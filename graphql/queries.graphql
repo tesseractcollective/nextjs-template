@@ -1,0 +1,95 @@
+query layout(
+  $eventFirst: Int = 500
+  $blogFirst: Int = 500
+  $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC
+  $blogOrderBy: BlogOrderByInput = date_DESC
+  $albumFirst: Int = 100
+  $albumOrderBy: AlbumOrderByInput = releaseDate_DESC
+  $testimonialOrderBy: TestimonialOrderByInput = updatedAt_DESC
+  $testimonialFirst: Int = 100
+  $profilesFirst: Int = 100
+  $pageSlug: String!
+  $logoTableFirst: Int = 100
+  $logoTableOrderBy: LogoTableOrderByInput = logoName_ASC
+) {
+  siteLibrary(where: { signature: "lnzame" }) {
+    ...siteLibraryFields
+  }
+  events(first: $eventFirst, orderBy: $eventOrderBy) {
+    ...eventFields
+  }
+  albums(first: $albumFirst, orderBy: $albumOrderBy) {
+    ...albumFields
+  }
+  testimonials(first: $testimonialFirst, orderBy: $testimonialOrderBy) {
+    ...testimonialFields
+  }
+  blogs(first: $blogFirst, orderBy: $blogOrderBy) {
+    ...blogFields
+  }
+  profiles(first: $profilesFirst) {
+    ...profileFields
+  }
+  page(where: { pageSlug: $pageSlug }) {
+    ...pageFields
+  }
+  navigations {
+    ...navigationFields
+  }
+  logoTables(first: $logoTableFirst, orderBy: $logoTableOrderBy) {
+    ...logoTableFields
+  }
+}
+
+query blog($blogSlug: String!) {
+  blog(where: { blogSlug: $blogSlug }) {
+    ...blogFields
+  }
+}
+
+query siteLibrary {
+  siteLibrary(where: { signature: "lnzame" }) {
+    ...siteLibraryFields
+  }
+}
+query Navigation {
+  navigations {
+    ...navigationFields
+  }
+}
+
+query event($eventSlug: String!) {
+  event(where: { eventSlug: $eventSlug }) {
+    ...eventFields
+  }
+}
+
+query album($albumSlug: String!) {
+  album(where: { albumSlug: $albumSlug }) {
+    ...albumFields
+  }
+}
+
+query profiles {
+  profiles(first: 100) {
+    ...profileFields
+  }
+}
+query testimonials {
+  testimonials(first: 100) {
+    ...testimonialFields
+  }
+}
+
+# query profillesByType($profileType: ProfilesSelect!) {
+#   profiles(first: 100, where: {profileType: $profileType}) {
+#     ...profileFields
+
+#   }
+# }
+
+query profile($profileSlug: String!) {
+  profile(where: { profileSlug: $profileSlug }) {
+    ...profileFields
+  }
+}

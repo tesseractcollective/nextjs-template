@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "codegen": "graphql-code-generator --config ./graphql.config.js"
+  },
+  "dependencies": {
+    "graphql": "^16.7.1",
+    "graphql-request": "^6.1.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.1",
+    "@graphql-codegen/typescript": "^3.0.4",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.9",
+    "@graphql-codegen/typescript-operations": "^3.0.4",
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.38.0",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

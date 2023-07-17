@@ -1,0 +1,576 @@
+fragment albumFields on Album {
+  id
+  albumSlug
+  title
+  releaseDate
+  albumBuyLink
+  featureHomePage
+  albumCover {
+    id
+    url
+  }
+  description {
+    raw
+    html
+    markdown
+    text
+  }
+  albumJsonData
+  iFramePlayer
+  videoBox {
+    videoTitle
+    youtubeVideoId
+    vimeoVideoId
+    youtubePlaylistId
+  }
+}
+
+fragment blogFields on Blog {
+  id
+  blogSlug
+  blogCategory
+  title
+  excerpt
+  image {
+    id
+    url
+  }
+  content {
+    raw
+    html
+    markdown
+    text
+  }
+  blogCallToActionText
+  blogCategory
+  blogJson
+  date
+  blogCallToActionLink
+  blogGallery {
+    url
+  }
+  videoBox {
+    videoTitle
+    youtubeVideoId
+    vimeoVideoId
+    youtubePlaylistId
+  }
+}
+
+fragment siteLibraryFields on SiteLibrary {
+  id
+  title
+  isSpanish
+  facebookLink
+  tikTokLink
+  instagramLink
+  spotifyLink
+  threadsLink
+  twitterLink
+  youtubeLink
+  pandoraLink
+  appleMusicLink
+  soundcloudLink
+  pinterestLink
+  githubLink
+  linkedinLink
+  siteCssBodyClass
+  mailchimp
+  logo {
+    id
+    url
+  }
+  bookingEmailOne
+  bookingPhoneOne
+  bookingNameOne
+  miniBio
+  analyticsId
+  siteLibraryJson
+  youtubePlaylistId
+  labelName
+  labelLink
+  labelLogo {
+    id
+    url
+  }
+  navigation
+  logoSecondary {
+    id
+    url
+  }
+  bandsInTownEmailWidget
+  paypalClientId
+  themeColor {
+    dark {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    primary {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    primaryHover {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    primaryFade {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    primaryFadeOpacity {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    white {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+  }
+  metaGoogleConsoleVerification
+  metaDescription
+  favicon {
+    url
+  }
+  metaOgImage {
+    url
+  }
+  metaAppleTouchIcon {
+    url
+  }
+  metaDomain
+  youtubeApiKey
+}
+
+fragment eventFields on Event {
+  eventAddress
+  eventAddressGoogleMapLink
+  eventCityState
+  eventEndDateTime
+  eventDescription {
+    html
+  }
+  eventFeatured
+  eventFlyer {
+    id
+    url
+  }
+  eventLinkButtonText
+  eventShortDescription
+  eventSlug
+  eventStartDateTime
+  eventTicketLinkDestination
+  eventTitle
+  eventVenueName
+  eventGallery {
+    url
+    id
+  }
+}
+
+fragment testimonialFields on Testimonial {
+  id
+  updatedAt
+  testimonialName
+  testimonialAvatar {
+    url
+  }
+  testimonialJobTitle
+  testimonialText {
+    html
+  }
+  testimonialType
+}
+
+fragment logoTableFields on LogoTable {
+  logoName
+  logoLink
+  logoImage {
+    url
+  }
+  logoType
+}
+
+fragment pageFields on Page {
+  id
+  pageSlug
+  title
+  subtitle
+  pageWidthStyle
+  contentPageJson
+  hideNav
+  hideFooter
+  hideHeader
+  setHomePage
+  whatsAppContactNumberFloatingButton
+  heroImage {
+    url
+  }
+  layoutBlocks {
+    id
+    layoutBlock(orderBy: id_ASC, first: 100) {
+      id
+      htmlId
+      cssClass
+      hideBlockColumn
+      heroMediaSlider(orderBy: id_ASC, first: 100) {
+        id
+        mediaType
+        sliderCssWrapper
+        displaySocialMedia
+        sliderMediaBackground {
+          url
+        }
+        textContent {
+          contentImage {
+            url
+          }
+          header {
+            html
+          }
+          subHeader {
+            html
+          }
+          content {
+            html
+          }
+          contentAlign
+          link
+          imageStyle
+          textContentWidth
+          headerFont
+          subHeaderFont
+          contentFont
+          headerSize
+          subHeaderSize
+          contentSize
+        }
+        callToAction {
+          ctaLink
+          ctaLabel
+          ctaClass
+          ctaPrimary
+          contentAlign
+        }
+      }
+      textContent(orderBy: id_ASC) {
+        id
+        contentImage {
+          url
+        }
+        header {
+          html
+        }
+        subHeader {
+          html
+        }
+        content {
+          html
+        }
+        contentAlign
+        link
+        imageStyle
+        textContentWidth
+        headerFont
+        subHeaderFont
+        contentFont
+        headerSize
+        subHeaderSize
+        contentSize
+      }
+      callToAction {
+        ctaLink
+        ctaLabel
+        ctaClass
+        ctaPrimary
+        contentAlign
+      }
+      backgroundImage {
+        url
+      }
+      parallaxImage {
+        url
+      }
+      gridBox {
+        boxTitle
+        boxLink
+        boxDescription {
+          html
+        }
+        boxImage {
+          url
+        }
+      }
+      logoTableSection {
+        logoTableTitle
+        logoTableQuery
+      }
+      contactForm {
+        contactFormTitle
+        netlifyContactForm
+        cssClass
+        netlifyFormFields
+        contactFormDescription {
+          html
+        }
+        jotformUrl
+        hubspotFormId
+        hubspotPortalId
+      }
+      videoBox {
+        videoTitle
+        youtubeVideoId
+        vimeoVideoId
+        youtubePlaylistId
+      }
+      testimonialSelection {
+        testimonialTitle
+        testimonialQuery
+      }
+      galleryLayout
+      sliderGallery(first: 500) {
+        url
+      }
+      eventSection {
+        eventDisplayType
+        eventSectionTitle
+      }
+      standOutText
+      displayBlogSection
+      blogSectionTitle
+      blogCategory
+      profileSectionTitle
+      profilesQuery
+      profileLayoutStyle
+      displayMusicSection
+      displayAllMusic
+      mailchimpLink
+      mailchimpTitle
+      mailchimpSubtitle
+      iFrameTitle
+      iFrameCode
+      parallaxImage {
+        url
+      }
+    }
+    backgroundColor {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+  }
+  accordion(orderBy: id_ASC) {
+    id
+    header {
+      html
+    }
+    accordionContent(orderBy: id_ASC) {
+      id
+      contentHeader {
+        html
+      }
+      contentDescription {
+        html
+      }
+      videoBox {
+        videoTitle
+        youtubeVideoId
+        vimeoVideoId
+        youtubePlaylistId
+      }
+      contentImage {
+        url
+      }
+    }
+  }
+}
+
+fragment navigationFields on Navigation {
+  navigationLayoutStyle
+  pageNavigationSelection
+  navigationLogo {
+    url
+  }
+  items {
+    image {
+      id
+      url
+    }
+    link
+    label
+    cssClass
+    sameTab
+    primaryItem
+    items {
+      image {
+        id
+        url
+      }
+      link
+      label
+      cssClass
+      sameTab
+    }
+  }
+  footerColumns {
+    footerImage {
+      url
+    }
+    footerText {
+      html
+    }
+    footerIframe
+    footerTitle
+    wideColumn
+    recentBlogByCategory
+    footerColumnCssWrapper
+    footerLink {
+      image {
+        id
+        url
+      }
+      link
+      label
+      cssClass
+      sameTab
+      items {
+        image {
+          id
+          url
+        }
+        link
+        label
+        cssClass
+        sameTab
+      }
+    }
+  }
+  footerItems {
+    image {
+      id
+      url
+    }
+    link
+    label
+    cssClass
+    sameTab
+    items {
+      image {
+        id
+        url
+      }
+      link
+      label
+      cssClass
+      sameTab
+    }
+  }
+}
+
+fragment profileFields on Profile {
+  createdAt
+  updatedAt
+  appleMusicLink
+  calendlyLink
+  companyTitle
+  email
+  epkLink
+  facebookLink
+  iFrame
+  instagramLink
+  instrument
+  linkedinLink
+  profileType
+  miniBio
+  name
+  order
+  pandoraLink
+  phoneNumber
+  primaryProfile
+  soundcloudLink
+  spotifyLink
+  profileSlug
+  tikTokLink
+  tourWidgetiFrame
+  threadsLink
+  twitterLink
+  websiteLink
+  youtubeLink
+  fullBio {
+    html
+  }
+  avatarImage {
+    url
+  }
+  imageGallery(first: 100) {
+    url
+  }
+  memberMusicRelease(first: 100) {
+    url
+  }
+  profileJson
+  contactList {
+    contactName
+    contactEmail
+    contactTitle
+    contactPhone
+    contactAddress
+    contactGoogleAddressLink
+    contactAvatar {
+      id
+      url
+    }
+  }
+  videoBox {
+    videoTitle
+    youtubeVideoId
+    vimeoVideoId
+    youtubePlaylistId
+  }
+  heroImage {
+    url
+  }
+  profileLogo {
+    url
+  }
+}
