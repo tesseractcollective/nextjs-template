@@ -1,8 +1,8 @@
 // import { Fade } from "react-awesome-reveal";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 // import Nav from "../nav/Nav";
-import Footer from "../footer/Footer";
-import Nav from "../nav/Nav";
+import Footer from "./navigation/Footer";
+import Nav from "./navigation/Nav";
 // import type { LayoutSectionComponentType } from '~/types/types';
 // import Mailchimp from '~/components/mailchimp/Mailchimp';
 // import MagicGrid from 'magic-grid';

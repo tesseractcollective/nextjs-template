@@ -1,6 +1,6 @@
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 import '@/app/globals.css'
-import LayoutBlocks from "@/components/layoutBlocks/LayoutBlocks";
+import LayoutBlocks from "@/components/LayoutBlocks";
 
 interface HomeProps {
   layout: LayoutQuery;
