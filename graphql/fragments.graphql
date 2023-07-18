@@ -226,6 +226,10 @@ fragment logoTableFields on LogoTable {
   logoType
 }
 
+fragment pagesSlugListFields on Page {
+  pageSlug
+}
+
 fragment pageFields on Page {
   id
   pageSlug

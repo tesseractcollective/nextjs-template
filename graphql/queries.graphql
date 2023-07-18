@@ -40,6 +40,16 @@ query layout(
     ...logoTableFields
   }
 }
+query pages {
+  pages(first: 500) {
+    ...pageFields
+  }
+}
+query pagesSlugList {
+ pages {
+    ...pagesSlugListFields
+  }
+}
 
 query blog($blogSlug: String!) {
   blog(where: { blogSlug: $blogSlug }) {
