@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next";
 import { sdkClient } from "@/lib/graphql-client";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
-import PageComponent from "@/components/PageComponent";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const layout: LayoutQuery = await sdkClient.layout({
@@ -16,5 +15,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 export default function Page({ layout }: { layout: LayoutQuery }) {
-  return <PageComponent layout={layout} />;
+  return (
+    <>
+      <h1>{layout.page?.pageSlug}</h1>
+      {/* <Home layout={layout} />     */}
+    </>
+  );
 }

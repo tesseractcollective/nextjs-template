@@ -28,7 +28,7 @@ import type {
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;
   navigation: NavigationFieldsFragment;
-  blogs: BlogFieldsFragment;
+  blogs: BlogFieldsFragment[];
   hideFooter?: boolean;
 }
 
@@ -278,7 +278,7 @@ export default function Footer({
             }.`}
           </p>
           <a
-            href={`https://lnza.me/?${encodeURIComponent(title)}%20fan`}
+            href={`https://lnza.me/?${encodeURIComponent(title ?? "" + " fan")}`}
             target="_blank"
             rel="noreferrer"
             className="max-w-max mb-4 mx-auto text-xs text-color-secondary opacity-60 text-link uppercase text-center hover:opacity-100"

@@ -1,21 +1,20 @@
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetServerSideProps } from "next";
 import { sdkClient } from "@/lib/graphql-client";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
-import Home from "@/components/page";
+import PageComponent from "@/components/PageComponent";
 
-export const getStaticProps: GetStaticProps<{
-  layout: LayoutQuery;
-}> = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const layout: LayoutQuery = await sdkClient.layout({
     pageSlug: "home",
   });
-  return { props: { layout } };
+  console.log("getServerSideProps", layout.page?.pageSlug);
+  return {
+    props: {
+      layout,
+    },
+  };
 };
 
-export default function HomePage({
-  layout,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
-    <Home layout={layout} />
-  );
+export default function Page({ layout }: { layout: LayoutQuery }) {
+  return <PageComponent layout={layout} />;
 }
