@@ -57,11 +57,18 @@ query blog($blogSlug: String!) {
   }
 }
 
+query blogs {
+  blogs(first: 200) {
+    ...blogFields
+  }
+}
+
 query siteLibrary {
   siteLibrary(where: { signature: "lnzame" }) {
     ...siteLibraryFields
   }
 }
+
 query Navigation {
   navigations {
     ...navigationFields

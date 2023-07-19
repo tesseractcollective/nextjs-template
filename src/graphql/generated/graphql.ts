@@ -23053,6 +23053,11 @@ export type BlogQueryVariables = Exact<{
 
 export type BlogQuery = { __typename?: 'Query', blog?: { __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> } | null };
 
+export type BlogsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type BlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> };
+
 export type SiteLibraryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -23745,6 +23750,13 @@ export const BlogDocument = gql`
   }
 }
     ${BlogFieldsFragmentDoc}`;
+export const BlogsDocument = gql`
+    query blogs {
+  blogs(first: 200) {
+    ...blogFields
+  }
+}
+    ${BlogFieldsFragmentDoc}`;
 export const SiteLibraryDocument = gql`
     query siteLibrary {
   siteLibrary(where: {signature: "lnzame"}) {
@@ -23813,6 +23825,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     blog(variables: BlogQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<BlogQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<BlogQuery>(BlogDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'blog', 'query');
+    },
+    blogs(variables?: BlogsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<BlogsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<BlogsQuery>(BlogsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'blogs', 'query');
     },
     siteLibrary(variables?: SiteLibraryQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SiteLibraryQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SiteLibraryQuery>(SiteLibraryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'siteLibrary', 'query');

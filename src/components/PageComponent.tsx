@@ -1,17 +1,21 @@
 import type { LayoutQuery } from "@/graphql/generated/graphql";
-import '@/app/globals.css'
+import "@/app/tailwind.css";
+import "@/styles/global.scss";
+import "@/styles/layoutBlocks.scss";
 import LayoutBlocks from "@/components/LayoutBlocks";
+import ThemeColors from "@/styles/ThemeColors";
 
 interface HomeProps {
   layout: LayoutQuery;
 }
 
 export default function PageComponent({ layout }: HomeProps) {
+  if (!layout.siteLibrary) return <div />;
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-     <LayoutBlocks 
-      layout={layout}
-     />
-    </main>
+    <>
+      <ThemeColors siteLibrary={layout.siteLibrary} />
+      <LayoutBlocks layout={layout} />
+    </>
   );
 }

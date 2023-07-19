@@ -27,7 +27,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
     blogs,
   } = layout;
 
-  console.log("Layout", layout);
+  // console.log("Layout", layout);
   // console.log("Layout/siteLibrary", siteLibrary);
   // console.log("Layout/events", events);
   // console.log("Layout/testimonials", testimonials);
@@ -74,7 +74,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
           hideNav={page?.hideNav || undefined}
         />
       )}
-      {navigations[0] && siteLibrary && blogs && (
+      {navigations[0] && siteLibrary && (
         <Footer
           siteLibrary={siteLibrary}
           navigation={navigations[0]}

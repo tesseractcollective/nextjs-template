@@ -1,8 +1,22 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { GetServerSideProps } from "next";
+import { sdkClient } from "@/lib/graphql-client";
+import type { LayoutQuery, SiteLibraryQuery } from "@/graphql/generated/graphql";
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const siteLibrary: SiteLibraryQuery = await sdkClient.siteLibrary();
+  console.log("getServerSideProps", siteLibrary.siteLibrary?.title);
+  return {
+    props: {
+      siteLibrary,
+    },
+  };
+};
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,10 +27,11 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}, { siteLibrary }: { siteLibrary: SiteLibraryQuery }) {
+  console.log('laayout', siteLibrary)
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${siteLibrary.siteLibrary?.siteCssBodyClass}`}>{children}</body>
     </html>
   )
 }
