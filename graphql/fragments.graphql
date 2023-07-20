@@ -12,6 +12,7 @@ fragment albumFields on Album {
   description {
     raw
     html
+    raw
     markdown
     text
   }
@@ -184,6 +185,7 @@ fragment eventFields on Event {
   eventEndDateTime
   eventDescription {
     html
+    raw
   }
   eventFeatured
   eventFlyer {
@@ -213,6 +215,7 @@ fragment testimonialFields on Testimonial {
   testimonialJobTitle
   testimonialText {
     html
+    raw
   }
   testimonialType
 }
@@ -266,12 +269,15 @@ fragment pageFields on Page {
           }
           header {
             html
+            raw
           }
           subHeader {
             html
+            raw
           }
           content {
             html
+            raw
           }
           contentAlign
           link
@@ -299,12 +305,15 @@ fragment pageFields on Page {
         }
         header {
           html
+          raw
         }
         subHeader {
           html
+          raw
         }
         content {
           html
+          raw
         }
         contentAlign
         link
@@ -335,6 +344,7 @@ fragment pageFields on Page {
         boxLink
         boxDescription {
           html
+          raw
         }
         boxImage {
           url
@@ -351,6 +361,7 @@ fragment pageFields on Page {
         netlifyFormFields
         contactFormDescription {
           html
+          raw
         }
         jotformUrl
         hubspotFormId
@@ -407,14 +418,17 @@ fragment pageFields on Page {
     id
     header {
       html
+      raw
     }
     accordionContent(orderBy: id_ASC) {
       id
       contentHeader {
         html
+        raw
       }
       contentDescription {
         html
+        raw
       }
       videoBox {
         videoTitle
@@ -462,6 +476,7 @@ fragment navigationFields on Navigation {
     }
     footerText {
       html
+      raw
     }
     footerIframe
     footerTitle
@@ -542,6 +557,7 @@ fragment profileFields on Profile {
   youtubeLink
   fullBio {
     html
+    raw
   }
   avatarImage {
     url

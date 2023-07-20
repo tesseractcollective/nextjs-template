@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
-import Pagination from "swiper";
-import Navigation from "swiper";
+import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -38,7 +37,7 @@ export default function Blogs({
           {FilteredBlogs.splice(0, 4).map((blogItem) => (
             <li key={blogItem.blogSlug} className="">
               <Link
-                href={blogItem.blogSlug || "#"}
+                href={`/blog/${blogItem.blogSlug}` || "#"}
                 className="no-underline flex gap-x-2 items-center"
               >
                 <img
@@ -122,8 +121,8 @@ export default function Blogs({
                     alt=""
                     className="absolute inset-0 -z-10 h-full w-full object-cover vignette"
                   />
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-dark/50 via-gray-900/40" />
-                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-dark/50 via-white/40" />
+                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10 overflow-hidden" />
 
                   <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
                     <div className="-ml-4 flex items-center gap-x-4">
@@ -135,8 +134,8 @@ export default function Blogs({
                       </svg>
                     </div>
                   </div>
-                  <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
-                    <Link href={`/blog/${blogItem.blogSlug || "/blogs"}`}>
+                  <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
+                    <Link href={`/blog/${blogItem.blogSlug || "/blogs"}`} className="!text-white">
                       <span className="absolute inset-0" />
                       {blogItem.title}
                     </Link>
@@ -148,7 +147,7 @@ export default function Blogs({
         </div>
         <div className="w-full text-center">
           <Link
-            to="/blogs"
+            href="/blogs"
             className="text-link flex flex-row my-1 items-center max-w-max justify-center text-sm text-center mx-auto mb-8"
           >
             <span>All {(!!blogHeader && blogHeader) || "Blogs"}</span>
@@ -168,7 +167,7 @@ export default function Blogs({
           <h2 className="text-center">
             {(!!blogHeader && blogHeader) || "Blogs"}
           </h2>
-          <div className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          <div className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 xl:mx-0 lg:max-w-none md:grid-cols-2 xl:grid-cols-3 animate-col-width">
             {FilteredBlogs?.map((blogItem) => (
               <article
                 key={blogItem.id}
@@ -192,7 +191,7 @@ export default function Blogs({
                     </svg>
                   </div>
                 </div>
-                <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
+                <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
                   <Link href={`/blog/${blogItem.blogSlug || "/blogs"}`}>
                     <span className="absolute inset-0" />
                     {blogItem.title}

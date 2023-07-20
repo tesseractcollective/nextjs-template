@@ -1,52 +1,52 @@
 import { sdkClient } from "@/lib/graphql-client";
-import Album from "@/components/Album";
 import Footer from "@/components/navigation/Footer";
 import Nav from "@/components/navigation/Nav";
 import {
-  AlbumQuery,
   SiteLibraryQuery,
   NavigationQuery,
   BlogsQuery,
+  BlogQuery
 } from "@/graphql/generated/graphql";
 import { GetServerSideProps } from "next";
-import "@/app/tailwind.css";
 import "@/styles/global.scss";
 import "@/styles/layoutBlocks.scss";
+import "@/app/tailwind.css";
 import ThemeColors from "@/styles/ThemeColors";
+import Blog from "@/components/Blog";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const album: AlbumQuery = await sdkClient.album({
-    albumSlug: params?.albumSlug as string,
+  const blog: BlogQuery = await sdkClient.blog({
+    blogSlug: params?.blogSlug as string,
   });
   const siteLibrary: SiteLibraryQuery = await sdkClient.siteLibrary();
   const navigations: NavigationQuery = await sdkClient.Navigation();
   const blogs: BlogsQuery = await sdkClient.blogs();
-  console.log("getServerSideProps", params?.albumSlug);
-  console.log("getServerSideProps", album.album?.albumSlug);
+  console.log("getServerSideProps", params?.blogSlug);
+  console.log("getServerSideProps", blog.blog?.blogSlug);
   return {
     props: {
       siteLibrary,
       navigations,
-      album,
+      blog,
       blogs,
     },
   };
 };
 
-interface AlbumPageProps {
-  album: AlbumQuery;
+interface BlogPageProps {
+  blog: BlogQuery;
   siteLibrary: SiteLibraryQuery;
   blogs: BlogsQuery;
   navigations: NavigationQuery;
 }
 
-export default function AlbumSlug({
-  album,
+export default function BlogSlug({
+  blog,
   siteLibrary,
   blogs,
   navigations,
-}: AlbumPageProps) {
-  if (!album.album || !siteLibrary.siteLibrary) return <></>;
+}: BlogPageProps) {
+  if (!blog.blog || !siteLibrary.siteLibrary) return <></>;
   return (
     <>
       <ThemeColors siteLibrary={siteLibrary.siteLibrary} />
@@ -55,7 +55,7 @@ export default function AlbumSlug({
         navigation={navigations.navigations[0]}
         hideNav={false}
       />
-      <Album album={album?.album} siteLibrary={siteLibrary?.siteLibrary} />
+      <Blog blog={blog?.blog} siteLibrary={siteLibrary?.siteLibrary} />
       <Footer
         siteLibrary={siteLibrary.siteLibrary}
         navigation={navigations.navigations[0]}

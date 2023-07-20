@@ -447,11 +447,10 @@ section#frontera.frontera-wrapper {
 
 .text-link {
     position: relative;
-    display: inline-block;
     font-weight: 500;
     letter-spacing: 0.5px;
-    color: var(--white);
     overflow: hidden;
+    color: var(--white);
     background: linear-gradient(135deg, var(--primary), var(--primary-hover) 50%, var(--white) 50%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -475,7 +474,6 @@ section#frontera.frontera-wrapper {
         color: var(--primary);
       }
     }
-
 }
 
 .gradient-text {
@@ -553,6 +551,7 @@ section#frontera.frontera-wrapper {
   }
   a {
     position: relative;
+    margin: 0 0.25rem;
     color: var(--primary-hover);
     overflow: hidden;
     background: linear-gradient(135deg, var(--primary), var(--white) 50%, var(--white) 50%);

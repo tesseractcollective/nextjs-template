@@ -1,5 +1,5 @@
 import Vimeo from "@u-wave/react-vimeo";
-import YouTubePlaylist from '@codesweetly/react-youtube-playlist';
+import YouTubePlaylist from "@codesweetly/react-youtube-playlist";
 
 interface VideoBoxProps {
   videoTitle?: string;
@@ -14,9 +14,8 @@ export default function VideoBox({
   youtubeVideoId,
   vimeoVideoId,
   youtubePlaylistId,
-  youtubeApiKey
-}: 
-VideoBoxProps) {
+  youtubeApiKey,
+}: VideoBoxProps) {
   return (
     <section className="container mx-auto dark-section my-8">
       <div className="mx-auto">
@@ -44,13 +43,13 @@ VideoBoxProps) {
             <Vimeo video={vimeoVideoId} />
           </div>
         )}
-        {!!youtubePlaylistId && youtubeApiKey && (
-            <YouTubePlaylist
-              apiKey={youtubeApiKey}
-              playlistId={youtubePlaylistId}
-              uniqueName={`${youtubePlaylistId}`}
-            />
-          )}
+        {/* {!!youtubePlaylistId && youtubeApiKey && (
+          <YouTubePlaylist
+            apiKey={youtubeApiKey}
+            playlistId={youtubePlaylistId}
+            uniqueName={`${youtubePlaylistId}`}
+          />
+        )} */}
       </div>
     </section>
   );

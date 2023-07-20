@@ -1,7 +1,4 @@
 import type { LayoutQuery } from "@/graphql/generated/graphql";
-import "@/app/tailwind.css";
-import "@/styles/global.scss";
-import "@/styles/layoutBlocks.scss";
 import LayoutBlocks from "@/components/LayoutBlocks";
 import ThemeColors from "@/styles/ThemeColors";
 

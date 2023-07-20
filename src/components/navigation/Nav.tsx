@@ -126,7 +126,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                             alt={item.label || ""}
                                             layout="fill"
                                             objectFit="cover"
-                                            className="object-center"
+                                            className="object-center mx-auto max-h-16"
                                           />
                                         )}
                                       </div>
