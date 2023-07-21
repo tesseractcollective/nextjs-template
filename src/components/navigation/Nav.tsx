@@ -4,17 +4,12 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import {
-  Dialog,
-  Disclosure,
-  Popover,
-  Transition,
-  Tab,
-} from "@headlessui/react";
+import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "../SocialMediaIcons";
+import LinkItem from "@/components/LinkItem";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -57,7 +52,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
             leaveTo="opacity-0"
           >
             <div
-              className="fixed inset-0 bg-dark opacity-50"
+              className="fixed inset-0 bg-dark opacity-90"
               aria-hidden="true"
             />
           </Transition.Child>
@@ -119,29 +114,37 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                       key={item.label}
                                       className="group relative"
                                     >
-                                      <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
+                                      <div className="overflow-hidden rounded-md bg-gray-100 group-hover:opacity-80 transition opacity-100">
                                         {!!item?.image?.url && (
                                           <Image
                                             src={item.image.url}
                                             alt={item.label || ""}
-                                            layout="fill"
+                                            width={140}
+                                            height={140}
+                                            sizes="100%"
                                             objectFit="cover"
-                                            className="object-center mx-auto max-h-16"
+                                            style={{
+                                              maxHeight: "400px",
+                                              maxWidth: "400px",
+                                              objectFit: "cover",
+                                              aspectRatio: 1,
+                                            }}
                                           />
                                         )}
                                       </div>
                                       {!!item?.link && (
-                                        <Link
-                                          prefetch
-                                          href={item.link}
-                                          className="mt-6 block text-sm font-medium text-white"
+                                        <LinkItem
+                                          key={item?.link}
+                                          link={item?.link}
+                                          label={item?.label}
+                                          cssClass={`mt-2 block text-sm font-medium text-white text-center group-hover:text-primary transition ${item?.cssClass}`}
+                                          sameTab={item?.sameTab}
                                         >
                                           <span
                                             className="absolute inset-0 z-10"
                                             aria-hidden="true"
                                           />
-                                          {item.label}
-                                        </Link>
+                                        </LinkItem>
                                       )}
                                     </div>
                                   ))}
@@ -151,19 +154,36 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                           </Tab.Group>
                         )}
 
-                        <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                          {!hasItems && (
+                        {!hasItems && (
+                          <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                             <div className="flow-root">
-                              <a
-                                key={mainNavigationItem.label}
-                                href={mainNavigationItem.link || "/"}
-                                className="-m-2 block p-2 font-medium text-white max-w-max"
-                              >
-                                {mainNavigationItem.label}
-                              </a>
+                              {mainNavigationItem.link?.includes("http") ? (
+                                <a
+                                  target={
+                                    mainNavigationItem?.sameTab
+                                      ? "_self"
+                                      : "_blank"
+                                  }
+                                  key={mainNavigationItem.label}
+                                  href={mainNavigationItem.link || "/"}
+                                  className="-m-2 block p-2 font-medium text-white max-w-max"
+                                >
+                                  {mainNavigationItem.label}
+                                </a>
+                              ) : (
+                                <Link
+                                  prefetch
+                                  key={mainNavigationItem.label}
+                                  href={mainNavigationItem.link || "/"}
+                                  className="-m-2 block p-2 font-medium text-white max-w-max"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  {mainNavigationItem.label}
+                                </Link>
+                              )}
                             </div>
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </div>
                     );
                   })}
@@ -264,27 +284,40 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                                           {item?.image && (
                                                             <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
                                                               <Image
-                                                                src={item.image?.url}
-                                                                alt={ item?.label || "" }
+                                                                src={
+                                                                  item.image
+                                                                    ?.url
+                                                                }
+                                                                alt={
+                                                                  item?.label ||
+                                                                  ""
+                                                                }
                                                                 width={0}
                                                                 height={0}
                                                                 sizes="100%"
-                                                                style={{ width: "100%" }}
+                                                                style={{
+                                                                  width: "100%",
+                                                                }}
                                                               />
                                                             </div>
                                                           )}
                                                           {!!item?.link && (
-                                                            <Link
-                                                              prefetch
-                                                              href={item.link}
-                                                              className="mt-4 block font-medium text-white"
+                                                            <LinkItem
+                                                              key={item?.link}
+                                                              link={item?.link}
+                                                              label={
+                                                                item?.label
+                                                              }
+                                                              cssClass={`mt-4 block font-medium text-white ${item?.cssClass}`}
+                                                              sameTab={
+                                                                item?.sameTab
+                                                              }
                                                             >
                                                               <span
                                                                 className="absolute inset-0 z-10"
                                                                 aria-hidden="true"
                                                               />
-                                                              {item.label}
-                                                            </Link>
+                                                            </LinkItem>
                                                           )}
                                                         </div>
                                                       )
@@ -299,13 +332,13 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                     </Popover>
                                   )}
                                   {!hasItems && (
-                                    <Link
-                                      prefetch
-                                      href={mainNavigationItem.link || "/"}
-                                      className="flex items-center text-sm font-medium text-white opacity-90 hover:text-white hover:opacity-100"
-                                    >
-                                      {mainNavigationItem.label}
-                                    </Link>
+                                    <LinkItem
+                                      key={mainNavigationItem?.link}
+                                      link={mainNavigationItem?.link}
+                                      label={mainNavigationItem?.label}
+                                      cssClass={`flex items-center text-sm font-medium text-white opacity-90 hover:text-white hover:opacity-100 ${mainNavigationItem?.cssClass}`}
+                                      sameTab={mainNavigationItem?.sameTab}
+                                    />
                                   )}
                                 </div>
                               );
@@ -333,7 +366,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                       <Image
                         src={navigation.navigationLogo.url}
                         alt=""
-                        className="h-8 w-auto"
+                        className="h-12 lg:h-10 w-auto object-contain"
                         width={0}
                         height={0}
                         sizes="100%"
@@ -350,14 +383,13 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                             mainNavigationItem.primaryItem === true
                         )
                         .map((mainNavigationItem) => (
-                          <Link
-                            prefetch
-                            key={mainNavigationItem.label}
-                            href={mainNavigationItem.link || "/"}
-                            className="flex items-center text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary"
-                          >
-                            {mainNavigationItem.label}
-                          </Link>
+                          <LinkItem
+                            key={mainNavigationItem?.link}
+                            link={mainNavigationItem?.link}
+                            label={mainNavigationItem?.label}
+                            cssClass={`flex items-center text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary ${mainNavigationItem?.cssClass}`}
+                            sameTab={mainNavigationItem?.sameTab}
+                          />
                         ))}
                   </div>
                 </div>

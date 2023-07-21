@@ -13,7 +13,6 @@ import type {
   SiteLibraryFieldsFragment,
   PageFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 
 type ContactFormType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlock"][number]["contactForm"];
@@ -64,7 +63,7 @@ export default function ContactFormSection({
           className="container grid mx-auto my-8 dark-section"
           key={index}
         >
-          <div className="w-12/12 md:w-10/12 mx-auto">
+          <div className="w-full md:w-8/12 mx-auto">
             <div
               className={`border-round p-2 mx-auto ${
                 contactFormItem?.cssClass && contactFormItem.cssClass
@@ -86,8 +85,8 @@ export default function ContactFormSection({
                     <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
                       <Honeypot />
                       <section className="container flex-column grid mx-auto dark-section">
-                        <div className="w-10/12 md:w-8/12 mx-auto">
-                          <div className="form-input-wrapper border-round p-4">
+                        <div className="w-full mx-auto">
+                          <div className="form-input-wrapper border-round p-2">
                             {netlify.success && (
                               <p>Thanks for contacting us!</p>
                             )}
@@ -99,7 +98,7 @@ export default function ContactFormSection({
                               </p>
                             )}
 
-                            <div>
+                            <div className="mb-2">
                               <label
                                 htmlFor="email"
                                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -119,26 +118,11 @@ export default function ContactFormSection({
                                   })}
                                   className="block w-full rounded-md border-0 py-1.5 pr-10 text-red-900 ring-1 ring-inset ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6"
                                   placeholder="you@example.com"
-                                  defaultValue="adamwathan"
-                                  aria-invalid="true"
-                                  aria-describedby="email-error"
                                 />
-                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                                  <ExclamationCircleIcon
-                                    className="h-5 w-5 text-red-500"
-                                    aria-hidden="true"
-                                  />
-                                </div>
                               </div>
-                              <p
-                                className="mt-2 text-sm text-red-600"
-                                id="email-error"
-                              >
-                                Not a valid email address.
-                              </p>
                             </div>
 
-                            <div>
+                            <div className="mb-2">
                               <label
                                 htmlFor="Name"
                                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -153,12 +137,12 @@ export default function ContactFormSection({
                                   })}
                                   id="Name"
                                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                  placeholder="you@gmail.com"
+                                  placeholder="Name"
                                 />
                               </div>
                             </div>
 
-                            <div>
+                            <div className="mb-2">
                               <label
                                 htmlFor="phone"
                                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -173,7 +157,7 @@ export default function ContactFormSection({
                                     required: "Phone is required",
                                   })}
                                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                  placeholder="you@gmail.com"
+                                  placeholder="281-330-8004"
                                 />
                               </div>
                             </div>
@@ -208,7 +192,7 @@ export default function ContactFormSection({
                                     label: `Contact Page - Form Submit`,
                                   });
                                 }}
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 !text-white shadow-sm hover:bg-primary-hover transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2"
                               >
                                 {isSpanish ? "Enviar" : "Submit"}
                               </button>

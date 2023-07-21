@@ -47,6 +47,9 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
             layout="fill"
             objectFit="cover"
             className="object-center mx-auto"
+            width={0}
+            height={0}
+            sizes="100%"
           />
         </div>
         )}

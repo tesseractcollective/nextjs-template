@@ -1,4 +1,4 @@
-import Link from "next/link";
+import LinkItem from "@/components/LinkItem";
 import Image from "next/image";
 import parse from "html-react-parser";
 import type {
@@ -6,8 +6,8 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import SocialMediaIcons from "../SocialMediaIcons";
-import Blogs from "../Blogs";
+import SocialMediaIcons from "@/components/SocialMediaIcons";
+import Blogs from "@/components/Blogs";
 
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -78,23 +78,13 @@ export default function Footer({
                       <li key={index} className="text-sm max-w-max">
                         {!!linkItem.link && (
                           <div className="max-w-max">
-                            {linkItem.link.includes("https") ? (
-                              <a
-                                href={linkItem.link}
-                                target={linkItem.sameTab ? "" : "_blank"}
-                                className={`text-white opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem.cssClass}`}
-                                rel="noreferrer"
-                              >
-                                {linkItem.label}
-                              </a>
-                            ) : (
-                              <Link
-                                href={linkItem.link}
-                                className={`text-white opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem.cssClass}`}
-                              >
-                                {linkItem.label}
-                              </Link>
-                            )}
+                            <LinkItem
+                              key={linkItem?.link}
+                              link={linkItem?.link}
+                              label={linkItem?.label}
+                              cssClass={`text-white opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
+                              sameTab={linkItem?.sameTab}
+                            />
                           </div>
                         )}
                       </li>
