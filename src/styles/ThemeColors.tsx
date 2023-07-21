@@ -25,21 +25,21 @@ export default function ThemeColors({ siteLibrary }: ThemeColorsProps) {
     if (siteLibrary?.themeColor?.primary?.hex) {
       document.body.style.setProperty(
         "--primary",
-        siteLibrary?.themeColor.primary.hex
+        siteLibrary.themeColor.primary.hex
       );
       document.body.style.setProperty(
         "--swiper-theme-color",
-        siteLibrary?.themeColor.primary.hex
+        siteLibrary.themeColor.primary.hex
       );
       document.body.style.setProperty(
         "--primary-color",
-        siteLibrary?.themeColor.primary.hex
+        siteLibrary.themeColor.primary.hex
       );
     }
     if (siteLibrary?.themeColor?.primaryHover?.hex) {
       document.body.style.setProperty(
         "--primary-hover",
-        siteLibrary?.themeColor.primaryHover.hex
+        siteLibrary.themeColor.primaryHover.hex
       );
       document.body.style.setProperty(
         "--swiper-pagination-bullet-inactive-color",
@@ -73,14 +73,13 @@ export default function ThemeColors({ siteLibrary }: ThemeColorsProps) {
     }
   }, [
     siteLibrary?.siteCssBodyClass,
-    siteLibrary?.themeColor.dark.hex,
-    siteLibrary?.themeColor.primary.hex,
-    siteLibrary?.themeColor.primaryFade.hex,
-    siteLibrary?.themeColor.primaryFadeOpacity.hex,
-    siteLibrary?.themeColor.primaryHover.hex,
-    siteLibrary?.themeColor.white.hex,
     siteLibrary?.siteLibraryJson?.siteID,
+    siteLibrary?.themeColor?.dark?.hex,
+    siteLibrary?.themeColor?.primary?.hex,
+    siteLibrary?.themeColor.primaryFade?.hex,
+    siteLibrary?.themeColor?.primaryFadeOpacity?.hex,
+    siteLibrary?.themeColor?.primaryHover?.hex,
+    siteLibrary?.themeColor?.white?.hex,
   ]);
-
   return <></>;
 }
