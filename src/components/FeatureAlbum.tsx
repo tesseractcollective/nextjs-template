@@ -1,13 +1,11 @@
 import React from "react";
-import  Link  from "next/link";
+import Link from "next/link";
+import Image from "next/image";
 import parse from "html-react-parser";
 import { Fade, Slide } from "react-awesome-reveal";
 import useViewport from "@/hooks/useViewport";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import  Pagination  from "swiper";
-// import  EffectCoverflow  from "swiper";
-import { EffectCoverflow, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination } from "swiper/modules";
 import ReactGA from "react-ga4";
 import type {
   AlbumFieldsFragment,
@@ -35,10 +33,7 @@ export default function FeatureAlbum({
       {albums
         .filter((album) => album.featureHomePage === true)
         .map((albumItem) => (
-          <section
-            className="gradient-bkg px-2 mx-0"
-            key={albumItem.albumSlug}
-          >
+          <section className="gradient-bkg px-2 mx-0" key={albumItem.albumSlug}>
             <section className="container py-5 mx-auto">
               <div className="grid">
                 <div className="col-12">
@@ -66,10 +61,13 @@ export default function FeatureAlbum({
                     >
                       {!!albumItem.albumCover?.url && (
                         <Slide className="w-full" direction="up" triggerOnce>
-                          <img
+                          <Image
                             src={albumItem.albumCover.url}
                             alt={(albumItem.title && albumItem.title) || ""}
                             className="mx-auto mb-0 w-full block box-shadow border-round"
+                            width={0}
+                            height={0}
+                            sizes="100%"
                             style={{
                               maxHeight: "400px",
                               maxWidth: "400px",
@@ -111,7 +109,7 @@ export default function FeatureAlbum({
           </section>
         ))}
       {!!albumMap && (
-        <section className="bg-primary-gradient px-2 mx-0">
+        <section className="px-2 mx-0">
           <section className="container py-5 feature-album-slider-wrapper mx-auto">
             <h2 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center">
               {isSpanish ? "Música" : "Music"}
@@ -147,10 +145,13 @@ export default function FeatureAlbum({
                       className="max-w-max no-underline"
                     >
                       {!!albumItem.albumCover?.url && (
-                        <img
+                        <Image
                           src={albumItem.albumCover.url}
+                          width={0}
+                          height={0}
+                          sizes="100%"
                           alt={(albumItem.title && albumItem.title) || ""}
-                          className="mx-auto mb-0 block border-round"
+                          className="mx-auto mb-0 block border-round w-[20rem]"
                           style={{
                             maxHeight: "400px",
                             objectFit: "cover",
@@ -163,43 +164,48 @@ export default function FeatureAlbum({
                 ))}
               </Swiper>
             ) : (
-              <div className={`flex flex-row flex-wrap items-center`}>
+              <div
+                className={`flex flex-row flex-wrap items-start justify-center my-16`}
+              >
                 {albums.map((albumItem) => (
                   <div
-                    className="mx-auto animate-col-width w-52"
+                    className="mx-auto animate-col-width w-64"
                     key={albumItem.albumSlug}
                   >
-                      {!!albumItem.albumSlug && (
-                        <Link
-                          href={`/music/${albumItem.albumSlug}`}
-                          prefetch
-                          onClick={() =>
-                            ReactGA.event({
-                              category: "Link",
-                              action: `Visit ${albumItem.title}`,
-                              label: albumItem.title || "",
-                            })
-                          }
-                          className="mx-auto max-w-max block no-underline album-map-grid-item"
-                        >
-                          {!!albumItem.albumCover?.url && (
-                            <img
-                              src={albumItem.albumCover.url}
-                              alt={(albumItem.title && albumItem.title) || ""}
-                              className="mx-auto mb-2 w-full block box-shadow border-round"
-                              style={{
-                                maxHeight: "400px",
-                                maxWidth: "400px",
-                                objectFit: "cover",
-                                aspectRatio: 1,
-                              }}
-                            />
-                          )}
-                        </Link>
-                      )}
-                      <h3 className="text-xs mt-0 mb-4 text-center uppercase">
-                        {albumItem.title}
-                      </h3>
+                    {!!albumItem.albumSlug && (
+                      <Link
+                        href={`/music/${albumItem.albumSlug}`}
+                        prefetch
+                        onClick={() =>
+                          ReactGA.event({
+                            category: "Link",
+                            action: `Visit ${albumItem.title}`,
+                            label: albumItem.title || "",
+                          })
+                        }
+                        className="max-w-max block no-underline album-map-grid-item"
+                      >
+                        {!!albumItem.albumCover?.url && (
+                          <Image
+                            src={albumItem.albumCover.url}
+                            alt={(albumItem.title && albumItem.title) || ""}
+                            className="mx-auto mb-2 w-full block box-shadow border-round"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            style={{
+                              maxHeight: "400px",
+                              maxWidth: "400px",
+                              objectFit: "cover",
+                              aspectRatio: 1,
+                            }}
+                          />
+                        )}
+                      </Link>
+                    )}
+                    <h3 className="text-xs mt-0 mb-4 text-center uppercase">
+                      {albumItem.title}
+                    </h3>
                   </div>
                 ))}
               </div>
