@@ -25,7 +25,6 @@ body {
   z-index: -1;
   top: 50%;
   left: 50%;
-
   transform: translate(-50%, 0%);
   width: 800px;
   height: 800px;
@@ -650,24 +649,6 @@ section#frontera.frontera-wrapper {
   }
 } 
 
-// .body-parsed-text a {
-//   position: relative;
-//   color: var(--primary-hover);
-//   overflow: hidden;
-//   background: linear-gradient(135deg, var(--primary), var(--white) 50%, var(--white) 50%);
-//   background-clip: text;
-//   -webkit-background-clip: text;
-//   -webkit-text-fill-color: transparent;
-//   background-size: 250% 100%;
-//   background-position: 100%;
-//   transition: all 275ms ease;
-//   border-bottom: 1px solid var(--primary-hover);
-//   &:hover,  &:focus {
-//     background-position: 0 100%;
-//     border-bottom: 1px solid var(--primary-hover);
-//   }
-// }
-
 .p-inputtext:enabled:hover {
   border-color: var(--primary-hover) !important;
 }
@@ -721,14 +702,6 @@ section#frontera.frontera-wrapper {
     color: var(--dark) !important;
   }
 }
-
-// .text-white {
-//   color: var(--white) !important;
-// }
-
-// .text-dark {
-//   color: var(--dark) !important;
-// }
 
 p, h1, h2, h3,
 h4, h5, h6  {color: var(--white);}

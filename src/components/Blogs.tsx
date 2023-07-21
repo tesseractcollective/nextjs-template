@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Swiper as SwiperType } from "swiper";
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -37,14 +38,21 @@ export default function Blogs({
           {FilteredBlogs.splice(0, 4).map((blogItem) => (
             <li key={blogItem.blogSlug} className="">
               <Link
+              prefetch
                 href={`/blog/${blogItem.blogSlug}` || "#"}
                 className="no-underline flex gap-x-2 items-center"
               >
-                <img
-                  className="h-4 w-4 flex-none rounded-full bg-gray-50 object-cover"
-                  src={blogItem.image?.url}
-                  alt=""
-                />
+                {!!blogItem.image?.url && (
+                  <Image
+                    className="h-4 w-4 flex-none rounded-full bg-gray-50 object-cover"
+                    src={blogItem.image?.url}
+                    alt=""
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    style={{ width: "16px" }}
+                  />
+                )}
                 <div className="flex-auto">
                   <div className="flex items-center justify-between gap-x-4">
                     <p className="text-xs text-white opacity-80 line-clamp-1 max-w-[180px]">
@@ -111,18 +119,22 @@ export default function Blogs({
             // }}
           >
             {FilteredBlogs.map((blogItem) => (
-              <SwiperSlide className="mr-4" key={blogItem.blogSlug}>
+              <SwiperSlide className="mr-4 group" key={blogItem.blogSlug}>
                 <article
                   key={blogItem.id}
                   className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 h-full"
                 >
-                  <img
-                    src={blogItem.image?.url}
-                    alt=""
-                    className="absolute inset-0 -z-10 h-full w-full object-cover vignette"
-                  />
+                  {!!blogItem.image?.url && (
+                    <Image
+                      src={blogItem.image.url}
+                      alt=""
+                      layout="fill"
+                      objectFit="cover"
+                      className="absolute inset-0 -z-10 h-full w-full object-cover vignette object-center"
+                    />
+                  )}
                   <div className="absolute inset-0 -z-10 bg-gradient-to-t from-dark/50 via-white/40" />
-                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10 overflow-hidden" />
+                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary ring-inset ring-dark/10 overflow-hidden vignette transition group-hover:ring-primary-hover" />
 
                   <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
                     <div className="-ml-4 flex items-center gap-x-4">
@@ -135,7 +147,7 @@ export default function Blogs({
                     </div>
                   </div>
                   <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
-                    <Link href={`/blog/${blogItem.blogSlug || "/blogs"}`} className="!text-white">
+                    <Link href={`/blog/${blogItem.blogSlug || "/blogs"}`} className="!text-white" prefetch>
                       <span className="absolute inset-0" />
                       {blogItem.title}
                     </Link>
@@ -148,7 +160,7 @@ export default function Blogs({
         <div className="w-full text-center">
           <Link
             href="/blogs"
-            className="text-link flex flex-row my-1 items-center max-w-max justify-center text-sm text-center mx-auto mb-8"
+            className="text-link flex flex-row my-1 items-center max-w-max justify-center text-sm text-center mx-auto mb-8" prefetch
           >
             <span>All {(!!blogHeader && blogHeader) || "Blogs"}</span>
             <FontAwesomeIcon
@@ -171,15 +183,21 @@ export default function Blogs({
             {FilteredBlogs?.map((blogItem) => (
               <article
                 key={blogItem.id}
-                className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
+                className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 group"
               >
-                <img
-                  src={blogItem.image?.url}
-                  alt=""
-                  className="absolute inset-0 -z-10 h-full w-full object-cover"
-                />
+                {!!blogItem.image?.url && ( 
+                  <Image
+                    src={blogItem.image.url}
+                    alt=""
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    style={{ width: "100%" }}
+                    className="absolute inset-0 -z-10 h-full w-full object-cover"
+                  />
+                )}
                 <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
-                <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+                <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition ring-primary group-hover:ring-primary-hover ring-inset ring-gray-900/10" />
 
                 <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
                   <div className="-ml-4 flex items-center gap-x-4">
@@ -192,7 +210,7 @@ export default function Blogs({
                   </div>
                 </div>
                 <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
-                  <Link href={`/blog/${blogItem.blogSlug || "/blogs"}`}>
+                  <Link href={`/blog/${blogItem.blogSlug}`} prefetch>
                     <span className="absolute inset-0" />
                     {blogItem.title}
                   </Link>

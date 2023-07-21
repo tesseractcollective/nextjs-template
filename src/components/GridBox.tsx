@@ -1,5 +1,6 @@
 import parse from "html-react-parser";
-import  Link  from "next/link";
+import Link from "next/link";
+import Image from "next/image";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 
 type GridBoxType =
@@ -11,7 +12,9 @@ interface GridBoxProps {
 export default function GridBox({ gridBoxData }: GridBoxProps) {
   return (
     <section className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 my-16">
-      <div className={`space-y-12 lg:grid lg:grid-cols-${gridBoxData.length} lg:gap-x-8 lg:space-y-0`}>
+      <div
+        className={`space-y-12 lg:grid lg:grid-cols-${gridBoxData.length} lg:gap-x-8 lg:space-y-0`}
+      >
         {gridBoxData.map((gridBoxItem) => {
           if (gridBoxItem.boxLink?.includes("http"))
             return (
@@ -23,11 +26,13 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
                 {!!gridBoxItem?.boxImage?.url && (
                   <div
                     aria-hidden="true"
-                    className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg group-hover:opacity-75"
+                    className="overflow-hidden rounded-lg group-hover:opacity-75"
                   >
-                    <img
+                    <Image
                       src={gridBoxItem.boxImage?.url}
                       alt={gridBoxItem?.boxTitle || ""}
+                      layout="fill"
+                      objectFit="cover"
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -56,9 +61,11 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
                     aria-hidden="true"
                     className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg group-hover:opacity-75"
                   >
-                    <img
+                    <Image
                       src={gridBoxItem.boxImage?.url}
                       alt={gridBoxItem?.boxTitle || ""}
+                      layout="fill"
+                      objectFit="cover"
                       className="h-full w-full object-cover object-center"
                     />
                   </div>

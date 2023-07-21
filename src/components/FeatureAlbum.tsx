@@ -53,6 +53,7 @@ export default function FeatureAlbum({
                 <div className="w-12 md:w-8/12 mx-auto">
                   {!!albumItem?.albumSlug && albumItem?.title && (
                     <Link
+                      prefetch
                       href={`/music/${albumItem.albumSlug}`}
                       onClick={() =>
                         ReactGA.event({
@@ -135,6 +136,7 @@ export default function FeatureAlbum({
                   <SwiperSlide key={albumItem.albumSlug}>
                     <Link
                       href={`/music/${albumItem.albumSlug}`}
+                      prefetch
                       onClick={() =>
                         ReactGA.event({
                           category: "Link",
@@ -170,6 +172,7 @@ export default function FeatureAlbum({
                       {!!albumItem.albumSlug && (
                         <Link
                           href={`/music/${albumItem.albumSlug}`}
+                          prefetch
                           onClick={() =>
                             ReactGA.event({
                               category: "Link",

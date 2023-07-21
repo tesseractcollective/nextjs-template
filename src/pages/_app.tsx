@@ -6,6 +6,7 @@ import "@/styles/layoutBlocks.scss";
 import type { SiteLibraryQuery } from "@/graphql/generated/graphql";
 import { sdkClient } from "@/lib/graphql-client";
 import { GetServerSideProps } from "next";
+import Script from "next/script";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const siteLibraryData: SiteLibraryQuery = await sdkClient.siteLibrary();
@@ -53,9 +54,20 @@ export default function App(
             content={siteLibrary.metaGoogleConsoleVerification}
           />
         )}
-        {/* <script src="//widget-app.songkick.com/injector"></script> */}
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
         <link rel="manifest" href="/manifest.json" />
       </Head>
+      <Script src="//widget-app.songkick.com/injector"></Script>
       <Component {...pageProps} />
     </>
   );

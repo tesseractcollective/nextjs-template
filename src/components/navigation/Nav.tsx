@@ -132,6 +132,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                       </div>
                                       {!!item?.link && (
                                         <Link
+                                          prefetch
                                           href={item.link}
                                           className="mt-6 block text-sm font-medium text-white"
                                         >
@@ -185,7 +186,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:flex-1 lg:items-center">
-                    <Link href="/">
+                    <Link href="/" prefetch>
                       <span className="sr-only">{title}</span>
                       {!!navigation.navigationLogo && (
                         <Image
@@ -274,6 +275,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                                           )}
                                                           {!!item?.link && (
                                                             <Link
+                                                              prefetch
                                                               href={item.link}
                                                               className="mt-4 block font-medium text-white"
                                                             >
@@ -298,6 +300,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                   )}
                                   {!hasItems && (
                                     <Link
+                                      prefetch
                                       href={mainNavigationItem.link || "/"}
                                       className="flex items-center text-sm font-medium text-white opacity-90 hover:text-white hover:opacity-100"
                                     >
@@ -324,7 +327,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                   </div>
 
                   {/* Logo (lg-) */}
-                  <Link href="/" className="lg:hidden">
+                  <Link href="/" className="lg:hidden" prefetch>
                     <span className="sr-only">{title}</span>
                     {!!navigation.navigationLogo?.url && (
                       <Image
@@ -348,6 +351,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                         )
                         .map((mainNavigationItem) => (
                           <Link
+                            prefetch
                             key={mainNavigationItem.label}
                             href={mainNavigationItem.link || "/"}
                             className="flex items-center text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary"

@@ -12,6 +12,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import parse from "html-react-parser";
 import Link from "next/link";
+import Image from "next/image";
 import VideoBox from "@/components/VideoBox";
 import GridBox from "@/components/GridBox";
 import ContactFormSection from "@/components/ContactFormSection";
@@ -46,7 +47,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
     albums,
     blogs,
   } = layout;
-
+  if (!siteLibrary) return <></>;
   // console.log("Layout", layout);
   // console.log("Layout/siteLibrary", siteLibrary);
   // console.log("Layout/events", events);
@@ -71,19 +72,6 @@ export default function LayoutBlocks({ layout }: PageProps) {
   //     (image: { url: any }) => image.url,
   //   ),
   // );
-  // layoutBlocks => layoutBlock => layoutBlockContent
-  // let totalColumns = 0;
-  // totalColumns += page.layoutBlocks.forEach(LayoutBlock) => {
-  //   layoutBlock.lenght
-  // };
-  // totalColumns += page.layoutBlocks.forEach(layoutBlock) = {
-  //   layoutBlock.length
-  // page.layoutBlocks.forEach((layoutBlock) => (
-  //   layoutBlock
-  //   )
-  // });
-
-  // console.log("TotalColumn", totalColumns);
 
   return (
     <>
@@ -267,12 +255,12 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                     ) : (
                                       <div className="flex flex-row p-2 align-items-start">
                                         {textContentItem?.contentImage && (
-                                          <img
+                                          <Image
                                             className="block m-0 p-0 border-round"
+                                            height={70}
+                                            width={70}
                                             style={{
                                               objectFit: "cover",
-                                              height: "70px",
-                                              width: "70px",
                                               minHeight: "70px",
                                               minWidth: "70px",
                                             }}
@@ -646,7 +634,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                       src={image.url}
                                       alt=""
                                       className="w-full slider-image"
-                                      key={Math.random()}
+                                      key={image.url}
                                     />
                                   )
                                 )}

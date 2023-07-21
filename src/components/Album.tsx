@@ -34,6 +34,7 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
         <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
           <Link
             href="/music"
+            prefetch
             className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
           >
             <FontAwesomeIcon
@@ -85,6 +86,8 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
                 width={0}
                 height={0}
                 sizes="100%"
+                placeholder='blur'
+                blurDataURL='https://images.unsplash.com/photo-1550134464-4c07c5b02073?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=985&q=80'
                 style={{ width: "100%" }}
               />
             </div>
