@@ -8,6 +8,7 @@ import type {
 } from "@/graphql/generated/graphql";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import Blogs from "@/components/Blogs";
+import { Fade } from "react-awesome-reveal";
 
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -39,14 +40,17 @@ export default function Footer({
             className={`grid lg:grid-flow-col lg:auto-rows-min lg:grid-cols-${footerColumns.length} lg:gap-x-8 lg:gap-y-16`}
           >
             {footerColumns.map((item, index) => (
-              <div
+              <Fade
+                direction="up"
+                cascade
+                triggerOnce
+                damping={0.2}
                 key={index}
-                id={`footer-col-${index + 1}`}
                 className={`relative my-4 md:my-0 ${
                   item?.footerColumnCssWrapper || ""
                 }`}
               >
-                <div className="">
+                <div className="" id={`footer-col-${index + 1}`}>
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
@@ -98,7 +102,7 @@ export default function Footer({
                     />
                   )}
                 </div>
-              </div>
+              </Fade>
             ))}
           </div>
         )}

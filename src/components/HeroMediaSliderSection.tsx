@@ -8,6 +8,7 @@ import type {
   PageFieldsFragment,
 } from "@/graphql/generated/graphql";
 import SocialMediaIcons from "./SocialMediaIcons";
+import { Fade } from "react-awesome-reveal";
 
 type HeroMediaSliderType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlock"][number]["heroMediaSlider"];
@@ -81,7 +82,7 @@ export default function HeroMediaSliderSection({
                       heroMediaSliderItem?.textContent?.contentAlign?.toLocaleLowerCase()
                     }`}
                   >
-                    <div className="animate-fade-in-up">
+                    <Fade direction="up" triggerOnce>
                       {heroMediaSliderItem?.textContent?.contentImage && (
                         <img
                           className={`block mb-0 ${
@@ -110,7 +111,7 @@ export default function HeroMediaSliderSection({
                           }
                         />
                       )}
-                    </div>
+                    </Fade>
                     <div className="animate-fade-in-up">
                       {heroMediaSliderItem?.textContent?.header && (
                         <div

@@ -5,8 +5,8 @@ import type {
 import parse from "html-react-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import Link from "next/link";
 import Image from "next/image";
+import Head from "next/head";
 import VideoBox from "@/components/VideoBox";
 import {
   faSpotify,
@@ -22,8 +22,12 @@ import {
   faEnvelope,
   faLocationDot,
   faPhone,
-  faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 // import Profiles from "@/components/Profiles";
 
 export interface ProfileProps {
@@ -33,15 +37,31 @@ export interface ProfileProps {
 }
 
 export default function Profile({ profile, siteLibrary }: ProfileProps) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    arrows: false,
+  };
+
   return (
-  <>
-     <div className="bg-dark">
+    <>
+      <Head>{!!profile?.name && <title>{profile.name}</title>}</Head>
+      <div className="bg-dark">
         <div aria-hidden="true" className="relative">
-          <img
-            src={profile.heroImage?.url}
-            alt=""
-            className="h-[30rem] w-full object-cover object-center"
-          />
+          {!!profile.heroImage?.url && (
+            <Image
+              src={profile.heroImage?.url}
+              alt=""
+              width={0}
+              height={0}
+              sizes="100%"
+              className="h-[30rem] w-full object-cover object-center"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-dark" />
         </div>
 
@@ -225,13 +245,13 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
         <div className="transition bg-invert overflow-x-clip overflow-y-visible h-screen">
           <div className="mx-auto container relative flex flex-col items-center justify-between">
             {profile.miniBio && (
-              <div className="py-32 text-4xl font-bold tracking-tight transition text-white lg:text-dark md:text-5xl max-w-max text-center lg:text-left">
+              <div className="py-32 px-2 text-4xl font-bold tracking-tight transition text-white lg:text-dark md:text-5xl max-w-max text-center lg:text-left">
                 {parse(profile.miniBio)}
               </div>
             )}
             {profile.imageGallery.length >= 1 && (
               <div className="relative">
-                <div className="flex min-w-max space-x-6 mx-auto lg:space-x-8">
+                <div className="hidden md:flex min-w-max space-x-6 mx-auto lg:space-x-8">
                   <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
                     {profile?.imageGallery[0]?.url && (
                       <div className="flex-shrink-0">
@@ -302,17 +322,32 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                 </div>
               </div>
             )}
+             <ul
+                  role="list"
+                  className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
+                >
+                  {profile.imageGallery.map((image) => (
+                    <li key={image?.url} className="relative">
+                      <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                        <img
+                          src={image?.url}
+                          alt=""
+                          className="pointer-events-none object-cover group-hover:opacity-75"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
           </div>
         </div>
       </div>
+
       <section className="container mx-auto">
         {!!profile?.tourWidgetiFrame && (
-          <div className="my-16 mx-auto">
-            {parse(profile.tourWidgetiFrame)}
-          </div>
+          <div className="my-16 mx-auto">{parse(profile.tourWidgetiFrame)}</div>
         )}
         {!!profile?.iFrame && (
-          <div className="my-16 mx-auto">{parse(profile.iFrame)}</div>
+          <div className="my-16 mx-auto px-4">{parse(profile.iFrame)}</div>
         )}
         {!!profile?.videoBox && (
           <div>
@@ -330,7 +365,10 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
         )}
       </section>
       <div className="bg-white my-16">
-        <section aria-labelledby="features-heading" className="relative h-70vh flex items-center">
+        <section
+          aria-labelledby="features-heading"
+          className="relative h-70vh flex items-center"
+        >
           {profile.avatarImage?.url && (
             <div className="aspect-h-3 aspect-w-3 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-16">
               <img
@@ -441,6 +479,6 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
           profilesQuery={profile.profileType}
         />
       )} */}
-  </>
+    </>
   );
 }

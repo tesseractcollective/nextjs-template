@@ -16,7 +16,9 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
+import { Fade } from "react-awesome-reveal";
 
 interface MemberProps {
   profileSectionTitle?: string;
@@ -38,28 +40,30 @@ export default function Profiles({
     <>
       {profiles && profiles.length && (
         <div className="relative texture-background overflow-hidden">
-          <section className="container my-16 mx-auto w-10/12 xl:w-10/12 dark-section flex">
-            <div className="w-12/12 lg:w-4/12">
+          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+            <div className="w-full lg:5/12 xl:w-4/12 transition">
               {!!profileSectionTitle && (
-                <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center">
+                <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition">
                   {profileSectionTitle}
                 </h3>
               )}
             </div>
-            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-12/12 lg:w-8/12 mx-auto md:mx-0">
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full  lg:7/12 xl:w-8/12 mx-auto lg:mx-0 transition">
               {profiles
                 .filter((member) => member?.profileType?.toLowerCase() === profilesQuery?.toLowerCase())
                 .map((member) => (
-                  <div key={member.profileSlug} className="">
+                  <Fade direction="up" cascade triggerOnce damping={0.1} key={member.profileSlug} className="mx-auto">
                     {profileLayoutStyle === "cardModal" ? (
                       <div className="animate-col-width mx-auto md:mx-0">
                         <div className="member-card">
-                          <img
-                            src={member?.avatarImage?.url}
-                            alt={(member.name && member.name) || ""}
-                            className=""
-                            style={{ objectFit: "cover" }}
-                          />
+                          {!!member?.avatarImage?.url && (
+                            <Image
+                              src={member?.avatarImage?.url}
+                              alt={(member.name && member.name) || ""}
+                              className=""
+                              style={{ objectFit: "cover" }}
+                            />
+                          )}
 
                           <div className="flex flex-col">
                             {!!member.name && (
@@ -189,15 +193,21 @@ export default function Profiles({
                         href={`/${member.profileType?.toLowerCase()}/${
                           member.profileSlug
                         }`}
-                        className="talent-card h-full no-underline animate-col-width mx-auto"
+                        className="talent-card h-full no-underline mx-auto relative mb-4 inline-block max-w-max"
                         key={member.profileSlug}
                       >
-                        <img
-                          src={member.avatarImage?.url}
-                          alt=""
-                          className="talent-card-image"
-                        />
-                        <p className="my-0 py-0 flex flex-row items-center">
+                        {!!member.avatarImage?.url && (
+                          <Image
+                            src={member.avatarImage?.url}
+                            alt=""
+                            objectFit="cover"
+                            className="talent-card-image object-center block mb-2 transition"
+                            width={320}
+                            height={320}
+                            // sizes="100%"
+                          />
+                        )}
+                        <p className="my-0 py-0 flex flex-row items-center justify-center">
                           <span>{member.name}</span>
                           <FontAwesomeIcon
                             icon={faArrowRight as IconProp}
@@ -206,7 +216,7 @@ export default function Profiles({
                         </p>
                       </Link>
                     )}
-                  </div>
+                  </Fade>
                 ))}
             </div>
           </section>

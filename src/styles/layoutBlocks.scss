@@ -263,8 +263,6 @@
 }
 
 .talent-card {
-  position: relative;
-  margin-bottom: 1.2rem;
   h4, p {
     transition: all 200ms ease;
     letter-spacing: normal;
@@ -275,20 +273,15 @@
       transition: all 200ms ease;
     }
   }
-  img.talent-card-image {
-    transform: skew(0deg);
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    max-height: 300px;
-    aspect-ratio: 1;
-    position: relative;
-    z-index: 1;
-    display: block;
-    margin-bottom: 12px;
-    transition: all 200ms ease;
-    box-shadow: rgba(0,0,0,0) 1px 1px 0px 1px;
-  }
+  // img.talent-card-image {
+  //   transform: skew(0deg);
+  //   max-height: 300px;
+  //   aspect-ratio: 1;
+  //   position: relative;
+  //   z-index: 1;
+  //   transition: all 200ms ease;
+  //   box-shadow: rgba(0,0,0,0) 1px 1px 0px 1px;
+  // }
   &:hover, &:focus-within {
     h4, p {
       color: var(--primary) !important;
@@ -299,7 +292,7 @@
       }
     }
     img {
-      transform: skew(1deg);
+      transform: skew(0.5deg);
       box-shadow: var(--primary-hover) 3px 3px 0px 1px;
     }
   }

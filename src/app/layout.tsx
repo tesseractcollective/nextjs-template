@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import { GetServerSideProps } from "next";
 import { sdkClient } from "@/lib/graphql-client";
 import type {
-  LayoutQuery,
   SiteLibraryQuery,
 } from "@/graphql/generated/graphql";
 

@@ -52,7 +52,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
             leaveTo="opacity-0"
           >
             <div
-              className="fixed inset-0 bg-dark opacity-90"
+              className="fixed inset-0 bg-dark opacity-60"
               aria-hidden="true"
             />
           </Transition.Child>
@@ -69,13 +69,27 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
             >
               <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-dark pb-12 shadow-xl border-r-primary border-r">
                 <div className="flex px-4 pb-2 pt-5">
+                  <Link href="/" onClick={() => setOpen(false)}>
+                      <span className="sr-only">{title}</span>
+                      {!!navigation.navigationLogo && (
+                        <Image
+                          className="h-8 w-auto"
+                          src={navigation.navigationLogo?.url}
+                          alt=""
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          style={{ width: "100%" }}
+                        />
+                      )}
+                    </Link>
                   <button
                     type="button"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto"
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close menu</span>
-                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
                   </button>
                 </div>
 
@@ -155,7 +169,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                         )}
 
                         {!hasItems && (
-                          <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                          <div className="space-y-6 border-y border-[#2c2c2c6f] px-4 py-3">
                             <div className="flow-root">
                               {mainNavigationItem.link?.includes("http") ? (
                                 <a
@@ -166,7 +180,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                   }
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
-                                  className="-m-2 block p-2 font-medium text-white max-w-max"
+                                  className="-m-2 block p-2 font-medium text-white max-w-max mx-auto"
                                 >
                                   {mainNavigationItem.label}
                                 </a>
@@ -174,7 +188,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                 <Link
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
-                                  className="-m-2 block p-2 font-medium text-white max-w-max"
+                                  className="-m-2 block p-2 font-medium text-white max-w-max mx-auto"
                                   onClick={() => setOpen(false)}
                                 >
                                   {mainNavigationItem.label}
@@ -189,7 +203,32 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <SocialMediaIcons siteLibrary={siteLibrary} />
+                  <div className="text-center">
+                    {!!bookingNameOne && (
+                      <p className="text-white text-xs font-bold">
+                        <span>{bookingNameOne}</span>
+                      </p>
+                    )}
+                    {!!bookingPhoneOne && (
+                      <a href={`tel:${bookingPhoneOne.replace("-", "")}`} className="text-xs block my-1 text-link !border-none hover:!border-none">
+                        <span>{bookingPhoneOne}</span>
+                      </a>
+                    )}
+                    {!!bookingEmailOne && (
+                      <a href={`mailto:${bookingEmailOne}`} className="text-xs block my-1 text-link !border-none hover:!border-none">
+                        <span>{bookingEmailOne}</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
+                <button
+                    type="button"
+                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto"
+                    onClick={() => setOpen(false)}
+                  >
+                    <span className="sr-only">Close menu</span>
+                    <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                  </button>
               </Dialog.Panel>
             </Transition.Child>
           </div>
