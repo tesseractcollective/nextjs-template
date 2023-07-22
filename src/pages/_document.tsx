@@ -24,7 +24,7 @@ class Document extends NextDocument<Props> {
     return (
       <Html>
         <Head>
-        {!!siteLibraryData?.siteLibrary?.favicon && (
+        {/* {!!siteLibraryData?.siteLibrary?.favicon && (
           <link rel="shortcut icon" href={siteLibraryData?.siteLibrary.favicon.url} />
         )}
         {!!siteLibraryData?.siteLibrary?.metaOgImage && (
@@ -48,7 +48,7 @@ class Document extends NextDocument<Props> {
             name="google-site-verification"
             content={siteLibraryData?.siteLibrary.metaGoogleConsoleVerification}
           />
-        )}
+        )} */}
         <link
           rel="stylesheet"
           type="text/css"

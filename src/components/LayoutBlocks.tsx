@@ -8,8 +8,8 @@ import Nav from "./navigation/Nav";
 // import MagicGrid from 'magic-grid';
 
 // layoutSectionBlocksData?: LayoutSectionComponentType[];
-import { Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation, Pagination } from "swiper/modules";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import parse from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
@@ -374,12 +374,6 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                       <div className="animate-fade-in-up">
                                         {textContentItem?.header && (
                                           <div
-                                            style={{
-                                              fontFamily:
-                                                textContentItem?.headerFont
-                                                  ?.split("_")
-                                                  .join(" "),
-                                            }}
                                             className="body-parsed-text"
                                           >
                                             {parse(textContentItem.header.html)}
@@ -389,13 +383,6 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                       <div className="animate-fade-in-up">
                                         {textContentItem?.subHeader && (
                                           <div
-                                            style={{
-                                              fontFamily:
-                                                textContentItem?.subHeaderFont?.replace(
-                                                  "_",
-                                                  " "
-                                                ),
-                                            }}
                                             className="body-parsed-text"
                                           >
                                             {parse(
@@ -408,13 +395,6 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                         {textContentItem?.content && (
                                           <div
                                             className="body-parsed-text"
-                                            style={{
-                                              fontFamily:
-                                                textContentItem?.contentFont?.replace(
-                                                  "_",
-                                                  " "
-                                                ),
-                                            }}
                                           >
                                             {parse(
                                               textContentItem.content.html
