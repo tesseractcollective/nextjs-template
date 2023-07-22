@@ -283,12 +283,7 @@ fragment pageFields on Page {
           link
           imageStyle
           textContentWidth
-          headerFont
-          subHeaderFont
-          contentFont
-          headerSize
-          subHeaderSize
-          contentSize
+          linkImage
         }
         callToAction {
           ctaLink
@@ -298,7 +293,7 @@ fragment pageFields on Page {
           contentAlign
         }
       }
-      textContent(orderBy: id_ASC) {
+      textContent {
         id
         contentImage {
           url
@@ -319,12 +314,7 @@ fragment pageFields on Page {
         link
         imageStyle
         textContentWidth
-        headerFont
-        subHeaderFont
-        contentFont
-        headerSize
-        subHeaderSize
-        contentSize
+        linkImage
       }
       callToAction {
         ctaLink

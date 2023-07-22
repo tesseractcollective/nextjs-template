@@ -40,7 +40,7 @@ export default function Profile({ profile, siteLibrary, profiles }: ProfileProps
           <img
             src={profile.heroImage?.url}
             alt=""
-            className="h-96 w-full object-cover object-center"
+            className="h-[30rem] w-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-dark" />
         </div>
@@ -221,9 +221,9 @@ export default function Profile({ profile, siteLibrary, profiles }: ProfileProps
           </div>
         </div>
       </div>
-      <div className="py-32">
-        <div className="transition bg-invert overflow-x-clip overflow-y-visible">
-          <div className="mx-auto container relative flex flex-col lg:flex-row items-center justify-between">
+      <div className="py-8">
+        <div className="transition bg-invert overflow-x-clip overflow-y-visible h-screen">
+          <div className="mx-auto container relative flex flex-col items-center justify-between">
             {profile.miniBio && (
               <div className="py-32 text-4xl font-bold tracking-tight transition text-white lg:text-dark md:text-5xl max-w-max text-center lg:text-left">
                 {parse(profile.miniBio)}
@@ -330,9 +330,9 @@ export default function Profile({ profile, siteLibrary, profiles }: ProfileProps
         )}
       </section>
       <div className="bg-white my-16">
-        <section aria-labelledby="features-heading" className="relative">
+        <section aria-labelledby="features-heading" className="relative h-70vh flex items-center">
           {profile.avatarImage?.url && (
-            <div className="aspect-h-2 aspect-w-3 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-16">
+            <div className="aspect-h-3 aspect-w-3 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-16">
               <img
                 src={profile.avatarImage.url}
                 alt={profile?.name || ""}
