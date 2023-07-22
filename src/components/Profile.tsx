@@ -24,15 +24,15 @@ import {
   faPhone,
   faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
-import Profiles from "@/components/Profiles";
+// import Profiles from "@/components/Profiles";
 
 export interface ProfileProps {
   profile: ProfileFieldsFragment;
-  profiles?: ProfileFieldsFragment[];
+  // profiles?: ProfileFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export default function Profile({ profile, siteLibrary, profiles }: ProfileProps) {
+export default function Profile({ profile, siteLibrary }: ProfileProps) {
   return (
   <>
      <div className="bg-dark">

@@ -5,7 +5,7 @@ import {
   SiteLibraryQuery,
   NavigationQuery,
   ProfileQuery,
-  ProfilesQuery,
+  // ProfilesQuery,
  BlogsQuery,
 } from "@/graphql/generated/graphql";
 import { GetServerSideProps } from "next";
@@ -13,7 +13,6 @@ import "@/styles/global.scss";
 import "@/styles/layoutBlocks.scss";
 import "@/app/tailwind.css";
 import ThemeColors from "@/styles/ThemeColors";
-import Blog from "@/components/Blog";
 import Profile from "@/components/Profile";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -48,7 +47,7 @@ interface ProfilePageProps {
 export default function ProfileSlug({
   profile,
   siteLibrary,
-  profiles,
+  // profiles,
   navigations,
   blogs
 }: ProfilePageProps) {
@@ -61,7 +60,8 @@ export default function ProfileSlug({
         navigation={navigations.navigations[0]}
         hideNav={false}
       />
-      <Profile profile={profile?.profile} profiles={profiles} siteLibrary={siteLibrary?.siteLibrary} />
+      {/* <Profile profile={profile?.profile} profiles={profiles} siteLibrary={siteLibrary?.siteLibrary} /> */}
+      <Profile profile={profile?.profile} siteLibrary={siteLibrary?.siteLibrary} />
       <Footer
         siteLibrary={siteLibrary.siteLibrary}
         navigation={navigations.navigations[0]}
