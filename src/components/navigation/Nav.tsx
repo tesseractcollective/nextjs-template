@@ -172,7 +172,6 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                 </a>
                               ) : (
                                 <Link
-                                  prefetch
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
                                   className="-m-2 block p-2 font-medium text-white max-w-max"
@@ -206,7 +205,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:flex-1 lg:items-center">
-                    <Link href="/" prefetch>
+                    <Link href="/">
                       <span className="sr-only">{title}</span>
                       {!!navigation.navigationLogo && (
                         <Image
@@ -266,7 +265,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                           >
-                                            <Popover.Panel className="absolute inset-x-0 top-full text-sm text-white border-b-2 border-primary">
+                                            <Popover.Panel className="absolute inset-x-0 top-full text-sm text-white border-t-2 border-b-2 border-primary">
                                               <div
                                                 className="absolute inset-0 top-1/2 bg-primary-hover shadow"
                                                 aria-hidden="true"
@@ -360,7 +359,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                   </div>
 
                   {/* Logo (lg-) */}
-                  <Link href="/" className="lg:hidden" prefetch>
+                  <Link href="/" className="lg:hidden">
                     <span className="sr-only">{title}</span>
                     {!!navigation.navigationLogo?.url && (
                       <Image

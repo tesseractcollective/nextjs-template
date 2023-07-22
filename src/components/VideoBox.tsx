@@ -1,5 +1,5 @@
 import Vimeo from "@u-wave/react-vimeo";
-import YouTubePlaylist from "@codesweetly/react-youtube-playlist";
+// import YouTubePlaylist from "@codesweetly/react-youtube-playlist";
 
 interface VideoBoxProps {
   videoTitle?: string;

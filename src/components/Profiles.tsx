@@ -25,7 +25,7 @@ interface MemberProps {
   profiles?: ProfileFieldsFragment[];
 }
 
-export default function TeamMember({
+export default function Profiles({
   profileSectionTitle,
   profilesQuery,
   profileLayoutStyle,

@@ -250,7 +250,7 @@ fragment pageFields on Page {
   }
   layoutBlocks {
     id
-    layoutBlock(orderBy: id_ASC, first: 100) {
+    layoutBlock(first: 100) {
       id
       htmlId
       cssClass

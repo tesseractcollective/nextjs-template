@@ -1,3 +1,4 @@
+// Commented out for build error, keeping for reference.
 // import {
 //   GetStaticProps,
 //   GetStaticPaths,

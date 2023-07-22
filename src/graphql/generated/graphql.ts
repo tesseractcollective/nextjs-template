@@ -1805,7 +1805,6 @@ export type AssetCreateInput = {
   logoSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
   memberHeroImageMember?: InputMaybe<TeamMemberItemCreateManyInlineInput>;
   memberImageGalleryMember?: InputMaybe<TeamMemberItemCreateManyInlineInput>;
-  memberLogoTeamMemberItem?: InputMaybe<TeamMemberItemCreateManyInlineInput>;
   memberMusicReleaseGalleryMember?: InputMaybe<TeamMemberItemCreateManyInlineInput>;
   memberMusicReleaseProfile?: InputMaybe<ProfileCreateManyInlineInput>;
   metaAppleTouchIconSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
@@ -2074,7 +2073,6 @@ export type AssetUpdateInput = {
   logoSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
   memberHeroImageMember?: InputMaybe<TeamMemberItemUpdateManyInlineInput>;
   memberImageGalleryMember?: InputMaybe<TeamMemberItemUpdateManyInlineInput>;
-  memberLogoTeamMemberItem?: InputMaybe<TeamMemberItemUpdateManyInlineInput>;
   memberMusicReleaseGalleryMember?: InputMaybe<TeamMemberItemUpdateManyInlineInput>;
   memberMusicReleaseProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
   metaAppleTouchIconSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
@@ -18890,7 +18888,6 @@ export type TeamMemberItem = {
   memberHeroImage?: Maybe<Asset>;
   memberIFrame?: Maybe<Scalars['String']>;
   memberImageGallery: Array<Asset>;
-  memberLogo?: Maybe<Asset>;
   memberMusicReleaseGallery: Array<Asset>;
   memberOrder?: Maybe<Scalars['Int']>;
   memberSlug?: Maybe<Scalars['String']>;
@@ -18905,6 +18902,7 @@ export type TeamMemberItem = {
   spotifyMemberLink?: Maybe<Scalars['String']>;
   /** System stage field */
   stage: Stage;
+  threadsLink?: Maybe<Scalars['String']>;
   tikTokMemberLink?: Maybe<Scalars['String']>;
   twitterMemberLink?: Maybe<Scalars['String']>;
   videoBox: Array<VideoBox>;
@@ -18948,12 +18946,6 @@ export type TeamMemberItemMemberImageGalleryArgs = {
   orderBy?: InputMaybe<AssetOrderByInput>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetWhereInput>;
-};
-
-
-export type TeamMemberItemMemberLogoArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
 };
 
 
@@ -19014,7 +19006,6 @@ export type TeamMemberItemCreateInput = {
   memberHeroImage?: InputMaybe<AssetCreateOneInlineInput>;
   memberIFrame?: InputMaybe<Scalars['String']>;
   memberImageGallery?: InputMaybe<AssetCreateManyInlineInput>;
-  memberLogo?: InputMaybe<AssetCreateOneInlineInput>;
   memberMusicReleaseGallery?: InputMaybe<AssetCreateManyInlineInput>;
   memberOrder?: InputMaybe<Scalars['Int']>;
   memberSlug?: InputMaybe<Scalars['String']>;
@@ -19027,6 +19018,7 @@ export type TeamMemberItemCreateInput = {
   phoneMemberLink?: InputMaybe<Scalars['String']>;
   primaryMember?: InputMaybe<Scalars['Boolean']>;
   spotifyMemberLink?: InputMaybe<Scalars['String']>;
+  threadsLink?: InputMaybe<Scalars['String']>;
   tikTokMemberLink?: InputMaybe<Scalars['String']>;
   twitterMemberLink?: InputMaybe<Scalars['String']>;
   videoBox?: InputMaybe<VideoBoxCreateManyInlineInput>;
@@ -19258,7 +19250,6 @@ export type TeamMemberItemManyWhereInput = {
   memberImageGallery_every?: InputMaybe<AssetWhereInput>;
   memberImageGallery_none?: InputMaybe<AssetWhereInput>;
   memberImageGallery_some?: InputMaybe<AssetWhereInput>;
-  memberLogo?: InputMaybe<AssetWhereInput>;
   memberMusicReleaseGallery_every?: InputMaybe<AssetWhereInput>;
   memberMusicReleaseGallery_none?: InputMaybe<AssetWhereInput>;
   memberMusicReleaseGallery_some?: InputMaybe<AssetWhereInput>;
@@ -19439,6 +19430,25 @@ export type TeamMemberItemManyWhereInput = {
   spotifyMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   spotifyMemberLink_starts_with?: InputMaybe<Scalars['String']>;
+  threadsLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  threadsLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  threadsLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  threadsLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  threadsLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  threadsLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  threadsLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  threadsLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  threadsLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  threadsLink_starts_with?: InputMaybe<Scalars['String']>;
   tikTokMemberLink?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   tikTokMemberLink_contains?: InputMaybe<Scalars['String']>;
@@ -19561,6 +19571,8 @@ export enum TeamMemberItemOrderByInput {
   PrimaryMemberDesc = 'primaryMember_DESC',
   SpotifyMemberLinkAsc = 'spotifyMemberLink_ASC',
   SpotifyMemberLinkDesc = 'spotifyMemberLink_DESC',
+  ThreadsLinkAsc = 'threadsLink_ASC',
+  ThreadsLinkDesc = 'threadsLink_DESC',
   TikTokMemberLinkAsc = 'tikTokMemberLink_ASC',
   TikTokMemberLinkDesc = 'tikTokMemberLink_DESC',
   TwitterMemberLinkAsc = 'twitterMemberLink_ASC',
@@ -19586,7 +19598,6 @@ export type TeamMemberItemUpdateInput = {
   memberHeroImage?: InputMaybe<AssetUpdateOneInlineInput>;
   memberIFrame?: InputMaybe<Scalars['String']>;
   memberImageGallery?: InputMaybe<AssetUpdateManyInlineInput>;
-  memberLogo?: InputMaybe<AssetUpdateOneInlineInput>;
   memberMusicReleaseGallery?: InputMaybe<AssetUpdateManyInlineInput>;
   memberOrder?: InputMaybe<Scalars['Int']>;
   memberSlug?: InputMaybe<Scalars['String']>;
@@ -19599,6 +19610,7 @@ export type TeamMemberItemUpdateInput = {
   phoneMemberLink?: InputMaybe<Scalars['String']>;
   primaryMember?: InputMaybe<Scalars['Boolean']>;
   spotifyMemberLink?: InputMaybe<Scalars['String']>;
+  threadsLink?: InputMaybe<Scalars['String']>;
   tikTokMemberLink?: InputMaybe<Scalars['String']>;
   twitterMemberLink?: InputMaybe<Scalars['String']>;
   videoBox?: InputMaybe<VideoBoxUpdateManyInlineInput>;
@@ -19638,6 +19650,7 @@ export type TeamMemberItemUpdateManyInput = {
   phoneMemberLink?: InputMaybe<Scalars['String']>;
   primaryMember?: InputMaybe<Scalars['Boolean']>;
   spotifyMemberLink?: InputMaybe<Scalars['String']>;
+  threadsLink?: InputMaybe<Scalars['String']>;
   tikTokMemberLink?: InputMaybe<Scalars['String']>;
   twitterMemberLink?: InputMaybe<Scalars['String']>;
   websiteMemberLink?: InputMaybe<Scalars['String']>;
@@ -19899,7 +19912,6 @@ export type TeamMemberItemWhereInput = {
   memberImageGallery_every?: InputMaybe<AssetWhereInput>;
   memberImageGallery_none?: InputMaybe<AssetWhereInput>;
   memberImageGallery_some?: InputMaybe<AssetWhereInput>;
-  memberLogo?: InputMaybe<AssetWhereInput>;
   memberMusicReleaseGallery_every?: InputMaybe<AssetWhereInput>;
   memberMusicReleaseGallery_none?: InputMaybe<AssetWhereInput>;
   memberMusicReleaseGallery_some?: InputMaybe<AssetWhereInput>;
@@ -20080,6 +20092,25 @@ export type TeamMemberItemWhereInput = {
   spotifyMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   spotifyMemberLink_starts_with?: InputMaybe<Scalars['String']>;
+  threadsLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  threadsLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  threadsLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  threadsLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  threadsLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  threadsLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  threadsLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  threadsLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  threadsLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  threadsLink_starts_with?: InputMaybe<Scalars['String']>;
   tikTokMemberLink?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   tikTokMemberLink_contains?: InputMaybe<Scalars['String']>;
@@ -23359,7 +23390,7 @@ export const PageFieldsFragmentDoc = gql`
   }
   layoutBlocks {
     id
-    layoutBlock(orderBy: id_ASC, first: 100) {
+    layoutBlock(first: 100) {
       id
       htmlId
       cssClass

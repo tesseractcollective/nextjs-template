@@ -38,7 +38,6 @@ export default function Blogs({
           {FilteredBlogs.splice(0, 4).map((blogItem) => (
             <li key={blogItem.blogSlug} className="">
               <Link
-              prefetch
                 href={`/blog/${blogItem.blogSlug}` || "#"}
                 className="no-underline flex gap-x-2 items-center"
               >
@@ -147,7 +146,7 @@ export default function Blogs({
                     </div>
                   </div>
                   <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
-                    <Link href={`/blog/${blogItem.blogSlug || "/blogs"}`} className="!text-white" prefetch>
+                    <Link href={`/blog/${blogItem.blogSlug || "/blogs"}`} className="!text-white">
                       <span className="absolute inset-0" />
                       {blogItem.title}
                     </Link>
@@ -160,7 +159,7 @@ export default function Blogs({
         <div className="w-full text-center">
           <Link
             href="/blogs"
-            className="text-link flex flex-row my-1 items-center max-w-max justify-center text-sm text-center mx-auto mb-8" prefetch
+            className="text-link flex flex-row my-1 items-center max-w-max justify-center text-sm text-center mx-auto mb-8"
           >
             <span>All {(!!blogHeader && blogHeader) || "Blogs"}</span>
             <FontAwesomeIcon
@@ -210,7 +209,7 @@ export default function Blogs({
                   </div>
                 </div>
                 <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
-                  <Link href={`/blog/${blogItem.blogSlug}`} prefetch>
+                  <Link href={`/blog/${blogItem.blogSlug}`}>
                     <span className="absolute inset-0" />
                     {blogItem.title}
                   </Link>

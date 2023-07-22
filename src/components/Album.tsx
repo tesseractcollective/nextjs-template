@@ -34,7 +34,6 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
         <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
           <Link
             href="/music"
-            prefetch
             className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
           >
             <FontAwesomeIcon

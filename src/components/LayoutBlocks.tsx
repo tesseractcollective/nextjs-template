@@ -20,7 +20,6 @@ import Slider from "react-slick";
 import LogoTable from "@/components/LogoTable";
 import Blogs from "@/components/Blogs";
 import Events from "@/components/Events";
-import TeamMember from "@/components/Profiles";
 import Whatsapp from "@/components/Whatsapp";
 import FeatureAlbum from "@/components/FeatureAlbum";
 import PageHeader from "@/components/PageHeader";
@@ -29,6 +28,7 @@ import Parallax from "@/components/Parallax";
 import StandOutText from "@/components/StandOutText";
 import Testimonials from "@/components/Testimonials";
 import IframeBox from "@/components/IframeBox";
+import Profiles from "@/components/Profiles";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -665,7 +665,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                         layoutBlockColumn?.profilesQuery &&
                         layoutBlockColumn?.profileSectionTitle &&
                         layoutBlockColumn.profileLayoutStyle && (
-                          <TeamMember
+                          <Profiles
                             profiles={profiles}
                             profileLayoutStyle={
                               layoutBlockColumn.profileLayoutStyle
