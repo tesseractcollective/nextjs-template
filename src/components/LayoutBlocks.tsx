@@ -343,7 +343,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                       <div className="animate-fade-in-up">
                                         {textContentItem?.contentImage && (
                                           <img
-                                            className={`block mb-0 ${
+                                            className={`block mb-4 ${
                                               (textContentItem?.contentAlign ===
                                                 "center" &&
                                                 "mx-auto") ||

@@ -242,102 +242,137 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
         </div>
       </div>
       <div className="py-8">
-        <div className="transition bg-invert overflow-x-clip overflow-y-visible h-screen">
-          <div className="mx-auto container relative flex flex-col items-center justify-between">
+        <div className="transition bg-invert overflow-x-clip overflow-y-visible px-4">
+          <div className="mx-auto container relative flex flex-col md:items-center md:justify-center">
             {profile.miniBio && (
-              <div className="py-32 px-2 text-4xl font-bold tracking-tight transition text-white lg:text-dark md:text-5xl max-w-max text-center lg:text-left">
+              <div className="py-16 md:py-32 px-2 text-4xl font-bold tracking-tight transition text-white lg:text-dark md:text-5xl max-w-max text-center lg:text-left">
                 {parse(profile.miniBio)}
               </div>
             )}
             {profile.imageGallery.length >= 1 && (
-              <div className="relative">
-                <div className="hidden md:flex min-w-max space-x-6 mx-auto lg:space-x-8">
-                  <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
-                    {profile?.imageGallery[0]?.url && (
-                      <div className="flex-shrink-0">
-                        <img
-                          className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src={profile.imageGallery[0].url}
-                          alt=""
-                          id="image-0"
-                        />
-                      </div>
-                    )}
+              <>
+                <div className="relative pb-0 md:pb-32">
+                  <div className="hidden md:flex min-w-max space-x-6 mx-auto lg:space-x-8">
+                    <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
+                      {profile?.imageGallery[0]?.url && (
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={profile.imageGallery[0].url}
+                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                            alt=""
+                            objectFit="cover"
+                            width={288}
+                            height={288}
+                            sizes="100%"
+                            id="image-0"
+                          />
+                        </div>
+                      )}
 
-                    {profile?.imageGallery[1]?.url && (
-                      <div className="mt-6 flex-shrink-0 sm:mt-0">
-                        <img
-                          className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src={profile.imageGallery[1].url}
-                          alt=""
-                          id="image-1"
-                        />
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                    {profile?.imageGallery[2]?.url && (
-                      <div className="flex-shrink-0">
-                        <img
-                          className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src={profile.imageGallery[2].url}
-                          alt=""
-                          id="image-2"
-                        />
-                      </div>
-                    )}
-                    {profile?.imageGallery[3]?.url && (
-                      <div className="mt-6 flex-shrink-0 sm:mt-0">
-                        <img
-                          className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src={profile.imageGallery[3].url}
-                          alt=""
-                          id="image-3"
-                        />
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
-                    {profile?.imageGallery[4]?.url && (
-                      <div className="flex-shrink-0">
-                        <img
-                          className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src={profile.imageGallery[4].url}
-                          alt=""
-                          id="image-4"
-                        />
-                      </div>
-                    )}
-                    {profile?.imageGallery[5]?.url && (
-                      <div className="mt-6 flex-shrink-0 sm:mt-0">
-                        <img
-                          className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src={profile.imageGallery[5].url}
-                          alt=""
-                          id="image-5"
-                        />
-                      </div>
-                    )}
+                      {profile?.imageGallery[1]?.url && (
+                        <div className="mt-6 flex-shrink-0 sm:mt-0">
+                          <Image
+                            src={profile.imageGallery[1].url}
+                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                            alt=""
+                            objectFit="cover"
+                            width={288}
+                            height={288}
+                            sizes="100%"
+                            id="image-1"
+                          />
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
+                      {profile?.imageGallery[2]?.url && (
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={profile.imageGallery[2].url}
+                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                            alt=""
+                            objectFit="cover"
+                            width={288}
+                            height={288}
+                            sizes="100%"
+                            id="image-2"
+                          />
+                        </div>
+                      )}
+                      {profile?.imageGallery[3]?.url && (
+                        <div className="mt-6 flex-shrink-0 sm:mt-0">
+                          <Image
+                            src={profile.imageGallery[3].url}
+                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                            alt=""
+                            objectFit="cover"
+                            width={288}
+                            height={288}
+                            sizes="100%"
+                            id="image-3"
+                          />
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
+                      {profile?.imageGallery[4]?.url && (
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={profile.imageGallery[4].url}
+                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                            alt=""
+                            objectFit="cover"
+                            width={288}
+                            height={288}
+                            sizes="100%"
+                            id="image-4"
+                          />
+                        </div>
+                      )}
+                      {profile?.imageGallery[5]?.url && (
+                        <div className="mt-6 flex-shrink-0 sm:mt-0">
+                          <Image
+                            src={profile.imageGallery[5].url}
+                             className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                            alt=""
+                            objectFit="cover"
+                            width={288}
+                            height={288}
+                            sizes="100%"
+                            id="image-5"
+                          />
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+                <div className="block">
+                  <ul
+                    role="list"
+                    className="grid md:hidden grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
+                  >
+                    {profile.imageGallery.map((image) => (
+                      <li key={image?.url} className="relative">
+                        <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                          {!!image?.url && (
+                            <Image
+                              src={image?.url}
+                              alt=""
+                              layout="fill"
+                              objectFit="cover"
+                              className="object-center mx-auto"
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                            />
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
             )}
-             <ul
-                  role="list"
-                  className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
-                >
-                  {profile.imageGallery.map((image) => (
-                    <li key={image?.url} className="relative">
-                      <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
-                        <img
-                          src={image?.url}
-                          alt=""
-                          className="pointer-events-none object-cover group-hover:opacity-75"
-                        />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
           </div>
         </div>
       </div>
@@ -371,9 +406,14 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
         >
           {profile.avatarImage?.url && (
             <div className="aspect-h-3 aspect-w-3 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-16">
-              <img
+              <Image
                 src={profile.avatarImage.url}
                 alt={profile?.name || ""}
+                layout="fill"
+                objectFit="cover"
+                width={0}
+                height={0}
+                sizes="100%"
                 className="h-full w-full object-cover object-center lg:h-full lg:w-full"
               />
             </div>
@@ -395,10 +435,14 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                     <li key={contact.contactName}>
                       <div className="flex items-center gap-x-6">
                         {contact?.contactAvatar?.url && (
-                          <img
+                          <Image
                             className="h-16 w-16 rounded-full object-cover"
                             src={contact.contactAvatar.url}
                             alt=""
+                            objectFit="cover"
+                            width={64}
+                            height={64}
+                            sizes="100%"
                           />
                         )}
                         <div>
