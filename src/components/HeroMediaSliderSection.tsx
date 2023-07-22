@@ -115,13 +115,6 @@ export default function HeroMediaSliderSection({
                       {heroMediaSliderItem?.textContent?.header && (
                         <div
                           className="text-shadow body-parsed-text"
-                          style={{
-                            fontFamily:
-                              heroMediaSliderItem?.textContent?.headerFont?.replace(
-                                "_",
-                                " "
-                              ),
-                          }}
                         >
                           {parse(heroMediaSliderItem?.textContent.header.html)}
                         </div>
@@ -131,13 +124,6 @@ export default function HeroMediaSliderSection({
                       {heroMediaSliderItem?.textContent?.subHeader && (
                         <div
                           className="body-parsed-text"
-                          style={{
-                            fontFamily:
-                              heroMediaSliderItem?.textContent?.subHeaderFont?.replace(
-                                "_",
-                                " "
-                              ),
-                          }}
                         >
                           {parse(
                             heroMediaSliderItem?.textContent.subHeader.html
@@ -149,13 +135,6 @@ export default function HeroMediaSliderSection({
                       {heroMediaSliderItem?.textContent?.content && (
                         <div
                           className="body-parsed-text"
-                          style={{
-                            fontFamily:
-                              heroMediaSliderItem?.textContent?.contentFont?.replace(
-                                "_",
-                                " "
-                              ),
-                          }}
                         >
                           {parse(heroMediaSliderItem?.textContent.content.html)}
                         </div>
