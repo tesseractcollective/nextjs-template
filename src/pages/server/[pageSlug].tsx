@@ -6,7 +6,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const layout: LayoutQuery = await sdkClient.layout({
     pageSlug: params?.pageSlug as string,
   });
-  console.log("getServerSideProps", layout.page?.pageSlug);
   return {
     props: {
       layout,

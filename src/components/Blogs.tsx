@@ -9,6 +9,7 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import useViewport from "@/app/hooks/useViewport";
 import type { BlogFieldsFragment } from "@/graphql/generated/graphql";
+import { Fade } from "react-awesome-reveal";
 
 export interface BlogsProps {
   fromHomePage?: boolean;
@@ -125,6 +126,7 @@ export default function Blogs({
                       src={blogItem.image.url}
                       alt=""
                       fill
+                      sizes="100%"
                       className="absolute inset-0 -z-10 h-full w-full object-cover vignette object-center"
                     />
                   )}
@@ -179,44 +181,46 @@ export default function Blogs({
           <h2 className="text-center">
             {(!!blogHeader && blogHeader) || "Blogs"}
           </h2>
-          <div className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 xl:mx-0 lg:max-w-none md:grid-cols-2 xl:grid-cols-3 animate-col-width">
-            {FilteredBlogs?.map((blogItem) => (
-              <article
-                key={blogItem.id}
-                className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 group"
-              >
-                {!!blogItem.image?.url && (
-                  <Image
-                    src={blogItem.image.url}
-                    alt=""
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    style={{ width: "100%" }}
-                    className="absolute inset-0 -z-10 h-full w-full object-cover"
-                  />
-                )}
-                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
-                <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition ring-primary group-hover:ring-primary-hover ring-inset ring-gray-900/10" />
+          <div className="mx-auto flex flex-wrap flex-row gap-8 animate-col-width items-stretch w-full my-8">
+            <Fade direction="up" triggerOnce cascade damping={0.1} className="w-full md:w=[50%] lg:w-[40%] xl:w-[31.5%] mx-auto">
+              {FilteredBlogs?.map((blogItem) => (
+                <article
+                  key={blogItem.id}
+                  className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 lg:pt-80 group transition w-full h-full"
+                >
+                  {!!blogItem.image?.url && (
+                    <Image
+                      src={blogItem.image.url}
+                      alt=""
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      style={{ width: "100%" }}
+                      className="absolute inset-0 -z-10 h-full w-full object-cover"
+                    />
+                  )}
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-dark via-gray-900/40 group-hover:from-primary-hover transition-all" />
+                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition ring-primary group-hover:ring-primary-hover ring-inset" />
 
-                <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
-                  <div className="-ml-4 flex items-center gap-x-4">
-                    <svg
-                      viewBox="0 0 2 2"
-                      className="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50"
-                    >
-                      <circle cx={1} cy={1} r={1} />
-                    </svg>
+                  <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
+                    <div className="-ml-4 flex items-center gap-x-4">
+                      <svg
+                        viewBox="0 0 2 2"
+                        className="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50"
+                      >
+                        <circle cx={1} cy={1} r={1} />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-                <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
-                  <Link href={`/blog/${blogItem.blogSlug}`}>
-                    <span className="absolute inset-0" />
-                    {blogItem.title}
-                  </Link>
-                </h3>
-              </article>
-            ))}
+                  <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
+                    <Link href={`/blog/${blogItem.blogSlug}`}>
+                      <span className="absolute inset-0 z-30" />
+                      {blogItem.title}
+                    </Link>
+                  </h3>
+                </article>
+              ))}
+            </Fade>
           </div>
         </div>
       )}

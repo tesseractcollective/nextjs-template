@@ -248,7 +248,7 @@ fragment pageFields on Page {
   heroImage {
     url
   }
-  layoutBlocks {
+  layoutBlocks(first: 100) {
     id
     layoutBlock(first: 100) {
       id

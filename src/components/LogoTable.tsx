@@ -25,51 +25,62 @@ export default function LogoTable({
               {title}
             </h3>
           )}
-          <div className="grid animate-col-width gap-x-8 gap-y-8 grid-cols-2 md:grid-cols:4 lg:grid-cols-4 xl:grid-cols-6">
-            {filteredTable.map((logoTableItem) => (
-              <div
-                className="mx-auto flex items-center justify-center"
-                key={`${logoTableItem.logoName}-${Math.random()}`}
-              >
-                {!!logoTableItem.logoImage?.url &&
-                  !!logoTableItem?.logoName && (
-                    <>
-                      {logoTableItem?.logoLink ? (
-                        <a
-                          target="_blank"
-                          title={logoTableItem?.logoName || ""}
-                          href={`${logoTableItem.logoLink}`}
-                          className="w-full no-underline animate-col-width inline hover-reveal-color mx-auto"
-                          rel="noreferrer"
-                        >
-                                                   <Image
-                            src={logoTableItem.logoImage.url}
-                            alt={logoTableItem?.logoName}
-                            width={160}
-                            height={160}
-                            layout="intrinsic"
-                            objectFit="contain"
-                            className="block mx-auto hover-reveal-color"
-                            style={{ objectFit: "contain", maxWidth: "140px" }}
-                          />
-                        </a>
-                      ) : (
-                        <div className="w-full no-underline animate-col-width mx-auto inline-block relative">
-                          <Image
-                            src={logoTableItem.logoImage.url}
-                            alt={logoTableItem?.logoName}
-                            width={160}
-                            height={160}
-                            layout="intrinsic"
-                            className="block mx-auto hover-reveal-color"
-                            style={{ objectFit: "contain", maxWidth: "140px" }}
-                          />
-                        </div>
+          <div className="py-12">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
+                {filteredTable.map((logoTableItem) => (
+                  <div
+                    className="bg-gray-dark/20 p-8 sm:p-10"
+                    key={`${logoTableItem.logoName}-${Math.random()}`}
+                  >
+                    {!!logoTableItem.logoImage?.url &&
+                      !!logoTableItem?.logoName && (
+                        <>
+                          {logoTableItem?.logoLink ? (
+                            <a
+                              target="_blank"
+                              title={logoTableItem?.logoName || ""}
+                              href={`${logoTableItem.logoLink}`}
+                              rel="noreferrer"
+                              className="no-underline"
+                            >
+                              <Image
+                                className="max-h-12 w-full object-contain"
+                                src={logoTableItem.logoImage.url}
+                                alt={logoTableItem?.logoName}
+                                width={0}
+                                height={0}
+                                sizes="100%"
+                                style={{
+                                  width: 'auto',
+                                  height: 'auto',
+                                  margin: '0 auto'
+                                }}
+                              />
+                               <span className="sr-only">{logoTableItem?.logoName}</span>
+                            </a>
+                          ) : (
+                            <Image
+                              className="max-h-12 w-full object-contain"
+                              src={logoTableItem.logoImage.url}
+                              alt={logoTableItem?.logoName}
+                              title={logoTableItem?.logoName || ""}
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                              style={{
+                                width: 'auto',
+                                height: 'auto',
+                                margin: '0 auto'
+                              }}
+                            />
+                          )}
+                        </>
                       )}
-                    </>
-                  )}
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </section>
       )}

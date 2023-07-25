@@ -357,8 +357,6 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                             <Image
                               src={image?.url}
                               alt=""
-                              layout="fill"
-                              objectFit="cover"
                               className="object-center mx-auto"
                               width={0}
                               height={0}
@@ -408,8 +406,6 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
               <Image
                 src={profile.avatarImage.url}
                 alt={profile?.name || ""}
-                layout="fill"
-                objectFit="cover"
                 width={0}
                 height={0}
                 sizes="100%"
@@ -438,7 +434,6 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                             className="h-16 w-16 rounded-full object-cover"
                             src={contact.contactAvatar.url}
                             alt=""
-                            objectFit="cover"
                             width={64}
                             height={64}
                             sizes="100%"

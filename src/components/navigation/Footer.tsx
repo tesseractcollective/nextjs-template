@@ -43,8 +43,8 @@ export default function Footer({
               <Fade
                 direction="up"
                 cascade
-                triggerOnce
                 damping={0.2}
+                triggerOnce
                 key={index}
                 className={`relative my-4 md:my-0 ${
                   item?.footerColumnCssWrapper || ""

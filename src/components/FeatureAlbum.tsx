@@ -85,7 +85,7 @@ export default function FeatureAlbum({
                               maxWidth: "400px",
                               objectFit: "cover",
                               aspectRatio: 1,
-                            }}
+                            }=
                           />
                         </Slide>
                       )}
@@ -151,7 +151,6 @@ export default function FeatureAlbum({
                             src={albumItem.albumCover.url}
                             alt={(albumItem.title && albumItem.title) || ""}
                             className="mx-auto mb-2 w-full block box-shadow border-round"
-                            layout="intrinsic"
                             height={400}
                             width={400}
                             style={{

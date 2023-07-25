@@ -17,7 +17,6 @@ export interface AlbumProps {
 }
 
 export default function Album({ album, siteLibrary }: AlbumProps) {
-  console.log('album.tsx', album);
   const {
     albumCover,
     iFramePlayer,
@@ -59,7 +58,7 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
           </nav>
 
           <div className="mt-4">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {title}
             </h1>
           </div>
@@ -85,6 +84,7 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
                 width={0}
                 height={0}
                 sizes="100%"
+                priority
                 placeholder='blur'
                 blurDataURL='https://images.unsplash.com/photo-1550134464-4c07c5b02073?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=985&q=80'
                 style={{ width: "100%" }}

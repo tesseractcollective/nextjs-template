@@ -23249,7 +23249,7 @@ export const PageFieldsFragmentDoc = gql`
   heroImage {
     url
   }
-  layoutBlocks {
+  layoutBlocks(first: 100) {
     id
     layoutBlock(first: 100) {
       id

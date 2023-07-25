@@ -3,15 +3,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { GetServerSideProps } from "next";
 import { sdkClient } from "@/lib/graphql-client";
-import type {
-  SiteLibraryQuery,
-} from "@/graphql/generated/graphql";
+import type { SiteLibraryQuery } from "@/graphql/generated/graphql";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const siteLibrary: SiteLibraryQuery = await sdkClient.siteLibrary();
-  console.log("getServerSideProps", siteLibrary.siteLibrary?.title);
   return {
     props: {
       siteLibrary,
@@ -32,7 +29,6 @@ export default function RootLayout(
   },
   { siteLibrary }: { siteLibrary: SiteLibraryQuery }
 ) {
-  console.log("laayout", siteLibrary);
   return (
     <html lang="en">
       <body

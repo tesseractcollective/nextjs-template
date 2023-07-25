@@ -44,10 +44,16 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
           <Image
             src={image.url}
             alt=""
+            priority
             className="object-center mx-auto"
             width={0}
             height={0}
             sizes="100%"
+            style={{
+              width: 'auto',
+              height: 'auto',
+              margin: '0 auto'
+            }}
           />
         </div>
         )}

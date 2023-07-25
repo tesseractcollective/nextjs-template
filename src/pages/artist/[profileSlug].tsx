@@ -23,8 +23,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const navigations: NavigationQuery = await sdkClient.Navigation();
   const profiles: ProfileQuery = await sdkClient.profiles();
   const blogs: BlogsQuery = await sdkClient.blogs();
-  console.log("getServerSideProps", params?.profileSlug);
-  console.log("getServerSideProps", profile.profile?.profileSlug);
   return {
     props: {
       siteLibrary,

@@ -78,7 +78,6 @@ export default function Testimonials({
                             alt={testimonial.testimonialName || ""}
                             width={288}
                             height={288}
-                            layout="intrinsic"
                           />
                         </div>
                       )}

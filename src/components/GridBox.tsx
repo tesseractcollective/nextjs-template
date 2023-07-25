@@ -24,6 +24,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
                 src={gridBoxItem.boxImage.url}
                 alt=""
                 fill
+                sizes="100%"
                 className="absolute inset-0 -z-10 h-full w-full object-cover vignette object-center"
               />
             )}
@@ -40,13 +41,13 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
                 </svg>
               </div>
             </div>
-            <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
+            <h3 className="mt-3 text-lg font-semibold leading-6 !text-white text-shadow">
               <LinkItem
                 link={gridBoxItem?.boxLink}
                 label={gridBoxItem?.boxTitle}
-                cssClass="!text-white drop-shadow-md"
+                cssClass="!text-white text-shadow"
               >
-                <span className="absolute inset-0" aria-hidden="true" />
+                <span className="absolute inset-0 z-50" aria-hidden="true" />
               </LinkItem>
             </h3>
             <div className="absolute inset-0 bg-gradient-to-b from-primary-hover transition opacity-0 group-hover:opacity-30 z-10" />
