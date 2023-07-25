@@ -44,8 +44,6 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
           <Image
             src={image.url}
             alt=""
-            layout="fill"
-            objectFit="cover"
             className="object-center mx-auto"
             width={0}
             height={0}

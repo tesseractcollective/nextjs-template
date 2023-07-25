@@ -200,7 +200,6 @@ export default function Profiles({
                           <Image
                             src={member.avatarImage?.url}
                             alt=""
-                            objectFit="cover"
                             className="talent-card-image object-center block mb-2 transition"
                             width={320}
                             height={320}

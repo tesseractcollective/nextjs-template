@@ -50,7 +50,7 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
             <ol role="list" className="flex items-center space-x-2">
               <li>
                 <div className="flex items-center text-sm">
-                  <p className="flex-none text-xs text-white opacity-40">
+                  <p className="flex-none text-xs text-white opacity-60">
                     <time dateTime={releaseDate}>{releaseDate}</time>
                   </p>
                 </div>

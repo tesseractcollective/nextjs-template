@@ -1,3 +1,4 @@
+"use client";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 import LayoutBlocks from "@/components/LayoutBlocks";
 import ThemeColors from "@/styles/ThemeColors";

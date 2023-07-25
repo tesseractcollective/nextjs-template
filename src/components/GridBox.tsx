@@ -1,7 +1,6 @@
-import parse from "html-react-parser";
-import Link from "next/link";
 import Image from "next/image";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
+import LinkItem from "@/components/LinkItem";
 
 type GridBoxType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlock"][number]["gridBox"];
@@ -11,78 +10,49 @@ interface GridBoxProps {
 
 export default function GridBox({ gridBoxData }: GridBoxProps) {
   return (
-    <section className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 my-16">
+    <section className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 my-8">
       <div
-        className={`space-y-12 lg:grid lg:grid-cols-${gridBoxData.length} lg:gap-x-8 lg:space-y-0`}
+        className={`space-y-12 lg:grid lg:grid-cols-${gridBoxData.length} lg:gap-x-8 lg:space-y-0 justify-items-center items-center`}
       >
-        {gridBoxData.map((gridBoxItem) => {
-          if (gridBoxItem.boxLink?.includes("http"))
-            return (
-              <a
-                key={gridBoxItem.boxLink}
-                href={gridBoxItem?.boxLink || "#"}
-                className="group block max-h-[280px] h-full"
+        {gridBoxData.map((gridBoxItem) => (
+          <article
+            key={gridBoxItem.boxLink}
+            className="relative isolate flex flex-col overflow-hidden rounded-2xl bg-dark px-36 pb-4 pt-40 sm:pt-36 max-w-md group hover:cursor-pointer"
+          >
+            {!!gridBoxItem.boxImage?.url && (
+              <Image
+                src={gridBoxItem.boxImage.url}
+                alt=""
+                fill
+                className="absolute inset-0 -z-10 h-full w-full object-cover vignette object-center"
+              />
+            )}
+            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-dark/50 via-white/40" />
+            <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary ring-inset ring-dark/10 overflow-hidden vignette transition group-hover:ring-primary-hover" />
+
+            <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
+              <div className="-ml-4 flex items-center gap-x-4">
+                <svg
+                  viewBox="0 0 2 2"
+                  className="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50"
+                >
+                  <circle cx={1} cy={1} r={1} />
+                </svg>
+              </div>
+            </div>
+            <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
+              <LinkItem
+                link={gridBoxItem?.boxLink}
+                label={gridBoxItem?.boxTitle}
+                cssClass="!text-white drop-shadow-md"
               >
-                {!!gridBoxItem?.boxImage?.url && (
-                  <div
-                    aria-hidden="true"
-                    className="overflow-hidden rounded-lg group-hover:opacity-75"
-                  >
-                    <Image
-                      src={gridBoxItem.boxImage?.url}
-                      alt={gridBoxItem?.boxTitle || ""}
-                      layout="fill"
-                      objectFit="cover"
-                      className="h-full w-full object-cover object-center"
-                    />
-                  </div>
-                )}
-                {!!gridBoxItem?.boxTitle && (
-                  <h3 className="mt-4 text-base font-semibold text-gray-900">
-                    {gridBoxItem.boxTitle}
-                  </h3>
-                )}
-                {!!gridBoxItem?.boxDescription && (
-                  <div className="mt-2 text-sm text-gray-500 body-parsed-text">
-                    {parse(gridBoxItem.boxDescription.html)}
-                  </div>
-                )}
-              </a>
-            );
-          else
-            return (
-              <Link
-                key={gridBoxItem.boxLink}
-                href={gridBoxItem?.boxLink || "#"}
-                className="group block max-h-[280px] h-full"
-              >
-                {!!gridBoxItem?.boxImage?.url && (
-                  <div
-                    aria-hidden="true"
-                    className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg group-hover:opacity-75"
-                  >
-                    <Image
-                      src={gridBoxItem.boxImage?.url}
-                      alt={gridBoxItem?.boxTitle || ""}
-                      layout="fill"
-                      objectFit="cover"
-                      className="h-full w-full object-cover object-center"
-                    />
-                  </div>
-                )}
-                {!!gridBoxItem?.boxTitle && (
-                  <h3 className="mt-4 text-base font-semibold text-gray-900">
-                    {gridBoxItem.boxTitle}
-                  </h3>
-                )}
-                {!!gridBoxItem?.boxDescription && (
-                  <div className="mt-2 text-sm text-gray-500 body-parsed-text">
-                    {parse(gridBoxItem.boxDescription.html)}
-                  </div>
-                )}
-              </Link>
-            );
-        })}
+                <span className="absolute inset-0" aria-hidden="true" />
+              </LinkItem>
+            </h3>
+            <div className="absolute inset-0 bg-gradient-to-b from-primary-hover transition opacity-0 group-hover:opacity-30 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark transition opacity-0 group-hover:opacity-30 z-10" />
+          </article>
+        ))}
       </div>
     </section>
   );

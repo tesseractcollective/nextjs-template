@@ -38,7 +38,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
   const { items } = navigation;
 
   return (
-    <div className="bg-dark">
+    <div className="bg-dark" id="navigation">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -136,7 +136,6 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                             width={140}
                                             height={140}
                                             sizes="100%"
-                                            objectFit="cover"
                                             style={{
                                               maxHeight: "400px",
                                               maxWidth: "400px",

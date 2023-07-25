@@ -2,6 +2,7 @@ import type { ReactElement } from "react";
 import React from "react";
 import parse from "html-react-parser";
 import Link from "next/link";
+import Image from "next/image";
 import ReactGA from "react-ga4";
 import type {
   SiteLibraryFieldsFragment,
@@ -84,7 +85,10 @@ export default function HeroMediaSliderSection({
                   >
                     <Fade direction="up" triggerOnce>
                       {heroMediaSliderItem?.textContent?.contentImage && (
-                        <img
+                        <Image
+                        width={0}
+                        height={0}
+                        sizes='100%'
                           className={`block mb-0 ${
                             (heroMediaSliderItem?.textContent?.contentAlign ===
                               "center" &&
@@ -114,18 +118,14 @@ export default function HeroMediaSliderSection({
                     </Fade>
                     <div className="animate-fade-in-up">
                       {heroMediaSliderItem?.textContent?.header && (
-                        <div
-                          className="text-shadow body-parsed-text"
-                        >
+                        <div className="text-shadow body-parsed-text">
                           {parse(heroMediaSliderItem?.textContent.header.html)}
                         </div>
                       )}
                     </div>
                     <div className="animate-fade-in-up">
                       {heroMediaSliderItem?.textContent?.subHeader && (
-                        <div
-                          className="body-parsed-text"
-                        >
+                        <div className="body-parsed-text">
                           {parse(
                             heroMediaSliderItem?.textContent.subHeader.html
                           )}
@@ -134,9 +134,7 @@ export default function HeroMediaSliderSection({
                     </div>
                     <div className="animate-fade-in-up">
                       {heroMediaSliderItem?.textContent?.content && (
-                        <div
-                          className="body-parsed-text"
-                        >
+                        <div className="body-parsed-text">
                           {parse(heroMediaSliderItem?.textContent.content.html)}
                         </div>
                       )}
@@ -222,10 +220,13 @@ export default function HeroMediaSliderSection({
                       aria-hidden="true"
                     />
                   ) : (
-                    <img
+                    <Image
                       src={heroMediaSliderItem.sliderMediaBackground.url}
                       className="hero-media-image"
                       alt=""
+                      width={1920}
+                      height={1080}
+                      layout="intrinsic"
                     />
                   )}
                 </div>

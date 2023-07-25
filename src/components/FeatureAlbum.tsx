@@ -6,6 +6,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 import useViewport from "@/hooks/useViewport";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
+import Slider from "react-slick";
 import ReactGA from "react-ga4";
 import type {
   AlbumFieldsFragment,
@@ -28,9 +29,21 @@ export default function FeatureAlbum({
   const { isSpanish } = siteLibrary;
   if (!albums) return <></>;
 
+  const settings = {
+    // dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true,
+    draggable: true,
+    fade: true,
+    pauseOnHover: true
+  };
+
   return (
     <>
-      {albums
+      {/* {albums
         .filter((album) => album.featureHomePage === true)
         .map((albumItem) => (
           <section className="gradient-bkg px-2 mx-0" key={albumItem.albumSlug}>
@@ -106,68 +119,19 @@ export default function FeatureAlbum({
               </div>
             </section>
           </section>
-        ))}
+        ))} */}
       {!!albumMap && (
         <section className="px-2 mx-0">
           <section className="container py-5 feature-album-slider-wrapper mx-auto">
             <h2 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center">
               {isSpanish ? "Música" : "Music"}
             </h2>
-            {isMobile ? (
-              <Swiper
-                effect="coverflow"
-                grabCursor
-                centeredSlides
-                slidesPerView="auto"
-                coverflowEffect={{
-                  rotate: 50,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 1,
-                }}
-                pagination
-                modules={[EffectCoverflow, Pagination]}
-                className="album-swiper"
-              >
-                {albums.map((albumItem) => (
-                  <SwiperSlide key={albumItem.albumSlug}>
-                    <Link
-                      href={`/music/${albumItem.albumSlug}`}
-                      onClick={() =>
-                        ReactGA.event({
-                          category: "Link",
-                          action: `Visit ${albumItem.title}`,
-                          label: albumItem.title || "",
-                        })
-                      }
-                      className="max-w-max no-underline"
-                    >
-                      {!!albumItem.albumCover?.url && (
-                        <Image
-                          src={albumItem.albumCover.url}
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt={(albumItem.title && albumItem.title) || ""}
-                          className="mx-auto mb-0 block border-round w-[20rem]"
-                          style={{
-                            maxHeight: "400px",
-                            objectFit: "cover",
-                            aspectRatio: 1,
-                          }}
-                        />
-                      )}
-                    </Link>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            ) : (
-              <div
+            <div
                 className={`flex flex-row flex-wrap items-start justify-center my-16`}
               >
                 {albums.map((albumItem) => (
                   <div
-                    className="mx-auto animate-col-width w-64"
+                    className="mx-auto !animate-col-width w-28 sm:w-32 md:w-64"
                     key={albumItem.albumSlug}
                   >
                     {!!albumItem.albumSlug && (
@@ -180,16 +144,16 @@ export default function FeatureAlbum({
                             label: albumItem.title || "",
                           })
                         }
-                        className="max-w-max block no-underline album-map-grid-item"
+                        className="max-w-max block no-underline album-map-grid-item mx-auto relative"
                       >
                         {!!albumItem.albumCover?.url && (
                           <Image
                             src={albumItem.albumCover.url}
                             alt={(albumItem.title && albumItem.title) || ""}
                             className="mx-auto mb-2 w-full block box-shadow border-round"
-                            width={0}
-                            height={0}
-                            sizes="100%"
+                            layout="intrinsic"
+                            height={400}
+                            width={400}
                             style={{
                               maxHeight: "400px",
                               maxWidth: "400px",
@@ -206,7 +170,6 @@ export default function FeatureAlbum({
                   </div>
                 ))}
               </div>
-            )}
           </section>
         </section>
       )}

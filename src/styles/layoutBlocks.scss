@@ -220,11 +220,11 @@
 }
 
 .slider-image {
-  height: 40vh;
-  object-fit: cover;
-  @media only screen and (min-width: 960px) {
-    height: 95vh;
-  }
+  // height: 40vh;
+  // object-fit: cover;
+  // @media only screen and (min-width: 960px) {
+  //   height: 95vh;
+  // }
 }
 
 
@@ -786,4 +786,24 @@ body iframe {
 
 .h-70vh {
   min-height: 70vh;
+}
+
+.slick-slider.mobile-album-slick {
+  .slick-arrow {
+    color: var(--primary) !important;
+    &::before {
+      color: var(--primary) !important;
+    }
+    &.slick-prev {
+      left: 0 !important;
+    }
+    &.slick-next {
+      right: 0 !important;
+    }
+  }
+  .slick-slide {
+    div {
+      display: flex;
+    }
+  }
 }

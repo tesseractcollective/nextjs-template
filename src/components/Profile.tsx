@@ -49,7 +49,12 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
 
   return (
     <>
-      <Head>{!!profile?.name && <title>{profile.name}</title>}</Head>
+      <Head>
+        {!!profile?.name && <title>{profile.name}</title>}
+        {!!profile.heroImage?.url && (
+          <meta property="og:image" content={profile.heroImage?.url} />
+        )}
+      </Head>
       <div className="bg-dark">
         <div aria-hidden="true" className="relative">
           {!!profile.heroImage?.url && (
@@ -242,10 +247,10 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
         </div>
       </div>
       <div className="py-8">
-        <div className="transition bg-invert overflow-x-clip overflow-y-visible px-4">
+        <div className="bg-invert px-4 overflow-x-hidden">
           <div className="mx-auto container relative flex flex-col md:items-center md:justify-center">
             {profile.miniBio && (
-              <div className="py-16 md:py-32 px-2 text-4xl font-bold tracking-tight transition text-white lg:text-dark md:text-5xl max-w-max text-center lg:text-left">
+              <div className="py-16 md:py-32 px-2 text-4xl font-bold tracking-tight transition text-white lg:text-dark md:text-5xl max-w-max text-center mx-auto">
                 {parse(profile.miniBio)}
               </div>
             )}
@@ -255,12 +260,11 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                   <div className="hidden md:flex min-w-max space-x-6 mx-auto lg:space-x-8">
                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
                       {profile?.imageGallery[0]?.url && (
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 relative">
                           <Image
                             src={profile.imageGallery[0].url}
                             className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
                             alt=""
-                            objectFit="cover"
                             width={288}
                             height={288}
                             sizes="100%"
@@ -270,12 +274,11 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                       )}
 
                       {profile?.imageGallery[1]?.url && (
-                        <div className="mt-6 flex-shrink-0 sm:mt-0">
+                        <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
                           <Image
                             src={profile.imageGallery[1].url}
                             className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
                             alt=""
-                            objectFit="cover"
                             width={288}
                             height={288}
                             sizes="100%"
@@ -286,12 +289,11 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                     </div>
                     <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
                       {profile?.imageGallery[2]?.url && (
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 relative">
                           <Image
                             src={profile.imageGallery[2].url}
                             className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
                             alt=""
-                            objectFit="cover"
                             width={288}
                             height={288}
                             sizes="100%"
@@ -300,12 +302,11 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                         </div>
                       )}
                       {profile?.imageGallery[3]?.url && (
-                        <div className="mt-6 flex-shrink-0 sm:mt-0">
+                        <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
                           <Image
                             src={profile.imageGallery[3].url}
                             className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
                             alt=""
-                            objectFit="cover"
                             width={288}
                             height={288}
                             sizes="100%"
@@ -316,12 +317,11 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                     </div>
                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
                       {profile?.imageGallery[4]?.url && (
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 relative">
                           <Image
                             src={profile.imageGallery[4].url}
                             className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
                             alt=""
-                            objectFit="cover"
                             width={288}
                             height={288}
                             sizes="100%"
@@ -330,12 +330,11 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                         </div>
                       )}
                       {profile?.imageGallery[5]?.url && (
-                        <div className="mt-6 flex-shrink-0 sm:mt-0">
+                        <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
                           <Image
                             src={profile.imageGallery[5].url}
-                             className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
                             alt=""
-                            objectFit="cover"
                             width={288}
                             height={288}
                             sizes="100%"
@@ -346,14 +345,14 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                     </div>
                   </div>
                 </div>
-                <div className="block">
+                <div className="block mb-16">
                   <ul
                     role="list"
                     className="grid md:hidden grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
                   >
                     {profile.imageGallery.map((image) => (
                       <li key={image?.url} className="relative">
-                        <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                        <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 relative">
                           {!!image?.url && (
                             <Image
                               src={image?.url}

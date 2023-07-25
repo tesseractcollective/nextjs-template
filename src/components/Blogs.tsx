@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -113,22 +113,18 @@ export default function Blogs({
             autoplay
             slidesPerView={isMobile ? 1 : 3}
             spaceBetween={30}
-            // pagination={{
-            //   clickable: true,
-            // }}
           >
             {FilteredBlogs.map((blogItem) => (
               <SwiperSlide className="mr-4 group" key={blogItem.blogSlug}>
                 <article
                   key={blogItem.id}
-                  className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 h-full"
+                  className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 h-full group"
                 >
                   {!!blogItem.image?.url && (
                     <Image
                       src={blogItem.image.url}
                       alt=""
-                      layout="fill"
-                      objectFit="cover"
+                      fill
                       className="absolute inset-0 -z-10 h-full w-full object-cover vignette object-center"
                     />
                   )}
@@ -146,11 +142,16 @@ export default function Blogs({
                     </div>
                   </div>
                   <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
-                    <Link href={`/blog/${blogItem.blogSlug || "/blogs"}`} className="!text-white">
+                    <Link
+                      href={`/blog/${blogItem.blogSlug || "/blogs"}`}
+                      className="!text-white"
+                    >
                       <span className="absolute inset-0" />
                       {blogItem.title}
                     </Link>
                   </h3>
+                  <div className="absolute inset-0 bg-gradient-to-b from-primary-hover transition opacity-0 group-hover:opacity-30 z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark transition opacity-0 group-hover:opacity-30 z-10" />
                 </article>
               </SwiperSlide>
             ))}
@@ -184,7 +185,7 @@ export default function Blogs({
                 key={blogItem.id}
                 className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 group"
               >
-                {!!blogItem.image?.url && ( 
+                {!!blogItem.image?.url && (
                   <Image
                     src={blogItem.image.url}
                     alt=""

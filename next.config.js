@@ -5,7 +5,6 @@ const nextConfig = {
   },
   experimental: {
     esmExternals: true,
-    serverComponentsExternalPackages: ["@codesweetly/react-youtube-playlist"],
   },
 };
 

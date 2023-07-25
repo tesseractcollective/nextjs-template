@@ -1,3 +1,5 @@
+"use client";
+import YouTubePlaylist from "@codesweetly/react-youtube-playlist";
 // import { Fade } from "react-awesome-reveal";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 // import Nav from "../nav/Nav";
@@ -13,7 +15,7 @@ import Nav from "./navigation/Nav";
 import parse from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
-import VideoBox from "@/components/VideoBox";
+// import VideoBox from "@/components/VideoBox";
 import GridBox from "@/components/GridBox";
 import ContactFormSection from "@/components/ContactFormSection";
 import Slider from "react-slick";
@@ -156,7 +158,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                             rel="noreferrer"
                                           >
                                             {textContentItem?.contentImage && (
-                                              <img
+                                              <Image
                                                 className="block m-0 p-0 border-round"
                                                 style={{
                                                   objectFit: "cover",
@@ -206,7 +208,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                             className="flex flex-row p-2 align-items-start no-underline border-0 hover:border"
                                           >
                                             {textContentItem?.contentImage && (
-                                              <img
+                                              <Image
                                                 className="block m-0 p-0 border-round"
                                                 style={{
                                                   objectFit: "cover",
@@ -342,7 +344,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                     >
                                       <div className="animate-fade-in-up">
                                         {textContentItem?.contentImage && (
-                                          <img
+                                          <Image
                                             className={`block mb-4 ${
                                               (textContentItem?.contentAlign ===
                                                 "center" &&
@@ -373,18 +375,14 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                       </div>
                                       <div className="animate-fade-in-up">
                                         {textContentItem?.header && (
-                                          <div
-                                            className="body-parsed-text"
-                                          >
+                                          <div className="body-parsed-text">
                                             {parse(textContentItem.header.html)}
                                           </div>
                                         )}
                                       </div>
                                       <div className="animate-fade-in-up">
                                         {textContentItem?.subHeader && (
-                                          <div
-                                            className="body-parsed-text"
-                                          >
+                                          <div className="body-parsed-text">
                                             {parse(
                                               textContentItem.subHeader.html
                                             )}
@@ -393,9 +391,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                       </div>
                                       <div className="animate-fade-in-up">
                                         {textContentItem?.content && (
-                                          <div
-                                            className="body-parsed-text"
-                                          >
+                                          <div className="body-parsed-text">
                                             {parse(
                                               textContentItem.content.html
                                             )}
@@ -492,7 +488,13 @@ export default function LayoutBlocks({ layout }: PageProps) {
                             />
                           </section>
                         )}
-                      {!!layoutBlockColumn?.videoBox &&
+
+                      {/* <YouTubePlaylist
+                        apiKey="AIzaSyDRSCldWgk_sVE5qDnziqlGlB5Inq_Ljc8"
+                        playlistId="PLPZMiBBzqLb0MrkNOy93YQmoQ1Nb2mkZO"
+                        uniqueName="THIS_PLAYLIST_INSTANCE_NAME"
+                      /> */}
+                      {/* {!!layoutBlockColumn?.videoBox &&
                         layoutBlockColumn?.videoBox.length >= 1 && (
                           <section
                             className="container mx-auto z-20 w-10/12"
@@ -513,7 +515,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                               />
                             ))}
                           </section>
-                        )}
+                        )} */}
                       {!!layoutBlockColumn?.gridBox &&
                         layoutBlockColumn?.gridBox?.length >= 1 && (
                           <section
@@ -592,7 +594,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                           {/* {!!finalImages && (
                             <MagicGrid items={finalImages}>
                               {finalImages.map(image => (
-                                <img
+                                <Image
                                   src={image}
                                   alt=""
                                   className=""
@@ -610,12 +612,17 @@ export default function LayoutBlocks({ layout }: PageProps) {
                               <Slider {...settings} className="">
                                 {layoutBlockColumn?.sliderGallery.map(
                                   (image) => (
-                                    <img
-                                      src={image.url}
-                                      alt=""
-                                      className="w-full slider-image"
-                                      key={image.url}
-                                    />
+                                    <div className="relative h-70vh md:h-screen max-h-[80vh]" key={image.url}>
+                                      <Image
+                                        src={image.url}
+                                        alt={image.url}
+                                        fill
+                                        sizes="100vw"
+                                        style={{
+                                          objectFit: 'cover',
+                                        }}
+                                      />
+                                    </div>
                                   )
                                 )}
                               </Slider>

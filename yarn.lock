@@ -506,10 +506,10 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
-"@codesweetly/react-youtube-playlist@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@codesweetly/react-youtube-playlist/-/react-youtube-playlist-1.0.11.tgz#c014307c288993b91c124bf36b1eb0bf3e513d6c"
-  integrity sha512-Y3UwlPNoylujivnSIXnq4JnSbKDXvWK2u5fJerhpXKchZCTTbgmb2aP9P8dldp4VnPN6nAwdeQ4qW46QKkJrig==
+"@codesweetly/react-youtube-playlist@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@codesweetly/react-youtube-playlist/-/react-youtube-playlist-1.0.13.tgz#eee20d15717c38131f622d4674bb3525aa044fb3"
+  integrity sha512-00nB4CBjVdH2c2fuGXvXh0ZjSPqPD0BpyylAF1Sak+vILJfrCJIfcc6aIKQBboXCMf1KWsHitcIqwekcFlgxtw==
   dependencies:
     fslightbox-react "^1.7.4"
     prop-types "^15.8.1"
