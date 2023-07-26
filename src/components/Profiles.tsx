@@ -169,7 +169,7 @@ export default function Profiles({
                                 </a>
                               )}
                             </nav>
-                            {!!member && (
+                            {!!profile && (
                               <button
                                 type="button"
                                 className="bg-none text-white border-white border px-4 md:px-4 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full mx-auto border-round text-xs"
