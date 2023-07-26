@@ -1,24 +1,21 @@
-"use client";
-// import YouTubePlaylist from "@codesweetly/react-youtube-playlist";
 import Vimeo from "@u-wave/react-vimeo";
-import React from "react";
 
 interface VideoBoxProps {
   videoTitle?: string;
   youtubeVideoId?: string;
   vimeoVideoId?: string;
   youtubePlaylistId?: string;
-  youtubeApiKey?: string | null;
+  youtubeApiKey: string;
 }
 
 export default function VideoBox({
   videoTitle,
   youtubeVideoId,
   vimeoVideoId,
-  youtubePlaylistId,
   youtubeApiKey,
 }: VideoBoxProps) {
-  // React.useEffect(() => import("@codesweetly/react-youtube-playlist"), []);
+  console.log("youtubeApiKey", youtubeApiKey);
+
   return (
     <section className="container mx-auto dark-section my-8">
       <div className="mx-auto">
@@ -46,13 +43,6 @@ export default function VideoBox({
             <Vimeo video={vimeoVideoId} />
           </div>
         )}
-        {/* {!!youtubeApiKey && (
-          <YouTubePlaylist
-            apiKey="AIzaSyDRSCldWgk_sVE5qDnziqlGlB5Inq_Ljc8"
-            playlistId="PLPZMiBBzqLb0MrkNOy93YQmoQ1Nb2mkZO"
-            uniqueName="THIS_PLAYLIST_INSTANCE_NAME"
-          />
-        )} */}
       </div>
     </section>
   );

@@ -50,36 +50,36 @@ export default function Profiles({
             </div>
             <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full  lg:7/12 xl:w-8/12 mx-auto lg:mx-0 transition">
               {profiles
-                .filter((member) => member?.profileType?.toLowerCase() === profilesQuery?.toLowerCase())
-                .map((member) => (
-                  <Fade direction="up" cascade triggerOnce damping={0.1} key={member.profileSlug} className="mx-auto">
+                .filter((profile) => profile?.profileType?.toLowerCase() === profilesQuery?.toLowerCase())
+                .map((profile) => (
+                  <Fade direction="up" cascade triggerOnce damping={0.1} key={profile.profileSlug} className="mx-auto">
                     {profileLayoutStyle === "cardModal" ? (
                       <div className="animate-col-width mx-auto md:mx-0">
                         <div className="member-card">
-                          {!!member?.avatarImage?.url && (
+                          {!!profile?.avatarImage?.url && (
                             <Image
-                              src={member?.avatarImage?.url}
-                              alt={(member.name && member.name) || ""}
+                              src={profile?.avatarImage?.url}
+                              alt={(profile.name && profile.name) || ""}
                               className=""
                               style={{ objectFit: "cover" }}
                             />
                           )}
 
                           <div className="flex flex-col">
-                            {!!member.name && (
+                            {!!profile.name && (
                               <h3 className="text-2xl uppercase mb-2 gradient-text text-center underline">
-                                {member.name}
+                                {profile.name}
                               </h3>
                             )}
-                            {!!member.name && (
+                            {!!profile.role && (
                               <h4 className="uppercase mt-0 mb-2 text-center text-sm  opacity-80">
-                                {member.companyTitle}
+                                {profile.role}
                               </h4>
                             )}
                             <nav className="flex flex-row member-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-center">
-                              {!!member.instagramLink && (
+                              {!!profile.instagramLink && (
                                 <a
-                                  href={member.instagramLink}
+                                  href={profile.instagramLink}
                                   target="_blank"
                                   className="max-w-max mr-2 text-center ml-0"
                                   rel="noreferrer"
@@ -90,9 +90,9 @@ export default function Profiles({
                                   />
                                 </a>
                               )}
-                              {!!member.facebookLink && (
+                              {!!profile.facebookLink && (
                                 <a
-                                  href={member.facebookLink}
+                                  href={profile.facebookLink}
                                   target="_blank"
                                   className="max-w-max mr-2 ml-0"
                                   rel="noreferrer"
@@ -103,9 +103,9 @@ export default function Profiles({
                                   />
                                 </a>
                               )}
-                              {!!member.twitterLink && (
+                              {!!profile.twitterLink && (
                                 <a
-                                  href={member.twitterLink}
+                                  href={profile.twitterLink}
                                   target="_blank"
                                   className="max-w-max mr-2 ml-0"
                                   rel="noreferrer"
@@ -116,9 +116,9 @@ export default function Profiles({
                                   />
                                 </a>
                               )}
-                              {!!member.youtubeLink && (
+                              {!!profile.youtubeLink && (
                                 <a
-                                  href={member.youtubeLink}
+                                  href={profile.youtubeLink}
                                   target="_blank"
                                   className="max-w-max mr-2 ml-0"
                                   rel="noreferrer"
@@ -129,9 +129,9 @@ export default function Profiles({
                                   />
                                 </a>
                               )}
-                              {!!member.linkedinLink && (
+                              {!!profile.linkedinLink && (
                                 <a
-                                  href={member.linkedinLink}
+                                  href={profile.linkedinLink}
                                   target="_blank"
                                   className="max-w-max mr-2 ml-0"
                                   rel="noreferrer"
@@ -142,9 +142,9 @@ export default function Profiles({
                                   />
                                 </a>
                               )}
-                              {!!member.email && (
+                              {!!profile.email && (
                                 <a
-                                  href={`mailto:${member.email}`}
+                                  href={`mailto:${profile.email}`}
                                   target="_blank"
                                   className="max-w-max mr-2 ml-0"
                                   rel="noreferrer"
@@ -155,9 +155,9 @@ export default function Profiles({
                                   />
                                 </a>
                               )}
-                              {!!member.phoneNumber && (
+                              {!!profile.phoneNumber && (
                                 <a
-                                  href={`tel:${member.phoneNumber}`}
+                                  href={`tel:${profile.phoneNumber}`}
                                   target="_blank"
                                   className="max-w-max mr-2 ml-0"
                                   rel="noreferrer"
@@ -190,15 +190,15 @@ export default function Profiles({
                       </div>
                     ) : (
                       <Link
-                        href={`/${member.profileType?.toLowerCase()}/${
-                          member.profileSlug
+                        href={`/${profile.profileType?.toLowerCase()}/${
+                          profile.profileSlug
                         }`}
                         className="talent-card h-full no-underline mx-auto relative mb-4 inline-block max-w-max"
-                        key={member.profileSlug}
+                        key={profile.profileSlug}
                       >
-                        {!!member.avatarImage?.url && (
+                        {!!profile.avatarImage?.url && (
                           <Image
-                            src={member.avatarImage?.url}
+                            src={profile.avatarImage?.url}
                             alt=""
                             className="talent-card-image object-center block mb-2 transition"
                             width={320}
@@ -207,7 +207,7 @@ export default function Profiles({
                           />
                         )}
                         <p className="my-0 py-0 flex flex-row items-center justify-center">
-                          <span>{member.name}</span>
+                          <span>{profile.name}</span>
                           <FontAwesomeIcon
                             icon={faArrowRight as IconProp}
                             className="fa-fw text-sm h-4 w-4"
@@ -230,8 +230,8 @@ export default function Profiles({
         draggable={false}>
         <div className="member-card-content px-4">
           <img
-            src={selectedMember?.avatarImage?.url}
-            alt={(selectedMember?.name && selectedMember.name) || ''}
+            src={selectedprofile?.avatarImage?.url}
+            alt={(selectedprofile?.name && selectedprofile.name) || ''}
             className="border mx-auto block"
             style={{
               width: '120px',
@@ -240,20 +240,20 @@ export default function Profiles({
               borderRadius: '50%',
             }}
           />
-          {!!selectedMember?.name && (
+          {!!selectedprofile?.name && (
             <h3 className="text-2xl uppercase mb-2 gradient-text text-center underline">
-              {selectedMember.name}
+              {selectedprofile.name}
             </h3>
           )}
-          {!!selectedMember?.welcomeQuote && (
+          {!!selectedprofile?.welcomeQuote && (
             <p className="text-sm mt-0 py-0 mb-2 uppercase text-center">
-              {selectedMember.welcomeQuote}
+              {selectedprofile.welcomeQuote}
             </p>
           )}
           <nav className="flex flex-row member-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-center">
-            {!!selectedMember?.instagramLink && (
+            {!!selectedprofile?.instagramLink && (
               <a
-                href={selectedMember.instagramLink}
+                href={selectedprofile.instagramLink}
                 target="_blank"
                 className="max-w-max mr-2 text-center ml-0"
                 rel="noreferrer">
@@ -263,9 +263,9 @@ export default function Profiles({
                 />
               </a>
             )}
-            {!!selectedMember?.facebookLink && (
+            {!!selectedprofile?.facebookLink && (
               <a
-                href={selectedMember.facebookLink}
+                href={selectedprofile.facebookLink}
                 target="_blank"
                 className="max-w-max mr-2 ml-0"
                 rel="noreferrer">
@@ -275,9 +275,9 @@ export default function Profiles({
                 />
               </a>
             )}
-            {!!selectedMember?.twitterLink && (
+            {!!selectedprofile?.twitterLink && (
               <a
-                href={selectedMember.twitterLink}
+                href={selectedprofile.twitterLink}
                 target="_blank"
                 className="max-w-max mr-2 ml-0"
                 rel="noreferrer">
@@ -287,9 +287,9 @@ export default function Profiles({
                 />
               </a>
             )}
-            {!!selectedMember?.youtubeLink && (
+            {!!selectedprofile?.youtubeLink && (
               <a
-                href={selectedMember.youtubeLink}
+                href={selectedprofile.youtubeLink}
                 target="_blank"
                 className="max-w-max mr-2 ml-0"
                 rel="noreferrer">
@@ -300,9 +300,9 @@ export default function Profiles({
               </a>
             )}
 
-            {!!selectedMember?.linkedinLink && (
+            {!!selectedprofile?.linkedinLink && (
               <a
-                href={selectedMember.linkedinLink}
+                href={selectedprofile.linkedinLink}
                 target="_blank"
                 className="max-w-max mr-2 ml-0"
                 rel="noreferrer">
@@ -312,9 +312,9 @@ export default function Profiles({
                 />
               </a>
             )}
-            {!!selectedMember?.email && (
+            {!!selectedprofile?.email && (
               <a
-                href={`mailto:${selectedMember.email}`}
+                href={`mailto:${selectedprofile.email}`}
                 target="_blank"
                 className="max-w-max mr-2 ml-0"
                 rel="noreferrer">
@@ -324,9 +324,9 @@ export default function Profiles({
                 />
               </a>
             )}
-            {!!selectedMember?.phoneNumber && (
+            {!!selectedprofile?.phoneNumber && (
               <a
-                href={selectedMember.phoneNumber}
+                href={selectedprofile.phoneNumber}
                 target="_blank"
                 className="max-w-max mr-2 ml-0"
                 rel="noreferrer">
@@ -334,9 +334,9 @@ export default function Profiles({
               </a>
             )}
           </nav>
-          {!!selectedMember?.fullBio && (
+          {!!selectedprofile?.fullBio && (
             <div className="body-parsed-text">
-              {parse(selectedMember.fullBio?.html)}
+              {parse(selectedprofile.fullBio?.html)}
             </div>
           )}
         </div>

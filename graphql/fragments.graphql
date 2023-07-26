@@ -368,7 +368,7 @@ fragment pageFields on Page {
         testimonialQuery
       }
       galleryLayout
-      sliderGallery(first: 500) {
+      gallery(first: 500) {
         url
       }
       eventSection {
@@ -521,13 +521,12 @@ fragment profileFields on Profile {
   updatedAt
   appleMusicLink
   calendlyLink
-  companyTitle
   email
   epkLink
   facebookLink
   iFrame
   instagramLink
-  instrument
+  role
   linkedinLink
   profileType
   miniBio

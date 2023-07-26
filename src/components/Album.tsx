@@ -129,8 +129,8 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
                   videoTitle={video?.videoTitle || undefined}
                   vimeoVideoId={video?.vimeoVideoId || undefined}
                   youtubeVideoId={video?.youtubeVideoId || undefined}
-                  youtubePlaylistId={video?.youtubePlaylistId || undefined}
-                  youtubeApiKey={youtubeApiKey}
+                  youtubePlaylistId={video.youtubePlaylistId || undefined}
+                  youtubeApiKey={siteLibrary.youtubeApiKey}
                   key={Math.random()}
                 />
               ))}

@@ -15,7 +15,7 @@ import Nav from "./navigation/Nav";
 import parse from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
-// import VideoBox from "@/components/VideoBox";
+import VideoBox from "@/components/VideoBox";
 import GridBox from "@/components/GridBox";
 import ContactFormSection from "@/components/ContactFormSection";
 import Slider from "react-slick";
@@ -31,6 +31,7 @@ import StandOutText from "@/components/StandOutText";
 import Testimonials from "@/components/Testimonials";
 import IframeBox from "@/components/IframeBox";
 import Profiles from "@/components/Profiles";
+import VideoPlaylistBox from "./VideoPlaylistBox";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -68,9 +69,9 @@ export default function LayoutBlocks({ layout }: PageProps) {
     arrows: false,
   };
 
-  // const { sliderGallery } = layoutSectionContent as LayoutSectionComponentType;
+  // const { gallery } = layoutSectionContent as LayoutSectionComponentType;
   // const finalImages = layoutSectionContent.map(layoutBlockColumn =>
-  //   layoutBlockColumn?.sliderGallery?.map(
+  //   layoutBlockColumn?.gallery?.map(
   //     (image: { url: any }) => image.url,
   //   ),
   // );
@@ -494,28 +495,53 @@ export default function LayoutBlocks({ layout }: PageProps) {
                         playlistId="PLPZMiBBzqLb0MrkNOy93YQmoQ1Nb2mkZO"
                         uniqueName="THIS_PLAYLIST_INSTANCE_NAME"
                       /> */}
-                      {/* {!!layoutBlockColumn?.videoBox &&
-                        layoutBlockColumn?.videoBox.length >= 1 && (
-                          <section
-                            className="container mx-auto z-20 w-10/12"
-                            id={`videoBox-${index}`}
-                          >
-                            {layoutBlockColumn.videoBox?.map((video) => (
-                              <VideoBox
-                                videoTitle={video?.videoTitle || undefined}
-                                vimeoVideoId={video?.vimeoVideoId || undefined}
-                                youtubeVideoId={
-                                  video?.youtubeVideoId || undefined
-                                }
-                                youtubePlaylistId={
-                                  video?.youtubePlaylistId || undefined
-                                }
-                                youtubeApiKey={siteLibrary?.youtubeApiKey}
-                                key={Math.random()}
-                              />
-                            ))}
-                          </section>
-                        )} */}
+                      {!!siteLibrary.youtubeApiKey && (
+                        <>
+                          {!!layoutBlockColumn?.videoBox &&
+                            layoutBlockColumn?.videoBox.length >= 1 && (
+                              <section
+                                className="container mx-auto z-20 w-10/12"
+                                id={`videoBox-${index}`}
+                              >
+                                {layoutBlockColumn.videoBox?.map((video) => (
+                                  <div key={Math.random()}>
+                                    {video?.youtubePlaylistId ? (
+                                      <VideoPlaylistBox
+                                        videoTitle={
+                                          video?.videoTitle || undefined
+                                        }
+                                        youtubePlaylistId={
+                                          video.youtubePlaylistId
+                                        }
+                                        youtubeApiKey={
+                                          siteLibrary.youtubeApiKey
+                                        }
+                                      />
+                                    ) : (
+                                      <VideoBox
+                                        videoTitle={
+                                          video?.videoTitle || undefined
+                                        }
+                                        vimeoVideoId={
+                                          video?.vimeoVideoId || undefined
+                                        }
+                                        youtubeVideoId={
+                                          video?.youtubeVideoId || undefined
+                                        }
+                                        youtubePlaylistId={
+                                          video?.youtubePlaylistId!
+                                        }
+                                        youtubeApiKey={
+                                          siteLibrary.youtubeApiKey
+                                        }
+                                      />
+                                    )}
+                                  </div>
+                                ))}
+                              </section>
+                            )}
+                        </>
+                      )}
                       {!!layoutBlockColumn?.gridBox &&
                         layoutBlockColumn?.gridBox?.length >= 1 && (
                           <section
@@ -607,24 +633,25 @@ export default function LayoutBlocks({ layout }: PageProps) {
                         </div>
                       ) : (
                         <>
-                          {!!layoutBlockColumn?.sliderGallery &&
-                            layoutBlockColumn?.sliderGallery.length >= 1 && (
+                          {!!layoutBlockColumn?.gallery &&
+                            layoutBlockColumn?.gallery.length >= 1 && (
                               <Slider {...settings} className="">
-                                {layoutBlockColumn?.sliderGallery.map(
-                                  (image) => (
-                                    <div className="relative h-70vh md:h-screen max-h-[80vh]" key={image.url}>
-                                      <Image
-                                        src={image.url}
-                                        alt={image.url}
-                                        fill
-                                        sizes="100vw"
-                                        style={{
-                                          objectFit: 'cover',
-                                        }}
-                                      />
-                                    </div>
-                                  )
-                                )}
+                                {layoutBlockColumn?.gallery.map((image) => (
+                                  <div
+                                    className="relative h-70vh md:h-screen max-h-[80vh]"
+                                    key={image.url}
+                                  >
+                                    <Image
+                                      src={image.url}
+                                      alt={image.url}
+                                      fill
+                                      sizes="100vw"
+                                      style={{
+                                        objectFit: "cover",
+                                      }}
+                                    />
+                                  </div>
+                                ))}
                               </Slider>
                             )}
                         </>

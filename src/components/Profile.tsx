@@ -388,8 +388,8 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                 videoTitle={video?.videoTitle || undefined}
                 vimeoVideoId={video?.vimeoVideoId || undefined}
                 youtubeVideoId={video?.youtubeVideoId || undefined}
-                // youtubePlaylistId={video?.youtubePlaylistId || undefined}
-                // youtubeApiKey={youtubeApiKey}
+                youtubePlaylistId={video?.youtubePlaylistId || undefined}
+                youtubeApiKey={siteLibrary.youtubeApiKey}
                 key={Math.random()}
               />
             ))}
