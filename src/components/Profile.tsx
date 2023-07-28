@@ -28,6 +28,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Fade } from "react-awesome-reveal";
 // import Profiles from "@/components/Profiles";
 
 export interface ProfileProps {
@@ -260,87 +261,99 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                   <div className="hidden md:flex min-w-max space-x-6 mx-auto lg:space-x-8">
                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
                       {profile?.imageGallery[0]?.url && (
-                        <div className="flex-shrink-0 relative">
-                          <Image
-                            src={profile.imageGallery[0].url}
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                            alt=""
-                            width={288}
-                            height={288}
-                            sizes="100%"
-                            id="image-0"
-                          />
-                        </div>
+                        <Fade triggerOnce direction="left">
+                          <div className="flex-shrink-0 relative">
+                            <Image
+                              src={profile.imageGallery[0].url}
+                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                              alt=""
+                              width={288}
+                              height={288}
+                              sizes="100%"
+                              id="image-0"
+                            />
+                          </div>
+                        </Fade>
                       )}
 
                       {profile?.imageGallery[1]?.url && (
-                        <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
-                          <Image
-                            src={profile.imageGallery[1].url}
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                            alt=""
-                            width={288}
-                            height={288}
-                            sizes="100%"
-                            id="image-1"
-                          />
-                        </div>
+                        <Fade triggerOnce direction="left">
+                          <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
+                            <Image
+                              src={profile.imageGallery[1].url}
+                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                              alt=""
+                              width={288}
+                              height={288}
+                              sizes="100%"
+                              id="image-1"
+                            />
+                          </div>
+                        </Fade>
                       )}
                     </div>
                     <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
                       {profile?.imageGallery[2]?.url && (
-                        <div className="flex-shrink-0 relative">
-                          <Image
-                            src={profile.imageGallery[2].url}
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                            alt=""
-                            width={288}
-                            height={288}
-                            sizes="100%"
-                            id="image-2"
-                          />
-                        </div>
+                        <Fade triggerOnce direction="up">
+                          <div className="flex-shrink-0 relative">
+                            <Image
+                              src={profile.imageGallery[2].url}
+                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                              alt=""
+                              width={288}
+                              height={288}
+                              sizes="100%"
+                              id="image-2"
+                            />
+                          </div>
+                        </Fade>
                       )}
                       {profile?.imageGallery[3]?.url && (
-                        <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
-                          <Image
-                            src={profile.imageGallery[3].url}
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                            alt=""
-                            width={288}
-                            height={288}
-                            sizes="100%"
-                            id="image-3"
-                          />
-                        </div>
+                        <Fade triggerOnce direction="up">
+                          <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
+                            <Image
+                              src={profile.imageGallery[3].url}
+                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                              alt=""
+                              width={288}
+                              height={288}
+                              sizes="100%"
+                              id="image-3"
+                            />
+                          </div>
+                        </Fade>
                       )}
                     </div>
                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
                       {profile?.imageGallery[4]?.url && (
-                        <div className="flex-shrink-0 relative">
-                          <Image
-                            src={profile.imageGallery[4].url}
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                            alt=""
-                            width={288}
-                            height={288}
-                            sizes="100%"
-                            id="image-4"
-                          />
-                        </div>
+                        <Fade triggerOnce direction="right">
+                          <div className="flex-shrink-0 relative">
+                            <Image
+                              src={profile.imageGallery[4].url}
+                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                              alt=""
+                              width={288}
+                              height={288}
+                              sizes="100%"
+                              id="image-4"
+                            />
+                          </div>
+                        </Fade>
                       )}
                       {profile?.imageGallery[5]?.url && (
-                        <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
-                          <Image
-                            src={profile.imageGallery[5].url}
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                            alt=""
-                            width={288}
-                            height={288}
-                            sizes="100%"
-                            id="image-5"
-                          />
-                        </div>
+                        <Fade triggerOnce direction="right">
+                          <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
+                            <Image
+                              src={profile.imageGallery[5].url}
+                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                              alt=""
+                              width={288}
+                              height={288}
+                              sizes="100%"
+                              id="image-5"
+                            />
+                          </div>
+                        </Fade>
                       )}
                     </div>
                   </div>
@@ -352,18 +365,20 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                   >
                     {profile.imageGallery.map((image) => (
                       <li key={image?.url} className="relative">
-                        <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 relative">
-                          {!!image?.url && (
-                            <Image
-                              src={image?.url}
-                              alt=""
-                              className="object-center mx-auto"
-                              width={0}
-                              height={0}
-                              sizes="100%"
-                            />
-                          )}
-                        </div>
+                        <Fade direction="up" triggerOnce cascade damping={0.1}>
+                          <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 relative">
+                            {!!image?.url && (
+                              <Image
+                                src={image?.url}
+                                alt=""
+                                className="object-center mx-auto"
+                                width={0}
+                                height={0}
+                                sizes="100%"
+                              />
+                            )}
+                          </div>
+                        </Fade>
                       </li>
                     ))}
                   </ul>
@@ -376,10 +391,10 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
 
       <section className="container mx-auto">
         {!!profile?.tourWidgetiFrame && (
-          <div className="my-16 mx-auto">{parse(profile.tourWidgetiFrame)}</div>
+          <div className="my-16 mx-auto" id="profile-tourwidget">{parse(profile.tourWidgetiFrame)}</div>
         )}
         {!!profile?.iFrame && (
-          <div className="my-16 mx-auto px-4">{parse(profile.iFrame)}</div>
+          <div className="my-16 mx-auto px-4" id="profile-iframe">{parse(profile.iFrame)}</div>
         )}
         {!!profile?.videoBox && (
           <div>

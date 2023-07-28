@@ -38,7 +38,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
   const { items } = navigation;
 
   return (
-    <div className="bg-dark" id="navigation">
+    <div className="" id="navigation">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
