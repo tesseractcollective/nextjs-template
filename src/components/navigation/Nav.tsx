@@ -70,26 +70,29 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
               <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-dark pb-12 shadow-xl border-r-primary border-r">
                 <div className="flex px-4 pb-2 pt-5">
                   <Link href="/" onClick={() => setOpen(false)}>
-                      <span className="sr-only">{title}</span>
-                      {!!navigation.navigationLogo && (
-                        <Image
-                          className="h-8 w-auto"
-                          src={navigation.navigationLogo?.url}
-                          alt=""
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          style={{ width: "100%" }}
-                        />
-                      )}
-                    </Link>
+                    <span className="sr-only">{title}</span>
+                    {!!navigation.navigationLogo && (
+                      <Image
+                        className="h-8 w-auto"
+                        src={navigation.navigationLogo?.url}
+                        alt=""
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        style={{ width: "100%" }}
+                      />
+                    )}
+                  </Link>
                   <button
                     type="button"
                     className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto"
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close menu</span>
-                    <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                    <XMarkIcon
+                      className="h-6 w-6 text-white"
+                      aria-hidden="true"
+                    />
                   </button>
                 </div>
 
@@ -150,7 +153,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                           key={item?.link}
                                           link={item?.link}
                                           label={item?.label}
-                                          cssClass={`mt-2 block text-sm font-medium text-white text-center group-hover:text-primary transition ${item?.cssClass}`}
+                                          cssClass={`mt-2 block text-xs md:text-sm font-medium text-white text-center group-hover:text-primary transition ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
                                           <span
@@ -209,25 +212,34 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                       </p>
                     )}
                     {!!bookingPhoneOne && (
-                      <a href={`tel:${bookingPhoneOne.replace("-", "")}`} className="text-xs block my-1 text-link !border-none hover:!border-none">
+                      <a
+                        href={`tel:${bookingPhoneOne.replace("-", "")}`}
+                        className="text-xs block my-1 text-link !border-none hover:!border-none"
+                      >
                         <span>{bookingPhoneOne}</span>
                       </a>
                     )}
                     {!!bookingEmailOne && (
-                      <a href={`mailto:${bookingEmailOne}`} className="text-xs block my-1 text-link !border-none hover:!border-none">
+                      <a
+                        href={`mailto:${bookingEmailOne}`}
+                        className="text-xs block my-1 text-link !border-none hover:!border-none"
+                      >
                         <span>{bookingEmailOne}</span>
                       </a>
                     )}
                   </div>
                 </div>
                 <button
-                    type="button"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto"
-                    onClick={() => setOpen(false)}
-                  >
-                    <span className="sr-only">Close menu</span>
-                    <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                  </button>
+                  type="button"
+                  className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto"
+                  onClick={() => setOpen(false)}
+                >
+                  <span className="sr-only">Close menu</span>
+                  <XMarkIcon
+                    className="h-6 w-6 text-white"
+                    aria-hidden="true"
+                  />
+                </button>
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -287,7 +299,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                                 open
                                                   ? "border-primary text-primary"
                                                   : "border-dark text-white opacity-90 hover:text-white hover:opacity-100",
-                                                "relative z-10 -mb-px flex items-center pt-px text-sm font-medium transition-colors duration-200 ease-out border-dark hover:border-white border-b-2"
+                                                "relative z-10 -mb-px flex items-center pt-px text-xs md:text-sm font-medium transition-colors duration-200 ease-out border-dark hover:border-white border-b-2"
                                               )}
                                             >
                                               {mainNavigationItem.label}
@@ -303,65 +315,92 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                           >
-                                            <Popover.Panel className="absolute inset-x-0 top-full text-sm text-white border-t-2 border-b-2 border-primary">
-                                              <div
-                                                className="absolute inset-0 top-1/2 bg-primary-hover shadow"
-                                                aria-hidden="true"
-                                              />
+                                            <Popover.Panel className="absolute inset-x-0 top-full text-xs md:text-sm text-white border-t-2 border-b-2 border-primary">
+                                              {({ close }) => (
+                                                <>
+                                                  <div
+                                                    className="absolute inset-0 top-1/2 bg-dark shadow"
+                                                    aria-hidden="true"
+                                                  />
 
-                                              <div className="relative bg-dark">
-                                                <div className="mx-auto max-w-7xl px-8">
-                                                  <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
-                                                    {mainNavigationItem.items.map(
-                                                      (item) => (
-                                                        <div
-                                                          key={item.label}
-                                                          className="group relative"
-                                                        >
-                                                          {item?.image && (
-                                                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
-                                                              <Image
-                                                                src={
-                                                                  item.image
-                                                                    ?.url
-                                                                }
-                                                                alt={
-                                                                  item?.label ||
-                                                                  ""
-                                                                }
-                                                                width={0}
-                                                                height={0}
-                                                                sizes="100%"
-                                                                style={{
-                                                                  width: "100%",
-                                                                }}
-                                                              />
-                                                            </div>
-                                                          )}
-                                                          {!!item?.link && (
-                                                            <LinkItem
-                                                              key={item?.link}
-                                                              link={item?.link}
-                                                              label={
-                                                                item?.label
-                                                              }
-                                                              cssClass={`mt-4 block font-medium text-white ${item?.cssClass}`}
-                                                              sameTab={
-                                                                item?.sameTab
+                                                  <div className="relative bg-dark">
+                                                    <div className="mx-auto max-w-7xl px-8">
+                                                      <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
+                                                        {mainNavigationItem.items.map(
+                                                          (item) => (
+                                                            <div
+                                                              key={item.label}
+                                                              className="group relative"
+                                                              onClick={() =>
+                                                                close()
                                                               }
                                                             >
-                                                              <span
-                                                                className="absolute inset-0 z-10"
-                                                                aria-hidden="true"
-                                                              />
-                                                            </LinkItem>
-                                                          )}
-                                                        </div>
-                                                      )
-                                                    )}
+                                                              {item?.image && (
+                                                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
+                                                                  <Image
+                                                                    src={
+                                                                      item.image
+                                                                        ?.url
+                                                                    }
+                                                                    alt={
+                                                                      item?.label ||
+                                                                      ""
+                                                                    }
+                                                                    width={0}
+                                                                    height={0}
+                                                                    sizes="100%"
+                                                                    style={{
+                                                                      width:
+                                                                        "100%",
+                                                                    }}
+                                                                  />
+                                                                </div>
+                                                              )}
+                                                              {!!item?.link && (
+                                                                <LinkItem
+                                                                  key={
+                                                                    item?.link
+                                                                  }
+                                                                  link={
+                                                                    item?.link
+                                                                  }
+                                                                  label={
+                                                                    item?.label
+                                                                  }
+                                                                  cssClass={`mt-4 block font-medium text-white ${item?.cssClass}`}
+                                                                  sameTab={
+                                                                    item?.sameTab
+                                                                  }
+                                                                >
+                                                                  <span
+                                                                    className="absolute inset-0 z-10"
+                                                                    aria-hidden="true"
+                                                                  />
+                                                                </LinkItem>
+                                                              )}
+                                                            </div>
+                                                          )
+                                                        )}
+                                                      </div>
+                                                    </div>
                                                   </div>
-                                                </div>
-                                              </div>
+                                                  <div className="absolute top-0 right-0 ml-auto">
+                                                    <button
+                                                      type="button"
+                                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 outline outline-primary z-50"
+                                                      onClick={() => close()}
+                                                    >
+                                                      <span className="sr-only">
+                                                        Close menu
+                                                      </span>
+                                                      <XMarkIcon
+                                                        className="h-6 w-6 text-white"
+                                                        aria-hidden="true"
+                                                      />
+                                                    </button>
+                                                  </div>
+                                                </>
+                                              )}
                                             </Popover.Panel>
                                           </Transition>
                                         </>
@@ -373,7 +412,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                       key={mainNavigationItem?.link}
                                       link={mainNavigationItem?.link}
                                       label={mainNavigationItem?.label}
-                                      cssClass={`flex items-center text-sm font-medium text-white opacity-90 hover:text-white hover:opacity-100 ${mainNavigationItem?.cssClass}`}
+                                      cssClass={`flex items-center text-xs md:text-sm font-medium text-white opacity-90 hover:text-white hover:opacity-100 ${mainNavigationItem?.cssClass}`}
                                       sameTab={mainNavigationItem?.sameTab}
                                     />
                                   )}
@@ -424,7 +463,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                             key={mainNavigationItem?.link}
                             link={mainNavigationItem?.link}
                             label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary ${mainNavigationItem?.cssClass}`}
+                            cssClass={`flex items-center text-xs md:text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary ${mainNavigationItem?.cssClass}`}
                             sameTab={mainNavigationItem?.sameTab}
                           />
                         ))}
