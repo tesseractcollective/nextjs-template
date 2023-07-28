@@ -436,13 +436,13 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                   </div>
 
                   {/* Logo (lg-) */}
-                  <Link href="/" className="lg:hidden">
+                  <Link href="/" className="lg:hidden max-w-max mx-auto">
                     <span className="sr-only">{title}</span>
                     {!!navigation.navigationLogo?.url && (
                       <Image
                         src={navigation.navigationLogo.url}
                         alt=""
-                        className="h-12 lg:h-10 w-auto object-contain"
+                        className="h-12 lg:h-10 w-auto object-contain max-w-max mx-auto"
                         width={0}
                         height={0}
                         sizes="100%"
