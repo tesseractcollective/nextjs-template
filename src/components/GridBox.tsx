@@ -3,7 +3,7 @@ import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "@/components/LinkItem";
 
 type GridBoxType =
-  PageFieldsFragment["layoutBlocks"][number]["layoutBlock"][number]["gridBox"];
+  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["gridBox"];
 interface GridBoxProps {
   gridBoxData: GridBoxType;
 }
