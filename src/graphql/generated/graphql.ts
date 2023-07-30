@@ -25,25 +25,26 @@ export type Scalars = {
 
 export type Accordion = {
   __typename?: 'Accordion';
-  accordionContent: Array<AccordionContent>;
-  header?: Maybe<RichText>;
+  contentDescription?: Maybe<RichText>;
+  contentHeader?: Maybe<RichText>;
+  contentImage?: Maybe<Asset>;
   /** The unique identifier */
   id: Scalars['ID'];
   /** System stage field */
   stage: Stage;
+  videoBox?: Maybe<VideoBox>;
 };
 
 
-export type AccordionAccordionContentArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
+export type AccordionContentImageArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<AccordionContentOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<AccordionContentWhereInput>;
+};
+
+
+export type AccordionVideoBoxArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
 };
 
 export type AccordionConnectInput = {
@@ -63,317 +64,11 @@ export type AccordionConnection = {
   pageInfo: PageInfo;
 };
 
-export type AccordionContent = {
-  __typename?: 'AccordionContent';
-  contentDescription?: Maybe<RichText>;
-  contentHeader?: Maybe<RichText>;
-  contentImage?: Maybe<Asset>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  /** System stage field */
-  stage: Stage;
-  videoBox?: Maybe<VideoBox>;
-};
-
-
-export type AccordionContentContentImageArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type AccordionContentVideoBoxArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-export type AccordionContentConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: AccordionContentWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type AccordionContentConnection = {
-  __typename?: 'AccordionContentConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<AccordionContentEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type AccordionContentCreateInput = {
+export type AccordionCreateInput = {
   contentDescription?: InputMaybe<Scalars['RichTextAST']>;
   contentHeader?: InputMaybe<Scalars['RichTextAST']>;
   contentImage?: InputMaybe<AssetCreateOneInlineInput>;
   videoBox?: InputMaybe<VideoBoxCreateOneInlineInput>;
-};
-
-export type AccordionContentCreateManyInlineInput = {
-  /** Create and connect multiple existing AccordionContent documents */
-  create?: InputMaybe<Array<AccordionContentCreateInput>>;
-};
-
-export type AccordionContentCreateOneInlineInput = {
-  /** Create and connect one AccordionContent document */
-  create?: InputMaybe<AccordionContentCreateInput>;
-};
-
-export type AccordionContentCreateWithPositionInput = {
-  /** Document to create */
-  data: AccordionContentCreateInput;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-};
-
-/** An edge in a connection. */
-export type AccordionContentEdge = {
-  __typename?: 'AccordionContentEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: AccordionContent;
-};
-
-/** Identifies documents */
-export type AccordionContentManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<AccordionContentWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<AccordionContentWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<AccordionContentWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  contentImage?: InputMaybe<AssetWhereInput>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  videoBox?: InputMaybe<VideoBoxWhereInput>;
-};
-
-export enum AccordionContentOrderByInput {
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC'
-}
-
-export type AccordionContentParent = Accordion;
-
-export type AccordionContentParentConnectInput = {
-  Accordion?: InputMaybe<AccordionConnectInput>;
-};
-
-export type AccordionContentParentCreateInput = {
-  Accordion?: InputMaybe<AccordionCreateInput>;
-};
-
-export type AccordionContentParentCreateManyInlineInput = {
-  /** Create and connect multiple existing AccordionContentParent documents */
-  create?: InputMaybe<Array<AccordionContentParentCreateInput>>;
-};
-
-export type AccordionContentParentCreateOneInlineInput = {
-  /** Create and connect one AccordionContentParent document */
-  create?: InputMaybe<AccordionContentParentCreateInput>;
-};
-
-export type AccordionContentParentCreateWithPositionInput = {
-  Accordion?: InputMaybe<AccordionCreateWithPositionInput>;
-};
-
-export type AccordionContentParentUpdateInput = {
-  Accordion?: InputMaybe<AccordionUpdateInput>;
-};
-
-export type AccordionContentParentUpdateManyInlineInput = {
-  /** Create and connect multiple AccordionContentParent component instances */
-  create?: InputMaybe<Array<AccordionContentParentCreateWithPositionInput>>;
-  /** Delete multiple AccordionContentParent documents */
-  delete?: InputMaybe<Array<AccordionContentParentWhereUniqueInput>>;
-  /** Update multiple AccordionContentParent component instances */
-  update?: InputMaybe<Array<AccordionContentParentUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple AccordionContentParent component instances */
-  upsert?: InputMaybe<Array<AccordionContentParentUpsertWithNestedWhereUniqueAndPositionInput>>;
-};
-
-export type AccordionContentParentUpdateManyWithNestedWhereInput = {
-  Accordion?: InputMaybe<AccordionUpdateManyWithNestedWhereInput>;
-};
-
-export type AccordionContentParentUpdateOneInlineInput = {
-  /** Create and connect one AccordionContentParent document */
-  create?: InputMaybe<AccordionContentParentCreateInput>;
-  /** Delete currently connected AccordionContentParent document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single AccordionContentParent document */
-  update?: InputMaybe<AccordionContentParentUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single AccordionContentParent document */
-  upsert?: InputMaybe<AccordionContentParentUpsertWithNestedWhereUniqueInput>;
-};
-
-export type AccordionContentParentUpdateWithNestedWhereUniqueAndPositionInput = {
-  Accordion?: InputMaybe<AccordionUpdateWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type AccordionContentParentUpdateWithNestedWhereUniqueInput = {
-  Accordion?: InputMaybe<AccordionUpdateWithNestedWhereUniqueInput>;
-};
-
-export type AccordionContentParentUpsertWithNestedWhereUniqueAndPositionInput = {
-  Accordion?: InputMaybe<AccordionUpsertWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type AccordionContentParentUpsertWithNestedWhereUniqueInput = {
-  Accordion?: InputMaybe<AccordionUpsertWithNestedWhereUniqueInput>;
-};
-
-export type AccordionContentParentWhereInput = {
-  Accordion?: InputMaybe<AccordionWhereInput>;
-};
-
-export type AccordionContentParentWhereUniqueInput = {
-  Accordion?: InputMaybe<AccordionWhereUniqueInput>;
-};
-
-export type AccordionContentUpdateInput = {
-  contentDescription?: InputMaybe<Scalars['RichTextAST']>;
-  contentHeader?: InputMaybe<Scalars['RichTextAST']>;
-  contentImage?: InputMaybe<AssetUpdateOneInlineInput>;
-  videoBox?: InputMaybe<VideoBoxUpdateOneInlineInput>;
-};
-
-export type AccordionContentUpdateManyInlineInput = {
-  /** Create and connect multiple AccordionContent component instances */
-  create?: InputMaybe<Array<AccordionContentCreateWithPositionInput>>;
-  /** Delete multiple AccordionContent documents */
-  delete?: InputMaybe<Array<AccordionContentWhereUniqueInput>>;
-  /** Update multiple AccordionContent component instances */
-  update?: InputMaybe<Array<AccordionContentUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple AccordionContent component instances */
-  upsert?: InputMaybe<Array<AccordionContentUpsertWithNestedWhereUniqueAndPositionInput>>;
-};
-
-export type AccordionContentUpdateManyInput = {
-  contentDescription?: InputMaybe<Scalars['RichTextAST']>;
-  contentHeader?: InputMaybe<Scalars['RichTextAST']>;
-};
-
-export type AccordionContentUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: AccordionContentUpdateManyInput;
-  /** Document search */
-  where: AccordionContentWhereInput;
-};
-
-export type AccordionContentUpdateOneInlineInput = {
-  /** Create and connect one AccordionContent document */
-  create?: InputMaybe<AccordionContentCreateInput>;
-  /** Delete currently connected AccordionContent document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single AccordionContent document */
-  update?: InputMaybe<AccordionContentUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single AccordionContent document */
-  upsert?: InputMaybe<AccordionContentUpsertWithNestedWhereUniqueInput>;
-};
-
-export type AccordionContentUpdateWithNestedWhereUniqueAndPositionInput = {
-  /** Document to update */
-  data?: InputMaybe<AccordionContentUpdateInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: AccordionContentWhereUniqueInput;
-};
-
-export type AccordionContentUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: AccordionContentUpdateInput;
-  /** Unique document search */
-  where: AccordionContentWhereUniqueInput;
-};
-
-export type AccordionContentUpsertInput = {
-  /** Create document if it didn't exist */
-  create: AccordionContentCreateInput;
-  /** Update document if it exists */
-  update: AccordionContentUpdateInput;
-};
-
-export type AccordionContentUpsertWithNestedWhereUniqueAndPositionInput = {
-  /** Document to upsert */
-  data?: InputMaybe<AccordionContentUpsertInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: AccordionContentWhereUniqueInput;
-};
-
-export type AccordionContentUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: AccordionContentUpsertInput;
-  /** Unique document search */
-  where: AccordionContentWhereUniqueInput;
-};
-
-/** Identifies documents */
-export type AccordionContentWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<AccordionContentWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<AccordionContentWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<AccordionContentWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  contentImage?: InputMaybe<AssetWhereInput>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  videoBox?: InputMaybe<VideoBoxWhereInput>;
-};
-
-/** References AccordionContent record uniquely */
-export type AccordionContentWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-export type AccordionCreateInput = {
-  accordionContent?: InputMaybe<AccordionContentCreateManyInlineInput>;
-  header?: InputMaybe<Scalars['RichTextAST']>;
 };
 
 export type AccordionCreateManyInlineInput = {
@@ -412,9 +107,7 @@ export type AccordionManyWhereInput = {
   OR?: InputMaybe<Array<AccordionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  accordionContent_every?: InputMaybe<AccordionContentWhereInput>;
-  accordionContent_none?: InputMaybe<AccordionContentWhereInput>;
-  accordionContent_some?: InputMaybe<AccordionContentWhereInput>;
+  contentImage?: InputMaybe<AssetWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -434,6 +127,7 @@ export type AccordionManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  videoBox?: InputMaybe<VideoBoxWhereInput>;
 };
 
 export enum AccordionOrderByInput {
@@ -441,89 +135,89 @@ export enum AccordionOrderByInput {
   IdDesc = 'id_DESC'
 }
 
-export type AccordionParent = Page;
+export type AccordionParent = LayoutBlockColumn;
 
 export type AccordionParentConnectInput = {
-  Page?: InputMaybe<PageConnectInput>;
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnConnectInput>;
 };
 
 export type AccordionParentCreateInput = {
-  Page?: InputMaybe<PageCreateInput>;
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateInput>;
 };
 
 export type AccordionParentCreateManyInlineInput = {
-  /** Connect multiple existing AccordionParent documents */
-  connect?: InputMaybe<Array<AccordionParentWhereUniqueInput>>;
   /** Create and connect multiple existing AccordionParent documents */
   create?: InputMaybe<Array<AccordionParentCreateInput>>;
 };
 
 export type AccordionParentCreateOneInlineInput = {
-  /** Connect one existing AccordionParent document */
-  connect?: InputMaybe<AccordionParentWhereUniqueInput>;
   /** Create and connect one AccordionParent document */
   create?: InputMaybe<AccordionParentCreateInput>;
 };
 
+export type AccordionParentCreateWithPositionInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateWithPositionInput>;
+};
+
 export type AccordionParentUpdateInput = {
-  Page?: InputMaybe<PageUpdateInput>;
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateInput>;
 };
 
 export type AccordionParentUpdateManyInlineInput = {
-  /** Connect multiple existing AccordionParent documents */
-  connect?: InputMaybe<Array<AccordionParentConnectInput>>;
-  /** Create and connect multiple AccordionParent documents */
-  create?: InputMaybe<Array<AccordionParentCreateInput>>;
+  /** Create and connect multiple AccordionParent component instances */
+  create?: InputMaybe<Array<AccordionParentCreateWithPositionInput>>;
   /** Delete multiple AccordionParent documents */
   delete?: InputMaybe<Array<AccordionParentWhereUniqueInput>>;
-  /** Disconnect multiple AccordionParent documents */
-  disconnect?: InputMaybe<Array<AccordionParentWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing AccordionParent documents */
-  set?: InputMaybe<Array<AccordionParentWhereUniqueInput>>;
-  /** Update multiple AccordionParent documents */
-  update?: InputMaybe<Array<AccordionParentUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple AccordionParent documents */
-  upsert?: InputMaybe<Array<AccordionParentUpsertWithNestedWhereUniqueInput>>;
+  /** Update multiple AccordionParent component instances */
+  update?: InputMaybe<Array<AccordionParentUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple AccordionParent component instances */
+  upsert?: InputMaybe<Array<AccordionParentUpsertWithNestedWhereUniqueAndPositionInput>>;
 };
 
 export type AccordionParentUpdateManyWithNestedWhereInput = {
-  Page?: InputMaybe<PageUpdateManyWithNestedWhereInput>;
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateManyWithNestedWhereInput>;
 };
 
 export type AccordionParentUpdateOneInlineInput = {
-  /** Connect existing AccordionParent document */
-  connect?: InputMaybe<AccordionParentWhereUniqueInput>;
   /** Create and connect one AccordionParent document */
   create?: InputMaybe<AccordionParentCreateInput>;
   /** Delete currently connected AccordionParent document */
   delete?: InputMaybe<Scalars['Boolean']>;
-  /** Disconnect currently connected AccordionParent document */
-  disconnect?: InputMaybe<Scalars['Boolean']>;
   /** Update single AccordionParent document */
   update?: InputMaybe<AccordionParentUpdateWithNestedWhereUniqueInput>;
   /** Upsert single AccordionParent document */
   upsert?: InputMaybe<AccordionParentUpsertWithNestedWhereUniqueInput>;
 };
 
+export type AccordionParentUpdateWithNestedWhereUniqueAndPositionInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueAndPositionInput>;
+};
+
 export type AccordionParentUpdateWithNestedWhereUniqueInput = {
-  Page?: InputMaybe<PageUpdateWithNestedWhereUniqueInput>;
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueInput>;
+};
+
+export type AccordionParentUpsertWithNestedWhereUniqueAndPositionInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueAndPositionInput>;
 };
 
 export type AccordionParentUpsertWithNestedWhereUniqueInput = {
-  Page?: InputMaybe<PageUpsertWithNestedWhereUniqueInput>;
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueInput>;
 };
 
 export type AccordionParentWhereInput = {
-  Page?: InputMaybe<PageWhereInput>;
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereInput>;
 };
 
 export type AccordionParentWhereUniqueInput = {
-  Page?: InputMaybe<PageWhereUniqueInput>;
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereUniqueInput>;
 };
 
 export type AccordionUpdateInput = {
-  accordionContent?: InputMaybe<AccordionContentUpdateManyInlineInput>;
-  header?: InputMaybe<Scalars['RichTextAST']>;
+  contentDescription?: InputMaybe<Scalars['RichTextAST']>;
+  contentHeader?: InputMaybe<Scalars['RichTextAST']>;
+  contentImage?: InputMaybe<AssetUpdateOneInlineInput>;
+  videoBox?: InputMaybe<VideoBoxUpdateOneInlineInput>;
 };
 
 export type AccordionUpdateManyInlineInput = {
@@ -538,7 +232,8 @@ export type AccordionUpdateManyInlineInput = {
 };
 
 export type AccordionUpdateManyInput = {
-  header?: InputMaybe<Scalars['RichTextAST']>;
+  contentDescription?: InputMaybe<Scalars['RichTextAST']>;
+  contentHeader?: InputMaybe<Scalars['RichTextAST']>;
 };
 
 export type AccordionUpdateManyWithNestedWhereInput = {
@@ -608,9 +303,7 @@ export type AccordionWhereInput = {
   OR?: InputMaybe<Array<AccordionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  accordionContent_every?: InputMaybe<AccordionContentWhereInput>;
-  accordionContent_none?: InputMaybe<AccordionContentWhereInput>;
-  accordionContent_some?: InputMaybe<AccordionContentWhereInput>;
+  contentImage?: InputMaybe<AssetWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -630,6 +323,7 @@ export type AccordionWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  videoBox?: InputMaybe<VideoBoxWhereInput>;
 };
 
 /** References Accordion record uniquely */
@@ -1776,12 +1470,13 @@ export type AssetConnection = {
 export type AssetCreateInput = {
   albumCoverAlbum?: InputMaybe<AlbumCreateManyInlineInput>;
   avatarImageProfile?: InputMaybe<ProfileCreateManyInlineInput>;
+  backgroundImageLayoutBlock?: InputMaybe<LayoutBlockCreateManyInlineInput>;
   backgroundImageLayoutSectionContent?: InputMaybe<LayoutBlockColumnCreateManyInlineInput>;
   blogGalleryBlog?: InputMaybe<BlogCreateManyInlineInput>;
   boxImageGridBox?: InputMaybe<GridBoxCreateManyInlineInput>;
   categoryImageVideoCategory?: InputMaybe<VideoCategoryCreateManyInlineInput>;
   contactAvatarContactList?: InputMaybe<ContactListCreateManyInlineInput>;
-  contentImageAccordionContent?: InputMaybe<AccordionContentCreateManyInlineInput>;
+  contentImageAccordionContent?: InputMaybe<AccordionCreateManyInlineInput>;
   contentImageTextContent?: InputMaybe<TextContentCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   eventFlyerEvent?: InputMaybe<EventCreateManyInlineInput>;
@@ -1795,7 +1490,6 @@ export type AssetCreateInput = {
   heroImageProfile?: InputMaybe<ProfileCreateManyInlineInput>;
   imageBlog?: InputMaybe<BlogCreateManyInlineInput>;
   imageGalleryProfile?: InputMaybe<ProfileCreateManyInlineInput>;
-  imageMemberAvatarMember?: InputMaybe<TeamMemberItemCreateManyInlineInput>;
   imageNavigationItem?: InputMaybe<NavigationItemCreateManyInlineInput>;
   labelLogoSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
@@ -1803,10 +1497,6 @@ export type AssetCreateInput = {
   logoImageLogoTable?: InputMaybe<LogoTableCreateManyInlineInput>;
   logoSecondarySiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
   logoSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
-  memberHeroImageMember?: InputMaybe<TeamMemberItemCreateManyInlineInput>;
-  memberImageGalleryMember?: InputMaybe<TeamMemberItemCreateManyInlineInput>;
-  memberLogoTeamMemberItem?: InputMaybe<TeamMemberItemCreateManyInlineInput>;
-  memberMusicReleaseGalleryMember?: InputMaybe<TeamMemberItemCreateManyInlineInput>;
   memberMusicReleaseProfile?: InputMaybe<ProfileCreateManyInlineInput>;
   metaAppleTouchIconSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
   metaOgImageSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
@@ -2046,12 +1736,13 @@ export type AssetTransformationInput = {
 export type AssetUpdateInput = {
   albumCoverAlbum?: InputMaybe<AlbumUpdateManyInlineInput>;
   avatarImageProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
+  backgroundImageLayoutBlock?: InputMaybe<LayoutBlockUpdateManyInlineInput>;
   backgroundImageLayoutSectionContent?: InputMaybe<LayoutBlockColumnUpdateManyInlineInput>;
   blogGalleryBlog?: InputMaybe<BlogUpdateManyInlineInput>;
   boxImageGridBox?: InputMaybe<GridBoxUpdateManyInlineInput>;
   categoryImageVideoCategory?: InputMaybe<VideoCategoryUpdateManyInlineInput>;
   contactAvatarContactList?: InputMaybe<ContactListUpdateManyInlineInput>;
-  contentImageAccordionContent?: InputMaybe<AccordionContentUpdateManyInlineInput>;
+  contentImageAccordionContent?: InputMaybe<AccordionUpdateManyInlineInput>;
   contentImageTextContent?: InputMaybe<TextContentUpdateManyInlineInput>;
   eventFlyerEvent?: InputMaybe<EventUpdateManyInlineInput>;
   eventGalleryEvent?: InputMaybe<EventUpdateManyInlineInput>;
@@ -2064,7 +1755,6 @@ export type AssetUpdateInput = {
   heroImageProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
   imageBlog?: InputMaybe<BlogUpdateManyInlineInput>;
   imageGalleryProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
-  imageMemberAvatarMember?: InputMaybe<TeamMemberItemUpdateManyInlineInput>;
   imageNavigationItem?: InputMaybe<NavigationItemUpdateManyInlineInput>;
   labelLogoSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
   /** Manage document localizations */
@@ -2072,10 +1762,6 @@ export type AssetUpdateInput = {
   logoImageLogoTable?: InputMaybe<LogoTableUpdateManyInlineInput>;
   logoSecondarySiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
   logoSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
-  memberHeroImageMember?: InputMaybe<TeamMemberItemUpdateManyInlineInput>;
-  memberImageGalleryMember?: InputMaybe<TeamMemberItemUpdateManyInlineInput>;
-  memberLogoTeamMemberItem?: InputMaybe<TeamMemberItemUpdateManyInlineInput>;
-  memberMusicReleaseGalleryMember?: InputMaybe<TeamMemberItemUpdateManyInlineInput>;
   memberMusicReleaseProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
   metaAppleTouchIconSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
   metaOgImageSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
@@ -4499,16 +4185,14 @@ export enum ContactListOrderByInput {
   IdDesc = 'id_DESC'
 }
 
-export type ContactListParent = Profile | TeamMemberItem;
+export type ContactListParent = Profile;
 
 export type ContactListParentConnectInput = {
   Profile?: InputMaybe<ProfileConnectInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemConnectInput>;
 };
 
 export type ContactListParentCreateInput = {
   Profile?: InputMaybe<ProfileCreateInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemCreateInput>;
 };
 
 export type ContactListParentCreateManyInlineInput = {
@@ -4527,7 +4211,6 @@ export type ContactListParentCreateOneInlineInput = {
 
 export type ContactListParentUpdateInput = {
   Profile?: InputMaybe<ProfileUpdateInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemUpdateInput>;
 };
 
 export type ContactListParentUpdateManyInlineInput = {
@@ -4549,7 +4232,6 @@ export type ContactListParentUpdateManyInlineInput = {
 
 export type ContactListParentUpdateManyWithNestedWhereInput = {
   Profile?: InputMaybe<ProfileUpdateManyWithNestedWhereInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemUpdateManyWithNestedWhereInput>;
 };
 
 export type ContactListParentUpdateOneInlineInput = {
@@ -4569,22 +4251,18 @@ export type ContactListParentUpdateOneInlineInput = {
 
 export type ContactListParentUpdateWithNestedWhereUniqueInput = {
   Profile?: InputMaybe<ProfileUpdateWithNestedWhereUniqueInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemUpdateWithNestedWhereUniqueInput>;
 };
 
 export type ContactListParentUpsertWithNestedWhereUniqueInput = {
   Profile?: InputMaybe<ProfileUpsertWithNestedWhereUniqueInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemUpsertWithNestedWhereUniqueInput>;
 };
 
 export type ContactListParentWhereInput = {
   Profile?: InputMaybe<ProfileWhereInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemWhereInput>;
 };
 
 export type ContactListParentWhereUniqueInput = {
   Profile?: InputMaybe<ProfileWhereUniqueInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemWhereUniqueInput>;
 };
 
 export type ContactListUpdateInput = {
@@ -5411,348 +5089,6 @@ export enum EventOrderByInput {
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC'
 }
-
-export type EventSection = {
-  __typename?: 'EventSection';
-  eventDisplayType?: Maybe<EventDisplayType>;
-  eventSectionTitle?: Maybe<Scalars['String']>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  /** System stage field */
-  stage: Stage;
-};
-
-export type EventSectionConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: EventSectionWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type EventSectionConnection = {
-  __typename?: 'EventSectionConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<EventSectionEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type EventSectionCreateInput = {
-  eventDisplayType?: InputMaybe<EventDisplayType>;
-  eventSectionTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type EventSectionCreateManyInlineInput = {
-  /** Create and connect multiple existing EventSection documents */
-  create?: InputMaybe<Array<EventSectionCreateInput>>;
-};
-
-export type EventSectionCreateOneInlineInput = {
-  /** Create and connect one EventSection document */
-  create?: InputMaybe<EventSectionCreateInput>;
-};
-
-export type EventSectionCreateWithPositionInput = {
-  /** Document to create */
-  data: EventSectionCreateInput;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-};
-
-/** An edge in a connection. */
-export type EventSectionEdge = {
-  __typename?: 'EventSectionEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: EventSection;
-};
-
-/** Identifies documents */
-export type EventSectionManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<EventSectionWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<EventSectionWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<EventSectionWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  eventDisplayType?: InputMaybe<EventDisplayType>;
-  /** All values that are contained in given list. */
-  eventDisplayType_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  eventDisplayType_not?: InputMaybe<EventDisplayType>;
-  /** All values that are not contained in given list. */
-  eventDisplayType_not_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
-  eventSectionTitle?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  eventSectionTitle_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  eventSectionTitle_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  eventSectionTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  eventSectionTitle_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  eventSectionTitle_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  eventSectionTitle_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  eventSectionTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  eventSectionTitle_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  eventSectionTitle_starts_with?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-};
-
-export enum EventSectionOrderByInput {
-  EventDisplayTypeAsc = 'eventDisplayType_ASC',
-  EventDisplayTypeDesc = 'eventDisplayType_DESC',
-  EventSectionTitleAsc = 'eventSectionTitle_ASC',
-  EventSectionTitleDesc = 'eventSectionTitle_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC'
-}
-
-export type EventSectionParent = LayoutBlockColumn;
-
-export type EventSectionParentConnectInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnConnectInput>;
-};
-
-export type EventSectionParentCreateInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateInput>;
-};
-
-export type EventSectionParentCreateManyInlineInput = {
-  /** Create and connect multiple existing EventSectionParent documents */
-  create?: InputMaybe<Array<EventSectionParentCreateInput>>;
-};
-
-export type EventSectionParentCreateOneInlineInput = {
-  /** Create and connect one EventSectionParent document */
-  create?: InputMaybe<EventSectionParentCreateInput>;
-};
-
-export type EventSectionParentCreateWithPositionInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateWithPositionInput>;
-};
-
-export type EventSectionParentUpdateInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateInput>;
-};
-
-export type EventSectionParentUpdateManyInlineInput = {
-  /** Create and connect multiple EventSectionParent component instances */
-  create?: InputMaybe<Array<EventSectionParentCreateWithPositionInput>>;
-  /** Delete multiple EventSectionParent documents */
-  delete?: InputMaybe<Array<EventSectionParentWhereUniqueInput>>;
-  /** Update multiple EventSectionParent component instances */
-  update?: InputMaybe<Array<EventSectionParentUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple EventSectionParent component instances */
-  upsert?: InputMaybe<Array<EventSectionParentUpsertWithNestedWhereUniqueAndPositionInput>>;
-};
-
-export type EventSectionParentUpdateManyWithNestedWhereInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateManyWithNestedWhereInput>;
-};
-
-export type EventSectionParentUpdateOneInlineInput = {
-  /** Create and connect one EventSectionParent document */
-  create?: InputMaybe<EventSectionParentCreateInput>;
-  /** Delete currently connected EventSectionParent document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single EventSectionParent document */
-  update?: InputMaybe<EventSectionParentUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single EventSectionParent document */
-  upsert?: InputMaybe<EventSectionParentUpsertWithNestedWhereUniqueInput>;
-};
-
-export type EventSectionParentUpdateWithNestedWhereUniqueAndPositionInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type EventSectionParentUpdateWithNestedWhereUniqueInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueInput>;
-};
-
-export type EventSectionParentUpsertWithNestedWhereUniqueAndPositionInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type EventSectionParentUpsertWithNestedWhereUniqueInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueInput>;
-};
-
-export type EventSectionParentWhereInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereInput>;
-};
-
-export type EventSectionParentWhereUniqueInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereUniqueInput>;
-};
-
-export type EventSectionUpdateInput = {
-  eventDisplayType?: InputMaybe<EventDisplayType>;
-  eventSectionTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type EventSectionUpdateManyInlineInput = {
-  /** Create and connect multiple EventSection component instances */
-  create?: InputMaybe<Array<EventSectionCreateWithPositionInput>>;
-  /** Delete multiple EventSection documents */
-  delete?: InputMaybe<Array<EventSectionWhereUniqueInput>>;
-  /** Update multiple EventSection component instances */
-  update?: InputMaybe<Array<EventSectionUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple EventSection component instances */
-  upsert?: InputMaybe<Array<EventSectionUpsertWithNestedWhereUniqueAndPositionInput>>;
-};
-
-export type EventSectionUpdateManyInput = {
-  eventDisplayType?: InputMaybe<EventDisplayType>;
-  eventSectionTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type EventSectionUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: EventSectionUpdateManyInput;
-  /** Document search */
-  where: EventSectionWhereInput;
-};
-
-export type EventSectionUpdateOneInlineInput = {
-  /** Create and connect one EventSection document */
-  create?: InputMaybe<EventSectionCreateInput>;
-  /** Delete currently connected EventSection document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single EventSection document */
-  update?: InputMaybe<EventSectionUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single EventSection document */
-  upsert?: InputMaybe<EventSectionUpsertWithNestedWhereUniqueInput>;
-};
-
-export type EventSectionUpdateWithNestedWhereUniqueAndPositionInput = {
-  /** Document to update */
-  data?: InputMaybe<EventSectionUpdateInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: EventSectionWhereUniqueInput;
-};
-
-export type EventSectionUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: EventSectionUpdateInput;
-  /** Unique document search */
-  where: EventSectionWhereUniqueInput;
-};
-
-export type EventSectionUpsertInput = {
-  /** Create document if it didn't exist */
-  create: EventSectionCreateInput;
-  /** Update document if it exists */
-  update: EventSectionUpdateInput;
-};
-
-export type EventSectionUpsertWithNestedWhereUniqueAndPositionInput = {
-  /** Document to upsert */
-  data?: InputMaybe<EventSectionUpsertInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: EventSectionWhereUniqueInput;
-};
-
-export type EventSectionUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: EventSectionUpsertInput;
-  /** Unique document search */
-  where: EventSectionWhereUniqueInput;
-};
-
-/** Identifies documents */
-export type EventSectionWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<EventSectionWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<EventSectionWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<EventSectionWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  eventDisplayType?: InputMaybe<EventDisplayType>;
-  /** All values that are contained in given list. */
-  eventDisplayType_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  eventDisplayType_not?: InputMaybe<EventDisplayType>;
-  /** All values that are not contained in given list. */
-  eventDisplayType_not_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
-  eventSectionTitle?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  eventSectionTitle_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  eventSectionTitle_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  eventSectionTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  eventSectionTitle_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  eventSectionTitle_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  eventSectionTitle_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  eventSectionTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  eventSectionTitle_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  eventSectionTitle_starts_with?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-};
-
-/** References EventSection record uniquely */
-export type EventSectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']>;
-};
 
 export type EventUpdateInput = {
   eventAddress?: InputMaybe<Scalars['String']>;
@@ -6656,7 +5992,8 @@ export type FooterColumnWhereUniqueInput = {
 };
 
 export enum GalleryLayout {
-  Grid = 'grid'
+  Grid = 'grid',
+  Slider = 'slider'
 }
 
 export type GridBox = {
@@ -7476,15 +6813,23 @@ export type ImageTransformationInput = {
 export type LayoutBlock = {
   __typename?: 'LayoutBlock';
   backgroundColor?: Maybe<Color>;
+  backgroundImage?: Maybe<Asset>;
+  cssClass?: Maybe<Scalars['String']>;
   /** The unique identifier */
   id: Scalars['ID'];
-  layoutBlock: Array<LayoutBlockColumn>;
+  layoutBlockColumns: Array<LayoutBlockColumn>;
   /** System stage field */
   stage: Stage;
 };
 
 
-export type LayoutBlockLayoutBlockArgs = {
+export type LayoutBlockBackgroundImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type LayoutBlockLayoutBlockColumnsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
@@ -7498,6 +6843,7 @@ export type LayoutBlockLayoutBlockArgs = {
 
 export type LayoutBlockColumn = {
   __typename?: 'LayoutBlockColumn';
+  accordions: Array<Accordion>;
   backgroundImage?: Maybe<Asset>;
   blogCategory?: Maybe<BlogTags>;
   blogSectionTitle?: Maybe<Scalars['String']>;
@@ -7505,11 +6851,10 @@ export type LayoutBlockColumn = {
   contactForm: Array<ContactForm>;
   cssClass?: Maybe<Scalars['String']>;
   displayAllMusic?: Maybe<Scalars['Boolean']>;
-  displayBlogSection?: Maybe<Scalars['Boolean']>;
+  displayFeaturedMusic?: Maybe<Scalars['Boolean']>;
   /** Enter a username or URL to display the Instagram grid. */
   displayInstagramSectionUsername?: Maybe<Scalars['String']>;
-  displayMusicSection?: Maybe<Scalars['Boolean']>;
-  eventSection?: Maybe<EventSection>;
+  eventDisplayLayout?: Maybe<EventDisplayType>;
   gallery: Array<Asset>;
   galleryLayout?: Maybe<GalleryLayout>;
   gridBox: Array<GridBox>;
@@ -7520,7 +6865,7 @@ export type LayoutBlockColumn = {
   iFrameTitle?: Maybe<Scalars['String']>;
   /** The unique identifier */
   id: Scalars['ID'];
-  logoTableSection: Array<LogoTableSection>;
+  logoTableQuery?: Maybe<LogoTableItem>;
   mailchimpLink?: Maybe<Scalars['String']>;
   mailchimpSubtitle?: Maybe<Scalars['String']>;
   mailchimpTitle?: Maybe<Scalars['String']>;
@@ -7531,9 +6876,23 @@ export type LayoutBlockColumn = {
   /** System stage field */
   stage: Stage;
   standOutText?: Maybe<Scalars['String']>;
-  testimonialSelection?: Maybe<TestimonialSelection>;
+  stripePricingTableId?: Maybe<Scalars['String']>;
+  testimonialsQuery?: Maybe<TestimonialType>;
   textContent: Array<TextContent>;
   videoBox: Array<VideoBox>;
+};
+
+
+export type LayoutBlockColumnAccordionsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<AccordionOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<AccordionWhereInput>;
 };
 
 
@@ -7566,12 +6925,6 @@ export type LayoutBlockColumnContactFormArgs = {
   orderBy?: InputMaybe<ContactFormOrderByInput>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ContactFormWhereInput>;
-};
-
-
-export type LayoutBlockColumnEventSectionArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
 };
 
 
@@ -7614,26 +6967,7 @@ export type LayoutBlockColumnHeroMediaSliderArgs = {
 };
 
 
-export type LayoutBlockColumnLogoTableSectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<LogoTableSectionOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<LogoTableSectionWhereInput>;
-};
-
-
 export type LayoutBlockColumnParallaxImageArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type LayoutBlockColumnTestimonialSelectionArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
@@ -7682,6 +7016,7 @@ export type LayoutBlockColumnConnection = {
 };
 
 export type LayoutBlockColumnCreateInput = {
+  accordions?: InputMaybe<AccordionCreateManyInlineInput>;
   backgroundImage?: InputMaybe<AssetCreateOneInlineInput>;
   blogCategory?: InputMaybe<BlogTags>;
   blogSectionTitle?: InputMaybe<Scalars['String']>;
@@ -7689,10 +7024,9 @@ export type LayoutBlockColumnCreateInput = {
   contactForm?: InputMaybe<ContactFormCreateManyInlineInput>;
   cssClass?: InputMaybe<Scalars['String']>;
   displayAllMusic?: InputMaybe<Scalars['Boolean']>;
-  displayBlogSection?: InputMaybe<Scalars['Boolean']>;
+  displayFeaturedMusic?: InputMaybe<Scalars['Boolean']>;
   displayInstagramSectionUsername?: InputMaybe<Scalars['String']>;
-  displayMusicSection?: InputMaybe<Scalars['Boolean']>;
-  eventSection?: InputMaybe<EventSectionCreateOneInlineInput>;
+  eventDisplayLayout?: InputMaybe<EventDisplayType>;
   gallery?: InputMaybe<AssetCreateManyInlineInput>;
   galleryLayout?: InputMaybe<GalleryLayout>;
   gridBox?: InputMaybe<GridBoxCreateManyInlineInput>;
@@ -7701,7 +7035,7 @@ export type LayoutBlockColumnCreateInput = {
   htmlId?: InputMaybe<Scalars['String']>;
   iFrameCode?: InputMaybe<Scalars['String']>;
   iFrameTitle?: InputMaybe<Scalars['String']>;
-  logoTableSection?: InputMaybe<LogoTableSectionCreateManyInlineInput>;
+  logoTableQuery?: InputMaybe<LogoTableItem>;
   mailchimpLink?: InputMaybe<Scalars['String']>;
   mailchimpSubtitle?: InputMaybe<Scalars['String']>;
   mailchimpTitle?: InputMaybe<Scalars['String']>;
@@ -7710,7 +7044,8 @@ export type LayoutBlockColumnCreateInput = {
   profileSectionTitle?: InputMaybe<Scalars['String']>;
   profilesQuery?: InputMaybe<ProfilesSelect>;
   standOutText?: InputMaybe<Scalars['String']>;
-  testimonialSelection?: InputMaybe<TestimonialSelectionCreateOneInlineInput>;
+  stripePricingTableId?: InputMaybe<Scalars['String']>;
+  testimonialsQuery?: InputMaybe<TestimonialType>;
   textContent?: InputMaybe<TextContentCreateManyInlineInput>;
   videoBox?: InputMaybe<VideoBoxCreateManyInlineInput>;
 };
@@ -7751,6 +7086,9 @@ export type LayoutBlockColumnManyWhereInput = {
   OR?: InputMaybe<Array<LayoutBlockColumnWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  accordions_every?: InputMaybe<AccordionWhereInput>;
+  accordions_none?: InputMaybe<AccordionWhereInput>;
+  accordions_some?: InputMaybe<AccordionWhereInput>;
   backgroundImage?: InputMaybe<AssetWhereInput>;
   blogCategory?: InputMaybe<BlogTags>;
   /** All values that are contained in given list. */
@@ -7806,9 +7144,9 @@ export type LayoutBlockColumnManyWhereInput = {
   displayAllMusic?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
   displayAllMusic_not?: InputMaybe<Scalars['Boolean']>;
-  displayBlogSection?: InputMaybe<Scalars['Boolean']>;
+  displayFeaturedMusic?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
-  displayBlogSection_not?: InputMaybe<Scalars['Boolean']>;
+  displayFeaturedMusic_not?: InputMaybe<Scalars['Boolean']>;
   displayInstagramSectionUsername?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   displayInstagramSectionUsername_contains?: InputMaybe<Scalars['String']>;
@@ -7828,10 +7166,13 @@ export type LayoutBlockColumnManyWhereInput = {
   displayInstagramSectionUsername_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   displayInstagramSectionUsername_starts_with?: InputMaybe<Scalars['String']>;
-  displayMusicSection?: InputMaybe<Scalars['Boolean']>;
+  eventDisplayLayout?: InputMaybe<EventDisplayType>;
+  /** All values that are contained in given list. */
+  eventDisplayLayout_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
   /** Any other value that exists and is not equal to the given value. */
-  displayMusicSection_not?: InputMaybe<Scalars['Boolean']>;
-  eventSection?: InputMaybe<EventSectionWhereInput>;
+  eventDisplayLayout_not?: InputMaybe<EventDisplayType>;
+  /** All values that are not contained in given list. */
+  eventDisplayLayout_not_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
   galleryLayout?: InputMaybe<GalleryLayout>;
   /** All values that are contained in given list. */
   galleryLayout_in?: InputMaybe<Array<InputMaybe<GalleryLayout>>>;
@@ -7927,9 +7268,13 @@ export type LayoutBlockColumnManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  logoTableSection_every?: InputMaybe<LogoTableSectionWhereInput>;
-  logoTableSection_none?: InputMaybe<LogoTableSectionWhereInput>;
-  logoTableSection_some?: InputMaybe<LogoTableSectionWhereInput>;
+  logoTableQuery?: InputMaybe<LogoTableItem>;
+  /** All values that are contained in given list. */
+  logoTableQuery_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  logoTableQuery_not?: InputMaybe<LogoTableItem>;
+  /** All values that are not contained in given list. */
+  logoTableQuery_not_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
   mailchimpLink?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   mailchimpLink_contains?: InputMaybe<Scalars['String']>;
@@ -8040,7 +7385,32 @@ export type LayoutBlockColumnManyWhereInput = {
   standOutText_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   standOutText_starts_with?: InputMaybe<Scalars['String']>;
-  testimonialSelection?: InputMaybe<TestimonialSelectionWhereInput>;
+  stripePricingTableId?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  stripePricingTableId_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  stripePricingTableId_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  stripePricingTableId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  stripePricingTableId_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  stripePricingTableId_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  stripePricingTableId_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  stripePricingTableId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  stripePricingTableId_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  stripePricingTableId_starts_with?: InputMaybe<Scalars['String']>;
+  testimonialsQuery?: InputMaybe<TestimonialType>;
+  /** All values that are contained in given list. */
+  testimonialsQuery_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  testimonialsQuery_not?: InputMaybe<TestimonialType>;
+  /** All values that are not contained in given list. */
+  testimonialsQuery_not_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
   textContent_every?: InputMaybe<TextContentWhereInput>;
   textContent_none?: InputMaybe<TextContentWhereInput>;
   textContent_some?: InputMaybe<TextContentWhereInput>;
@@ -8058,12 +7428,12 @@ export enum LayoutBlockColumnOrderByInput {
   CssClassDesc = 'cssClass_DESC',
   DisplayAllMusicAsc = 'displayAllMusic_ASC',
   DisplayAllMusicDesc = 'displayAllMusic_DESC',
-  DisplayBlogSectionAsc = 'displayBlogSection_ASC',
-  DisplayBlogSectionDesc = 'displayBlogSection_DESC',
+  DisplayFeaturedMusicAsc = 'displayFeaturedMusic_ASC',
+  DisplayFeaturedMusicDesc = 'displayFeaturedMusic_DESC',
   DisplayInstagramSectionUsernameAsc = 'displayInstagramSectionUsername_ASC',
   DisplayInstagramSectionUsernameDesc = 'displayInstagramSectionUsername_DESC',
-  DisplayMusicSectionAsc = 'displayMusicSection_ASC',
-  DisplayMusicSectionDesc = 'displayMusicSection_DESC',
+  EventDisplayLayoutAsc = 'eventDisplayLayout_ASC',
+  EventDisplayLayoutDesc = 'eventDisplayLayout_DESC',
   GalleryLayoutAsc = 'galleryLayout_ASC',
   GalleryLayoutDesc = 'galleryLayout_DESC',
   HideBlockColumnAsc = 'hideBlockColumn_ASC',
@@ -8076,6 +7446,8 @@ export enum LayoutBlockColumnOrderByInput {
   IFrameTitleDesc = 'iFrameTitle_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  LogoTableQueryAsc = 'logoTableQuery_ASC',
+  LogoTableQueryDesc = 'logoTableQuery_DESC',
   MailchimpLinkAsc = 'mailchimpLink_ASC',
   MailchimpLinkDesc = 'mailchimpLink_DESC',
   MailchimpSubtitleAsc = 'mailchimpSubtitle_ASC',
@@ -8089,7 +7461,11 @@ export enum LayoutBlockColumnOrderByInput {
   ProfilesQueryAsc = 'profilesQuery_ASC',
   ProfilesQueryDesc = 'profilesQuery_DESC',
   StandOutTextAsc = 'standOutText_ASC',
-  StandOutTextDesc = 'standOutText_DESC'
+  StandOutTextDesc = 'standOutText_DESC',
+  StripePricingTableIdAsc = 'stripePricingTableId_ASC',
+  StripePricingTableIdDesc = 'stripePricingTableId_DESC',
+  TestimonialsQueryAsc = 'testimonialsQuery_ASC',
+  TestimonialsQueryDesc = 'testimonialsQuery_DESC'
 }
 
 export type LayoutBlockColumnParent = LayoutBlock;
@@ -8171,6 +7547,7 @@ export type LayoutBlockColumnParentWhereUniqueInput = {
 };
 
 export type LayoutBlockColumnUpdateInput = {
+  accordions?: InputMaybe<AccordionUpdateManyInlineInput>;
   backgroundImage?: InputMaybe<AssetUpdateOneInlineInput>;
   blogCategory?: InputMaybe<BlogTags>;
   blogSectionTitle?: InputMaybe<Scalars['String']>;
@@ -8178,10 +7555,9 @@ export type LayoutBlockColumnUpdateInput = {
   contactForm?: InputMaybe<ContactFormUpdateManyInlineInput>;
   cssClass?: InputMaybe<Scalars['String']>;
   displayAllMusic?: InputMaybe<Scalars['Boolean']>;
-  displayBlogSection?: InputMaybe<Scalars['Boolean']>;
+  displayFeaturedMusic?: InputMaybe<Scalars['Boolean']>;
   displayInstagramSectionUsername?: InputMaybe<Scalars['String']>;
-  displayMusicSection?: InputMaybe<Scalars['Boolean']>;
-  eventSection?: InputMaybe<EventSectionUpdateOneInlineInput>;
+  eventDisplayLayout?: InputMaybe<EventDisplayType>;
   gallery?: InputMaybe<AssetUpdateManyInlineInput>;
   galleryLayout?: InputMaybe<GalleryLayout>;
   gridBox?: InputMaybe<GridBoxUpdateManyInlineInput>;
@@ -8190,7 +7566,7 @@ export type LayoutBlockColumnUpdateInput = {
   htmlId?: InputMaybe<Scalars['String']>;
   iFrameCode?: InputMaybe<Scalars['String']>;
   iFrameTitle?: InputMaybe<Scalars['String']>;
-  logoTableSection?: InputMaybe<LogoTableSectionUpdateManyInlineInput>;
+  logoTableQuery?: InputMaybe<LogoTableItem>;
   mailchimpLink?: InputMaybe<Scalars['String']>;
   mailchimpSubtitle?: InputMaybe<Scalars['String']>;
   mailchimpTitle?: InputMaybe<Scalars['String']>;
@@ -8199,7 +7575,8 @@ export type LayoutBlockColumnUpdateInput = {
   profileSectionTitle?: InputMaybe<Scalars['String']>;
   profilesQuery?: InputMaybe<ProfilesSelect>;
   standOutText?: InputMaybe<Scalars['String']>;
-  testimonialSelection?: InputMaybe<TestimonialSelectionUpdateOneInlineInput>;
+  stripePricingTableId?: InputMaybe<Scalars['String']>;
+  testimonialsQuery?: InputMaybe<TestimonialType>;
   textContent?: InputMaybe<TextContentUpdateManyInlineInput>;
   videoBox?: InputMaybe<VideoBoxUpdateManyInlineInput>;
 };
@@ -8220,14 +7597,15 @@ export type LayoutBlockColumnUpdateManyInput = {
   blogSectionTitle?: InputMaybe<Scalars['String']>;
   cssClass?: InputMaybe<Scalars['String']>;
   displayAllMusic?: InputMaybe<Scalars['Boolean']>;
-  displayBlogSection?: InputMaybe<Scalars['Boolean']>;
+  displayFeaturedMusic?: InputMaybe<Scalars['Boolean']>;
   displayInstagramSectionUsername?: InputMaybe<Scalars['String']>;
-  displayMusicSection?: InputMaybe<Scalars['Boolean']>;
+  eventDisplayLayout?: InputMaybe<EventDisplayType>;
   galleryLayout?: InputMaybe<GalleryLayout>;
   hideBlockColumn?: InputMaybe<Scalars['Boolean']>;
   htmlId?: InputMaybe<Scalars['String']>;
   iFrameCode?: InputMaybe<Scalars['String']>;
   iFrameTitle?: InputMaybe<Scalars['String']>;
+  logoTableQuery?: InputMaybe<LogoTableItem>;
   mailchimpLink?: InputMaybe<Scalars['String']>;
   mailchimpSubtitle?: InputMaybe<Scalars['String']>;
   mailchimpTitle?: InputMaybe<Scalars['String']>;
@@ -8235,6 +7613,8 @@ export type LayoutBlockColumnUpdateManyInput = {
   profileSectionTitle?: InputMaybe<Scalars['String']>;
   profilesQuery?: InputMaybe<ProfilesSelect>;
   standOutText?: InputMaybe<Scalars['String']>;
+  stripePricingTableId?: InputMaybe<Scalars['String']>;
+  testimonialsQuery?: InputMaybe<TestimonialType>;
 };
 
 export type LayoutBlockColumnUpdateManyWithNestedWhereInput = {
@@ -8304,6 +7684,9 @@ export type LayoutBlockColumnWhereInput = {
   OR?: InputMaybe<Array<LayoutBlockColumnWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  accordions_every?: InputMaybe<AccordionWhereInput>;
+  accordions_none?: InputMaybe<AccordionWhereInput>;
+  accordions_some?: InputMaybe<AccordionWhereInput>;
   backgroundImage?: InputMaybe<AssetWhereInput>;
   blogCategory?: InputMaybe<BlogTags>;
   /** All values that are contained in given list. */
@@ -8359,9 +7742,9 @@ export type LayoutBlockColumnWhereInput = {
   displayAllMusic?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
   displayAllMusic_not?: InputMaybe<Scalars['Boolean']>;
-  displayBlogSection?: InputMaybe<Scalars['Boolean']>;
+  displayFeaturedMusic?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
-  displayBlogSection_not?: InputMaybe<Scalars['Boolean']>;
+  displayFeaturedMusic_not?: InputMaybe<Scalars['Boolean']>;
   displayInstagramSectionUsername?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   displayInstagramSectionUsername_contains?: InputMaybe<Scalars['String']>;
@@ -8381,10 +7764,13 @@ export type LayoutBlockColumnWhereInput = {
   displayInstagramSectionUsername_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   displayInstagramSectionUsername_starts_with?: InputMaybe<Scalars['String']>;
-  displayMusicSection?: InputMaybe<Scalars['Boolean']>;
+  eventDisplayLayout?: InputMaybe<EventDisplayType>;
+  /** All values that are contained in given list. */
+  eventDisplayLayout_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
   /** Any other value that exists and is not equal to the given value. */
-  displayMusicSection_not?: InputMaybe<Scalars['Boolean']>;
-  eventSection?: InputMaybe<EventSectionWhereInput>;
+  eventDisplayLayout_not?: InputMaybe<EventDisplayType>;
+  /** All values that are not contained in given list. */
+  eventDisplayLayout_not_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
   galleryLayout?: InputMaybe<GalleryLayout>;
   /** All values that are contained in given list. */
   galleryLayout_in?: InputMaybe<Array<InputMaybe<GalleryLayout>>>;
@@ -8480,9 +7866,13 @@ export type LayoutBlockColumnWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  logoTableSection_every?: InputMaybe<LogoTableSectionWhereInput>;
-  logoTableSection_none?: InputMaybe<LogoTableSectionWhereInput>;
-  logoTableSection_some?: InputMaybe<LogoTableSectionWhereInput>;
+  logoTableQuery?: InputMaybe<LogoTableItem>;
+  /** All values that are contained in given list. */
+  logoTableQuery_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  logoTableQuery_not?: InputMaybe<LogoTableItem>;
+  /** All values that are not contained in given list. */
+  logoTableQuery_not_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
   mailchimpLink?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   mailchimpLink_contains?: InputMaybe<Scalars['String']>;
@@ -8593,7 +7983,32 @@ export type LayoutBlockColumnWhereInput = {
   standOutText_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   standOutText_starts_with?: InputMaybe<Scalars['String']>;
-  testimonialSelection?: InputMaybe<TestimonialSelectionWhereInput>;
+  stripePricingTableId?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  stripePricingTableId_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  stripePricingTableId_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  stripePricingTableId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  stripePricingTableId_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  stripePricingTableId_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  stripePricingTableId_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  stripePricingTableId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  stripePricingTableId_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  stripePricingTableId_starts_with?: InputMaybe<Scalars['String']>;
+  testimonialsQuery?: InputMaybe<TestimonialType>;
+  /** All values that are contained in given list. */
+  testimonialsQuery_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  testimonialsQuery_not?: InputMaybe<TestimonialType>;
+  /** All values that are not contained in given list. */
+  testimonialsQuery_not_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
   textContent_every?: InputMaybe<TextContentWhereInput>;
   textContent_none?: InputMaybe<TextContentWhereInput>;
   textContent_some?: InputMaybe<TextContentWhereInput>;
@@ -8626,7 +8041,9 @@ export type LayoutBlockConnection = {
 
 export type LayoutBlockCreateInput = {
   backgroundColor?: InputMaybe<ColorInput>;
-  layoutBlock?: InputMaybe<LayoutBlockColumnCreateManyInlineInput>;
+  backgroundImage?: InputMaybe<AssetCreateOneInlineInput>;
+  cssClass?: InputMaybe<Scalars['String']>;
+  layoutBlockColumns?: InputMaybe<LayoutBlockColumnCreateManyInlineInput>;
 };
 
 export type LayoutBlockCreateManyInlineInput = {
@@ -8665,6 +8082,26 @@ export type LayoutBlockManyWhereInput = {
   OR?: InputMaybe<Array<LayoutBlockWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  backgroundImage?: InputMaybe<AssetWhereInput>;
+  cssClass?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClass_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClass_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClass_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClass_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClass_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClass_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClass_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClass_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClass_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -8684,12 +8121,14 @@ export type LayoutBlockManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  layoutBlock_every?: InputMaybe<LayoutBlockColumnWhereInput>;
-  layoutBlock_none?: InputMaybe<LayoutBlockColumnWhereInput>;
-  layoutBlock_some?: InputMaybe<LayoutBlockColumnWhereInput>;
+  layoutBlockColumns_every?: InputMaybe<LayoutBlockColumnWhereInput>;
+  layoutBlockColumns_none?: InputMaybe<LayoutBlockColumnWhereInput>;
+  layoutBlockColumns_some?: InputMaybe<LayoutBlockColumnWhereInput>;
 };
 
 export enum LayoutBlockOrderByInput {
+  CssClassAsc = 'cssClass_ASC',
+  CssClassDesc = 'cssClass_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC'
 }
@@ -8776,7 +8215,9 @@ export type LayoutBlockParentWhereUniqueInput = {
 
 export type LayoutBlockUpdateInput = {
   backgroundColor?: InputMaybe<ColorInput>;
-  layoutBlock?: InputMaybe<LayoutBlockColumnUpdateManyInlineInput>;
+  backgroundImage?: InputMaybe<AssetUpdateOneInlineInput>;
+  cssClass?: InputMaybe<Scalars['String']>;
+  layoutBlockColumns?: InputMaybe<LayoutBlockColumnUpdateManyInlineInput>;
 };
 
 export type LayoutBlockUpdateManyInlineInput = {
@@ -8792,6 +8233,7 @@ export type LayoutBlockUpdateManyInlineInput = {
 
 export type LayoutBlockUpdateManyInput = {
   backgroundColor?: InputMaybe<ColorInput>;
+  cssClass?: InputMaybe<Scalars['String']>;
 };
 
 export type LayoutBlockUpdateManyWithNestedWhereInput = {
@@ -8861,6 +8303,26 @@ export type LayoutBlockWhereInput = {
   OR?: InputMaybe<Array<LayoutBlockWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  backgroundImage?: InputMaybe<AssetWhereInput>;
+  cssClass?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClass_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClass_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClass_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClass_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClass_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClass_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClass_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClass_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClass_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -8880,9 +8342,9 @@ export type LayoutBlockWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  layoutBlock_every?: InputMaybe<LayoutBlockColumnWhereInput>;
-  layoutBlock_none?: InputMaybe<LayoutBlockColumnWhereInput>;
-  layoutBlock_some?: InputMaybe<LayoutBlockColumnWhereInput>;
+  layoutBlockColumns_every?: InputMaybe<LayoutBlockColumnWhereInput>;
+  layoutBlockColumns_none?: InputMaybe<LayoutBlockColumnWhereInput>;
+  layoutBlockColumns_some?: InputMaybe<LayoutBlockColumnWhereInput>;
 };
 
 /** References LayoutBlock record uniquely */
@@ -9206,13 +8668,6 @@ export type LogoTableSection = {
   stage: Stage;
 };
 
-export type LogoTableSectionConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: LogoTableSectionWhereUniqueInput;
-};
-
 /** A connection to a list of items. */
 export type LogoTableSectionConnection = {
   __typename?: 'LogoTableSectionConnection';
@@ -9226,16 +8681,6 @@ export type LogoTableSectionConnection = {
 export type LogoTableSectionCreateInput = {
   logoTableQuery?: InputMaybe<LogoTableItem>;
   logoTableTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type LogoTableSectionCreateManyInlineInput = {
-  /** Create and connect multiple existing LogoTableSection documents */
-  create?: InputMaybe<Array<LogoTableSectionCreateInput>>;
-};
-
-export type LogoTableSectionCreateOneInlineInput = {
-  /** Create and connect one LogoTableSection document */
-  create?: InputMaybe<LogoTableSectionCreateInput>;
 };
 
 export type LogoTableSectionCreateWithPositionInput = {
@@ -9320,98 +8765,9 @@ export enum LogoTableSectionOrderByInput {
   LogoTableTitleDesc = 'logoTableTitle_DESC'
 }
 
-export type LogoTableSectionParent = LayoutBlockColumn;
-
-export type LogoTableSectionParentConnectInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnConnectInput>;
-};
-
-export type LogoTableSectionParentCreateInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateInput>;
-};
-
-export type LogoTableSectionParentCreateManyInlineInput = {
-  /** Create and connect multiple existing LogoTableSectionParent documents */
-  create?: InputMaybe<Array<LogoTableSectionParentCreateInput>>;
-};
-
-export type LogoTableSectionParentCreateOneInlineInput = {
-  /** Create and connect one LogoTableSectionParent document */
-  create?: InputMaybe<LogoTableSectionParentCreateInput>;
-};
-
-export type LogoTableSectionParentCreateWithPositionInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateWithPositionInput>;
-};
-
-export type LogoTableSectionParentUpdateInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateInput>;
-};
-
-export type LogoTableSectionParentUpdateManyInlineInput = {
-  /** Create and connect multiple LogoTableSectionParent component instances */
-  create?: InputMaybe<Array<LogoTableSectionParentCreateWithPositionInput>>;
-  /** Delete multiple LogoTableSectionParent documents */
-  delete?: InputMaybe<Array<LogoTableSectionParentWhereUniqueInput>>;
-  /** Update multiple LogoTableSectionParent component instances */
-  update?: InputMaybe<Array<LogoTableSectionParentUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple LogoTableSectionParent component instances */
-  upsert?: InputMaybe<Array<LogoTableSectionParentUpsertWithNestedWhereUniqueAndPositionInput>>;
-};
-
-export type LogoTableSectionParentUpdateManyWithNestedWhereInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateManyWithNestedWhereInput>;
-};
-
-export type LogoTableSectionParentUpdateOneInlineInput = {
-  /** Create and connect one LogoTableSectionParent document */
-  create?: InputMaybe<LogoTableSectionParentCreateInput>;
-  /** Delete currently connected LogoTableSectionParent document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single LogoTableSectionParent document */
-  update?: InputMaybe<LogoTableSectionParentUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single LogoTableSectionParent document */
-  upsert?: InputMaybe<LogoTableSectionParentUpsertWithNestedWhereUniqueInput>;
-};
-
-export type LogoTableSectionParentUpdateWithNestedWhereUniqueAndPositionInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type LogoTableSectionParentUpdateWithNestedWhereUniqueInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueInput>;
-};
-
-export type LogoTableSectionParentUpsertWithNestedWhereUniqueAndPositionInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type LogoTableSectionParentUpsertWithNestedWhereUniqueInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueInput>;
-};
-
-export type LogoTableSectionParentWhereInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereInput>;
-};
-
-export type LogoTableSectionParentWhereUniqueInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereUniqueInput>;
-};
-
 export type LogoTableSectionUpdateInput = {
   logoTableQuery?: InputMaybe<LogoTableItem>;
   logoTableTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type LogoTableSectionUpdateManyInlineInput = {
-  /** Create and connect multiple LogoTableSection component instances */
-  create?: InputMaybe<Array<LogoTableSectionCreateWithPositionInput>>;
-  /** Delete multiple LogoTableSection documents */
-  delete?: InputMaybe<Array<LogoTableSectionWhereUniqueInput>>;
-  /** Update multiple LogoTableSection component instances */
-  update?: InputMaybe<Array<LogoTableSectionUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple LogoTableSection component instances */
-  upsert?: InputMaybe<Array<LogoTableSectionUpsertWithNestedWhereUniqueAndPositionInput>>;
 };
 
 export type LogoTableSectionUpdateManyInput = {
@@ -9424,17 +8780,6 @@ export type LogoTableSectionUpdateManyWithNestedWhereInput = {
   data: LogoTableSectionUpdateManyInput;
   /** Document search */
   where: LogoTableSectionWhereInput;
-};
-
-export type LogoTableSectionUpdateOneInlineInput = {
-  /** Create and connect one LogoTableSection document */
-  create?: InputMaybe<LogoTableSectionCreateInput>;
-  /** Delete currently connected LogoTableSection document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single LogoTableSection document */
-  update?: InputMaybe<LogoTableSectionUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single LogoTableSection document */
-  upsert?: InputMaybe<LogoTableSectionUpsertWithNestedWhereUniqueInput>;
 };
 
 export type LogoTableSectionUpdateWithNestedWhereUniqueAndPositionInput = {
@@ -12461,7 +11806,6 @@ export type Node = {
 
 export type Page = Node & {
   __typename?: 'Page';
-  accordion: Array<Accordion>;
   contentPageJson?: Maybe<Scalars['Json']>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -12497,19 +11841,6 @@ export type Page = Node & {
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
   whatsAppContactNumberFloatingButton?: Maybe<Scalars['String']>;
-};
-
-
-export type PageAccordionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<AccordionOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<AccordionWhereInput>;
 };
 
 
@@ -12593,7 +11924,6 @@ export type PageConnection = {
 };
 
 export type PageCreateInput = {
-  accordion?: InputMaybe<AccordionCreateManyInlineInput>;
   contentPageJson?: InputMaybe<Scalars['Json']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   heroImage?: InputMaybe<AssetCreateOneInlineInput>;
@@ -12660,9 +11990,6 @@ export type PageManyWhereInput = {
   OR?: InputMaybe<Array<PageWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  accordion_every?: InputMaybe<AccordionWhereInput>;
-  accordion_none?: InputMaybe<AccordionWhereInput>;
-  accordion_some?: InputMaybe<AccordionWhereInput>;
   /** All values containing the given json path. */
   contentPageJson_json_path_exists?: InputMaybe<Scalars['String']>;
   /**
@@ -12899,7 +12226,6 @@ export enum PageOrderByInput {
 }
 
 export type PageUpdateInput = {
-  accordion?: InputMaybe<AccordionUpdateManyInlineInput>;
   contentPageJson?: InputMaybe<Scalars['Json']>;
   heroImage?: InputMaybe<AssetUpdateOneInlineInput>;
   hideFooter?: InputMaybe<Scalars['Boolean']>;
@@ -13005,9 +12331,6 @@ export type PageWhereInput = {
   OR?: InputMaybe<Array<PageWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  accordion_every?: InputMaybe<AccordionWhereInput>;
-  accordion_none?: InputMaybe<AccordionWhereInput>;
-  accordion_some?: InputMaybe<AccordionWhereInput>;
   /** All values containing the given json path. */
   contentPageJson_json_path_exists?: InputMaybe<Scalars['String']>;
   /**
@@ -18827,1301 +18150,6 @@ export enum SystemDateTimeFieldVariation {
   Localization = 'LOCALIZATION'
 }
 
-export type TeamMemberItem = {
-  __typename?: 'TeamMemberItem';
-  contactList: Array<ContactList>;
-  emailMemberLink?: Maybe<Scalars['String']>;
-  epkMemberLink?: Maybe<Scalars['String']>;
-  facebookMemberLink?: Maybe<Scalars['String']>;
-  fullMemberBio?: Maybe<RichText>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  imageMemberAvatar?: Maybe<Asset>;
-  instagramMemberLink?: Maybe<Scalars['String']>;
-  instrument?: Maybe<Scalars['String']>;
-  linkedinMemberLink?: Maybe<Scalars['String']>;
-  memberBandsInTown?: Maybe<Scalars['String']>;
-  memberBookingData?: Maybe<Scalars['Json']>;
-  memberHeroImage?: Maybe<Asset>;
-  memberIFrame?: Maybe<Scalars['String']>;
-  memberImageGallery: Array<Asset>;
-  memberLogo?: Maybe<Asset>;
-  memberMusicReleaseGallery: Array<Asset>;
-  memberOrder?: Maybe<Scalars['Int']>;
-  memberSlug?: Maybe<Scalars['String']>;
-  memberSnapchatLink?: Maybe<Scalars['String']>;
-  memberSoundcloudLink?: Maybe<Scalars['String']>;
-  memberType?: Maybe<ProfilesSelect>;
-  miniMemberBio?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  pandoraMemberLink?: Maybe<Scalars['String']>;
-  phoneMemberLink?: Maybe<Scalars['String']>;
-  primaryMember?: Maybe<Scalars['Boolean']>;
-  spotifyMemberLink?: Maybe<Scalars['String']>;
-  /** System stage field */
-  stage: Stage;
-  tikTokMemberLink?: Maybe<Scalars['String']>;
-  twitterMemberLink?: Maybe<Scalars['String']>;
-  videoBox: Array<VideoBox>;
-  websiteMemberLink?: Maybe<Scalars['String']>;
-  youtubeMemberLink?: Maybe<Scalars['String']>;
-};
-
-
-export type TeamMemberItemContactListArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<ContactListOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ContactListWhereInput>;
-};
-
-
-export type TeamMemberItemImageMemberAvatarArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type TeamMemberItemMemberHeroImageArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type TeamMemberItemMemberImageGalleryArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<AssetOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<AssetWhereInput>;
-};
-
-
-export type TeamMemberItemMemberLogoArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type TeamMemberItemMemberMusicReleaseGalleryArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<AssetOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<AssetWhereInput>;
-};
-
-
-export type TeamMemberItemVideoBoxArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<VideoBoxOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<VideoBoxWhereInput>;
-};
-
-export type TeamMemberItemConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: TeamMemberItemWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type TeamMemberItemConnection = {
-  __typename?: 'TeamMemberItemConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<TeamMemberItemEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type TeamMemberItemCreateInput = {
-  contactList?: InputMaybe<ContactListCreateManyInlineInput>;
-  emailMemberLink?: InputMaybe<Scalars['String']>;
-  epkMemberLink?: InputMaybe<Scalars['String']>;
-  facebookMemberLink?: InputMaybe<Scalars['String']>;
-  fullMemberBio?: InputMaybe<Scalars['RichTextAST']>;
-  imageMemberAvatar?: InputMaybe<AssetCreateOneInlineInput>;
-  instagramMemberLink?: InputMaybe<Scalars['String']>;
-  instrument?: InputMaybe<Scalars['String']>;
-  linkedinMemberLink?: InputMaybe<Scalars['String']>;
-  memberBandsInTown?: InputMaybe<Scalars['String']>;
-  memberBookingData?: InputMaybe<Scalars['Json']>;
-  memberHeroImage?: InputMaybe<AssetCreateOneInlineInput>;
-  memberIFrame?: InputMaybe<Scalars['String']>;
-  memberImageGallery?: InputMaybe<AssetCreateManyInlineInput>;
-  memberLogo?: InputMaybe<AssetCreateOneInlineInput>;
-  memberMusicReleaseGallery?: InputMaybe<AssetCreateManyInlineInput>;
-  memberOrder?: InputMaybe<Scalars['Int']>;
-  memberSlug?: InputMaybe<Scalars['String']>;
-  memberSnapchatLink?: InputMaybe<Scalars['String']>;
-  memberSoundcloudLink?: InputMaybe<Scalars['String']>;
-  memberType?: InputMaybe<ProfilesSelect>;
-  miniMemberBio?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  pandoraMemberLink?: InputMaybe<Scalars['String']>;
-  phoneMemberLink?: InputMaybe<Scalars['String']>;
-  primaryMember?: InputMaybe<Scalars['Boolean']>;
-  spotifyMemberLink?: InputMaybe<Scalars['String']>;
-  tikTokMemberLink?: InputMaybe<Scalars['String']>;
-  twitterMemberLink?: InputMaybe<Scalars['String']>;
-  videoBox?: InputMaybe<VideoBoxCreateManyInlineInput>;
-  websiteMemberLink?: InputMaybe<Scalars['String']>;
-  youtubeMemberLink?: InputMaybe<Scalars['String']>;
-};
-
-export type TeamMemberItemCreateManyInlineInput = {
-  /** Create and connect multiple existing TeamMemberItem documents */
-  create?: InputMaybe<Array<TeamMemberItemCreateInput>>;
-};
-
-export type TeamMemberItemCreateOneInlineInput = {
-  /** Create and connect one TeamMemberItem document */
-  create?: InputMaybe<TeamMemberItemCreateInput>;
-};
-
-export type TeamMemberItemCreateWithPositionInput = {
-  /** Document to create */
-  data: TeamMemberItemCreateInput;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-};
-
-/** An edge in a connection. */
-export type TeamMemberItemEdge = {
-  __typename?: 'TeamMemberItemEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: TeamMemberItem;
-};
-
-/** Identifies documents */
-export type TeamMemberItemManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<TeamMemberItemWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<TeamMemberItemWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<TeamMemberItemWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  contactList_every?: InputMaybe<ContactListWhereInput>;
-  contactList_none?: InputMaybe<ContactListWhereInput>;
-  contactList_some?: InputMaybe<ContactListWhereInput>;
-  emailMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  emailMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  emailMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  emailMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  emailMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  emailMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  emailMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  emailMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  emailMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  emailMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  epkMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  epkMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  epkMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  epkMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  epkMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  epkMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  epkMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  epkMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  epkMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  epkMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  facebookMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  facebookMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  facebookMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  facebookMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  facebookMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  facebookMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  facebookMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  facebookMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  facebookMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  facebookMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  imageMemberAvatar?: InputMaybe<AssetWhereInput>;
-  instagramMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  instagramMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  instagramMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  instagramMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  instagramMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  instagramMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  instagramMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  instagramMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  instagramMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  instagramMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  instrument?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  instrument_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  instrument_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  instrument_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  instrument_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  instrument_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  instrument_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  instrument_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  instrument_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  instrument_starts_with?: InputMaybe<Scalars['String']>;
-  linkedinMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  linkedinMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  linkedinMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  linkedinMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  linkedinMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  linkedinMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  linkedinMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  linkedinMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  linkedinMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  linkedinMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  memberBandsInTown?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberBandsInTown_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberBandsInTown_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberBandsInTown_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberBandsInTown_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberBandsInTown_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberBandsInTown_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberBandsInTown_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberBandsInTown_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberBandsInTown_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values containing the given json path. */
-  memberBookingData_json_path_exists?: InputMaybe<Scalars['String']>;
-  /**
-   * Recursively tries to find the provided JSON scalar value inside the field.
-   * It does use an exact match when comparing values.
-   * If you pass `null` as value the filter will be ignored.
-   * Note: This filter fails if you try to look for a non scalar JSON value!
-   */
-  memberBookingData_value_recursive?: InputMaybe<Scalars['Json']>;
-  memberHeroImage?: InputMaybe<AssetWhereInput>;
-  memberIFrame?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberIFrame_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberIFrame_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberIFrame_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberIFrame_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberIFrame_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberIFrame_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberIFrame_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberIFrame_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberIFrame_starts_with?: InputMaybe<Scalars['String']>;
-  memberImageGallery_every?: InputMaybe<AssetWhereInput>;
-  memberImageGallery_none?: InputMaybe<AssetWhereInput>;
-  memberImageGallery_some?: InputMaybe<AssetWhereInput>;
-  memberLogo?: InputMaybe<AssetWhereInput>;
-  memberMusicReleaseGallery_every?: InputMaybe<AssetWhereInput>;
-  memberMusicReleaseGallery_none?: InputMaybe<AssetWhereInput>;
-  memberMusicReleaseGallery_some?: InputMaybe<AssetWhereInput>;
-  memberOrder?: InputMaybe<Scalars['Int']>;
-  /** All values greater than the given value. */
-  memberOrder_gt?: InputMaybe<Scalars['Int']>;
-  /** All values greater than or equal the given value. */
-  memberOrder_gte?: InputMaybe<Scalars['Int']>;
-  /** All values that are contained in given list. */
-  memberOrder_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
-  /** All values less than the given value. */
-  memberOrder_lt?: InputMaybe<Scalars['Int']>;
-  /** All values less than or equal the given value. */
-  memberOrder_lte?: InputMaybe<Scalars['Int']>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberOrder_not?: InputMaybe<Scalars['Int']>;
-  /** All values that are not contained in given list. */
-  memberOrder_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
-  memberSlug?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberSlug_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberSlug_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberSlug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberSlug_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberSlug_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberSlug_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberSlug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberSlug_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberSlug_starts_with?: InputMaybe<Scalars['String']>;
-  memberSnapchatLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberSnapchatLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberSnapchatLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberSnapchatLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberSnapchatLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberSnapchatLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberSnapchatLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberSnapchatLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberSnapchatLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberSnapchatLink_starts_with?: InputMaybe<Scalars['String']>;
-  memberSoundcloudLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberSoundcloudLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberSoundcloudLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberSoundcloudLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberSoundcloudLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberSoundcloudLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberSoundcloudLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberSoundcloudLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberSoundcloudLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberSoundcloudLink_starts_with?: InputMaybe<Scalars['String']>;
-  memberType?: InputMaybe<ProfilesSelect>;
-  /** All values that are contained in given list. */
-  memberType_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberType_not?: InputMaybe<ProfilesSelect>;
-  /** All values that are not contained in given list. */
-  memberType_not_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
-  miniMemberBio?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  miniMemberBio_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  miniMemberBio_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  miniMemberBio_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  miniMemberBio_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  miniMemberBio_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  miniMemberBio_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  miniMemberBio_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  miniMemberBio_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  miniMemberBio_starts_with?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  name_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  name_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  name_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  name_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  name_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  name_starts_with?: InputMaybe<Scalars['String']>;
-  pandoraMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  pandoraMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  pandoraMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  pandoraMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  pandoraMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  pandoraMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  pandoraMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  pandoraMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  pandoraMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  pandoraMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  phoneMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  phoneMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  phoneMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  phoneMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  phoneMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  phoneMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  phoneMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  phoneMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  phoneMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  phoneMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  primaryMember?: InputMaybe<Scalars['Boolean']>;
-  /** Any other value that exists and is not equal to the given value. */
-  primaryMember_not?: InputMaybe<Scalars['Boolean']>;
-  spotifyMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  spotifyMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  spotifyMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  spotifyMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  spotifyMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  spotifyMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  spotifyMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  spotifyMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  spotifyMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  spotifyMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  tikTokMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  tikTokMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  tikTokMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  tikTokMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  tikTokMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  tikTokMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  tikTokMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  tikTokMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  tikTokMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  tikTokMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  twitterMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  twitterMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  twitterMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  twitterMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  twitterMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  twitterMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  twitterMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  twitterMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  twitterMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  twitterMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  videoBox_every?: InputMaybe<VideoBoxWhereInput>;
-  videoBox_none?: InputMaybe<VideoBoxWhereInput>;
-  videoBox_some?: InputMaybe<VideoBoxWhereInput>;
-  websiteMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  websiteMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  websiteMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  websiteMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  websiteMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  websiteMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  websiteMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  websiteMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  websiteMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  websiteMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  youtubeMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  youtubeMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  youtubeMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  youtubeMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  youtubeMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  youtubeMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  youtubeMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  youtubeMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  youtubeMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  youtubeMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-};
-
-export enum TeamMemberItemOrderByInput {
-  EmailMemberLinkAsc = 'emailMemberLink_ASC',
-  EmailMemberLinkDesc = 'emailMemberLink_DESC',
-  EpkMemberLinkAsc = 'epkMemberLink_ASC',
-  EpkMemberLinkDesc = 'epkMemberLink_DESC',
-  FacebookMemberLinkAsc = 'facebookMemberLink_ASC',
-  FacebookMemberLinkDesc = 'facebookMemberLink_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  InstagramMemberLinkAsc = 'instagramMemberLink_ASC',
-  InstagramMemberLinkDesc = 'instagramMemberLink_DESC',
-  InstrumentAsc = 'instrument_ASC',
-  InstrumentDesc = 'instrument_DESC',
-  LinkedinMemberLinkAsc = 'linkedinMemberLink_ASC',
-  LinkedinMemberLinkDesc = 'linkedinMemberLink_DESC',
-  MemberBandsInTownAsc = 'memberBandsInTown_ASC',
-  MemberBandsInTownDesc = 'memberBandsInTown_DESC',
-  MemberIFrameAsc = 'memberIFrame_ASC',
-  MemberIFrameDesc = 'memberIFrame_DESC',
-  MemberOrderAsc = 'memberOrder_ASC',
-  MemberOrderDesc = 'memberOrder_DESC',
-  MemberSlugAsc = 'memberSlug_ASC',
-  MemberSlugDesc = 'memberSlug_DESC',
-  MemberSnapchatLinkAsc = 'memberSnapchatLink_ASC',
-  MemberSnapchatLinkDesc = 'memberSnapchatLink_DESC',
-  MemberSoundcloudLinkAsc = 'memberSoundcloudLink_ASC',
-  MemberSoundcloudLinkDesc = 'memberSoundcloudLink_DESC',
-  MemberTypeAsc = 'memberType_ASC',
-  MemberTypeDesc = 'memberType_DESC',
-  MiniMemberBioAsc = 'miniMemberBio_ASC',
-  MiniMemberBioDesc = 'miniMemberBio_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  PandoraMemberLinkAsc = 'pandoraMemberLink_ASC',
-  PandoraMemberLinkDesc = 'pandoraMemberLink_DESC',
-  PhoneMemberLinkAsc = 'phoneMemberLink_ASC',
-  PhoneMemberLinkDesc = 'phoneMemberLink_DESC',
-  PrimaryMemberAsc = 'primaryMember_ASC',
-  PrimaryMemberDesc = 'primaryMember_DESC',
-  SpotifyMemberLinkAsc = 'spotifyMemberLink_ASC',
-  SpotifyMemberLinkDesc = 'spotifyMemberLink_DESC',
-  TikTokMemberLinkAsc = 'tikTokMemberLink_ASC',
-  TikTokMemberLinkDesc = 'tikTokMemberLink_DESC',
-  TwitterMemberLinkAsc = 'twitterMemberLink_ASC',
-  TwitterMemberLinkDesc = 'twitterMemberLink_DESC',
-  WebsiteMemberLinkAsc = 'websiteMemberLink_ASC',
-  WebsiteMemberLinkDesc = 'websiteMemberLink_DESC',
-  YoutubeMemberLinkAsc = 'youtubeMemberLink_ASC',
-  YoutubeMemberLinkDesc = 'youtubeMemberLink_DESC'
-}
-
-export type TeamMemberItemUpdateInput = {
-  contactList?: InputMaybe<ContactListUpdateManyInlineInput>;
-  emailMemberLink?: InputMaybe<Scalars['String']>;
-  epkMemberLink?: InputMaybe<Scalars['String']>;
-  facebookMemberLink?: InputMaybe<Scalars['String']>;
-  fullMemberBio?: InputMaybe<Scalars['RichTextAST']>;
-  imageMemberAvatar?: InputMaybe<AssetUpdateOneInlineInput>;
-  instagramMemberLink?: InputMaybe<Scalars['String']>;
-  instrument?: InputMaybe<Scalars['String']>;
-  linkedinMemberLink?: InputMaybe<Scalars['String']>;
-  memberBandsInTown?: InputMaybe<Scalars['String']>;
-  memberBookingData?: InputMaybe<Scalars['Json']>;
-  memberHeroImage?: InputMaybe<AssetUpdateOneInlineInput>;
-  memberIFrame?: InputMaybe<Scalars['String']>;
-  memberImageGallery?: InputMaybe<AssetUpdateManyInlineInput>;
-  memberLogo?: InputMaybe<AssetUpdateOneInlineInput>;
-  memberMusicReleaseGallery?: InputMaybe<AssetUpdateManyInlineInput>;
-  memberOrder?: InputMaybe<Scalars['Int']>;
-  memberSlug?: InputMaybe<Scalars['String']>;
-  memberSnapchatLink?: InputMaybe<Scalars['String']>;
-  memberSoundcloudLink?: InputMaybe<Scalars['String']>;
-  memberType?: InputMaybe<ProfilesSelect>;
-  miniMemberBio?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  pandoraMemberLink?: InputMaybe<Scalars['String']>;
-  phoneMemberLink?: InputMaybe<Scalars['String']>;
-  primaryMember?: InputMaybe<Scalars['Boolean']>;
-  spotifyMemberLink?: InputMaybe<Scalars['String']>;
-  tikTokMemberLink?: InputMaybe<Scalars['String']>;
-  twitterMemberLink?: InputMaybe<Scalars['String']>;
-  videoBox?: InputMaybe<VideoBoxUpdateManyInlineInput>;
-  websiteMemberLink?: InputMaybe<Scalars['String']>;
-  youtubeMemberLink?: InputMaybe<Scalars['String']>;
-};
-
-export type TeamMemberItemUpdateManyInlineInput = {
-  /** Create and connect multiple TeamMemberItem component instances */
-  create?: InputMaybe<Array<TeamMemberItemCreateWithPositionInput>>;
-  /** Delete multiple TeamMemberItem documents */
-  delete?: InputMaybe<Array<TeamMemberItemWhereUniqueInput>>;
-  /** Update multiple TeamMemberItem component instances */
-  update?: InputMaybe<Array<TeamMemberItemUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple TeamMemberItem component instances */
-  upsert?: InputMaybe<Array<TeamMemberItemUpsertWithNestedWhereUniqueAndPositionInput>>;
-};
-
-export type TeamMemberItemUpdateManyInput = {
-  emailMemberLink?: InputMaybe<Scalars['String']>;
-  epkMemberLink?: InputMaybe<Scalars['String']>;
-  facebookMemberLink?: InputMaybe<Scalars['String']>;
-  fullMemberBio?: InputMaybe<Scalars['RichTextAST']>;
-  instagramMemberLink?: InputMaybe<Scalars['String']>;
-  instrument?: InputMaybe<Scalars['String']>;
-  linkedinMemberLink?: InputMaybe<Scalars['String']>;
-  memberBandsInTown?: InputMaybe<Scalars['String']>;
-  memberBookingData?: InputMaybe<Scalars['Json']>;
-  memberIFrame?: InputMaybe<Scalars['String']>;
-  memberOrder?: InputMaybe<Scalars['Int']>;
-  memberSnapchatLink?: InputMaybe<Scalars['String']>;
-  memberSoundcloudLink?: InputMaybe<Scalars['String']>;
-  memberType?: InputMaybe<ProfilesSelect>;
-  miniMemberBio?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  pandoraMemberLink?: InputMaybe<Scalars['String']>;
-  phoneMemberLink?: InputMaybe<Scalars['String']>;
-  primaryMember?: InputMaybe<Scalars['Boolean']>;
-  spotifyMemberLink?: InputMaybe<Scalars['String']>;
-  tikTokMemberLink?: InputMaybe<Scalars['String']>;
-  twitterMemberLink?: InputMaybe<Scalars['String']>;
-  websiteMemberLink?: InputMaybe<Scalars['String']>;
-  youtubeMemberLink?: InputMaybe<Scalars['String']>;
-};
-
-export type TeamMemberItemUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: TeamMemberItemUpdateManyInput;
-  /** Document search */
-  where: TeamMemberItemWhereInput;
-};
-
-export type TeamMemberItemUpdateOneInlineInput = {
-  /** Create and connect one TeamMemberItem document */
-  create?: InputMaybe<TeamMemberItemCreateInput>;
-  /** Delete currently connected TeamMemberItem document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single TeamMemberItem document */
-  update?: InputMaybe<TeamMemberItemUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single TeamMemberItem document */
-  upsert?: InputMaybe<TeamMemberItemUpsertWithNestedWhereUniqueInput>;
-};
-
-export type TeamMemberItemUpdateWithNestedWhereUniqueAndPositionInput = {
-  /** Document to update */
-  data?: InputMaybe<TeamMemberItemUpdateInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: TeamMemberItemWhereUniqueInput;
-};
-
-export type TeamMemberItemUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: TeamMemberItemUpdateInput;
-  /** Unique document search */
-  where: TeamMemberItemWhereUniqueInput;
-};
-
-export type TeamMemberItemUpsertInput = {
-  /** Create document if it didn't exist */
-  create: TeamMemberItemCreateInput;
-  /** Update document if it exists */
-  update: TeamMemberItemUpdateInput;
-};
-
-export type TeamMemberItemUpsertWithNestedWhereUniqueAndPositionInput = {
-  /** Document to upsert */
-  data?: InputMaybe<TeamMemberItemUpsertInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: TeamMemberItemWhereUniqueInput;
-};
-
-export type TeamMemberItemUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: TeamMemberItemUpsertInput;
-  /** Unique document search */
-  where: TeamMemberItemWhereUniqueInput;
-};
-
-/** Identifies documents */
-export type TeamMemberItemWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<TeamMemberItemWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<TeamMemberItemWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<TeamMemberItemWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  contactList_every?: InputMaybe<ContactListWhereInput>;
-  contactList_none?: InputMaybe<ContactListWhereInput>;
-  contactList_some?: InputMaybe<ContactListWhereInput>;
-  emailMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  emailMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  emailMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  emailMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  emailMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  emailMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  emailMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  emailMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  emailMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  emailMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  epkMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  epkMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  epkMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  epkMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  epkMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  epkMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  epkMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  epkMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  epkMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  epkMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  facebookMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  facebookMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  facebookMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  facebookMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  facebookMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  facebookMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  facebookMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  facebookMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  facebookMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  facebookMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  imageMemberAvatar?: InputMaybe<AssetWhereInput>;
-  instagramMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  instagramMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  instagramMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  instagramMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  instagramMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  instagramMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  instagramMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  instagramMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  instagramMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  instagramMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  instrument?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  instrument_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  instrument_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  instrument_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  instrument_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  instrument_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  instrument_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  instrument_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  instrument_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  instrument_starts_with?: InputMaybe<Scalars['String']>;
-  linkedinMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  linkedinMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  linkedinMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  linkedinMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  linkedinMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  linkedinMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  linkedinMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  linkedinMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  linkedinMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  linkedinMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  memberBandsInTown?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberBandsInTown_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberBandsInTown_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberBandsInTown_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberBandsInTown_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberBandsInTown_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberBandsInTown_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberBandsInTown_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberBandsInTown_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberBandsInTown_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values containing the given json path. */
-  memberBookingData_json_path_exists?: InputMaybe<Scalars['String']>;
-  /**
-   * Recursively tries to find the provided JSON scalar value inside the field.
-   * It does use an exact match when comparing values.
-   * If you pass `null` as value the filter will be ignored.
-   * Note: This filter fails if you try to look for a non scalar JSON value!
-   */
-  memberBookingData_value_recursive?: InputMaybe<Scalars['Json']>;
-  memberHeroImage?: InputMaybe<AssetWhereInput>;
-  memberIFrame?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberIFrame_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberIFrame_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberIFrame_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberIFrame_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberIFrame_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberIFrame_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberIFrame_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberIFrame_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberIFrame_starts_with?: InputMaybe<Scalars['String']>;
-  memberImageGallery_every?: InputMaybe<AssetWhereInput>;
-  memberImageGallery_none?: InputMaybe<AssetWhereInput>;
-  memberImageGallery_some?: InputMaybe<AssetWhereInput>;
-  memberLogo?: InputMaybe<AssetWhereInput>;
-  memberMusicReleaseGallery_every?: InputMaybe<AssetWhereInput>;
-  memberMusicReleaseGallery_none?: InputMaybe<AssetWhereInput>;
-  memberMusicReleaseGallery_some?: InputMaybe<AssetWhereInput>;
-  memberOrder?: InputMaybe<Scalars['Int']>;
-  /** All values greater than the given value. */
-  memberOrder_gt?: InputMaybe<Scalars['Int']>;
-  /** All values greater than or equal the given value. */
-  memberOrder_gte?: InputMaybe<Scalars['Int']>;
-  /** All values that are contained in given list. */
-  memberOrder_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
-  /** All values less than the given value. */
-  memberOrder_lt?: InputMaybe<Scalars['Int']>;
-  /** All values less than or equal the given value. */
-  memberOrder_lte?: InputMaybe<Scalars['Int']>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberOrder_not?: InputMaybe<Scalars['Int']>;
-  /** All values that are not contained in given list. */
-  memberOrder_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
-  memberSlug?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberSlug_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberSlug_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberSlug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberSlug_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberSlug_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberSlug_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberSlug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberSlug_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberSlug_starts_with?: InputMaybe<Scalars['String']>;
-  memberSnapchatLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberSnapchatLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberSnapchatLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberSnapchatLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberSnapchatLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberSnapchatLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberSnapchatLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberSnapchatLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberSnapchatLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberSnapchatLink_starts_with?: InputMaybe<Scalars['String']>;
-  memberSoundcloudLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  memberSoundcloudLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  memberSoundcloudLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  memberSoundcloudLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberSoundcloudLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  memberSoundcloudLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  memberSoundcloudLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  memberSoundcloudLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  memberSoundcloudLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  memberSoundcloudLink_starts_with?: InputMaybe<Scalars['String']>;
-  memberType?: InputMaybe<ProfilesSelect>;
-  /** All values that are contained in given list. */
-  memberType_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  memberType_not?: InputMaybe<ProfilesSelect>;
-  /** All values that are not contained in given list. */
-  memberType_not_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
-  miniMemberBio?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  miniMemberBio_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  miniMemberBio_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  miniMemberBio_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  miniMemberBio_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  miniMemberBio_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  miniMemberBio_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  miniMemberBio_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  miniMemberBio_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  miniMemberBio_starts_with?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  name_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  name_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  name_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  name_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  name_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  name_starts_with?: InputMaybe<Scalars['String']>;
-  pandoraMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  pandoraMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  pandoraMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  pandoraMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  pandoraMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  pandoraMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  pandoraMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  pandoraMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  pandoraMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  pandoraMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  phoneMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  phoneMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  phoneMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  phoneMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  phoneMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  phoneMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  phoneMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  phoneMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  phoneMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  phoneMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  primaryMember?: InputMaybe<Scalars['Boolean']>;
-  /** Any other value that exists and is not equal to the given value. */
-  primaryMember_not?: InputMaybe<Scalars['Boolean']>;
-  spotifyMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  spotifyMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  spotifyMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  spotifyMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  spotifyMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  spotifyMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  spotifyMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  spotifyMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  spotifyMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  spotifyMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  tikTokMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  tikTokMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  tikTokMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  tikTokMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  tikTokMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  tikTokMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  tikTokMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  tikTokMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  tikTokMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  tikTokMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  twitterMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  twitterMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  twitterMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  twitterMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  twitterMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  twitterMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  twitterMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  twitterMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  twitterMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  twitterMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  videoBox_every?: InputMaybe<VideoBoxWhereInput>;
-  videoBox_none?: InputMaybe<VideoBoxWhereInput>;
-  videoBox_some?: InputMaybe<VideoBoxWhereInput>;
-  websiteMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  websiteMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  websiteMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  websiteMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  websiteMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  websiteMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  websiteMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  websiteMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  websiteMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  websiteMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-  youtubeMemberLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  youtubeMemberLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  youtubeMemberLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  youtubeMemberLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  youtubeMemberLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  youtubeMemberLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  youtubeMemberLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  youtubeMemberLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  youtubeMemberLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  youtubeMemberLink_starts_with?: InputMaybe<Scalars['String']>;
-};
-
-/** References TeamMemberItem record uniquely */
-export type TeamMemberItemWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']>;
-  memberSlug?: InputMaybe<Scalars['String']>;
-};
-
 export type Testimonial = Node & {
   __typename?: 'Testimonial';
   /** The time the document was created */
@@ -20410,13 +18438,6 @@ export type TestimonialSelection = {
   testimonialTitle?: Maybe<Scalars['String']>;
 };
 
-export type TestimonialSelectionConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: TestimonialSelectionWhereUniqueInput;
-};
-
 /** A connection to a list of items. */
 export type TestimonialSelectionConnection = {
   __typename?: 'TestimonialSelectionConnection';
@@ -20430,16 +18451,6 @@ export type TestimonialSelectionConnection = {
 export type TestimonialSelectionCreateInput = {
   testimonialQuery?: InputMaybe<TestimonialType>;
   testimonialTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type TestimonialSelectionCreateManyInlineInput = {
-  /** Create and connect multiple existing TestimonialSelection documents */
-  create?: InputMaybe<Array<TestimonialSelectionCreateInput>>;
-};
-
-export type TestimonialSelectionCreateOneInlineInput = {
-  /** Create and connect one TestimonialSelection document */
-  create?: InputMaybe<TestimonialSelectionCreateInput>;
 };
 
 export type TestimonialSelectionCreateWithPositionInput = {
@@ -20524,98 +18535,9 @@ export enum TestimonialSelectionOrderByInput {
   TestimonialTitleDesc = 'testimonialTitle_DESC'
 }
 
-export type TestimonialSelectionParent = LayoutBlockColumn;
-
-export type TestimonialSelectionParentConnectInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnConnectInput>;
-};
-
-export type TestimonialSelectionParentCreateInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateInput>;
-};
-
-export type TestimonialSelectionParentCreateManyInlineInput = {
-  /** Create and connect multiple existing TestimonialSelectionParent documents */
-  create?: InputMaybe<Array<TestimonialSelectionParentCreateInput>>;
-};
-
-export type TestimonialSelectionParentCreateOneInlineInput = {
-  /** Create and connect one TestimonialSelectionParent document */
-  create?: InputMaybe<TestimonialSelectionParentCreateInput>;
-};
-
-export type TestimonialSelectionParentCreateWithPositionInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateWithPositionInput>;
-};
-
-export type TestimonialSelectionParentUpdateInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateInput>;
-};
-
-export type TestimonialSelectionParentUpdateManyInlineInput = {
-  /** Create and connect multiple TestimonialSelectionParent component instances */
-  create?: InputMaybe<Array<TestimonialSelectionParentCreateWithPositionInput>>;
-  /** Delete multiple TestimonialSelectionParent documents */
-  delete?: InputMaybe<Array<TestimonialSelectionParentWhereUniqueInput>>;
-  /** Update multiple TestimonialSelectionParent component instances */
-  update?: InputMaybe<Array<TestimonialSelectionParentUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple TestimonialSelectionParent component instances */
-  upsert?: InputMaybe<Array<TestimonialSelectionParentUpsertWithNestedWhereUniqueAndPositionInput>>;
-};
-
-export type TestimonialSelectionParentUpdateManyWithNestedWhereInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateManyWithNestedWhereInput>;
-};
-
-export type TestimonialSelectionParentUpdateOneInlineInput = {
-  /** Create and connect one TestimonialSelectionParent document */
-  create?: InputMaybe<TestimonialSelectionParentCreateInput>;
-  /** Delete currently connected TestimonialSelectionParent document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single TestimonialSelectionParent document */
-  update?: InputMaybe<TestimonialSelectionParentUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single TestimonialSelectionParent document */
-  upsert?: InputMaybe<TestimonialSelectionParentUpsertWithNestedWhereUniqueInput>;
-};
-
-export type TestimonialSelectionParentUpdateWithNestedWhereUniqueAndPositionInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type TestimonialSelectionParentUpdateWithNestedWhereUniqueInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueInput>;
-};
-
-export type TestimonialSelectionParentUpsertWithNestedWhereUniqueAndPositionInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type TestimonialSelectionParentUpsertWithNestedWhereUniqueInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueInput>;
-};
-
-export type TestimonialSelectionParentWhereInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereInput>;
-};
-
-export type TestimonialSelectionParentWhereUniqueInput = {
-  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereUniqueInput>;
-};
-
 export type TestimonialSelectionUpdateInput = {
   testimonialQuery?: InputMaybe<TestimonialType>;
   testimonialTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type TestimonialSelectionUpdateManyInlineInput = {
-  /** Create and connect multiple TestimonialSelection component instances */
-  create?: InputMaybe<Array<TestimonialSelectionCreateWithPositionInput>>;
-  /** Delete multiple TestimonialSelection documents */
-  delete?: InputMaybe<Array<TestimonialSelectionWhereUniqueInput>>;
-  /** Update multiple TestimonialSelection component instances */
-  update?: InputMaybe<Array<TestimonialSelectionUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple TestimonialSelection component instances */
-  upsert?: InputMaybe<Array<TestimonialSelectionUpsertWithNestedWhereUniqueAndPositionInput>>;
 };
 
 export type TestimonialSelectionUpdateManyInput = {
@@ -20628,17 +18550,6 @@ export type TestimonialSelectionUpdateManyWithNestedWhereInput = {
   data: TestimonialSelectionUpdateManyInput;
   /** Document search */
   where: TestimonialSelectionWhereInput;
-};
-
-export type TestimonialSelectionUpdateOneInlineInput = {
-  /** Create and connect one TestimonialSelection document */
-  create?: InputMaybe<TestimonialSelectionCreateInput>;
-  /** Delete currently connected TestimonialSelection document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single TestimonialSelection document */
-  update?: InputMaybe<TestimonialSelectionUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single TestimonialSelection document */
-  upsert?: InputMaybe<TestimonialSelectionUpsertWithNestedWhereUniqueInput>;
 };
 
 export type TestimonialSelectionUpdateWithNestedWhereUniqueAndPositionInput = {
@@ -22024,26 +19935,24 @@ export enum VideoBoxOrderByInput {
   YoutubeVideoIdDesc = 'youtubeVideoId_DESC'
 }
 
-export type VideoBoxParent = AccordionContent | Album | Blog | Event | LayoutBlockColumn | Profile | TeamMemberItem;
+export type VideoBoxParent = Accordion | Album | Blog | Event | LayoutBlockColumn | Profile;
 
 export type VideoBoxParentConnectInput = {
-  AccordionContent?: InputMaybe<AccordionContentConnectInput>;
+  Accordion?: InputMaybe<AccordionConnectInput>;
   Album?: InputMaybe<AlbumConnectInput>;
   Blog?: InputMaybe<BlogConnectInput>;
   Event?: InputMaybe<EventConnectInput>;
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnConnectInput>;
   Profile?: InputMaybe<ProfileConnectInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemConnectInput>;
 };
 
 export type VideoBoxParentCreateInput = {
-  AccordionContent?: InputMaybe<AccordionContentCreateInput>;
+  Accordion?: InputMaybe<AccordionCreateInput>;
   Album?: InputMaybe<AlbumCreateInput>;
   Blog?: InputMaybe<BlogCreateInput>;
   Event?: InputMaybe<EventCreateInput>;
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateInput>;
   Profile?: InputMaybe<ProfileCreateInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemCreateInput>;
 };
 
 export type VideoBoxParentCreateManyInlineInput = {
@@ -22061,13 +19970,12 @@ export type VideoBoxParentCreateOneInlineInput = {
 };
 
 export type VideoBoxParentUpdateInput = {
-  AccordionContent?: InputMaybe<AccordionContentUpdateInput>;
+  Accordion?: InputMaybe<AccordionUpdateInput>;
   Album?: InputMaybe<AlbumUpdateInput>;
   Blog?: InputMaybe<BlogUpdateInput>;
   Event?: InputMaybe<EventUpdateInput>;
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateInput>;
   Profile?: InputMaybe<ProfileUpdateInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemUpdateInput>;
 };
 
 export type VideoBoxParentUpdateManyInlineInput = {
@@ -22088,13 +19996,12 @@ export type VideoBoxParentUpdateManyInlineInput = {
 };
 
 export type VideoBoxParentUpdateManyWithNestedWhereInput = {
-  AccordionContent?: InputMaybe<AccordionContentUpdateManyWithNestedWhereInput>;
+  Accordion?: InputMaybe<AccordionUpdateManyWithNestedWhereInput>;
   Album?: InputMaybe<AlbumUpdateManyWithNestedWhereInput>;
   Blog?: InputMaybe<BlogUpdateManyWithNestedWhereInput>;
   Event?: InputMaybe<EventUpdateManyWithNestedWhereInput>;
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateManyWithNestedWhereInput>;
   Profile?: InputMaybe<ProfileUpdateManyWithNestedWhereInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemUpdateManyWithNestedWhereInput>;
 };
 
 export type VideoBoxParentUpdateOneInlineInput = {
@@ -22113,43 +20020,39 @@ export type VideoBoxParentUpdateOneInlineInput = {
 };
 
 export type VideoBoxParentUpdateWithNestedWhereUniqueInput = {
-  AccordionContent?: InputMaybe<AccordionContentUpdateWithNestedWhereUniqueInput>;
+  Accordion?: InputMaybe<AccordionUpdateWithNestedWhereUniqueInput>;
   Album?: InputMaybe<AlbumUpdateWithNestedWhereUniqueInput>;
   Blog?: InputMaybe<BlogUpdateWithNestedWhereUniqueInput>;
   Event?: InputMaybe<EventUpdateWithNestedWhereUniqueInput>;
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueInput>;
   Profile?: InputMaybe<ProfileUpdateWithNestedWhereUniqueInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemUpdateWithNestedWhereUniqueInput>;
 };
 
 export type VideoBoxParentUpsertWithNestedWhereUniqueInput = {
-  AccordionContent?: InputMaybe<AccordionContentUpsertWithNestedWhereUniqueInput>;
+  Accordion?: InputMaybe<AccordionUpsertWithNestedWhereUniqueInput>;
   Album?: InputMaybe<AlbumUpsertWithNestedWhereUniqueInput>;
   Blog?: InputMaybe<BlogUpsertWithNestedWhereUniqueInput>;
   Event?: InputMaybe<EventUpsertWithNestedWhereUniqueInput>;
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueInput>;
   Profile?: InputMaybe<ProfileUpsertWithNestedWhereUniqueInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemUpsertWithNestedWhereUniqueInput>;
 };
 
 export type VideoBoxParentWhereInput = {
-  AccordionContent?: InputMaybe<AccordionContentWhereInput>;
+  Accordion?: InputMaybe<AccordionWhereInput>;
   Album?: InputMaybe<AlbumWhereInput>;
   Blog?: InputMaybe<BlogWhereInput>;
   Event?: InputMaybe<EventWhereInput>;
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereInput>;
   Profile?: InputMaybe<ProfileWhereInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemWhereInput>;
 };
 
 export type VideoBoxParentWhereUniqueInput = {
-  AccordionContent?: InputMaybe<AccordionContentWhereUniqueInput>;
+  Accordion?: InputMaybe<AccordionWhereUniqueInput>;
   Album?: InputMaybe<AlbumWhereUniqueInput>;
   Blog?: InputMaybe<BlogWhereUniqueInput>;
   Event?: InputMaybe<EventWhereUniqueInput>;
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereUniqueInput>;
   Profile?: InputMaybe<ProfileWhereUniqueInput>;
-  TeamMemberItem?: InputMaybe<TeamMemberItemWhereUniqueInput>;
 };
 
 export type VideoBoxUpdateInput = {
@@ -22859,7 +20762,7 @@ export type LogoTableFieldsFragment = { __typename?: 'LogoTable', logoName?: str
 
 export type PagesSlugListFieldsFragment = { __typename?: 'Page', pageSlug?: string | null };
 
-export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, layoutBlock: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, displayBlogSection?: boolean | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayMusicSection?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, logoTableSection: Array<{ __typename?: 'LogoTableSection', logoTableTitle?: string | null, logoTableQuery?: LogoTableItem | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, testimonialSelection?: { __typename?: 'TestimonialSelection', testimonialTitle?: string | null, testimonialQuery?: TestimonialType | null } | null, gallery: Array<{ __typename?: 'Asset', url: string }>, eventSection?: { __typename?: 'EventSection', eventDisplayType?: EventDisplayType | null, eventSectionTitle?: string | null } | null }>, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }>, accordion: Array<{ __typename?: 'Accordion', id: string, header?: { __typename?: 'RichText', html: string, raw: any } | null, accordionContent: Array<{ __typename?: 'AccordionContent', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> };
+export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> };
 
 export type NavigationFieldsFragment = { __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> };
 
@@ -22881,12 +20784,12 @@ export type LayoutQueryVariables = Exact<{
 }>;
 
 
-export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, bookingEmailOne?: string | null, bookingPhoneOne?: string | null, bookingNameOne?: string | null, miniBio?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, youtubePlaylistId?: string | null, labelName?: string | null, labelLink?: string | null, navigation?: any | null, bandsInTownEmailWidget?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, labelLogo?: { __typename?: 'Asset', id: string, url: string } | null, logoSecondary?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, memberMusicRelease: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, layoutBlock: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, displayBlogSection?: boolean | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayMusicSection?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, logoTableSection: Array<{ __typename?: 'LogoTableSection', logoTableTitle?: string | null, logoTableQuery?: LogoTableItem | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, testimonialSelection?: { __typename?: 'TestimonialSelection', testimonialTitle?: string | null, testimonialQuery?: TestimonialType | null } | null, gallery: Array<{ __typename?: 'Asset', url: string }>, eventSection?: { __typename?: 'EventSection', eventDisplayType?: EventDisplayType | null, eventSectionTitle?: string | null } | null }>, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }>, accordion: Array<{ __typename?: 'Accordion', id: string, header?: { __typename?: 'RichText', html: string, raw: any } | null, accordionContent: Array<{ __typename?: 'AccordionContent', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
+export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, bookingEmailOne?: string | null, bookingPhoneOne?: string | null, bookingNameOne?: string | null, miniBio?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, youtubePlaylistId?: string | null, labelName?: string | null, labelLink?: string | null, navigation?: any | null, bandsInTownEmailWidget?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, labelLogo?: { __typename?: 'Asset', id: string, url: string } | null, logoSecondary?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, memberMusicRelease: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
 
 export type PagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, layoutBlock: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, displayBlogSection?: boolean | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayMusicSection?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, logoTableSection: Array<{ __typename?: 'LogoTableSection', logoTableTitle?: string | null, logoTableQuery?: LogoTableItem | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, testimonialSelection?: { __typename?: 'TestimonialSelection', testimonialTitle?: string | null, testimonialQuery?: TestimonialType | null } | null, gallery: Array<{ __typename?: 'Asset', url: string }>, eventSection?: { __typename?: 'EventSection', eventDisplayType?: EventDisplayType | null, eventSectionTitle?: string | null } | null }>, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }>, accordion: Array<{ __typename?: 'Accordion', id: string, header?: { __typename?: 'RichText', html: string, raw: any } | null, accordionContent: Array<{ __typename?: 'AccordionContent', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> };
+export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> }> };
 
 export type PagesSlugListQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -23206,7 +21109,21 @@ export const PageFieldsFragmentDoc = gql`
   }
   layoutBlocks(first: 100) {
     id
-    layoutBlock(first: 100) {
+    cssClass
+    backgroundColor {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    backgroundImage {
+      url
+    }
+    layoutBlockColumns(first: 100) {
       id
       htmlId
       cssClass
@@ -23296,10 +21213,7 @@ export const PageFieldsFragmentDoc = gql`
           url
         }
       }
-      logoTableSection {
-        logoTableTitle
-        logoTableQuery
-      }
+      logoTableQuery
       contactForm {
         contactFormTitle
         netlifyContactForm
@@ -23319,26 +21233,19 @@ export const PageFieldsFragmentDoc = gql`
         vimeoVideoId
         youtubePlaylistId
       }
-      testimonialSelection {
-        testimonialTitle
-        testimonialQuery
-      }
+      testimonialsQuery
       galleryLayout
       gallery(first: 500) {
         url
       }
-      eventSection {
-        eventDisplayType
-        eventSectionTitle
-      }
+      eventDisplayLayout
       standOutText
-      displayBlogSection
       blogSectionTitle
       blogCategory
       profileSectionTitle
       profilesQuery
       profileLayoutStyle
-      displayMusicSection
+      displayFeaturedMusic
       displayAllMusic
       mailchimpLink
       mailchimpTitle
@@ -23348,42 +21255,25 @@ export const PageFieldsFragmentDoc = gql`
       parallaxImage {
         url
       }
-    }
-    backgroundColor {
-      hex
-      rgba {
-        r
-        g
-        b
-        a
-      }
-      css
-    }
-  }
-  accordion(orderBy: id_ASC) {
-    id
-    header {
-      html
-      raw
-    }
-    accordionContent(orderBy: id_ASC) {
-      id
-      contentHeader {
-        html
-        raw
-      }
-      contentDescription {
-        html
-        raw
-      }
-      videoBox {
-        videoTitle
-        youtubeVideoId
-        vimeoVideoId
-        youtubePlaylistId
-      }
-      contentImage {
-        url
+      accordions(orderBy: id_ASC) {
+        id
+        contentHeader {
+          html
+          raw
+        }
+        contentDescription {
+          html
+          raw
+        }
+        videoBox {
+          videoTitle
+          youtubeVideoId
+          vimeoVideoId
+          youtubePlaylistId
+        }
+        contentImage {
+          url
+        }
       }
     }
   }

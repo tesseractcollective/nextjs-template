@@ -86,6 +86,7 @@ export default function Footer({
                               key={linkItem?.link}
                               link={linkItem?.link}
                               label={linkItem?.label}
+                              
                               cssClass={`text-white opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
                             />

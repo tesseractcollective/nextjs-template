@@ -3,13 +3,11 @@ import Image from "next/image";
 import type { LogoTableFieldsFragment } from "@/graphql/generated/graphql";
 
 interface LogoTableProps {
-  title: string;
   query: string;
   logoTables: LogoTableFieldsFragment[];
 }
 
 export default function LogoTable({
-  title,
   query,
   logoTables,
 }: LogoTableProps) {
@@ -20,11 +18,6 @@ export default function LogoTable({
     <div>
       {!!filteredTable && filteredTable?.length >= 1 && (
         <section className="container mx-auto px-4 my-16">
-          {!!title && (
-            <h3 className="text-2xl md:text-4xl col-12 opacity-80 uppercase text-center">
-              {title}
-            </h3>
-          )}
           <div className="py-12">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">

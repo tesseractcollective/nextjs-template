@@ -250,7 +250,21 @@ fragment pageFields on Page {
   }
   layoutBlocks(first: 100) {
     id
-    layoutBlock(first: 100) {
+    cssClass
+    backgroundColor {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    backgroundImage {
+      url
+    }
+    layoutBlockColumns(first: 100) {
       id
       htmlId
       cssClass
@@ -340,10 +354,7 @@ fragment pageFields on Page {
           url
         }
       }
-      logoTableSection {
-        logoTableTitle
-        logoTableQuery
-      }
+      logoTableQuery
       contactForm {
         contactFormTitle
         netlifyContactForm
@@ -363,26 +374,19 @@ fragment pageFields on Page {
         vimeoVideoId
         youtubePlaylistId
       }
-      testimonialSelection {
-        testimonialTitle
-        testimonialQuery
-      }
+      testimonialsQuery
       galleryLayout
       gallery(first: 500) {
         url
       }
-      eventSection {
-        eventDisplayType
-        eventSectionTitle
-      }
+      eventDisplayLayout
       standOutText
-      displayBlogSection
       blogSectionTitle
       blogCategory
       profileSectionTitle
       profilesQuery
       profileLayoutStyle
-      displayMusicSection
+      displayFeaturedMusic
       displayAllMusic
       mailchimpLink
       mailchimpTitle
@@ -392,42 +396,25 @@ fragment pageFields on Page {
       parallaxImage {
         url
       }
-    }
-    backgroundColor {
-      hex
-      rgba {
-        r
-        g
-        b
-        a
-      }
-      css
-    }
-  }
-  accordion(orderBy: id_ASC) {
-    id
-    header {
-      html
-      raw
-    }
-    accordionContent(orderBy: id_ASC) {
-      id
-      contentHeader {
-        html
-        raw
-      }
-      contentDescription {
-        html
-        raw
-      }
-      videoBox {
-        videoTitle
-        youtubeVideoId
-        vimeoVideoId
-        youtubePlaylistId
-      }
-      contentImage {
-        url
+      accordions(orderBy: id_ASC) {
+        id
+        contentHeader {
+          html
+          raw
+        }
+        contentDescription {
+          html
+          raw
+        }
+        videoBox {
+          videoTitle
+          youtubeVideoId
+          vimeoVideoId
+          youtubePlaylistId
+        }
+        contentImage {
+          url
+        }
       }
     }
   }

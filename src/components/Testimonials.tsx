@@ -6,7 +6,6 @@ import type { TestimonialFieldsFragment } from "@/graphql/generated/graphql";
 import Image from 'next/image';
 
 interface TestimonialProps {
-  title: string;
   query: string;
   testimonials: TestimonialFieldsFragment[];
 }
@@ -14,7 +13,6 @@ interface TestimonialProps {
 export default function Testimonials({
   testimonials,
   query,
-  title,
 }: TestimonialProps) {
   const filteredTestimonials = testimonials.filter(
     (testimonial) => testimonial.testimonialType === query
@@ -23,9 +21,6 @@ export default function Testimonials({
     <div className="w-full">
       {!!filteredTestimonials && filteredTestimonials.length >= 1 && (
         <div className="testimonial-slider-wrapper w-full mx-auto my-16">
-          <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center">
-            {title}
-          </h3>
           <Swiper
             grabCursor
             loop
