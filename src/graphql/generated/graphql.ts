@@ -1031,6 +1031,7 @@ export type Asset = Node & {
   albumCoverAlbum: Array<Album>;
   avatarImageProfile: Array<Profile>;
   blogGalleryBlog: Array<Blog>;
+  clientLogoLogoTable: Array<LogoTable>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -1054,26 +1055,24 @@ export type Asset = Node & {
   id: Scalars['ID'];
   imageBlog: Array<Blog>;
   imageGalleryProfile: Array<Profile>;
-  labelLogoSiteLibrary: Array<SiteLibrary>;
   /** System Locale field */
   locale: Locale;
   /** Get the other localizations for this document */
   localizations: Array<Asset>;
-  logoImageLogoTable: Array<LogoTable>;
-  logoSecondarySiteLibrary: Array<SiteLibrary>;
   logoSiteLibrary: Array<SiteLibrary>;
-  memberMusicReleaseProfile: Array<Profile>;
   metaAppleTouchIconSiteLibrary: Array<SiteLibrary>;
   metaOgImageSiteLibrary: Array<SiteLibrary>;
   /** The mime type of the file */
   mimeType?: Maybe<Scalars['String']>;
   navigationLogoNavigation: Array<Navigation>;
+  portfolioGalleryProfile: Array<Profile>;
   profileLogoProfile: Array<Profile>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
+  secondaryLogoSiteLibrary: Array<SiteLibrary>;
   /** The file size */
   size?: Maybe<Scalars['Float']>;
   /** System stage field */
@@ -1129,6 +1128,20 @@ export type AssetBlogGalleryBlogArgs = {
   orderBy?: InputMaybe<BlogOrderByInput>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<BlogWhereInput>;
+};
+
+
+/** Asset system model */
+export type AssetClientLogoLogoTableArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<LogoTableOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LogoTableWhereInput>;
 };
 
 
@@ -1260,51 +1273,9 @@ export type AssetImageGalleryProfileArgs = {
 
 
 /** Asset system model */
-export type AssetLabelLogoSiteLibraryArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<SiteLibraryOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<SiteLibraryWhereInput>;
-};
-
-
-/** Asset system model */
 export type AssetLocalizationsArgs = {
   includeCurrent?: Scalars['Boolean'];
   locales?: Array<Locale>;
-};
-
-
-/** Asset system model */
-export type AssetLogoImageLogoTableArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<LogoTableOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<LogoTableWhereInput>;
-};
-
-
-/** Asset system model */
-export type AssetLogoSecondarySiteLibraryArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<SiteLibraryOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<SiteLibraryWhereInput>;
 };
 
 
@@ -1319,20 +1290,6 @@ export type AssetLogoSiteLibraryArgs = {
   orderBy?: InputMaybe<SiteLibraryOrderByInput>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<SiteLibraryWhereInput>;
-};
-
-
-/** Asset system model */
-export type AssetMemberMusicReleaseProfileArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<ProfileOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ProfileWhereInput>;
 };
 
 
@@ -1379,6 +1336,20 @@ export type AssetNavigationLogoNavigationArgs = {
 
 
 /** Asset system model */
+export type AssetPortfolioGalleryProfileArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ProfileOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProfileWhereInput>;
+};
+
+
+/** Asset system model */
 export type AssetProfileLogoProfileArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -1415,6 +1386,20 @@ export type AssetScheduledInArgs = {
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+/** Asset system model */
+export type AssetSecondaryLogoSiteLibraryArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<SiteLibraryOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<SiteLibraryWhereInput>;
 };
 
 
@@ -1474,7 +1459,7 @@ export type AssetCreateInput = {
   backgroundImageLayoutSectionContent?: InputMaybe<LayoutBlockColumnCreateManyInlineInput>;
   blogGalleryBlog?: InputMaybe<BlogCreateManyInlineInput>;
   boxImageGridBox?: InputMaybe<GridBoxCreateManyInlineInput>;
-  categoryImageVideoCategory?: InputMaybe<VideoCategoryCreateManyInlineInput>;
+  clientLogoLogoTable?: InputMaybe<LogoTableCreateManyInlineInput>;
   contactAvatarContactList?: InputMaybe<ContactListCreateManyInlineInput>;
   contentImageAccordionContent?: InputMaybe<AccordionCreateManyInlineInput>;
   contentImageTextContent?: InputMaybe<TextContentCreateManyInlineInput>;
@@ -1490,23 +1475,22 @@ export type AssetCreateInput = {
   heroImageProfile?: InputMaybe<ProfileCreateManyInlineInput>;
   imageBlog?: InputMaybe<BlogCreateManyInlineInput>;
   imageGalleryProfile?: InputMaybe<ProfileCreateManyInlineInput>;
-  imageNavigationItem?: InputMaybe<NavigationItemCreateManyInlineInput>;
-  labelLogoSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
+  imagePopup?: InputMaybe<PopupCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
-  logoImageLogoTable?: InputMaybe<LogoTableCreateManyInlineInput>;
-  logoSecondarySiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
   logoSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
-  memberMusicReleaseProfile?: InputMaybe<ProfileCreateManyInlineInput>;
   metaAppleTouchIconSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
   metaOgImageSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
   mimeType?: InputMaybe<Scalars['String']>;
+  navLogoNavigationItem?: InputMaybe<NavigationItemCreateManyInlineInput>;
   navigationLogoNavigation?: InputMaybe<NavigationCreateManyInlineInput>;
   parallaxImageLayoutSectionContent?: InputMaybe<LayoutBlockColumnCreateManyInlineInput>;
+  portfolioGalleryProfile?: InputMaybe<ProfileCreateManyInlineInput>;
   profileLogoProfile?: InputMaybe<ProfileCreateManyInlineInput>;
+  secondaryLogoSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
   size?: InputMaybe<Scalars['Float']>;
   sliderGalleryLayoutSectionContent?: InputMaybe<LayoutBlockColumnCreateManyInlineInput>;
-  sliderVideoBackgroundHomeVideoSlider?: InputMaybe<HeroMediaSliderCreateManyInlineInput>;
+  sliderMediaBackgroundHeroMediaSlider?: InputMaybe<HeroMediaSliderCreateManyInlineInput>;
   testimonialAvatarTestimonial?: InputMaybe<TestimonialCreateManyInlineInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   width?: InputMaybe<Scalars['Float']>;
@@ -1576,6 +1560,9 @@ export type AssetManyWhereInput = {
   blogGalleryBlog_every?: InputMaybe<BlogWhereInput>;
   blogGalleryBlog_none?: InputMaybe<BlogWhereInput>;
   blogGalleryBlog_some?: InputMaybe<BlogWhereInput>;
+  clientLogoLogoTable_every?: InputMaybe<LogoTableWhereInput>;
+  clientLogoLogoTable_none?: InputMaybe<LogoTableWhereInput>;
+  clientLogoLogoTable_some?: InputMaybe<LogoTableWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1635,21 +1622,9 @@ export type AssetManyWhereInput = {
   imageGalleryProfile_every?: InputMaybe<ProfileWhereInput>;
   imageGalleryProfile_none?: InputMaybe<ProfileWhereInput>;
   imageGalleryProfile_some?: InputMaybe<ProfileWhereInput>;
-  labelLogoSiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
-  labelLogoSiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
-  labelLogoSiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
-  logoImageLogoTable_every?: InputMaybe<LogoTableWhereInput>;
-  logoImageLogoTable_none?: InputMaybe<LogoTableWhereInput>;
-  logoImageLogoTable_some?: InputMaybe<LogoTableWhereInput>;
-  logoSecondarySiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
-  logoSecondarySiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
-  logoSecondarySiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
   logoSiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
   logoSiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
   logoSiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
-  memberMusicReleaseProfile_every?: InputMaybe<ProfileWhereInput>;
-  memberMusicReleaseProfile_none?: InputMaybe<ProfileWhereInput>;
-  memberMusicReleaseProfile_some?: InputMaybe<ProfileWhereInput>;
   metaAppleTouchIconSiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
   metaAppleTouchIconSiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
   metaAppleTouchIconSiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
@@ -1659,6 +1634,9 @@ export type AssetManyWhereInput = {
   navigationLogoNavigation_every?: InputMaybe<NavigationWhereInput>;
   navigationLogoNavigation_none?: InputMaybe<NavigationWhereInput>;
   navigationLogoNavigation_some?: InputMaybe<NavigationWhereInput>;
+  portfolioGalleryProfile_every?: InputMaybe<ProfileWhereInput>;
+  portfolioGalleryProfile_none?: InputMaybe<ProfileWhereInput>;
+  portfolioGalleryProfile_some?: InputMaybe<ProfileWhereInput>;
   profileLogoProfile_every?: InputMaybe<ProfileWhereInput>;
   profileLogoProfile_none?: InputMaybe<ProfileWhereInput>;
   profileLogoProfile_some?: InputMaybe<ProfileWhereInput>;
@@ -1681,6 +1659,9 @@ export type AssetManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  secondaryLogoSiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
+  secondaryLogoSiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
+  secondaryLogoSiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
   testimonialAvatarTestimonial_every?: InputMaybe<TestimonialWhereInput>;
   testimonialAvatarTestimonial_none?: InputMaybe<TestimonialWhereInput>;
   testimonialAvatarTestimonial_some?: InputMaybe<TestimonialWhereInput>;
@@ -1740,7 +1721,7 @@ export type AssetUpdateInput = {
   backgroundImageLayoutSectionContent?: InputMaybe<LayoutBlockColumnUpdateManyInlineInput>;
   blogGalleryBlog?: InputMaybe<BlogUpdateManyInlineInput>;
   boxImageGridBox?: InputMaybe<GridBoxUpdateManyInlineInput>;
-  categoryImageVideoCategory?: InputMaybe<VideoCategoryUpdateManyInlineInput>;
+  clientLogoLogoTable?: InputMaybe<LogoTableUpdateManyInlineInput>;
   contactAvatarContactList?: InputMaybe<ContactListUpdateManyInlineInput>;
   contentImageAccordionContent?: InputMaybe<AccordionUpdateManyInlineInput>;
   contentImageTextContent?: InputMaybe<TextContentUpdateManyInlineInput>;
@@ -1755,23 +1736,22 @@ export type AssetUpdateInput = {
   heroImageProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
   imageBlog?: InputMaybe<BlogUpdateManyInlineInput>;
   imageGalleryProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
-  imageNavigationItem?: InputMaybe<NavigationItemUpdateManyInlineInput>;
-  labelLogoSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
+  imagePopup?: InputMaybe<PopupUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
-  logoImageLogoTable?: InputMaybe<LogoTableUpdateManyInlineInput>;
-  logoSecondarySiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
   logoSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
-  memberMusicReleaseProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
   metaAppleTouchIconSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
   metaOgImageSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
   mimeType?: InputMaybe<Scalars['String']>;
+  navLogoNavigationItem?: InputMaybe<NavigationItemUpdateManyInlineInput>;
   navigationLogoNavigation?: InputMaybe<NavigationUpdateManyInlineInput>;
   parallaxImageLayoutSectionContent?: InputMaybe<LayoutBlockColumnUpdateManyInlineInput>;
+  portfolioGalleryProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
   profileLogoProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
+  secondaryLogoSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
   size?: InputMaybe<Scalars['Float']>;
   sliderGalleryLayoutSectionContent?: InputMaybe<LayoutBlockColumnUpdateManyInlineInput>;
-  sliderVideoBackgroundHomeVideoSlider?: InputMaybe<HeroMediaSliderUpdateManyInlineInput>;
+  sliderMediaBackgroundHeroMediaSlider?: InputMaybe<HeroMediaSliderUpdateManyInlineInput>;
   testimonialAvatarTestimonial?: InputMaybe<TestimonialUpdateManyInlineInput>;
   width?: InputMaybe<Scalars['Float']>;
 };
@@ -1919,6 +1899,9 @@ export type AssetWhereInput = {
   blogGalleryBlog_every?: InputMaybe<BlogWhereInput>;
   blogGalleryBlog_none?: InputMaybe<BlogWhereInput>;
   blogGalleryBlog_some?: InputMaybe<BlogWhereInput>;
+  clientLogoLogoTable_every?: InputMaybe<LogoTableWhereInput>;
+  clientLogoLogoTable_none?: InputMaybe<LogoTableWhereInput>;
+  clientLogoLogoTable_some?: InputMaybe<LogoTableWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -2031,21 +2014,9 @@ export type AssetWhereInput = {
   imageGalleryProfile_every?: InputMaybe<ProfileWhereInput>;
   imageGalleryProfile_none?: InputMaybe<ProfileWhereInput>;
   imageGalleryProfile_some?: InputMaybe<ProfileWhereInput>;
-  labelLogoSiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
-  labelLogoSiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
-  labelLogoSiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
-  logoImageLogoTable_every?: InputMaybe<LogoTableWhereInput>;
-  logoImageLogoTable_none?: InputMaybe<LogoTableWhereInput>;
-  logoImageLogoTable_some?: InputMaybe<LogoTableWhereInput>;
-  logoSecondarySiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
-  logoSecondarySiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
-  logoSecondarySiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
   logoSiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
   logoSiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
   logoSiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
-  memberMusicReleaseProfile_every?: InputMaybe<ProfileWhereInput>;
-  memberMusicReleaseProfile_none?: InputMaybe<ProfileWhereInput>;
-  memberMusicReleaseProfile_some?: InputMaybe<ProfileWhereInput>;
   metaAppleTouchIconSiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
   metaAppleTouchIconSiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
   metaAppleTouchIconSiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
@@ -2074,6 +2045,9 @@ export type AssetWhereInput = {
   navigationLogoNavigation_every?: InputMaybe<NavigationWhereInput>;
   navigationLogoNavigation_none?: InputMaybe<NavigationWhereInput>;
   navigationLogoNavigation_some?: InputMaybe<NavigationWhereInput>;
+  portfolioGalleryProfile_every?: InputMaybe<ProfileWhereInput>;
+  portfolioGalleryProfile_none?: InputMaybe<ProfileWhereInput>;
+  portfolioGalleryProfile_some?: InputMaybe<ProfileWhereInput>;
   profileLogoProfile_every?: InputMaybe<ProfileWhereInput>;
   profileLogoProfile_none?: InputMaybe<ProfileWhereInput>;
   profileLogoProfile_some?: InputMaybe<ProfileWhereInput>;
@@ -2096,6 +2070,9 @@ export type AssetWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  secondaryLogoSiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
+  secondaryLogoSiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
+  secondaryLogoSiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
   size?: InputMaybe<Scalars['Float']>;
   /** All values greater than the given value. */
   size_gt?: InputMaybe<Scalars['Float']>;
@@ -3412,6 +3389,7 @@ export type ContactForm = {
   __typename?: 'ContactForm';
   contactFormDescription?: Maybe<RichText>;
   contactFormTitle?: Maybe<Scalars['String']>;
+  /** theme-bg-white */
   cssClass?: Maybe<Scalars['String']>;
   hubspotFormId?: Maybe<Scalars['String']>;
   hubspotPortalId?: Maybe<Scalars['String']>;
@@ -5507,7 +5485,10 @@ export type EventWhereUniqueInput = {
 };
 
 export enum FontFamily {
-  Arial = 'arial'
+  Montserrat = 'Montserrat',
+  OpenSans = 'Open_Sans',
+  TimesNewRoman = 'Times_New_Roman',
+  Verdana = 'Verdana'
 }
 
 export type FooterColumn = {
@@ -6389,6 +6370,7 @@ export type HeroMediaSlider = {
   /** System stage field */
   stage: Stage;
   textContent?: Maybe<TextContent>;
+  youtubeVideoId?: Maybe<Scalars['String']>;
 };
 
 
@@ -6440,6 +6422,7 @@ export type HeroMediaSliderCreateInput = {
   sliderCssWrapper?: InputMaybe<Scalars['String']>;
   sliderMediaBackground?: InputMaybe<AssetCreateOneInlineInput>;
   textContent?: InputMaybe<TextContentCreateOneInlineInput>;
+  youtubeVideoId?: InputMaybe<Scalars['String']>;
 };
 
 export type HeroMediaSliderCreateManyInlineInput = {
@@ -6531,6 +6514,25 @@ export type HeroMediaSliderManyWhereInput = {
   sliderCssWrapper_starts_with?: InputMaybe<Scalars['String']>;
   sliderMediaBackground?: InputMaybe<AssetWhereInput>;
   textContent?: InputMaybe<TextContentWhereInput>;
+  youtubeVideoId?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  youtubeVideoId_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  youtubeVideoId_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  youtubeVideoId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  youtubeVideoId_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  youtubeVideoId_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  youtubeVideoId_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  youtubeVideoId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  youtubeVideoId_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  youtubeVideoId_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 export enum HeroMediaSliderOrderByInput {
@@ -6541,7 +6543,9 @@ export enum HeroMediaSliderOrderByInput {
   MediaTypeAsc = 'mediaType_ASC',
   MediaTypeDesc = 'mediaType_DESC',
   SliderCssWrapperAsc = 'sliderCssWrapper_ASC',
-  SliderCssWrapperDesc = 'sliderCssWrapper_DESC'
+  SliderCssWrapperDesc = 'sliderCssWrapper_DESC',
+  YoutubeVideoIdAsc = 'youtubeVideoId_ASC',
+  YoutubeVideoIdDesc = 'youtubeVideoId_DESC'
 }
 
 export type HeroMediaSliderParent = LayoutBlockColumn;
@@ -6629,6 +6633,7 @@ export type HeroMediaSliderUpdateInput = {
   sliderCssWrapper?: InputMaybe<Scalars['String']>;
   sliderMediaBackground?: InputMaybe<AssetUpdateOneInlineInput>;
   textContent?: InputMaybe<TextContentUpdateOneInlineInput>;
+  youtubeVideoId?: InputMaybe<Scalars['String']>;
 };
 
 export type HeroMediaSliderUpdateManyInlineInput = {
@@ -6646,6 +6651,7 @@ export type HeroMediaSliderUpdateManyInput = {
   displaySocialMedia?: InputMaybe<Scalars['Boolean']>;
   mediaType?: InputMaybe<MediaType>;
   sliderCssWrapper?: InputMaybe<Scalars['String']>;
+  youtubeVideoId?: InputMaybe<Scalars['String']>;
 };
 
 export type HeroMediaSliderUpdateManyWithNestedWhereInput = {
@@ -6768,6 +6774,25 @@ export type HeroMediaSliderWhereInput = {
   sliderCssWrapper_starts_with?: InputMaybe<Scalars['String']>;
   sliderMediaBackground?: InputMaybe<AssetWhereInput>;
   textContent?: InputMaybe<TextContentWhereInput>;
+  youtubeVideoId?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  youtubeVideoId_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  youtubeVideoId_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  youtubeVideoId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  youtubeVideoId_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  youtubeVideoId_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  youtubeVideoId_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  youtubeVideoId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  youtubeVideoId_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  youtubeVideoId_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 /** References HeroMediaSlider record uniquely */
@@ -6852,8 +6877,8 @@ export type LayoutBlockColumn = {
   cssClass?: Maybe<Scalars['String']>;
   displayAllMusic?: Maybe<Scalars['Boolean']>;
   displayFeaturedMusic?: Maybe<Scalars['Boolean']>;
-  /** Enter a username or URL to display the Instagram grid. */
   displayInstagramSectionUsername?: Maybe<Scalars['String']>;
+  displayProduct?: Maybe<ProductType>;
   eventDisplayLayout?: Maybe<EventDisplayType>;
   gallery: Array<Asset>;
   galleryLayout?: Maybe<GalleryLayout>;
@@ -7026,6 +7051,7 @@ export type LayoutBlockColumnCreateInput = {
   displayAllMusic?: InputMaybe<Scalars['Boolean']>;
   displayFeaturedMusic?: InputMaybe<Scalars['Boolean']>;
   displayInstagramSectionUsername?: InputMaybe<Scalars['String']>;
+  displayProduct?: InputMaybe<ProductType>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
   gallery?: InputMaybe<AssetCreateManyInlineInput>;
   galleryLayout?: InputMaybe<GalleryLayout>;
@@ -7166,6 +7192,13 @@ export type LayoutBlockColumnManyWhereInput = {
   displayInstagramSectionUsername_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   displayInstagramSectionUsername_starts_with?: InputMaybe<Scalars['String']>;
+  displayProduct?: InputMaybe<ProductType>;
+  /** All values that are contained in given list. */
+  displayProduct_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  displayProduct_not?: InputMaybe<ProductType>;
+  /** All values that are not contained in given list. */
+  displayProduct_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
   /** All values that are contained in given list. */
   eventDisplayLayout_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
@@ -7432,6 +7465,8 @@ export enum LayoutBlockColumnOrderByInput {
   DisplayFeaturedMusicDesc = 'displayFeaturedMusic_DESC',
   DisplayInstagramSectionUsernameAsc = 'displayInstagramSectionUsername_ASC',
   DisplayInstagramSectionUsernameDesc = 'displayInstagramSectionUsername_DESC',
+  DisplayProductAsc = 'displayProduct_ASC',
+  DisplayProductDesc = 'displayProduct_DESC',
   EventDisplayLayoutAsc = 'eventDisplayLayout_ASC',
   EventDisplayLayoutDesc = 'eventDisplayLayout_DESC',
   GalleryLayoutAsc = 'galleryLayout_ASC',
@@ -7557,6 +7592,7 @@ export type LayoutBlockColumnUpdateInput = {
   displayAllMusic?: InputMaybe<Scalars['Boolean']>;
   displayFeaturedMusic?: InputMaybe<Scalars['Boolean']>;
   displayInstagramSectionUsername?: InputMaybe<Scalars['String']>;
+  displayProduct?: InputMaybe<ProductType>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
   gallery?: InputMaybe<AssetUpdateManyInlineInput>;
   galleryLayout?: InputMaybe<GalleryLayout>;
@@ -7599,6 +7635,7 @@ export type LayoutBlockColumnUpdateManyInput = {
   displayAllMusic?: InputMaybe<Scalars['Boolean']>;
   displayFeaturedMusic?: InputMaybe<Scalars['Boolean']>;
   displayInstagramSectionUsername?: InputMaybe<Scalars['String']>;
+  displayProduct?: InputMaybe<ProductType>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
   galleryLayout?: InputMaybe<GalleryLayout>;
   hideBlockColumn?: InputMaybe<Scalars['Boolean']>;
@@ -7764,6 +7801,13 @@ export type LayoutBlockColumnWhereInput = {
   displayInstagramSectionUsername_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   displayInstagramSectionUsername_starts_with?: InputMaybe<Scalars['String']>;
+  displayProduct?: InputMaybe<ProductType>;
+  /** All values that are contained in given list. */
+  displayProduct_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  displayProduct_not?: InputMaybe<ProductType>;
+  /** All values that are not contained in given list. */
+  displayProduct_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
   /** All values that are contained in given list. */
   eventDisplayLayout_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
@@ -8506,8 +8550,11 @@ export type LogoTableEdge = {
   node: LogoTable;
 };
 
+/** Logo Type */
 export enum LogoTableItem {
-  Sponsor = 'sponsor'
+  Client = 'Client',
+  Partner = 'Partner',
+  Venture = 'Venture'
 }
 
 /** Identifies documents */
@@ -8657,231 +8704,6 @@ export enum LogoTableOrderByInput {
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC'
 }
-
-export type LogoTableSection = {
-  __typename?: 'LogoTableSection';
-  /** The unique identifier */
-  id: Scalars['ID'];
-  logoTableQuery?: Maybe<LogoTableItem>;
-  logoTableTitle?: Maybe<Scalars['String']>;
-  /** System stage field */
-  stage: Stage;
-};
-
-/** A connection to a list of items. */
-export type LogoTableSectionConnection = {
-  __typename?: 'LogoTableSectionConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<LogoTableSectionEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type LogoTableSectionCreateInput = {
-  logoTableQuery?: InputMaybe<LogoTableItem>;
-  logoTableTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type LogoTableSectionCreateWithPositionInput = {
-  /** Document to create */
-  data: LogoTableSectionCreateInput;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-};
-
-/** An edge in a connection. */
-export type LogoTableSectionEdge = {
-  __typename?: 'LogoTableSectionEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: LogoTableSection;
-};
-
-/** Identifies documents */
-export type LogoTableSectionManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<LogoTableSectionWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<LogoTableSectionWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<LogoTableSectionWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  logoTableQuery?: InputMaybe<LogoTableItem>;
-  /** All values that are contained in given list. */
-  logoTableQuery_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  logoTableQuery_not?: InputMaybe<LogoTableItem>;
-  /** All values that are not contained in given list. */
-  logoTableQuery_not_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
-  logoTableTitle?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  logoTableTitle_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  logoTableTitle_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  logoTableTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  logoTableTitle_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  logoTableTitle_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  logoTableTitle_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  logoTableTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  logoTableTitle_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  logoTableTitle_starts_with?: InputMaybe<Scalars['String']>;
-};
-
-export enum LogoTableSectionOrderByInput {
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  LogoTableQueryAsc = 'logoTableQuery_ASC',
-  LogoTableQueryDesc = 'logoTableQuery_DESC',
-  LogoTableTitleAsc = 'logoTableTitle_ASC',
-  LogoTableTitleDesc = 'logoTableTitle_DESC'
-}
-
-export type LogoTableSectionUpdateInput = {
-  logoTableQuery?: InputMaybe<LogoTableItem>;
-  logoTableTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type LogoTableSectionUpdateManyInput = {
-  logoTableQuery?: InputMaybe<LogoTableItem>;
-  logoTableTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type LogoTableSectionUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: LogoTableSectionUpdateManyInput;
-  /** Document search */
-  where: LogoTableSectionWhereInput;
-};
-
-export type LogoTableSectionUpdateWithNestedWhereUniqueAndPositionInput = {
-  /** Document to update */
-  data?: InputMaybe<LogoTableSectionUpdateInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: LogoTableSectionWhereUniqueInput;
-};
-
-export type LogoTableSectionUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: LogoTableSectionUpdateInput;
-  /** Unique document search */
-  where: LogoTableSectionWhereUniqueInput;
-};
-
-export type LogoTableSectionUpsertInput = {
-  /** Create document if it didn't exist */
-  create: LogoTableSectionCreateInput;
-  /** Update document if it exists */
-  update: LogoTableSectionUpdateInput;
-};
-
-export type LogoTableSectionUpsertWithNestedWhereUniqueAndPositionInput = {
-  /** Document to upsert */
-  data?: InputMaybe<LogoTableSectionUpsertInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: LogoTableSectionWhereUniqueInput;
-};
-
-export type LogoTableSectionUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: LogoTableSectionUpsertInput;
-  /** Unique document search */
-  where: LogoTableSectionWhereUniqueInput;
-};
-
-/** Identifies documents */
-export type LogoTableSectionWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<LogoTableSectionWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<LogoTableSectionWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<LogoTableSectionWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  logoTableQuery?: InputMaybe<LogoTableItem>;
-  /** All values that are contained in given list. */
-  logoTableQuery_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  logoTableQuery_not?: InputMaybe<LogoTableItem>;
-  /** All values that are not contained in given list. */
-  logoTableQuery_not_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
-  logoTableTitle?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  logoTableTitle_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  logoTableTitle_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  logoTableTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  logoTableTitle_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  logoTableTitle_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  logoTableTitle_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  logoTableTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  logoTableTitle_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  logoTableTitle_starts_with?: InputMaybe<Scalars['String']>;
-};
-
-/** References LogoTableSection record uniquely */
-export type LogoTableSectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']>;
-};
 
 export type LogoTableUpdateInput = {
   logoImage?: InputMaybe<AssetUpdateOneInlineInput>;
@@ -10802,6 +10624,7 @@ export type Navigation = Node & {
   /** Get the document in other stages */
   documentInStages: Array<Navigation>;
   footerColumns: Array<FooterColumn>;
+  /** ie: terms, privacy, etc */
   footerItems: Array<NavigationItem>;
   /** List of Navigation versions */
   history: Array<Version>;
@@ -11609,6 +11432,7 @@ export type NavigationUpdateManyInlineInput = {
 
 export type NavigationUpdateManyInput = {
   navigationLayoutStyle?: InputMaybe<NavigationLayout>;
+  pageNavigationSelection?: InputMaybe<PageNavigationSelection>;
 };
 
 export type NavigationUpdateManyWithNestedWhereInput = {
@@ -11786,7 +11610,6 @@ export type NavigationWhereStageInput = {
 /** References Navigation record uniquely */
 export type NavigationWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
-  pageNavigationSelection?: InputMaybe<PageNavigationSelection>;
 };
 
 export enum NetlifyFormFields {
@@ -11826,6 +11649,7 @@ export type Page = Node & {
   pageSlug?: Maybe<Scalars['String']>;
   pageWidthStyle?: Maybe<PageWidthStyle>;
   parentPage?: Maybe<ParentPage>;
+  popup?: Maybe<Popup>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -11883,6 +11707,12 @@ export type PageLayoutBlocksArgs = {
 };
 
 
+export type PagePopupArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
 export type PagePublishedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
@@ -11935,6 +11765,7 @@ export type PageCreateInput = {
   pageSlug?: InputMaybe<Scalars['String']>;
   pageWidthStyle?: InputMaybe<PageWidthStyle>;
   parentPage?: InputMaybe<ParentPage>;
+  popup?: InputMaybe<PopupCreateOneInlineInput>;
   setHomePage?: InputMaybe<Scalars['Boolean']>;
   subtitle?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
@@ -12090,6 +11921,7 @@ export type PageManyWhereInput = {
   parentPage_not?: InputMaybe<ParentPage>;
   /** All values that are not contained in given list. */
   parentPage_not_in?: InputMaybe<Array<InputMaybe<ParentPage>>>;
+  popup?: InputMaybe<PopupWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -12236,6 +12068,7 @@ export type PageUpdateInput = {
   pageSlug?: InputMaybe<Scalars['String']>;
   pageWidthStyle?: InputMaybe<PageWidthStyle>;
   parentPage?: InputMaybe<ParentPage>;
+  popup?: InputMaybe<PopupUpdateOneInlineInput>;
   setHomePage?: InputMaybe<Scalars['Boolean']>;
   subtitle?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
@@ -12431,6 +12264,7 @@ export type PageWhereInput = {
   parentPage_not?: InputMaybe<ParentPage>;
   /** All values that are not contained in given list. */
   parentPage_not_in?: InputMaybe<Array<InputMaybe<ParentPage>>>;
+  popup?: InputMaybe<PopupWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -12555,7 +12389,631 @@ export enum PageWidthStyle {
 }
 
 export enum ParentPage {
+  Catalog = 'catalog',
+  Course = 'course',
   Service = 'service'
+}
+
+export type Popup = {
+  __typename?: 'Popup';
+  actionLabel?: Maybe<Scalars['String']>;
+  actionLink?: Maybe<Scalars['String']>;
+  actionOpenModal?: Maybe<Scalars['Boolean']>;
+  backgroundColor?: Maybe<Color>;
+  content?: Maybe<Scalars['String']>;
+  contentAlign?: Maybe<ContentAlign>;
+  /** Seconds popup lasts for - default is 30 seconds */
+  duration?: Maybe<Scalars['Int']>;
+  header?: Maybe<Scalars['String']>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  image?: Maybe<Asset>;
+  popupPosition: PopupPosition;
+  /** System stage field */
+  stage: Stage;
+  subHeader?: Maybe<Scalars['String']>;
+};
+
+
+export type PopupImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type PopupConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: PopupWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type PopupConnection = {
+  __typename?: 'PopupConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<PopupEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type PopupCreateInput = {
+  actionLabel?: InputMaybe<Scalars['String']>;
+  actionLink?: InputMaybe<Scalars['String']>;
+  actionOpenModal?: InputMaybe<Scalars['Boolean']>;
+  backgroundColor?: InputMaybe<ColorInput>;
+  content?: InputMaybe<Scalars['String']>;
+  contentAlign?: InputMaybe<ContentAlign>;
+  duration?: InputMaybe<Scalars['Int']>;
+  header?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<AssetCreateOneInlineInput>;
+  popupPosition: PopupPosition;
+  subHeader?: InputMaybe<Scalars['String']>;
+};
+
+export type PopupCreateManyInlineInput = {
+  /** Create and connect multiple existing Popup documents */
+  create?: InputMaybe<Array<PopupCreateInput>>;
+};
+
+export type PopupCreateOneInlineInput = {
+  /** Create and connect one Popup document */
+  create?: InputMaybe<PopupCreateInput>;
+};
+
+export type PopupCreateWithPositionInput = {
+  /** Document to create */
+  data: PopupCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type PopupEdge = {
+  __typename?: 'PopupEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Popup;
+};
+
+/** Identifies documents */
+export type PopupManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<PopupWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<PopupWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<PopupWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  actionLabel?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  actionLabel_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  actionLabel_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  actionLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  actionLabel_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  actionLabel_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  actionLabel_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  actionLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  actionLabel_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  actionLabel_starts_with?: InputMaybe<Scalars['String']>;
+  actionLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  actionLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  actionLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  actionLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  actionLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  actionLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  actionLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  actionLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  actionLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  actionLink_starts_with?: InputMaybe<Scalars['String']>;
+  actionOpenModal?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  actionOpenModal_not?: InputMaybe<Scalars['Boolean']>;
+  content?: InputMaybe<Scalars['String']>;
+  contentAlign?: InputMaybe<ContentAlign>;
+  /** All values that are contained in given list. */
+  contentAlign_in?: InputMaybe<Array<InputMaybe<ContentAlign>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contentAlign_not?: InputMaybe<ContentAlign>;
+  /** All values that are not contained in given list. */
+  contentAlign_not_in?: InputMaybe<Array<InputMaybe<ContentAlign>>>;
+  /** All values containing the given string. */
+  content_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  content_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  content_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  content_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  content_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  content_starts_with?: InputMaybe<Scalars['String']>;
+  duration?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  duration_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  duration_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  duration_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  /** All values less than the given value. */
+  duration_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  duration_lte?: InputMaybe<Scalars['Int']>;
+  /** Any other value that exists and is not equal to the given value. */
+  duration_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  duration_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  header?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  header_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  header_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  header_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  header_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  header_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  header_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  header_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  header_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  header_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<AssetWhereInput>;
+  popupPosition?: InputMaybe<PopupPosition>;
+  /** All values that are contained in given list. */
+  popupPosition_in?: InputMaybe<Array<InputMaybe<PopupPosition>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  popupPosition_not?: InputMaybe<PopupPosition>;
+  /** All values that are not contained in given list. */
+  popupPosition_not_in?: InputMaybe<Array<InputMaybe<PopupPosition>>>;
+  subHeader?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  subHeader_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  subHeader_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  subHeader_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  subHeader_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  subHeader_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  subHeader_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  subHeader_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  subHeader_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  subHeader_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+export enum PopupOrderByInput {
+  ActionLabelAsc = 'actionLabel_ASC',
+  ActionLabelDesc = 'actionLabel_DESC',
+  ActionLinkAsc = 'actionLink_ASC',
+  ActionLinkDesc = 'actionLink_DESC',
+  ActionOpenModalAsc = 'actionOpenModal_ASC',
+  ActionOpenModalDesc = 'actionOpenModal_DESC',
+  ContentAlignAsc = 'contentAlign_ASC',
+  ContentAlignDesc = 'contentAlign_DESC',
+  ContentAsc = 'content_ASC',
+  ContentDesc = 'content_DESC',
+  DurationAsc = 'duration_ASC',
+  DurationDesc = 'duration_DESC',
+  HeaderAsc = 'header_ASC',
+  HeaderDesc = 'header_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PopupPositionAsc = 'popupPosition_ASC',
+  PopupPositionDesc = 'popupPosition_DESC',
+  SubHeaderAsc = 'subHeader_ASC',
+  SubHeaderDesc = 'subHeader_DESC'
+}
+
+export type PopupParent = Page;
+
+export type PopupParentConnectInput = {
+  Page?: InputMaybe<PageConnectInput>;
+};
+
+export type PopupParentCreateInput = {
+  Page?: InputMaybe<PageCreateInput>;
+};
+
+export type PopupParentCreateManyInlineInput = {
+  /** Connect multiple existing PopupParent documents */
+  connect?: InputMaybe<Array<PopupParentWhereUniqueInput>>;
+  /** Create and connect multiple existing PopupParent documents */
+  create?: InputMaybe<Array<PopupParentCreateInput>>;
+};
+
+export type PopupParentCreateOneInlineInput = {
+  /** Connect one existing PopupParent document */
+  connect?: InputMaybe<PopupParentWhereUniqueInput>;
+  /** Create and connect one PopupParent document */
+  create?: InputMaybe<PopupParentCreateInput>;
+};
+
+export type PopupParentUpdateInput = {
+  Page?: InputMaybe<PageUpdateInput>;
+};
+
+export type PopupParentUpdateManyInlineInput = {
+  /** Connect multiple existing PopupParent documents */
+  connect?: InputMaybe<Array<PopupParentConnectInput>>;
+  /** Create and connect multiple PopupParent documents */
+  create?: InputMaybe<Array<PopupParentCreateInput>>;
+  /** Delete multiple PopupParent documents */
+  delete?: InputMaybe<Array<PopupParentWhereUniqueInput>>;
+  /** Disconnect multiple PopupParent documents */
+  disconnect?: InputMaybe<Array<PopupParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing PopupParent documents */
+  set?: InputMaybe<Array<PopupParentWhereUniqueInput>>;
+  /** Update multiple PopupParent documents */
+  update?: InputMaybe<Array<PopupParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple PopupParent documents */
+  upsert?: InputMaybe<Array<PopupParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type PopupParentUpdateManyWithNestedWhereInput = {
+  Page?: InputMaybe<PageUpdateManyWithNestedWhereInput>;
+};
+
+export type PopupParentUpdateOneInlineInput = {
+  /** Connect existing PopupParent document */
+  connect?: InputMaybe<PopupParentWhereUniqueInput>;
+  /** Create and connect one PopupParent document */
+  create?: InputMaybe<PopupParentCreateInput>;
+  /** Delete currently connected PopupParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected PopupParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single PopupParent document */
+  update?: InputMaybe<PopupParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single PopupParent document */
+  upsert?: InputMaybe<PopupParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type PopupParentUpdateWithNestedWhereUniqueInput = {
+  Page?: InputMaybe<PageUpdateWithNestedWhereUniqueInput>;
+};
+
+export type PopupParentUpsertWithNestedWhereUniqueInput = {
+  Page?: InputMaybe<PageUpsertWithNestedWhereUniqueInput>;
+};
+
+export type PopupParentWhereInput = {
+  Page?: InputMaybe<PageWhereInput>;
+};
+
+export type PopupParentWhereUniqueInput = {
+  Page?: InputMaybe<PageWhereUniqueInput>;
+};
+
+export enum PopupPosition {
+  Bottom = 'bottom',
+  BottomCenter = 'bottom_center',
+  BottomLeft = 'bottom_left',
+  BottomRight = 'bottom_right',
+  Center = 'center',
+  Left = 'left',
+  Right = 'right',
+  Top = 'top',
+  TopCenter = 'top_center',
+  TopLeft = 'top_left',
+  TopRight = 'top_right'
+}
+
+export type PopupUpdateInput = {
+  actionLabel?: InputMaybe<Scalars['String']>;
+  actionLink?: InputMaybe<Scalars['String']>;
+  actionOpenModal?: InputMaybe<Scalars['Boolean']>;
+  backgroundColor?: InputMaybe<ColorInput>;
+  content?: InputMaybe<Scalars['String']>;
+  contentAlign?: InputMaybe<ContentAlign>;
+  duration?: InputMaybe<Scalars['Int']>;
+  header?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<AssetUpdateOneInlineInput>;
+  popupPosition?: InputMaybe<PopupPosition>;
+  subHeader?: InputMaybe<Scalars['String']>;
+};
+
+export type PopupUpdateManyInlineInput = {
+  /** Create and connect multiple Popup component instances */
+  create?: InputMaybe<Array<PopupCreateWithPositionInput>>;
+  /** Delete multiple Popup documents */
+  delete?: InputMaybe<Array<PopupWhereUniqueInput>>;
+  /** Update multiple Popup component instances */
+  update?: InputMaybe<Array<PopupUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple Popup component instances */
+  upsert?: InputMaybe<Array<PopupUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type PopupUpdateManyInput = {
+  actionLabel?: InputMaybe<Scalars['String']>;
+  actionLink?: InputMaybe<Scalars['String']>;
+  actionOpenModal?: InputMaybe<Scalars['Boolean']>;
+  backgroundColor?: InputMaybe<ColorInput>;
+  content?: InputMaybe<Scalars['String']>;
+  contentAlign?: InputMaybe<ContentAlign>;
+  duration?: InputMaybe<Scalars['Int']>;
+  header?: InputMaybe<Scalars['String']>;
+  popupPosition?: InputMaybe<PopupPosition>;
+  subHeader?: InputMaybe<Scalars['String']>;
+};
+
+export type PopupUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: PopupUpdateManyInput;
+  /** Document search */
+  where: PopupWhereInput;
+};
+
+export type PopupUpdateOneInlineInput = {
+  /** Create and connect one Popup document */
+  create?: InputMaybe<PopupCreateInput>;
+  /** Delete currently connected Popup document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Popup document */
+  update?: InputMaybe<PopupUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Popup document */
+  upsert?: InputMaybe<PopupUpsertWithNestedWhereUniqueInput>;
+};
+
+export type PopupUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<PopupUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: PopupWhereUniqueInput;
+};
+
+export type PopupUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: PopupUpdateInput;
+  /** Unique document search */
+  where: PopupWhereUniqueInput;
+};
+
+export type PopupUpsertInput = {
+  /** Create document if it didn't exist */
+  create: PopupCreateInput;
+  /** Update document if it exists */
+  update: PopupUpdateInput;
+};
+
+export type PopupUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<PopupUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: PopupWhereUniqueInput;
+};
+
+export type PopupUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: PopupUpsertInput;
+  /** Unique document search */
+  where: PopupWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type PopupWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<PopupWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<PopupWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<PopupWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  actionLabel?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  actionLabel_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  actionLabel_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  actionLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  actionLabel_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  actionLabel_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  actionLabel_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  actionLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  actionLabel_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  actionLabel_starts_with?: InputMaybe<Scalars['String']>;
+  actionLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  actionLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  actionLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  actionLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  actionLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  actionLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  actionLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  actionLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  actionLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  actionLink_starts_with?: InputMaybe<Scalars['String']>;
+  actionOpenModal?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  actionOpenModal_not?: InputMaybe<Scalars['Boolean']>;
+  content?: InputMaybe<Scalars['String']>;
+  contentAlign?: InputMaybe<ContentAlign>;
+  /** All values that are contained in given list. */
+  contentAlign_in?: InputMaybe<Array<InputMaybe<ContentAlign>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contentAlign_not?: InputMaybe<ContentAlign>;
+  /** All values that are not contained in given list. */
+  contentAlign_not_in?: InputMaybe<Array<InputMaybe<ContentAlign>>>;
+  /** All values containing the given string. */
+  content_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  content_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  content_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  content_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  content_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  content_starts_with?: InputMaybe<Scalars['String']>;
+  duration?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  duration_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  duration_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  duration_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  /** All values less than the given value. */
+  duration_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  duration_lte?: InputMaybe<Scalars['Int']>;
+  /** Any other value that exists and is not equal to the given value. */
+  duration_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  duration_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  header?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  header_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  header_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  header_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  header_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  header_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  header_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  header_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  header_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  header_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<AssetWhereInput>;
+  popupPosition?: InputMaybe<PopupPosition>;
+  /** All values that are contained in given list. */
+  popupPosition_in?: InputMaybe<Array<InputMaybe<PopupPosition>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  popupPosition_not?: InputMaybe<PopupPosition>;
+  /** All values that are not contained in given list. */
+  popupPosition_not_in?: InputMaybe<Array<InputMaybe<PopupPosition>>>;
+  subHeader?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  subHeader_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  subHeader_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  subHeader_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  subHeader_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  subHeader_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  subHeader_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  subHeader_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  subHeader_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  subHeader_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+/** References Popup record uniquely */
+export type PopupWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+export enum ProductType {
+  Imedia = 'imedia'
 }
 
 export type Profile = Node & {
@@ -12583,12 +13041,12 @@ export type Profile = Node & {
   imageGallery: Array<Asset>;
   instagramLink?: Maybe<Scalars['String']>;
   linkedinLink?: Maybe<Scalars['String']>;
-  memberMusicRelease: Array<Asset>;
   miniBio?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   order?: Maybe<Scalars['Int']>;
   pandoraLink?: Maybe<Scalars['String']>;
   phoneNumber?: Maybe<Scalars['String']>;
+  portfolioGallery: Array<Asset>;
   primaryProfile?: Maybe<Scalars['Boolean']>;
   profileJson?: Maybe<Scalars['Json']>;
   profileLogo?: Maybe<Asset>;
@@ -12677,7 +13135,7 @@ export type ProfileImageGalleryArgs = {
 };
 
 
-export type ProfileMemberMusicReleaseArgs = {
+export type ProfilePortfolioGalleryArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
@@ -12764,12 +13222,12 @@ export type ProfileCreateInput = {
   imageGallery?: InputMaybe<AssetCreateManyInlineInput>;
   instagramLink?: InputMaybe<Scalars['String']>;
   linkedinLink?: InputMaybe<Scalars['String']>;
-  memberMusicRelease?: InputMaybe<AssetCreateManyInlineInput>;
   miniBio?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   order?: InputMaybe<Scalars['Int']>;
   pandoraLink?: InputMaybe<Scalars['String']>;
   phoneNumber?: InputMaybe<Scalars['String']>;
+  portfolioGallery?: InputMaybe<AssetCreateManyInlineInput>;
   primaryProfile?: InputMaybe<Scalars['Boolean']>;
   profileJson?: InputMaybe<Scalars['Json']>;
   profileLogo?: InputMaybe<AssetCreateOneInlineInput>;
@@ -13025,9 +13483,6 @@ export type ProfileManyWhereInput = {
   linkedinLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   linkedinLink_starts_with?: InputMaybe<Scalars['String']>;
-  memberMusicRelease_every?: InputMaybe<AssetWhereInput>;
-  memberMusicRelease_none?: InputMaybe<AssetWhereInput>;
-  memberMusicRelease_some?: InputMaybe<AssetWhereInput>;
   miniBio?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   miniBio_contains?: InputMaybe<Scalars['String']>;
@@ -13119,6 +13574,9 @@ export type ProfileManyWhereInput = {
   phoneNumber_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   phoneNumber_starts_with?: InputMaybe<Scalars['String']>;
+  portfolioGallery_every?: InputMaybe<AssetWhereInput>;
+  portfolioGallery_none?: InputMaybe<AssetWhereInput>;
+  portfolioGallery_some?: InputMaybe<AssetWhereInput>;
   primaryProfile?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
   primaryProfile_not?: InputMaybe<Scalars['Boolean']>;
@@ -13465,12 +13923,12 @@ export type ProfileUpdateInput = {
   imageGallery?: InputMaybe<AssetUpdateManyInlineInput>;
   instagramLink?: InputMaybe<Scalars['String']>;
   linkedinLink?: InputMaybe<Scalars['String']>;
-  memberMusicRelease?: InputMaybe<AssetUpdateManyInlineInput>;
   miniBio?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   order?: InputMaybe<Scalars['Int']>;
   pandoraLink?: InputMaybe<Scalars['String']>;
   phoneNumber?: InputMaybe<Scalars['String']>;
+  portfolioGallery?: InputMaybe<AssetUpdateManyInlineInput>;
   primaryProfile?: InputMaybe<Scalars['Boolean']>;
   profileJson?: InputMaybe<Scalars['Json']>;
   profileLogo?: InputMaybe<AssetUpdateOneInlineInput>;
@@ -13793,9 +14251,6 @@ export type ProfileWhereInput = {
   linkedinLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   linkedinLink_starts_with?: InputMaybe<Scalars['String']>;
-  memberMusicRelease_every?: InputMaybe<AssetWhereInput>;
-  memberMusicRelease_none?: InputMaybe<AssetWhereInput>;
-  memberMusicRelease_some?: InputMaybe<AssetWhereInput>;
   miniBio?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   miniBio_contains?: InputMaybe<Scalars['String']>;
@@ -13887,6 +14342,9 @@ export type ProfileWhereInput = {
   phoneNumber_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   phoneNumber_starts_with?: InputMaybe<Scalars['String']>;
+  portfolioGallery_every?: InputMaybe<AssetWhereInput>;
+  portfolioGallery_none?: InputMaybe<AssetWhereInput>;
+  portfolioGallery_some?: InputMaybe<AssetWhereInput>;
   primaryProfile?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
   primaryProfile_not?: InputMaybe<Scalars['Boolean']>;
@@ -14178,10 +14636,7 @@ export type ProfileWhereUniqueInput = {
 
 export enum ProfilesSelect {
   Admin = 'Admin',
-  Artist = 'Artist',
-  SecondaryArtist = 'SecondaryArtist',
-  Staff = 'Staff',
-  Talent = 'Talent'
+  Staff = 'Staff'
 }
 
 export type PublishLocaleInput = {
@@ -14799,8 +15254,7 @@ export type RgbaInput = {
 };
 
 export enum ReleaseType {
-  Album = 'Album',
-  Single = 'Single'
+  Single = 'single'
 }
 
 /** Custom type representing a rich text value comprising of raw rich text ast, html, markdown and text values */
@@ -16139,10 +16593,9 @@ export type SiteLibrary = Node & {
   __typename?: 'SiteLibrary';
   analyticsId?: Maybe<Scalars['String']>;
   appleMusicLink?: Maybe<Scalars['String']>;
-  bandsInTownEmailWidget?: Maybe<Scalars['String']>;
-  bookingEmailOne?: Maybe<Scalars['String']>;
-  bookingNameOne?: Maybe<Scalars['String']>;
-  bookingPhoneOne?: Maybe<Scalars['String']>;
+  contactEmail?: Maybe<Scalars['String']>;
+  contactName?: Maybe<Scalars['String']>;
+  contactPhone?: Maybe<Scalars['String']>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -16158,21 +16611,14 @@ export type SiteLibrary = Node & {
   id: Scalars['ID'];
   instagramLink?: Maybe<Scalars['String']>;
   isSpanish?: Maybe<Scalars['Boolean']>;
-  labelLink?: Maybe<Scalars['String']>;
-  labelLogo?: Maybe<Asset>;
-  labelName?: Maybe<Scalars['String']>;
   linkedinLink?: Maybe<Scalars['String']>;
   logo?: Maybe<Asset>;
-  logoSecondary?: Maybe<Asset>;
-  logoSecondaryLink?: Maybe<Scalars['String']>;
   mailchimp?: Maybe<Scalars['String']>;
   metaAppleTouchIcon?: Maybe<Asset>;
   metaDescription?: Maybe<Scalars['String']>;
   metaDomain?: Maybe<Scalars['String']>;
   metaGoogleConsoleVerification?: Maybe<Scalars['String']>;
   metaOgImage?: Maybe<Asset>;
-  miniBio?: Maybe<Scalars['String']>;
-  navigation?: Maybe<Scalars['Json']>;
   pandoraLink?: Maybe<Scalars['String']>;
   paypalClientId?: Maybe<Scalars['String']>;
   pinterestLink?: Maybe<Scalars['String']>;
@@ -16181,6 +16627,9 @@ export type SiteLibrary = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
+  secondaryLink?: Maybe<Scalars['String']>;
+  secondaryLogo?: Maybe<Asset>;
+  secondaryName?: Maybe<Scalars['String']>;
   signature?: Maybe<Scalars['String']>;
   /** CSS Class added to body */
   siteCssBodyClass?: Maybe<Scalars['String']>;
@@ -16191,11 +16640,7 @@ export type SiteLibrary = Node & {
   spotifyLink?: Maybe<Scalars['String']>;
   /** System stage field */
   stage: Stage;
-  /**
-   * Theme Colors
-   *
-   */
-  themeColor: RootColor;
+  themeColor?: Maybe<RootColor>;
   threadsLink?: Maybe<Scalars['String']>;
   tikTokLink?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -16206,8 +16651,6 @@ export type SiteLibrary = Node & {
   updatedBy?: Maybe<User>;
   youtubeApiKey: Scalars['String'];
   youtubeLink?: Maybe<Scalars['String']>;
-  /** Youtube Playlist ID only */
-  youtubePlaylistId?: Maybe<Scalars['String']>;
 };
 
 
@@ -16237,19 +16680,7 @@ export type SiteLibraryHistoryArgs = {
 };
 
 
-export type SiteLibraryLabelLogoArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
 export type SiteLibraryLogoArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type SiteLibraryLogoSecondaryArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
@@ -16285,6 +16716,12 @@ export type SiteLibraryScheduledInArgs = {
 };
 
 
+export type SiteLibrarySecondaryLogoArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
 export type SiteLibraryThemeColorArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
@@ -16316,34 +16753,29 @@ export type SiteLibraryConnection = {
 export type SiteLibraryCreateInput = {
   analyticsId?: InputMaybe<Scalars['String']>;
   appleMusicLink?: InputMaybe<Scalars['String']>;
-  bandsInTownEmailWidget?: InputMaybe<Scalars['String']>;
-  bookingEmailOne?: InputMaybe<Scalars['String']>;
-  bookingNameOne?: InputMaybe<Scalars['String']>;
-  bookingPhoneOne?: InputMaybe<Scalars['String']>;
+  contactEmail?: InputMaybe<Scalars['String']>;
+  contactName?: InputMaybe<Scalars['String']>;
+  contactPhone?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   facebookLink?: InputMaybe<Scalars['String']>;
   favicon?: InputMaybe<AssetCreateOneInlineInput>;
   githubLink?: InputMaybe<Scalars['String']>;
   instagramLink?: InputMaybe<Scalars['String']>;
   isSpanish?: InputMaybe<Scalars['Boolean']>;
-  labelLink?: InputMaybe<Scalars['String']>;
-  labelLogo?: InputMaybe<AssetCreateOneInlineInput>;
-  labelName?: InputMaybe<Scalars['String']>;
   linkedinLink?: InputMaybe<Scalars['String']>;
   logo?: InputMaybe<AssetCreateOneInlineInput>;
-  logoSecondary?: InputMaybe<AssetCreateOneInlineInput>;
-  logoSecondaryLink?: InputMaybe<Scalars['String']>;
   mailchimp?: InputMaybe<Scalars['String']>;
   metaAppleTouchIcon?: InputMaybe<AssetCreateOneInlineInput>;
   metaDescription?: InputMaybe<Scalars['String']>;
   metaDomain?: InputMaybe<Scalars['String']>;
   metaGoogleConsoleVerification?: InputMaybe<Scalars['String']>;
   metaOgImage?: InputMaybe<AssetCreateOneInlineInput>;
-  miniBio?: InputMaybe<Scalars['String']>;
-  navigation?: InputMaybe<Scalars['Json']>;
   pandoraLink?: InputMaybe<Scalars['String']>;
   paypalClientId?: InputMaybe<Scalars['String']>;
   pinterestLink?: InputMaybe<Scalars['String']>;
+  secondaryLink?: InputMaybe<Scalars['String']>;
+  secondaryLogo?: InputMaybe<AssetCreateOneInlineInput>;
+  secondaryName?: InputMaybe<Scalars['String']>;
   signature?: InputMaybe<Scalars['String']>;
   siteCssBodyClass?: InputMaybe<Scalars['String']>;
   siteLibraryJson?: InputMaybe<Scalars['Json']>;
@@ -16351,7 +16783,7 @@ export type SiteLibraryCreateInput = {
   snapchatLink?: InputMaybe<Scalars['String']>;
   soundcloudLink?: InputMaybe<Scalars['String']>;
   spotifyLink?: InputMaybe<Scalars['String']>;
-  themeColor: RootColorCreateOneInlineInput;
+  themeColor?: InputMaybe<RootColorCreateOneInlineInput>;
   threadsLink?: InputMaybe<Scalars['String']>;
   tikTokLink?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
@@ -16359,7 +16791,6 @@ export type SiteLibraryCreateInput = {
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   youtubeApiKey: Scalars['String'];
   youtubeLink?: InputMaybe<Scalars['String']>;
-  youtubePlaylistId?: InputMaybe<Scalars['String']>;
 };
 
 export type SiteLibraryCreateManyInlineInput = {
@@ -16433,82 +16864,63 @@ export type SiteLibraryManyWhereInput = {
   appleMusicLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   appleMusicLink_starts_with?: InputMaybe<Scalars['String']>;
-  bandsInTownEmailWidget?: InputMaybe<Scalars['String']>;
+  contactEmail?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
-  bandsInTownEmailWidget_contains?: InputMaybe<Scalars['String']>;
+  contactEmail_contains?: InputMaybe<Scalars['String']>;
   /** All values ending with the given string. */
-  bandsInTownEmailWidget_ends_with?: InputMaybe<Scalars['String']>;
+  contactEmail_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are contained in given list. */
-  bandsInTownEmailWidget_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactEmail_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Any other value that exists and is not equal to the given value. */
-  bandsInTownEmailWidget_not?: InputMaybe<Scalars['String']>;
+  contactEmail_not?: InputMaybe<Scalars['String']>;
   /** All values not containing the given string. */
-  bandsInTownEmailWidget_not_contains?: InputMaybe<Scalars['String']>;
+  contactEmail_not_contains?: InputMaybe<Scalars['String']>;
   /** All values not ending with the given string */
-  bandsInTownEmailWidget_not_ends_with?: InputMaybe<Scalars['String']>;
+  contactEmail_not_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are not contained in given list. */
-  bandsInTownEmailWidget_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactEmail_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values not starting with the given string. */
-  bandsInTownEmailWidget_not_starts_with?: InputMaybe<Scalars['String']>;
+  contactEmail_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
-  bandsInTownEmailWidget_starts_with?: InputMaybe<Scalars['String']>;
-  bookingEmailOne?: InputMaybe<Scalars['String']>;
+  contactEmail_starts_with?: InputMaybe<Scalars['String']>;
+  contactName?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
-  bookingEmailOne_contains?: InputMaybe<Scalars['String']>;
+  contactName_contains?: InputMaybe<Scalars['String']>;
   /** All values ending with the given string. */
-  bookingEmailOne_ends_with?: InputMaybe<Scalars['String']>;
+  contactName_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are contained in given list. */
-  bookingEmailOne_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Any other value that exists and is not equal to the given value. */
-  bookingEmailOne_not?: InputMaybe<Scalars['String']>;
+  contactName_not?: InputMaybe<Scalars['String']>;
   /** All values not containing the given string. */
-  bookingEmailOne_not_contains?: InputMaybe<Scalars['String']>;
+  contactName_not_contains?: InputMaybe<Scalars['String']>;
   /** All values not ending with the given string */
-  bookingEmailOne_not_ends_with?: InputMaybe<Scalars['String']>;
+  contactName_not_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are not contained in given list. */
-  bookingEmailOne_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values not starting with the given string. */
-  bookingEmailOne_not_starts_with?: InputMaybe<Scalars['String']>;
+  contactName_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
-  bookingEmailOne_starts_with?: InputMaybe<Scalars['String']>;
-  bookingNameOne?: InputMaybe<Scalars['String']>;
+  contactName_starts_with?: InputMaybe<Scalars['String']>;
+  contactPhone?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
-  bookingNameOne_contains?: InputMaybe<Scalars['String']>;
+  contactPhone_contains?: InputMaybe<Scalars['String']>;
   /** All values ending with the given string. */
-  bookingNameOne_ends_with?: InputMaybe<Scalars['String']>;
+  contactPhone_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are contained in given list. */
-  bookingNameOne_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactPhone_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Any other value that exists and is not equal to the given value. */
-  bookingNameOne_not?: InputMaybe<Scalars['String']>;
+  contactPhone_not?: InputMaybe<Scalars['String']>;
   /** All values not containing the given string. */
-  bookingNameOne_not_contains?: InputMaybe<Scalars['String']>;
+  contactPhone_not_contains?: InputMaybe<Scalars['String']>;
   /** All values not ending with the given string */
-  bookingNameOne_not_ends_with?: InputMaybe<Scalars['String']>;
+  contactPhone_not_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are not contained in given list. */
-  bookingNameOne_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactPhone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values not starting with the given string. */
-  bookingNameOne_not_starts_with?: InputMaybe<Scalars['String']>;
+  contactPhone_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
-  bookingNameOne_starts_with?: InputMaybe<Scalars['String']>;
-  bookingPhoneOne?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  bookingPhoneOne_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  bookingPhoneOne_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  bookingPhoneOne_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  bookingPhoneOne_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  bookingPhoneOne_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  bookingPhoneOne_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  bookingPhoneOne_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  bookingPhoneOne_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  bookingPhoneOne_starts_with?: InputMaybe<Scalars['String']>;
+  contactPhone_starts_with?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -16608,45 +17020,6 @@ export type SiteLibraryManyWhereInput = {
   isSpanish?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
   isSpanish_not?: InputMaybe<Scalars['Boolean']>;
-  labelLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  labelLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  labelLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  labelLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  labelLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  labelLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  labelLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  labelLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  labelLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  labelLink_starts_with?: InputMaybe<Scalars['String']>;
-  labelLogo?: InputMaybe<AssetWhereInput>;
-  labelName?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  labelName_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  labelName_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  labelName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  labelName_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  labelName_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  labelName_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  labelName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  labelName_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  labelName_starts_with?: InputMaybe<Scalars['String']>;
   linkedinLink?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   linkedinLink_contains?: InputMaybe<Scalars['String']>;
@@ -16667,26 +17040,6 @@ export type SiteLibraryManyWhereInput = {
   /** All values starting with the given string. */
   linkedinLink_starts_with?: InputMaybe<Scalars['String']>;
   logo?: InputMaybe<AssetWhereInput>;
-  logoSecondary?: InputMaybe<AssetWhereInput>;
-  logoSecondaryLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  logoSecondaryLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  logoSecondaryLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  logoSecondaryLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  logoSecondaryLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  logoSecondaryLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  logoSecondaryLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  logoSecondaryLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  logoSecondaryLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  logoSecondaryLink_starts_with?: InputMaybe<Scalars['String']>;
   mailchimp?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   mailchimp_contains?: InputMaybe<Scalars['String']>;
@@ -16765,34 +17118,6 @@ export type SiteLibraryManyWhereInput = {
   /** All values starting with the given string. */
   metaGoogleConsoleVerification_starts_with?: InputMaybe<Scalars['String']>;
   metaOgImage?: InputMaybe<AssetWhereInput>;
-  miniBio?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  miniBio_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  miniBio_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  miniBio_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  miniBio_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  miniBio_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  miniBio_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  miniBio_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  miniBio_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  miniBio_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values containing the given json path. */
-  navigation_json_path_exists?: InputMaybe<Scalars['String']>;
-  /**
-   * Recursively tries to find the provided JSON scalar value inside the field.
-   * It does use an exact match when comparing values.
-   * If you pass `null` as value the filter will be ignored.
-   * Note: This filter fails if you try to look for a non scalar JSON value!
-   */
-  navigation_value_recursive?: InputMaybe<Scalars['Json']>;
   pandoraLink?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   pandoraLink_contains?: InputMaybe<Scalars['String']>;
@@ -16869,6 +17194,45 @@ export type SiteLibraryManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  secondaryLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  secondaryLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  secondaryLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  secondaryLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  secondaryLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  secondaryLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  secondaryLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  secondaryLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  secondaryLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  secondaryLink_starts_with?: InputMaybe<Scalars['String']>;
+  secondaryLogo?: InputMaybe<AssetWhereInput>;
+  secondaryName?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  secondaryName_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  secondaryName_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  secondaryName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  secondaryName_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  secondaryName_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  secondaryName_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  secondaryName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  secondaryName_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  secondaryName_starts_with?: InputMaybe<Scalars['String']>;
   signature?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   signature_contains?: InputMaybe<Scalars['String']>;
@@ -17111,25 +17475,6 @@ export type SiteLibraryManyWhereInput = {
   youtubeLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   youtubeLink_starts_with?: InputMaybe<Scalars['String']>;
-  youtubePlaylistId?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  youtubePlaylistId_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  youtubePlaylistId_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  youtubePlaylistId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  youtubePlaylistId_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  youtubePlaylistId_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  youtubePlaylistId_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  youtubePlaylistId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  youtubePlaylistId_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  youtubePlaylistId_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 export enum SiteLibraryOrderByInput {
@@ -17137,14 +17482,12 @@ export enum SiteLibraryOrderByInput {
   AnalyticsIdDesc = 'analyticsId_DESC',
   AppleMusicLinkAsc = 'appleMusicLink_ASC',
   AppleMusicLinkDesc = 'appleMusicLink_DESC',
-  BandsInTownEmailWidgetAsc = 'bandsInTownEmailWidget_ASC',
-  BandsInTownEmailWidgetDesc = 'bandsInTownEmailWidget_DESC',
-  BookingEmailOneAsc = 'bookingEmailOne_ASC',
-  BookingEmailOneDesc = 'bookingEmailOne_DESC',
-  BookingNameOneAsc = 'bookingNameOne_ASC',
-  BookingNameOneDesc = 'bookingNameOne_DESC',
-  BookingPhoneOneAsc = 'bookingPhoneOne_ASC',
-  BookingPhoneOneDesc = 'bookingPhoneOne_DESC',
+  ContactEmailAsc = 'contactEmail_ASC',
+  ContactEmailDesc = 'contactEmail_DESC',
+  ContactNameAsc = 'contactName_ASC',
+  ContactNameDesc = 'contactName_DESC',
+  ContactPhoneAsc = 'contactPhone_ASC',
+  ContactPhoneDesc = 'contactPhone_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   FacebookLinkAsc = 'facebookLink_ASC',
@@ -17157,14 +17500,8 @@ export enum SiteLibraryOrderByInput {
   InstagramLinkDesc = 'instagramLink_DESC',
   IsSpanishAsc = 'isSpanish_ASC',
   IsSpanishDesc = 'isSpanish_DESC',
-  LabelLinkAsc = 'labelLink_ASC',
-  LabelLinkDesc = 'labelLink_DESC',
-  LabelNameAsc = 'labelName_ASC',
-  LabelNameDesc = 'labelName_DESC',
   LinkedinLinkAsc = 'linkedinLink_ASC',
   LinkedinLinkDesc = 'linkedinLink_DESC',
-  LogoSecondaryLinkAsc = 'logoSecondaryLink_ASC',
-  LogoSecondaryLinkDesc = 'logoSecondaryLink_DESC',
   MailchimpAsc = 'mailchimp_ASC',
   MailchimpDesc = 'mailchimp_DESC',
   MetaDescriptionAsc = 'metaDescription_ASC',
@@ -17173,8 +17510,6 @@ export enum SiteLibraryOrderByInput {
   MetaDomainDesc = 'metaDomain_DESC',
   MetaGoogleConsoleVerificationAsc = 'metaGoogleConsoleVerification_ASC',
   MetaGoogleConsoleVerificationDesc = 'metaGoogleConsoleVerification_DESC',
-  MiniBioAsc = 'miniBio_ASC',
-  MiniBioDesc = 'miniBio_DESC',
   PandoraLinkAsc = 'pandoraLink_ASC',
   PandoraLinkDesc = 'pandoraLink_DESC',
   PaypalClientIdAsc = 'paypalClientId_ASC',
@@ -17183,6 +17518,10 @@ export enum SiteLibraryOrderByInput {
   PinterestLinkDesc = 'pinterestLink_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  SecondaryLinkAsc = 'secondaryLink_ASC',
+  SecondaryLinkDesc = 'secondaryLink_DESC',
+  SecondaryNameAsc = 'secondaryName_ASC',
+  SecondaryNameDesc = 'secondaryName_DESC',
   SignatureAsc = 'signature_ASC',
   SignatureDesc = 'signature_DESC',
   SiteCssBodyClassAsc = 'siteCssBodyClass_ASC',
@@ -17208,41 +17547,34 @@ export enum SiteLibraryOrderByInput {
   YoutubeApiKeyAsc = 'youtubeApiKey_ASC',
   YoutubeApiKeyDesc = 'youtubeApiKey_DESC',
   YoutubeLinkAsc = 'youtubeLink_ASC',
-  YoutubeLinkDesc = 'youtubeLink_DESC',
-  YoutubePlaylistIdAsc = 'youtubePlaylistId_ASC',
-  YoutubePlaylistIdDesc = 'youtubePlaylistId_DESC'
+  YoutubeLinkDesc = 'youtubeLink_DESC'
 }
 
 export type SiteLibraryUpdateInput = {
   analyticsId?: InputMaybe<Scalars['String']>;
   appleMusicLink?: InputMaybe<Scalars['String']>;
-  bandsInTownEmailWidget?: InputMaybe<Scalars['String']>;
-  bookingEmailOne?: InputMaybe<Scalars['String']>;
-  bookingNameOne?: InputMaybe<Scalars['String']>;
-  bookingPhoneOne?: InputMaybe<Scalars['String']>;
+  contactEmail?: InputMaybe<Scalars['String']>;
+  contactName?: InputMaybe<Scalars['String']>;
+  contactPhone?: InputMaybe<Scalars['String']>;
   facebookLink?: InputMaybe<Scalars['String']>;
   favicon?: InputMaybe<AssetUpdateOneInlineInput>;
   githubLink?: InputMaybe<Scalars['String']>;
   instagramLink?: InputMaybe<Scalars['String']>;
   isSpanish?: InputMaybe<Scalars['Boolean']>;
-  labelLink?: InputMaybe<Scalars['String']>;
-  labelLogo?: InputMaybe<AssetUpdateOneInlineInput>;
-  labelName?: InputMaybe<Scalars['String']>;
   linkedinLink?: InputMaybe<Scalars['String']>;
   logo?: InputMaybe<AssetUpdateOneInlineInput>;
-  logoSecondary?: InputMaybe<AssetUpdateOneInlineInput>;
-  logoSecondaryLink?: InputMaybe<Scalars['String']>;
   mailchimp?: InputMaybe<Scalars['String']>;
   metaAppleTouchIcon?: InputMaybe<AssetUpdateOneInlineInput>;
   metaDescription?: InputMaybe<Scalars['String']>;
   metaDomain?: InputMaybe<Scalars['String']>;
   metaGoogleConsoleVerification?: InputMaybe<Scalars['String']>;
   metaOgImage?: InputMaybe<AssetUpdateOneInlineInput>;
-  miniBio?: InputMaybe<Scalars['String']>;
-  navigation?: InputMaybe<Scalars['Json']>;
   pandoraLink?: InputMaybe<Scalars['String']>;
   paypalClientId?: InputMaybe<Scalars['String']>;
   pinterestLink?: InputMaybe<Scalars['String']>;
+  secondaryLink?: InputMaybe<Scalars['String']>;
+  secondaryLogo?: InputMaybe<AssetUpdateOneInlineInput>;
+  secondaryName?: InputMaybe<Scalars['String']>;
   signature?: InputMaybe<Scalars['String']>;
   siteCssBodyClass?: InputMaybe<Scalars['String']>;
   siteLibraryJson?: InputMaybe<Scalars['Json']>;
@@ -17257,7 +17589,6 @@ export type SiteLibraryUpdateInput = {
   twitterLink?: InputMaybe<Scalars['String']>;
   youtubeApiKey?: InputMaybe<Scalars['String']>;
   youtubeLink?: InputMaybe<Scalars['String']>;
-  youtubePlaylistId?: InputMaybe<Scalars['String']>;
 };
 
 export type SiteLibraryUpdateManyInlineInput = {
@@ -17280,27 +17611,23 @@ export type SiteLibraryUpdateManyInlineInput = {
 export type SiteLibraryUpdateManyInput = {
   analyticsId?: InputMaybe<Scalars['String']>;
   appleMusicLink?: InputMaybe<Scalars['String']>;
-  bandsInTownEmailWidget?: InputMaybe<Scalars['String']>;
-  bookingEmailOne?: InputMaybe<Scalars['String']>;
-  bookingNameOne?: InputMaybe<Scalars['String']>;
-  bookingPhoneOne?: InputMaybe<Scalars['String']>;
+  contactEmail?: InputMaybe<Scalars['String']>;
+  contactName?: InputMaybe<Scalars['String']>;
+  contactPhone?: InputMaybe<Scalars['String']>;
   facebookLink?: InputMaybe<Scalars['String']>;
   githubLink?: InputMaybe<Scalars['String']>;
   instagramLink?: InputMaybe<Scalars['String']>;
   isSpanish?: InputMaybe<Scalars['Boolean']>;
-  labelLink?: InputMaybe<Scalars['String']>;
-  labelName?: InputMaybe<Scalars['String']>;
   linkedinLink?: InputMaybe<Scalars['String']>;
-  logoSecondaryLink?: InputMaybe<Scalars['String']>;
   mailchimp?: InputMaybe<Scalars['String']>;
   metaDescription?: InputMaybe<Scalars['String']>;
   metaDomain?: InputMaybe<Scalars['String']>;
   metaGoogleConsoleVerification?: InputMaybe<Scalars['String']>;
-  miniBio?: InputMaybe<Scalars['String']>;
-  navigation?: InputMaybe<Scalars['Json']>;
   pandoraLink?: InputMaybe<Scalars['String']>;
   paypalClientId?: InputMaybe<Scalars['String']>;
   pinterestLink?: InputMaybe<Scalars['String']>;
+  secondaryLink?: InputMaybe<Scalars['String']>;
+  secondaryName?: InputMaybe<Scalars['String']>;
   siteCssBodyClass?: InputMaybe<Scalars['String']>;
   siteLibraryJson?: InputMaybe<Scalars['Json']>;
   siteTheme?: InputMaybe<SiteTheme>;
@@ -17313,7 +17640,6 @@ export type SiteLibraryUpdateManyInput = {
   twitterLink?: InputMaybe<Scalars['String']>;
   youtubeApiKey?: InputMaybe<Scalars['String']>;
   youtubeLink?: InputMaybe<Scalars['String']>;
-  youtubePlaylistId?: InputMaybe<Scalars['String']>;
 };
 
 export type SiteLibraryUpdateManyWithNestedWhereInput = {
@@ -17413,82 +17739,63 @@ export type SiteLibraryWhereInput = {
   appleMusicLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   appleMusicLink_starts_with?: InputMaybe<Scalars['String']>;
-  bandsInTownEmailWidget?: InputMaybe<Scalars['String']>;
+  contactEmail?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
-  bandsInTownEmailWidget_contains?: InputMaybe<Scalars['String']>;
+  contactEmail_contains?: InputMaybe<Scalars['String']>;
   /** All values ending with the given string. */
-  bandsInTownEmailWidget_ends_with?: InputMaybe<Scalars['String']>;
+  contactEmail_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are contained in given list. */
-  bandsInTownEmailWidget_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactEmail_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Any other value that exists and is not equal to the given value. */
-  bandsInTownEmailWidget_not?: InputMaybe<Scalars['String']>;
+  contactEmail_not?: InputMaybe<Scalars['String']>;
   /** All values not containing the given string. */
-  bandsInTownEmailWidget_not_contains?: InputMaybe<Scalars['String']>;
+  contactEmail_not_contains?: InputMaybe<Scalars['String']>;
   /** All values not ending with the given string */
-  bandsInTownEmailWidget_not_ends_with?: InputMaybe<Scalars['String']>;
+  contactEmail_not_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are not contained in given list. */
-  bandsInTownEmailWidget_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactEmail_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values not starting with the given string. */
-  bandsInTownEmailWidget_not_starts_with?: InputMaybe<Scalars['String']>;
+  contactEmail_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
-  bandsInTownEmailWidget_starts_with?: InputMaybe<Scalars['String']>;
-  bookingEmailOne?: InputMaybe<Scalars['String']>;
+  contactEmail_starts_with?: InputMaybe<Scalars['String']>;
+  contactName?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
-  bookingEmailOne_contains?: InputMaybe<Scalars['String']>;
+  contactName_contains?: InputMaybe<Scalars['String']>;
   /** All values ending with the given string. */
-  bookingEmailOne_ends_with?: InputMaybe<Scalars['String']>;
+  contactName_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are contained in given list. */
-  bookingEmailOne_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Any other value that exists and is not equal to the given value. */
-  bookingEmailOne_not?: InputMaybe<Scalars['String']>;
+  contactName_not?: InputMaybe<Scalars['String']>;
   /** All values not containing the given string. */
-  bookingEmailOne_not_contains?: InputMaybe<Scalars['String']>;
+  contactName_not_contains?: InputMaybe<Scalars['String']>;
   /** All values not ending with the given string */
-  bookingEmailOne_not_ends_with?: InputMaybe<Scalars['String']>;
+  contactName_not_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are not contained in given list. */
-  bookingEmailOne_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values not starting with the given string. */
-  bookingEmailOne_not_starts_with?: InputMaybe<Scalars['String']>;
+  contactName_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
-  bookingEmailOne_starts_with?: InputMaybe<Scalars['String']>;
-  bookingNameOne?: InputMaybe<Scalars['String']>;
+  contactName_starts_with?: InputMaybe<Scalars['String']>;
+  contactPhone?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
-  bookingNameOne_contains?: InputMaybe<Scalars['String']>;
+  contactPhone_contains?: InputMaybe<Scalars['String']>;
   /** All values ending with the given string. */
-  bookingNameOne_ends_with?: InputMaybe<Scalars['String']>;
+  contactPhone_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are contained in given list. */
-  bookingNameOne_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactPhone_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Any other value that exists and is not equal to the given value. */
-  bookingNameOne_not?: InputMaybe<Scalars['String']>;
+  contactPhone_not?: InputMaybe<Scalars['String']>;
   /** All values not containing the given string. */
-  bookingNameOne_not_contains?: InputMaybe<Scalars['String']>;
+  contactPhone_not_contains?: InputMaybe<Scalars['String']>;
   /** All values not ending with the given string */
-  bookingNameOne_not_ends_with?: InputMaybe<Scalars['String']>;
+  contactPhone_not_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are not contained in given list. */
-  bookingNameOne_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contactPhone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values not starting with the given string. */
-  bookingNameOne_not_starts_with?: InputMaybe<Scalars['String']>;
+  contactPhone_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
-  bookingNameOne_starts_with?: InputMaybe<Scalars['String']>;
-  bookingPhoneOne?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  bookingPhoneOne_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  bookingPhoneOne_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  bookingPhoneOne_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  bookingPhoneOne_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  bookingPhoneOne_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  bookingPhoneOne_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  bookingPhoneOne_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  bookingPhoneOne_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  bookingPhoneOne_starts_with?: InputMaybe<Scalars['String']>;
+  contactPhone_starts_with?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -17588,45 +17895,6 @@ export type SiteLibraryWhereInput = {
   isSpanish?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
   isSpanish_not?: InputMaybe<Scalars['Boolean']>;
-  labelLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  labelLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  labelLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  labelLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  labelLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  labelLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  labelLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  labelLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  labelLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  labelLink_starts_with?: InputMaybe<Scalars['String']>;
-  labelLogo?: InputMaybe<AssetWhereInput>;
-  labelName?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  labelName_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  labelName_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  labelName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  labelName_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  labelName_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  labelName_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  labelName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  labelName_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  labelName_starts_with?: InputMaybe<Scalars['String']>;
   linkedinLink?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   linkedinLink_contains?: InputMaybe<Scalars['String']>;
@@ -17647,26 +17915,6 @@ export type SiteLibraryWhereInput = {
   /** All values starting with the given string. */
   linkedinLink_starts_with?: InputMaybe<Scalars['String']>;
   logo?: InputMaybe<AssetWhereInput>;
-  logoSecondary?: InputMaybe<AssetWhereInput>;
-  logoSecondaryLink?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  logoSecondaryLink_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  logoSecondaryLink_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  logoSecondaryLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  logoSecondaryLink_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  logoSecondaryLink_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  logoSecondaryLink_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  logoSecondaryLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  logoSecondaryLink_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  logoSecondaryLink_starts_with?: InputMaybe<Scalars['String']>;
   mailchimp?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   mailchimp_contains?: InputMaybe<Scalars['String']>;
@@ -17745,34 +17993,6 @@ export type SiteLibraryWhereInput = {
   /** All values starting with the given string. */
   metaGoogleConsoleVerification_starts_with?: InputMaybe<Scalars['String']>;
   metaOgImage?: InputMaybe<AssetWhereInput>;
-  miniBio?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  miniBio_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  miniBio_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  miniBio_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  miniBio_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  miniBio_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  miniBio_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  miniBio_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  miniBio_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  miniBio_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values containing the given json path. */
-  navigation_json_path_exists?: InputMaybe<Scalars['String']>;
-  /**
-   * Recursively tries to find the provided JSON scalar value inside the field.
-   * It does use an exact match when comparing values.
-   * If you pass `null` as value the filter will be ignored.
-   * Note: This filter fails if you try to look for a non scalar JSON value!
-   */
-  navigation_value_recursive?: InputMaybe<Scalars['Json']>;
   pandoraLink?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   pandoraLink_contains?: InputMaybe<Scalars['String']>;
@@ -17849,6 +18069,45 @@ export type SiteLibraryWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  secondaryLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  secondaryLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  secondaryLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  secondaryLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  secondaryLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  secondaryLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  secondaryLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  secondaryLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  secondaryLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  secondaryLink_starts_with?: InputMaybe<Scalars['String']>;
+  secondaryLogo?: InputMaybe<AssetWhereInput>;
+  secondaryName?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  secondaryName_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  secondaryName_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  secondaryName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  secondaryName_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  secondaryName_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  secondaryName_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  secondaryName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  secondaryName_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  secondaryName_starts_with?: InputMaybe<Scalars['String']>;
   signature?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   signature_contains?: InputMaybe<Scalars['String']>;
@@ -18091,25 +18350,6 @@ export type SiteLibraryWhereInput = {
   youtubeLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   youtubeLink_starts_with?: InputMaybe<Scalars['String']>;
-  youtubePlaylistId?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  youtubePlaylistId_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  youtubePlaylistId_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  youtubePlaylistId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  youtubePlaylistId_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  youtubePlaylistId_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  youtubePlaylistId_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  youtubePlaylistId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  youtubePlaylistId_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  youtubePlaylistId_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 /** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
@@ -18428,234 +18668,11 @@ export enum TestimonialOrderByInput {
   UpdatedAtDesc = 'updatedAt_DESC'
 }
 
-export type TestimonialSelection = {
-  __typename?: 'TestimonialSelection';
-  /** The unique identifier */
-  id: Scalars['ID'];
-  /** System stage field */
-  stage: Stage;
-  testimonialQuery?: Maybe<TestimonialType>;
-  testimonialTitle?: Maybe<Scalars['String']>;
-};
-
-/** A connection to a list of items. */
-export type TestimonialSelectionConnection = {
-  __typename?: 'TestimonialSelectionConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<TestimonialSelectionEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type TestimonialSelectionCreateInput = {
-  testimonialQuery?: InputMaybe<TestimonialType>;
-  testimonialTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type TestimonialSelectionCreateWithPositionInput = {
-  /** Document to create */
-  data: TestimonialSelectionCreateInput;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-};
-
-/** An edge in a connection. */
-export type TestimonialSelectionEdge = {
-  __typename?: 'TestimonialSelectionEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: TestimonialSelection;
-};
-
-/** Identifies documents */
-export type TestimonialSelectionManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<TestimonialSelectionWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<TestimonialSelectionWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<TestimonialSelectionWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  testimonialQuery?: InputMaybe<TestimonialType>;
-  /** All values that are contained in given list. */
-  testimonialQuery_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  testimonialQuery_not?: InputMaybe<TestimonialType>;
-  /** All values that are not contained in given list. */
-  testimonialQuery_not_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
-  testimonialTitle?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  testimonialTitle_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  testimonialTitle_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  testimonialTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  testimonialTitle_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  testimonialTitle_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  testimonialTitle_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  testimonialTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  testimonialTitle_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  testimonialTitle_starts_with?: InputMaybe<Scalars['String']>;
-};
-
-export enum TestimonialSelectionOrderByInput {
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  TestimonialQueryAsc = 'testimonialQuery_ASC',
-  TestimonialQueryDesc = 'testimonialQuery_DESC',
-  TestimonialTitleAsc = 'testimonialTitle_ASC',
-  TestimonialTitleDesc = 'testimonialTitle_DESC'
-}
-
-export type TestimonialSelectionUpdateInput = {
-  testimonialQuery?: InputMaybe<TestimonialType>;
-  testimonialTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type TestimonialSelectionUpdateManyInput = {
-  testimonialQuery?: InputMaybe<TestimonialType>;
-  testimonialTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type TestimonialSelectionUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: TestimonialSelectionUpdateManyInput;
-  /** Document search */
-  where: TestimonialSelectionWhereInput;
-};
-
-export type TestimonialSelectionUpdateWithNestedWhereUniqueAndPositionInput = {
-  /** Document to update */
-  data?: InputMaybe<TestimonialSelectionUpdateInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: TestimonialSelectionWhereUniqueInput;
-};
-
-export type TestimonialSelectionUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: TestimonialSelectionUpdateInput;
-  /** Unique document search */
-  where: TestimonialSelectionWhereUniqueInput;
-};
-
-export type TestimonialSelectionUpsertInput = {
-  /** Create document if it didn't exist */
-  create: TestimonialSelectionCreateInput;
-  /** Update document if it exists */
-  update: TestimonialSelectionUpdateInput;
-};
-
-export type TestimonialSelectionUpsertWithNestedWhereUniqueAndPositionInput = {
-  /** Document to upsert */
-  data?: InputMaybe<TestimonialSelectionUpsertInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: TestimonialSelectionWhereUniqueInput;
-};
-
-export type TestimonialSelectionUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: TestimonialSelectionUpsertInput;
-  /** Unique document search */
-  where: TestimonialSelectionWhereUniqueInput;
-};
-
-/** Identifies documents */
-export type TestimonialSelectionWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<TestimonialSelectionWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<TestimonialSelectionWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<TestimonialSelectionWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  testimonialQuery?: InputMaybe<TestimonialType>;
-  /** All values that are contained in given list. */
-  testimonialQuery_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  testimonialQuery_not?: InputMaybe<TestimonialType>;
-  /** All values that are not contained in given list. */
-  testimonialQuery_not_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
-  testimonialTitle?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  testimonialTitle_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  testimonialTitle_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  testimonialTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  testimonialTitle_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  testimonialTitle_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  testimonialTitle_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  testimonialTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  testimonialTitle_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  testimonialTitle_starts_with?: InputMaybe<Scalars['String']>;
-};
-
-/** References TestimonialSelection record uniquely */
-export type TestimonialSelectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
 export enum TestimonialType {
-  Review = 'review',
-  Sponsor = 'sponsor'
+  Client = 'Client',
+  Investor = 'Investor',
+  Partner = 'Partner',
+  Sponsor = 'Sponsor'
 }
 
 export type TestimonialUpdateInput = {
@@ -18894,6 +18911,7 @@ export type TextContent = {
   content?: Maybe<RichText>;
   contentAlign?: Maybe<ContentAlign>;
   contentImage?: Maybe<Asset>;
+  cssClass?: Maybe<Scalars['String']>;
   header?: Maybe<RichText>;
   /** The unique identifier */
   id: Scalars['ID'];
@@ -18934,6 +18952,7 @@ export type TextContentCreateInput = {
   content?: InputMaybe<Scalars['RichTextAST']>;
   contentAlign?: InputMaybe<ContentAlign>;
   contentImage?: InputMaybe<AssetCreateOneInlineInput>;
+  cssClass?: InputMaybe<Scalars['String']>;
   header?: InputMaybe<Scalars['RichTextAST']>;
   imageStyle?: InputMaybe<Array<ImageStyle>>;
   link?: InputMaybe<Scalars['String']>;
@@ -18986,6 +19005,25 @@ export type TextContentManyWhereInput = {
   /** All values that are not contained in given list. */
   contentAlign_not_in?: InputMaybe<Array<InputMaybe<ContentAlign>>>;
   contentImage?: InputMaybe<AssetWhereInput>;
+  cssClass?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClass_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClass_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClass_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClass_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClass_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClass_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClass_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClass_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClass_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -19049,6 +19087,8 @@ export type TextContentManyWhereInput = {
 export enum TextContentOrderByInput {
   ContentAlignAsc = 'contentAlign_ASC',
   ContentAlignDesc = 'contentAlign_DESC',
+  CssClassAsc = 'cssClass_ASC',
+  CssClassDesc = 'cssClass_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   ImageStyleAsc = 'imageStyle_ASC',
@@ -19154,6 +19194,7 @@ export type TextContentUpdateInput = {
   content?: InputMaybe<Scalars['RichTextAST']>;
   contentAlign?: InputMaybe<ContentAlign>;
   contentImage?: InputMaybe<AssetUpdateOneInlineInput>;
+  cssClass?: InputMaybe<Scalars['String']>;
   header?: InputMaybe<Scalars['RichTextAST']>;
   imageStyle?: InputMaybe<Array<ImageStyle>>;
   link?: InputMaybe<Scalars['String']>;
@@ -19176,6 +19217,7 @@ export type TextContentUpdateManyInlineInput = {
 export type TextContentUpdateManyInput = {
   content?: InputMaybe<Scalars['RichTextAST']>;
   contentAlign?: InputMaybe<ContentAlign>;
+  cssClass?: InputMaybe<Scalars['String']>;
   header?: InputMaybe<Scalars['RichTextAST']>;
   imageStyle?: InputMaybe<Array<ImageStyle>>;
   link?: InputMaybe<Scalars['String']>;
@@ -19259,6 +19301,25 @@ export type TextContentWhereInput = {
   /** All values that are not contained in given list. */
   contentAlign_not_in?: InputMaybe<Array<InputMaybe<ContentAlign>>>;
   contentImage?: InputMaybe<AssetWhereInput>;
+  cssClass?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClass_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClass_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClass_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClass_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClass_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClass_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClass_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClass_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClass_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -19332,7 +19393,6 @@ export enum TextSize {
   Text_6xl = 'text_6xl',
   Text_7xl = 'text_7xl',
   Text_8xl = 'text_8xl',
-  Text_9xl = 'text_9xl',
   TextBase = 'text_base',
   TextLg = 'text_lg',
   TextSm = 'text_sm',
@@ -20249,419 +20309,6 @@ export type VideoBoxWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type VideoCategory = {
-  __typename?: 'VideoCategory';
-  categoryCssClassWrapper?: Maybe<Scalars['String']>;
-  categoryDescription?: Maybe<RichText>;
-  categoryImage?: Maybe<Asset>;
-  categoryJson?: Maybe<Scalars['Json']>;
-  categoryName?: Maybe<Scalars['String']>;
-  categorySlug?: Maybe<Scalars['String']>;
-  categoryYoutubePlaylistId?: Maybe<Scalars['String']>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  /** System stage field */
-  stage: Stage;
-};
-
-
-export type VideoCategoryCategoryImageArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-export type VideoCategoryConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: VideoCategoryWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type VideoCategoryConnection = {
-  __typename?: 'VideoCategoryConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<VideoCategoryEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type VideoCategoryCreateInput = {
-  categoryCssClassWrapper?: InputMaybe<Scalars['String']>;
-  categoryDescription?: InputMaybe<Scalars['RichTextAST']>;
-  categoryImage?: InputMaybe<AssetCreateOneInlineInput>;
-  categoryJson?: InputMaybe<Scalars['Json']>;
-  categoryName?: InputMaybe<Scalars['String']>;
-  categorySlug?: InputMaybe<Scalars['String']>;
-  categoryYoutubePlaylistId?: InputMaybe<Scalars['String']>;
-};
-
-export type VideoCategoryCreateManyInlineInput = {
-  /** Create and connect multiple existing VideoCategory documents */
-  create?: InputMaybe<Array<VideoCategoryCreateInput>>;
-};
-
-export type VideoCategoryCreateOneInlineInput = {
-  /** Create and connect one VideoCategory document */
-  create?: InputMaybe<VideoCategoryCreateInput>;
-};
-
-export type VideoCategoryCreateWithPositionInput = {
-  /** Document to create */
-  data: VideoCategoryCreateInput;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-};
-
-/** An edge in a connection. */
-export type VideoCategoryEdge = {
-  __typename?: 'VideoCategoryEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: VideoCategory;
-};
-
-/** Identifies documents */
-export type VideoCategoryManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<VideoCategoryWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<VideoCategoryWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<VideoCategoryWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  categoryCssClassWrapper?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  categoryCssClassWrapper_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  categoryCssClassWrapper_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  categoryCssClassWrapper_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  categoryCssClassWrapper_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  categoryCssClassWrapper_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  categoryCssClassWrapper_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  categoryCssClassWrapper_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  categoryCssClassWrapper_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  categoryCssClassWrapper_starts_with?: InputMaybe<Scalars['String']>;
-  categoryImage?: InputMaybe<AssetWhereInput>;
-  /** All values containing the given json path. */
-  categoryJson_json_path_exists?: InputMaybe<Scalars['String']>;
-  /**
-   * Recursively tries to find the provided JSON scalar value inside the field.
-   * It does use an exact match when comparing values.
-   * If you pass `null` as value the filter will be ignored.
-   * Note: This filter fails if you try to look for a non scalar JSON value!
-   */
-  categoryJson_value_recursive?: InputMaybe<Scalars['Json']>;
-  categoryName?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  categoryName_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  categoryName_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  categoryName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  categoryName_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  categoryName_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  categoryName_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  categoryName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  categoryName_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  categoryName_starts_with?: InputMaybe<Scalars['String']>;
-  categorySlug?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  categorySlug_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  categorySlug_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  categorySlug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  categorySlug_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  categorySlug_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  categorySlug_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  categorySlug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  categorySlug_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  categorySlug_starts_with?: InputMaybe<Scalars['String']>;
-  categoryYoutubePlaylistId?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  categoryYoutubePlaylistId_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  categoryYoutubePlaylistId_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  categoryYoutubePlaylistId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  categoryYoutubePlaylistId_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  categoryYoutubePlaylistId_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  categoryYoutubePlaylistId_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  categoryYoutubePlaylistId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  categoryYoutubePlaylistId_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  categoryYoutubePlaylistId_starts_with?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-};
-
-export enum VideoCategoryOrderByInput {
-  CategoryCssClassWrapperAsc = 'categoryCssClassWrapper_ASC',
-  CategoryCssClassWrapperDesc = 'categoryCssClassWrapper_DESC',
-  CategoryNameAsc = 'categoryName_ASC',
-  CategoryNameDesc = 'categoryName_DESC',
-  CategorySlugAsc = 'categorySlug_ASC',
-  CategorySlugDesc = 'categorySlug_DESC',
-  CategoryYoutubePlaylistIdAsc = 'categoryYoutubePlaylistId_ASC',
-  CategoryYoutubePlaylistIdDesc = 'categoryYoutubePlaylistId_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC'
-}
-
-export type VideoCategoryUpdateInput = {
-  categoryCssClassWrapper?: InputMaybe<Scalars['String']>;
-  categoryDescription?: InputMaybe<Scalars['RichTextAST']>;
-  categoryImage?: InputMaybe<AssetUpdateOneInlineInput>;
-  categoryJson?: InputMaybe<Scalars['Json']>;
-  categoryName?: InputMaybe<Scalars['String']>;
-  categorySlug?: InputMaybe<Scalars['String']>;
-  categoryYoutubePlaylistId?: InputMaybe<Scalars['String']>;
-};
-
-export type VideoCategoryUpdateManyInlineInput = {
-  /** Create and connect multiple VideoCategory component instances */
-  create?: InputMaybe<Array<VideoCategoryCreateWithPositionInput>>;
-  /** Delete multiple VideoCategory documents */
-  delete?: InputMaybe<Array<VideoCategoryWhereUniqueInput>>;
-  /** Update multiple VideoCategory component instances */
-  update?: InputMaybe<Array<VideoCategoryUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple VideoCategory component instances */
-  upsert?: InputMaybe<Array<VideoCategoryUpsertWithNestedWhereUniqueAndPositionInput>>;
-};
-
-export type VideoCategoryUpdateManyInput = {
-  categoryCssClassWrapper?: InputMaybe<Scalars['String']>;
-  categoryDescription?: InputMaybe<Scalars['RichTextAST']>;
-  categoryJson?: InputMaybe<Scalars['Json']>;
-  categoryName?: InputMaybe<Scalars['String']>;
-  categoryYoutubePlaylistId?: InputMaybe<Scalars['String']>;
-};
-
-export type VideoCategoryUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: VideoCategoryUpdateManyInput;
-  /** Document search */
-  where: VideoCategoryWhereInput;
-};
-
-export type VideoCategoryUpdateOneInlineInput = {
-  /** Create and connect one VideoCategory document */
-  create?: InputMaybe<VideoCategoryCreateInput>;
-  /** Delete currently connected VideoCategory document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single VideoCategory document */
-  update?: InputMaybe<VideoCategoryUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single VideoCategory document */
-  upsert?: InputMaybe<VideoCategoryUpsertWithNestedWhereUniqueInput>;
-};
-
-export type VideoCategoryUpdateWithNestedWhereUniqueAndPositionInput = {
-  /** Document to update */
-  data?: InputMaybe<VideoCategoryUpdateInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: VideoCategoryWhereUniqueInput;
-};
-
-export type VideoCategoryUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: VideoCategoryUpdateInput;
-  /** Unique document search */
-  where: VideoCategoryWhereUniqueInput;
-};
-
-export type VideoCategoryUpsertInput = {
-  /** Create document if it didn't exist */
-  create: VideoCategoryCreateInput;
-  /** Update document if it exists */
-  update: VideoCategoryUpdateInput;
-};
-
-export type VideoCategoryUpsertWithNestedWhereUniqueAndPositionInput = {
-  /** Document to upsert */
-  data?: InputMaybe<VideoCategoryUpsertInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: VideoCategoryWhereUniqueInput;
-};
-
-export type VideoCategoryUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: VideoCategoryUpsertInput;
-  /** Unique document search */
-  where: VideoCategoryWhereUniqueInput;
-};
-
-/** Identifies documents */
-export type VideoCategoryWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<VideoCategoryWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<VideoCategoryWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<VideoCategoryWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  categoryCssClassWrapper?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  categoryCssClassWrapper_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  categoryCssClassWrapper_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  categoryCssClassWrapper_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  categoryCssClassWrapper_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  categoryCssClassWrapper_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  categoryCssClassWrapper_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  categoryCssClassWrapper_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  categoryCssClassWrapper_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  categoryCssClassWrapper_starts_with?: InputMaybe<Scalars['String']>;
-  categoryImage?: InputMaybe<AssetWhereInput>;
-  /** All values containing the given json path. */
-  categoryJson_json_path_exists?: InputMaybe<Scalars['String']>;
-  /**
-   * Recursively tries to find the provided JSON scalar value inside the field.
-   * It does use an exact match when comparing values.
-   * If you pass `null` as value the filter will be ignored.
-   * Note: This filter fails if you try to look for a non scalar JSON value!
-   */
-  categoryJson_value_recursive?: InputMaybe<Scalars['Json']>;
-  categoryName?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  categoryName_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  categoryName_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  categoryName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  categoryName_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  categoryName_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  categoryName_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  categoryName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  categoryName_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  categoryName_starts_with?: InputMaybe<Scalars['String']>;
-  categorySlug?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  categorySlug_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  categorySlug_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  categorySlug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  categorySlug_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  categorySlug_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  categorySlug_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  categorySlug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  categorySlug_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  categorySlug_starts_with?: InputMaybe<Scalars['String']>;
-  categoryYoutubePlaylistId?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  categoryYoutubePlaylistId_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  categoryYoutubePlaylistId_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  categoryYoutubePlaylistId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  categoryYoutubePlaylistId_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  categoryYoutubePlaylistId_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  categoryYoutubePlaylistId_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  categoryYoutubePlaylistId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  categoryYoutubePlaylistId_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  categoryYoutubePlaylistId_starts_with?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-};
-
-/** References VideoCategory record uniquely */
-export type VideoCategoryWhereUniqueInput = {
-  categorySlug?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-};
-
 export enum _FilterKind {
   And = 'AND',
   Not = 'NOT',
@@ -20752,7 +20399,7 @@ export type AlbumFieldsFragment = { __typename?: 'Album', id: string, albumSlug?
 
 export type BlogFieldsFragment = { __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> };
 
-export type SiteLibraryFieldsFragment = { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, bookingEmailOne?: string | null, bookingPhoneOne?: string | null, bookingNameOne?: string | null, miniBio?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, youtubePlaylistId?: string | null, labelName?: string | null, labelLink?: string | null, navigation?: any | null, bandsInTownEmailWidget?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, labelLogo?: { __typename?: 'Asset', id: string, url: string } | null, logoSecondary?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null };
+export type SiteLibraryFieldsFragment = { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor?: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null } | null, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null };
 
 export type EventFieldsFragment = { __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> };
 
@@ -20762,11 +20409,11 @@ export type LogoTableFieldsFragment = { __typename?: 'LogoTable', logoName?: str
 
 export type PagesSlugListFieldsFragment = { __typename?: 'Page', pageSlug?: string | null };
 
-export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> };
+export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> };
 
 export type NavigationFieldsFragment = { __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> };
 
-export type ProfileFieldsFragment = { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, memberMusicRelease: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null };
+export type ProfileFieldsFragment = { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null };
 
 export type LayoutQueryVariables = Exact<{
   eventFirst?: InputMaybe<Scalars['Int']>;
@@ -20784,12 +20431,12 @@ export type LayoutQueryVariables = Exact<{
 }>;
 
 
-export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, bookingEmailOne?: string | null, bookingPhoneOne?: string | null, bookingNameOne?: string | null, miniBio?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, youtubePlaylistId?: string | null, labelName?: string | null, labelLink?: string | null, navigation?: any | null, bandsInTownEmailWidget?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, labelLogo?: { __typename?: 'Asset', id: string, url: string } | null, logoSecondary?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, memberMusicRelease: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
+export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor?: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null } | null, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
 
 export type PagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> }> };
+export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> }> };
 
 export type PagesSlugListQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -20811,7 +20458,7 @@ export type BlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename?: 'Bl
 export type SiteLibraryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SiteLibraryQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, bookingEmailOne?: string | null, bookingPhoneOne?: string | null, bookingNameOne?: string | null, miniBio?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, youtubePlaylistId?: string | null, labelName?: string | null, labelLink?: string | null, navigation?: any | null, bandsInTownEmailWidget?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, labelLogo?: { __typename?: 'Asset', id: string, url: string } | null, logoSecondary?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null };
+export type SiteLibraryQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor?: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null } | null, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null };
 
 export type NavigationQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -20835,7 +20482,7 @@ export type AlbumQuery = { __typename?: 'Query', album?: { __typename?: 'Album',
 export type ProfilesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ProfilesQuery = { __typename?: 'Query', profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, memberMusicRelease: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }> };
+export type ProfilesQuery = { __typename?: 'Query', profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }> };
 
 export type TestimonialsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -20847,7 +20494,7 @@ export type ProfileQueryVariables = Exact<{
 }>;
 
 
-export type ProfileQuery = { __typename?: 'Query', profile?: { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, memberMusicRelease: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null } | null };
+export type ProfileQuery = { __typename?: 'Query', profile?: { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null } | null };
 
 export const AlbumFieldsFragmentDoc = gql`
     fragment albumFields on Album {
@@ -20935,25 +20582,17 @@ export const SiteLibraryFieldsFragmentDoc = gql`
     id
     url
   }
-  bookingEmailOne
-  bookingPhoneOne
-  bookingNameOne
-  miniBio
+  contactEmail
+  contactPhone
+  contactName
   analyticsId
   siteLibraryJson
-  youtubePlaylistId
-  labelName
-  labelLink
-  labelLogo {
+  secondaryName
+  secondaryLink
+  secondaryLogo {
     id
     url
   }
-  navigation
-  logoSecondary {
-    id
-    url
-  }
-  bandsInTownEmailWidget
   paypalClientId
   themeColor {
     dark {
@@ -21157,6 +20796,7 @@ export const PageFieldsFragmentDoc = gql`
           imageStyle
           textContentWidth
           linkImage
+          cssClass
         }
         callToAction {
           ctaLink
@@ -21188,6 +20828,7 @@ export const PageFieldsFragmentDoc = gql`
         imageStyle
         textContentWidth
         linkImage
+        cssClass
       }
       callToAction {
         ctaLink
@@ -21402,7 +21043,7 @@ export const ProfileFieldsFragmentDoc = gql`
   imageGallery(first: 100) {
     url
   }
-  memberMusicRelease(first: 100) {
+  portfolioGallery(first: 100) {
     url
   }
   profileJson

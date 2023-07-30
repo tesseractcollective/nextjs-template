@@ -81,25 +81,17 @@ fragment siteLibraryFields on SiteLibrary {
     id
     url
   }
-  bookingEmailOne
-  bookingPhoneOne
-  bookingNameOne
-  miniBio
+  contactEmail
+  contactPhone
+  contactName
   analyticsId
   siteLibraryJson
-  youtubePlaylistId
-  labelName
-  labelLink
-  labelLogo {
+  secondaryName
+  secondaryLink
+  secondaryLogo {
     id
     url
   }
-  navigation
-  logoSecondary {
-    id
-    url
-  }
-  bandsInTownEmailWidget
   paypalClientId
   themeColor {
     dark {
@@ -298,6 +290,7 @@ fragment pageFields on Page {
           imageStyle
           textContentWidth
           linkImage
+          cssClass
         }
         callToAction {
           ctaLink
@@ -329,6 +322,7 @@ fragment pageFields on Page {
         imageStyle
         textContentWidth
         linkImage
+        cssClass
       }
       callToAction {
         ctaLink
@@ -541,7 +535,7 @@ fragment profileFields on Profile {
   imageGallery(first: 100) {
     url
   }
-  memberMusicRelease(first: 100) {
+  portfolioGallery(first: 100) {
     url
   }
   profileJson

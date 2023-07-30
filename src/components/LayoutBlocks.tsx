@@ -484,7 +484,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                             </div>
                           )}
                         {!!testimonials &&
-                          layoutBlockColumn?.testimoniaslQuery && (
+                          layoutBlockColumn?.testimonialsQuery && (
                             <section
                               className="container mx-auto z-20 w-10/12"
                               id={`Testimonial-${index}`}

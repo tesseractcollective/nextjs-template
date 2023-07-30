@@ -25,9 +25,9 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
 
   const {
     title,
-    bookingPhoneOne,
-    bookingEmailOne,
-    bookingNameOne,
+    contactPhone,
+    contactEmail,
+    contactName,
     siteLibraryJson,
   } = siteLibrary;
 
@@ -206,25 +206,25 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <SocialMediaIcons siteLibrary={siteLibrary} />
                   <div className="text-center">
-                    {!!bookingNameOne && (
+                    {!!contactName && (
                       <p className="text-white text-xs font-bold">
-                        <span>{bookingNameOne}</span>
+                        <span>{contactName}</span>
                       </p>
                     )}
-                    {!!bookingPhoneOne && (
+                    {!!contactPhone && (
                       <a
-                        href={`tel:${bookingPhoneOne.replace("-", "")}`}
+                        href={`tel:${contactPhone.replace("-", "")}`}
                         className="text-xs block my-1 text-link !border-none hover:!border-none"
                       >
-                        <span>{bookingPhoneOne}</span>
+                        <span>{contactPhone}</span>
                       </a>
                     )}
-                    {!!bookingEmailOne && (
+                    {!!contactEmail && (
                       <a
-                        href={`mailto:${bookingEmailOne}`}
+                        href={`mailto:${contactEmail}`}
                         className="text-xs block my-1 text-link !border-none hover:!border-none"
                       >
-                        <span>{bookingEmailOne}</span>
+                        <span>{contactEmail}</span>
                       </a>
                     )}
                   </div>
