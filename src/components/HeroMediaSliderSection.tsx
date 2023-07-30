@@ -12,7 +12,7 @@ import SocialMediaIcons from "./SocialMediaIcons";
 import { Fade } from "react-awesome-reveal";
 
 type HeroMediaSliderType =
-  PageFieldsFragment["layoutBlocks"][number]["layoutBlock"][number]["heroMediaSlider"];
+  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["heroMediaSlider"];
 
 interface HeroMediaSliderProps {
   heroMediaSlider: HeroMediaSliderType;
