@@ -15,7 +15,7 @@ import type {
 } from "@/graphql/generated/graphql";
 
 type ContactFormType =
-  PageFieldsFragment["layoutBlocks"][number]["layoutBlock"][number]["contactForm"];
+  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["contactForm"];
 
 interface ContactFormProps {
   contactFormData: ContactFormType;
