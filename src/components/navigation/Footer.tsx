@@ -37,20 +37,18 @@ export default function Footer({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {footerColumns && footerColumns?.length >= 1 && (
           <div
-            className={`grid lg:grid-flow-col lg:auto-rows-min lg:grid-cols-${footerColumns.length} lg:gap-x-8 lg:gap-y-16`}
+            className={`grid place-content-between lg:grid-flow-col lg:auto-rows-min lg:grid-cols-${footerColumns.length} lg:gap-x-8 lg:gap-y-16`}
           >
+            <Fade
+              direction="up"
+              cascade
+              damping={0.1}
+              triggerOnce
+            >
             {footerColumns.map((item, index) => (
-              <Fade
-                direction="up"
-                cascade
-                damping={0.2}
-                triggerOnce
-                key={index}
-                className={`relative my-4 md:my-0 ${
+                <div  key={index}  className={`relative my-4 md:my-0 ${
                   item?.footerColumnCssWrapper || ""
-                }`}
-              >
-                <div className="" id={`footer-col-${index + 1}`}>
+                }`} id={`footer-col-${index + 1}`}>
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
@@ -68,7 +66,7 @@ export default function Footer({
                     </h3>
                   )}
                   {!!item?.footerText?.html && (
-                    <div className="text-xs font-medium text-white max-w-max body-parsed-text leading-none ring-opacity-90 opacity-90">
+                    <div className="text-xs font-medium text-white max-w-max body-parsed-text leading-none ring-opacity-90 opacity-80">
                       {parse(item.footerText?.html)}
                     </div>
                   )}
@@ -103,8 +101,8 @@ export default function Footer({
                     />
                   )}
                 </div>
-              </Fade>
             ))}
+              </Fade>
           </div>
         )}
 
