@@ -34,7 +34,7 @@ export default function Footer({
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
         {footerColumns && footerColumns?.length >= 1 && (
           <div
             className={`grid place-content-between lg:grid-flow-col lg:auto-rows-min lg:grid-cols-${footerColumns.length} lg:gap-x-8 lg:gap-y-16`}

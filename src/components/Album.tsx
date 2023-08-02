@@ -42,7 +42,7 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
             <span>{isSpanish ? "Toda La Música" : "All Music"}</span>
           </Link>
         </div>
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-12 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-12 lg:grid lg:max-w-8xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
         {/* Product details */}
         <div className="lg:max-w-lg lg:self-end">
           <nav aria-label="Breadcrumb">
@@ -112,7 +112,7 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
       </div>
 
       {(iFramePlayer || videoBox) && (
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">
           <div className="relative">
             <div
               className="absolute inset-0 flex items-center"

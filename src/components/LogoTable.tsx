@@ -19,7 +19,7 @@ export default function LogoTable({
       {!!filteredTable && filteredTable?.length >= 1 && (
         <section className="container mx-auto px-4 my-16">
           <div className="py-12">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-8xl px-6 lg:px-8">
               <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
                 {filteredTable.map((logoTableItem) => (
                   <div

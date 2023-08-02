@@ -250,7 +250,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
         <nav aria-label="Top">
           {/* Secondary navigation */}
           <div className="bg-dark">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
               <div className="border-b border-dark">
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
@@ -324,7 +324,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                                   />
 
                                                   <div className="relative bg-dark">
-                                                    <div className="mx-auto max-w-7xl px-8">
+                                                    <div className="mx-auto max-w-8xl px-8">
                                                       <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
                                                         {mainNavigationItem.items.map(
                                                           (item) => (
@@ -346,6 +346,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                                                       item?.label ||
                                                                       ""
                                                                     }
+                                                                    className="object-cover"
                                                                     width={0}
                                                                     height={0}
                                                                     sizes="100%"

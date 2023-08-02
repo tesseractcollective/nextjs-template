@@ -57,21 +57,23 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
         )}
       </Head>
       <div className="bg-dark">
-        <div aria-hidden="true" className="relative">
-          {!!profile.heroImage?.url && (
-            <Image
-              src={profile.heroImage?.url}
-              alt=""
-              width={0}
-              height={0}
-              sizes="100%"
-              className="h-[30rem] w-full object-cover object-center"
-            />
-          )}
+        <div aria-hidden="true" className="relative overflow-hidden">
+          <Fade direction="up" triggerOnce>
+            {!!profile.heroImage?.url && (
+              <Image
+                src={profile.heroImage?.url}
+                alt=""
+                width={0}
+                height={0}
+                sizes="100%"
+                className="h-[30rem] w-full object-cover object-center"
+              />
+            )}
+          </Fade>
           <div className="absolute inset-0 bg-gradient-to-t from-dark" />
         </div>
 
-        <div className="relative mx-auto -mt-12 max-w-7xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+        <div className="relative mx-auto -mt-12 max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
           <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
             <h2 className="text-3xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase">
               {profile.name}
@@ -366,12 +368,12 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                     {profile.imageGallery.map((image) => (
                       <li key={image?.url} className="relative">
                         <Fade direction="up" triggerOnce cascade damping={0.1}>
-                          <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 relative">
+                          <div className="group aspect-h-10 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 relative">
                             {!!image?.url && (
                               <Image
                                 src={image?.url}
                                 alt=""
-                                className="object-center mx-auto"
+                                className="object-center mx-auto object-cover"
                                 width={0}
                                 height={0}
                                 sizes="100%"
@@ -429,7 +431,7 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
             </div>
           )}
           {!!profile?.contactList && (
-            <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 sm:pb-32 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:pt-32">
+            <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 sm:pb-32 lg:grid lg:max-w-8xl lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:pt-32">
               <div className="lg:col-start-2">
                 <h2
                   id="features-heading"
@@ -443,10 +445,10 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                 <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
                   {profile.contactList?.map((contact) => (
                     <li key={contact.contactName}>
-                      <div className="flex items-center gap-x-6">
+                      <div className="flex items-center gap-x-4 md:gap-x-6">
                         {contact?.contactAvatar?.url && (
                           <Image
-                            className="h-16 w-16 rounded-full object-cover"
+                            className="h-14 md:h-16 w-14 md:w-16 rounded-full object-cover"
                             src={contact.contactAvatar.url}
                             alt=""
                             width={64}
@@ -456,12 +458,12 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                         )}
                         <div>
                           {contact.contactName && (
-                            <h3 className="text-base font-semibold leading-7 tracking-tight text-dark">
+                            <h3 className="text-sm md:text-base font-semibold leading-6 md:leading-7 tracking-tight text-dark">
                               {contact.contactName}
                             </h3>
                           )}
                           {contact.contactTitle && (
-                            <p className="text-sm font-semibold leading-6 text-primary">
+                            <p className="text-xs md:text-sm font-semibold leading-6 text-primary">
                               {contact.contactTitle}
                             </p>
                           )}
@@ -480,7 +482,7 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                             </p>
                           )}
                           {contact.contactEmail && (
-                            <p className="text-sm my-0 text-dark opacity-80 flex flex-row items-center">
+                            <p className="text-xs md:text-sm my-0 text-dark opacity-80 flex flex-row items-center">
                               <a
                                 href={`mailto:${contact.contactEmail}`}
                                 className="no-underline"
@@ -494,7 +496,7 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                             </p>
                           )}
                           {!!contact.contactAddress && (
-                            <p className="text-sm my-0 text-dark opacity-80 flex flex-row items-center">
+                            <p className="text-xs md:text-sm my-0 text-dark opacity-80 flex flex-row items-center">
                               <FontAwesomeIcon
                                 icon={faLocationDot as IconProp}
                                 className="fa-fw mr-2 h-4 w-4"

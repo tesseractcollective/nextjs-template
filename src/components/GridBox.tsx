@@ -10,14 +10,14 @@ interface GridBoxProps {
 
 export default function GridBox({ gridBoxData }: GridBoxProps) {
   return (
-    <section className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 my-8">
+    <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8">
       <div
         className={`space-y-12 lg:grid lg:grid-cols-${gridBoxData.length} lg:gap-x-8 lg:space-y-0 justify-items-center items-center`}
       >
         {gridBoxData.map((gridBoxItem) => (
           <article
             key={gridBoxItem.boxLink}
-            className="relative isolate flex flex-col overflow-hidden rounded-2xl bg-dark px-36 pb-4 pt-40 sm:pt-36 max-w-md group hover:cursor-pointer"
+            className="relative isolate flex flex-col overflow-hidden rounded-2xl bg-dark px-36 pb-4 pt-40 sm:pt-36 max-w-md group hover:cursor-pointer mx-auto"
           >
             {!!gridBoxItem.boxImage?.url && (
               <Image

@@ -522,7 +522,7 @@ body iframe {
 }
 
 .album-item {
-  transition: all 200ms ease-in-out;
+  transition: all 400ms ease-in-out;
   z-index: 2;
   position: relative;
   overflow: hidden;
@@ -549,6 +549,19 @@ body iframe {
     }
     p {
       color: var(--primary);
+    }
+  }
+}
+
+.bg-invert {
+  .album-item {
+    &:after {
+      background: linear-gradient(0deg, var(--white) 50%, var(--white) 100%);
+    }
+    &:hover, &:focus {
+      &:after {
+        background: linear-gradient(0deg, var(--white) 50%, var(--primary) 100%);
+      }
     }
   }
 }

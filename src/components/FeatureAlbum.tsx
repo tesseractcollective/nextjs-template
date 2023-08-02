@@ -34,7 +34,7 @@ export default function FeatureAlbum({
             .filter((album) => album.featureHomePage === true)
             .map((albumItem) => (
               <section
-                className="gradient-bkg px-2 mx-0"
+                className="px-2 mx-0"
                 key={albumItem.albumSlug}
               >
                 <section className="container py-5 mx-auto">
@@ -144,7 +144,7 @@ export default function FeatureAlbum({
                           label: albumItem.title || "",
                         })
                       }
-                      className="max-w-max block no-underline album-map-grid-item mx-auto relative"
+                      className="max-w-max block no-underline album-item mx-auto relative p-1 hover:p-2 focus:p-2"
                     >
                       {!!albumItem.albumCover?.url && (
                         <Image
@@ -161,11 +161,11 @@ export default function FeatureAlbum({
                           }}
                         />
                       )}
+                      <p className="text-xs mt-0 mb-4 text-center uppercase">
+                        {albumItem.title}
+                      </p>
                     </Link>
                   )}
-                  <h3 className="text-xs mt-0 mb-4 text-center uppercase">
-                    {albumItem.title}
-                  </h3>
                 </Fade>
               ))}
             </div>
