@@ -266,6 +266,7 @@ fragment pageFields on Page {
         mediaType
         sliderCssWrapper
         displaySocialMedia
+        youtubeVideoId
         sliderMediaBackground {
           url
         }

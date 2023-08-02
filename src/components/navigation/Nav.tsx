@@ -103,7 +103,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                       <div key={mainNavigationItem.label}>
                         {hasItems && (
                           <Tab.Group as="div" className="mt-2">
-                            <div className="border-b border-gray-200">
+                            <div className="border-b border-primary">
                               <Tab.List className="-mb-px flex space-x-8 px-4">
                                 <Tab
                                   key={mainNavigationItem.label}
@@ -251,7 +251,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
           {/* Secondary navigation */}
           <div className="bg-dark">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="border-b border-gray-200">
+              <div className="border-b border-dark">
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:flex-1 lg:items-center">
