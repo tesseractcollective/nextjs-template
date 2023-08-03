@@ -40,6 +40,7 @@
     "graphql": "^16.7.1",
     "graphql-request": "5.1",
     "html-react-parser": "^4.0.0",
+    "magic-grid": "^3.2.4",
     "moment": "^2.29.4",
     "next": "13.4.10",
     "postcss": "^8.4.26",

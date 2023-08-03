@@ -7,8 +7,7 @@ import Footer from "./navigation/Footer";
 import Nav from "./navigation/Nav";
 // import type { LayoutSectionComponentType } from '~/types/types';
 // import Mailchimp from '~/components/mailchimp/Mailchimp';
-// import MagicGrid from 'magic-grid';
-
+// import MagicGrid from "magic-grid";
 // layoutSectionBlocksData?: LayoutSectionComponentType[];
 // import { Navigation, Pagination } from "swiper/modules";
 // import { Swiper, SwiperSlide } from "swiper/react";
@@ -32,6 +31,7 @@ import Testimonials from "@/components/Testimonials";
 import IframeBox from "@/components/IframeBox";
 import Profiles from "@/components/Profiles";
 import VideoPlaylistBox from "./VideoPlaylistBox";
+import { Fade } from "react-awesome-reveal";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -355,41 +355,44 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                           textContentItem?.contentAlign?.toLocaleLowerCase()
                                         }`}
                                       >
-                                        <div className="animate-fade-in-up">
+                                        <div>
                                           {textContentItem?.contentImage && (
-                                            <Image
-                                              className={`block mb-4 ${
-                                                (textContentItem?.contentAlign ===
-                                                  "center" &&
-                                                  "mx-auto") ||
-                                                (textContentItem?.contentAlign ===
-                                                  "left" &&
-                                                  "mr-auto") ||
-                                                (textContentItem?.contentAlign ===
-                                                  "right" &&
-                                                  "ml-auto") ||
-                                                (textContentItem?.contentAlign ===
-                                                  "justify" &&
-                                                  "mx-auto")
-                                              } ${textContentItem?.imageStyle?.map(
-                                                (imageStyleItem) =>
-                                                  ` dynamic-image-class dynamic-${imageStyleItem} `
-                                              )}`}
-                                              style={{ objectFit: "contain" }}
-                                              src={
-                                                textContentItem.contentImage.url
-                                              }
-                                              alt={
-                                                textContentItem?.header?.html ||
-                                                ""
-                                              }
-                                              width={0}
-                                              height={0}
-                                              sizes="100%"
-                                            />
+                                            <Fade direction="up" triggerOnce>
+                                              <Image
+                                                className={`block mb-4 ${
+                                                  (textContentItem?.contentAlign ===
+                                                    "center" &&
+                                                    "mx-auto") ||
+                                                  (textContentItem?.contentAlign ===
+                                                    "left" &&
+                                                    "mr-auto") ||
+                                                  (textContentItem?.contentAlign ===
+                                                    "right" &&
+                                                    "ml-auto") ||
+                                                  (textContentItem?.contentAlign ===
+                                                    "justify" &&
+                                                    "mx-auto")
+                                                } ${textContentItem?.imageStyle?.map(
+                                                  (imageStyleItem) =>
+                                                    ` dynamic-image-class dynamic-${imageStyleItem} `
+                                                )}`}
+                                                style={{ objectFit: "contain" }}
+                                                src={
+                                                  textContentItem.contentImage
+                                                    .url
+                                                }
+                                                alt={
+                                                  textContentItem?.header
+                                                    ?.html || ""
+                                                }
+                                                width={0}
+                                                height={0}
+                                                sizes="100%"
+                                              />
+                                            </Fade>
                                           )}
                                         </div>
-                                        <div className="animate-fade-in-up">
+                                        <Fade direction="up" triggerOnce>
                                           {textContentItem?.header && (
                                             <div className="body-parsed-text">
                                               {parse(
@@ -397,8 +400,8 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                               )}
                                             </div>
                                           )}
-                                        </div>
-                                        <div className="animate-fade-in-up">
+                                        </Fade>
+                                        <Fade direction="up" triggerOnce>
                                           {textContentItem?.subHeader && (
                                             <div className="body-parsed-text">
                                               {parse(
@@ -406,8 +409,8 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                               )}
                                             </div>
                                           )}
-                                        </div>
-                                        <div className="animate-fade-in-up">
+                                        </Fade>
+                                        <Fade direction="up" triggerOnce>
                                           {textContentItem?.content && (
                                             <div className="body-parsed-text">
                                               {parse(
@@ -415,7 +418,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                                               )}
                                             </div>
                                           )}
-                                        </div>
+                                        </Fade>
                                       </div>
                                     </div>
                                   ))}
@@ -583,7 +586,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                           />
                         )}
                         {!!layoutBlockColumn?.logoTableQuery &&
-                         logoTables.length >= 1 && (
+                          logoTables.length >= 1 && (
                             <div>
                               {logoTables &&
                                 layoutBlockColumn.logoTableQuery && (
@@ -615,19 +618,22 @@ export default function LayoutBlocks({ layout }: PageProps) {
                         )}
                         {layoutBlockColumn?.galleryLayout === "grid" ? (
                           <div className="my-8">
-                            {/* {!!finalImages && (
-                            <MagicGrid items={finalImages}>
-                              {finalImages.map(image => (
-                                <Image
-                                  src={image}
-                                  alt=""
-                                  className=""
-                                  style={{ maxWidth: '300px' }}
-                                  key={image}
-                                />
-                              ))}
-                            </MagicGrid>
-                          )} */}
+                            {!!layoutBlockColumn?.gallery &&
+                              layoutBlockColumn?.gallery.length >= 1 && (
+                                <>
+                                  {/* <MagicGrid items={layoutBlockColumn.gallery}>
+                                    {layoutBlockColumn.gallery.map((image) => (
+                                      <Image
+                                        src={image.url}
+                                        alt=""
+                                        className=""
+                                        style={{ maxWidth: "300px" }}
+                                        key={image.url}
+                                      />
+                                    ))}
+                                  </MagicGrid> */}
+                                </>
+                              )}
                           </div>
                         ) : (
                           <>
