@@ -1,8 +1,7 @@
+import React, { useState, useEffect } from "react";
 import parse from "html-react-parser";
 import HubspotForm from "react-hubspot-form";
 import JotformEmbed from "react-jotform-embed";
-import NetlifyForm from "react-ssg-netlify-forms";
-import React, { useState, useEffect } from "react";
 import ReactGA from "react-ga4";
 import type {
   SiteLibraryFieldsFragment,
@@ -54,15 +53,6 @@ export default function ContactFormSection({
   if (!siteLibrary) return <></>;
   const { isSpanish } = siteLibrary;
 
-  // // Post-Submit Navigate
-  // const postSubmit = () => {
-  //   setFormValues({
-  //     name: "",
-  //     message: "",
-  //     phone: "",
-  //     email: "",
-  //   });
-  // };\
   const encode = (data: any) => {
     return Object.keys(data)
       .map(
@@ -123,7 +113,7 @@ export default function ContactFormSection({
                     data-netlify="true"
                     onSubmit={handleSubmit(onSubmit)}
                   >
-                    <input type="hidden"  name="form-name" value="contact" />
+                    <input type="hidden" name="form-name" value="contact" />
                     <section className="container flex-column grid mx-auto dark-section">
                       <div className="w-full mx-auto">
                         <div className="form-input-wrapper border-round p-2">
