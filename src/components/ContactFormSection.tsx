@@ -79,7 +79,7 @@ export default function ContactFormSection({
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-contact": "contact", ...data }),
+      body: encode({ "form-name": "contact", ...data }),
     })
       .then(() => console.log("Success!"))
       .catch((error) => console.log(error));
@@ -123,7 +123,7 @@ export default function ContactFormSection({
                     data-netlify="true"
                     onSubmit={handleSubmit(onSubmit)}
                   >
-                    <input type="hidden" name="form-contact" value="contact" />
+                    <input type="hidden"  name="form-name" value="contact" />
                     <section className="container flex-column grid mx-auto dark-section">
                       <div className="w-full mx-auto">
                         <div className="form-input-wrapper border-round p-2">
