@@ -261,6 +261,9 @@ fragment pageFields on Page {
       htmlId
       cssClass
       hideBlockColumn
+      stripePricingTableId
+      stripePublishableKey
+      displayInstagramSectionUsername
       heroMediaSlider(orderBy: id_ASC, first: 100) {
         id
         mediaType

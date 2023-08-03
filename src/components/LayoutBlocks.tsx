@@ -1,6 +1,5 @@
 "use client";
 import YouTubePlaylist from "@codesweetly/react-youtube-playlist";
-// import { Fade } from "react-awesome-reveal";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 // import Nav from "../nav/Nav";
 import Footer from "./navigation/Footer";
@@ -32,6 +31,8 @@ import IframeBox from "@/components/IframeBox";
 import Profiles from "@/components/Profiles";
 import VideoPlaylistBox from "./VideoPlaylistBox";
 import { Fade } from "react-awesome-reveal";
+import { StripePricingTable } from "./StripePricingTable";
+import InstagramSection from "./InstagramSection";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -709,6 +710,17 @@ export default function LayoutBlocks({ layout }: PageProps) {
                             siteLibrary={siteLibrary}
                           />
                         )}
+                        {!!layoutBlockColumn?.stripePricingTableId &&
+                          layoutBlockColumn?.stripePublishableKey && (
+                            <StripePricingTable
+                              pricingTableId={
+                                layoutBlockColumn.stripePricingTableId
+                              }
+                              publishableKey={
+                                layoutBlockColumn.stripePublishableKey
+                              }
+                            />
+                          )}
                         {/* {layoutBlockColumn?.mailchimpLink && (
                         <div className="gradient-bkg m-0 p-0">
                           <section className="container py-8 flex align-items center jutsify-content-center">
@@ -724,13 +736,13 @@ export default function LayoutBlocks({ layout }: PageProps) {
                           </section>
                         </div>
                       )} */}
-                        {/* {layoutBlockColumn?.displayInstagramSectionUsername && (
-                        <InstagramSection
-                          IGUsername={
-                            layoutBlockColumn.displayInstagramSectionUsername
-                          }
-                        />
-                      )} */}
+                        {layoutBlockColumn?.displayInstagramSectionUsername && (
+                          <InstagramSection
+                            IGUsername={
+                              layoutBlockColumn.displayInstagramSectionUsername
+                            }
+                          />
+                        )}
                       </div>
                     );
                   }
