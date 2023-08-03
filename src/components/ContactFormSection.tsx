@@ -112,6 +112,7 @@ export default function ContactFormSection({
                     method="POST"
                     data-netlify="true"
                     onSubmit={handleSubmit(onSubmit)}
+                    action="#?formSubmit=success"
                   >
                     <input type="hidden" name="form-name" value="contact" />
                     <section className="container flex-column grid mx-auto dark-section">
