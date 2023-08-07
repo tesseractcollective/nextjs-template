@@ -236,6 +236,7 @@ fragment pageFields on Page {
   hideFooter
   hideHeader
   setHomePage
+  noIndex
   whatsAppContactNumberFloatingButton
   heroImage {
     url
@@ -264,6 +265,7 @@ fragment pageFields on Page {
       stripePricingTableId
       stripePublishableKey
       displayInstagramSectionUsername
+      productQuery
       heroMediaSlider(orderBy: id_ASC, first: 100) {
         id
         mediaType
@@ -529,6 +531,7 @@ fragment profileFields on Profile {
   twitterLink
   websiteLink
   youtubeLink
+  contactQuery
   fullBio {
     html
     raw
@@ -543,18 +546,6 @@ fragment profileFields on Profile {
     url
   }
   profileJson
-  contactList {
-    contactName
-    contactEmail
-    contactTitle
-    contactPhone
-    contactAddress
-    contactGoogleAddressLink
-    contactAvatar {
-      id
-      url
-    }
-  }
   videoBox {
     videoTitle
     youtubeVideoId
@@ -566,5 +557,39 @@ fragment profileFields on Profile {
   }
   profileLogo {
     url
+  }
+}
+
+fragment contactFields on Contact {
+  contactName
+  contactQuery
+  contactEmail
+  contactTitle
+  contactPhone
+  contactAddress
+  contactGoogleAddressLink
+  contactWhatsapp
+  contactCalendly
+  contactAvatar {
+    id
+    url
+  }
+}
+
+fragment productFields on Product {
+  name
+  productSlug
+  vendor
+  gallery {
+    url
+  }
+  price
+  sku
+  purchaseLink
+  purchaseLabel
+  enableProduct
+  productType
+  description {
+    html
   }
 }

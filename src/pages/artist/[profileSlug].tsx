@@ -5,8 +5,9 @@ import {
   SiteLibraryQuery,
   NavigationQuery,
   ProfileQuery,
-  // ProfilesQuery,
- BlogsQuery,
+  ProfilesQuery,
+  BlogsQuery,
+  ContactsQuery,
 } from "@/graphql/generated/graphql";
 import { GetServerSideProps } from "next";
 import "@/styles/global.scss";
@@ -21,33 +22,37 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   });
   const siteLibrary: SiteLibraryQuery = await sdkClient.siteLibrary();
   const navigations: NavigationQuery = await sdkClient.Navigation();
-  const profiles: ProfileQuery = await sdkClient.profiles();
+  const profiles: ProfilesQuery = await sdkClient.profiles();
   const blogs: BlogsQuery = await sdkClient.blogs();
+  const contacts: ContactsQuery = await sdkClient.contacts();
   return {
     props: {
       siteLibrary,
       navigations,
       profile,
+      profiles,
       blogs,
-      profiles
+      contacts,
     },
   };
 };
 
 interface ProfilePageProps {
   profile: ProfileQuery;
+  profiles: ProfilesQuery;
   siteLibrary: SiteLibraryQuery;
-  profiles: ProfileQuery;
   navigations: NavigationQuery;
   blogs: BlogsQuery;
+  contacts: ContactsQuery;
 }
 
 export default function ProfileSlug({
   profile,
   siteLibrary,
-  // profiles,
+  profiles,
+  contacts,
   navigations,
-  blogs
+  blogs,
 }: ProfilePageProps) {
   if (!profile.profile || !siteLibrary.siteLibrary) return <></>;
   return (
@@ -58,8 +63,12 @@ export default function ProfileSlug({
         navigation={navigations.navigations[0]}
         hideNav={false}
       />
-      {/* <Profile profile={profile?.profile} profiles={profiles} siteLibrary={siteLibrary?.siteLibrary} /> */}
-      <Profile profile={profile?.profile} siteLibrary={siteLibrary?.siteLibrary} />
+      <Profile
+        profile={profile?.profile}
+        siteLibrary={siteLibrary?.siteLibrary}
+        contacts={contacts.contacts}
+        profiles={profiles?.profiles}
+      />
       <Footer
         siteLibrary={siteLibrary.siteLibrary}
         navigation={navigations.navigations[0]}

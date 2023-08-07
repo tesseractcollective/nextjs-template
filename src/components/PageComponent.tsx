@@ -1,47 +1,49 @@
-"use client";
-import type { LayoutQuery } from "@/graphql/generated/graphql";
-import LayoutBlocks from "@/components/LayoutBlocks";
-import ThemeColors from "@/styles/ThemeColors";
+import { FC } from 'react';
 import Head from 'next/head';
 
-interface HomeProps {
+import { LayoutQuery } from '@/graphql/generated/graphql';
+import LayoutBlocks from '@/components/LayoutBlocks';
+import ThemeColors from '@/styles/ThemeColors';
+
+interface Props {
   layout: LayoutQuery;
 }
 
-export default function PageComponent({ layout }: HomeProps) {
+const PageComponent: FC<Props> = ({ layout }) => {
   if (!layout.siteLibrary) return <div />;
+
+  const {
+    title,
+    metaDescription,
+    metaOgImage,
+    favicon,
+    metaAppleTouchIcon,
+    metaGoogleConsoleVerification,
+  } = layout.siteLibrary;
 
   return (
     <>
-    <Head>
-    {!!layout?.siteLibrary?.favicon && (
-          <link rel="shortcut icon" href={layout?.siteLibrary.favicon.url} />
+      <Head>
+        {!!favicon && <link rel="shortcut icon" href={favicon.url} />}
+        {!!metaOgImage && <meta property="og:image" content={metaOgImage.url} />}
+        {!!metaOgImage && <meta name="twitter:image" content={metaOgImage.url} />}
+        {!!metaDescription && <meta name="description" content={metaDescription} />}
+        {!!title && <title>{title}</title>}
+        {!!metaAppleTouchIcon && (
+          <link rel="apple-touch-icon" href={metaAppleTouchIcon.url} />
         )}
-        {!!layout?.siteLibrary?.metaOgImage && (
-          <meta property="og:image" content={layout?.siteLibrary.metaOgImage.url} />
-        )}
-        {!!layout?.siteLibrary?.metaOgImage && (
-          <meta name="twitter:image" content={layout?.siteLibrary.metaOgImage.url} />
-        )}
-        {!!layout?.siteLibrary?.metaDescription && (
-          <meta name="description" content={layout?.siteLibrary.metaDescription} />
-        )}
-        {!!layout?.siteLibrary?.title && <title>{layout?.siteLibrary.title}</title>}
-        {!!layout?.siteLibrary?.metaAppleTouchIcon && (
-          <link
-            rel="apple-touch-icon"
-            href={layout?.siteLibrary.metaAppleTouchIcon?.url}
-          />
-        )}
-        {!!layout?.siteLibrary?.metaGoogleConsoleVerification && (
+        {!!metaGoogleConsoleVerification && (
           <meta
             name="google-site-verification"
-            content={layout?.siteLibrary.metaGoogleConsoleVerification}
+            content={metaGoogleConsoleVerification}
           />
         )}
-    </Head>
+        {layout.page?.noIndex && <meta name="robots" content="noindex" />}
+      </Head>
       <ThemeColors siteLibrary={layout.siteLibrary} />
       <LayoutBlocks layout={layout} />
     </>
   );
-}
+};
+
+export default PageComponent;

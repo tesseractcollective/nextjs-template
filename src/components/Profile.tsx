@@ -1,4 +1,5 @@
 import type {
+  ContactFieldsFragment,
   ProfileFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
@@ -29,31 +30,38 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Fade } from "react-awesome-reveal";
-// import Profiles from "@/components/Profiles";
+import Profiles from "@/components/Profiles";
 
 export interface ProfileProps {
   profile: ProfileFieldsFragment;
-  // profiles?: ProfileFieldsFragment[];
+  profiles: ProfileFieldsFragment[];
+  contacts: ContactFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export default function Profile({ profile, siteLibrary }: ProfileProps) {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 1500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    arrows: false,
-  };
-
+export default function Profile({
+  profile,
+  siteLibrary,
+  contacts,
+  profiles
+}: ProfileProps) {
+  const filteredContacts = contacts?.filter((contact) =>
+    profile?.contactQuery.includes(contact.contactQuery)
+  );
+  const filteredProfiles = profiles?.filter(tempProf => profile.profileSlug !== tempProf.profileSlug);
+  console.log('profiles - profile.tsx:', profiles);
   return (
     <>
       <Head>
         {!!profile?.name && <title>{profile.name}</title>}
         {!!profile.heroImage?.url && (
           <meta property="og:image" content={profile.heroImage?.url} />
+        )}
+        {!!siteLibrary?.title && (
+          <meta name="description" content={siteLibrary.title} />
+        )}
+        {!!siteLibrary?.favicon && (
+          <link rel="shortcut icon" href={siteLibrary.favicon.url} />
         )}
       </Head>
       <div className="bg-dark">
@@ -393,10 +401,14 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
 
       <section className="container mx-auto">
         {!!profile?.tourWidgetiFrame && (
-          <div className="my-16 mx-auto" id="profile-tourwidget">{parse(profile.tourWidgetiFrame)}</div>
+          <div className="my-16 mx-auto" id="profile-tourwidget">
+            {parse(profile.tourWidgetiFrame)}
+          </div>
         )}
         {!!profile?.iFrame && (
-          <div className="my-16 mx-auto px-4" id="profile-iframe">{parse(profile.iFrame)}</div>
+          <div className="my-16 mx-auto px-4" id="profile-iframe">
+            {parse(profile.iFrame)}
+          </div>
         )}
         {!!profile?.videoBox && (
           <div>
@@ -407,7 +419,7 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                 youtubeVideoId={video?.youtubeVideoId || undefined}
                 youtubePlaylistId={video?.youtubePlaylistId || undefined}
                 youtubeApiKey={siteLibrary.youtubeApiKey}
-                key={Math.random()}
+                key={profile.profileSlug}
               />
             ))}
           </div>
@@ -430,11 +442,11 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
               />
             </div>
           )}
-          {!!profile?.contactList && (
+          {!!filteredContacts && (
             <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 sm:pb-32 lg:grid lg:max-w-8xl lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:pt-32">
               <div className="lg:col-start-2">
                 <h2
-                  id="features-heading"
+                  id="contacts-heading"
                   className="font-medium text-dark mb-0"
                 >
                   {profile.name}
@@ -443,7 +455,7 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
                   {siteLibrary.isSpanish ? "Contáctenos" : "Contact Details"}
                 </p>
                 <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
-                  {profile.contactList?.map((contact) => (
+                  {filteredContacts?.map((contact) => (
                     <li key={contact.contactName}>
                       <div className="flex items-center gap-x-4 md:gap-x-6">
                         {contact?.contactAvatar?.url && (
@@ -526,14 +538,14 @@ export default function Profile({ profile, siteLibrary }: ProfileProps) {
           )}
         </section>
       </div>
-      {/* {!!profiles && profile.profileType && (
+      {!!profiles && profile.profileType && (
         <Profiles
-        profiles={profiles}
+          profiles={filteredProfiles}
           profileLayoutStyle="cardLink"
           profileSectionTitle={profile.profileType}
           profilesQuery={profile.profileType}
         />
-      )} */}
+      )}
     </>
   );
 }

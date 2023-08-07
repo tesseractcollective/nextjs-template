@@ -33,6 +33,7 @@ import VideoPlaylistBox from "./VideoPlaylistBox";
 import { Fade } from "react-awesome-reveal";
 import { StripePricingTable } from "./StripePricingTable";
 import InstagramSection from "./InstagramSection";
+import Products from "./Products";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -50,6 +51,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
     logoTables,
     albums,
     blogs,
+    products
   } = layout;
   if (!siteLibrary) return <></>;
   // console.log("Layout", layout);
@@ -491,15 +493,23 @@ export default function LayoutBlocks({ layout }: PageProps) {
                           layoutBlockColumn?.testimonialsQuery && (
                             <section
                               className="container mx-auto z-20 w-10/12"
-                              id={`Testimonial-${index}`}
+                              id={`testimonial-${index}`}
                             >
                               <Testimonials
                                 testimonials={testimonials}
                                 query={layoutBlockColumn?.testimonialsQuery}
                               />
                             </section>
-                          )}
-
+                        )}
+                        {!!products && layoutBlockColumn?.productQuery && (
+                          <section className="container mx-auto z-20 w-10/12"
+                          id={`product-${index}`}>
+                            <Products 
+                             products={products}
+                             query={layoutBlockColumn?.productQuery}
+                            />
+                          </section>
+                        )}
                         {/* <YouTubePlaylist
                         apiKey="AIzaSyDRSCldWgk_sVE5qDnziqlGlB5Inq_Ljc8"
                         playlistId="PLPZMiBBzqLb0MrkNOy93YQmoQ1Nb2mkZO"

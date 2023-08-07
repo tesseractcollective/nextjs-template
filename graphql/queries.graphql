@@ -9,6 +9,7 @@ query layout(
   $testimonialFirst: Int = 100
   $profilesFirst: Int = 100
   $pageSlug: String!
+  $productFirst: Int = 100
   $logoTableFirst: Int = 100
   $logoTableOrderBy: LogoTableOrderByInput = logoName_ASC
 ) {
@@ -36,6 +37,9 @@ query layout(
   navigations {
     ...navigationFields
   }
+  products(first: $productFirst) {
+    ...productFields
+  }
   logoTables(first: $logoTableFirst, orderBy: $logoTableOrderBy) {
     ...logoTableFields
   }
@@ -60,6 +64,11 @@ query blog($blogSlug: String!) {
 query blogs {
   blogs(first: 200) {
     ...blogFields
+  }
+}
+query contacts {
+  contacts(first: 200) {
+    ...contactFields
   }
 }
 
@@ -87,26 +96,30 @@ query album($albumSlug: String!) {
   }
 }
 
-query profiles {
-  profiles(first: 100) {
-    ...profileFields
-  }
-}
 query testimonials {
   testimonials(first: 100) {
     ...testimonialFields
   }
 }
-
-# query profillesByType($profileType: ProfilesSelect!) {
-#   profiles(first: 100, where: {profileType: $profileType}) {
-#     ...profileFields
-
-#   }
-# }
+query profiles {
+  profiles(first: 100) {
+    ...profileFields
+  }
+}
 
 query profile($profileSlug: String!) {
   profile(where: { profileSlug: $profileSlug }) {
     ...profileFields
+  }
+}
+query products {
+  products(first: 100) {
+    ...productFields
+  }
+}
+
+query product($productSlug: String!) {
+  product(where: { productSlug: $productSlug }) {
+    ...productFields
   }
 }

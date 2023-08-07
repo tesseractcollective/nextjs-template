@@ -1031,6 +1031,7 @@ export type Asset = Node & {
   albumCoverAlbum: Array<Album>;
   avatarImageProfile: Array<Profile>;
   blogGalleryBlog: Array<Blog>;
+  contactAvatarContact: Array<Contact>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -1042,6 +1043,7 @@ export type Asset = Node & {
   faviconSiteLibrary: Array<SiteLibrary>;
   /** The file name */
   fileName: Scalars['String'];
+  galleryProduct: Array<Product>;
   /** The file handle */
   handle: Scalars['String'];
   /** The height of the file */
@@ -1132,6 +1134,20 @@ export type AssetBlogGalleryBlogArgs = {
 
 
 /** Asset system model */
+export type AssetContactAvatarContactArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ContactOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContactWhereInput>;
+};
+
+
+/** Asset system model */
 export type AssetCreatedAtArgs = {
   variation?: SystemDateTimeFieldVariation;
 };
@@ -1191,6 +1207,20 @@ export type AssetFaviconSiteLibraryArgs = {
   orderBy?: InputMaybe<SiteLibraryOrderByInput>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<SiteLibraryWhereInput>;
+};
+
+
+/** Asset system model */
+export type AssetGalleryProductArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ProductOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProductWhereInput>;
 };
 
 
@@ -1459,7 +1489,7 @@ export type AssetCreateInput = {
   backgroundImageLayoutSectionContent?: InputMaybe<LayoutBlockColumnCreateManyInlineInput>;
   blogGalleryBlog?: InputMaybe<BlogCreateManyInlineInput>;
   boxImageGridBox?: InputMaybe<GridBoxCreateManyInlineInput>;
-  contactAvatarContactList?: InputMaybe<ContactListCreateManyInlineInput>;
+  contactAvatarContact?: InputMaybe<ContactCreateManyInlineInput>;
   contentImageAccordionContent?: InputMaybe<AccordionCreateManyInlineInput>;
   contentImageTextContent?: InputMaybe<TextContentCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
@@ -1468,6 +1498,7 @@ export type AssetCreateInput = {
   faviconSiteLibrary?: InputMaybe<SiteLibraryCreateManyInlineInput>;
   fileName: Scalars['String'];
   footerImageFooterColumn?: InputMaybe<FooterColumnCreateManyInlineInput>;
+  galleryProduct?: InputMaybe<ProductCreateManyInlineInput>;
   handle: Scalars['String'];
   height?: InputMaybe<Scalars['Float']>;
   heroImagePage?: InputMaybe<PageCreateManyInlineInput>;
@@ -1559,6 +1590,9 @@ export type AssetManyWhereInput = {
   blogGalleryBlog_every?: InputMaybe<BlogWhereInput>;
   blogGalleryBlog_none?: InputMaybe<BlogWhereInput>;
   blogGalleryBlog_some?: InputMaybe<BlogWhereInput>;
+  contactAvatarContact_every?: InputMaybe<ContactWhereInput>;
+  contactAvatarContact_none?: InputMaybe<ContactWhereInput>;
+  contactAvatarContact_some?: InputMaybe<ContactWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1587,6 +1621,9 @@ export type AssetManyWhereInput = {
   faviconSiteLibrary_every?: InputMaybe<SiteLibraryWhereInput>;
   faviconSiteLibrary_none?: InputMaybe<SiteLibraryWhereInput>;
   faviconSiteLibrary_some?: InputMaybe<SiteLibraryWhereInput>;
+  galleryProduct_every?: InputMaybe<ProductWhereInput>;
+  galleryProduct_none?: InputMaybe<ProductWhereInput>;
+  galleryProduct_some?: InputMaybe<ProductWhereInput>;
   heroImagePage_every?: InputMaybe<PageWhereInput>;
   heroImagePage_none?: InputMaybe<PageWhereInput>;
   heroImagePage_some?: InputMaybe<PageWhereInput>;
@@ -1720,7 +1757,7 @@ export type AssetUpdateInput = {
   backgroundImageLayoutSectionContent?: InputMaybe<LayoutBlockColumnUpdateManyInlineInput>;
   blogGalleryBlog?: InputMaybe<BlogUpdateManyInlineInput>;
   boxImageGridBox?: InputMaybe<GridBoxUpdateManyInlineInput>;
-  contactAvatarContactList?: InputMaybe<ContactListUpdateManyInlineInput>;
+  contactAvatarContact?: InputMaybe<ContactUpdateManyInlineInput>;
   contentImageAccordionContent?: InputMaybe<AccordionUpdateManyInlineInput>;
   contentImageTextContent?: InputMaybe<TextContentUpdateManyInlineInput>;
   eventFlyerEvent?: InputMaybe<EventUpdateManyInlineInput>;
@@ -1728,6 +1765,7 @@ export type AssetUpdateInput = {
   faviconSiteLibrary?: InputMaybe<SiteLibraryUpdateManyInlineInput>;
   fileName?: InputMaybe<Scalars['String']>;
   footerImageFooterColumn?: InputMaybe<FooterColumnUpdateManyInlineInput>;
+  galleryProduct?: InputMaybe<ProductUpdateManyInlineInput>;
   handle?: InputMaybe<Scalars['String']>;
   height?: InputMaybe<Scalars['Float']>;
   heroImagePage?: InputMaybe<PageUpdateManyInlineInput>;
@@ -1897,6 +1935,9 @@ export type AssetWhereInput = {
   blogGalleryBlog_every?: InputMaybe<BlogWhereInput>;
   blogGalleryBlog_none?: InputMaybe<BlogWhereInput>;
   blogGalleryBlog_some?: InputMaybe<BlogWhereInput>;
+  contactAvatarContact_every?: InputMaybe<ContactWhereInput>;
+  contactAvatarContact_none?: InputMaybe<ContactWhereInput>;
+  contactAvatarContact_some?: InputMaybe<ContactWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1944,6 +1985,9 @@ export type AssetWhereInput = {
   fileName_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   fileName_starts_with?: InputMaybe<Scalars['String']>;
+  galleryProduct_every?: InputMaybe<ProductWhereInput>;
+  galleryProduct_none?: InputMaybe<ProductWhereInput>;
+  galleryProduct_some?: InputMaybe<ProductWhereInput>;
   handle?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   handle_contains?: InputMaybe<Scalars['String']>;
@@ -3383,6 +3427,146 @@ export type ConnectPositionInput = {
   start?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type Contact = Node & {
+  __typename?: 'Contact';
+  contactAddress?: Maybe<Scalars['String']>;
+  contactAvatar?: Maybe<Asset>;
+  contactCalendly?: Maybe<Scalars['String']>;
+  contactEmail?: Maybe<Scalars['String']>;
+  contactGoogleAddressLink?: Maybe<Scalars['String']>;
+  contactName: Scalars['String'];
+  contactPhone?: Maybe<Scalars['String']>;
+  contactQuery: ContactQueries;
+  contactTitle?: Maybe<Scalars['String']>;
+  contactWhatsapp?: Maybe<Scalars['String']>;
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Contact>;
+  /** List of Contact versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type ContactContactAvatarArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ContactCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ContactDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type ContactHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type ContactPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ContactScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type ContactUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type ContactConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: ContactWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type ContactConnection = {
+  __typename?: 'ContactConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<ContactEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type ContactCreateInput = {
+  contactAddress?: InputMaybe<Scalars['String']>;
+  contactAvatar?: InputMaybe<AssetCreateOneInlineInput>;
+  contactCalendly?: InputMaybe<Scalars['String']>;
+  contactEmail?: InputMaybe<Scalars['String']>;
+  contactGoogleAddressLink?: InputMaybe<Scalars['String']>;
+  contactName: Scalars['String'];
+  contactPhone?: InputMaybe<Scalars['String']>;
+  contactQuery: ContactQueries;
+  contactTitle?: InputMaybe<Scalars['String']>;
+  contactWhatsapp?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ContactCreateManyInlineInput = {
+  /** Connect multiple existing Contact documents */
+  connect?: InputMaybe<Array<ContactWhereUniqueInput>>;
+  /** Create and connect multiple existing Contact documents */
+  create?: InputMaybe<Array<ContactCreateInput>>;
+};
+
+export type ContactCreateOneInlineInput = {
+  /** Connect one existing Contact document */
+  connect?: InputMaybe<ContactWhereUniqueInput>;
+  /** Create and connect one Contact document */
+  create?: InputMaybe<ContactCreateInput>;
+};
+
+/** An edge in a connection. */
+export type ContactEdge = {
+  __typename?: 'ContactEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Contact;
+};
+
 export type ContactForm = {
   __typename?: 'ContactForm';
   contactFormDescription?: Maybe<RichText>;
@@ -3923,88 +4107,14 @@ export type ContactFormWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type ContactList = {
-  __typename?: 'ContactList';
-  contactAddress?: Maybe<Scalars['String']>;
-  contactAvatar?: Maybe<Asset>;
-  contactEmail?: Maybe<Scalars['String']>;
-  contactGoogleAddressLink?: Maybe<Scalars['String']>;
-  contactName?: Maybe<Scalars['String']>;
-  contactPhone?: Maybe<Scalars['String']>;
-  contactTitle?: Maybe<Scalars['String']>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  /** System stage field */
-  stage: Stage;
-};
-
-
-export type ContactListContactAvatarArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-export type ContactListConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: ContactListWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type ContactListConnection = {
-  __typename?: 'ContactListConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<ContactListEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type ContactListCreateInput = {
-  contactAddress?: InputMaybe<Scalars['String']>;
-  contactAvatar?: InputMaybe<AssetCreateOneInlineInput>;
-  contactEmail?: InputMaybe<Scalars['String']>;
-  contactGoogleAddressLink?: InputMaybe<Scalars['String']>;
-  contactName?: InputMaybe<Scalars['String']>;
-  contactPhone?: InputMaybe<Scalars['String']>;
-  contactTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type ContactListCreateManyInlineInput = {
-  /** Create and connect multiple existing ContactList documents */
-  create?: InputMaybe<Array<ContactListCreateInput>>;
-};
-
-export type ContactListCreateOneInlineInput = {
-  /** Create and connect one ContactList document */
-  create?: InputMaybe<ContactListCreateInput>;
-};
-
-export type ContactListCreateWithPositionInput = {
-  /** Document to create */
-  data: ContactListCreateInput;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-};
-
-/** An edge in a connection. */
-export type ContactListEdge = {
-  __typename?: 'ContactListEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: ContactList;
-};
-
 /** Identifies documents */
-export type ContactListManyWhereInput = {
+export type ContactManyWhereInput = {
   /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ContactListWhereInput>>;
+  AND?: InputMaybe<Array<ContactWhereInput>>;
   /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ContactListWhereInput>>;
+  NOT?: InputMaybe<Array<ContactWhereInput>>;
   /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ContactListWhereInput>>;
+  OR?: InputMaybe<Array<ContactWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
   contactAddress?: InputMaybe<Scalars['String']>;
@@ -4027,6 +4137,25 @@ export type ContactListManyWhereInput = {
   /** All values starting with the given string. */
   contactAddress_starts_with?: InputMaybe<Scalars['String']>;
   contactAvatar?: InputMaybe<AssetWhereInput>;
+  contactCalendly?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  contactCalendly_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  contactCalendly_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  contactCalendly_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contactCalendly_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  contactCalendly_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  contactCalendly_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  contactCalendly_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  contactCalendly_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  contactCalendly_starts_with?: InputMaybe<Scalars['String']>;
   contactEmail?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   contactEmail_contains?: InputMaybe<Scalars['String']>;
@@ -4103,6 +4232,13 @@ export type ContactListManyWhereInput = {
   contactPhone_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   contactPhone_starts_with?: InputMaybe<Scalars['String']>;
+  contactQuery?: InputMaybe<ContactQueries>;
+  /** All values that are contained in given list. */
+  contactQuery_in?: InputMaybe<Array<InputMaybe<ContactQueries>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contactQuery_not?: InputMaybe<ContactQueries>;
+  /** All values that are not contained in given list. */
+  contactQuery_not_in?: InputMaybe<Array<InputMaybe<ContactQueries>>>;
   contactTitle?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   contactTitle_contains?: InputMaybe<Scalars['String']>;
@@ -4122,6 +4258,44 @@ export type ContactListManyWhereInput = {
   contactTitle_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   contactTitle_starts_with?: InputMaybe<Scalars['String']>;
+  contactWhatsapp?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  contactWhatsapp_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  contactWhatsapp_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  contactWhatsapp_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contactWhatsapp_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  contactWhatsapp_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  contactWhatsapp_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  contactWhatsapp_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  contactWhatsapp_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  contactWhatsapp_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ContactWhereStageInput>;
+  documentInStages_none?: InputMaybe<ContactWhereStageInput>;
+  documentInStages_some?: InputMaybe<ContactWhereStageInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -4141,11 +4315,48 @@ export type ContactListManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
 };
 
-export enum ContactListOrderByInput {
+export enum ContactOrderByInput {
   ContactAddressAsc = 'contactAddress_ASC',
   ContactAddressDesc = 'contactAddress_DESC',
+  ContactCalendlyAsc = 'contactCalendly_ASC',
+  ContactCalendlyDesc = 'contactCalendly_DESC',
   ContactEmailAsc = 'contactEmail_ASC',
   ContactEmailDesc = 'contactEmail_DESC',
   ContactGoogleAddressLinkAsc = 'contactGoogleAddressLink_ASC',
@@ -4154,187 +4365,125 @@ export enum ContactListOrderByInput {
   ContactNameDesc = 'contactName_DESC',
   ContactPhoneAsc = 'contactPhone_ASC',
   ContactPhoneDesc = 'contactPhone_DESC',
+  ContactQueryAsc = 'contactQuery_ASC',
+  ContactQueryDesc = 'contactQuery_DESC',
   ContactTitleAsc = 'contactTitle_ASC',
   ContactTitleDesc = 'contactTitle_DESC',
+  ContactWhatsappAsc = 'contactWhatsapp_ASC',
+  ContactWhatsappDesc = 'contactWhatsapp_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
   IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC'
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
 }
 
-export type ContactListParent = Profile;
+export enum ContactQueries {
+  Admin = 'admin'
+}
 
-export type ContactListParentConnectInput = {
-  Profile?: InputMaybe<ProfileConnectInput>;
-};
-
-export type ContactListParentCreateInput = {
-  Profile?: InputMaybe<ProfileCreateInput>;
-};
-
-export type ContactListParentCreateManyInlineInput = {
-  /** Connect multiple existing ContactListParent documents */
-  connect?: InputMaybe<Array<ContactListParentWhereUniqueInput>>;
-  /** Create and connect multiple existing ContactListParent documents */
-  create?: InputMaybe<Array<ContactListParentCreateInput>>;
-};
-
-export type ContactListParentCreateOneInlineInput = {
-  /** Connect one existing ContactListParent document */
-  connect?: InputMaybe<ContactListParentWhereUniqueInput>;
-  /** Create and connect one ContactListParent document */
-  create?: InputMaybe<ContactListParentCreateInput>;
-};
-
-export type ContactListParentUpdateInput = {
-  Profile?: InputMaybe<ProfileUpdateInput>;
-};
-
-export type ContactListParentUpdateManyInlineInput = {
-  /** Connect multiple existing ContactListParent documents */
-  connect?: InputMaybe<Array<ContactListParentConnectInput>>;
-  /** Create and connect multiple ContactListParent documents */
-  create?: InputMaybe<Array<ContactListParentCreateInput>>;
-  /** Delete multiple ContactListParent documents */
-  delete?: InputMaybe<Array<ContactListParentWhereUniqueInput>>;
-  /** Disconnect multiple ContactListParent documents */
-  disconnect?: InputMaybe<Array<ContactListParentWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing ContactListParent documents */
-  set?: InputMaybe<Array<ContactListParentWhereUniqueInput>>;
-  /** Update multiple ContactListParent documents */
-  update?: InputMaybe<Array<ContactListParentUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple ContactListParent documents */
-  upsert?: InputMaybe<Array<ContactListParentUpsertWithNestedWhereUniqueInput>>;
-};
-
-export type ContactListParentUpdateManyWithNestedWhereInput = {
-  Profile?: InputMaybe<ProfileUpdateManyWithNestedWhereInput>;
-};
-
-export type ContactListParentUpdateOneInlineInput = {
-  /** Connect existing ContactListParent document */
-  connect?: InputMaybe<ContactListParentWhereUniqueInput>;
-  /** Create and connect one ContactListParent document */
-  create?: InputMaybe<ContactListParentCreateInput>;
-  /** Delete currently connected ContactListParent document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Disconnect currently connected ContactListParent document */
-  disconnect?: InputMaybe<Scalars['Boolean']>;
-  /** Update single ContactListParent document */
-  update?: InputMaybe<ContactListParentUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single ContactListParent document */
-  upsert?: InputMaybe<ContactListParentUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ContactListParentUpdateWithNestedWhereUniqueInput = {
-  Profile?: InputMaybe<ProfileUpdateWithNestedWhereUniqueInput>;
-};
-
-export type ContactListParentUpsertWithNestedWhereUniqueInput = {
-  Profile?: InputMaybe<ProfileUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ContactListParentWhereInput = {
-  Profile?: InputMaybe<ProfileWhereInput>;
-};
-
-export type ContactListParentWhereUniqueInput = {
-  Profile?: InputMaybe<ProfileWhereUniqueInput>;
-};
-
-export type ContactListUpdateInput = {
+export type ContactUpdateInput = {
   contactAddress?: InputMaybe<Scalars['String']>;
   contactAvatar?: InputMaybe<AssetUpdateOneInlineInput>;
+  contactCalendly?: InputMaybe<Scalars['String']>;
   contactEmail?: InputMaybe<Scalars['String']>;
   contactGoogleAddressLink?: InputMaybe<Scalars['String']>;
   contactName?: InputMaybe<Scalars['String']>;
   contactPhone?: InputMaybe<Scalars['String']>;
+  contactQuery?: InputMaybe<ContactQueries>;
   contactTitle?: InputMaybe<Scalars['String']>;
+  contactWhatsapp?: InputMaybe<Scalars['String']>;
 };
 
-export type ContactListUpdateManyInlineInput = {
-  /** Create and connect multiple ContactList component instances */
-  create?: InputMaybe<Array<ContactListCreateWithPositionInput>>;
-  /** Delete multiple ContactList documents */
-  delete?: InputMaybe<Array<ContactListWhereUniqueInput>>;
-  /** Update multiple ContactList component instances */
-  update?: InputMaybe<Array<ContactListUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple ContactList component instances */
-  upsert?: InputMaybe<Array<ContactListUpsertWithNestedWhereUniqueAndPositionInput>>;
+export type ContactUpdateManyInlineInput = {
+  /** Connect multiple existing Contact documents */
+  connect?: InputMaybe<Array<ContactConnectInput>>;
+  /** Create and connect multiple Contact documents */
+  create?: InputMaybe<Array<ContactCreateInput>>;
+  /** Delete multiple Contact documents */
+  delete?: InputMaybe<Array<ContactWhereUniqueInput>>;
+  /** Disconnect multiple Contact documents */
+  disconnect?: InputMaybe<Array<ContactWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Contact documents */
+  set?: InputMaybe<Array<ContactWhereUniqueInput>>;
+  /** Update multiple Contact documents */
+  update?: InputMaybe<Array<ContactUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Contact documents */
+  upsert?: InputMaybe<Array<ContactUpsertWithNestedWhereUniqueInput>>;
 };
 
-export type ContactListUpdateManyInput = {
+export type ContactUpdateManyInput = {
   contactAddress?: InputMaybe<Scalars['String']>;
+  contactCalendly?: InputMaybe<Scalars['String']>;
   contactEmail?: InputMaybe<Scalars['String']>;
   contactGoogleAddressLink?: InputMaybe<Scalars['String']>;
   contactName?: InputMaybe<Scalars['String']>;
   contactPhone?: InputMaybe<Scalars['String']>;
+  contactQuery?: InputMaybe<ContactQueries>;
   contactTitle?: InputMaybe<Scalars['String']>;
+  contactWhatsapp?: InputMaybe<Scalars['String']>;
 };
 
-export type ContactListUpdateManyWithNestedWhereInput = {
+export type ContactUpdateManyWithNestedWhereInput = {
   /** Update many input */
-  data: ContactListUpdateManyInput;
+  data: ContactUpdateManyInput;
   /** Document search */
-  where: ContactListWhereInput;
+  where: ContactWhereInput;
 };
 
-export type ContactListUpdateOneInlineInput = {
-  /** Create and connect one ContactList document */
-  create?: InputMaybe<ContactListCreateInput>;
-  /** Delete currently connected ContactList document */
+export type ContactUpdateOneInlineInput = {
+  /** Connect existing Contact document */
+  connect?: InputMaybe<ContactWhereUniqueInput>;
+  /** Create and connect one Contact document */
+  create?: InputMaybe<ContactCreateInput>;
+  /** Delete currently connected Contact document */
   delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single ContactList document */
-  update?: InputMaybe<ContactListUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single ContactList document */
-  upsert?: InputMaybe<ContactListUpsertWithNestedWhereUniqueInput>;
+  /** Disconnect currently connected Contact document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Contact document */
+  update?: InputMaybe<ContactUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Contact document */
+  upsert?: InputMaybe<ContactUpsertWithNestedWhereUniqueInput>;
 };
 
-export type ContactListUpdateWithNestedWhereUniqueAndPositionInput = {
+export type ContactUpdateWithNestedWhereUniqueInput = {
   /** Document to update */
-  data?: InputMaybe<ContactListUpdateInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: ContactListWhereUniqueInput;
-};
-
-export type ContactListUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: ContactListUpdateInput;
+  data: ContactUpdateInput;
   /** Unique document search */
-  where: ContactListWhereUniqueInput;
+  where: ContactWhereUniqueInput;
 };
 
-export type ContactListUpsertInput = {
+export type ContactUpsertInput = {
   /** Create document if it didn't exist */
-  create: ContactListCreateInput;
+  create: ContactCreateInput;
   /** Update document if it exists */
-  update: ContactListUpdateInput;
+  update: ContactUpdateInput;
 };
 
-export type ContactListUpsertWithNestedWhereUniqueAndPositionInput = {
-  /** Document to upsert */
-  data?: InputMaybe<ContactListUpsertInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: ContactListWhereUniqueInput;
-};
-
-export type ContactListUpsertWithNestedWhereUniqueInput = {
+export type ContactUpsertWithNestedWhereUniqueInput = {
   /** Upsert data */
-  data: ContactListUpsertInput;
+  data: ContactUpsertInput;
   /** Unique document search */
-  where: ContactListWhereUniqueInput;
+  where: ContactWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type ContactWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Identifies documents */
-export type ContactListWhereInput = {
+export type ContactWhereInput = {
   /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ContactListWhereInput>>;
+  AND?: InputMaybe<Array<ContactWhereInput>>;
   /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ContactListWhereInput>>;
+  NOT?: InputMaybe<Array<ContactWhereInput>>;
   /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ContactListWhereInput>>;
+  OR?: InputMaybe<Array<ContactWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
   contactAddress?: InputMaybe<Scalars['String']>;
@@ -4357,6 +4506,25 @@ export type ContactListWhereInput = {
   /** All values starting with the given string. */
   contactAddress_starts_with?: InputMaybe<Scalars['String']>;
   contactAvatar?: InputMaybe<AssetWhereInput>;
+  contactCalendly?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  contactCalendly_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  contactCalendly_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  contactCalendly_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contactCalendly_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  contactCalendly_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  contactCalendly_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  contactCalendly_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  contactCalendly_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  contactCalendly_starts_with?: InputMaybe<Scalars['String']>;
   contactEmail?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   contactEmail_contains?: InputMaybe<Scalars['String']>;
@@ -4433,6 +4601,13 @@ export type ContactListWhereInput = {
   contactPhone_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   contactPhone_starts_with?: InputMaybe<Scalars['String']>;
+  contactQuery?: InputMaybe<ContactQueries>;
+  /** All values that are contained in given list. */
+  contactQuery_in?: InputMaybe<Array<InputMaybe<ContactQueries>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contactQuery_not?: InputMaybe<ContactQueries>;
+  /** All values that are not contained in given list. */
+  contactQuery_not_in?: InputMaybe<Array<InputMaybe<ContactQueries>>>;
   contactTitle?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   contactTitle_contains?: InputMaybe<Scalars['String']>;
@@ -4452,6 +4627,44 @@ export type ContactListWhereInput = {
   contactTitle_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   contactTitle_starts_with?: InputMaybe<Scalars['String']>;
+  contactWhatsapp?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  contactWhatsapp_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  contactWhatsapp_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  contactWhatsapp_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contactWhatsapp_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  contactWhatsapp_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  contactWhatsapp_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  contactWhatsapp_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  contactWhatsapp_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  contactWhatsapp_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ContactWhereStageInput>;
+  documentInStages_none?: InputMaybe<ContactWhereStageInput>;
+  documentInStages_some?: InputMaybe<ContactWhereStageInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -4471,10 +4684,59 @@ export type ContactListWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
 };
 
-/** References ContactList record uniquely */
-export type ContactListWhereUniqueInput = {
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type ContactWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ContactWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ContactWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ContactWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<ContactWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References Contact record uniquely */
+export type ContactWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
@@ -5967,8 +6229,7 @@ export type FooterColumnWhereUniqueInput = {
 };
 
 export enum GalleryLayout {
-  Grid = 'grid',
-  Slider = 'slider'
+  Grid = 'grid'
 }
 
 export type GridBox = {
@@ -6889,6 +7150,7 @@ export type LayoutBlockColumn = {
   mailchimpSubtitle?: Maybe<Scalars['String']>;
   mailchimpTitle?: Maybe<Scalars['String']>;
   parallaxImage?: Maybe<Asset>;
+  productQuery?: Maybe<ProductType>;
   profileLayoutStyle?: Maybe<ProfileLayoutStyle>;
   profileSectionTitle?: Maybe<Scalars['String']>;
   profilesQuery?: Maybe<ProfilesSelect>;
@@ -7060,6 +7322,7 @@ export type LayoutBlockColumnCreateInput = {
   mailchimpSubtitle?: InputMaybe<Scalars['String']>;
   mailchimpTitle?: InputMaybe<Scalars['String']>;
   parallaxImage?: InputMaybe<AssetCreateOneInlineInput>;
+  productQuery?: InputMaybe<ProductType>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   profileSectionTitle?: InputMaybe<Scalars['String']>;
   profilesQuery?: InputMaybe<ProfilesSelect>;
@@ -7354,6 +7617,13 @@ export type LayoutBlockColumnManyWhereInput = {
   /** All values starting with the given string. */
   mailchimpTitle_starts_with?: InputMaybe<Scalars['String']>;
   parallaxImage?: InputMaybe<AssetWhereInput>;
+  productQuery?: InputMaybe<ProductType>;
+  /** All values that are contained in given list. */
+  productQuery_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  productQuery_not?: InputMaybe<ProductType>;
+  /** All values that are not contained in given list. */
+  productQuery_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   /** All values that are contained in given list. */
   profileLayoutStyle_in?: InputMaybe<Array<InputMaybe<ProfileLayoutStyle>>>;
@@ -7494,6 +7764,8 @@ export enum LayoutBlockColumnOrderByInput {
   MailchimpSubtitleDesc = 'mailchimpSubtitle_DESC',
   MailchimpTitleAsc = 'mailchimpTitle_ASC',
   MailchimpTitleDesc = 'mailchimpTitle_DESC',
+  ProductQueryAsc = 'productQuery_ASC',
+  ProductQueryDesc = 'productQuery_DESC',
   ProfileLayoutStyleAsc = 'profileLayoutStyle_ASC',
   ProfileLayoutStyleDesc = 'profileLayoutStyle_DESC',
   ProfileSectionTitleAsc = 'profileSectionTitle_ASC',
@@ -7613,6 +7885,7 @@ export type LayoutBlockColumnUpdateInput = {
   mailchimpSubtitle?: InputMaybe<Scalars['String']>;
   mailchimpTitle?: InputMaybe<Scalars['String']>;
   parallaxImage?: InputMaybe<AssetUpdateOneInlineInput>;
+  productQuery?: InputMaybe<ProductType>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   profileSectionTitle?: InputMaybe<Scalars['String']>;
   profilesQuery?: InputMaybe<ProfilesSelect>;
@@ -7652,6 +7925,7 @@ export type LayoutBlockColumnUpdateManyInput = {
   mailchimpLink?: InputMaybe<Scalars['String']>;
   mailchimpSubtitle?: InputMaybe<Scalars['String']>;
   mailchimpTitle?: InputMaybe<Scalars['String']>;
+  productQuery?: InputMaybe<ProductType>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   profileSectionTitle?: InputMaybe<Scalars['String']>;
   profilesQuery?: InputMaybe<ProfilesSelect>;
@@ -7975,6 +8249,13 @@ export type LayoutBlockColumnWhereInput = {
   /** All values starting with the given string. */
   mailchimpTitle_starts_with?: InputMaybe<Scalars['String']>;
   parallaxImage?: InputMaybe<AssetWhereInput>;
+  productQuery?: InputMaybe<ProductType>;
+  /** All values that are contained in given list. */
+  productQuery_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  productQuery_not?: InputMaybe<ProductType>;
+  /** All values that are not contained in given list. */
+  productQuery_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   /** All values that are contained in given list. */
   profileLayoutStyle_in?: InputMaybe<Array<InputMaybe<ProfileLayoutStyle>>>;
@@ -8967,6 +9248,8 @@ export type Mutation = {
   createAsset?: Maybe<Asset>;
   /** Create one blog */
   createBlog?: Maybe<Blog>;
+  /** Create one contact */
+  createContact?: Maybe<Contact>;
   /** Create one event */
   createEvent?: Maybe<Event>;
   /** Create one logoTable */
@@ -8975,6 +9258,8 @@ export type Mutation = {
   createNavigation?: Maybe<Navigation>;
   /** Create one page */
   createPage?: Maybe<Page>;
+  /** Create one product */
+  createProduct?: Maybe<Product>;
   /** Create one profile */
   createProfile?: Maybe<Profile>;
   /** Create one scheduledRelease */
@@ -8989,6 +9274,8 @@ export type Mutation = {
   deleteAsset?: Maybe<Asset>;
   /** Delete one blog from _all_ existing stages. Returns deleted document. */
   deleteBlog?: Maybe<Blog>;
+  /** Delete one contact from _all_ existing stages. Returns deleted document. */
+  deleteContact?: Maybe<Contact>;
   /** Delete one event from _all_ existing stages. Returns deleted document. */
   deleteEvent?: Maybe<Event>;
   /** Delete one logoTable from _all_ existing stages. Returns deleted document. */
@@ -9014,6 +9301,13 @@ export type Mutation = {
   deleteManyBlogs: BatchPayload;
   /** Delete many Blog documents, return deleted documents */
   deleteManyBlogsConnection: BlogConnection;
+  /**
+   * Delete many Contact documents
+   * @deprecated Please use the new paginated many mutation (deleteManyContactsConnection)
+   */
+  deleteManyContacts: BatchPayload;
+  /** Delete many Contact documents, return deleted documents */
+  deleteManyContactsConnection: ContactConnection;
   /**
    * Delete many Event documents
    * @deprecated Please use the new paginated many mutation (deleteManyEventsConnection)
@@ -9043,6 +9337,13 @@ export type Mutation = {
   /** Delete many Page documents, return deleted documents */
   deleteManyPagesConnection: PageConnection;
   /**
+   * Delete many Product documents
+   * @deprecated Please use the new paginated many mutation (deleteManyProductsConnection)
+   */
+  deleteManyProducts: BatchPayload;
+  /** Delete many Product documents, return deleted documents */
+  deleteManyProductsConnection: ProductConnection;
+  /**
    * Delete many Profile documents
    * @deprecated Please use the new paginated many mutation (deleteManyProfilesConnection)
    */
@@ -9067,6 +9368,8 @@ export type Mutation = {
   deleteNavigation?: Maybe<Navigation>;
   /** Delete one page from _all_ existing stages. Returns deleted document. */
   deletePage?: Maybe<Page>;
+  /** Delete one product from _all_ existing stages. Returns deleted document. */
+  deleteProduct?: Maybe<Product>;
   /** Delete one profile from _all_ existing stages. Returns deleted document. */
   deleteProfile?: Maybe<Profile>;
   /** Delete and return scheduled operation */
@@ -9083,6 +9386,8 @@ export type Mutation = {
   publishAsset?: Maybe<Asset>;
   /** Publish one blog */
   publishBlog?: Maybe<Blog>;
+  /** Publish one contact */
+  publishContact?: Maybe<Contact>;
   /** Publish one event */
   publishEvent?: Maybe<Event>;
   /** Publish one logoTable */
@@ -9108,6 +9413,13 @@ export type Mutation = {
   publishManyBlogs: BatchPayload;
   /** Publish many Blog documents */
   publishManyBlogsConnection: BlogConnection;
+  /**
+   * Publish many Contact documents
+   * @deprecated Please use the new paginated many mutation (publishManyContactsConnection)
+   */
+  publishManyContacts: BatchPayload;
+  /** Publish many Contact documents */
+  publishManyContactsConnection: ContactConnection;
   /**
    * Publish many Event documents
    * @deprecated Please use the new paginated many mutation (publishManyEventsConnection)
@@ -9137,6 +9449,13 @@ export type Mutation = {
   /** Publish many Page documents */
   publishManyPagesConnection: PageConnection;
   /**
+   * Publish many Product documents
+   * @deprecated Please use the new paginated many mutation (publishManyProductsConnection)
+   */
+  publishManyProducts: BatchPayload;
+  /** Publish many Product documents */
+  publishManyProductsConnection: ProductConnection;
+  /**
    * Publish many Profile documents
    * @deprecated Please use the new paginated many mutation (publishManyProfilesConnection)
    */
@@ -9161,6 +9480,8 @@ export type Mutation = {
   publishNavigation?: Maybe<Navigation>;
   /** Publish one page */
   publishPage?: Maybe<Page>;
+  /** Publish one product */
+  publishProduct?: Maybe<Product>;
   /** Publish one profile */
   publishProfile?: Maybe<Profile>;
   /** Publish one siteLibrary */
@@ -9173,6 +9494,8 @@ export type Mutation = {
   schedulePublishAsset?: Maybe<Asset>;
   /** Schedule to publish one blog */
   schedulePublishBlog?: Maybe<Blog>;
+  /** Schedule to publish one contact */
+  schedulePublishContact?: Maybe<Contact>;
   /** Schedule to publish one event */
   schedulePublishEvent?: Maybe<Event>;
   /** Schedule to publish one logoTable */
@@ -9181,6 +9504,8 @@ export type Mutation = {
   schedulePublishNavigation?: Maybe<Navigation>;
   /** Schedule to publish one page */
   schedulePublishPage?: Maybe<Page>;
+  /** Schedule to publish one product */
+  schedulePublishProduct?: Maybe<Product>;
   /** Schedule to publish one profile */
   schedulePublishProfile?: Maybe<Profile>;
   /** Schedule to publish one siteLibrary */
@@ -9193,6 +9518,8 @@ export type Mutation = {
   scheduleUnpublishAsset?: Maybe<Asset>;
   /** Unpublish one blog from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishBlog?: Maybe<Blog>;
+  /** Unpublish one contact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishContact?: Maybe<Contact>;
   /** Unpublish one event from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishEvent?: Maybe<Event>;
   /** Unpublish one logoTable from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -9201,6 +9528,8 @@ export type Mutation = {
   scheduleUnpublishNavigation?: Maybe<Navigation>;
   /** Unpublish one page from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishPage?: Maybe<Page>;
+  /** Unpublish one product from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishProduct?: Maybe<Product>;
   /** Unpublish one profile from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishProfile?: Maybe<Profile>;
   /** Unpublish one siteLibrary from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -9213,6 +9542,8 @@ export type Mutation = {
   unpublishAsset?: Maybe<Asset>;
   /** Unpublish one blog from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishBlog?: Maybe<Blog>;
+  /** Unpublish one contact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishContact?: Maybe<Contact>;
   /** Unpublish one event from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishEvent?: Maybe<Event>;
   /** Unpublish one logoTable from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -9238,6 +9569,13 @@ export type Mutation = {
   unpublishManyBlogs: BatchPayload;
   /** Find many Blog documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyBlogsConnection: BlogConnection;
+  /**
+   * Unpublish many Contact documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyContactsConnection)
+   */
+  unpublishManyContacts: BatchPayload;
+  /** Find many Contact documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyContactsConnection: ContactConnection;
   /**
    * Unpublish many Event documents
    * @deprecated Please use the new paginated many mutation (unpublishManyEventsConnection)
@@ -9267,6 +9605,13 @@ export type Mutation = {
   /** Find many Page documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyPagesConnection: PageConnection;
   /**
+   * Unpublish many Product documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyProductsConnection)
+   */
+  unpublishManyProducts: BatchPayload;
+  /** Find many Product documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyProductsConnection: ProductConnection;
+  /**
    * Unpublish many Profile documents
    * @deprecated Please use the new paginated many mutation (unpublishManyProfilesConnection)
    */
@@ -9291,6 +9636,8 @@ export type Mutation = {
   unpublishNavigation?: Maybe<Navigation>;
   /** Unpublish one page from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishPage?: Maybe<Page>;
+  /** Unpublish one product from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishProduct?: Maybe<Product>;
   /** Unpublish one profile from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishProfile?: Maybe<Profile>;
   /** Unpublish one siteLibrary from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -9303,6 +9650,8 @@ export type Mutation = {
   updateAsset?: Maybe<Asset>;
   /** Update one blog */
   updateBlog?: Maybe<Blog>;
+  /** Update one contact */
+  updateContact?: Maybe<Contact>;
   /** Update one event */
   updateEvent?: Maybe<Event>;
   /** Update one logoTable */
@@ -9328,6 +9677,13 @@ export type Mutation = {
   updateManyBlogs: BatchPayload;
   /** Update many Blog documents */
   updateManyBlogsConnection: BlogConnection;
+  /**
+   * Update many contacts
+   * @deprecated Please use the new paginated many mutation (updateManyContactsConnection)
+   */
+  updateManyContacts: BatchPayload;
+  /** Update many Contact documents */
+  updateManyContactsConnection: ContactConnection;
   /**
    * Update many events
    * @deprecated Please use the new paginated many mutation (updateManyEventsConnection)
@@ -9357,6 +9713,13 @@ export type Mutation = {
   /** Update many Page documents */
   updateManyPagesConnection: PageConnection;
   /**
+   * Update many products
+   * @deprecated Please use the new paginated many mutation (updateManyProductsConnection)
+   */
+  updateManyProducts: BatchPayload;
+  /** Update many Product documents */
+  updateManyProductsConnection: ProductConnection;
+  /**
    * Update many profiles
    * @deprecated Please use the new paginated many mutation (updateManyProfilesConnection)
    */
@@ -9381,6 +9744,8 @@ export type Mutation = {
   updateNavigation?: Maybe<Navigation>;
   /** Update one page */
   updatePage?: Maybe<Page>;
+  /** Update one product */
+  updateProduct?: Maybe<Product>;
   /** Update one profile */
   updateProfile?: Maybe<Profile>;
   /** Update one scheduledRelease */
@@ -9395,6 +9760,8 @@ export type Mutation = {
   upsertAsset?: Maybe<Asset>;
   /** Upsert one blog */
   upsertBlog?: Maybe<Blog>;
+  /** Upsert one contact */
+  upsertContact?: Maybe<Contact>;
   /** Upsert one event */
   upsertEvent?: Maybe<Event>;
   /** Upsert one logoTable */
@@ -9403,6 +9770,8 @@ export type Mutation = {
   upsertNavigation?: Maybe<Navigation>;
   /** Upsert one page */
   upsertPage?: Maybe<Page>;
+  /** Upsert one product */
+  upsertProduct?: Maybe<Product>;
   /** Upsert one profile */
   upsertProfile?: Maybe<Profile>;
   /** Upsert one siteLibrary */
@@ -9427,6 +9796,11 @@ export type MutationCreateBlogArgs = {
 };
 
 
+export type MutationCreateContactArgs = {
+  data: ContactCreateInput;
+};
+
+
 export type MutationCreateEventArgs = {
   data: EventCreateInput;
 };
@@ -9444,6 +9818,11 @@ export type MutationCreateNavigationArgs = {
 
 export type MutationCreatePageArgs = {
   data: PageCreateInput;
+};
+
+
+export type MutationCreateProductArgs = {
+  data: ProductCreateInput;
 };
 
 
@@ -9479,6 +9858,11 @@ export type MutationDeleteAssetArgs = {
 
 export type MutationDeleteBlogArgs = {
   where: BlogWhereUniqueInput;
+};
+
+
+export type MutationDeleteContactArgs = {
+  where: ContactWhereUniqueInput;
 };
 
 
@@ -9534,6 +9918,21 @@ export type MutationDeleteManyBlogsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<BlogManyWhereInput>;
+};
+
+
+export type MutationDeleteManyContactsArgs = {
+  where?: InputMaybe<ContactManyWhereInput>;
+};
+
+
+export type MutationDeleteManyContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContactManyWhereInput>;
 };
 
 
@@ -9597,6 +9996,21 @@ export type MutationDeleteManyPagesConnectionArgs = {
 };
 
 
+export type MutationDeleteManyProductsArgs = {
+  where?: InputMaybe<ProductManyWhereInput>;
+};
+
+
+export type MutationDeleteManyProductsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProductManyWhereInput>;
+};
+
+
 export type MutationDeleteManyProfilesArgs = {
   where?: InputMaybe<ProfileManyWhereInput>;
 };
@@ -9652,6 +10066,11 @@ export type MutationDeletePageArgs = {
 };
 
 
+export type MutationDeleteProductArgs = {
+  where: ProductWhereUniqueInput;
+};
+
+
 export type MutationDeleteProfileArgs = {
   where: ProfileWhereUniqueInput;
 };
@@ -9695,6 +10114,12 @@ export type MutationPublishAssetArgs = {
 export type MutationPublishBlogArgs = {
   to?: Array<Stage>;
   where: BlogWhereUniqueInput;
+};
+
+
+export type MutationPublishContactArgs = {
+  to?: Array<Stage>;
+  where: ContactWhereUniqueInput;
 };
 
 
@@ -9770,6 +10195,24 @@ export type MutationPublishManyBlogsConnectionArgs = {
 };
 
 
+export type MutationPublishManyContactsArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<ContactManyWhereInput>;
+};
+
+
+export type MutationPublishManyContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<ContactManyWhereInput>;
+};
+
+
 export type MutationPublishManyEventsArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<EventManyWhereInput>;
@@ -9842,6 +10285,24 @@ export type MutationPublishManyPagesConnectionArgs = {
 };
 
 
+export type MutationPublishManyProductsArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<ProductManyWhereInput>;
+};
+
+
+export type MutationPublishManyProductsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<ProductManyWhereInput>;
+};
+
+
 export type MutationPublishManyProfilesArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<ProfileManyWhereInput>;
@@ -9908,6 +10369,12 @@ export type MutationPublishPageArgs = {
 };
 
 
+export type MutationPublishProductArgs = {
+  to?: Array<Stage>;
+  where: ProductWhereUniqueInput;
+};
+
+
 export type MutationPublishProfileArgs = {
   to?: Array<Stage>;
   where: ProfileWhereUniqueInput;
@@ -9953,6 +10420,14 @@ export type MutationSchedulePublishBlogArgs = {
 };
 
 
+export type MutationSchedulePublishContactArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: ContactWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishEventArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
@@ -9982,6 +10457,14 @@ export type MutationSchedulePublishPageArgs = {
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
   where: PageWhereUniqueInput;
+};
+
+
+export type MutationSchedulePublishProductArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: ProductWhereUniqueInput;
 };
 
 
@@ -10035,6 +10518,14 @@ export type MutationScheduleUnpublishBlogArgs = {
 };
 
 
+export type MutationScheduleUnpublishContactArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: ContactWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishEventArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
@@ -10064,6 +10555,14 @@ export type MutationScheduleUnpublishPageArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: PageWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishProductArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: ProductWhereUniqueInput;
 };
 
 
@@ -10108,6 +10607,12 @@ export type MutationUnpublishAssetArgs = {
 export type MutationUnpublishBlogArgs = {
   from?: Array<Stage>;
   where: BlogWhereUniqueInput;
+};
+
+
+export type MutationUnpublishContactArgs = {
+  from?: Array<Stage>;
+  where: ContactWhereUniqueInput;
 };
 
 
@@ -10178,6 +10683,24 @@ export type MutationUnpublishManyBlogsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Stage>;
   where?: InputMaybe<BlogManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyContactsArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<ContactManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<ContactManyWhereInput>;
 };
 
 
@@ -10253,6 +10776,24 @@ export type MutationUnpublishManyPagesConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyProductsArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<ProductManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyProductsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<ProductManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyProfilesArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<ProfileManyWhereInput>;
@@ -10319,6 +10860,12 @@ export type MutationUnpublishPageArgs = {
 };
 
 
+export type MutationUnpublishProductArgs = {
+  from?: Array<Stage>;
+  where: ProductWhereUniqueInput;
+};
+
+
 export type MutationUnpublishProfileArgs = {
   from?: Array<Stage>;
   where: ProfileWhereUniqueInput;
@@ -10352,6 +10899,12 @@ export type MutationUpdateAssetArgs = {
 export type MutationUpdateBlogArgs = {
   data: BlogUpdateInput;
   where: BlogWhereUniqueInput;
+};
+
+
+export type MutationUpdateContactArgs = {
+  data: ContactUpdateInput;
+  where: ContactWhereUniqueInput;
 };
 
 
@@ -10415,6 +10968,23 @@ export type MutationUpdateManyBlogsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<BlogManyWhereInput>;
+};
+
+
+export type MutationUpdateManyContactsArgs = {
+  data: ContactUpdateManyInput;
+  where?: InputMaybe<ContactManyWhereInput>;
+};
+
+
+export type MutationUpdateManyContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: ContactUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContactManyWhereInput>;
 };
 
 
@@ -10486,6 +11056,23 @@ export type MutationUpdateManyPagesConnectionArgs = {
 };
 
 
+export type MutationUpdateManyProductsArgs = {
+  data: ProductUpdateManyInput;
+  where?: InputMaybe<ProductManyWhereInput>;
+};
+
+
+export type MutationUpdateManyProductsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: ProductUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProductManyWhereInput>;
+};
+
+
 export type MutationUpdateManyProfilesArgs = {
   data: ProfileUpdateManyInput;
   where?: InputMaybe<ProfileManyWhereInput>;
@@ -10549,6 +11136,12 @@ export type MutationUpdatePageArgs = {
 };
 
 
+export type MutationUpdateProductArgs = {
+  data: ProductUpdateInput;
+  where: ProductWhereUniqueInput;
+};
+
+
 export type MutationUpdateProfileArgs = {
   data: ProfileUpdateInput;
   where: ProfileWhereUniqueInput;
@@ -10591,6 +11184,12 @@ export type MutationUpsertBlogArgs = {
 };
 
 
+export type MutationUpsertContactArgs = {
+  upsert: ContactUpsertInput;
+  where: ContactWhereUniqueInput;
+};
+
+
 export type MutationUpsertEventArgs = {
   upsert: EventUpsertInput;
   where: EventWhereUniqueInput;
@@ -10612,6 +11211,12 @@ export type MutationUpsertNavigationArgs = {
 export type MutationUpsertPageArgs = {
   upsert: PageUpsertInput;
   where: PageWhereUniqueInput;
+};
+
+
+export type MutationUpsertProductArgs = {
+  upsert: ProductUpsertInput;
+  where: ProductWhereUniqueInput;
 };
 
 
@@ -11661,6 +12266,7 @@ export type Page = Node & {
   /** The unique identifier */
   id: Scalars['ID'];
   layoutBlocks: Array<LayoutBlock>;
+  noIndex?: Maybe<Scalars['Boolean']>;
   pageNavigationSelection?: Maybe<PageNavigationSelection>;
   pageSlug?: Maybe<Scalars['String']>;
   pageWidthStyle?: Maybe<PageWidthStyle>;
@@ -11770,6 +12376,7 @@ export type PageCreateInput = {
   hideHeader?: InputMaybe<Scalars['Boolean']>;
   hideNav?: InputMaybe<Scalars['Boolean']>;
   layoutBlocks?: InputMaybe<LayoutBlockCreateManyInlineInput>;
+  noIndex?: InputMaybe<Scalars['Boolean']>;
   pageNavigationSelection?: InputMaybe<PageNavigationSelection>;
   pageSlug?: InputMaybe<Scalars['String']>;
   pageWidthStyle?: InputMaybe<PageWidthStyle>;
@@ -11889,6 +12496,9 @@ export type PageManyWhereInput = {
   layoutBlocks_every?: InputMaybe<LayoutBlockWhereInput>;
   layoutBlocks_none?: InputMaybe<LayoutBlockWhereInput>;
   layoutBlocks_some?: InputMaybe<LayoutBlockWhereInput>;
+  noIndex?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  noIndex_not?: InputMaybe<Scalars['Boolean']>;
   pageNavigationSelection?: InputMaybe<PageNavigationSelection>;
   /** All values that are contained in given list. */
   pageNavigationSelection_in?: InputMaybe<Array<InputMaybe<PageNavigationSelection>>>;
@@ -12042,6 +12652,8 @@ export enum PageOrderByInput {
   HideNavDesc = 'hideNav_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  NoIndexAsc = 'noIndex_ASC',
+  NoIndexDesc = 'noIndex_DESC',
   PageNavigationSelectionAsc = 'pageNavigationSelection_ASC',
   PageNavigationSelectionDesc = 'pageNavigationSelection_DESC',
   PageSlugAsc = 'pageSlug_ASC',
@@ -12071,6 +12683,7 @@ export type PageUpdateInput = {
   hideHeader?: InputMaybe<Scalars['Boolean']>;
   hideNav?: InputMaybe<Scalars['Boolean']>;
   layoutBlocks?: InputMaybe<LayoutBlockUpdateManyInlineInput>;
+  noIndex?: InputMaybe<Scalars['Boolean']>;
   pageNavigationSelection?: InputMaybe<PageNavigationSelection>;
   pageSlug?: InputMaybe<Scalars['String']>;
   pageWidthStyle?: InputMaybe<PageWidthStyle>;
@@ -12103,6 +12716,7 @@ export type PageUpdateManyInput = {
   hideFooter?: InputMaybe<Scalars['Boolean']>;
   hideHeader?: InputMaybe<Scalars['Boolean']>;
   hideNav?: InputMaybe<Scalars['Boolean']>;
+  noIndex?: InputMaybe<Scalars['Boolean']>;
   pageNavigationSelection?: InputMaybe<PageNavigationSelection>;
   pageWidthStyle?: InputMaybe<PageWidthStyle>;
   parentPage?: InputMaybe<ParentPage>;
@@ -12230,6 +12844,9 @@ export type PageWhereInput = {
   layoutBlocks_every?: InputMaybe<LayoutBlockWhereInput>;
   layoutBlocks_none?: InputMaybe<LayoutBlockWhereInput>;
   layoutBlocks_some?: InputMaybe<LayoutBlockWhereInput>;
+  noIndex?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  noIndex_not?: InputMaybe<Scalars['Boolean']>;
   pageNavigationSelection?: InputMaybe<PageNavigationSelection>;
   /** All values that are contained in given list. */
   pageNavigationSelection_in?: InputMaybe<Array<InputMaybe<PageNavigationSelection>>>;
@@ -12397,12 +13014,768 @@ export enum ParentPage {
   Service = 'service'
 }
 
+export type Product = Node & {
+  __typename?: 'Product';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  description?: Maybe<RichText>;
+  /** Get the document in other stages */
+  documentInStages: Array<Product>;
+  enableProduct?: Maybe<Scalars['Boolean']>;
+  gallery: Array<Asset>;
+  /** List of Product versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  price?: Maybe<Scalars['String']>;
+  productSlug: Scalars['String'];
+  productType: ProductType;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  purchaseLabel?: Maybe<Scalars['String']>;
+  purchaseLink?: Maybe<Scalars['String']>;
+  scheduledIn: Array<ScheduledOperation>;
+  sku?: Maybe<Scalars['String']>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+  vendor?: Maybe<Scalars['String']>;
+};
+
+
+export type ProductCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ProductDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type ProductGalleryArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<AssetOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<AssetWhereInput>;
+};
+
+
+export type ProductHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type ProductPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ProductScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type ProductUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type ProductConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: ProductWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type ProductConnection = {
+  __typename?: 'ProductConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<ProductEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type ProductCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description?: InputMaybe<Scalars['RichTextAST']>;
+  enableProduct?: InputMaybe<Scalars['Boolean']>;
+  gallery?: InputMaybe<AssetCreateManyInlineInput>;
+  name: Scalars['String'];
+  price?: InputMaybe<Scalars['String']>;
+  productSlug: Scalars['String'];
+  productType: ProductType;
+  purchaseLabel?: InputMaybe<Scalars['String']>;
+  purchaseLink?: InputMaybe<Scalars['String']>;
+  sku?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  vendor?: InputMaybe<Scalars['String']>;
+};
+
+export type ProductCreateManyInlineInput = {
+  /** Connect multiple existing Product documents */
+  connect?: InputMaybe<Array<ProductWhereUniqueInput>>;
+  /** Create and connect multiple existing Product documents */
+  create?: InputMaybe<Array<ProductCreateInput>>;
+};
+
+export type ProductCreateOneInlineInput = {
+  /** Connect one existing Product document */
+  connect?: InputMaybe<ProductWhereUniqueInput>;
+  /** Create and connect one Product document */
+  create?: InputMaybe<ProductCreateInput>;
+};
+
+/** An edge in a connection. */
+export type ProductEdge = {
+  __typename?: 'ProductEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Product;
+};
+
+/** Identifies documents */
+export type ProductManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ProductWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ProductWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ProductWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ProductWhereStageInput>;
+  documentInStages_none?: InputMaybe<ProductWhereStageInput>;
+  documentInStages_some?: InputMaybe<ProductWhereStageInput>;
+  enableProduct?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  enableProduct_not?: InputMaybe<Scalars['Boolean']>;
+  gallery_every?: InputMaybe<AssetWhereInput>;
+  gallery_none?: InputMaybe<AssetWhereInput>;
+  gallery_some?: InputMaybe<AssetWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  price?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  price_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  price_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  price_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  price_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  price_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  price_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  price_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  price_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  price_starts_with?: InputMaybe<Scalars['String']>;
+  productSlug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  productSlug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  productSlug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  productSlug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  productSlug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  productSlug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  productSlug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  productSlug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  productSlug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  productSlug_starts_with?: InputMaybe<Scalars['String']>;
+  productType?: InputMaybe<ProductType>;
+  /** All values that are contained in given list. */
+  productType_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  productType_not?: InputMaybe<ProductType>;
+  /** All values that are not contained in given list. */
+  productType_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  purchaseLabel?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  purchaseLabel_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  purchaseLabel_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  purchaseLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  purchaseLabel_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  purchaseLabel_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  purchaseLabel_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  purchaseLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  purchaseLabel_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  purchaseLabel_starts_with?: InputMaybe<Scalars['String']>;
+  purchaseLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  purchaseLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  purchaseLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  purchaseLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  purchaseLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  purchaseLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  purchaseLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  purchaseLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  purchaseLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  purchaseLink_starts_with?: InputMaybe<Scalars['String']>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  sku?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  sku_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  sku_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  sku_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  sku_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  sku_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  sku_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  sku_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  sku_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  sku_starts_with?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  vendor?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  vendor_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  vendor_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  vendor_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  vendor_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  vendor_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  vendor_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  vendor_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  vendor_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  vendor_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+export enum ProductOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  EnableProductAsc = 'enableProduct_ASC',
+  EnableProductDesc = 'enableProduct_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PriceAsc = 'price_ASC',
+  PriceDesc = 'price_DESC',
+  ProductSlugAsc = 'productSlug_ASC',
+  ProductSlugDesc = 'productSlug_DESC',
+  ProductTypeAsc = 'productType_ASC',
+  ProductTypeDesc = 'productType_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  PurchaseLabelAsc = 'purchaseLabel_ASC',
+  PurchaseLabelDesc = 'purchaseLabel_DESC',
+  PurchaseLinkAsc = 'purchaseLink_ASC',
+  PurchaseLinkDesc = 'purchaseLink_DESC',
+  SkuAsc = 'sku_ASC',
+  SkuDesc = 'sku_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  VendorAsc = 'vendor_ASC',
+  VendorDesc = 'vendor_DESC'
+}
+
+export enum ProductType {
+  Store = 'store'
+}
+
+export type ProductUpdateInput = {
+  description?: InputMaybe<Scalars['RichTextAST']>;
+  enableProduct?: InputMaybe<Scalars['Boolean']>;
+  gallery?: InputMaybe<AssetUpdateManyInlineInput>;
+  name?: InputMaybe<Scalars['String']>;
+  price?: InputMaybe<Scalars['String']>;
+  productSlug?: InputMaybe<Scalars['String']>;
+  productType?: InputMaybe<ProductType>;
+  purchaseLabel?: InputMaybe<Scalars['String']>;
+  purchaseLink?: InputMaybe<Scalars['String']>;
+  sku?: InputMaybe<Scalars['String']>;
+  vendor?: InputMaybe<Scalars['String']>;
+};
+
+export type ProductUpdateManyInlineInput = {
+  /** Connect multiple existing Product documents */
+  connect?: InputMaybe<Array<ProductConnectInput>>;
+  /** Create and connect multiple Product documents */
+  create?: InputMaybe<Array<ProductCreateInput>>;
+  /** Delete multiple Product documents */
+  delete?: InputMaybe<Array<ProductWhereUniqueInput>>;
+  /** Disconnect multiple Product documents */
+  disconnect?: InputMaybe<Array<ProductWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Product documents */
+  set?: InputMaybe<Array<ProductWhereUniqueInput>>;
+  /** Update multiple Product documents */
+  update?: InputMaybe<Array<ProductUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Product documents */
+  upsert?: InputMaybe<Array<ProductUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type ProductUpdateManyInput = {
+  description?: InputMaybe<Scalars['RichTextAST']>;
+  enableProduct?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  price?: InputMaybe<Scalars['String']>;
+  productType?: InputMaybe<ProductType>;
+  purchaseLabel?: InputMaybe<Scalars['String']>;
+  purchaseLink?: InputMaybe<Scalars['String']>;
+  sku?: InputMaybe<Scalars['String']>;
+  vendor?: InputMaybe<Scalars['String']>;
+};
+
+export type ProductUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: ProductUpdateManyInput;
+  /** Document search */
+  where: ProductWhereInput;
+};
+
+export type ProductUpdateOneInlineInput = {
+  /** Connect existing Product document */
+  connect?: InputMaybe<ProductWhereUniqueInput>;
+  /** Create and connect one Product document */
+  create?: InputMaybe<ProductCreateInput>;
+  /** Delete currently connected Product document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Product document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Product document */
+  update?: InputMaybe<ProductUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Product document */
+  upsert?: InputMaybe<ProductUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ProductUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: ProductUpdateInput;
+  /** Unique document search */
+  where: ProductWhereUniqueInput;
+};
+
+export type ProductUpsertInput = {
+  /** Create document if it didn't exist */
+  create: ProductCreateInput;
+  /** Update document if it exists */
+  update: ProductUpdateInput;
+};
+
+export type ProductUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: ProductUpsertInput;
+  /** Unique document search */
+  where: ProductWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type ProductWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Identifies documents */
+export type ProductWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ProductWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ProductWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ProductWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ProductWhereStageInput>;
+  documentInStages_none?: InputMaybe<ProductWhereStageInput>;
+  documentInStages_some?: InputMaybe<ProductWhereStageInput>;
+  enableProduct?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  enableProduct_not?: InputMaybe<Scalars['Boolean']>;
+  gallery_every?: InputMaybe<AssetWhereInput>;
+  gallery_none?: InputMaybe<AssetWhereInput>;
+  gallery_some?: InputMaybe<AssetWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  price?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  price_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  price_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  price_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  price_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  price_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  price_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  price_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  price_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  price_starts_with?: InputMaybe<Scalars['String']>;
+  productSlug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  productSlug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  productSlug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  productSlug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  productSlug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  productSlug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  productSlug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  productSlug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  productSlug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  productSlug_starts_with?: InputMaybe<Scalars['String']>;
+  productType?: InputMaybe<ProductType>;
+  /** All values that are contained in given list. */
+  productType_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  productType_not?: InputMaybe<ProductType>;
+  /** All values that are not contained in given list. */
+  productType_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  purchaseLabel?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  purchaseLabel_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  purchaseLabel_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  purchaseLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  purchaseLabel_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  purchaseLabel_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  purchaseLabel_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  purchaseLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  purchaseLabel_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  purchaseLabel_starts_with?: InputMaybe<Scalars['String']>;
+  purchaseLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  purchaseLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  purchaseLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  purchaseLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  purchaseLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  purchaseLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  purchaseLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  purchaseLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  purchaseLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  purchaseLink_starts_with?: InputMaybe<Scalars['String']>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  sku?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  sku_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  sku_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  sku_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  sku_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  sku_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  sku_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  sku_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  sku_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  sku_starts_with?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  vendor?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  vendor_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  vendor_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  vendor_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  vendor_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  vendor_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  vendor_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  vendor_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  vendor_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  vendor_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type ProductWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ProductWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ProductWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ProductWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<ProductWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References Product record uniquely */
+export type ProductWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  productSlug?: InputMaybe<Scalars['String']>;
+};
+
 export type Profile = Node & {
   __typename?: 'Profile';
   appleMusicLink?: Maybe<Scalars['String']>;
   avatarImage?: Maybe<Asset>;
   calendlyLink?: Maybe<Scalars['String']>;
-  contactList: Array<ContactList>;
+  contactQuery: Array<ContactQueries>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -12432,7 +13805,7 @@ export type Profile = Node & {
   profileJson?: Maybe<Scalars['Json']>;
   profileLogo?: Maybe<Asset>;
   profileSlug?: Maybe<Scalars['String']>;
-  profileType?: Maybe<ProfilesSelect>;
+  profileType: ProfilesSelect;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -12461,19 +13834,6 @@ export type Profile = Node & {
 export type ProfileAvatarImageArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type ProfileContactListArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<ContactListOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ContactListWhereInput>;
 };
 
 
@@ -12592,7 +13952,7 @@ export type ProfileCreateInput = {
   appleMusicLink?: InputMaybe<Scalars['String']>;
   avatarImage?: InputMaybe<AssetCreateOneInlineInput>;
   calendlyLink?: InputMaybe<Scalars['String']>;
-  contactList?: InputMaybe<ContactListCreateManyInlineInput>;
+  contactQuery?: InputMaybe<Array<ContactQueries>>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   email?: InputMaybe<Scalars['String']>;
   epkLink?: InputMaybe<Scalars['String']>;
@@ -12613,7 +13973,7 @@ export type ProfileCreateInput = {
   profileJson?: InputMaybe<Scalars['Json']>;
   profileLogo?: InputMaybe<AssetCreateOneInlineInput>;
   profileSlug?: InputMaybe<Scalars['String']>;
-  profileType?: InputMaybe<ProfilesSelect>;
+  profileType: ProfilesSelect;
   role?: InputMaybe<Scalars['String']>;
   snapchatLink?: InputMaybe<Scalars['String']>;
   soundcloudLink?: InputMaybe<Scalars['String']>;
@@ -12705,9 +14065,16 @@ export type ProfileManyWhereInput = {
   calendlyLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   calendlyLink_starts_with?: InputMaybe<Scalars['String']>;
-  contactList_every?: InputMaybe<ContactListWhereInput>;
-  contactList_none?: InputMaybe<ContactListWhereInput>;
-  contactList_some?: InputMaybe<ContactListWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  contactQuery?: InputMaybe<Array<ContactQueries>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  contactQuery_contains_all?: InputMaybe<Array<ContactQueries>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  contactQuery_contains_none?: InputMaybe<Array<ContactQueries>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  contactQuery_contains_some?: InputMaybe<Array<ContactQueries>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  contactQuery_not?: InputMaybe<Array<ContactQueries>>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -13232,6 +14599,8 @@ export enum ProfileOrderByInput {
   AppleMusicLinkDesc = 'appleMusicLink_DESC',
   CalendlyLinkAsc = 'calendlyLink_ASC',
   CalendlyLinkDesc = 'calendlyLink_DESC',
+  ContactQueryAsc = 'contactQuery_ASC',
+  ContactQueryDesc = 'contactQuery_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   EmailAsc = 'email_ASC',
@@ -13294,7 +14663,7 @@ export type ProfileUpdateInput = {
   appleMusicLink?: InputMaybe<Scalars['String']>;
   avatarImage?: InputMaybe<AssetUpdateOneInlineInput>;
   calendlyLink?: InputMaybe<Scalars['String']>;
-  contactList?: InputMaybe<ContactListUpdateManyInlineInput>;
+  contactQuery?: InputMaybe<Array<ContactQueries>>;
   email?: InputMaybe<Scalars['String']>;
   epkLink?: InputMaybe<Scalars['String']>;
   facebookLink?: InputMaybe<Scalars['String']>;
@@ -13348,6 +14717,7 @@ export type ProfileUpdateManyInlineInput = {
 export type ProfileUpdateManyInput = {
   appleMusicLink?: InputMaybe<Scalars['String']>;
   calendlyLink?: InputMaybe<Scalars['String']>;
+  contactQuery?: InputMaybe<Array<ContactQueries>>;
   email?: InputMaybe<Scalars['String']>;
   epkLink?: InputMaybe<Scalars['String']>;
   facebookLink?: InputMaybe<Scalars['String']>;
@@ -13473,9 +14843,16 @@ export type ProfileWhereInput = {
   calendlyLink_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   calendlyLink_starts_with?: InputMaybe<Scalars['String']>;
-  contactList_every?: InputMaybe<ContactListWhereInput>;
-  contactList_none?: InputMaybe<ContactListWhereInput>;
-  contactList_some?: InputMaybe<ContactListWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  contactQuery?: InputMaybe<Array<ContactQueries>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  contactQuery_contains_all?: InputMaybe<Array<ContactQueries>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  contactQuery_contains_none?: InputMaybe<Array<ContactQueries>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  contactQuery_contains_some?: InputMaybe<Array<ContactQueries>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  contactQuery_not?: InputMaybe<Array<ContactQueries>>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -14056,6 +15433,14 @@ export type Query = {
   blogs: Array<Blog>;
   /** Retrieve multiple blogs using the Relay connection interface */
   blogsConnection: BlogConnection;
+  /** Retrieve a single contact */
+  contact?: Maybe<Contact>;
+  /** Retrieve document version */
+  contactVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple contacts */
+  contacts: Array<Contact>;
+  /** Retrieve multiple contacts using the Relay connection interface */
+  contactsConnection: ContactConnection;
   /** Retrieve a single event */
   event?: Maybe<Event>;
   /** Retrieve document version */
@@ -14090,6 +15475,14 @@ export type Query = {
   pages: Array<Page>;
   /** Retrieve multiple pages using the Relay connection interface */
   pagesConnection: PageConnection;
+  /** Retrieve a single product */
+  product?: Maybe<Product>;
+  /** Retrieve document version */
+  productVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple products */
+  products: Array<Product>;
+  /** Retrieve multiple products using the Relay connection interface */
+  productsConnection: ProductConnection;
   /** Retrieve a single profile */
   profile?: Maybe<Profile>;
   /** Retrieve document version */
@@ -14249,6 +15642,44 @@ export type QueryBlogsConnectionArgs = {
 };
 
 
+export type QueryContactArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: ContactWhereUniqueInput;
+};
+
+
+export type QueryContactVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryContactsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ContactOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<ContactWhereInput>;
+};
+
+
+export type QueryContactsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ContactOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<ContactWhereInput>;
+};
+
+
 export type QueryEventArgs = {
   locales?: Array<Locale>;
   stage?: Stage;
@@ -14405,6 +15836,44 @@ export type QueryPagesConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<PageWhereInput>;
+};
+
+
+export type QueryProductArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: ProductWhereUniqueInput;
+};
+
+
+export type QueryProductVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryProductsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ProductOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<ProductWhereInput>;
+};
+
+
+export type QueryProductsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ProductOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<ProductWhereInput>;
 };
 
 
@@ -15041,7 +16510,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Album | Asset | Blog | Event | LogoTable | Navigation | Page | Profile | SiteLibrary | Testimonial;
+export type ScheduledOperationAffectedDocument = Album | Asset | Blog | Contact | Event | LogoTable | Navigation | Page | Product | Profile | SiteLibrary | Testimonial;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -19797,11 +21266,15 @@ export type LogoTableFieldsFragment = { __typename?: 'LogoTable', logoName?: str
 
 export type PagesSlugListFieldsFragment = { __typename?: 'Page', pageSlug?: string | null };
 
-export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> };
+export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, productQuery?: ProductType | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> };
 
 export type NavigationFieldsFragment = { __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> };
 
-export type ProfileFieldsFragment = { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null };
+export type ProfileFieldsFragment = { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null };
+
+export type ContactFieldsFragment = { __typename?: 'Contact', contactName: string, contactQuery: ContactQueries, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactWhatsapp?: string | null, contactCalendly?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null };
+
+export type ProductFieldsFragment = { __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null };
 
 export type LayoutQueryVariables = Exact<{
   eventFirst?: InputMaybe<Scalars['Int']>;
@@ -19814,17 +21287,18 @@ export type LayoutQueryVariables = Exact<{
   testimonialFirst?: InputMaybe<Scalars['Int']>;
   profilesFirst?: InputMaybe<Scalars['Int']>;
   pageSlug: Scalars['String'];
+  productFirst?: InputMaybe<Scalars['Int']>;
   logoTableFirst?: InputMaybe<Scalars['Int']>;
   logoTableOrderBy?: InputMaybe<LogoTableOrderByInput>;
 }>;
 
 
-export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
+export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, productQuery?: ProductType | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, products: Array<{ __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
 
 export type PagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> }> };
+export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, productQuery?: ProductType | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, galleryLayout?: GalleryLayout | null, eventDisplayLayout?: EventDisplayType | null, standOutText?: string | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, displayFeaturedMusic?: boolean | null, displayAllMusic?: boolean | null, mailchimpLink?: string | null, mailchimpTitle?: string | null, mailchimpSubtitle?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, heroMediaSlider: Array<{ __typename?: 'HeroMediaSlider', id: string, mediaType?: MediaType | null, sliderCssWrapper?: string | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> }>, textContent: Array<{ __typename?: 'TextContent', id: string, contentAlign?: ContentAlign | null, link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, linkImage?: boolean | null, cssClass?: string | null, contentImage?: { __typename?: 'Asset', url: string } | null, header?: { __typename?: 'RichText', html: string, raw: any } | null, subHeader?: { __typename?: 'RichText', html: string, raw: any } | null, content?: { __typename?: 'RichText', html: string, raw: any } | null }>, callToAction: Array<{ __typename?: 'CallToAction', ctaLink?: string | null, ctaLabel?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }>, backgroundImage?: { __typename?: 'Asset', url: string } | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gridBox: Array<{ __typename?: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', html: string, raw: any } | null, boxImage?: { __typename?: 'Asset', url: string } | null }>, contactForm: Array<{ __typename?: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, cssClass?: string | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, contactFormDescription?: { __typename?: 'RichText', html: string, raw: any } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, gallery: Array<{ __typename?: 'Asset', url: string }>, accordions: Array<{ __typename?: 'Accordion', id: string, contentHeader?: { __typename?: 'RichText', html: string, raw: any } | null, contentDescription?: { __typename?: 'RichText', html: string, raw: any } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null }> }> }> }> };
 
 export type PagesSlugListQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -19842,6 +21316,11 @@ export type BlogsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type BlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> };
+
+export type ContactsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ContactsQuery = { __typename?: 'Query', contacts: Array<{ __typename?: 'Contact', contactName: string, contactQuery: ContactQueries, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactWhatsapp?: string | null, contactCalendly?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }> };
 
 export type SiteLibraryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -19867,22 +21346,34 @@ export type AlbumQueryVariables = Exact<{
 
 export type AlbumQuery = { __typename?: 'Query', album?: { __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> } | null };
 
-export type ProfilesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ProfilesQuery = { __typename?: 'Query', profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }> };
-
 export type TestimonialsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type TestimonialsQuery = { __typename?: 'Query', testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }> };
+
+export type ProfilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ProfilesQuery = { __typename?: 'Query', profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }> };
 
 export type ProfileQueryVariables = Exact<{
   profileSlug: Scalars['String'];
 }>;
 
 
-export type ProfileQuery = { __typename?: 'Query', profile?: { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType?: ProfilesSelect | null, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, contactList: Array<{ __typename?: 'ContactList', contactName?: string | null, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null } | null };
+export type ProfileQuery = { __typename?: 'Query', profile?: { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null } | null };
+
+export type ProductsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null }> };
+
+export type ProductQueryVariables = Exact<{
+  productSlug: Scalars['String'];
+}>;
+
+
+export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null } | null };
 
 export const AlbumFieldsFragmentDoc = gql`
     fragment albumFields on Album {
@@ -20130,6 +21621,7 @@ export const PageFieldsFragmentDoc = gql`
   hideFooter
   hideHeader
   setHomePage
+  noIndex
   whatsAppContactNumberFloatingButton
   heroImage {
     url
@@ -20158,6 +21650,7 @@ export const PageFieldsFragmentDoc = gql`
       stripePricingTableId
       stripePublishableKey
       displayInstagramSectionUsername
+      productQuery
       heroMediaSlider(orderBy: id_ASC, first: 100) {
         id
         mediaType
@@ -20425,6 +21918,7 @@ export const ProfileFieldsFragmentDoc = gql`
   twitterLink
   websiteLink
   youtubeLink
+  contactQuery
   fullBio {
     html
     raw
@@ -20439,18 +21933,6 @@ export const ProfileFieldsFragmentDoc = gql`
     url
   }
   profileJson
-  contactList {
-    contactName
-    contactEmail
-    contactTitle
-    contactPhone
-    contactAddress
-    contactGoogleAddressLink
-    contactAvatar {
-      id
-      url
-    }
-  }
   videoBox {
     videoTitle
     youtubeVideoId
@@ -20465,8 +21947,44 @@ export const ProfileFieldsFragmentDoc = gql`
   }
 }
     `;
+export const ContactFieldsFragmentDoc = gql`
+    fragment contactFields on Contact {
+  contactName
+  contactQuery
+  contactEmail
+  contactTitle
+  contactPhone
+  contactAddress
+  contactGoogleAddressLink
+  contactWhatsapp
+  contactCalendly
+  contactAvatar {
+    id
+    url
+  }
+}
+    `;
+export const ProductFieldsFragmentDoc = gql`
+    fragment productFields on Product {
+  name
+  productSlug
+  vendor
+  gallery {
+    url
+  }
+  price
+  sku
+  purchaseLink
+  purchaseLabel
+  enableProduct
+  productType
+  description {
+    html
+  }
+}
+    `;
 export const LayoutDocument = gql`
-    query layout($eventFirst: Int = 500, $blogFirst: Int = 500, $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC, $blogOrderBy: BlogOrderByInput = date_DESC, $albumFirst: Int = 100, $albumOrderBy: AlbumOrderByInput = releaseDate_DESC, $testimonialOrderBy: TestimonialOrderByInput = updatedAt_DESC, $testimonialFirst: Int = 100, $profilesFirst: Int = 100, $pageSlug: String!, $logoTableFirst: Int = 100, $logoTableOrderBy: LogoTableOrderByInput = logoName_ASC) {
+    query layout($eventFirst: Int = 500, $blogFirst: Int = 500, $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC, $blogOrderBy: BlogOrderByInput = date_DESC, $albumFirst: Int = 100, $albumOrderBy: AlbumOrderByInput = releaseDate_DESC, $testimonialOrderBy: TestimonialOrderByInput = updatedAt_DESC, $testimonialFirst: Int = 100, $profilesFirst: Int = 100, $pageSlug: String!, $productFirst: Int = 100, $logoTableFirst: Int = 100, $logoTableOrderBy: LogoTableOrderByInput = logoName_ASC) {
   siteLibrary(where: {signature: "lnzame"}) {
     ...siteLibraryFields
   }
@@ -20491,6 +22009,9 @@ export const LayoutDocument = gql`
   navigations {
     ...navigationFields
   }
+  products(first: $productFirst) {
+    ...productFields
+  }
   logoTables(first: $logoTableFirst, orderBy: $logoTableOrderBy) {
     ...logoTableFields
   }
@@ -20503,6 +22024,7 @@ ${BlogFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${PageFieldsFragmentDoc}
 ${NavigationFieldsFragmentDoc}
+${ProductFieldsFragmentDoc}
 ${LogoTableFieldsFragmentDoc}`;
 export const PagesDocument = gql`
     query pages {
@@ -20532,6 +22054,13 @@ export const BlogsDocument = gql`
   }
 }
     ${BlogFieldsFragmentDoc}`;
+export const ContactsDocument = gql`
+    query contacts {
+  contacts(first: 200) {
+    ...contactFields
+  }
+}
+    ${ContactFieldsFragmentDoc}`;
 export const SiteLibraryDocument = gql`
     query siteLibrary {
   siteLibrary(where: {signature: "lnzame"}) {
@@ -20560,13 +22089,6 @@ export const AlbumDocument = gql`
   }
 }
     ${AlbumFieldsFragmentDoc}`;
-export const ProfilesDocument = gql`
-    query profiles {
-  profiles(first: 100) {
-    ...profileFields
-  }
-}
-    ${ProfileFieldsFragmentDoc}`;
 export const TestimonialsDocument = gql`
     query testimonials {
   testimonials(first: 100) {
@@ -20574,6 +22096,13 @@ export const TestimonialsDocument = gql`
   }
 }
     ${TestimonialFieldsFragmentDoc}`;
+export const ProfilesDocument = gql`
+    query profiles {
+  profiles(first: 100) {
+    ...profileFields
+  }
+}
+    ${ProfileFieldsFragmentDoc}`;
 export const ProfileDocument = gql`
     query profile($profileSlug: String!) {
   profile(where: {profileSlug: $profileSlug}) {
@@ -20581,6 +22110,20 @@ export const ProfileDocument = gql`
   }
 }
     ${ProfileFieldsFragmentDoc}`;
+export const ProductsDocument = gql`
+    query products {
+  products(first: 100) {
+    ...productFields
+  }
+}
+    ${ProductFieldsFragmentDoc}`;
+export const ProductDocument = gql`
+    query product($productSlug: String!) {
+  product(where: {productSlug: $productSlug}) {
+    ...productFields
+  }
+}
+    ${ProductFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -20604,6 +22147,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     blogs(variables?: BlogsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<BlogsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<BlogsQuery>(BlogsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'blogs', 'query');
     },
+    contacts(variables?: ContactsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ContactsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ContactsQuery>(ContactsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'contacts', 'query');
+    },
     siteLibrary(variables?: SiteLibraryQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SiteLibraryQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SiteLibraryQuery>(SiteLibraryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'siteLibrary', 'query');
     },
@@ -20616,14 +22162,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     album(variables: AlbumQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<AlbumQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<AlbumQuery>(AlbumDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'album', 'query');
     },
-    profiles(variables?: ProfilesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProfilesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ProfilesQuery>(ProfilesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profiles', 'query');
-    },
     testimonials(variables?: TestimonialsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<TestimonialsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<TestimonialsQuery>(TestimonialsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'testimonials', 'query');
     },
+    profiles(variables?: ProfilesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProfilesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProfilesQuery>(ProfilesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profiles', 'query');
+    },
     profile(variables: ProfileQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProfileQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ProfileQuery>(ProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profile', 'query');
+    },
+    products(variables?: ProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProductsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProductsQuery>(ProductsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'products', 'query');
+    },
+    product(variables: ProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProductQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProductQuery>(ProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'product', 'query');
     }
   };
 }

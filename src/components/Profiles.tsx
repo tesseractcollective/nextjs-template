@@ -20,7 +20,7 @@ import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
 
-interface MemberProps {
+interface ProfilesProps {
   profileSectionTitle?: string;
   profilesQuery?: string;
   profileLayoutStyle?: string;
@@ -32,7 +32,7 @@ export default function Profiles({
   profilesQuery,
   profileLayoutStyle,
   profiles,
-}: MemberProps) {
+}: ProfilesProps) {
   const [visible, setVisible] = useState(false);
   const [selectedMember, setSelctedMember] =
     useState<ProfileFieldsFragment>();
