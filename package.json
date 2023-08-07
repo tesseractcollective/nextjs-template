@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-code-generator --config ./graphql.config.js"
+    "codegen": "graphql-code-generator --config ./graphql.config.js",
+    "posstbuild": "next-sitemap"
   },
   "dependencies": {
     "@codesweetly/react-youtube-playlist": "^1.0.13",
@@ -24,6 +25,7 @@
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
     "@netlify/plugin-nextjs": "^4.39.1",
+    "@netlify/plugin-sitemap": "^0.8.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.4",
     "@types/graphql": "^14.5.0",
@@ -42,6 +44,7 @@
     "html-react-parser": "^4.0.0",
     "magic-grid": "^3.2.4",
     "moment": "^2.29.4",
+    "netlify-plugin-submit-sitemap": "^0.4.0",
     "next": "13.4.10",
     "postcss": "^8.4.26",
     "react": "18.2.0",

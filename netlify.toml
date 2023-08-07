@@ -1,6 +1,28 @@
 [[plugins]]
-package = "@netlify/plugin-nextjs"
+package = [ 
+    "@netlify/plugin-nextjs", 
+    "@netlify/plugin-sitemap",
+    "netlify-plugin-submit-sitemap"
+]
 
 [build]
 command = "yarn build"
 publish = ".next"
+
+	[plugins.inputs]
+  buildDir = ".next"
+  filePath = "/sitemap.xml"
+	# The base url of your site (optional, default = main URL set in Netlify)
+	# baseUrl = "default"
+
+	# Path to the sitemap URL (optional, default = /sitemap.xml)
+	# sitemapPath = "/sitemap.xml"
+
+	# Time in seconds to not submit the sitemap after successful submission
+	# ignorePeriod = 0
+
+	# Enabled providers to submit sitemap to (optional, default = 'google', 'yandex'). Possible providers are currently only 'google', 'yandex'.
+	providers = [
+		"google",
+		"yandex"
+	]
