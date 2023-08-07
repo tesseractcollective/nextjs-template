@@ -9,12 +9,13 @@ publish = ".next"
     package =  "@netlify/plugin-sitemap"
 	[plugins.inputs]
   buildDir = ".next"
-  filePath = "/sitemap.xml"
-  
+  filePath = "./sitemap.xml"
+
 [[plugins]]
   package =  "netlify-plugin-submit-sitemap"
 	# Time in seconds to not submit the sitemap after successful submission
 	[plugins.inputs]
+  sitemapPath = "./sitemap.xml"
 	ignorePeriod = 0
 
 	# Enabled providers to submit sitemap to (optional, default = 'google', 'yandex'). Possible providers are currently only 'google', 'yandex'.
