@@ -379,6 +379,7 @@ fragment HeroMediaSliderFields on HeroMediaSlider {
   }
   displaySocialMedia
   youtubeVideoId
+  id
 }
 
 fragment ContactFormFields on ContactForm {

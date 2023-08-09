@@ -19,41 +19,12 @@ interface HeroMediaSliderProps {
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
-// {
-//   mediaType?: string;
-//   sliderCssWrapper?: string;
-//   sliderMediaBackground?: {
-//     url: string;
-//   };
-//   textContent: {
-//     contentImage?: { url: string };
-//     header?: { html: string };
-//     subHeader?: { html: string };
-//     content?: { html: string };
-//     contentAlign?: string;
-//     link?: string;
-//     imageStyle?: [string];
-//     headerFont?: string;
-//     subHeaderFont?: string;
-//     contentFont?: string;
-//   };
-//   callToAction?: [
-//     {
-//       ctaLink?: string;
-//       ctaLabel?: string;
-//       ctaClass?: string;
-//       ctaPrimary?: boolean;
-//     },
-//   ];
-// },
-
 export default function HeroMediaSliderSection({
   heroMediaSlider,
   siteLibrary,
 }: HeroMediaSliderProps): ReactElement {
   if (!siteLibrary) return <></>;
   if (!heroMediaSlider) return <></>;
-  // console.log('HeroMediaSlider', heroMediaSlider);
   const settings = {
     dots: true,
     infinite: true,
