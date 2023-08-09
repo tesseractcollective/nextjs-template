@@ -12,15 +12,13 @@ import type {
 export interface FeatureAlbumProps {
   albums: AlbumFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
-  displayFeaturedMusic?: boolean;
-  displayAllMusic?: boolean;
+  albumQuery: string;
 }
 
 export default function FeatureAlbum({
   albums,
   siteLibrary,
-  displayFeaturedMusic,
-  displayAllMusic,
+  albumQuery,
 }: FeatureAlbumProps) {
   if (!siteLibrary) return <></>;
   const { isSpanish } = siteLibrary;
@@ -28,15 +26,12 @@ export default function FeatureAlbum({
 
   return (
     <>
-      {!!displayFeaturedMusic && (
+      {albumQuery === "featured" && (
         <>
           {albums
             .filter((album) => album.featureHomePage === true)
             .map((albumItem) => (
-              <section
-                className="px-2 mx-0"
-                key={albumItem.albumSlug}
-              >
+              <section className="px-2 mx-0" key={albumItem.albumSlug}>
                 <section className="container py-5 mx-auto">
                   <div className="grid">
                     <div className="col-12">
@@ -116,7 +111,7 @@ export default function FeatureAlbum({
             ))}
         </>
       )}
-      {!!displayAllMusic && (
+      {albumQuery === "all" && (
         <section className="px-2 mx-0">
           <section className="container py-5 feature-album-slider-wrapper mx-auto">
             <h2 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center">

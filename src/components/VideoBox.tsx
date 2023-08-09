@@ -4,18 +4,13 @@ interface VideoBoxProps {
   videoTitle?: string;
   youtubeVideoId?: string;
   vimeoVideoId?: string;
-  youtubePlaylistId?: string;
-  youtubeApiKey: string;
 }
 
 export default function VideoBox({
   videoTitle,
   youtubeVideoId,
   vimeoVideoId,
-  youtubeApiKey,
 }: VideoBoxProps) {
-  console.log("youtubeApiKey", youtubeApiKey);
-
   return (
     <section className="container mx-auto dark-section my-8">
       <div className="mx-auto">

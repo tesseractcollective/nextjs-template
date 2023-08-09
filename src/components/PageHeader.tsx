@@ -25,11 +25,7 @@ export default function PageHeader({
     <div>
       {pageWidthStyle === "Full" && (
         <section
-          className={`relative ${
-            pageWidthStyle === "Full"
-              ? "w-full py-4"
-              : "container mx-auto w-10/12 lg:w-10/12 xl:w-10/12"
-          } ${cssClass}`}
+          className={`relative "w-full py-4 h-[30rem] ${cssClass}`}
         >
           <div aria-hidden="true" className="relative overflow-hidden">
             {!!pageHeaderImageProp && (

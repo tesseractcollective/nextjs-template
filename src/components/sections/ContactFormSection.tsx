@@ -6,6 +6,7 @@ import ReactGA from "react-ga4";
 import type {
   SiteLibraryFieldsFragment,
   PageFieldsFragment,
+  ContactFormFieldsFragment,
 } from "@/graphql/generated/graphql";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -16,11 +17,10 @@ interface FormPost {
   message: string;
 }
 
-type ContactFormType =
-  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["contactForm"];
+type ContactFormType = ContactFormFieldsFragment;
 
 interface ContactFormProps {
-  contactFormData: ContactFormType;
+  contactFormData: ContactFormType[];
   siteLibrary: SiteLibraryFieldsFragment;
 }
 

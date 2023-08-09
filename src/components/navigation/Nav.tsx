@@ -23,13 +23,8 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
   if (!navigation && !siteLibrary) return <></>;
   if (hideNav === true) return <></>;
 
-  const {
-    title,
-    contactPhone,
-    contactEmail,
-    contactName,
-    siteLibraryJson,
-  } = siteLibrary;
+  const { title, contactPhone, contactEmail, contactName, siteLibraryJson } =
+    siteLibrary;
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -69,7 +64,11 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
             >
               <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-dark pb-12 shadow-xl border-r-primary border-r">
                 <div className="flex px-4 pb-2 pt-5">
-                  <Link href="/" onClick={() => setOpen(false)}>
+                  <Link
+                    href="/"
+                    onClick={() => setOpen(false)}
+                    className=" cursor-pointer"
+                  >
                     <span className="sr-only">{title}</span>
                     {!!navigation.navigationLogo && (
                       <Image
@@ -254,7 +253,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
               <div className="border-b border-dark">
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
-                  <div className="hidden lg:flex lg:flex-1 lg:items-center">
+                  <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer">
                     <Link href="/">
                       <span className="sr-only">{title}</span>
                       {!!navigation.navigationLogo && (
@@ -437,13 +436,16 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                   </div>
 
                   {/* Logo (lg-) */}
-                  <Link href="/" className="lg:hidden max-w-max mx-auto">
+                  <Link
+                    href="/"
+                    className="lg:hidden max-w-max mx-auto cursor-pointer"
+                  >
                     <span className="sr-only">{title}</span>
                     {!!navigation.navigationLogo?.url && (
                       <Image
                         src={navigation.navigationLogo.url}
                         alt=""
-                        className="h-12 lg:h-10 w-auto object-contain max-w-max mx-auto"
+                        className="h-12 lg:h-10 w-auto object-contain max-w-max mx-auto cursor-pointer"
                         width={0}
                         height={0}
                         sizes="100%"
@@ -464,7 +466,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                             key={mainNavigationItem?.link}
                             link={mainNavigationItem?.link}
                             label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-xs md:text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary ${mainNavigationItem?.cssClass}`}
+                            cssClass={`flex items-center text-xs md:text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary cursor-pointer ${mainNavigationItem?.cssClass}`}
                             sameTab={mainNavigationItem?.sameTab}
                           />
                         ))}

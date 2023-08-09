@@ -9,6 +9,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
 import VideoBox from "@/components/VideoBox";
+import VideoPlaylistBox from "./VideoPlaylistBox";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;
@@ -85,14 +86,21 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
         {!!videoBox && (
           <div>
             {videoBox?.map((video) => (
-              <VideoBox
-                videoTitle={video?.videoTitle || undefined}
-                vimeoVideoId={video?.vimeoVideoId || undefined}
-                youtubeVideoId={video?.youtubeVideoId || undefined}
-                youtubePlaylistId={video?.youtubePlaylistId || undefined}
-                youtubeApiKey={siteLibrary.youtubeApiKey}
-                key={Math.random()}
-              />
+              <div key={Math.random()}>
+              {video?.youtubePlaylistId ? (
+                <VideoPlaylistBox
+                  videoTitle={video?.videoTitle || undefined}
+                  youtubePlaylistId={video.youtubePlaylistId}
+                  youtubeApiKey={siteLibrary.youtubeApiKey}
+                />
+              ) : (
+                <VideoBox
+                  videoTitle={video?.videoTitle || undefined}
+                  vimeoVideoId={video?.vimeoVideoId || undefined}
+                  youtubeVideoId={video?.youtubeVideoId || undefined}
+                />
+              )}
+            </div>
             ))}
           </div>
         )}

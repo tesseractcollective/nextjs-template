@@ -1,14 +1,13 @@
 import Image from "next/image";
-import type { PageFieldsFragment } from "@/graphql/generated/graphql";
+import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "@/components/LinkItem";
 
-type GridBoxType =
-  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["gridBox"];
 interface GridBoxProps {
-  gridBoxData: GridBoxType;
+  gridBoxData: GridBoxFieldsFragment[];
 }
 
 export default function GridBox({ gridBoxData }: GridBoxProps) {
+  console.log('GridBox.tsx', gridBoxData)
   return (
     <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8">
       <div

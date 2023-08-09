@@ -6,17 +6,16 @@ import Image from "next/image";
 import ReactGA from "react-ga4";
 import type {
   SiteLibraryFieldsFragment,
-  PageFieldsFragment,
+  HeroMediaSliderFieldsFragment,
 } from "@/graphql/generated/graphql";
-import SocialMediaIcons from "./SocialMediaIcons";
+import SocialMediaIcons from "../SocialMediaIcons";
 import { Fade } from "react-awesome-reveal";
 import Slider from "react-slick";
 
-type HeroMediaSliderType =
-  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["heroMediaSlider"];
+type HeroMediaSliderType = HeroMediaSliderFieldsFragment
 
 interface HeroMediaSliderProps {
-  heroMediaSlider: HeroMediaSliderType;
+  heroMediaSlider: HeroMediaSliderType[];
   siteLibrary: SiteLibraryFieldsFragment;
 }
 

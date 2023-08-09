@@ -31,6 +31,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Fade } from "react-awesome-reveal";
 import Profiles from "@/components/Profiles";
+import VideoPlaylistBox from "./VideoPlaylistBox";
 
 export interface ProfileProps {
   profile: ProfileFieldsFragment;
@@ -43,13 +44,14 @@ export default function Profile({
   profile,
   siteLibrary,
   contacts,
-  profiles
+  profiles,
 }: ProfileProps) {
   const filteredContacts = contacts?.filter((contact) =>
     profile?.contactQuery.includes(contact.contactQuery)
   );
-  const filteredProfiles = profiles?.filter(tempProf => profile.profileSlug !== tempProf.profileSlug);
-  console.log('profiles - profile.tsx:', profiles);
+  const filteredProfiles = profiles?.filter(
+    (tempProf) => profile.profileSlug !== tempProf.profileSlug
+  );
   return (
     <>
       <Head>
@@ -413,14 +415,21 @@ export default function Profile({
         {!!profile?.videoBox && (
           <div>
             {profile.videoBox?.map((video) => (
-              <VideoBox
-                videoTitle={video?.videoTitle || undefined}
-                vimeoVideoId={video?.vimeoVideoId || undefined}
-                youtubeVideoId={video?.youtubeVideoId || undefined}
-                youtubePlaylistId={video?.youtubePlaylistId || undefined}
-                youtubeApiKey={siteLibrary.youtubeApiKey}
-                key={profile.profileSlug}
-              />
+              <div key={Math.random()}>
+                {video?.youtubePlaylistId ? (
+                  <VideoPlaylistBox
+                    videoTitle={video?.videoTitle || undefined}
+                    youtubePlaylistId={video.youtubePlaylistId}
+                    youtubeApiKey={siteLibrary.youtubeApiKey}
+                  />
+                ) : (
+                  <VideoBox
+                    videoTitle={video?.videoTitle || undefined}
+                    vimeoVideoId={video?.vimeoVideoId || undefined}
+                    youtubeVideoId={video?.youtubeVideoId || undefined}
+                  />
+                )}
+              </div>
             ))}
           </div>
         )}

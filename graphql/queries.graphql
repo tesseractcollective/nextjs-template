@@ -4,6 +4,7 @@ query layout(
   $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC
   $blogOrderBy: BlogOrderByInput = date_DESC
   $albumFirst: Int = 100
+  $contactFirst: Int = 100
   $albumOrderBy: AlbumOrderByInput = releaseDate_DESC
   $testimonialOrderBy: TestimonialOrderByInput = updatedAt_DESC
   $testimonialFirst: Int = 100
@@ -37,6 +38,9 @@ query layout(
   navigations {
     ...navigationFields
   }
+  contacts(first: $contactFirst) {
+    ...contactFields
+  }
   products(first: $productFirst) {
     ...productFields
   }
@@ -62,12 +66,12 @@ query blog($blogSlug: String!) {
 }
 
 query blogs {
-  blogs(first: 200) {
+  blogs(first: 500) {
     ...blogFields
   }
 }
 query contacts {
-  contacts(first: 200) {
+  contacts(first: 500) {
     ...contactFields
   }
 }
@@ -113,7 +117,7 @@ query profile($profileSlug: String!) {
   }
 }
 query products {
-  products(first: 100) {
+  products(first: 500) {
     ...productFields
   }
 }

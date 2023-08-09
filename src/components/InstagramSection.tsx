@@ -19,7 +19,7 @@ export default function InstagramSection({
   }, [IGUsername]);
 
   return (
-    <section className="container mx-auto w-10">
+    <section className="container mx-auto w-10/12 my-16">
       <blockquote
         className="instagram-media"
         data-instgrm-permalink={`https://www.instagram.com/${IGHandle}/?utm_source=ig_embed&utm_campaign=loading`}

@@ -12,7 +12,6 @@ fragment albumFields on Album {
   description {
     raw
     html
-    raw
     markdown
     text
   }
@@ -262,162 +261,177 @@ fragment pageFields on Page {
       htmlId
       cssClass
       hideBlockColumn
-      stripePricingTableId
-      stripePublishableKey
-      displayInstagramSectionUsername
-      productQuery
-      heroMediaSlider(orderBy: id_ASC, first: 100) {
-        id
-        mediaType
-        sliderCssWrapper
-        displaySocialMedia
-        youtubeVideoId
-        sliderMediaBackground {
-          url
-        }
-        textContent {
-          contentImage {
-            url
-          }
-          header {
-            html
-            raw
-          }
-          subHeader {
-            html
-            raw
-          }
-          content {
-            html
-            raw
-          }
-          contentAlign
-          link
-          imageStyle
-          textContentWidth
-          linkImage
-          cssClass
-        }
-        callToAction {
-          ctaLink
-          ctaLabel
-          ctaClass
-          ctaPrimary
-          contentAlign
-        }
-      }
-      textContent {
-        id
-        contentImage {
-          url
-        }
-        header {
-          html
-          raw
-        }
-        subHeader {
-          html
-          raw
-        }
-        content {
-          html
-          raw
-        }
-        contentAlign
-        link
-        imageStyle
-        textContentWidth
-        linkImage
-        cssClass
-      }
-      callToAction {
-        ctaLink
-        ctaLabel
-        ctaClass
-        ctaPrimary
-        contentAlign
-      }
       backgroundImage {
         url
       }
-      parallaxImage {
-        url
+      contentQueries {
+        productQuery
+        logoTableQuery
+        testimonialsQuery
+        eventDisplayLayout
+        blogSectionTitle
+        blogCategory
+        profileSectionTitle
+        profilesQuery
+        profileLayoutStyle
+        albumQuery
+        contactQuery
       }
-      gridBox {
-        boxTitle
-        boxLink
-        boxDescription {
-          html
-          raw
+      elements {
+        stripePricingTableId
+        stripePublishableKey
+        displayInstagramSectionUsername
+        parallaxImage {
+          url
         }
-        boxImage {
+        galleryLayout
+        gallery(first: 500) {
+          url
+        }
+        standOutText
+        iFrameTitle
+        iFrameCode
+        parallaxImage {
           url
         }
       }
-      logoTableQuery
-      contactForm {
-        contactFormTitle
-        netlifyContactForm
-        cssClass
-        netlifyFormFields
-        contactFormDescription {
-          html
-          raw
-        }
-        jotformUrl
-        hubspotFormId
-        hubspotPortalId
-      }
-      videoBox {
-        videoTitle
-        youtubeVideoId
-        vimeoVideoId
-        youtubePlaylistId
-      }
-      testimonialsQuery
-      galleryLayout
-      gallery(first: 500) {
-        url
-      }
-      eventDisplayLayout
-      standOutText
-      blogSectionTitle
-      blogCategory
-      profileSectionTitle
-      profilesQuery
-      profileLayoutStyle
-      displayFeaturedMusic
-      displayAllMusic
-      mailchimpLink
-      mailchimpTitle
-      mailchimpSubtitle
-      iFrameTitle
-      iFrameCode
-      parallaxImage {
-        url
-      }
-      accordions(orderBy: id_ASC) {
-        id
-        contentHeader {
-          html
-          raw
-        }
-        contentDescription {
-          html
-          raw
-        }
-        videoBox {
-          videoTitle
-          youtubeVideoId
-          vimeoVideoId
-          youtubePlaylistId
-        }
-        contentImage {
-          url
-        }
+      sections(first: 100) {
+        __typename
+        ...TextContentFields
+        ...CallToActionFields
+        ...HeroMediaSliderFields
+        ...ContactFormFields
+        ...GridBoxFields
+        ...AccordionFields
+        ...VideoBoxFields
       }
     }
   }
+}
+
+fragment TextContentFields on TextContent {
+  header {
+    raw
+    html
+  }
+  subHeader {
+    raw
+    html
+  }
+  content {
+    raw
+    html
+  }
+  link
+  contentImage {
+    url
+  }
+  imageStyle
+  textContentWidth
+  contentAlign
+  linkImage
+  cssClass
+}
+
+fragment CallToActionFields on CallToAction {
+  ctaLabel
+  ctaLink
+  ctaClass
+  ctaPrimary
+  contentAlign
+}
+
+fragment HeroMediaSliderFields on HeroMediaSlider {
+  sliderMediaBackground {
+    url
+  }
+  sliderCssWrapper
+  mediaType
+  textContent {
+    header {
+      raw
+      html
+    }
+    subHeader {
+      raw
+      html
+    }
+    content {
+      raw
+      html
+    }
+    link
+    contentImage {
+      url
+    }
+    imageStyle
+    textContentWidth
+    contentAlign
+    linkImage
+    cssClass
+  }
+  callToAction(first: 50) {
+    ctaLabel
+    ctaLink
+    ctaClass
+    ctaPrimary
+    contentAlign
+  }
+  displaySocialMedia
+  youtubeVideoId
+}
+
+fragment ContactFormFields on ContactForm {
+  contactFormTitle
+  contactFormDescription {
+    raw
+    html
+  }
+  netlifyContactForm
+  netlifyFormFields
+  jotformUrl
+  hubspotFormId
+  hubspotPortalId
+  cssClass
+}
+
+fragment GridBoxFields on GridBox {
+  boxTitle
+  boxLink
+  boxDescription {
+    raw
+    html
+  }
+  boxImage {
+    url
+  }
+}
+
+fragment AccordionFields on Accordion {
+  contentHeader {
+    raw
+    html
+  }
+  contentDescription {
+    raw
+    html
+  }
+  videoBox {
+    videoTitle
+    youtubeVideoId
+    vimeoVideoId
+    youtubePlaylistId
+  }
+  contentImage {
+    url
+  }
+}
+
+fragment VideoBoxFields on VideoBox {
+  videoTitle
+  youtubeVideoId
+  vimeoVideoId
+  youtubePlaylistId
 }
 
 fragment navigationFields on Navigation {
