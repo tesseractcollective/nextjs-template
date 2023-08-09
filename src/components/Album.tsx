@@ -10,6 +10,7 @@ import ReactGA from "react-ga4";
 import Link  from "next/link";
 import Image  from "next/image";
 import VideoBox from "@/components/VideoBox";
+import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 
 export interface AlbumProps {
   album: AlbumFieldsFragment;
@@ -125,14 +126,21 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
           {!!videoBox && (
             <div>
               {videoBox?.map((video) => (
-                <VideoBox
-                  videoTitle={video?.videoTitle || undefined}
-                  vimeoVideoId={video?.vimeoVideoId || undefined}
-                  youtubeVideoId={video?.youtubeVideoId || undefined}
-                  youtubePlaylistId={video.youtubePlaylistId || undefined}
-                  youtubeApiKey={siteLibrary.youtubeApiKey}
-                  key={Math.random()}
-                />
+                 <div key={Math.random()}>
+                 {video?.youtubePlaylistId ? (
+                   <VideoPlaylistBox
+                     videoTitle={video?.videoTitle || undefined}
+                     youtubePlaylistId={video.youtubePlaylistId}
+                     youtubeApiKey={siteLibrary.youtubeApiKey}
+                   />
+                 ) : (
+                   <VideoBox
+                     videoTitle={video?.videoTitle || undefined}
+                     vimeoVideoId={video?.vimeoVideoId || undefined}
+                     youtubeVideoId={video?.youtubeVideoId || undefined}
+                   />
+                 )}
+               </div>
               ))}
             </div>
           )}

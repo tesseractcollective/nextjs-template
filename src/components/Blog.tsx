@@ -9,7 +9,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
 import VideoBox from "@/components/VideoBox";
-import VideoPlaylistBox from "./VideoPlaylistBox";
+import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;

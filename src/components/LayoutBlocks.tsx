@@ -132,7 +132,6 @@ export default function LayoutBlocks({ layout }: PageProps) {
           hideFooter={page?.hideFooter || undefined}
         />
       )}
-      <div className="hidden h-screen h-240 h-256 opacity-0 h-0 bg-white xl:w-6/12 xl:w-3/12 xl:w-12/12"></div>
     </>
   );
 }
