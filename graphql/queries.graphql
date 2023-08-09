@@ -115,6 +115,21 @@ query profile($profileSlug: String!) {
   profile(where: { profileSlug: $profileSlug }) {
     ...profileFields
   }
+  profiles(first: 100) {
+    ...profileFields
+  }
+  siteLibrary(where: { signature: "lnzame" }) {
+    ...siteLibraryFields
+  }
+  navigations {
+    ...navigationFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  contacts(first: 500) {
+    ...contactFields
+  }
 }
 query products {
   products(first: 500) {

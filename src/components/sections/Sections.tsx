@@ -18,33 +18,38 @@ import TextContentSection from "./TextContent";
 
 type SectionsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["sections"];
+type SectionType = SectionsType[number];
 
 interface SectionsProps {
   sectionData: SectionsType;
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
+function filterSections<T>(sections: SectionType[], typename: string): T[] {
+  return sections.filter((section) => section.__typename === typename) as T[];
+}
+
 export default function Sections({ sectionData, siteLibrary }: SectionsProps) {
-  const section = sectionData.map((section) => section);
-  const textContentData = section.filter(
-    (section) => section.__typename === "TextContent"
-  ) as TextContentFieldsFragment[];
-  const callToActionData = section.filter(
+  const sections = sectionData.map((section) => section);
+
+  const textContentData: TextContentFieldsFragment[] = filterSections(sections, "TextContent");
+
+  const callToActionData = sections.filter(
     (section) => section.__typename === "CallToAction"
   ) as CallToActionFieldsFragment[];
-  const gridBoxData = section.filter(
+  const gridBoxData = sections.filter(
     (section) => section.__typename === "GridBox"
   ) as GridBoxFieldsFragment[];
-  const heroMediaSlider = section.filter(
+  const heroMediaSliders = sections.filter(
     (section) => section.__typename === "HeroMediaSlider"
   ) as HeroMediaSliderFieldsFragment[];
-  const videos = section.filter(
+  const videos = sections.filter(
     (section) => section.__typename === "VideoBox"
   ) as VideoBoxFieldsFragment[];
-  const contactFormData = section.filter(
+  const contactFormData = sections.filter(
     (section) => section.__typename === "ContactForm"
   ) as ContactFormFieldsFragment[];
-  const accordionData = section.filter(
+  const accordionData = sections.filter(
     (section) => section.__typename === "Accordion"
   ) as AccordionFieldsFragment[];
   console.log(accordionData)
@@ -83,9 +88,9 @@ export default function Sections({ sectionData, siteLibrary }: SectionsProps) {
             )}
         </>
       )}
-      {!!heroMediaSlider && siteLibrary && (
+      {!!heroMediaSliders && siteLibrary && (
         <HeroMediaSliderSection
-          heroMediaSlider={heroMediaSlider}
+          heroMediaSliders={heroMediaSliders}
           siteLibrary={siteLibrary}
         />
       )}

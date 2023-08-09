@@ -35,7 +35,7 @@ interface ContentQuieresProps {
   page: PageFieldsFragment;
 }
 
-export default function ContentQueries({
+export default function ContentComponents({
   contentQueries,
   events,
   testimonials,

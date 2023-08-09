@@ -5,7 +5,7 @@ import Nav from "@/components/navigation/Nav";
 import Whatsapp from "@/components/Whatsapp";
 import PageHeader from "@/components/PageHeader";
 import Sections from "@/components/sections/Sections";
-import ContentQueries from "@/components/ContentQueries";
+import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
 
 interface PageProps {
@@ -98,7 +98,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                           sectionData={layoutBlockColumn.sections}
                           siteLibrary={siteLibrary}
                         />
-                        <ContentQueries
+                        <ContentComponents
                           contentQueries={layoutBlockColumn.contentQueries}
                           events={events}
                           contacts={contacts}

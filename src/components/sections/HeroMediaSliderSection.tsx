@@ -15,16 +15,16 @@ import Slider from "react-slick";
 type HeroMediaSliderType = HeroMediaSliderFieldsFragment
 
 interface HeroMediaSliderProps {
-  heroMediaSlider: HeroMediaSliderType[];
+  heroMediaSliders: HeroMediaSliderType[];
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
 export default function HeroMediaSliderSection({
-  heroMediaSlider,
+  heroMediaSliders,
   siteLibrary,
 }: HeroMediaSliderProps): ReactElement {
   if (!siteLibrary) return <></>;
-  if (!heroMediaSlider) return <></>;
+  if (!heroMediaSliders) return <></>;
   const settings = {
     dots: true,
     infinite: true,
@@ -38,10 +38,10 @@ export default function HeroMediaSliderSection({
   };
   return (
     <>
-      {!!heroMediaSlider && heroMediaSlider.length >= 1 && (
+      {!!heroMediaSliders && heroMediaSliders.length >= 1 && (
         <div className="w-full mx-0 px-0">
           <Slider {...settings} className="">
-            {heroMediaSlider.map((heroMediaSliderItem, index) => (
+            {heroMediaSliders.map((heroMediaSliderItem, index) => (
               <section
                 key={`${heroMediaSliderItem.id}-${index++}`}
                 className={`video-wrapper dark-section ${
