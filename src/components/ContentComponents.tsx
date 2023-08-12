@@ -18,11 +18,11 @@ import Profiles from "@/components/Profiles";
 import Products from "@/components/Products";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 
-type ContentQueriesType =
-  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["contentQueries"];
+type ContentTagsType =
+  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["contentTags"];
 
-interface ContentQuieresProps {
-  contentQueries: ContentQueriesType;
+interface ContentTagsProps {
+  contentTags: ContentTagsType;
   events: EventFieldsFragment[];
   testimonials: TestimonialFieldsFragment[];
   profiles: ProfileFieldsFragment[];
@@ -35,8 +35,8 @@ interface ContentQuieresProps {
   page: PageFieldsFragment;
 }
 
-export default function ContentQueries({
-  contentQueries,
+export default function ContentComponents({
+  contentTags,
   events,
   testimonials,
   profiles,
@@ -46,89 +46,81 @@ export default function ContentQueries({
   siteLibrary,
   page,
   albums,
-}: ContentQuieresProps) {
-  if (!contentQueries) return <></>;
-  if (!siteLibrary) return <></>;
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 1500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    arrows: false,
-  };
-
+}: ContentTagsProps) {
+  if (!contentTags || !siteLibrary) return <></>;
+  const {
+    albumDisplayType,
+    blogCategory,
+    blogSectionTitle,
+    eventDisplayLayout,
+    logoTableType,
+    productType,
+    profileLayoutStyle,
+    profileSectionTitle,
+    profileType,
+    testimonialType,
+  } = contentTags;
   return (
     <>
-      {!!testimonials && contentQueries?.testimonialsQuery && (
+      {!!testimonials && testimonialType && (
         <section
           className="container mx-auto z-20 w-10/12"
-          id={`testimonial-${contentQueries?.testimonialsQuery}`}
+          id={`testimonial-${testimonialType}`}
         >
-          <Testimonials
-            testimonials={testimonials}
-            query={contentQueries?.testimonialsQuery}
-          />
+          <Testimonials testimonials={testimonials} query={testimonialType} />
         </section>
       )}
-      {!!products && contentQueries?.productQuery && (
+      {!!products && productType && (
         <section
           className="container mx-auto z-20 w-10/12"
-          id={`product-${contentQueries?.productQuery}`}
+          id={`product-${productType}`}
         >
-          <Products products={products} query={contentQueries?.productQuery} />
+          <Products products={products} type={productType} />
         </section>
       )}
-      {!!contentQueries?.logoTableQuery && logoTables.length >= 1 && (
+      {!!logoTableType && logoTables.length >= 1 && (
         <div>
-          {logoTables && contentQueries.logoTableQuery && (
-            <LogoTable
-              query={contentQueries.logoTableQuery}
-              logoTables={logoTables}
-            />
+          {logoTables && logoTableType && (
+            <LogoTable type={logoTableType} logoTables={logoTables} />
           )}
         </div>
       )}
-      {!!blogs && contentQueries?.blogCategory && (
+      {!!blogs && blogCategory && (
         <div className="relative texture-background texture-right overflow-hidden">
           <section className="container my-8 px-4 dark-section mx-auto">
             <Blogs
               fromHomePage={page.setHomePage || false}
               blogs={blogs}
-              blogCategory={contentQueries.blogCategory}
-              blogHeader={contentQueries?.blogSectionTitle || "Blogs"}
+              blogCategory={blogCategory}
+              blogHeader={blogSectionTitle || "Blogs"}
             />
           </section>
         </div>
       )}
-      {!!albums && contentQueries?.albumQuery && (
+      {!!albums && albumDisplayType && (
         <FeatureAlbum
-          albumQuery={contentQueries.albumQuery}
+          albumDisplayType={albumDisplayType}
           albums={albums}
           siteLibrary={siteLibrary}
         />
       )}
-      {!!events && !!contentQueries?.eventDisplayLayout && (
+      {!!events && !!eventDisplayLayout && (
         <section className="container my-4 mx-auto">
           <Events
-            displayEventsStyleGridOrSlider={
-              contentQueries.eventDisplayLayout || "grid"
-            }
+            displayEventsStyleGridOrSlider={eventDisplayLayout || "grid"}
             events={events}
           />
         </section>
       )}
       {!!profiles &&
-        contentQueries?.profilesQuery &&
-        contentQueries?.profileSectionTitle &&
-        contentQueries.profileLayoutStyle && (
+        profileType &&
+        profileSectionTitle &&
+        profileLayoutStyle && (
           <Profiles
             profiles={profiles}
-            profileLayoutStyle={contentQueries.profileLayoutStyle}
-            profileSectionTitle={contentQueries.profileSectionTitle}
-            profilesQuery={contentQueries.profilesQuery}
+            profileLayoutStyle={profileLayoutStyle}
+            profileSectionTitle={profileSectionTitle}
+            profileType={profileType}
           />
         )}
     </>

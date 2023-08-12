@@ -12,13 +12,13 @@ import type {
 export interface FeatureAlbumProps {
   albums: AlbumFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
-  albumQuery: string;
+  albumDisplayType: string;
 }
 
 export default function FeatureAlbum({
   albums,
   siteLibrary,
-  albumQuery,
+  albumDisplayType,
 }: FeatureAlbumProps) {
   if (!siteLibrary) return <></>;
   const { isSpanish } = siteLibrary;
@@ -26,7 +26,7 @@ export default function FeatureAlbum({
 
   return (
     <>
-      {albumQuery === "featured" && (
+      {albumDisplayType === "featured" && (
         <>
           {albums
             .filter((album) => album.featureHomePage === true)
@@ -111,7 +111,7 @@ export default function FeatureAlbum({
             ))}
         </>
       )}
-      {albumQuery === "all" && (
+      {albumDisplayType === "all" && (
         <section className="px-2 mx-0">
           <section className="container py-5 feature-album-slider-wrapper mx-auto">
             <h2 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center">

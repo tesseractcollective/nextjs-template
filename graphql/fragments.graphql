@@ -264,18 +264,18 @@ fragment pageFields on Page {
       backgroundImage {
         url
       }
-      contentQueries {
-        productQuery
-        logoTableQuery
-        testimonialsQuery
-        eventDisplayLayout
-        blogSectionTitle
+      contentTags {
+        albumDisplayType
         blogCategory
-        profileSectionTitle
-        profilesQuery
+        blogSectionTitle
+        contactType
+        eventDisplayLayout
+        logoTableType
+        productType
         profileLayoutStyle
-        albumQuery
-        contactQuery
+        profileSectionTitle
+        profileType
+        testimonialType
       }
       elements {
         stripePricingTableId

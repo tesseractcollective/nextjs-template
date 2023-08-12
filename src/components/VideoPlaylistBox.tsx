@@ -12,9 +12,6 @@ export default function VideoBox({
   youtubePlaylistId,
   youtubeApiKey,
 }: VideoBoxProps) {
-  console.log("youtubePlaylistId", youtubePlaylistId);
-  console.log("youtubeApiKey", youtubeApiKey);
-
   return (
     <section className="container mx-auto dark-section my-8 playlist-box">
       <div className="mx-auto">
@@ -23,13 +20,13 @@ export default function VideoBox({
             {videoTitle}
           </h3>
         )}
-        {/* <h2>{`youtubeApiKey: ${youtubeApiKey}`}</h2>
-        <h2>{`youtubePlaylistId: ${youtubePlaylistId}`}</h2> */}
-        {/* <YouTubePlaylist
-          apiKey={youtubeApiKey}
-          playlistId='PLPZMiBBzqLb0MrkNOy93YQmoQ1Nb2mkZO'
-          uniqueName='sr-only'
-        /> */}
+        {/* <div className="sr-only">
+          <YouTubePlaylist
+            apiKey={youtubeApiKey}
+            playlistId="PLPZMiBBzqLb0MrkNOy93YQmoQ1Nb2mkZO"
+            uniqueName="sr-only"
+          />
+        </div> */}
         {/* <YouTubePlaylist
           apiKey={youtubeApiKey}
           playlistId={youtubePlaylistId}

@@ -12,19 +12,19 @@ import SocialMediaIcons from "../SocialMediaIcons";
 import { Fade } from "react-awesome-reveal";
 import Slider from "react-slick";
 
-type HeroMediaSliderType = HeroMediaSliderFieldsFragment
+type HeroMediaSliderType = HeroMediaSliderFieldsFragment;
 
 interface HeroMediaSliderProps {
-  heroMediaSlider: HeroMediaSliderType[];
+  heroMediaSliderData: HeroMediaSliderType[];
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
 export default function HeroMediaSliderSection({
-  heroMediaSlider,
+  heroMediaSliderData,
   siteLibrary,
 }: HeroMediaSliderProps): ReactElement {
   if (!siteLibrary) return <></>;
-  if (!heroMediaSlider) return <></>;
+  if (!heroMediaSliderData) return <></>;
   const settings = {
     dots: true,
     infinite: true,
@@ -38,10 +38,10 @@ export default function HeroMediaSliderSection({
   };
   return (
     <>
-      {!!heroMediaSlider && heroMediaSlider.length >= 1 && (
+      {!!heroMediaSliderData && heroMediaSliderData.length >= 1 && (
         <div className="w-full mx-0 px-0">
           <Slider {...settings} className="">
-            {heroMediaSlider.map((heroMediaSliderItem, index) => (
+            {heroMediaSliderData.map((heroMediaSliderItem, index) => (
               <section
                 key={`${heroMediaSliderItem.id}-${index++}`}
                 className={`video-wrapper dark-section ${

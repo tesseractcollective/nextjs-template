@@ -4753,99 +4753,99 @@ export enum ContentAlign {
   Right = 'right'
 }
 
-export type ContentQuery = {
-  __typename?: 'ContentQuery';
-  albumQuery?: Maybe<AlbumQueryDisplay>;
+export type ContentTag = {
+  __typename?: 'ContentTag';
+  albumDisplayType?: Maybe<AlbumQueryDisplay>;
   blogCategory?: Maybe<BlogTags>;
   blogSectionTitle?: Maybe<Scalars['String']>;
-  contactQuery: Array<ContactQueries>;
+  contactType: Array<ContactQueries>;
   eventDisplayLayout?: Maybe<EventDisplayType>;
   /** The unique identifier */
   id: Scalars['ID'];
-  logoTableQuery?: Maybe<LogoTableItem>;
-  productQuery?: Maybe<ProductType>;
+  logoTableType?: Maybe<LogoTableItem>;
+  productType?: Maybe<ProductType>;
   profileLayoutStyle?: Maybe<ProfileLayoutStyle>;
   profileSectionTitle?: Maybe<Scalars['String']>;
-  profilesQuery?: Maybe<ProfilesSelect>;
+  profileType?: Maybe<ProfilesSelect>;
   /** System stage field */
   stage: Stage;
-  testimonialsQuery?: Maybe<TestimonialType>;
+  testimonialType?: Maybe<TestimonialType>;
 };
 
-export type ContentQueryConnectInput = {
+export type ContentTagConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
   position?: InputMaybe<ConnectPositionInput>;
   /** Document to connect */
-  where: ContentQueryWhereUniqueInput;
+  where: ContentTagWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
-export type ContentQueryConnection = {
-  __typename?: 'ContentQueryConnection';
+export type ContentTagConnection = {
+  __typename?: 'ContentTagConnection';
   aggregate: Aggregate;
   /** A list of edges. */
-  edges: Array<ContentQueryEdge>;
+  edges: Array<ContentTagEdge>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
 };
 
-export type ContentQueryCreateInput = {
-  albumQuery?: InputMaybe<AlbumQueryDisplay>;
+export type ContentTagCreateInput = {
+  albumDisplayType?: InputMaybe<AlbumQueryDisplay>;
   blogCategory?: InputMaybe<BlogTags>;
   blogSectionTitle?: InputMaybe<Scalars['String']>;
-  contactQuery?: InputMaybe<Array<ContactQueries>>;
+  contactType?: InputMaybe<Array<ContactQueries>>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
-  logoTableQuery?: InputMaybe<LogoTableItem>;
-  productQuery?: InputMaybe<ProductType>;
+  logoTableType?: InputMaybe<LogoTableItem>;
+  productType?: InputMaybe<ProductType>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   profileSectionTitle?: InputMaybe<Scalars['String']>;
-  profilesQuery?: InputMaybe<ProfilesSelect>;
-  testimonialsQuery?: InputMaybe<TestimonialType>;
+  profileType?: InputMaybe<ProfilesSelect>;
+  testimonialType?: InputMaybe<TestimonialType>;
 };
 
-export type ContentQueryCreateManyInlineInput = {
-  /** Create and connect multiple existing ContentQuery documents */
-  create?: InputMaybe<Array<ContentQueryCreateInput>>;
+export type ContentTagCreateManyInlineInput = {
+  /** Create and connect multiple existing ContentTag documents */
+  create?: InputMaybe<Array<ContentTagCreateInput>>;
 };
 
-export type ContentQueryCreateOneInlineInput = {
-  /** Create and connect one ContentQuery document */
-  create?: InputMaybe<ContentQueryCreateInput>;
+export type ContentTagCreateOneInlineInput = {
+  /** Create and connect one ContentTag document */
+  create?: InputMaybe<ContentTagCreateInput>;
 };
 
-export type ContentQueryCreateWithPositionInput = {
+export type ContentTagCreateWithPositionInput = {
   /** Document to create */
-  data: ContentQueryCreateInput;
+  data: ContentTagCreateInput;
   /** Position in the list of existing component instances, will default to appending at the end of list */
   position?: InputMaybe<ConnectPositionInput>;
 };
 
 /** An edge in a connection. */
-export type ContentQueryEdge = {
-  __typename?: 'ContentQueryEdge';
+export type ContentTagEdge = {
+  __typename?: 'ContentTagEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String'];
   /** The item at the end of the edge. */
-  node: ContentQuery;
+  node: ContentTag;
 };
 
 /** Identifies documents */
-export type ContentQueryManyWhereInput = {
+export type ContentTagManyWhereInput = {
   /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ContentQueryWhereInput>>;
+  AND?: InputMaybe<Array<ContentTagWhereInput>>;
   /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ContentQueryWhereInput>>;
+  NOT?: InputMaybe<Array<ContentTagWhereInput>>;
   /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ContentQueryWhereInput>>;
+  OR?: InputMaybe<Array<ContentTagWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  albumQuery?: InputMaybe<AlbumQueryDisplay>;
+  albumDisplayType?: InputMaybe<AlbumQueryDisplay>;
   /** All values that are contained in given list. */
-  albumQuery_in?: InputMaybe<Array<InputMaybe<AlbumQueryDisplay>>>;
+  albumDisplayType_in?: InputMaybe<Array<InputMaybe<AlbumQueryDisplay>>>;
   /** Any other value that exists and is not equal to the given value. */
-  albumQuery_not?: InputMaybe<AlbumQueryDisplay>;
+  albumDisplayType_not?: InputMaybe<AlbumQueryDisplay>;
   /** All values that are not contained in given list. */
-  albumQuery_not_in?: InputMaybe<Array<InputMaybe<AlbumQueryDisplay>>>;
+  albumDisplayType_not_in?: InputMaybe<Array<InputMaybe<AlbumQueryDisplay>>>;
   blogCategory?: InputMaybe<BlogTags>;
   /** All values that are contained in given list. */
   blogCategory_in?: InputMaybe<Array<InputMaybe<BlogTags>>>;
@@ -4873,15 +4873,15 @@ export type ContentQueryManyWhereInput = {
   /** All values starting with the given string. */
   blogSectionTitle_starts_with?: InputMaybe<Scalars['String']>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
-  contactQuery?: InputMaybe<Array<ContactQueries>>;
+  contactType?: InputMaybe<Array<ContactQueries>>;
   /** Matches if the field array contains *all* items provided to the filter */
-  contactQuery_contains_all?: InputMaybe<Array<ContactQueries>>;
+  contactType_contains_all?: InputMaybe<Array<ContactQueries>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
-  contactQuery_contains_none?: InputMaybe<Array<ContactQueries>>;
+  contactType_contains_none?: InputMaybe<Array<ContactQueries>>;
   /** Matches if the field array contains at least one item provided to the filter */
-  contactQuery_contains_some?: InputMaybe<Array<ContactQueries>>;
+  contactType_contains_some?: InputMaybe<Array<ContactQueries>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  contactQuery_not?: InputMaybe<Array<ContactQueries>>;
+  contactType_not?: InputMaybe<Array<ContactQueries>>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
   /** All values that are contained in given list. */
   eventDisplayLayout_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
@@ -4908,20 +4908,20 @@ export type ContentQueryManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  logoTableQuery?: InputMaybe<LogoTableItem>;
+  logoTableType?: InputMaybe<LogoTableItem>;
   /** All values that are contained in given list. */
-  logoTableQuery_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
+  logoTableType_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
   /** Any other value that exists and is not equal to the given value. */
-  logoTableQuery_not?: InputMaybe<LogoTableItem>;
+  logoTableType_not?: InputMaybe<LogoTableItem>;
   /** All values that are not contained in given list. */
-  logoTableQuery_not_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
-  productQuery?: InputMaybe<ProductType>;
+  logoTableType_not_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
+  productType?: InputMaybe<ProductType>;
   /** All values that are contained in given list. */
-  productQuery_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  productType_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
   /** Any other value that exists and is not equal to the given value. */
-  productQuery_not?: InputMaybe<ProductType>;
+  productType_not?: InputMaybe<ProductType>;
   /** All values that are not contained in given list. */
-  productQuery_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  productType_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   /** All values that are contained in given list. */
   profileLayoutStyle_in?: InputMaybe<Array<InputMaybe<ProfileLayoutStyle>>>;
@@ -4948,240 +4948,240 @@ export type ContentQueryManyWhereInput = {
   profileSectionTitle_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   profileSectionTitle_starts_with?: InputMaybe<Scalars['String']>;
-  profilesQuery?: InputMaybe<ProfilesSelect>;
+  profileType?: InputMaybe<ProfilesSelect>;
   /** All values that are contained in given list. */
-  profilesQuery_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
+  profileType_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
   /** Any other value that exists and is not equal to the given value. */
-  profilesQuery_not?: InputMaybe<ProfilesSelect>;
+  profileType_not?: InputMaybe<ProfilesSelect>;
   /** All values that are not contained in given list. */
-  profilesQuery_not_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
-  testimonialsQuery?: InputMaybe<TestimonialType>;
+  profileType_not_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
+  testimonialType?: InputMaybe<TestimonialType>;
   /** All values that are contained in given list. */
-  testimonialsQuery_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
+  testimonialType_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
   /** Any other value that exists and is not equal to the given value. */
-  testimonialsQuery_not?: InputMaybe<TestimonialType>;
+  testimonialType_not?: InputMaybe<TestimonialType>;
   /** All values that are not contained in given list. */
-  testimonialsQuery_not_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
+  testimonialType_not_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
 };
 
-export enum ContentQueryOrderByInput {
-  AlbumQueryAsc = 'albumQuery_ASC',
-  AlbumQueryDesc = 'albumQuery_DESC',
+export enum ContentTagOrderByInput {
+  AlbumDisplayTypeAsc = 'albumDisplayType_ASC',
+  AlbumDisplayTypeDesc = 'albumDisplayType_DESC',
   BlogCategoryAsc = 'blogCategory_ASC',
   BlogCategoryDesc = 'blogCategory_DESC',
   BlogSectionTitleAsc = 'blogSectionTitle_ASC',
   BlogSectionTitleDesc = 'blogSectionTitle_DESC',
-  ContactQueryAsc = 'contactQuery_ASC',
-  ContactQueryDesc = 'contactQuery_DESC',
+  ContactTypeAsc = 'contactType_ASC',
+  ContactTypeDesc = 'contactType_DESC',
   EventDisplayLayoutAsc = 'eventDisplayLayout_ASC',
   EventDisplayLayoutDesc = 'eventDisplayLayout_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
-  LogoTableQueryAsc = 'logoTableQuery_ASC',
-  LogoTableQueryDesc = 'logoTableQuery_DESC',
-  ProductQueryAsc = 'productQuery_ASC',
-  ProductQueryDesc = 'productQuery_DESC',
+  LogoTableTypeAsc = 'logoTableType_ASC',
+  LogoTableTypeDesc = 'logoTableType_DESC',
+  ProductTypeAsc = 'productType_ASC',
+  ProductTypeDesc = 'productType_DESC',
   ProfileLayoutStyleAsc = 'profileLayoutStyle_ASC',
   ProfileLayoutStyleDesc = 'profileLayoutStyle_DESC',
   ProfileSectionTitleAsc = 'profileSectionTitle_ASC',
   ProfileSectionTitleDesc = 'profileSectionTitle_DESC',
-  ProfilesQueryAsc = 'profilesQuery_ASC',
-  ProfilesQueryDesc = 'profilesQuery_DESC',
-  TestimonialsQueryAsc = 'testimonialsQuery_ASC',
-  TestimonialsQueryDesc = 'testimonialsQuery_DESC'
+  ProfileTypeAsc = 'profileType_ASC',
+  ProfileTypeDesc = 'profileType_DESC',
+  TestimonialTypeAsc = 'testimonialType_ASC',
+  TestimonialTypeDesc = 'testimonialType_DESC'
 }
 
-export type ContentQueryParent = LayoutBlockColumn;
+export type ContentTagParent = LayoutBlockColumn;
 
-export type ContentQueryParentConnectInput = {
+export type ContentTagParentConnectInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnConnectInput>;
 };
 
-export type ContentQueryParentCreateInput = {
+export type ContentTagParentCreateInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateInput>;
 };
 
-export type ContentQueryParentCreateManyInlineInput = {
-  /** Create and connect multiple existing ContentQueryParent documents */
-  create?: InputMaybe<Array<ContentQueryParentCreateInput>>;
+export type ContentTagParentCreateManyInlineInput = {
+  /** Create and connect multiple existing ContentTagParent documents */
+  create?: InputMaybe<Array<ContentTagParentCreateInput>>;
 };
 
-export type ContentQueryParentCreateOneInlineInput = {
-  /** Create and connect one ContentQueryParent document */
-  create?: InputMaybe<ContentQueryParentCreateInput>;
+export type ContentTagParentCreateOneInlineInput = {
+  /** Create and connect one ContentTagParent document */
+  create?: InputMaybe<ContentTagParentCreateInput>;
 };
 
-export type ContentQueryParentCreateWithPositionInput = {
+export type ContentTagParentCreateWithPositionInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateWithPositionInput>;
 };
 
-export type ContentQueryParentUpdateInput = {
+export type ContentTagParentUpdateInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateInput>;
 };
 
-export type ContentQueryParentUpdateManyInlineInput = {
-  /** Create and connect multiple ContentQueryParent component instances */
-  create?: InputMaybe<Array<ContentQueryParentCreateWithPositionInput>>;
-  /** Delete multiple ContentQueryParent documents */
-  delete?: InputMaybe<Array<ContentQueryParentWhereUniqueInput>>;
-  /** Update multiple ContentQueryParent component instances */
-  update?: InputMaybe<Array<ContentQueryParentUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple ContentQueryParent component instances */
-  upsert?: InputMaybe<Array<ContentQueryParentUpsertWithNestedWhereUniqueAndPositionInput>>;
+export type ContentTagParentUpdateManyInlineInput = {
+  /** Create and connect multiple ContentTagParent component instances */
+  create?: InputMaybe<Array<ContentTagParentCreateWithPositionInput>>;
+  /** Delete multiple ContentTagParent documents */
+  delete?: InputMaybe<Array<ContentTagParentWhereUniqueInput>>;
+  /** Update multiple ContentTagParent component instances */
+  update?: InputMaybe<Array<ContentTagParentUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple ContentTagParent component instances */
+  upsert?: InputMaybe<Array<ContentTagParentUpsertWithNestedWhereUniqueAndPositionInput>>;
 };
 
-export type ContentQueryParentUpdateManyWithNestedWhereInput = {
+export type ContentTagParentUpdateManyWithNestedWhereInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateManyWithNestedWhereInput>;
 };
 
-export type ContentQueryParentUpdateOneInlineInput = {
-  /** Create and connect one ContentQueryParent document */
-  create?: InputMaybe<ContentQueryParentCreateInput>;
-  /** Delete currently connected ContentQueryParent document */
+export type ContentTagParentUpdateOneInlineInput = {
+  /** Create and connect one ContentTagParent document */
+  create?: InputMaybe<ContentTagParentCreateInput>;
+  /** Delete currently connected ContentTagParent document */
   delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single ContentQueryParent document */
-  update?: InputMaybe<ContentQueryParentUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single ContentQueryParent document */
-  upsert?: InputMaybe<ContentQueryParentUpsertWithNestedWhereUniqueInput>;
+  /** Update single ContentTagParent document */
+  update?: InputMaybe<ContentTagParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ContentTagParent document */
+  upsert?: InputMaybe<ContentTagParentUpsertWithNestedWhereUniqueInput>;
 };
 
-export type ContentQueryParentUpdateWithNestedWhereUniqueAndPositionInput = {
+export type ContentTagParentUpdateWithNestedWhereUniqueAndPositionInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueAndPositionInput>;
 };
 
-export type ContentQueryParentUpdateWithNestedWhereUniqueInput = {
+export type ContentTagParentUpdateWithNestedWhereUniqueInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueInput>;
 };
 
-export type ContentQueryParentUpsertWithNestedWhereUniqueAndPositionInput = {
+export type ContentTagParentUpsertWithNestedWhereUniqueAndPositionInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueAndPositionInput>;
 };
 
-export type ContentQueryParentUpsertWithNestedWhereUniqueInput = {
+export type ContentTagParentUpsertWithNestedWhereUniqueInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueInput>;
 };
 
-export type ContentQueryParentWhereInput = {
+export type ContentTagParentWhereInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereInput>;
 };
 
-export type ContentQueryParentWhereUniqueInput = {
+export type ContentTagParentWhereUniqueInput = {
   LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereUniqueInput>;
 };
 
-export type ContentQueryUpdateInput = {
-  albumQuery?: InputMaybe<AlbumQueryDisplay>;
+export type ContentTagUpdateInput = {
+  albumDisplayType?: InputMaybe<AlbumQueryDisplay>;
   blogCategory?: InputMaybe<BlogTags>;
   blogSectionTitle?: InputMaybe<Scalars['String']>;
-  contactQuery?: InputMaybe<Array<ContactQueries>>;
+  contactType?: InputMaybe<Array<ContactQueries>>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
-  logoTableQuery?: InputMaybe<LogoTableItem>;
-  productQuery?: InputMaybe<ProductType>;
+  logoTableType?: InputMaybe<LogoTableItem>;
+  productType?: InputMaybe<ProductType>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   profileSectionTitle?: InputMaybe<Scalars['String']>;
-  profilesQuery?: InputMaybe<ProfilesSelect>;
-  testimonialsQuery?: InputMaybe<TestimonialType>;
+  profileType?: InputMaybe<ProfilesSelect>;
+  testimonialType?: InputMaybe<TestimonialType>;
 };
 
-export type ContentQueryUpdateManyInlineInput = {
-  /** Create and connect multiple ContentQuery component instances */
-  create?: InputMaybe<Array<ContentQueryCreateWithPositionInput>>;
-  /** Delete multiple ContentQuery documents */
-  delete?: InputMaybe<Array<ContentQueryWhereUniqueInput>>;
-  /** Update multiple ContentQuery component instances */
-  update?: InputMaybe<Array<ContentQueryUpdateWithNestedWhereUniqueAndPositionInput>>;
-  /** Upsert multiple ContentQuery component instances */
-  upsert?: InputMaybe<Array<ContentQueryUpsertWithNestedWhereUniqueAndPositionInput>>;
+export type ContentTagUpdateManyInlineInput = {
+  /** Create and connect multiple ContentTag component instances */
+  create?: InputMaybe<Array<ContentTagCreateWithPositionInput>>;
+  /** Delete multiple ContentTag documents */
+  delete?: InputMaybe<Array<ContentTagWhereUniqueInput>>;
+  /** Update multiple ContentTag component instances */
+  update?: InputMaybe<Array<ContentTagUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple ContentTag component instances */
+  upsert?: InputMaybe<Array<ContentTagUpsertWithNestedWhereUniqueAndPositionInput>>;
 };
 
-export type ContentQueryUpdateManyInput = {
-  albumQuery?: InputMaybe<AlbumQueryDisplay>;
+export type ContentTagUpdateManyInput = {
+  albumDisplayType?: InputMaybe<AlbumQueryDisplay>;
   blogCategory?: InputMaybe<BlogTags>;
   blogSectionTitle?: InputMaybe<Scalars['String']>;
-  contactQuery?: InputMaybe<Array<ContactQueries>>;
+  contactType?: InputMaybe<Array<ContactQueries>>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
-  logoTableQuery?: InputMaybe<LogoTableItem>;
-  productQuery?: InputMaybe<ProductType>;
+  logoTableType?: InputMaybe<LogoTableItem>;
+  productType?: InputMaybe<ProductType>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   profileSectionTitle?: InputMaybe<Scalars['String']>;
-  profilesQuery?: InputMaybe<ProfilesSelect>;
-  testimonialsQuery?: InputMaybe<TestimonialType>;
+  profileType?: InputMaybe<ProfilesSelect>;
+  testimonialType?: InputMaybe<TestimonialType>;
 };
 
-export type ContentQueryUpdateManyWithNestedWhereInput = {
+export type ContentTagUpdateManyWithNestedWhereInput = {
   /** Update many input */
-  data: ContentQueryUpdateManyInput;
+  data: ContentTagUpdateManyInput;
   /** Document search */
-  where: ContentQueryWhereInput;
+  where: ContentTagWhereInput;
 };
 
-export type ContentQueryUpdateOneInlineInput = {
-  /** Create and connect one ContentQuery document */
-  create?: InputMaybe<ContentQueryCreateInput>;
-  /** Delete currently connected ContentQuery document */
+export type ContentTagUpdateOneInlineInput = {
+  /** Create and connect one ContentTag document */
+  create?: InputMaybe<ContentTagCreateInput>;
+  /** Delete currently connected ContentTag document */
   delete?: InputMaybe<Scalars['Boolean']>;
-  /** Update single ContentQuery document */
-  update?: InputMaybe<ContentQueryUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single ContentQuery document */
-  upsert?: InputMaybe<ContentQueryUpsertWithNestedWhereUniqueInput>;
+  /** Update single ContentTag document */
+  update?: InputMaybe<ContentTagUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ContentTag document */
+  upsert?: InputMaybe<ContentTagUpsertWithNestedWhereUniqueInput>;
 };
 
-export type ContentQueryUpdateWithNestedWhereUniqueAndPositionInput = {
+export type ContentTagUpdateWithNestedWhereUniqueAndPositionInput = {
   /** Document to update */
-  data?: InputMaybe<ContentQueryUpdateInput>;
+  data?: InputMaybe<ContentTagUpdateInput>;
   /** Position in the list of existing component instances, will default to appending at the end of list */
   position?: InputMaybe<ConnectPositionInput>;
   /** Unique component instance search */
-  where: ContentQueryWhereUniqueInput;
+  where: ContentTagWhereUniqueInput;
 };
 
-export type ContentQueryUpdateWithNestedWhereUniqueInput = {
+export type ContentTagUpdateWithNestedWhereUniqueInput = {
   /** Document to update */
-  data: ContentQueryUpdateInput;
+  data: ContentTagUpdateInput;
   /** Unique document search */
-  where: ContentQueryWhereUniqueInput;
+  where: ContentTagWhereUniqueInput;
 };
 
-export type ContentQueryUpsertInput = {
+export type ContentTagUpsertInput = {
   /** Create document if it didn't exist */
-  create: ContentQueryCreateInput;
+  create: ContentTagCreateInput;
   /** Update document if it exists */
-  update: ContentQueryUpdateInput;
+  update: ContentTagUpdateInput;
 };
 
-export type ContentQueryUpsertWithNestedWhereUniqueAndPositionInput = {
+export type ContentTagUpsertWithNestedWhereUniqueAndPositionInput = {
   /** Document to upsert */
-  data?: InputMaybe<ContentQueryUpsertInput>;
+  data?: InputMaybe<ContentTagUpsertInput>;
   /** Position in the list of existing component instances, will default to appending at the end of list */
   position?: InputMaybe<ConnectPositionInput>;
   /** Unique component instance search */
-  where: ContentQueryWhereUniqueInput;
+  where: ContentTagWhereUniqueInput;
 };
 
-export type ContentQueryUpsertWithNestedWhereUniqueInput = {
+export type ContentTagUpsertWithNestedWhereUniqueInput = {
   /** Upsert data */
-  data: ContentQueryUpsertInput;
+  data: ContentTagUpsertInput;
   /** Unique document search */
-  where: ContentQueryWhereUniqueInput;
+  where: ContentTagWhereUniqueInput;
 };
 
 /** Identifies documents */
-export type ContentQueryWhereInput = {
+export type ContentTagWhereInput = {
   /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ContentQueryWhereInput>>;
+  AND?: InputMaybe<Array<ContentTagWhereInput>>;
   /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ContentQueryWhereInput>>;
+  NOT?: InputMaybe<Array<ContentTagWhereInput>>;
   /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ContentQueryWhereInput>>;
+  OR?: InputMaybe<Array<ContentTagWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  albumQuery?: InputMaybe<AlbumQueryDisplay>;
+  albumDisplayType?: InputMaybe<AlbumQueryDisplay>;
   /** All values that are contained in given list. */
-  albumQuery_in?: InputMaybe<Array<InputMaybe<AlbumQueryDisplay>>>;
+  albumDisplayType_in?: InputMaybe<Array<InputMaybe<AlbumQueryDisplay>>>;
   /** Any other value that exists and is not equal to the given value. */
-  albumQuery_not?: InputMaybe<AlbumQueryDisplay>;
+  albumDisplayType_not?: InputMaybe<AlbumQueryDisplay>;
   /** All values that are not contained in given list. */
-  albumQuery_not_in?: InputMaybe<Array<InputMaybe<AlbumQueryDisplay>>>;
+  albumDisplayType_not_in?: InputMaybe<Array<InputMaybe<AlbumQueryDisplay>>>;
   blogCategory?: InputMaybe<BlogTags>;
   /** All values that are contained in given list. */
   blogCategory_in?: InputMaybe<Array<InputMaybe<BlogTags>>>;
@@ -5209,15 +5209,15 @@ export type ContentQueryWhereInput = {
   /** All values starting with the given string. */
   blogSectionTitle_starts_with?: InputMaybe<Scalars['String']>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
-  contactQuery?: InputMaybe<Array<ContactQueries>>;
+  contactType?: InputMaybe<Array<ContactQueries>>;
   /** Matches if the field array contains *all* items provided to the filter */
-  contactQuery_contains_all?: InputMaybe<Array<ContactQueries>>;
+  contactType_contains_all?: InputMaybe<Array<ContactQueries>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
-  contactQuery_contains_none?: InputMaybe<Array<ContactQueries>>;
+  contactType_contains_none?: InputMaybe<Array<ContactQueries>>;
   /** Matches if the field array contains at least one item provided to the filter */
-  contactQuery_contains_some?: InputMaybe<Array<ContactQueries>>;
+  contactType_contains_some?: InputMaybe<Array<ContactQueries>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  contactQuery_not?: InputMaybe<Array<ContactQueries>>;
+  contactType_not?: InputMaybe<Array<ContactQueries>>;
   eventDisplayLayout?: InputMaybe<EventDisplayType>;
   /** All values that are contained in given list. */
   eventDisplayLayout_in?: InputMaybe<Array<InputMaybe<EventDisplayType>>>;
@@ -5244,20 +5244,20 @@ export type ContentQueryWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  logoTableQuery?: InputMaybe<LogoTableItem>;
+  logoTableType?: InputMaybe<LogoTableItem>;
   /** All values that are contained in given list. */
-  logoTableQuery_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
+  logoTableType_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
   /** Any other value that exists and is not equal to the given value. */
-  logoTableQuery_not?: InputMaybe<LogoTableItem>;
+  logoTableType_not?: InputMaybe<LogoTableItem>;
   /** All values that are not contained in given list. */
-  logoTableQuery_not_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
-  productQuery?: InputMaybe<ProductType>;
+  logoTableType_not_in?: InputMaybe<Array<InputMaybe<LogoTableItem>>>;
+  productType?: InputMaybe<ProductType>;
   /** All values that are contained in given list. */
-  productQuery_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  productType_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
   /** Any other value that exists and is not equal to the given value. */
-  productQuery_not?: InputMaybe<ProductType>;
+  productType_not?: InputMaybe<ProductType>;
   /** All values that are not contained in given list. */
-  productQuery_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
+  productType_not_in?: InputMaybe<Array<InputMaybe<ProductType>>>;
   profileLayoutStyle?: InputMaybe<ProfileLayoutStyle>;
   /** All values that are contained in given list. */
   profileLayoutStyle_in?: InputMaybe<Array<InputMaybe<ProfileLayoutStyle>>>;
@@ -5284,24 +5284,24 @@ export type ContentQueryWhereInput = {
   profileSectionTitle_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   profileSectionTitle_starts_with?: InputMaybe<Scalars['String']>;
-  profilesQuery?: InputMaybe<ProfilesSelect>;
+  profileType?: InputMaybe<ProfilesSelect>;
   /** All values that are contained in given list. */
-  profilesQuery_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
+  profileType_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
   /** Any other value that exists and is not equal to the given value. */
-  profilesQuery_not?: InputMaybe<ProfilesSelect>;
+  profileType_not?: InputMaybe<ProfilesSelect>;
   /** All values that are not contained in given list. */
-  profilesQuery_not_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
-  testimonialsQuery?: InputMaybe<TestimonialType>;
+  profileType_not_in?: InputMaybe<Array<InputMaybe<ProfilesSelect>>>;
+  testimonialType?: InputMaybe<TestimonialType>;
   /** All values that are contained in given list. */
-  testimonialsQuery_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
+  testimonialType_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
   /** Any other value that exists and is not equal to the given value. */
-  testimonialsQuery_not?: InputMaybe<TestimonialType>;
+  testimonialType_not?: InputMaybe<TestimonialType>;
   /** All values that are not contained in given list. */
-  testimonialsQuery_not_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
+  testimonialType_not_in?: InputMaybe<Array<InputMaybe<TestimonialType>>>;
 };
 
-/** References ContentQuery record uniquely */
-export type ContentQueryWhereUniqueInput = {
+/** References ContentTag record uniquely */
+export type ContentTagWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
@@ -8277,7 +8277,7 @@ export type LayoutBlockLayoutBlockColumnsArgs = {
 export type LayoutBlockColumn = {
   __typename?: 'LayoutBlockColumn';
   backgroundImage?: Maybe<Asset>;
-  contentQueries?: Maybe<ContentQuery>;
+  contentTags?: Maybe<ContentTag>;
   cssClass?: Maybe<Scalars['String']>;
   elements?: Maybe<Element>;
   hideBlockColumn?: Maybe<Scalars['Boolean']>;
@@ -8296,7 +8296,7 @@ export type LayoutBlockColumnBackgroundImageArgs = {
 };
 
 
-export type LayoutBlockColumnContentQueriesArgs = {
+export type LayoutBlockColumnContentTagsArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
@@ -8337,7 +8337,7 @@ export type LayoutBlockColumnConnection = {
 
 export type LayoutBlockColumnCreateInput = {
   backgroundImage?: InputMaybe<AssetCreateOneInlineInput>;
-  contentQueries?: InputMaybe<ContentQueryCreateOneInlineInput>;
+  contentTags?: InputMaybe<ContentTagCreateOneInlineInput>;
   cssClass?: InputMaybe<Scalars['String']>;
   elements?: InputMaybe<ElementCreateOneInlineInput>;
   hideBlockColumn?: InputMaybe<Scalars['Boolean']>;
@@ -8382,7 +8382,7 @@ export type LayoutBlockColumnManyWhereInput = {
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
   backgroundImage?: InputMaybe<AssetWhereInput>;
-  contentQueries?: InputMaybe<ContentQueryWhereInput>;
+  contentTags?: InputMaybe<ContentTagWhereInput>;
   cssClass?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   cssClass_contains?: InputMaybe<Scalars['String']>;
@@ -8541,7 +8541,7 @@ export type LayoutBlockColumnParentWhereUniqueInput = {
 
 export type LayoutBlockColumnUpdateInput = {
   backgroundImage?: InputMaybe<AssetUpdateOneInlineInput>;
-  contentQueries?: InputMaybe<ContentQueryUpdateOneInlineInput>;
+  contentTags?: InputMaybe<ContentTagUpdateOneInlineInput>;
   cssClass?: InputMaybe<Scalars['String']>;
   elements?: InputMaybe<ElementUpdateOneInlineInput>;
   hideBlockColumn?: InputMaybe<Scalars['Boolean']>;
@@ -8634,7 +8634,7 @@ export type LayoutBlockColumnWhereInput = {
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
   backgroundImage?: InputMaybe<AssetWhereInput>;
-  contentQueries?: InputMaybe<ContentQueryWhereInput>;
+  contentTags?: InputMaybe<ContentTagWhereInput>;
   cssClass?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   cssClass_contains?: InputMaybe<Scalars['String']>;
@@ -21751,7 +21751,7 @@ export type LogoTableFieldsFragment = { __typename?: 'LogoTable', logoName?: str
 
 export type PagesSlugListFieldsFragment = { __typename?: 'Page', pageSlug?: string | null };
 
-export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentQueries?: { __typename?: 'ContentQuery', productQuery?: ProductType | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, eventDisplayLayout?: EventDisplayType | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, albumQuery?: AlbumQueryDisplay | null, contactQuery: Array<ContactQueries> } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }> };
+export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }> };
 
 export type TextContentFieldsFragment = { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null };
 
@@ -21781,8 +21781,8 @@ export type LayoutQueryVariables = Exact<{
   eventOrderBy?: InputMaybe<EventOrderByInput>;
   blogOrderBy?: InputMaybe<BlogOrderByInput>;
   albumFirst?: InputMaybe<Scalars['Int']>;
-  contactFirst?: InputMaybe<Scalars['Int']>;
   albumOrderBy?: InputMaybe<AlbumOrderByInput>;
+  contactFirst?: InputMaybe<Scalars['Int']>;
   testimonialOrderBy?: InputMaybe<TestimonialOrderByInput>;
   testimonialFirst?: InputMaybe<Scalars['Int']>;
   profilesFirst?: InputMaybe<Scalars['Int']>;
@@ -21793,12 +21793,12 @@ export type LayoutQueryVariables = Exact<{
 }>;
 
 
-export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentQueries?: { __typename?: 'ContentQuery', productQuery?: ProductType | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, eventDisplayLayout?: EventDisplayType | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, albumQuery?: AlbumQueryDisplay | null, contactQuery: Array<ContactQueries> } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }> } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, contacts: Array<{ __typename?: 'Contact', contactName: string, contactQuery: ContactQueries, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactWhatsapp?: string | null, contactCalendly?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, products: Array<{ __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
+export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }> } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, contacts: Array<{ __typename?: 'Contact', contactName: string, contactQuery: ContactQueries, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactWhatsapp?: string | null, contactCalendly?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, products: Array<{ __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
 
 export type PagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentQueries?: { __typename?: 'ContentQuery', productQuery?: ProductType | null, logoTableQuery?: LogoTableItem | null, testimonialsQuery?: TestimonialType | null, eventDisplayLayout?: EventDisplayType | null, blogSectionTitle?: string | null, blogCategory?: BlogTags | null, profileSectionTitle?: string | null, profilesQuery?: ProfilesSelect | null, profileLayoutStyle?: ProfileLayoutStyle | null, albumQuery?: AlbumQueryDisplay | null, contactQuery: Array<ContactQueries> } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }> }> };
+export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }> }> };
 
 export type PagesSlugListQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -21863,6 +21863,13 @@ export type ProfileQueryVariables = Exact<{
 
 export type ProfileQuery = { __typename?: 'Query', profile?: { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null } | null };
 
+export type ProfilePageQueryVariables = Exact<{
+  profileSlug: Scalars['String'];
+}>;
+
+
+export type ProfilePageQuery = { __typename?: 'Query', profile?: { __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null } | null, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, contacts: Array<{ __typename?: 'Contact', contactName: string, contactQuery: ContactQueries, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactWhatsapp?: string | null, contactCalendly?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }> };
+
 export type ProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -21874,6 +21881,29 @@ export type ProductQueryVariables = Exact<{
 
 
 export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null } | null };
+
+export type ProductPageQueryVariables = Exact<{
+  productSlug: Scalars['String'];
+}>;
+
+
+export type ProductPageQuery = { __typename?: 'Query', product?: { __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null } | null, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, contacts: Array<{ __typename?: 'Contact', contactName: string, contactQuery: ContactQueries, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactWhatsapp?: string | null, contactCalendly?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }> };
+
+export type BlogPageQueryVariables = Exact<{
+  blogSlug: Scalars['String'];
+}>;
+
+
+export type BlogPageQuery = { __typename?: 'Query', blog?: { __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> } | null, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }> };
+
+export type AlbumPageQueryVariables = Exact<{
+  albumSlug: Scalars['String'];
+  albumFirst?: InputMaybe<Scalars['Int']>;
+  albumOrderBy?: InputMaybe<AlbumOrderByInput>;
+}>;
+
+
+export type AlbumPageQuery = { __typename?: 'Query', album?: { __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> } | null, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', dark?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primary?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryHover?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFade?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, primaryFadeOpacity?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, white?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }> };
 
 export const AlbumFieldsFragmentDoc = gql`
     fragment albumFields on Album {
@@ -22282,18 +22312,18 @@ export const PageFieldsFragmentDoc = gql`
       backgroundImage {
         url
       }
-      contentQueries {
-        productQuery
-        logoTableQuery
-        testimonialsQuery
-        eventDisplayLayout
-        blogSectionTitle
+      contentTags {
+        albumDisplayType
         blogCategory
-        profileSectionTitle
-        profilesQuery
+        blogSectionTitle
+        contactType
+        eventDisplayLayout
+        logoTableType
+        productType
         profileLayoutStyle
-        albumQuery
-        contactQuery
+        profileSectionTitle
+        profileType
+        testimonialType
       }
       elements {
         stripePricingTableId
@@ -22512,7 +22542,7 @@ export const ProductFieldsFragmentDoc = gql`
 }
     `;
 export const LayoutDocument = gql`
-    query layout($eventFirst: Int = 500, $blogFirst: Int = 500, $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC, $blogOrderBy: BlogOrderByInput = date_DESC, $albumFirst: Int = 100, $contactFirst: Int = 100, $albumOrderBy: AlbumOrderByInput = releaseDate_DESC, $testimonialOrderBy: TestimonialOrderByInput = updatedAt_DESC, $testimonialFirst: Int = 100, $profilesFirst: Int = 100, $pageSlug: String!, $productFirst: Int = 100, $logoTableFirst: Int = 100, $logoTableOrderBy: LogoTableOrderByInput = logoName_ASC) {
+    query layout($eventFirst: Int = 500, $blogFirst: Int = 500, $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC, $blogOrderBy: BlogOrderByInput = date_DESC, $albumFirst: Int = 100, $albumOrderBy: AlbumOrderByInput = releaseDate_DESC, $contactFirst: Int = 100, $testimonialOrderBy: TestimonialOrderByInput = updatedAt_DESC, $testimonialFirst: Int = 100, $profilesFirst: Int = 100, $pageSlug: String!, $productFirst: Int = 100, $logoTableFirst: Int = 100, $logoTableOrderBy: LogoTableOrderByInput = logoName_ASC) {
   siteLibrary(where: {signature: "lnzame"}) {
     ...siteLibraryFields
   }
@@ -22642,6 +22672,32 @@ export const ProfileDocument = gql`
   }
 }
     ${ProfileFieldsFragmentDoc}`;
+export const ProfilePageDocument = gql`
+    query profilePage($profileSlug: String!) {
+  profile(where: {profileSlug: $profileSlug}) {
+    ...profileFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  siteLibrary(where: {signature: "lnzame"}) {
+    ...siteLibraryFields
+  }
+  contacts(first: 500) {
+    ...contactFields
+  }
+  profiles(first: 100) {
+    ...profileFields
+  }
+  navigations {
+    ...navigationFields
+  }
+}
+    ${ProfileFieldsFragmentDoc}
+${BlogFieldsFragmentDoc}
+${SiteLibraryFieldsFragmentDoc}
+${ContactFieldsFragmentDoc}
+${NavigationFieldsFragmentDoc}`;
 export const ProductsDocument = gql`
     query products {
   products(first: 500) {
@@ -22656,6 +22712,73 @@ export const ProductDocument = gql`
   }
 }
     ${ProductFieldsFragmentDoc}`;
+export const ProductPageDocument = gql`
+    query productPage($productSlug: String!) {
+  product(where: {productSlug: $productSlug}) {
+    ...productFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  siteLibrary(where: {signature: "lnzame"}) {
+    ...siteLibraryFields
+  }
+  contacts(first: 500) {
+    ...contactFields
+  }
+  profiles(first: 100) {
+    ...profileFields
+  }
+  navigations {
+    ...navigationFields
+  }
+}
+    ${ProductFieldsFragmentDoc}
+${BlogFieldsFragmentDoc}
+${SiteLibraryFieldsFragmentDoc}
+${ContactFieldsFragmentDoc}
+${ProfileFieldsFragmentDoc}
+${NavigationFieldsFragmentDoc}`;
+export const BlogPageDocument = gql`
+    query blogPage($blogSlug: String!) {
+  blog(where: {blogSlug: $blogSlug}) {
+    ...blogFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  siteLibrary(where: {signature: "lnzame"}) {
+    ...siteLibraryFields
+  }
+  navigations {
+    ...navigationFields
+  }
+}
+    ${BlogFieldsFragmentDoc}
+${SiteLibraryFieldsFragmentDoc}
+${NavigationFieldsFragmentDoc}`;
+export const AlbumPageDocument = gql`
+    query albumPage($albumSlug: String!, $albumFirst: Int = 100, $albumOrderBy: AlbumOrderByInput = releaseDate_DESC) {
+  album(where: {albumSlug: $albumSlug}) {
+    ...albumFields
+  }
+  albums(first: $albumFirst, orderBy: $albumOrderBy) {
+    ...albumFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  siteLibrary(where: {signature: "lnzame"}) {
+    ...siteLibraryFields
+  }
+  navigations {
+    ...navigationFields
+  }
+}
+    ${AlbumFieldsFragmentDoc}
+${BlogFieldsFragmentDoc}
+${SiteLibraryFieldsFragmentDoc}
+${NavigationFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -22703,11 +22826,23 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     profile(variables: ProfileQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProfileQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ProfileQuery>(ProfileDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profile', 'query');
     },
+    profilePage(variables: ProfilePageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProfilePageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProfilePageQuery>(ProfilePageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'profilePage', 'query');
+    },
     products(variables?: ProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProductsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ProductsQuery>(ProductsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'products', 'query');
     },
     product(variables: ProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProductQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ProductQuery>(ProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'product', 'query');
+    },
+    productPage(variables: ProductPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProductPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProductPageQuery>(ProductPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'productPage', 'query');
+    },
+    blogPage(variables: BlogPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<BlogPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<BlogPageQuery>(BlogPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'blogPage', 'query');
+    },
+    albumPage(variables: AlbumPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<AlbumPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AlbumPageQuery>(AlbumPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'albumPage', 'query');
     }
   };
 }

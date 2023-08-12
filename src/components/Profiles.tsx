@@ -22,20 +22,19 @@ import { Fade } from "react-awesome-reveal";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
-  profilesQuery?: string;
+  profileType?: string;
   profileLayoutStyle?: string;
   profiles?: ProfileFieldsFragment[];
 }
 
 export default function Profiles({
   profileSectionTitle,
-  profilesQuery,
+  profileType,
   profileLayoutStyle,
   profiles,
 }: ProfilesProps) {
   const [visible, setVisible] = useState(false);
-  const [selectedMember, setSelctedMember] =
-    useState<ProfileFieldsFragment>();
+  const [selectedMember, setSelctedMember] = useState<ProfileFieldsFragment>();
   return (
     <>
       {profiles && profiles.length && (
@@ -50,9 +49,20 @@ export default function Profiles({
             </div>
             <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full  lg:7/12 xl:w-8/12 mx-auto lg:mx-0 transition">
               {profiles
-                .filter((profile) => profile?.profileType?.toLowerCase() === profilesQuery?.toLowerCase())
+                .filter(
+                  (profile) =>
+                    profile?.profileType?.toLowerCase() ===
+                    profileType?.toLowerCase()
+                )
                 .map((profile) => (
-                  <Fade direction="up" cascade triggerOnce damping={0.1} key={profile.profileSlug} className="mx-auto">
+                  <Fade
+                    direction="up"
+                    cascade
+                    triggerOnce
+                    damping={0.1}
+                    key={profile.profileSlug}
+                    className="mx-auto"
+                  >
                     {profileLayoutStyle === "cardModal" ? (
                       <div className="animate-col-width mx-auto md:mx-0">
                         <div className="member-card">

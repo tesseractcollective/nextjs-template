@@ -1,3 +1,4 @@
+"use client";
 import { GetServerSideProps } from "next";
 import { sdkClient } from "@/lib/graphql-client";
 import type { LayoutQuery } from "@/graphql/generated/graphql";

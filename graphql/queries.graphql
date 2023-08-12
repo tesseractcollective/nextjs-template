@@ -4,8 +4,8 @@ query layout(
   $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC
   $blogOrderBy: BlogOrderByInput = date_DESC
   $albumFirst: Int = 100
-  $contactFirst: Int = 100
   $albumOrderBy: AlbumOrderByInput = releaseDate_DESC
+  $contactFirst: Int = 100
   $testimonialOrderBy: TestimonialOrderByInput = updatedAt_DESC
   $testimonialFirst: Int = 100
   $profilesFirst: Int = 100
@@ -54,7 +54,7 @@ query pages {
   }
 }
 query pagesSlugList {
- pages {
+  pages {
     ...pagesSlugListFields
   }
 }
@@ -116,6 +116,26 @@ query profile($profileSlug: String!) {
     ...profileFields
   }
 }
+query profilePage($profileSlug: String!) {
+  profile(where: { profileSlug: $profileSlug }) {
+    ...profileFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  siteLibrary(where: { signature: "lnzame" }) {
+    ...siteLibraryFields
+  }
+  contacts(first: 500) {
+    ...contactFields
+  }
+  profiles(first: 100) {
+    ...profileFields
+  }
+  navigations {
+    ...navigationFields
+  }
+}
 query products {
   products(first: 500) {
     ...productFields
@@ -125,5 +145,61 @@ query products {
 query product($productSlug: String!) {
   product(where: { productSlug: $productSlug }) {
     ...productFields
+  }
+}
+
+query productPage($productSlug: String!) {
+  product(where: { productSlug: $productSlug }) {
+    ...productFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  siteLibrary(where: { signature: "lnzame" }) {
+    ...siteLibraryFields
+  }
+  contacts(first: 500) {
+    ...contactFields
+  }
+  profiles(first: 100) {
+    ...profileFields
+  }
+  navigations {
+    ...navigationFields
+  }
+}
+query blogPage($blogSlug: String!) {
+  blog(where: { blogSlug: $blogSlug }) {
+    ...blogFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  siteLibrary(where: { signature: "lnzame" }) {
+    ...siteLibraryFields
+  }
+  navigations {
+    ...navigationFields
+  }
+}
+query albumPage(
+  $albumSlug: String!
+  $albumFirst: Int = 100
+  $albumOrderBy: AlbumOrderByInput = releaseDate_DESC
+) {
+  album(where: { albumSlug: $albumSlug }) {
+    ...albumFields
+  }
+  albums(first: $albumFirst, orderBy: $albumOrderBy) {
+    ...albumFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  siteLibrary(where: { signature: "lnzame" }) {
+    ...siteLibraryFields
+  }
+  navigations {
+    ...navigationFields
   }
 }

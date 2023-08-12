@@ -2,12 +2,7 @@ import { sdkClient } from "@/lib/graphql-client";
 import Album from "@/components/Album";
 import Footer from "@/components/navigation/Footer";
 import Nav from "@/components/navigation/Nav";
-import {
-  AlbumQuery,
-  SiteLibraryQuery,
-  NavigationQuery,
-  BlogsQuery,
-} from "@/graphql/generated/graphql";
+import { AlbumPageQuery } from "@/graphql/generated/graphql";
 import { GetServerSideProps } from "next";
 import "@/app/tailwind.css";
 import "@/styles/global.scss";
@@ -15,50 +10,37 @@ import "@/styles/layoutBlocks.scss";
 import ThemeColors from "@/styles/ThemeColors";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const album: AlbumQuery = await sdkClient.album({
+  const albumPage: AlbumPageQuery = await sdkClient.albumPage({
     albumSlug: params?.albumSlug as string,
   });
-  const siteLibrary: SiteLibraryQuery = await sdkClient.siteLibrary();
-  const navigations: NavigationQuery = await sdkClient.Navigation();
-  const blogs: BlogsQuery = await sdkClient.blogs();
   return {
     props: {
-      siteLibrary,
-      navigations,
-      album,
-      blogs,
+      albumPage,
     },
   };
 };
 
-interface AlbumPageProps {
-  album: AlbumQuery;
-  siteLibrary: SiteLibraryQuery;
-  blogs: BlogsQuery;
-  navigations: NavigationQuery;
-}
-
 export default function AlbumSlug({
-  album,
-  siteLibrary,
-  blogs,
-  navigations,
-}: AlbumPageProps) {
-  if (!album.album || !siteLibrary.siteLibrary) return <></>;
+  albumPage,
+}: {
+  albumPage: AlbumPageQuery;
+}) {
+  if (!albumPage.album || !albumPage.siteLibrary) return <></>;
+  const { siteLibrary, navigations, blogs, album, albums } = albumPage;
   return (
     <>
-      <ThemeColors siteLibrary={siteLibrary.siteLibrary} />
+      <ThemeColors siteLibrary={siteLibrary} />
       <Nav
-        siteLibrary={siteLibrary.siteLibrary}
-        navigation={navigations.navigations[0]}
+        siteLibrary={siteLibrary}
+        navigation={navigations[0]}
         hideNav={false}
       />
-      <Album album={album?.album} siteLibrary={siteLibrary?.siteLibrary} />
+      <Album album={album} siteLibrary={siteLibrary} albums={albums} />
       <Footer
-        siteLibrary={siteLibrary.siteLibrary}
-        navigation={navigations.navigations[0]}
+        siteLibrary={siteLibrary}
+        navigation={navigations[0]}
         hideFooter={false}
-        blogs={blogs.blogs}
+        blogs={blogs}
       />
     </>
   );

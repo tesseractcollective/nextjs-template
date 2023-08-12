@@ -7,17 +7,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import ReactGA from "react-ga4";
-import Link  from "next/link";
-import Image  from "next/image";
+import Link from "next/link";
+import Image from "next/image";
 import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
+import FeatureAlbum from "./FeatureAlbum";
 
 export interface AlbumProps {
   album: AlbumFieldsFragment;
+  albums: AlbumFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export default function Album({ album, siteLibrary }: AlbumProps) {
+export default function Album({ album, siteLibrary, albums }: AlbumProps) {
   const {
     albumCover,
     iFramePlayer,
@@ -29,21 +31,24 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
     description,
   } = album;
   const { isSpanish, youtubeApiKey } = siteLibrary;
+  const filteredAlbums = albums?.filter(
+    (tempAlbum) => album.albumSlug !== tempAlbum.albumSlug
+  );
   return (
     <div className="bg-dark">
-        <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
-          <Link
-            href="/music"
-            className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
-          >
-            <FontAwesomeIcon
-              icon={faArrowLeft as IconProp}
-              className="fa-fw text-sm h-4 w-4 mr-2"
-            />
-            <span>{isSpanish ? "Toda La Música" : "All Music"}</span>
-          </Link>
-        </div>
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-12 lg:grid lg:max-w-8xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+      <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
+        <Link
+          href="/music"
+          className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
+        >
+          <FontAwesomeIcon
+            icon={faArrowLeft as IconProp}
+            className="fa-fw text-sm h-4 w-4 mr-2"
+          />
+          <span>{isSpanish ? "Toda La Música" : "All Music"}</span>
+        </Link>
+      </div>
+      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-12 lg:grid lg:max-w-8xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
         {/* Product details */}
         <div className="lg:max-w-lg lg:self-end">
           <nav aria-label="Breadcrumb">
@@ -86,8 +91,8 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
                 height={0}
                 sizes="100%"
                 priority
-                placeholder='blur'
-                blurDataURL='https://images.unsplash.com/photo-1550134464-4c07c5b02073?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=985&q=80'
+                placeholder="blur"
+                blurDataURL="https://images.unsplash.com/photo-1550134464-4c07c5b02073?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=985&q=80"
                 style={{ width: "100%" }}
               />
             </div>
@@ -103,9 +108,7 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
                 rel="noreferrer"
                 className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:ring-offset-gray-50 transition"
               >
-                <span>
-                {isSpanish ? "Escucha" : "Listen"}
-                </span>
+                <span>{isSpanish ? "Escucha" : "Listen"}</span>
               </a>
             </div>
           )}
@@ -113,7 +116,7 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
       </div>
 
       {(iFramePlayer || videoBox) && (
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">
           <div className="relative">
             <div
               className="absolute inset-0 flex items-center"
@@ -126,24 +129,41 @@ export default function Album({ album, siteLibrary }: AlbumProps) {
           {!!videoBox && (
             <div>
               {videoBox?.map((video) => (
-                 <div key={Math.random()}>
-                 {video?.youtubePlaylistId ? (
-                   <VideoPlaylistBox
-                     videoTitle={video?.videoTitle || undefined}
-                     youtubePlaylistId={video.youtubePlaylistId}
-                     youtubeApiKey={siteLibrary.youtubeApiKey}
-                   />
-                 ) : (
-                   <VideoBox
-                     videoTitle={video?.videoTitle || undefined}
-                     vimeoVideoId={video?.vimeoVideoId || undefined}
-                     youtubeVideoId={video?.youtubeVideoId || undefined}
-                   />
-                 )}
-               </div>
+                <div key={Math.random()}>
+                  {video?.youtubePlaylistId ? (
+                    <VideoPlaylistBox
+                      videoTitle={video?.videoTitle || undefined}
+                      youtubePlaylistId={video.youtubePlaylistId}
+                      youtubeApiKey={siteLibrary.youtubeApiKey}
+                    />
+                  ) : (
+                    <VideoBox
+                      videoTitle={video?.videoTitle || undefined}
+                      vimeoVideoId={video?.vimeoVideoId || undefined}
+                      youtubeVideoId={video?.youtubeVideoId || undefined}
+                    />
+                  )}
+                </div>
               ))}
             </div>
           )}
+        </div>
+      )}
+      {!!albums && (
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">
+          <div className="relative">
+            <div
+              className="absolute inset-0 flex items-center"
+              aria-hidden="true"
+            >
+              <div className="w-full border-t border-white opacity-40 mb-4" />
+            </div>
+          </div>
+          <FeatureAlbum
+            albumDisplayType="all"
+            albums={filteredAlbums}
+            siteLibrary={siteLibrary}
+          />
         </div>
       )}
     </div>

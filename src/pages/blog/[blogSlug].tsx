@@ -1,12 +1,7 @@
 import { sdkClient } from "@/lib/graphql-client";
 import Footer from "@/components/navigation/Footer";
 import Nav from "@/components/navigation/Nav";
-import {
-  SiteLibraryQuery,
-  NavigationQuery,
-  BlogsQuery,
-  BlogQuery
-} from "@/graphql/generated/graphql";
+import { BlogPageQuery } from "@/graphql/generated/graphql";
 import { GetServerSideProps } from "next";
 import "@/styles/global.scss";
 import "@/styles/layoutBlocks.scss";
@@ -15,50 +10,33 @@ import ThemeColors from "@/styles/ThemeColors";
 import Blog from "@/components/Blog";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const blog: BlogQuery = await sdkClient.blog({
+  const blogPage: BlogPageQuery = await sdkClient.blogPage({
     blogSlug: params?.blogSlug as string,
   });
-  const siteLibrary: SiteLibraryQuery = await sdkClient.siteLibrary();
-  const navigations: NavigationQuery = await sdkClient.Navigation();
-  const blogs: BlogsQuery = await sdkClient.blogs();
   return {
     props: {
-      siteLibrary,
-      navigations,
-      blog,
-      blogs,
+      blogPage,
     },
   };
 };
 
-interface BlogPageProps {
-  blog: BlogQuery;
-  siteLibrary: SiteLibraryQuery;
-  blogs: BlogsQuery;
-  navigations: NavigationQuery;
-}
-
-export default function BlogSlug({
-  blog,
-  siteLibrary,
-  blogs,
-  navigations,
-}: BlogPageProps) {
-  if (!blog.blog || !siteLibrary.siteLibrary) return <></>;
+export default function BlogSlug({ blogPage }: { blogPage: BlogPageQuery }) {
+  if (!blogPage.blog || !blogPage.siteLibrary) return <></>;
+  const { siteLibrary, navigations, blogs, blog } = blogPage;
   return (
     <>
-      <ThemeColors siteLibrary={siteLibrary.siteLibrary} />
+      <ThemeColors siteLibrary={siteLibrary} />
       <Nav
-        siteLibrary={siteLibrary.siteLibrary}
-        navigation={navigations.navigations[0]}
+        siteLibrary={siteLibrary}
+        navigation={navigations[0]}
         hideNav={false}
       />
-      <Blog blog={blog?.blog} siteLibrary={siteLibrary?.siteLibrary} />
+      <Blog blog={blog} siteLibrary={siteLibrary} />
       <Footer
-        siteLibrary={siteLibrary.siteLibrary}
-        navigation={navigations.navigations[0]}
+        siteLibrary={siteLibrary}
+        navigation={navigations[0]}
         hideFooter={false}
-        blogs={blogs.blogs}
+        blogs={blogs}
       />
     </>
   );

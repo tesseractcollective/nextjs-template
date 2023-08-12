@@ -5,7 +5,7 @@ import Nav from "@/components/navigation/Nav";
 import Whatsapp from "@/components/Whatsapp";
 import PageHeader from "@/components/PageHeader";
 import Sections from "@/components/sections/Sections";
-import ContentQueries from "@/components/ContentQueries";
+import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
 
 interface PageProps {
@@ -25,7 +25,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
     navigations,
     albums,
     blogs,
-    contacts
+    contacts,
   } = layout;
   if (!siteLibrary) return <></>;
 
@@ -54,6 +54,9 @@ export default function LayoutBlocks({ layout }: PageProps) {
             const styleBlockBGImage = layoutBlock?.backgroundImage?.url
               ? { backgroundImage: `url(${layoutBlock.backgroundImage.url})` }
               : {};
+            const styleBlockBGColor = layoutBlock?.backgroundColor?.hex
+              ? { backgroundColor: `url(${layoutBlock.backgroundColor?.hex})` }
+              : {};
             return (
               <div
                 key={`layout-block-row-${parentIndex++}`}
@@ -63,7 +66,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                     ? "background-image-featured"
                     : ""
                 }`}
-                style={{ backgroundColor: layoutBlock.backgroundColor?.hex }}
+                style={styleBlockBGImage || styleBlockBGColor}
               >
                 {layoutBlock.layoutBlockColumns.map(
                   (layoutBlockColumn, index) => {
@@ -98,8 +101,8 @@ export default function LayoutBlocks({ layout }: PageProps) {
                           sectionData={layoutBlockColumn.sections}
                           siteLibrary={siteLibrary}
                         />
-                        <ContentQueries
-                          contentQueries={layoutBlockColumn.contentQueries}
+                        <ContentComponents
+                          contentTags={layoutBlockColumn.contentTags}
                           events={events}
                           contacts={contacts}
                           testimonials={testimonials}
@@ -111,7 +114,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
                           siteLibrary={siteLibrary}
                           page={page}
                         />
-                       <Elements elements={layoutBlockColumn.elements}/>
+                        <Elements elements={layoutBlockColumn.elements} />
                       </div>
                     );
                   }

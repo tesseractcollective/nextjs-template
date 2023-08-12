@@ -7,7 +7,7 @@ import StandOutText from "@/components/StandOutText";
 import IframeBox from "@/components/IframeBox";
 import { StripePricingTable } from "@/components/StripePricingTable";
 import InstagramSection from "@/components/InstagramSection";
-import MagicGrid from "react-magic-grid"
+import MagicGrid from "react-magic-grid";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -30,7 +30,6 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
   };
 
   const finalImages = elements.gallery.map((image) => image.url);
-  console.log(elements.galleryLayout)
 
   return (
     <>

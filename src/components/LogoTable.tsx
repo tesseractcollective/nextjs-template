@@ -3,16 +3,13 @@ import Image from "next/image";
 import type { LogoTableFieldsFragment } from "@/graphql/generated/graphql";
 
 interface LogoTableProps {
-  query: string;
+  type: string;
   logoTables: LogoTableFieldsFragment[];
 }
 
-export default function LogoTable({
-  query,
-  logoTables,
-}: LogoTableProps) {
+export default function LogoTable({ type, logoTables }: LogoTableProps) {
   const filteredTable = logoTables.filter(
-    (logoTableItem) => logoTableItem.logoType === query
+    (logoTableItem) => logoTableItem.logoType === type
   );
   return (
     <div>
@@ -45,12 +42,14 @@ export default function LogoTable({
                                 height={0}
                                 sizes="100%"
                                 style={{
-                                  width: 'auto',
-                                  height: 'auto',
-                                  margin: '0 auto'
+                                  width: "auto",
+                                  height: "auto",
+                                  margin: "0 auto",
                                 }}
                               />
-                               <span className="sr-only">{logoTableItem?.logoName}</span>
+                              <span className="sr-only">
+                                {logoTableItem?.logoName}
+                              </span>
                             </a>
                           ) : (
                             <Image
@@ -62,9 +61,9 @@ export default function LogoTable({
                               height={0}
                               sizes="100%"
                               style={{
-                                width: 'auto',
-                                height: 'auto',
-                                margin: '0 auto'
+                                width: "auto",
+                                height: "auto",
+                                margin: "0 auto",
                               }}
                             />
                           )}
