@@ -4387,7 +4387,9 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Admin = 'admin'
+  Marcos = 'Marcos',
+  Ricardo = 'Ricardo',
+  Steve = 'Steve'
 }
 
 export type ContactUpdateInput = {

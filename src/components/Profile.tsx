@@ -552,7 +552,7 @@ export default function Profile({
           profiles={filteredProfiles}
           profileLayoutStyle="cardLink"
           profileSectionTitle={profile.profileType}
-          profilesQuery={profile.profileType}
+          profileType={profile.profileType}
         />
       )}
     </>
