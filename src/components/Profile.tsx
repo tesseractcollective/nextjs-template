@@ -76,7 +76,7 @@ export default function Profile({
                 width={0}
                 height={0}
                 sizes="100%"
-                className="h-[30rem] w-full object-cover object-center"
+                className="h-[35rem] w-full object-cover object-center"
               />
             )}
           </Fade>
@@ -408,7 +408,7 @@ export default function Profile({
           </div>
         )}
         {!!profile?.iFrame && (
-          <div className="my-16 mx-auto px-4" id="profile-iframe">
+          <div className="my-16 mx-auto px-4 max-w-5xl" id="profile-iframe">
             {parse(profile.iFrame)}
           </div>
         )}
@@ -452,7 +452,7 @@ export default function Profile({
             </div>
           )}
           {!!filteredContacts && (
-            <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 sm:pb-32 lg:grid lg:max-w-8xl lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:pt-32">
+            <div className="mx-auto px-4 pb-24 pt-16 sm:px-6 sm:pb-32 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:pt-32">
               <div className="lg:col-start-2">
                 <h2
                   id="contacts-heading"
@@ -463,7 +463,7 @@ export default function Profile({
                 <p className="mt-0 mb-4 text-3xl font-bold tracking-tight text-dark opacity-80">
                   {siteLibrary.isSpanish ? "Contáctenos" : "Contact Details"}
                 </p>
-                <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+                <ul className="flex flex-wrap gap-y-8">
                   {filteredContacts?.map((contact) => (
                     <li key={contact.contactName}>
                       <div className="flex items-center gap-x-4 md:gap-x-6">
