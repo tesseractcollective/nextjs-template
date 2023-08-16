@@ -506,10 +506,10 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
-"@codesweetly/react-youtube-playlist@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@codesweetly/react-youtube-playlist/-/react-youtube-playlist-1.0.13.tgz#eee20d15717c38131f622d4674bb3525aa044fb3"
-  integrity sha512-00nB4CBjVdH2c2fuGXvXh0ZjSPqPD0BpyylAF1Sak+vILJfrCJIfcc6aIKQBboXCMf1KWsHitcIqwekcFlgxtw==
+"@codesweetly/react-youtube-playlist@^1.0.16":
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@codesweetly/react-youtube-playlist/-/react-youtube-playlist-1.0.16.tgz#bf3dd11039e83940d642d82f509d23aac42aa173"
+  integrity sha512-PXoB16XQADYq1oRBMb5GjxcpNESXRe/1otwLmf7/KtIn2KlPzgNtcr+IrnpCG5MIZX3UBSs5uHEh6q41RDLrYA==
   dependencies:
     fslightbox-react "^1.7.4"
     prop-types "^15.8.1"
@@ -577,7 +577,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.8.1.tgz#c1ddb040429c6d21d38cc945fe75c818cfb68e17"
   integrity sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==
 
-"@emotion/react@^11.11.1":
+"@emotion/react@11.11.1":
   version "11.11.1"
   resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.11.1.tgz#b2c36afac95b184f73b08da8c214fdf861fa4157"
   integrity sha512-5mlW1DquU5HaxjLkfkGN1GA/fvVGdyHURRiX/0FHl2cfIfRxSOfmxEH5YS43edp0OldZrZ+dkBKbngxcNCdZvA==

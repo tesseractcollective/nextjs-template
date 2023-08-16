@@ -114,7 +114,7 @@ export default function ContactFormSection({
                     action="#?formSubmit=success"
                   >
                     <input type="hidden" name="form-name" value="contact" />
-                    <section className="container flex-column grid mx-auto dark-section">
+                    <section className="container flex-col grid mx-auto dark-section">
                       <div className="w-full mx-auto">
                         <div className="form-input-wrapper border-round p-2">
                           <div className="mb-2">

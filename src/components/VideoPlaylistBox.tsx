@@ -1,5 +1,5 @@
 "use client";
-// import YouTubePlaylist from "@codesweetly/react-youtube-playlist";
+import YouTubePlaylist from "@codesweetly/react-youtube-playlist";
 
 interface VideoBoxProps {
   videoTitle?: string;
@@ -27,11 +27,11 @@ export default function VideoBox({
             uniqueName="sr-only"
           />
         </div> */}
-        {/* <YouTubePlaylist
+        <YouTubePlaylist
           apiKey={youtubeApiKey}
           playlistId={youtubePlaylistId}
           uniqueName={youtubePlaylistId}
-        /> */}
+        />
       </div>
     </section>
   );

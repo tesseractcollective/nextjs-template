@@ -40,9 +40,9 @@ export default function Whatsapp({
             open={visibleWhatsappModal}
             onClose={() => setVisibleWhatsappModal(false)}
           >
-            <div className="fixed inset-0 bg-dark opacity-30" />
+            <div className="fixed inset-0 bg-black opacity-30" />
             <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-dark p-6 text-center align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-black p-6 text-center align-middle shadow-xl transition-all">
                 <Dialog.Title className="textt-white">Whatsapp</Dialog.Title>
                 {/* <div className="field-wrapper my-4">
                   <span className="p-float-label">
@@ -133,60 +133,6 @@ export default function Whatsapp({
           </Dialog>
         )}
       </AnimatePresence>
-      {/* <Transition
-      show={visibleWhatsappModal}
-      enter="transition duration-100 ease-out"
-      enterFrom="transform scale-95 opacity-0"
-      enterTo="transform scale-100 opacity-100"
-      leave="transition duration-75 ease-out"
-      leaveFrom="transform scale-100 opacity-100"
-      leaveTo="transform scale-95 opacity-0"
-      as={Fragment}
-    >
-      <Dialog
-        open={visibleWhatsappModal}
-        onClose={() => setVisibleWhatsappModal(false)}
-        className="w-10/12 md:w-6/12 var-surface-invert"
-        draggable={false}
-      >
-        <Dialog.Panel>
-          <Dialog.Title>Whatsapp</Dialog.Title>
-          <div className="field-wrapper my-4">
-            <span className="p-float-label">
-              <textarea
-                value={whatsAppMessage}
-                onChange={(e) => setWhatsappMessage(e.target.value)}
-                rows={5}
-                cols={30}
-                className="w-full"
-                id="whatsapp-input"
-              />
-              <label htmlFor="whatsapp-input">send</label>
-            </span>
-          </div>
-          <a
-            href={`https://api.whatsapp.com/send?phone=${encodeURIComponent(
-              `${contactNumber}`
-            )}&text=${whatsAppMessage}`}
-            target="_blank"
-            style={{
-              backgroundColor: "#25D366",
-              border: "2px solid #fff",
-              color: "#fff",
-            }}
-            className="w-full no-underline px-4 py-2 mx-auto block text-center"
-            onClick={() => setVisibleWhatsappModal(false)}
-            rel="noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faPaperPlane as IconProp}
-              className="fa-fw h-5 w-5"
-            />
-            <span className="sr-only">Send Message</span>
-          </a>
-        </Dialog.Panel>
-      </Dialog>
-      </Transition> */}
     </>
   );
 }
