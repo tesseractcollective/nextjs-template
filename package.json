@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-code-generator --config ./graphql.config.js"
+    "codegen": "graphql-code-generator --config ./graphql.config.js",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@codesweetly/react-youtube-playlist": "^1.0.16",
@@ -44,6 +45,7 @@
     "magic-grid": "^3.2.4",
     "moment": "^2.29.4",
     "next": "13.4.10",
+    "next-sitemap": "^4.2.2",
     "postcss": "^8.4.26",
     "react": "18.2.0",
     "react-awesome-reveal": "^4.2.5",
