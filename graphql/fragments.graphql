@@ -223,6 +223,7 @@ fragment logoTableFields on LogoTable {
 fragment pagesSlugListFields on Page {
   pageSlug
   updatedAt
+  noIndex
 }
 fragment blogsSlugListFields on Blog {
   blogSlug

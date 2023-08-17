@@ -21749,7 +21749,7 @@ export type TestimonialFieldsFragment = { __typename?: 'Testimonial', id: string
 
 export type LogoTableFieldsFragment = { __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null };
 
-export type PagesSlugListFieldsFragment = { __typename?: 'Page', pageSlug?: string | null, updatedAt: any };
+export type PagesSlugListFieldsFragment = { __typename?: 'Page', pageSlug?: string | null, updatedAt: any, noIndex?: boolean | null };
 
 export type BlogsSlugListFieldsFragment = { __typename?: 'Blog', blogSlug?: string | null, updatedAt: any };
 
@@ -21813,7 +21813,7 @@ export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Pa
 export type PagesSlugListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesSlugListQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', pageSlug?: string | null, updatedAt: any }>, blogs: Array<{ __typename?: 'Blog', blogSlug?: string | null, updatedAt: any }>, albums: Array<{ __typename?: 'Album', albumSlug?: string | null, updatedAt: any }>, events: Array<{ __typename?: 'Event', eventSlug?: string | null, updatedAt: any }>, profiles: Array<{ __typename?: 'Profile', profileSlug?: string | null, profileType: ProfilesSelect, updatedAt: any }>, products: Array<{ __typename?: 'Product', productSlug: string, productType: ProductType, updatedAt: any }> };
+export type PagesSlugListQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', pageSlug?: string | null, updatedAt: any, noIndex?: boolean | null }>, blogs: Array<{ __typename?: 'Blog', blogSlug?: string | null, updatedAt: any }>, albums: Array<{ __typename?: 'Album', albumSlug?: string | null, updatedAt: any }>, events: Array<{ __typename?: 'Event', eventSlug?: string | null, updatedAt: any }>, profiles: Array<{ __typename?: 'Profile', profileSlug?: string | null, profileType: ProfilesSelect, updatedAt: any }>, products: Array<{ __typename?: 'Product', productSlug: string, productType: ProductType, updatedAt: any }> };
 
 export type BlogQueryVariables = Exact<{
   blogSlug: Scalars['String'];
@@ -22147,6 +22147,7 @@ export const PagesSlugListFieldsFragmentDoc = gql`
     fragment pagesSlugListFields on Page {
   pageSlug
   updatedAt
+  noIndex
 }
     `;
 export const BlogsSlugListFieldsFragmentDoc = gql`
