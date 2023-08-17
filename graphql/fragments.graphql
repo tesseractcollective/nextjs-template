@@ -222,6 +222,29 @@ fragment logoTableFields on LogoTable {
 
 fragment pagesSlugListFields on Page {
   pageSlug
+  updatedAt
+}
+fragment blogsSlugListFields on Blog {
+  blogSlug
+  updatedAt
+}
+fragment albumsSlugListFields on Album {
+  albumSlug
+  updatedAt
+}
+fragment eventsSlugListFields on Event {
+  eventSlug
+  updatedAt
+}
+fragment profilesSlugListFields on Profile {
+  profileSlug
+  profileType
+  updatedAt
+}
+fragment productsSlugListFields on Product {
+  productSlug
+  productType
+  updatedAt
 }
 
 fragment pageFields on Page {

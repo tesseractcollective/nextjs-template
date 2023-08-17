@@ -57,6 +57,21 @@ query pagesSlugList {
   pages {
     ...pagesSlugListFields
   }
+  blogs {
+    ...blogsSlugListFields
+  }
+  albums {
+    ...albumsSlugListFields
+  }
+  events {
+    ...eventsSlugListFields
+  }
+  profiles {
+    ...profilesSlugListFields
+  }
+  products {
+    ...productsSlugListFields
+  }
 }
 
 query blog($blogSlug: String!) {

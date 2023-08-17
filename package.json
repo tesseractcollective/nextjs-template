@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-code-generator --config ./graphql.config.js",
-    "postbuild": "next-sitemap"
+    "codegen": "graphql-code-generator --config ./graphql.config.js"
   },
   "dependencies": {
     "@codesweetly/react-youtube-playlist": "^1.0.16",
@@ -34,6 +33,7 @@
     "@u-wave/react-vimeo": "^0.9.10",
     "autoprefixer": "^10.4.14",
     "beautiful-react-hooks": "^4.3.0",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.0.3",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
@@ -44,7 +44,6 @@
     "magic-grid": "^3.2.4",
     "moment": "^2.29.4",
     "next": "13.4.10",
-    "next-sitemap": "^4.2.2",
     "postcss": "^8.4.26",
     "react": "18.2.0",
     "react-awesome-reveal": "^4.2.5",

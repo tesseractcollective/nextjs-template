@@ -4387,9 +4387,7 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Marcos = 'Marcos',
-  Ricardo = 'Ricardo',
-  Steve = 'Steve'
+  Admin = 'admin'
 }
 
 export type ContactUpdateInput = {
@@ -21751,7 +21749,17 @@ export type TestimonialFieldsFragment = { __typename?: 'Testimonial', id: string
 
 export type LogoTableFieldsFragment = { __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null };
 
-export type PagesSlugListFieldsFragment = { __typename?: 'Page', pageSlug?: string | null };
+export type PagesSlugListFieldsFragment = { __typename?: 'Page', pageSlug?: string | null, updatedAt: any };
+
+export type BlogsSlugListFieldsFragment = { __typename?: 'Blog', blogSlug?: string | null, updatedAt: any };
+
+export type AlbumsSlugListFieldsFragment = { __typename?: 'Album', albumSlug?: string | null, updatedAt: any };
+
+export type EventsSlugListFieldsFragment = { __typename?: 'Event', eventSlug?: string | null, updatedAt: any };
+
+export type ProfilesSlugListFieldsFragment = { __typename?: 'Profile', profileSlug?: string | null, profileType: ProfilesSelect, updatedAt: any };
+
+export type ProductsSlugListFieldsFragment = { __typename?: 'Product', productSlug: string, productType: ProductType, updatedAt: any };
 
 export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }> };
 
@@ -21805,7 +21813,7 @@ export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Pa
 export type PagesSlugListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesSlugListQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', pageSlug?: string | null }> };
+export type PagesSlugListQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', pageSlug?: string | null, updatedAt: any }>, blogs: Array<{ __typename?: 'Blog', blogSlug?: string | null, updatedAt: any }>, albums: Array<{ __typename?: 'Album', albumSlug?: string | null, updatedAt: any }>, events: Array<{ __typename?: 'Event', eventSlug?: string | null, updatedAt: any }>, profiles: Array<{ __typename?: 'Profile', profileSlug?: string | null, profileType: ProfilesSelect, updatedAt: any }>, products: Array<{ __typename?: 'Product', productSlug: string, productType: ProductType, updatedAt: any }> };
 
 export type BlogQueryVariables = Exact<{
   blogSlug: Scalars['String'];
@@ -22138,6 +22146,39 @@ export const LogoTableFieldsFragmentDoc = gql`
 export const PagesSlugListFieldsFragmentDoc = gql`
     fragment pagesSlugListFields on Page {
   pageSlug
+  updatedAt
+}
+    `;
+export const BlogsSlugListFieldsFragmentDoc = gql`
+    fragment blogsSlugListFields on Blog {
+  blogSlug
+  updatedAt
+}
+    `;
+export const AlbumsSlugListFieldsFragmentDoc = gql`
+    fragment albumsSlugListFields on Album {
+  albumSlug
+  updatedAt
+}
+    `;
+export const EventsSlugListFieldsFragmentDoc = gql`
+    fragment eventsSlugListFields on Event {
+  eventSlug
+  updatedAt
+}
+    `;
+export const ProfilesSlugListFieldsFragmentDoc = gql`
+    fragment profilesSlugListFields on Profile {
+  profileSlug
+  profileType
+  updatedAt
+}
+    `;
+export const ProductsSlugListFieldsFragmentDoc = gql`
+    fragment productsSlugListFields on Product {
+  productSlug
+  productType
+  updatedAt
 }
     `;
 export const TextContentFieldsFragmentDoc = gql`
@@ -22602,8 +22643,28 @@ export const PagesSlugListDocument = gql`
   pages {
     ...pagesSlugListFields
   }
+  blogs {
+    ...blogsSlugListFields
+  }
+  albums {
+    ...albumsSlugListFields
+  }
+  events {
+    ...eventsSlugListFields
+  }
+  profiles {
+    ...profilesSlugListFields
+  }
+  products {
+    ...productsSlugListFields
+  }
 }
-    ${PagesSlugListFieldsFragmentDoc}`;
+    ${PagesSlugListFieldsFragmentDoc}
+${BlogsSlugListFieldsFragmentDoc}
+${AlbumsSlugListFieldsFragmentDoc}
+${EventsSlugListFieldsFragmentDoc}
+${ProfilesSlugListFieldsFragmentDoc}
+${ProductsSlugListFieldsFragmentDoc}`;
 export const BlogDocument = gql`
     query blog($blogSlug: String!) {
   blog(where: {blogSlug: $blogSlug}) {
