@@ -1,9 +1,8 @@
-import { FC } from 'react';
-import Head from 'next/head';
-
-import { LayoutQuery } from '@/graphql/generated/graphql';
-import LayoutBlocks from '@/components/LayoutBlocks';
-import ThemeColors from '@/styles/ThemeColors';
+import { FC } from "react";
+import Head from "next/head";
+import { LayoutQuery } from "@/graphql/generated/graphql";
+import LayoutBlocks from "@/components/LayoutBlocks";
+import ThemeColors from "@/styles/ThemeColors";
 
 interface Props {
   layout: LayoutQuery;
@@ -25,9 +24,15 @@ const PageComponent: FC<Props> = ({ layout }) => {
     <>
       <Head>
         {!!favicon && <link rel="shortcut icon" href={favicon.url} />}
-        {!!metaOgImage && <meta property="og:image" content={metaOgImage.url} />}
-        {!!metaOgImage && <meta name="twitter:image" content={metaOgImage.url} />}
-        {!!metaDescription && <meta name="description" content={metaDescription} />}
+        {!!metaOgImage && (
+          <meta property="og:image" content={metaOgImage.url} />
+        )}
+        {!!metaOgImage && (
+          <meta name="twitter:image" content={metaOgImage.url} />
+        )}
+        {!!metaDescription && (
+          <meta name="description" content={metaDescription} />
+        )}
         {!!title && <title>{title}</title>}
         {!!metaAppleTouchIcon && (
           <link rel="apple-touch-icon" href={metaAppleTouchIcon.url} />
@@ -38,7 +43,9 @@ const PageComponent: FC<Props> = ({ layout }) => {
             content={metaGoogleConsoleVerification}
           />
         )}
-        {layout.page?.noIndex && <meta name="robots" content="noindex" />}
+        {layout.page?.noIndex && (
+          <meta name="robots" content="noindex,nofollow" />
+        )}
       </Head>
       <ThemeColors siteLibrary={layout.siteLibrary} />
       <LayoutBlocks layout={layout} />

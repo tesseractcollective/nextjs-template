@@ -25,10 +25,10 @@ export default function Events({
           {events.map((event) => (
             <Link
               href={`/event/${event.eventSlug}`}
-              className="col-12 md:col-5 lg:col-4 flex flex-col no-underline relative mx-auto"
+              className="w-full flex flex-row no-underline relative mx-auto bg-primary items-center justify-center rounded-md hover:bg-primary-hover focus-visible:bg-primary-hover transition-all group"
               key={event.eventSlug}
             >
-              <div className="date-format-badge">
+              <div className="date-format-badge bg-white text-primary rounded-full">
                 <span className="date-format-badge-month">
                   <Moment format="MMM">{event.eventStartDateTime}</Moment>
                 </span>
@@ -36,18 +36,7 @@ export default function Events({
                   <Moment format="DD">{event.eventStartDateTime}</Moment>
                 </span>
               </div>
-              {!!event?.eventFlyer?.url && (
-                <Image
-                  src={event?.eventFlyer?.url}
-                  alt={event?.eventTitle || "Event"}
-                  className="block w-full mb-2 border-round"
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                  style={{ width: "100%" }}
-                />
-              )}
-              <span className="text-center text-link uppercase">
+              <span className="uppercase text-left py-4 text-white">
                 {event.eventTitle}
               </span>
             </Link>

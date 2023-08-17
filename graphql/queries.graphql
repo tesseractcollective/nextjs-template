@@ -218,3 +218,24 @@ query albumPage(
     ...navigationFields
   }
 }
+query eventPage(
+  $eventSlug: String!
+  $eventFirst: Int = 100
+  $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC
+) {
+  event(where: { eventSlug: $eventSlug }) {
+    ...eventFields
+  }
+  events(first: $eventFirst, orderBy: $eventOrderBy) {
+    ...eventFields
+  }
+  blogs(first: 500) {
+    ...blogFields
+  }
+  siteLibrary(where: { signature: "lnzame" }) {
+    ...siteLibraryFields
+  }
+  navigations {
+    ...navigationFields
+  }
+}
