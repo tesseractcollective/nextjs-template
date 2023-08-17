@@ -27,22 +27,6 @@ export default function ContactFormSection({
   contactFormData,
   siteLibrary,
 }: ContactFormProps) {
-  // Simple controlled form setup (Control your own state)
-  // const [success, setSuccess] = useState(false);
-  // useEffect(() => {
-  //   if (window.location.search.includes("success=true")) {
-  //     setSuccess(true);
-  //     postSubmit();
-  //   }
-  // }, []);
-  // const handleChange = (e) =>
-  //   setFormValues({ ...formValues, [e.target.name]: e.target.value });
-  // const [formValues, setFormValues] = useState({
-  //   name: "",
-  //   message: "",
-  //   phone: "",
-  //   email: "",
-  // });
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -66,7 +50,6 @@ export default function ContactFormSection({
 
   const onSubmit: SubmitHandler<FormPost> = (data) => {
     fetch("/contact", {
-      method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...data }),
     })
