@@ -24,9 +24,9 @@ export function createSitemap(
   products: ProductsSlugListFieldsFragment[]
 ): Sitemap {
   const sitemap: Sitemap = [];
-
+  const indexPages = pages.filter((page) => page.noIndex !== true);
   sitemap.push(
-    ...pages.map((page) => ({
+    ...indexPages.map((page) => ({
       url: `${process.env.SITE_URL}/${page.pageSlug}`,
       lastModified: formatDate(page.updatedAt),
     }))
@@ -70,13 +70,12 @@ export function createSitemap(
 }
 
 export function createSitemapXml(sitemap: Sitemap): string {
-  const urls = sitemap
-      .map((item) => {
-        return `<url>
+  const urls = sitemap.map((item) => {
+    return `<url>
           <loc>${item.url}</loc>
           <lastmod>${item.lastModified}</lastmod>
         </url>`;
-      });
+  });
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${urls.join("")}
