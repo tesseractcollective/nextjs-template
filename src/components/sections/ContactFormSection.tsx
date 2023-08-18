@@ -6,15 +6,13 @@ import type {
   SiteLibraryFieldsFragment,
   ContactFormFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { useForm, SubmitHandler } from "react-hook-form";
-
-interface FormPost {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}
-
+import {
+  useNetlifyForm,
+  NetlifyFormProvider,
+  NetlifyFormComponent,
+  Honeypot,
+} from "react-netlify-forms";
+import { useForm } from "react-hook-form";
 type ContactFormType = ContactFormFieldsFragment;
 
 interface ContactFormProps {
@@ -22,50 +20,39 @@ interface ContactFormProps {
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export interface NetlifyFormState {
-  loading: boolean;
-  error: boolean;
-  success: boolean;
-  recaptchaError?: boolean | undefined;
-  recaptcha?: React.ReactElement | undefined;
-}
-
 export default function ContactFormSection({
   contactFormData,
   siteLibrary,
 }: ContactFormProps) {
-  const [submitted, setSubmitted] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<FormPost>();
+  } = useForm({ mode: "onBlur" });
+
+  const netlify = useNetlifyForm({
+    name: "Contact",
+    action: "#",
+    honeypotName: "bot-field",
+    onSuccess: (response: any, context: any) => {
+      ("Successfully sent form data to LanzaMe Server");
+
+      console.log("response", response);
+      console.log("context", context);
+      reset();
+    },
+  });
+
   if (!siteLibrary) return <></>;
   const { isSpanish } = siteLibrary;
-  const encode = (data: any) => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  };
 
-  // Source: https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression
-  const emailRegex =
-    /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+  const onSubmit = (data) => netlify.handleSubmit(null, data);
 
-  const onSubmit: SubmitHandler<FormPost> = (data) => {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...data }),
-    })
-      .then(() => console.log("Success!"))
-      .catch((error) => console.log(error));
+  const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
 
-    setSubmitted(true);
-    console.log(data);
-  };
+  // cssClass
+  // netlifyFormFields
 
   return (
     <>
@@ -90,66 +77,136 @@ export default function ContactFormSection({
                   {parse(contactFormItem.contactFormDescription.html)}
                 </div>
               )}
-              {submitted && (
-                <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
-                  <p className="text-[#229a2a]">
-                    {isSpanish
-                      ? "¡Formulario enviado con éxito!"
-                      : "Successfully submitted form!"}
-                  </p>
-                </div>
-              )}
-              {/* {!submitted &&
-                !!contactFormItem?.netlifyContactForm &&
-                contactFormItem?.netlifyContactForm === true && (
-                  <form
-                    name="contact"
-                    method="POST"
-                    data-netlify="true"
-                    onSubmit={handleSubmit(onSubmit)}
-                  >
-                    <input type="hidden" name="form-name" value="contact" />
-                    <div>
-                      <div>
-                        <input
-                          type="text"
-                          id="name"
-                          placeholder="First Name"
-                          {...register("name")}
-                        />
+              <NetlifyFormProvider {...netlify}>
+                <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
+                  <Honeypot />
+                  <section className="container flex-column grid mx-auto dark-section">
+                    <div className="w-10/12 md:w-8/12 mx-auto">
+                      <div className="form-input-wrapper border-round p-4">
+                        {netlify.success && (
+                          <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
+                            <p className="text-[#229a2a]">
+                              {isSpanish
+                                ? "¡Formulario enviado con éxito!"
+                                : "Successfully submitted form!"}
+                            </p>
+                          </div>
+                        )}
+                        {netlify.error && (
+                          <p>
+                            Sorry, we could not reach servers. Because it only
+                            works on Netlify, our GitHub demo does not provide a
+                            response.
+                          </p>
+                        )}
+
+                        <div>
+                          <label
+                            htmlFor="email"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            Email
+                          </label>
+                          <div className="relative mt-2 rounded-md shadow-sm">
+                            <input
+                              type="email"
+                              id="Email"
+                              {...register("Email", {
+                                required: "Email is required",
+                                pattern: {
+                                  value: EMAIL_REGEX,
+                                  message: "Invalid email address",
+                                },
+                              })}
+                              className="block w-full rounded-md border-0 py-1.5 pr-10 text-red-900 ring-1 ring-inset ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6"
+                              placeholder="you@example.com"
+                              defaultValue="adamwathan"
+                              aria-invalid="true"
+                              aria-describedby="email-error"
+                            />
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"></div>
+                          </div>
+                          <p
+                            className="mt-2 text-sm text-red-600"
+                            id="email-error"
+                          >
+                            Not a valid email address.
+                          </p>
+                        </div>
+
+                        <div>
+                          <label
+                            htmlFor="Name"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            {isSpanish ? "Nombre" : "Name"}
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              type="text"
+                              {...register("Name", {
+                                required: "Name is required",
+                              })}
+                              id="Name"
+                              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                              placeholder="you@gmail.com"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label
+                            htmlFor="phone"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            {isSpanish ? "Tel" : "Phone"}
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              type="text"
+                              id="phone"
+                              {...register("Phone", {
+                                required: "Phone is required",
+                              })}
+                              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                              placeholder="you@gmail.com"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label
+                            htmlFor="Message"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            {isSpanish ? "Mensaje" : "Message"}
+                          </label>
+                          <div className="mt-2">
+                            <textarea
+                              rows={4}
+                              {...register("Message", {
+                                required: "Message is required",
+                              })}
+                              name="Message"
+                              id="Message"
+                              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                              defaultValue={""}
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <button
+                            type="submit"
+                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                          >
+                            {isSpanish ? "Enviar" : "Submit"}
+                          </button>
+                        </div>
                       </div>
-                      <div>
-                        <input
-                          type="text"
-                          id="message"
-                          placeholder="Message"
-                          {...register("message")}
-                        />
-                      </div>
                     </div>
-                    <div>
-                      <input
-                        type="text"
-                        id="email"
-                        placeholder="Email"
-                        {...register("email", {
-                          required: true,
-                          pattern: emailRegex,
-                        })}
-                      />
-                      {errors.email?.type === "required" ? (
-                        <p>Email is required</p>
-                      ) : errors.email?.type === "pattern" ? (
-                        <p>Invalid email</p>
-                      ) : (
-                        <></>
-                      )}
-                    </div>
-                    <div>
-                      <button type="submit">Get Access</button>
-                    </div>
-                  </form>
-                )} */}
+                  </section>
+                </NetlifyFormComponent>
+              </NetlifyFormProvider>
 
               <form name="contact" method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value="contact" />
