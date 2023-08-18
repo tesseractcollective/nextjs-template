@@ -53,23 +53,23 @@ query pages {
     ...pageFields
   }
 }
-query pagesSlugList {
-  pages {
+query pagesSlugList($pageSlugFirst: Int = 200) {
+  pages(first: $pageSlugFirst) {
     ...pagesSlugListFields
   }
-  blogs {
+  blogs(first: $pageSlugFirst) {
     ...blogsSlugListFields
   }
-  albums {
+  albums(first: $pageSlugFirst) {
     ...albumsSlugListFields
   }
-  events {
+  events(first: $pageSlugFirst) {
     ...eventsSlugListFields
   }
-  profiles {
+  profiles(first: $pageSlugFirst) {
     ...profilesSlugListFields
   }
-  products {
+  products(first: $pageSlugFirst) {
     ...productsSlugListFields
   }
 }

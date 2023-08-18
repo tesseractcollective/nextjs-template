@@ -7425,8 +7425,7 @@ export type FooterColumnWhereUniqueInput = {
 };
 
 export enum GalleryLayout {
-  Grid = 'grid',
-  Slider = 'slider'
+  Grid = 'grid'
 }
 
 export type GridBox = {
@@ -21854,7 +21853,9 @@ export type PagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }> }> };
 
-export type PagesSlugListQueryVariables = Exact<{ [key: string]: never; }>;
+export type PagesSlugListQueryVariables = Exact<{
+  pageSlugFirst?: InputMaybe<Scalars['Int']>;
+}>;
 
 
 export type PagesSlugListQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', pageSlug?: string | null, updatedAt: any, noIndex?: boolean | null }>, blogs: Array<{ __typename?: 'Blog', blogSlug?: string | null, updatedAt: any }>, albums: Array<{ __typename?: 'Album', albumSlug?: string | null, updatedAt: any }>, events: Array<{ __typename?: 'Event', eventSlug?: string | null, updatedAt: any }>, profiles: Array<{ __typename?: 'Profile', profileSlug?: string | null, profileType: ProfilesSelect, updatedAt: any }>, products: Array<{ __typename?: 'Product', productSlug: string, productType: ProductType, updatedAt: any }> };
@@ -22700,23 +22701,23 @@ export const PagesDocument = gql`
 }
     ${PageFieldsFragmentDoc}`;
 export const PagesSlugListDocument = gql`
-    query pagesSlugList {
-  pages {
+    query pagesSlugList($pageSlugFirst: Int = 200) {
+  pages(first: $pageSlugFirst) {
     ...pagesSlugListFields
   }
-  blogs {
+  blogs(first: $pageSlugFirst) {
     ...blogsSlugListFields
   }
-  albums {
+  albums(first: $pageSlugFirst) {
     ...albumsSlugListFields
   }
-  events {
+  events(first: $pageSlugFirst) {
     ...eventsSlugListFields
   }
-  profiles {
+  profiles(first: $pageSlugFirst) {
     ...profilesSlugListFields
   }
-  products {
+  products(first: $pageSlugFirst) {
     ...productsSlugListFields
   }
 }
