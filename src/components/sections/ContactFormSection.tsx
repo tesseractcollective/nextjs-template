@@ -99,7 +99,7 @@ export default function ContactFormSection({
                   </p>
                 </div>
               )}
-              {!submitted &&
+              {/* {!submitted &&
                 !!contactFormItem?.netlifyContactForm &&
                 contactFormItem?.netlifyContactForm === true && (
                   <form
@@ -149,7 +149,55 @@ export default function ContactFormSection({
                       <button type="submit">Get Access</button>
                     </div>
                   </form>
-                )}
+                )} */}
+
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <div>
+                  <div>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="First Name"
+                      {...register("name")}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      id="message"
+                      placeholder="Message"
+                      {...register("message")}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="email"
+                    placeholder="Email"
+                    {...register("email", {
+                      required: true,
+                      pattern: emailRegex,
+                    })}
+                  />
+                  {errors.email?.type === "required" ? (
+                    <p>Email is required</p>
+                  ) : errors.email?.type === "pattern" ? (
+                    <p>Invalid email</p>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                <div>
+                  <button type="submit">Get Access</button>
+                </div>
+              </form>
 
               {!!contactFormItem?.hubspotFormId && (
                 <HubspotForm
