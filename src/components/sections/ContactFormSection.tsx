@@ -204,7 +204,7 @@ export default function ContactFormSection({
                     </section>
                   </form>
                 )}
-              <div className="sr-only">
+              <div className="">
                 <form
                   name="contact"
                   method="POST"
