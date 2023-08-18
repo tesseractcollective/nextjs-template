@@ -1674,6 +1674,21 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-google-recaptcha@*":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@types/react-google-recaptcha/-/react-google-recaptcha-2.1.5.tgz#af157dc2e4bde3355f9b815a64f90e85cfa9df8b"
+  integrity sha512-iWTjmVttlNgp0teyh7eBXqNOQzVq2RWNiFROWjraOptRnb1OcHJehQnji0sjqIRAk9K0z8stjyhU+OLpPb0N6w==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-netlify-form@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-netlify-form/-/react-netlify-form-2.1.2.tgz#3632ec17794a2ec170ea0a94c83e58683986b554"
+  integrity sha512-ea+ukvd5bbS6DVs5RWyAZMwwDsNXaBnWNCg0EkUKOAwmGVrTEqq0tZuIyrcZXSv/bchPdoeHhbdSfQW3HH0wFw==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-google-recaptcha" "*"
+
 "@types/react@*", "@types/react@18.2.15", "@types/react@^17.0.0 || ^18.0.0":
   version "18.2.15"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.15.tgz#14792b35df676c20ec3cf595b262f8c615a73066"
