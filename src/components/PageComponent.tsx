@@ -48,6 +48,29 @@ const PageComponent: FC<Props> = ({ layout }) => {
         )}
       </Head>
       <ThemeColors siteLibrary={layout.siteLibrary} />
+      <form
+        name="contact"
+        action="#?success=true"
+        method="POST"
+        data-netlify="true"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <div className="w-full">
+          <label htmlFor="yourname">Your Name:</label>
+          <input type="text" name="name" id="yourname" />
+        </div>
+        <div className="w-full">
+          <label htmlFor="youremail">Your Email: </label>{" "}
+          <input type="email" name="email" id="youremail" />
+        </div>
+        <div className="w-full">
+          <label htmlFor="yourmessage">Message: </label>
+          <textarea name="message" id="yourmessage"></textarea>
+        </div>
+        <div className="w-full">
+          <button type="submit">Send</button>
+        </div>
+      </form>
       <LayoutBlocks layout={layout} />
     </>
   );

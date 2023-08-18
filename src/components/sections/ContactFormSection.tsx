@@ -206,21 +206,21 @@ export default function ContactFormSection({
                 data-netlify="true"
               >
                 <input type="hidden" name="form-name" value="contact" />
-                <p>
+                <div className="w-full">
                   <label htmlFor="yourname">Your Name:</label>
                   <input type="text" name="name" id="yourname" />
-                </p>
-                <p>
+                </div>
+                <div className="w-full">
                   <label htmlFor="youremail">Your Email: </label>{" "}
                   <input type="email" name="email" id="youremail" />
-                </p>
-                <p>
+                </div>
+                <div className="w-full">
                   <label htmlFor="yourmessage">Message: </label>
                   <textarea name="message" id="yourmessage"></textarea>
-                </p>
-                <p>
+                </div>
+                <div className="w-full">
                   <button type="submit">Send</button>
-                </p>
+                </div>
               </form>
               {!!contactFormItem?.hubspotFormId && (
                 <HubspotForm
