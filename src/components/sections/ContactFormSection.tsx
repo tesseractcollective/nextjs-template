@@ -85,7 +85,7 @@ export default function ContactFormSection({
                       <div className="form-input-wrapper border-round p-4">
                         {netlify.success && (
                           <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
-                            <p className="text-[#229a2a]">
+                            <p className="text-[#229a2a] font-bold">
                               {isSpanish
                                 ? "¡Formulario enviado con éxito!"
                                 : "Successfully submitted form!"}
@@ -207,14 +207,6 @@ export default function ContactFormSection({
                   </section>
                 </NetlifyFormComponent>
               </NetlifyFormProvider>
-
-              <form name="contact" method="POST" data-netlify="true">
-                <input type="hidden" name="form-name" value="contact" />
-                <input id="standard-basic" name="name" type="text" />
-                <input id="standard-basic" name="email" type="text" />
-                <input id="standard-basic" name="message" type="text" />
-                <button type="submit">Send</button>
-              </form>
 
               {!!contactFormItem?.hubspotFormId && (
                 <HubspotForm

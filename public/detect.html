@@ -8,10 +8,12 @@
   <body>
     <!-- A little help for the Netlify post-processing bots -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" id="name" />
-      <input type="email" name="email" id="email" />
-      <input type="text" name="phone" id="phone" />
-      <textarea name="message" id="message"></textarea>
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
     </form>
+    <div id="contact-form-wrapper"></div>
   </body>
 </html>
