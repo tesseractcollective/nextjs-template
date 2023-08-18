@@ -32,7 +32,7 @@ export default function ContactFormSection({
   } = useForm({ mode: "onBlur" });
 
   const netlify = useNetlifyForm({
-    name: "Contact",
+    name: "contact",
     action: "#",
     honeypotName: "bot-field",
     onSuccess: (response: any, context: any) => {
@@ -110,8 +110,8 @@ export default function ContactFormSection({
                           <div className="relative mt-2 rounded-md shadow-sm">
                             <input
                               type="email"
-                              id="Email"
-                              {...register("Email", {
+                              id="email"
+                              {...register("email", {
                                 required: "Email is required",
                                 pattern: {
                                   value: EMAIL_REGEX,
@@ -136,7 +136,7 @@ export default function ContactFormSection({
 
                         <div>
                           <label
-                            htmlFor="Name"
+                            htmlFor="name"
                             className="block text-sm font-medium leading-6 text-gray-900"
                           >
                             {isSpanish ? "Nombre" : "Name"}
@@ -144,10 +144,10 @@ export default function ContactFormSection({
                           <div className="mt-2">
                             <input
                               type="text"
-                              {...register("Name", {
+                              {...register("name", {
                                 required: "Name is required",
                               })}
-                              id="Name"
+                              id="name"
                               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               placeholder="you@gmail.com"
                             />
@@ -165,8 +165,8 @@ export default function ContactFormSection({
                             <input
                               type="text"
                               id="phone"
-                              {...register("Phone", {
-                                required: "Phone is required",
+                              {...register("phone", {
+                                required: "phone is required",
                               })}
                               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               placeholder="you@gmail.com"
@@ -176,7 +176,7 @@ export default function ContactFormSection({
 
                         <div>
                           <label
-                            htmlFor="Message"
+                            htmlFor="message"
                             className="block text-sm font-medium leading-6 text-gray-900"
                           >
                             {isSpanish ? "Mensaje" : "Message"}
@@ -184,11 +184,11 @@ export default function ContactFormSection({
                           <div className="mt-2">
                             <textarea
                               rows={4}
-                              {...register("Message", {
+                              {...register("message", {
                                 required: "Message is required",
                               })}
-                              name="Message"
-                              id="Message"
+                              name="message"
+                              id="message"
                               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               defaultValue={""}
                             />
