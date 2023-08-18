@@ -47,7 +47,7 @@ export default function ContactFormSection({
   if (!siteLibrary) return <></>;
   const { isSpanish } = siteLibrary;
 
-  const onSubmit = (data) => netlify.handleSubmit(null, data);
+  const onSubmit = (data: any) => netlify.handleSubmit(null, data);
 
   const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
 
