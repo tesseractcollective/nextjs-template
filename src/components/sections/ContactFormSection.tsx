@@ -30,30 +30,17 @@ export default function ContactFormSection({
     reset,
     formState: { errors },
   } = useForm({ mode: "onBlur" });
-
   const netlify = useNetlifyForm({
-    name: "contactCustom",
-    action: "#",
+    name: "react-hook-form",
+    action: "/thanks",
     honeypotName: "bot-field",
     onSuccess: (response: any, context: any) => {
-      ("Successfully sent form data to LanzaMe Server");
-
-      console.log("response", response);
-      console.log("context", context);
-      reset();
+      console.log("Successfully sent form data to Netlify Server");
     },
   });
-
-  if (!siteLibrary) return <></>;
-  const { isSpanish } = siteLibrary;
-
   const onSubmit = (data: any) => netlify.handleSubmit(null, data);
 
   const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
-
-  // cssClass
-  // netlifyFormFields
-
   return (
     <>
       {contactFormData.map((contactFormItem, index) => (
@@ -77,13 +64,7 @@ export default function ContactFormSection({
                   {parse(contactFormItem.contactFormDescription.html)}
                 </div>
               )}
-              <NetlifyFormProvider {...netlify}>
-                <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
-                  <Honeypot />
-                  <section className="container flex-column grid mx-auto dark-section">
-                    <div className="w-10/12 md:w-8/12 mx-auto">
-                      <div className="form-input-wrapper border-round p-4">
-                        {netlify.success && (
+              {/* {netlify.success && (
                           <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
                             <p className="text-[#229a2a] font-bold">
                               {isSpanish
@@ -91,118 +72,42 @@ export default function ContactFormSection({
                                 : "Successfully submitted form!"}
                             </p>
                           </div>
-                        )}
-                        {netlify.error && (
-                          <p>
-                            Sorry, we could not reach servers. Because it only
-                            works on Netlify, our GitHub demo does not provide a
-                            response.
-                          </p>
-                        )}
-
-                        <div>
-                          <label
-                            htmlFor="email"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Email
-                          </label>
-                          <div className="relative mt-2 rounded-md shadow-sm">
-                            <input
-                              type="email"
-                              id="email"
-                              {...register("email", {
-                                required: "Email is required",
-                                pattern: {
-                                  value: EMAIL_REGEX,
-                                  message: "Invalid email address",
-                                },
-                              })}
-                              className="block w-full rounded-md border-0 py-1.5 pr-10 text-red-900 ring-1 ring-inset ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6"
-                              placeholder="you@example.com"
-                              defaultValue="adamwathan"
-                              aria-invalid="true"
-                              aria-describedby="email-error"
-                            />
-                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"></div>
-                          </div>
-                          <p
-                            className="mt-2 text-sm text-red-600"
-                            id="email-error"
-                          >
-                            Not a valid email address.
-                          </p>
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="name"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            {isSpanish ? "Nombre" : "Name"}
-                          </label>
-                          <div className="mt-2">
-                            <input
-                              type="text"
-                              {...register("name", {
-                                required: "Name is required",
-                              })}
-                              id="name"
-                              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="phone"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            {isSpanish ? "Tel" : "Phone"}
-                          </label>
-                          <div className="mt-2">
-                            <input
-                              type="text"
-                              id="phone"
-                              {...register("phone", {
-                                required: "phone is required",
-                              })}
-                              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="message"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            {isSpanish ? "Mensaje" : "Message"}
-                          </label>
-                          <div className="mt-2">
-                            <textarea
-                              rows={4}
-                              {...register("message", {
-                                required: "Message is required",
-                              })}
-                              name="message"
-                              id="message"
-                              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                              defaultValue={""}
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <button
-                            type="submit"
-                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                          >
-                            {isSpanish ? "Enviar" : "Submit"}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
+                        )} */}
+              <NetlifyFormProvider {...netlify}>
+                <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
+                  <Honeypot />
+                  {netlify.success && <p>Thanks for contacting us!</p>}
+                  {netlify.error && (
+                    <p>
+                      Sorry, we could not reach servers. Because it only works
+                      on Netlify, our GitHub demo does not provide a response.
+                    </p>
+                  )}
+                  <div>
+                    <label htmlFor="email">Email:</label>
+                    <input
+                      type="email"
+                      id="email"
+                      {...register("email", {
+                        required: "Email is required",
+                        pattern: {
+                          value: EMAIL_REGEX,
+                          message: "Invalid email address",
+                        },
+                      })}
+                    />
+                    {errors.email && <div>errors.email.message</div>}
+                  </div>
+                  <div>
+                    <button type="submit">Submit</button>
+                    <button
+                      type="reset"
+                      onClick={() => reset()}
+                      sx={{ variant: "buttons.danger" }}
+                    >
+                      Reset
+                    </button>
+                  </div>
                 </NetlifyFormComponent>
               </NetlifyFormProvider>
 
