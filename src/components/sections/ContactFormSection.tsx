@@ -201,7 +201,7 @@ export default function ContactFormSection({
                 )} */}
               <form
                 name="contact"
-                action="/?success=true"
+                action="#?success=true"
                 method="POST"
                 data-netlify="true"
               >
