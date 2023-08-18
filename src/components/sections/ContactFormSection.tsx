@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import parse from "html-react-parser";
 import HubspotForm from "react-hubspot-form";
 import JotformEmbed from "react-jotform-embed";
+import ReactGA from "react-ga4";
 import type {
   SiteLibraryFieldsFragment,
   ContactFormFieldsFragment,
 } from "@/graphql/generated/graphql";
-import {
-  useNetlifyForm,
-  NetlifyFormProvider,
-  NetlifyFormComponent,
-  Honeypot,
-} from "react-netlify-forms";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+interface FormPost {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+}
+
 type ContactFormType = ContactFormFieldsFragment;
 
 interface ContactFormProps {
@@ -24,23 +27,38 @@ export default function ContactFormSection({
   contactFormData,
   siteLibrary,
 }: ContactFormProps) {
+  const [submitted, setSubmitted] = useState(false);
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
-  } = useForm({ mode: "onBlur" });
-  const netlify = useNetlifyForm({
-    name: "react-hook-form",
-    action: "/thanks",
-    honeypotName: "bot-field",
-    onSuccess: (response: any, context: any) => {
-      console.log("Successfully sent form data to Netlify Server");
-    },
-  });
-  const onSubmit = (data: any) => netlify.handleSubmit(null, data);
+  } = useForm<FormPost>();
+  if (!siteLibrary) return <></>;
+  const { isSpanish } = siteLibrary;
 
-  const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
+  const encode = (data: any) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
+
+  // Source: https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression
+
+  const onSubmit: SubmitHandler<FormPost> = (data) => {
+    fetch("/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...data }),
+    })
+      .then(() => console.log("Success!"))
+      .catch((error) => console.log(error));
+
+    setSubmitted(true);
+    console.log(data);
+  };
+
   return (
     <>
       {contactFormData.map((contactFormItem, index) => (
@@ -64,49 +82,239 @@ export default function ContactFormSection({
                   {parse(contactFormItem.contactFormDescription.html)}
                 </div>
               )}
-              {/* {netlify.success && (
-                          <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
-                            <p className="text-[#229a2a] font-bold">
-                              {isSpanish
-                                ? "¡Formulario enviado con éxito!"
-                                : "Successfully submitted form!"}
-                            </p>
+              {submitted && (
+                <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
+                  <p className="text-[#229a2a]">
+                    {isSpanish
+                      ? "¡Formulario enviado con éxito!"
+                      : "Successfully submitted form!"}
+                  </p>
+                </div>
+              )}
+              {!submitted &&
+                !!contactFormItem?.netlifyContactForm &&
+                contactFormItem?.netlifyContactForm === true && (
+                  <form
+                    name="contact"
+                    method="POST"
+                    data-netlify="true"
+                    onSubmit={handleSubmit(onSubmit)}
+                    action="#?formSubmit=success"
+                  >
+                    <input type="hidden" name="form-name" value="contact" />
+                    <section className="container flex-col grid mx-auto dark-section">
+                      <div className="w-full mx-auto">
+                        <div className="form-input-wrapper border-round p-2">
+                          <div className="mb-2">
+                            <label
+                              htmlFor="email"
+                              className="block text-sm font-medium leading-6 text-dark"
+                            >
+                              Email
+                            </label>
+                            <div className="relative mt-2 rounded-md shadow-sm">
+                              <input
+                                type="email"
+                                id="email"
+                                placeholder="Email"
+                                {...register("email")}
+                                className="block w-full rounded-md border-0 py-1.5 pr-10 text-red-900 ring-1 ring-inset ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6"
+                              />
+                              {errors.email?.type === "required" ? (
+                                <p>Email is required</p>
+                              ) : errors.email?.type === "pattern" ? (
+                                <p>Invalid email</p>
+                              ) : (
+                                <></>
+                              )}
+                            </div>
                           </div>
-                        )} */}
-              <NetlifyFormProvider {...netlify}>
-                <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
-                  <Honeypot />
-                  {netlify.success && <p>Thanks for contacting us!</p>}
-                  {netlify.error && (
-                    <p>
-                      Sorry, we could not reach servers. Because it only works
-                      on Netlify, our GitHub demo does not provide a response.
-                    </p>
-                  )}
-                  <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                      type="email"
-                      id="email"
-                      {...register("email", {
-                        required: "Email is required",
-                        pattern: {
-                          value: EMAIL_REGEX,
-                          message: "Invalid email address",
-                        },
-                      })}
-                    />
-                    {errors.email && <div>errors.email.message</div>}
-                  </div>
-                  <div>
-                    <button type="submit">Submit</button>
-                    <button type="reset" onClick={() => reset()}>
-                      Reset
-                    </button>
-                  </div>
-                </NetlifyFormComponent>
-              </NetlifyFormProvider>
 
+                          <div className="mb-2">
+                            <label
+                              htmlFor="Name"
+                              className="block text-sm font-medium leading-6 text-dark"
+                            >
+                              {isSpanish ? "Nombre" : "Name"}
+                            </label>
+                            <div className="mt-2">
+                              <input
+                                type="text"
+                                placeholder="name"
+                                {...register("name")}
+                                id="name"
+                                className="block w-full rounded-md border-0 py-1.5 text-dark shadow-sm ring-1 ring-inset ring-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="mb-2">
+                            <label
+                              htmlFor="phone"
+                              className="block text-sm font-medium leading-6 text-dark"
+                            >
+                              {isSpanish ? "Tel" : "Phone"}
+                            </label>
+                            <div className="mt-2">
+                              <input
+                                type="text"
+                                id="phone"
+                                {...register("phone")}
+                                className="block w-full rounded-md border-0 py-1.5 text-dark shadow-sm ring-1 ring-inset ring-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                                placeholder="281-330-8004"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="Message"
+                              className="block text-sm font-medium leading-6 text-dark"
+                            >
+                              {isSpanish ? "Mensaje" : "Message"}
+                            </label>
+                            <div className="mt-2">
+                              <textarea
+                                rows={4}
+                                placeholder="message"
+                                {...register("message")}
+                                name="message"
+                                id="message"
+                                className="block w-full rounded-md border-0 py-1.5 text-dark shadow-sm ring-1 ring-inset ring-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <button
+                              type="submit"
+                              onClick={() => {
+                                ReactGA.event({
+                                  category: "Interaction",
+                                  action: `Contact Page - Form Submit`,
+                                  label: `Contact Page - Form Submit`,
+                                });
+                              }}
+                              className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 !text-white shadow-sm hover:bg-primary-hover transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2"
+                            >
+                              {isSpanish ? "Enviar" : "Submit"}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </form>
+                )}
+              <div className="sr-only">
+                <form
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  onSubmit={handleSubmit(onSubmit)}
+                  action="#?formSubmit=success"
+                >
+                  <input type="hidden" name="form-name" value="contact" />
+                  <section className="container flex-col grid mx-auto dark-section">
+                    <div className="w-full mx-auto">
+                      <div className="form-input-wrapper border-round p-2">
+                        <div className="mb-2">
+                          <label
+                            htmlFor="email"
+                            className="block text-sm font-medium leading-6 text-dark"
+                          >
+                            Email
+                          </label>
+                          <div className="relative mt-2 rounded-md shadow-sm">
+                            <input
+                              type="email"
+                              id="email"
+                              placeholder="Email"
+                              {...register("email")}
+                              className="block w-full rounded-md border-0 py-1.5 pr-10 text-red-900 ring-1 ring-inset ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6"
+                            />
+                            {errors.email?.type === "required" ? (
+                              <p>Email is required</p>
+                            ) : errors.email?.type === "pattern" ? (
+                              <p>Invalid email</p>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="mb-2">
+                          <label
+                            htmlFor="Name"
+                            className="block text-sm font-medium leading-6 text-dark"
+                          >
+                            {isSpanish ? "Nombre" : "Name"}
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              type="text"
+                              placeholder="name"
+                              {...register("name")}
+                              id="name"
+                              className="block w-full rounded-md border-0 py-1.5 text-dark ring-1 ring-inset ring-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="mb-2">
+                          <label
+                            htmlFor="phone"
+                            className="block text-sm font-medium leading-6 text-dark"
+                          >
+                            {isSpanish ? "Tel" : "Phone"}
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              type="text"
+                              id="phone"
+                              {...register("phone")}
+                              className="block w-full rounded-md border-0 py-1.5 text-dark ring-1 ring-inset ring-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                              placeholder="281-330-8004"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label
+                            htmlFor="Message"
+                            className="block text-sm font-medium leading-6 text-dark"
+                          >
+                            {isSpanish ? "Mensaje" : "Message"}
+                          </label>
+                          <div className="mt-2">
+                            <textarea
+                              rows={4}
+                              placeholder="message"
+                              {...register("message")}
+                              name="message"
+                              id="message"
+                              className="block w-full rounded-md border-0 py-1.5 text-dark ring-1 ring-inset ring-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <button
+                            type="submit"
+                            onClick={() => {
+                              ReactGA.event({
+                                category: "Interaction",
+                                action: `Contact Page - Form Submit`,
+                                label: `Contact Page - Form Submit`,
+                              });
+                            }}
+                            className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 !text-white shadow-sm hover:bg-primary-hover transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2"
+                          >
+                            {isSpanish ? "Enviar" : "Submit"}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </form>
+              </div>
               {!!contactFormItem?.hubspotFormId && (
                 <HubspotForm
                   portalId={contactFormItem.hubspotPortalId}
