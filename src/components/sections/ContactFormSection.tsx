@@ -100,11 +100,7 @@ export default function ContactFormSection({
                   </div>
                   <div>
                     <button type="submit">Submit</button>
-                    <button
-                      type="reset"
-                      onClick={() => reset()}
-                      sx={{ variant: "buttons.danger" }}
-                    >
+                    <button type="reset" onClick={() => reset()}>
                       Reset
                     </button>
                   </div>
