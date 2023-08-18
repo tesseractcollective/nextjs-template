@@ -28,6 +28,17 @@ class Document extends NextDocument<Props> {
         <body>
           <Main />
           <NextScript />
+          <form
+            name="contact"
+            netlify-honeypot="bot-field"
+            hidden
+            className="sr-only"
+          >
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="phone" name="phone" />
+            <textarea name="message"></textarea>
+          </form>
         </body>
       </Html>
     );

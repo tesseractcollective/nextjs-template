@@ -51,7 +51,7 @@ export default function ContactFormSection({
   const onSubmit: SubmitHandler<FormPost> = (data) => {
     fetch("/contact", {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...data }),
+      body: encode({ contact: "contact", ...data }),
     })
       .then(() => console.log("Success!"))
       .catch((error) => console.log(error));
@@ -95,9 +95,8 @@ export default function ContactFormSection({
                     data-netlify="true"
                     onSubmit={handleSubmit(onSubmit)}
                     action="#?formSubmit=success"
-                    netlify-honeypot="bot-field"
                   >
-                    <input type="hidden" name="form-name" value="contact" />
+                    <input type="hidden" name="contact" value="contact" />
                     <section className="container flex-col grid mx-auto dark-section">
                       <div className="w-full mx-auto">
                         <div className="form-input-wrapper border-round p-2">
