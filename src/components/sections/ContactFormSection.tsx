@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import parse from "html-react-parser";
 import HubspotForm from "react-hubspot-form";
 import JotformEmbed from "react-jotform-embed";
