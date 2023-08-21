@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import parse from "html-react-parser";
 import HubspotForm from "react-hubspot-form";
 import JotformEmbed from "react-jotform-embed";
-import ReactGA from "react-ga4";
+import { Formik, Field, Form } from "formik";
 import type {
   SiteLibraryFieldsFragment,
   ContactFormFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { useForm, SubmitHandler } from "react-hook-form";
 
-interface FormPost {
-  name?: string;
-  email?: string;
-  phone?: string;
-  message?: string;
-}
+type FormikShape = {
+  Name: string;
+  Email: string;
+  Phone: string;
+  Message: string;
+  SiteEmail: string;
+  Website: string;
+};
 
 type ContactFormType = ContactFormFieldsFragment;
 
@@ -27,42 +28,31 @@ export default function ContactFormSection({
   contactFormData,
   siteLibrary,
 }: ContactFormProps) {
-  const [submitted, setSubmitted] = useState(false);
-  const [formReady, setFormReady] = React.useState(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const handleSubmit = (values: FormikShape) => {
+    setIsSubmitted(true);
+    let url =
+      "https://docs.google.com/forms/d/1iK-ZxPZ1CW_dzUY3hW-AhkDJdOND5lg46tyVH0ueOUg/formResponse?usp=pp_url&";
+    [
+      ["entry.1794276203", values.Name],
+      ["entry.1965148749", values.Email],
+      ["entry.1311838583", values.Phone],
+      ["entry.2047319632", values.Message],
+      ["entry.1069556033", values.SiteEmail],
+      ["entry.99525662", values.Website],
+      ["submit", "Submit"],
+    ].forEach((entry) => (url = `${url}&${entry[0]}=${encodeURI(entry[1])}`));
+    const request = new XMLHttpRequest();
+    request.open("POST", url, true);
+    request.setRequestHeader(
+      "Content-Type",
+      "application/x-www-form-urlencoded; charset=UTF-8"
+    );
+    request.send(null);
+  };
 
-  useEffect(() => {
-    setFormReady(true);
-  }, []);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormPost>();
   if (!siteLibrary) return <></>;
-  const { isSpanish } = siteLibrary;
-
-  const encode = (data: any) => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  };
-
-  // Source: https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression
-
-  const onSubmit: SubmitHandler<FormPost> = (data) => {
-    fetch("/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...data }),
-    })
-      .then(() => console.log("Success!"))
-      .catch((error) => console.log(error));
-
-    setSubmitted(true);
-    console.log(data);
-  };
+  const { isSpanish, contactEmail, metaDomain } = siteLibrary;
 
   return (
     <>
@@ -87,64 +77,97 @@ export default function ContactFormSection({
                   {parse(contactFormItem.contactFormDescription.html)}
                 </div>
               )}
-              {submitted && (
-                <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
-                  <p className="text-[#229a2a]">
-                    {isSpanish
-                      ? "¡Formulario enviado con éxito!"
-                      : "Successfully submitted form!"}
-                  </p>
-                </div>
+              {!!contactFormItem.netlifyContactForm && (
+                <>
+                  {isSubmitted ? (
+                    <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
+                      <p className="text-[#229a2a]">
+                        Successfully submitted form!
+                      </p>
+                    </div>
+                  ) : (
+                    <Formik
+                      initialValues={{
+                        Name: "",
+                        Email: "",
+                        Phone: "",
+                        Message: "",
+                        SiteEmail: contactEmail || "",
+                        Website: metaDomain || process.env.SITE_URL || "",
+                      }}
+                      onSubmit={handleSubmit}
+                    >
+                      <Form className="flex flex-col px-4 w-full mx-auto">
+                        <div className="relative mb-2">
+                          <label
+                            htmlFor="Name"
+                            className="text-[10px] uppercase top-2 left-3 absolute"
+                          >
+                            {isSpanish ? "Nombre" : "Name"}
+                          </label>
+                          <Field
+                            id="Name"
+                            name="Name"
+                            placeholder="Name"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset ring-red-300 placeholder:text-dark focus:ring-2 focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                          />
+                        </div>
+                        <div className="relative mb-2">
+                          <label
+                            htmlFor="Phone"
+                            className="text-[10px] uppercase top-2 left-3 absolute"
+                          >
+                            {" "}
+                            {isSpanish ? "Tel" : "Phone"}
+                          </label>
+                          <Field
+                            id="Phone"
+                            name="Phone"
+                            placeholder="Phone"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset ring-red-300 placeholder:text-dark focus:ring-2 focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                          />
+                        </div>
+                        <div className="relative mb-2">
+                          <label
+                            htmlFor="Email"
+                            className="text-[10px] uppercase top-2 left-3 absolute"
+                          >
+                            Email
+                          </label>
+                          <Field
+                            id="Email"
+                            name="Email"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset ring-red-300 placeholder:text-dark focus:ring-2 focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                            placeholder="jane@acme.com"
+                            type="Email"
+                          />
+                        </div>
+                        <div className="relative mb-0">
+                          <label
+                            htmlFor="Message"
+                            className="text-[10px] uppercase top-2 left-3 absolute"
+                          >
+                            {isSpanish ? "Mensaje" : "Message"}
+                          </label>
+                          <Field
+                            id="Message"
+                            name="Message"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset ring-red-300 placeholder:text-dark focus:ring-2 focus:ring-inset focus:ring-red-500 sm:leading-6"
+                            placeholder="Message"
+                            textarea
+                          />
+                        </div>
+                        <button
+                          type="submit"
+                          className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-md font-semibold leading-6 !text-white shadow-sm hover:bg-primary-hover transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2"
+                        >
+                          {isSpanish ? "Enviar" : "Submit"}
+                        </button>
+                      </Form>
+                    </Formik>
+                  )}
+                </>
               )}
-              {!submitted &&
-                !!contactFormItem?.netlifyContactForm &&
-                contactFormItem?.netlifyContactForm === true && (
-                  <>
-                    {formReady && (
-                      <form
-                        name="feedbackForm"
-                        method="post"
-                        data-netlify="true"
-                        action={"/#"}
-                        encType={"application/x-www-form-urlencoded"}
-                      >
-                        <input
-                          type="hidden"
-                          name="form-name"
-                          value="feedbackForm"
-                        />
-                        <h2>{"The mic is yours 🎙️"}</h2>
-                        <h3>
-                          {
-                            "Drop us a line with your thoughts or suggestions so we can improve."
-                          }
-                        </h3>
-                        <p>
-                          <label>
-                            Your Name: <input type="text" name="name" />
-                          </label>
-                        </p>
-                        <p>
-                          <label>
-                            Your Email: <input type="email" name="email" />
-                          </label>
-                        </p>
-                        <p>
-                          <label>
-                            Your Feedback:{" "}
-                            <textarea className="" name="comment"></textarea>
-                          </label>
-                        </p>
-
-                        <p>
-                          <button type="submit" className="">
-                            {"Send Feedback"}
-                          </button>
-                        </p>
-                      </form>
-                    )}
-                  </>
-                )}
               {!!contactFormItem?.hubspotFormId && (
                 <HubspotForm
                   portalId={contactFormItem.hubspotPortalId}

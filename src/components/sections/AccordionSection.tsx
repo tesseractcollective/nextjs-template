@@ -2,7 +2,7 @@ import { Disclosure, Transition } from "@headlessui/react";
 // import { SiteData } from "@/types";
 import parse from "html-react-parser";
 import { MinusIcon } from "@heroicons/react/20/solid";
-// import Image from "next/image";
+import Image from "next/image";
 import type { AccordionFieldsFragment } from "@/graphql/generated/graphql";
 // import LinkItem from "@/components/LinkItem";
 
@@ -19,17 +19,21 @@ export default function Accordion({ accordionData }: AccordionProps) {
           <Disclosure key={item.contentHeader?.html}>
             {({ open }) => (
               <>
-                <Disclosure.Button className="flex w-full justify-start items-center rounded-lg px-4 py-2 text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-white focus-visible:text-white hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-600">
-                  <div className="bg-gradient-to-tr from-primary to-primary-hover relative text-white h-6 w-6 rounded-md">
-                    <MinusIcon className="absolute w-6 h-6" />
-                    <MinusIcon
-                      className={`absolute w-6 h-6 transition-all duration-600 ${
-                        open ? "" : "rotate-90 transform"
-                      }`}
-                    />
-                  </div>
-                  <span className="ml-2">{item.contentHeader?.html}</span>
-                </Disclosure.Button>
+                {!!item.contentHeader?.html && (
+                  <Disclosure.Button className="flex w-full justify-start items-center rounded-lg px-4 py-2 text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-white focus-visible:text-white hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-600 border border-primary">
+                    <div className="bg-gradient-to-tr from-primary to-primary-hover relative text-white h-6 w-6 rounded-md">
+                      <MinusIcon className="absolute w-6 h-6" />
+                      <MinusIcon
+                        className={`absolute w-6 h-6 transition-all duration-600 ${
+                          open ? "" : "rotate-90 transform"
+                        }`}
+                      />
+                    </div>
+                    <span className="ml-2 text-white font-bold">
+                      {parse(item.contentHeader?.html)}
+                    </span>
+                  </Disclosure.Button>
+                )}
                 <Transition
                   show={open}
                   enter="transition duration-600 ease-out"
@@ -44,6 +48,16 @@ export default function Accordion({ accordionData }: AccordionProps) {
                       static
                       className="px-6 pt-4 pb-2 text-sm text-white opacity-80"
                     >
+                      {!!item?.contentImage?.url && (
+                        <Image
+                          src={item.contentImage.url}
+                          alt=""
+                          sizes="100%"
+                          className="w-full object-cover"
+                          height={0}
+                          width={0}
+                        />
+                      )}
                       {parse(item.contentDescription?.html)}
                     </Disclosure.Panel>
                   )}
