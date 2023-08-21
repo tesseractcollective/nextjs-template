@@ -23,16 +23,12 @@ interface ContactFormProps {
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export default function ContactFormSection({
+export default function FormTest({
   contactFormData,
   siteLibrary,
 }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
-  const [formReady, setFormReady] = React.useState(false);
 
-  useEffect(() => {
-    setFormReady(true);
-  }, []);
   const {
     register,
     handleSubmit,
@@ -66,44 +62,43 @@ export default function ContactFormSection({
 
   return (
     <>
-      {formReady && (
-        <form
-          name="feedbackForm"
-          method="post"
-          data-netlify="true"
-          action={"/#"}
-          encType={"application/x-www-form-urlencoded"}
-        >
-          <input type="hidden" name="form-name" value="feedbackForm" />
-          <h2>{"The mic is yours 🎙️"}</h2>
-          <h3>
-            {
-              "Drop us a line with your thoughts or suggestions so we can improve."
-            }
-          </h3>
-          <p>
-            <label>
-              Your Name: <input type="text" name="name" />
-            </label>
-          </p>
-          <p>
-            <label>
-              Your Email: <input type="email" name="email" />
-            </label>
-          </p>
-          <p>
-            <label>
-              Your Feedback: <textarea className="" name="comment"></textarea>
-            </label>
-          </p>
+      <form
+        name="feedbackForm"
+        className="sr-only"
+        method="post"
+        data-netlify="true"
+        action={"/#"}
+        encType={"application/x-www-form-urlencoded"}
+      >
+        <input type="hidden" name="form-name" value="feedbackForm" />
+        <h2>{"The mic is yours 🎙️"}</h2>
+        <h3>
+          {
+            "Drop us a line with your thoughts or suggestions so we can improve."
+          }
+        </h3>
+        <p>
+          <label>
+            Your Name: <input type="text" name="name" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your Email: <input type="email" name="email" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your Feedback: <textarea className="" name="comment"></textarea>
+          </label>
+        </p>
 
-          <p>
-            <button type="submit" className="">
-              {"Send Feedback"}
-            </button>
-          </p>
-        </form>
-      )}
+        <p>
+          <button type="submit" className="">
+            {"Send Feedback"}
+          </button>
+        </p>
+      </form>
     </>
   );
 }
