@@ -9,33 +9,8 @@ import type {
 } from "@/graphql/generated/graphql";
 import { useForm, SubmitHandler } from "react-hook-form";
 
-interface FormPost {
-  name?: string;
-  email?: string;
-  phone?: string;
-  message?: string;
-}
-
-type ContactFormType = ContactFormFieldsFragment;
-
-interface ContactFormProps {
-  contactFormData: ContactFormType[];
-  siteLibrary: SiteLibraryFieldsFragment;
-}
-
-export default function FormTest({
-  contactFormData,
-  siteLibrary,
-}: ContactFormProps) {
+export default function FormTest() {
   const [submitted, setSubmitted] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormPost>();
-  if (!siteLibrary) return <></>;
-  const { isSpanish } = siteLibrary;
 
   const encode = (data: any) => {
     return Object.keys(data)
@@ -47,24 +22,10 @@ export default function FormTest({
 
   // Source: https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression
 
-  const onSubmit: SubmitHandler<FormPost> = (data) => {
-    fetch("/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...data }),
-    })
-      .then(() => console.log("Success!"))
-      .catch((error) => console.log(error));
-
-    setSubmitted(true);
-    console.log(data);
-  };
-
   return (
     <>
       <form
         name="feedbackForm"
-        className="sr-only"
         method="post"
         data-netlify="true"
         action={"/#"}

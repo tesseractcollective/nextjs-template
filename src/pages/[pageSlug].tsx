@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 import { sdkClient } from "@/lib/graphql-client";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 import PageComponent from "@/components/PageComponent";
+import FormTest from "./form/form-test";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const layout: LayoutQuery = await sdkClient.layout({
@@ -14,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     },
   };
 };
-
 export default function Page({ layout }: { layout: LayoutQuery }) {
+  if (!layout) return <FormTest />;
   return <PageComponent layout={layout} />;
 }
