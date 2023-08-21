@@ -16,6 +16,5 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 export default function Page({ layout }: { layout: LayoutQuery }) {
-  if (!layout) return <FormTest />;
   return <PageComponent layout={layout} />;
 }
