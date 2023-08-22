@@ -345,7 +345,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                                                       item?.label ||
                                                                       ""
                                                                     }
-                                                                    className="object-cover"
+                                                                    className="max-w-xs"
                                                                     width={0}
                                                                     height={0}
                                                                     sizes="100%"
@@ -445,7 +445,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                       <Image
                         src={navigation.navigationLogo.url}
                         alt=""
-                        className="h-12 lg:h-10 w-auto object-contain max-w-max mx-auto cursor-pointer"
+                        className="h-12 lg:h-10 w-auto max-w-xs mx-auto cursor-pointer"
                         width={0}
                         height={0}
                         sizes="100%"

@@ -36,6 +36,10 @@ export default function HeroMediaSliderSection({
     draggable: true,
     pauseOnHover: true,
   };
+  const youtubeiFrameParams =
+    "&autoplay=1&mute=1&playsinline=1&loop=1&controls=0&disablekb=1?rel=0&enablejsapi=1";
+  const youtubeiFrameNoParams =
+    "?autoplay=1&mute=1&playsinline=1&loop=1&controls=0&disablekb=1?rel=0&enablejsapi=1";
   return (
     <>
       {!!heroMediaSliderData && heroMediaSliderData.length >= 1 && (
@@ -209,10 +213,13 @@ export default function HeroMediaSliderSection({
                     <div className="h-screen">
                       <div className="video-bg">
                         <iframe
-                          src={`https://www.youtube.com/embed/${heroMediaSliderItem.youtubeVideoId}?autoplay=1&mute=1&playsinline=1&loop=1&controls=0&disablekb=1?rel=0&enablejsapi=1`}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
+                          src={`https://www.youtube.com/embed/${
+                            heroMediaSliderItem.youtubeVideoId
+                          }${
+                            heroMediaSliderItem.youtubeVideoId.includes("?")
+                              ? youtubeiFrameParams
+                              : youtubeiFrameNoParams
+                          }`}
                         ></iframe>
                       </div>
                     </div>

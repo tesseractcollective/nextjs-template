@@ -13,14 +13,14 @@ interface AccordionProps {
 export default function Accordion({ accordionData }: AccordionProps) {
   if (accordionData?.length === 0) return <></>;
   return (
-    <div className="w-full px-4 pt-16">
+    <div className="w-full px-4 pt-16 h-full block mx-auto">
       <div className="mx-auto w-full rounded-2xl max-w-[800px] p-2">
         {accordionData.map((item) => (
           <Disclosure key={item.contentHeader?.html}>
             {({ open }) => (
-              <>
+              <div className="border border-primary rounded block">
                 {!!item.contentHeader?.html && (
-                  <Disclosure.Button className="flex w-full justify-start items-center rounded-lg px-4 py-2 text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-white focus-visible:text-white hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-600 border border-primary">
+                  <Disclosure.Button className="flex w-full justify-start items-center rounded-lg px-4 py-2 text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-white focus-visible:text-white hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-600">
                     <div className="bg-gradient-to-tr from-primary to-primary-hover relative text-white h-6 w-6 rounded-md">
                       <MinusIcon className="absolute w-6 h-6" />
                       <MinusIcon
@@ -29,7 +29,7 @@ export default function Accordion({ accordionData }: AccordionProps) {
                         }`}
                       />
                     </div>
-                    <span className="ml-2 text-white font-bold">
+                    <span className="ml-3 text-white font-bold text-2xl">
                       {parse(item.contentHeader?.html)}
                     </span>
                   </Disclosure.Button>
@@ -46,23 +46,31 @@ export default function Accordion({ accordionData }: AccordionProps) {
                   {!!item.contentDescription?.html && (
                     <Disclosure.Panel
                       static
-                      className="px-6 pt-4 pb-2 text-sm text-white opacity-80"
+                      className="px-6 pt-4 pb-2 text-sm text-white opacity-80 block"
                     >
-                      {!!item?.contentImage?.url && (
-                        <Image
-                          src={item.contentImage.url}
-                          alt=""
-                          sizes="100%"
-                          className="w-full object-cover"
-                          height={0}
-                          width={0}
-                        />
+                      {!!item.contentImage?.url && (
+                        <div className="relative">
+                          <Image
+                            src={item.contentImage.url}
+                            alt=""
+                            priority
+                            className="mx-auto block object-contain"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            style={{
+                              width: "auto",
+                              height: "auto",
+                              margin: "0 auto",
+                            }}
+                          />
+                        </div>
                       )}
                       {parse(item.contentDescription?.html)}
                     </Disclosure.Panel>
                   )}
                 </Transition>
-              </>
+              </div>
             )}
           </Disclosure>
         ))}

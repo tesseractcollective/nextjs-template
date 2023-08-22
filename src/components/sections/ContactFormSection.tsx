@@ -97,7 +97,7 @@ export default function ContactFormSection({
                       }}
                       onSubmit={handleSubmit}
                     >
-                      <Form className="flex flex-col px-4 w-full mx-auto">
+                      <Form className="flex flex-col px-4 w-full mx-auto gap-y-1">
                         <div className="relative mb-2">
                           <label
                             htmlFor="Name"
@@ -108,8 +108,8 @@ export default function ContactFormSection({
                           <Field
                             id="Name"
                             name="Name"
-                            placeholder="Name"
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset ring-red-300 placeholder:text-dark focus:ring-2 focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                            placeholder={isSpanish ? "Nombre" : "Name"}
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
                           />
                         </div>
                         <div className="relative mb-2">
@@ -117,14 +117,13 @@ export default function ContactFormSection({
                             htmlFor="Phone"
                             className="text-[10px] uppercase top-2 left-3 absolute"
                           >
-                            {" "}
                             {isSpanish ? "Tel" : "Phone"}
                           </label>
                           <Field
                             id="Phone"
                             name="Phone"
-                            placeholder="Phone"
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset ring-red-300 placeholder:text-dark focus:ring-2 focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                            placeholder={isSpanish ? "Tel" : "Phone"}
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
                           />
                         </div>
                         <div className="relative mb-2">
@@ -137,8 +136,8 @@ export default function ContactFormSection({
                           <Field
                             id="Email"
                             name="Email"
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset ring-red-300 placeholder:text-dark focus:ring-2 focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                            placeholder="jane@acme.com"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                            placeholder="Email"
                             type="Email"
                           />
                         </div>
@@ -152,14 +151,14 @@ export default function ContactFormSection({
                           <Field
                             id="Message"
                             name="Message"
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset ring-red-300 placeholder:text-dark focus:ring-2 focus:ring-inset focus:ring-red-500 sm:leading-6"
-                            placeholder="Message"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6"
+                            placeholder={isSpanish ? "Mensaje" : "Message"}
                             textarea
                           />
                         </div>
                         <button
                           type="submit"
-                          className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-md font-semibold leading-6 !text-white shadow-sm hover:bg-primary-hover transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2"
+                          className="flex w-full justify-center rounded-md bg-primary px-3 py-2.5 text-md font-semibold leading-6 !text-white shadow-sm hover:bg-primary-hover transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2"
                         >
                           {isSpanish ? "Enviar" : "Submit"}
                         </button>

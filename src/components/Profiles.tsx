@@ -72,6 +72,7 @@ export default function Profiles({
                               alt={(profile.name && profile.name) || ""}
                               className=""
                               style={{ objectFit: "cover" }}
+                              sizes="100%"
                             />
                           )}
 
@@ -203,24 +204,24 @@ export default function Profiles({
                         href={`/${profile.profileType?.toLowerCase()}/${
                           profile.profileSlug
                         }`}
-                        className="talent-card h-full no-underline mx-auto relative mb-4 inline-block max-w-max"
+                        className="profile-card h-full no-underline mx-auto relative mb-4 inline-block max-w-max group"
                         key={profile.profileSlug}
                       >
                         {!!profile.avatarImage?.url && (
                           <Image
                             src={profile.avatarImage?.url}
                             alt=""
-                            className="talent-card-image object-center block mb-2 transition"
-                            width={320}
-                            height={320}
-                            // sizes="100%"
+                            className="profile-card-image object-center mb-2 transition max-w-xs w-full transition-rounded"
+                            width={0}
+                            height={0}
+                            sizes="100%"
                           />
                         )}
-                        <p className="my-0 py-0 flex flex-row items-center justify-center">
+                        <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-white group-hover:text-primary-hover">
                           <span>{profile.name}</span>
                           <FontAwesomeIcon
                             icon={faArrowRight as IconProp}
-                            className="fa-fw text-sm h-4 w-4"
+                            className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:w-4 group-hover:opacity-100"
                           />
                         </p>
                       </Link>
