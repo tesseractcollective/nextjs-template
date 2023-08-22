@@ -211,7 +211,7 @@ export default function HeroMediaSliderSection({
                 {heroMediaSliderItem?.youtubeVideoId &&
                   heroMediaSliderItem.mediaType === "youtube" && (
                     <div className="h-screen">
-                      <div className="video-bg">
+                      <div className="video-bg youtube-bg">
                         <iframe
                           src={`https://www.youtube.com/embed/${
                             heroMediaSliderItem.youtubeVideoId

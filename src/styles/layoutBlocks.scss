@@ -685,6 +685,7 @@ body iframe {
     overflow: hidden;
     iframe {
       display: block;
+      object-fit: cover;
       position: absolute;
       top: 50%;
       left: 50%;
