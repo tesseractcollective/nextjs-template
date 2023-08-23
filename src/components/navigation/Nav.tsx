@@ -67,12 +67,13 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                   <Link
                     href="/"
                     onClick={() => setOpen(false)}
-                    className=" cursor-pointer"
+                    className="cursor-pointer"
+                    id={`nav-logo-mobile-panel-${title}`}
                   >
                     <span className="sr-only">{title}</span>
                     {!!navigation.navigationLogo && (
                       <Image
-                        className="h-8 w-auto"
+                        className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
                         src={navigation.navigationLogo?.url}
                         alt=""
                         width={0}
@@ -247,18 +248,17 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
 
       <header className="relative">
         <nav aria-label="Top">
-          {/* Secondary navigation */}
           <div className="bg-dark">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
               <div className="border-b border-dark">
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
-                  <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer">
-                    <Link href="/">
+                  <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-xs">
+                    <Link href="/" id={`nav-logo-desktop-${title}`}>
                       <span className="sr-only">{title}</span>
                       {!!navigation.navigationLogo && (
                         <Image
-                          className="h-8 w-auto"
+                          className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}
@@ -434,18 +434,17 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                       <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                     </button>
                   </div>
-
-                  {/* Logo (lg-) */}
                   <Link
                     href="/"
-                    className="lg:hidden max-w-max mx-auto cursor-pointer"
+                    className="lg:hidden mx-auto cursor-pointer max-w-[200px]"
+                    id={`nav-logo-mobile-${title}`}
                   >
                     <span className="sr-only">{title}</span>
                     {!!navigation.navigationLogo?.url && (
                       <Image
                         src={navigation.navigationLogo.url}
                         alt=""
-                        className="h-12 lg:h-10 w-auto max-w-xs mx-auto cursor-pointer"
+                        className="h-12 lg:h-10 w-auto max-w-xs mx-auto cursor-pointer object-contain"
                         width={0}
                         height={0}
                         sizes="100%"

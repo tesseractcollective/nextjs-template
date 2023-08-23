@@ -4,6 +4,7 @@ import Footer from "@/components/navigation/Footer";
 import Nav from "@/components/navigation/Nav";
 import Whatsapp from "@/components/Whatsapp";
 import PageHeader from "@/components/PageHeader";
+import Popup from "@/components/Popup";
 import Sections from "@/components/sections/Sections";
 import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
@@ -30,7 +31,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
   if (!siteLibrary) return <></>;
 
   return (
-    <>
+    <div className="relative">
       {navigations[0] && siteLibrary && (
         <Nav
           siteLibrary={siteLibrary}
@@ -135,6 +136,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
           hideFooter={page?.hideFooter || undefined}
         />
       )}
-    </>
+      {page?.popup && <Popup layout={layout} />}
+    </div>
   );
 }

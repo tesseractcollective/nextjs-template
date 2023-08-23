@@ -476,7 +476,7 @@ export default function Profile({
           )}
           {!!filteredContacts && (
             <div className="mx-auto px-4 pb-24 pt-16 sm:px-6 sm:pb-32 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:pt-32">
-              <div className="lg:col-start-2">
+              <div className="lg:col-start-2 text-center lg:text-left">
                 <h2
                   id="contacts-heading"
                   className="font-medium text-dark mb-0"
@@ -486,13 +486,13 @@ export default function Profile({
                 <p className="mt-0 mb-4 text-3xl font-bold tracking-tight text-dark opacity-80">
                   {siteLibrary.isSpanish ? "Contáctenos" : "Contact Details"}
                 </p>
-                <ul className="flex flex-col items-center justify-center md:flex-row gap-y-8 gap-x-24">
+                <ul className="flex flex-col items-center justify-center lg:flex-row gap-y-8 gap-x-24">
                   {filteredContacts?.map((contact) => (
                     <li key={contact.contactName}>
-                      <div className="flex items-center gap-x-4 md:gap-x-6 flex-col justify-center md:justify-start text-center md:text-left md:flex-row">
+                      <div className="flex items-center gap-x-4 lg:gap-x-6 flex-col justify-center lg:justify-start text-center lg:text-left lg:flex-row">
                         {contact?.contactAvatar?.url && (
                           <Image
-                            className="h-14 md:h-16 w-14 md:w-16 rounded-full object-cover"
+                            className="h-14 lg:h-16 w-14 lg:w-16 rounded-full object-cover"
                             src={contact.contactAvatar.url}
                             alt=""
                             width={64}
@@ -502,16 +502,16 @@ export default function Profile({
                         )}
                         <div>
                           {contact.contactName && (
-                            <h3 className="text-sm md:text-base font-semibold leading-6 md:leading-7 tracking-tight text-dark">
+                            <h3 className="text-sm lg:text-base font-bold leading-6 lg:leading-7 tracking-tight text-dark">
                               {contact.contactName}
                             </h3>
                           )}
                           {contact.contactTitle && (
-                            <p className="text-xs md:text-sm font-base leading-4 text-primary">
+                            <p className="text-xs lg:text-sm font-semibold leading-6 text-primary">
                               {contact.contactTitle}
                             </p>
                           )}
-                          <div className="text-sm my-0 text-dark opacity-80 flex flex-row items-center justify-center md:justify-start">
+                          <div className="text-sm my-0 text-dark opacity-80 flex flex-row items-center justify-center lg:justify-start">
                             {!!contact.contactPhone && (
                               <a
                                 title={contact.contactPhone}

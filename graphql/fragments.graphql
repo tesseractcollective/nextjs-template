@@ -338,6 +338,63 @@ fragment pageFields on Page {
       }
     }
   }
+  popup {
+    duration
+    header
+    buttonOpenText
+    buttonOpenCss
+    openOnScroll
+    popupContent(first: 100) {
+      id
+      htmlId
+      cssClass
+      hideBlockColumn
+      backgroundImage {
+        url
+      }
+      contentTags {
+        albumDisplayType
+        blogCategory
+        blogSectionTitle
+        contactType
+        eventDisplayLayout
+        logoTableType
+        productType
+        profileLayoutStyle
+        profileSectionTitle
+        profileType
+        testimonialType
+      }
+      elements {
+        stripePricingTableId
+        stripePublishableKey
+        displayInstagramSectionUsername
+        parallaxImage {
+          url
+        }
+        galleryLayout
+        gallery(first: 500) {
+          url
+        }
+        standOutText
+        iFrameTitle
+        iFrameCode
+        parallaxImage {
+          url
+        }
+      }
+      sections(first: 100) {
+        __typename
+        ...TextContentFields
+        ...CallToActionFields
+        ...HeroMediaSliderFields
+        ...ContactFormFields
+        ...GridBoxFields
+        ...AccordionFields
+        ...VideoBoxFields
+      }
+    }
+  }
 }
 
 fragment TextContentFields on TextContent {

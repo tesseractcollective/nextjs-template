@@ -208,14 +208,17 @@ export default function Profiles({
                         key={profile.profileSlug}
                       >
                         {!!profile.avatarImage?.url && (
-                          <Image
-                            src={profile.avatarImage?.url}
-                            alt=""
-                            className="profile-card-image object-center mb-2 transition max-w-xs w-full transition-rounded"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                          />
+                          <div className="relative">
+                            <Image
+                              src={profile.avatarImage?.url}
+                              alt=""
+                              className="profile-card-image object-center mb-2 transition max-w-xs w-full transition-rounded"
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                            />
+                            <div className="music-border"></div>
+                          </div>
                         )}
                         <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-white group-hover:text-primary-hover">
                           <span>{profile.name}</span>
