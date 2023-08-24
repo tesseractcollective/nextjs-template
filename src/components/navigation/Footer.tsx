@@ -12,19 +12,32 @@ import { Fade } from "react-awesome-reveal";
 
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;
-  navigation: NavigationFieldsFragment;
+  navigations: NavigationFieldsFragment[];
   blogs: BlogFieldsFragment[];
   hideFooter?: boolean;
+  pageNavigationSelection?: string;
 }
 
 export default function Footer({
   siteLibrary,
-  navigation,
+  navigations,
   hideFooter,
   blogs,
+  pageNavigationSelection,
 }: FooterProps) {
-  if (!navigation && !siteLibrary) return <></>;
-  const { isSpanish, title } = siteLibrary;
+  if (!navigations && !siteLibrary) return <></>;
+  const { isSpanish, title, secondaryLink, secondaryLogo, secondaryName } =
+    siteLibrary;
+
+  const navigation =
+    navigations?.find(
+      (navigationTemp) =>
+        navigationTemp?.pageNavigationSelection &&
+        pageNavigationSelection &&
+        navigationTemp?.pageNavigationSelection.includes(
+          pageNavigationSelection
+        )
+    ) || navigations[0];
 
   const { footerColumns } = navigation;
   if (hideFooter === true) return null;
@@ -39,16 +52,15 @@ export default function Footer({
           <div
             className={`grid place-content-between lg:grid-flow-col lg:auto-rows-min lg:grid-cols-${footerColumns.length} lg:gap-x-8 lg:gap-y-16`}
           >
-            <Fade
-              direction="up"
-              cascade
-              damping={0.1}
-              triggerOnce
-            >
-            {footerColumns.map((item, index) => (
-                <div  key={index}  className={`relative my-4 md:my-0 ${
-                  item?.footerColumnCssWrapper || ""
-                }`} id={`footer-col-${index + 1}`}>
+            <Fade direction="up" cascade damping={0.1} triggerOnce>
+              {footerColumns.map((item, index) => (
+                <div
+                  key={index}
+                  className={`relative my-4 md:my-0 ${
+                    item?.footerColumnCssWrapper || ""
+                  }`}
+                  id={`footer-col-${index + 1}`}
+                >
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
@@ -84,7 +96,6 @@ export default function Footer({
                               key={linkItem?.link}
                               link={linkItem?.link}
                               label={linkItem?.label}
-                              
                               cssClass={`text-white opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
                             />
@@ -101,25 +112,44 @@ export default function Footer({
                     />
                   )}
                 </div>
-            ))}
-              </Fade>
+              ))}
+            </Fade>
           </div>
         )}
 
         <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
           <SocialMediaIcons siteLibrary={siteLibrary} />
-          <p className="text-xs text-gray-400 uppercase text-center mb-8 opacity-70">
+          <p className="text-xs text-gray-400 uppercase text-center mb-4 opacity-70">
             {`© ${new Date().getFullYear()} ${!!title && title} ${
               isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
             }.`}
           </p>
+          {!!secondaryLogo?.url && secondaryLink && secondaryName && (
+            <a
+              href={secondaryLink}
+              title={secondaryName}
+              target="_blank"
+              rel="noreferrer"
+              className="no-underline max-w-max mx-auto h-12 mb-4"
+            >
+              <Image
+                src={secondaryLogo.url}
+                className="h-full w-full mb-4 object-cover block"
+                alt=""
+                width={0}
+                height={0}
+                sizes="100%"
+              />
+              <span className="sr-only">{secondaryName}</span>
+            </a>
+          )}
           <a
             href={`https://lnza.me/?${encodeURIComponent(
               title ?? "" + " fan"
             )}`}
             target="_blank"
             rel="noreferrer"
-            className="max-w-max mb-4 mx-auto text-xs text-color-secondary opacity-60 text-link uppercase text-center hover:opacity-100"
+            className="max-w-max mb-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
           >
             {isSpanish
               ? "Hecho a mano por Ricardo Bautista"

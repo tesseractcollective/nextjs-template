@@ -258,6 +258,7 @@ fragment productsSlugListFields on Product {
 fragment pageFields on Page {
   id
   pageSlug
+  pageNavigationSelection
   title
   subtitle
   pageWidthStyle

@@ -28,13 +28,13 @@ export default function BlogSlug({ blogPage }: { blogPage: BlogPageQuery }) {
       <ThemeColors siteLibrary={siteLibrary} />
       <Nav
         siteLibrary={siteLibrary}
-        navigation={navigations[0]}
+        navigations={navigations}
         hideNav={false}
       />
       <Blog blog={blog} siteLibrary={siteLibrary} />
       <Footer
         siteLibrary={siteLibrary}
-        navigation={navigations[0]}
+        navigations={navigations}
         hideFooter={false}
         blogs={blogs}
       />

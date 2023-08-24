@@ -388,16 +388,7 @@
   }
 }
 
-.member-card {
-  border: 1px solid var(--primary-hover);
-  overflow: hidden;
-  height: 100%;
-  img {
-    height: 500px;
-    width: 100%;
-    object-fit: cover;
-    display: block;
-  }
+.profile-card {
   .swiper-image-gallery-item {
     max-height: 400px;
     @media only screen and (min-width: 960px) {
@@ -405,7 +396,7 @@
     }
   }
   border-radius: 8px;
-  .member-card-social-icons {
+  .profile-card-social-icons {
     a {
       text-decoration: none !important;
       cursor: pointer;

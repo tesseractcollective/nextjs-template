@@ -32,11 +32,12 @@ export default function LayoutBlocks({ layout }: PageProps) {
 
   return (
     <div className="relative">
-      {navigations[0] && siteLibrary && (
+      {navigations && siteLibrary && (
         <Nav
           siteLibrary={siteLibrary}
-          navigation={navigations[0]}
+          navigations={navigations}
           hideNav={page?.hideNav || undefined}
+          pageNavigationSelection={page?.pageNavigationSelection || undefined}
         />
       )}
       {!!page && (
@@ -128,12 +129,13 @@ export default function LayoutBlocks({ layout }: PageProps) {
       {page?.whatsAppContactNumberFloatingButton && (
         <Whatsapp contactNumber={page.whatsAppContactNumberFloatingButton} />
       )}
-      {navigations[0] && siteLibrary && (
+      {navigations && siteLibrary && (
         <Footer
           siteLibrary={siteLibrary}
-          navigation={navigations[0]}
+          navigations={navigations}
           blogs={blogs}
           hideFooter={page?.hideFooter || undefined}
+          pageNavigationSelection={page?.pageNavigationSelection || undefined}
         />
       )}
       {page?.popup && <Popup layout={layout} />}

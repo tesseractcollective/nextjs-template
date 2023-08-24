@@ -32,13 +32,13 @@ export default function AlbumSlug({
       <ThemeColors siteLibrary={siteLibrary} />
       <Nav
         siteLibrary={siteLibrary}
-        navigation={navigations[0]}
+        navigations={navigations}
         hideNav={false}
       />
       <Album album={album} siteLibrary={siteLibrary} albums={albums} />
       <Footer
         siteLibrary={siteLibrary}
-        navigation={navigations[0]}
+        navigations={navigations}
         hideFooter={false}
         blogs={blogs}
       />

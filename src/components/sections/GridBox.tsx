@@ -7,7 +7,7 @@ interface GridBoxProps {
 }
 
 export default function GridBox({ gridBoxData }: GridBoxProps) {
-  console.log('GridBox.tsx', gridBoxData)
+  console.log("GridBox.tsx", gridBoxData);
   return (
     <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8">
       <div
@@ -29,7 +29,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
               />
             )}
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-dark/50 via-white/40" />
-            <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary ring-inset ring-dark/10 overflow-hidden transition group-hover:ring-primary-hover" />
+            <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary-fade ring-inset ring-dark/10 overflow-hidden transition group-hover:ring-primary-hover" />
             <LinkItem
               link={gridBoxItem?.boxLink}
               label={gridBoxItem?.boxTitle}

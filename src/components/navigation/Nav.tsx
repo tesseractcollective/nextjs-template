@@ -13,14 +13,20 @@ import LinkItem from "@/components/LinkItem";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
-  navigation: NavigationFieldsFragment;
+  navigations: NavigationFieldsFragment[];
   hideNav?: boolean;
+  pageNavigationSelection?: string;
 }
 
-export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
+export default function Nav({
+  navigations,
+  siteLibrary,
+  hideNav,
+  pageNavigationSelection,
+}: NavProps) {
   const [open, setOpen] = useState(false);
 
-  if (!navigation && !siteLibrary) return <></>;
+  if (!navigations && !siteLibrary) return <></>;
   if (hideNav === true) return <></>;
 
   const { title, contactPhone, contactEmail, contactName, siteLibraryJson } =
@@ -29,6 +35,15 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
+  const navigation =
+    navigations?.find(
+      (navigationTemp) =>
+        navigationTemp?.pageNavigationSelection &&
+        pageNavigationSelection &&
+        navigationTemp?.pageNavigationSelection.includes(
+          pageNavigationSelection
+        )
+    ) || navigations[0];
 
   const { items } = navigation;
 
@@ -70,17 +85,23 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                     className="cursor-pointer"
                     id={`nav-logo-mobile-panel-${title}`}
                   >
-                    <span className="sr-only">{title}</span>
-                    {!!navigation.navigationLogo && (
-                      <Image
-                        className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
-                        src={navigation.navigationLogo?.url}
-                        alt=""
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        style={{ width: "100%" }}
-                      />
+                    {navigation?.navigationLogo ? (
+                      <>
+                        <span className="sr-only">{title}</span>
+                        <Image
+                          className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                          src={navigation.navigationLogo?.url}
+                          alt=""
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          style={{ width: "100%" }}
+                        />
+                      </>
+                    ) : (
+                      <span className="font-bold text-2xl text-white">
+                        {title}
+                      </span>
                     )}
                   </Link>
                   <button
@@ -138,6 +159,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                             alt={item.label || ""}
                                             width={140}
                                             height={140}
+                                            className="object-cover"
                                             sizes="100%"
                                             style={{
                                               maxHeight: "400px",
@@ -253,25 +275,31 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
               <div className="border-b border-dark">
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
-                  <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-xs">
+                  <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max">
                     <Link href="/" id={`nav-logo-desktop-${title}`}>
-                      <span className="sr-only">{title}</span>
-                      {!!navigation.navigationLogo && (
-                        <Image
-                          className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
-                          src={navigation.navigationLogo?.url}
-                          alt=""
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          style={{ width: "100%" }}
-                        />
+                      {navigation?.navigationLogo ? (
+                        <>
+                          <span className="sr-only">{title}</span>
+                          <Image
+                            className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                            src={navigation.navigationLogo?.url}
+                            alt=""
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            style={{ width: "100%" }}
+                          />
+                        </>
+                      ) : (
+                        <span className="font-bold text-2xl text-white">
+                          {title}
+                        </span>
                       )}
                     </Link>
                   </div>
 
                   <div className="hidden h-full lg:flex">
-                    {/* Flyout menus */}
+                    {/* Desktop Flyout menus */}
                     <Popover.Group className="inset-x-0 bottom-0 px-4 z-[99999]">
                       <div className="flex h-full justify-center space-x-8">
                         {!!items &&
@@ -345,14 +373,10 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                                                                       item?.label ||
                                                                       ""
                                                                     }
-                                                                    className="max-w-xs"
+                                                                    className="max-w-xs object-cover"
                                                                     width={0}
                                                                     height={0}
                                                                     sizes="100%"
-                                                                    style={{
-                                                                      width:
-                                                                        "100%",
-                                                                    }}
                                                                   />
                                                                 </div>
                                                               )}
@@ -423,15 +447,18 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                     </Popover.Group>
                   </div>
 
-                  {/* Mobile menu and search (lg-) */}
-                  <div className="flex flex-1 items-center justify-between lg:hidden">
+                  {/* Mobile menu bar */}
+                  <div className="flex flex-1 items-center justify-between lg:hidden max-w-max">
                     <button
                       type="button"
-                      className="-ml-2 rounded-md bg-dark p-2 text-white"
+                      className="ml-2 rounded-md bg-dark px-2 py-1 text-white border border-white hover:border-primary transition group"
                       onClick={() => setOpen(true)}
                     >
                       <span className="sr-only">Open menu</span>
-                      <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                      <Bars3Icon
+                        className="h-6 w-6 group-hover:text-primary transition"
+                        aria-hidden="true"
+                      />
                     </button>
                   </div>
                   <Link
@@ -439,21 +466,26 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                     className="lg:hidden mx-auto cursor-pointer max-w-[200px]"
                     id={`nav-logo-mobile-${title}`}
                   >
-                    <span className="sr-only">{title}</span>
-                    {!!navigation.navigationLogo?.url && (
-                      <Image
-                        src={navigation.navigationLogo.url}
-                        alt=""
-                        className="h-12 lg:h-10 w-auto max-w-xs mx-auto cursor-pointer object-contain"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        style={{ width: "100%" }}
-                      />
+                    {navigation?.navigationLogo ? (
+                      <>
+                        <span className="sr-only">{title}</span>
+                        <Image
+                          className="h-11 w-full max-w-xs mx-auto cursor-pointer object-contain"
+                          src={navigation.navigationLogo?.url}
+                          alt=""
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                        />
+                      </>
+                    ) : (
+                      <span className="font-bold text-2xl text-white">
+                        {title}
+                      </span>
                     )}
                   </Link>
 
-                  <div className="flex flex-1 items-center justify-end">
+                  <div className="flex flex-1 items-center justify-end max-w-max">
                     {!!items &&
                       items
                         .filter(
@@ -465,7 +497,7 @@ export default function Nav({ navigation, siteLibrary, hideNav }: NavProps) {
                             key={mainNavigationItem?.link}
                             link={mainNavigationItem?.link}
                             label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-xs md:text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary cursor-pointer ${mainNavigationItem?.cssClass}`}
+                            cssClass={`flex items-center text-xs md:text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-4 py-2 rounded ${mainNavigationItem?.cssClass}`}
                             sameTab={mainNavigationItem?.sameTab}
                           />
                         ))}

@@ -33,7 +33,7 @@ export default function ProfileSlug({
       <ThemeColors siteLibrary={siteLibrary} />
       <Nav
         siteLibrary={siteLibrary}
-        navigation={navigations[0]}
+        navigations={navigations}
         hideNav={false}
       />
       <Profile
@@ -44,7 +44,7 @@ export default function ProfileSlug({
       />
       <Footer
         siteLibrary={siteLibrary}
-        navigation={navigations[0]}
+        navigations={navigations}
         hideFooter={false}
         blogs={blogs}
       />
