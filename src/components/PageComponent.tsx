@@ -1,8 +1,11 @@
+/* eslint-disable @next/next/no-script-component-in-head */
 import { FC } from "react";
 import Head from "next/head";
 import { LayoutQuery } from "@/graphql/generated/graphql";
 import LayoutBlocks from "@/components/LayoutBlocks";
 import ThemeColors from "@/styles/ThemeColors";
+import Script from "next/script";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 interface Props {
   layout: LayoutQuery;
@@ -18,6 +21,7 @@ const PageComponent: FC<Props> = ({ layout }) => {
     favicon,
     metaAppleTouchIcon,
     metaGoogleConsoleVerification,
+    analyticsId,
   } = layout.siteLibrary;
 
   return (
@@ -47,6 +51,7 @@ const PageComponent: FC<Props> = ({ layout }) => {
           <meta name="robots" content="noindex,nofollow" />
         )}
       </Head>
+      {!!analyticsId && <GoogleAnalytics analyticsId={analyticsId} />}
       <ThemeColors siteLibrary={layout.siteLibrary} />
       <LayoutBlocks layout={layout} />
     </>

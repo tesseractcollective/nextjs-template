@@ -1,9 +1,7 @@
 import type { ReactElement } from "react";
 import React from "react";
 import parse from "html-react-parser";
-import Link from "next/link";
 import Image from "next/image";
-import ReactGA from "react-ga4";
 import type {
   SiteLibraryFieldsFragment,
   HeroMediaSliderFieldsFragment,
@@ -11,6 +9,7 @@ import type {
 import SocialMediaIcons from "../SocialMediaIcons";
 import { Fade } from "react-awesome-reveal";
 import Slider from "react-slick";
+import LinkItem from "../LinkItem";
 
 type HeroMediaSliderType = HeroMediaSliderFieldsFragment;
 
@@ -131,31 +130,15 @@ export default function HeroMediaSliderSection({
                                     "mx-auto")
                                 }`}
                               >
-                                {callToActionItem?.ctaLink.includes("http") ? (
-                                  <a
-                                    href={callToActionItem?.ctaLink}
-                                    target="_blank"
-                                    className={`${callToActionItem.ctaClass} ${
-                                      callToActionItem?.ctaPrimary
-                                        ? "border-white text-white border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
-                                        : "text-white border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
-                                    } mr-2 max-w-max`}
-                                    rel="noreferrer"
-                                  >
-                                    {callToActionItem.ctaLabel}
-                                  </a>
-                                ) : (
-                                  <Link
-                                    href={callToActionItem?.ctaLink}
-                                    className={`${callToActionItem.ctaClass} ${
-                                      callToActionItem?.ctaPrimary
-                                        ? "border-white text-white border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
-                                        : "text-white border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
-                                    } mr-2 max-w-max`}
-                                  >
-                                    {callToActionItem.ctaLabel}
-                                  </Link>
-                                )}
+                                <LinkItem
+                                  label={callToActionItem.ctaLabel}
+                                  link={callToActionItem?.ctaLink}
+                                  cssClass={`${callToActionItem.ctaClass} ${
+                                    callToActionItem?.ctaPrimary
+                                      ? "border-white text-white border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
+                                      : "text-white border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
+                                  } mr-2 max-w-max`}
+                                />
                               </div>
                             )}
                           </div>
@@ -164,10 +147,12 @@ export default function HeroMediaSliderSection({
                     </div>
                   </div>
                 </div>
-
                 {!!heroMediaSliderItem?.displaySocialMedia && (
                   <div className="tagline-wrapper">
-                    <SocialMediaIcons siteLibrary={siteLibrary} />
+                    <SocialMediaIcons
+                      siteLibrary={siteLibrary}
+                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center"
+                    />
                   </div>
                 )}
                 {!!heroMediaSliderItem?.sliderMediaBackground && (

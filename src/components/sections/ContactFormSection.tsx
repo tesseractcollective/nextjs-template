@@ -7,6 +7,7 @@ import type {
   SiteLibraryFieldsFragment,
   ContactFormFieldsFragment,
 } from "@/graphql/generated/graphql";
+import ReactGA from "react-ga4";
 
 type FormikShape = {
   Name: string;
@@ -49,6 +50,11 @@ export default function ContactFormSection({
       "application/x-www-form-urlencoded; charset=UTF-8"
     );
     request.send(null);
+    ReactGA.event({
+      category: "Form Submit",
+      action: `${values.Name}: Submitted Form`,
+      label: `${values.Name}: Submitted Form`,
+    });
   };
 
   if (!siteLibrary) return <></>;

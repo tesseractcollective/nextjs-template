@@ -8,6 +8,7 @@ import "@/styles/layoutBlocks.scss";
 import "@/app/tailwind.css";
 import ThemeColors from "@/styles/ThemeColors";
 import Blog from "@/components/Blog";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const blogPage: BlogPageQuery = await sdkClient.blogPage({
@@ -26,6 +27,9 @@ export default function BlogSlug({ blogPage }: { blogPage: BlogPageQuery }) {
   return (
     <>
       <ThemeColors siteLibrary={siteLibrary} />
+      {!!siteLibrary?.analyticsId && (
+        <GoogleAnalytics analyticsId={siteLibrary.analyticsId} />
+      )}
       <Nav
         siteLibrary={siteLibrary}
         navigations={navigations}

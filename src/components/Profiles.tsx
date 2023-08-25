@@ -39,7 +39,6 @@ export default function Profiles({
   const [selectedProfile, setSelctedProfile] =
     useState<ProfileFieldsFragment>();
   if (!profiles) return <></>;
-  console.log("profileLayoutStyle", profileLayoutStyle);
   if (profileLayoutStyle === "cardModal")
     return (
       <>

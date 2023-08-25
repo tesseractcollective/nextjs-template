@@ -4,7 +4,7 @@ import StandOutText from "@/components/StandOutText";
 import IframeBox from "@/components/IframeBox";
 import { StripePricingTable } from "@/components/StripePricingTable";
 import InstagramSection from "@/components/InstagramSection";
-import Gallery from "../Gallery";
+import Gallery from "@/components/Gallery";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -16,31 +16,35 @@ interface ElementsProps {
 export default function LayoutBlocks({ elements }: ElementsProps) {
   if (!elements) return <></>;
 
+  const {
+    iFrameCode,
+    iFrameTitle,
+    parallaxImage,
+    standOutText,
+    gallery,
+    galleryLayout,
+    stripePricingTableId,
+    stripePublishableKey,
+    displayInstagramSectionUsername,
+  } = elements;
+
   return (
     <>
-      {!!elements?.iFrameCode && elements?.iFrameTitle && (
-        <IframeBox code={elements?.iFrameCode} title={elements?.iFrameTitle} />
+      {!!iFrameCode && (
+        <IframeBox code={iFrameCode} title={iFrameTitle || undefined} />
       )}
-      {elements?.parallaxImage?.url && (
-        <Parallax parallaxImage={elements?.parallaxImage?.url} />
-      )}
+      {!!parallaxImage?.url && <Parallax parallaxImage={parallaxImage.url} />}
 
-      {!!elements?.standOutText && (
-        <StandOutText standOutText={elements.standOutText} />
-      )}
-      {!!elements.gallery && elements?.galleryLayout && (
-        <Gallery elements={elements} />
-      )}
-      {!!elements?.stripePricingTableId && elements?.stripePublishableKey && (
+      {!!standOutText && <StandOutText standOutText={standOutText} />}
+      {!!gallery && galleryLayout && <Gallery elements={elements} />}
+      {!!stripePricingTableId && stripePublishableKey && (
         <StripePricingTable
-          pricingTableId={elements.stripePricingTableId}
-          publishableKey={elements.stripePublishableKey}
+          pricingTableId={stripePricingTableId}
+          publishableKey={stripePublishableKey}
         />
       )}
-      {elements?.displayInstagramSectionUsername && (
-        <InstagramSection
-          IGUsername={elements.displayInstagramSectionUsername}
-        />
+      {!!displayInstagramSectionUsername && (
+        <InstagramSection IGUsername={displayInstagramSectionUsername} />
       )}
     </>
   );

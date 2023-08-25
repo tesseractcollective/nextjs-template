@@ -6,7 +6,8 @@ import type {
 import parse from "html-react-parser";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
-import LinkItem from "../LinkItem";
+import LinkItem from "@/components/LinkItem";
+import ReactGA from "react-ga4";
 
 interface TextContentProps {
   textContentData: TextContentFieldsFragment[];
@@ -262,7 +263,7 @@ export default function TextContentSection({
       {!!callToActionData && callToActionData.length >= 1 && (
         <div className="flex flex-row flex-wrap items-center mx-auto relative z-20">
           {callToActionData?.map((callToActionItem) => (
-            <div key={Math.random()}>
+            <div key={callToActionItem?.ctaLink}>
               {callToActionItem?.ctaLink && (
                 <div
                   className={`flex ${
@@ -273,31 +274,15 @@ export default function TextContentSection({
                     (callToActionItem?.contentAlign === "justify" && "mx-auto")
                   }`}
                 >
-                  {callToActionItem?.ctaLink.includes("http") ? (
-                    <a
-                      href={callToActionItem?.ctaLink}
-                      target="_blank"
-                      className={`${callToActionItem.ctaClass} ${
-                        callToActionItem?.ctaPrimary
-                          ? "border-white text-white border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
-                          : "text-white border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
-                      } mr-2 max-w-max`}
-                      rel="noreferrer"
-                    >
-                      {callToActionItem.ctaLabel}
-                    </a>
-                  ) : (
-                    <Link
-                      href={callToActionItem?.ctaLink}
-                      className={`${callToActionItem.ctaClass} ${
-                        callToActionItem?.ctaPrimary
-                          ? "border-white text-white border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
-                          : "text-white border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
-                      } mr-2 max-w-max`}
-                    >
-                      {callToActionItem.ctaLabel}
-                    </Link>
-                  )}
+                  <LinkItem
+                    link={callToActionItem?.ctaLink}
+                    label={callToActionItem.ctaLabel}
+                    cssClass={`${callToActionItem.ctaClass} ${
+                      callToActionItem?.ctaPrimary
+                        ? "border-white text-white border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
+                        : "text-white border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
+                    } mr-2 max-w-max`}
+                  />
                 </div>
               )}
             </div>

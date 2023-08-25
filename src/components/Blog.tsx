@@ -11,6 +11,8 @@ import Image from "next/image";
 import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import Head from "next/head";
+import LinkItem from "@/components/LinkItem";
+import ReactGA from "react-ga4";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;
@@ -42,6 +44,13 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
         <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
           <Link
             href="/blogs"
+            onClick={() =>
+              ReactGA.event({
+                category: "Link",
+                action: "Visit Blogs",
+                label: "Visit Blogs",
+              })
+            }
             className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
           >
             <FontAwesomeIcon
@@ -75,25 +84,11 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
             <div className="body-parsed-text">{parse(content.html)}</div>
           )}
           {!!blogCallToActionText && blogCallToActionLink && (
-            <div>
-              {blogCallToActionLink?.includes("https") ? (
-                <a
-                  href={blogCallToActionLink}
-                  target="_blank"
-                  className="border-dark border px-4 md:px-8 py-3 theme-button mx-auto max-w-max block no-underline my-4 font-bold w-full"
-                  rel="noreferrer"
-                >
-                  {blogCallToActionText}
-                </a>
-              ) : (
-                <Link
-                  href={blogCallToActionLink}
-                  className="bg-white border-dark border px-4 md:px-8 py-3 theme-button mx-auto max-w-max block no-underline my-4 font-bold w-full"
-                >
-                  {blogCallToActionText}
-                </Link>
-              )}
-            </div>
+            <LinkItem
+              label={blogCallToActionText}
+              cssClass={blogCallToActionLink}
+              link="border-dark border px-4 md:px-8 py-3 theme-button mx-auto max-w-max block no-underline my-4 font-bold w-full"
+            />
           )}
           {!!videoBox && (
             <div>

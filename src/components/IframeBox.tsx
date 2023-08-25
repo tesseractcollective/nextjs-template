@@ -2,7 +2,7 @@ import parse from "html-react-parser";
 
 interface iFrameBoxProps {
   title?: string;
-  code?: string;
+  code: string;
 }
 
 export default function IframeBox({ title, code }: iFrameBoxProps) {

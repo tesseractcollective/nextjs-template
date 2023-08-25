@@ -8,6 +8,7 @@ import "@/app/tailwind.css";
 import "@/styles/global.scss";
 import "@/styles/layoutBlocks.scss";
 import ThemeColors from "@/styles/ThemeColors";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const albumPage: AlbumPageQuery = await sdkClient.albumPage({
@@ -30,6 +31,9 @@ export default function AlbumSlug({
   return (
     <>
       <ThemeColors siteLibrary={siteLibrary} />
+      {!!siteLibrary?.analyticsId && (
+        <GoogleAnalytics analyticsId={siteLibrary.analyticsId} />
+      )}
       <Nav
         siteLibrary={siteLibrary}
         navigations={navigations}

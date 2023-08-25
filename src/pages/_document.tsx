@@ -1,6 +1,5 @@
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 import React from "react";
-
 // import Script from 'next/script'
 
 type Props = {};
@@ -28,17 +27,6 @@ class Document extends NextDocument<Props> {
         <body>
           <Main />
           <NextScript />
-          <form
-            name="contact_document"
-            netlify-honeypot="bot-field"
-            hidden
-            className="sr-only"
-          >
-            <input type="text" name="name" />
-            <input type="email" name="email" />
-            <input type="phone" name="phone" />
-            <textarea name="message"></textarea>
-          </form>
         </body>
       </Html>
     );

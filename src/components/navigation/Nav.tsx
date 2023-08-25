@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "../SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
+import ReactGA from "react-ga4";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -29,8 +30,7 @@ export default function Nav({
   if (!navigations && !siteLibrary) return <></>;
   if (hideNav === true) return <></>;
 
-  const { title, contactPhone, contactEmail, contactName, siteLibraryJson } =
-    siteLibrary;
+  const { title, contactPhone, contactEmail, contactName } = siteLibrary;
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -81,7 +81,14 @@ export default function Nav({
                 <div className="flex px-4 pb-2 pt-5">
                   <Link
                     href="/"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      ReactGA.event({
+                        category: "Link",
+                        action: "Visit Home",
+                        label: "Visit Home",
+                      });
+                    }}
                     className="cursor-pointer"
                     id={`nav-logo-mobile-panel-${title}`}
                   >
@@ -205,6 +212,13 @@ export default function Nav({
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
                                   className="-m-2 block p-2 font-medium text-white max-w-max mx-auto"
+                                  onClick={() => {
+                                    ReactGA.event({
+                                      category: "Link",
+                                      action: mainNavigationItem.link,
+                                      label: mainNavigationItem.link,
+                                    });
+                                  }}
                                 >
                                   {mainNavigationItem.label}
                                 </a>
@@ -213,7 +227,14 @@ export default function Nav({
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
                                   className="-m-2 block p-2 font-medium text-white max-w-max mx-auto"
-                                  onClick={() => setOpen(false)}
+                                  onClick={() => {
+                                    setOpen(false);
+                                    ReactGA.event({
+                                      category: "Link",
+                                      action: "Visit Home",
+                                      label: "Visit Home",
+                                    });
+                                  }}
                                 >
                                   {mainNavigationItem.label}
                                 </Link>
@@ -226,7 +247,10 @@ export default function Nav({
                   })}
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <SocialMediaIcons siteLibrary={siteLibrary} />
+                  <SocialMediaIcons
+                    siteLibrary={siteLibrary}
+                    cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center"
+                  />
                   <div className="text-center">
                     {!!contactName && (
                       <p className="text-white text-xs font-bold">
@@ -276,7 +300,17 @@ export default function Nav({
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max">
-                    <Link href="/" id={`nav-logo-desktop-${title}`}>
+                    <Link
+                      href="/"
+                      id={`nav-logo-desktop-${title}`}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "Link",
+                          action: "Visit Home",
+                          label: "Visit Home",
+                        });
+                      }}
+                    >
                       {navigation?.navigationLogo ? (
                         <>
                           <span className="sr-only">{title}</span>
@@ -412,7 +446,16 @@ export default function Nav({
                                                     <button
                                                       type="button"
                                                       className="m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 outline outline-primary z-50"
-                                                      onClick={() => close()}
+                                                      onClick={() => {
+                                                        close();
+                                                        ReactGA.event({
+                                                          category: "Link",
+                                                          action:
+                                                            "Close Mobile Menu",
+                                                          label:
+                                                            "Close Mobile Menu",
+                                                        });
+                                                      }}
                                                     >
                                                       <span className="sr-only">
                                                         Close menu
@@ -452,7 +495,14 @@ export default function Nav({
                     <button
                       type="button"
                       className="ml-2 rounded-md bg-dark px-2 py-1 text-white border border-white hover:border-primary transition group"
-                      onClick={() => setOpen(true)}
+                      onClick={() => {
+                        setOpen(true);
+                        ReactGA.event({
+                          category: "Link",
+                          action: "Open Mobile Menu",
+                          label: "Open Mobile Menu",
+                        });
+                      }}
                     >
                       <span className="sr-only">Open menu</span>
                       <Bars3Icon
@@ -465,6 +515,13 @@ export default function Nav({
                     href="/"
                     className="lg:hidden mx-auto cursor-pointer max-w-[200px]"
                     id={`nav-logo-mobile-${title}`}
+                    onClick={() => {
+                      ReactGA.event({
+                        category: "Link",
+                        action: "Visit Home",
+                        label: "Visit Home",
+                      });
+                    }}
                   >
                     {navigation?.navigationLogo ? (
                       <>

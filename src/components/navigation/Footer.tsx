@@ -118,7 +118,10 @@ export default function Footer({
         )}
 
         <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
-          <SocialMediaIcons siteLibrary={siteLibrary} />
+          <SocialMediaIcons
+            siteLibrary={siteLibrary}
+            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center"
+          />
           <p className="text-xs text-gray-400 uppercase text-center mb-4 opacity-70">
             {`© ${new Date().getFullYear()} ${!!title && title} ${
               isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"

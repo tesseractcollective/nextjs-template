@@ -7,7 +7,6 @@ interface GridBoxProps {
 }
 
 export default function GridBox({ gridBoxData }: GridBoxProps) {
-  console.log("GridBox.tsx", gridBoxData);
   return (
     <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8">
       <div

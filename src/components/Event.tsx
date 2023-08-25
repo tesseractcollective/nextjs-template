@@ -3,12 +3,6 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import parse from "html-react-parser";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {
-  faMapLocationDot,
-  faArrowLeft,
-} from "@fortawesome/free-solid-svg-icons";
 import ReactGA from "react-ga4";
 import Moment from "react-moment";
 import Link from "next/link";
@@ -16,7 +10,12 @@ import Image from "next/image";
 import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import Head from "next/head";
-import Events from "./Events";
+import Events from "@/components/Events";
+import {
+  ArrowTopRightOnSquareIcon,
+  MapPinIcon,
+  ArrowLeftIcon,
+} from "@heroicons/react/24/outline";
 
 export interface EventProps {
   event: EventFieldsFragment;
@@ -74,9 +73,9 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
               href="/events"
               className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
             >
-              <FontAwesomeIcon
-                icon={faArrowLeft as IconProp}
-                className="fa-fw text-sm h-4 w-4 mr-2"
+              <ArrowLeftIcon
+                className="h-6 w-6 text-white mr-2"
+                aria-hidden="true"
               />
               <span>{isSpanish ? "Toda Los Eventos" : "All Events"}</span>
             </Link>
@@ -130,9 +129,9 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <FontAwesomeIcon
-                        icon={faMapLocationDot as IconProp}
-                        className="fa-fw ml-2"
+                      <MapPinIcon
+                        className="h-6 w-6 text-dark ml-2"
+                        aria-hidden="true"
                       />
                     </a>
                   )}
@@ -162,7 +161,6 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                   priority
                   placeholder="blur"
                   blurDataURL="https://images.unsplash.com/photo-1550134464-4c07c5b02073?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=985&q=80"
-                  style={{ width: "100%" }}
                 />
               </div>
             </div>
@@ -175,9 +173,20 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                 href={eventTicketLinkDestination}
                 target="_blank"
                 rel="noreferrer"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-16 py-3 text-base font-medium text-white hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:ring-offset-gray-50 transition max-w-max mx-auto"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-16 py-3 text-base font-medium text-white hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:ring-offset-gray-50 transition max-w-max mx-auto flex-row"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Link",
+                    action: eventTicketLinkDestination,
+                    label: eventTicketLinkDestination,
+                  });
+                }}
               >
                 <span>{eventLinkButtonText}</span>
+                <ArrowTopRightOnSquareIcon
+                  className="h-6 w-6 text-dark ml-2"
+                  aria-hidden="true"
+                />
               </a>
             </div>
           )}

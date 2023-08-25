@@ -5,7 +5,7 @@ import Elements from "@/components/elements/Elements";
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-
+import ReactGA from "react-ga4";
 interface PopupProps {
   layout: LayoutQuery;
 }
@@ -73,8 +73,6 @@ export default function Popup({ layout }: PopupProps) {
   //     8000);
   // }
   // isScrolled && setOpen(true);
-
-  console.log("isScrolled", isScrolled);
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
@@ -157,7 +155,14 @@ export default function Popup({ layout }: PopupProps) {
                   <button
                     type="button"
                     className="m-2 inline-flex items-center justify-center rounded-md p-2 text-dark outline outline-primary mx-auto max-w-max"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      ReactGA.event({
+                        category: "Link",
+                        action: "Close Popup",
+                        label: "Close Popup",
+                      });
+                    }}
                   >
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon
@@ -175,7 +180,14 @@ export default function Popup({ layout }: PopupProps) {
         type="button"
         id="popup-trigger"
         className={`rounded-md p-2 text-md font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 fixed left-8 bottom-8 z-[100] bg-primary ${buttonOpenCss}`}
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setOpen(true);
+          ReactGA.event({
+            category: "Link",
+            action: "Open Popup",
+            label: "Open Popup",
+          });
+        }}
       >
         <span className="max-w-max text-left">{buttonOpenText}</span>
       </button>

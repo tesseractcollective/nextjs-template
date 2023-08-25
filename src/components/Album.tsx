@@ -11,7 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
-import FeatureAlbum from "./FeatureAlbum";
+import FeatureAlbum from "@/components/FeatureAlbum";
 import Head from "next/head";
 
 export interface AlbumProps {
@@ -36,6 +36,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
   const filteredAlbums = albums?.filter(
     (tempAlbum) => album.albumSlug !== tempAlbum.albumSlug
   );
+  console.log(albumJsonData);
   return (
     <>
       <Head>
@@ -55,6 +56,13 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
           <Link
             href="/music"
             className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
+            onClick={() =>
+              ReactGA.event({
+                category: "Link",
+                action: "Music Page",
+                label: "Music Page",
+              })
+            }
           >
             <FontAwesomeIcon
               icon={faArrowLeft as IconProp}
@@ -122,6 +130,13 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
                   target="_blank"
                   rel="noreferrer"
                   className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:ring-offset-gray-50 transition"
+                  onClick={() =>
+                    ReactGA.event({
+                      category: "Link",
+                      action: albumBuyLink || "",
+                      label: albumBuyLink || "",
+                    })
+                  }
                 >
                   <span>{isSpanish ? "Escucha" : "Listen"}</span>
                 </a>

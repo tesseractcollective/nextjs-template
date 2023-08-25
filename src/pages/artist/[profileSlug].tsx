@@ -8,6 +8,7 @@ import "@/styles/layoutBlocks.scss";
 import "@/app/tailwind.css";
 import ThemeColors from "@/styles/ThemeColors";
 import Profile from "@/components/Profile";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const profilePage: ProfilePageQuery = await sdkClient.profilePage({
@@ -31,6 +32,9 @@ export default function ProfileSlug({
   return (
     <>
       <ThemeColors siteLibrary={siteLibrary} />
+      {!!siteLibrary?.analyticsId && (
+        <GoogleAnalytics analyticsId={siteLibrary.analyticsId} />
+      )}
       <Nav
         siteLibrary={siteLibrary}
         navigations={navigations}

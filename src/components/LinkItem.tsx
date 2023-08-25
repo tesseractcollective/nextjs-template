@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import ReactGA from "react-ga4";
 interface LinkItemProps {
   link?: string | null;
   label?: string | null;
@@ -13,9 +13,9 @@ export default function LinkItem({
   label,
   cssClass,
   sameTab,
-  children
+  children,
 }: LinkItemProps) {
-  if(!link) return <></>
+  if (!link) return <></>;
   return (
     <>
       {link?.includes("http") ? (
@@ -23,19 +23,33 @@ export default function LinkItem({
           target={sameTab ? "_self" : "_blank"}
           key={label}
           href={link}
-          className={cssClass || ''}
+          className={cssClass || ""}
+          onClick={() =>
+            ReactGA.event({
+              category: "Link",
+              action: link || "",
+              label: label || "",
+            })
+          }
         >
           {children}
-          {label}
+          {!!label && <>{label}</>}
         </a>
       ) : (
         <Link
           key={label}
           href={link}
-          className={cssClass || ''}
+          className={cssClass || ""}
+          onClick={() =>
+            ReactGA.event({
+              category: "Link",
+              action: link || "",
+              label: label || "",
+            })
+          }
         >
           {children}
-          {label}
+          {!!label && <>{label}</>}
         </Link>
       )}
     </>
