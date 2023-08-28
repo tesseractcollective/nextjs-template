@@ -71,8 +71,8 @@ export default function Profiles({
                     <>
                       <div className="animate-col-width mx-auto md:mx-0 w-full">
                         <div className="overflow-hidden border border-primary-fade h-full rounded profile-card w-full">
-                          <div className="h-72 w-72">
-                            {!!profile?.avatarImage?.url && (
+                          {!!profile?.avatarImage?.url && (
+                            <div className="h-72 max-w-72 p-0 m-0 w-full">
                               <Image
                                 src={profile?.avatarImage?.url}
                                 alt={(profile.name && profile.name) || ""}
@@ -81,17 +81,16 @@ export default function Profiles({
                                 width={0}
                                 height={0}
                               />
-                            )}
-                          </div>
-
-                          <div className="flex flex-col px-4 items-start justify-center text-left py-4">
+                            </div>
+                          )}
+                          <div className="flex flex-col items-start justify-center text-left p-4">
                             {!!profile.name && (
-                              <h3 className="text-3xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-2xl text-text-color mt-0 text-left">
+                              <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color mt-0 text-left">
                                 {profile.name}
                               </h3>
                             )}
                             {!!profile.role && (
-                              <h4 className="uppercase mt-0 mb-0 text-sm opacity-80 text-left">
+                              <h4 className="uppercase mt-0 mb-0 text-xs opacity-80 text-left line-clamp-1 w-10/12">
                                 {profile.role}
                               </h4>
                             )}
