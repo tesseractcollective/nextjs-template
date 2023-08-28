@@ -21,6 +21,7 @@ import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import SocialMediaIcons from "./SocialMediaIcons";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -69,7 +70,7 @@ export default function Profiles({
                   >
                     <>
                       <div className="animate-col-width mx-auto md:mx-0 w-full">
-                        <div className="overflow-hidden border border-primary-fade h-full rounded bg-dark profile-card w-full">
+                        <div className="overflow-hidden border border-primary-fade h-full rounded profile-card w-full">
                           <div className="h-72 w-72">
                             {!!profile?.avatarImage?.url && (
                               <Image
@@ -85,7 +86,7 @@ export default function Profiles({
 
                           <div className="flex flex-col px-4 items-start justify-center text-left py-4">
                             {!!profile.name && (
-                              <h3 className="text-3xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-2xl text-white mt-0 text-left">
+                              <h3 className="text-3xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-2xl text-text-color mt-0 text-left">
                                 {profile.name}
                               </h3>
                             )}
@@ -96,104 +97,31 @@ export default function Profiles({
                             )}
 
                             <div className="flex justify-between flex-row w-full">
-                              <nav className="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start">
-                                {!!profile.instagramLink && (
-                                  <a
-                                    href={profile.instagramLink}
-                                    target="_blank"
-                                    className="max-w-max mr-2 text-center ml-0 opacity-80 transition hover:opacity-100"
-                                    rel="noreferrer"
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={faInstagram as IconProp}
-                                      className="fa-fw"
-                                    />
-                                  </a>
-                                )}
-                                {!!profile.facebookLink && (
-                                  <a
-                                    href={profile.facebookLink}
-                                    target="_blank"
-                                    className="max-w-max mr-2 ml-0 opacity-80 transition hover:opacity-100"
-                                    rel="noreferrer"
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={faFacebook as IconProp}
-                                      className="fa-fw"
-                                    />
-                                  </a>
-                                )}
-                                {!!profile.twitterLink && (
-                                  <a
-                                    href={profile.twitterLink}
-                                    target="_blank"
-                                    className="max-w-max mr-2 ml-0 opacity-80 transition hover:opacity-100"
-                                    rel="noreferrer"
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={faTwitter as IconProp}
-                                      className="fa-fw"
-                                    />
-                                  </a>
-                                )}
-                                {!!profile.youtubeLink && (
-                                  <a
-                                    href={profile.youtubeLink}
-                                    target="_blank"
-                                    className="max-w-max mr-2 ml-0 opacity-80 transition hover:opacity-100"
-                                    rel="noreferrer"
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={faYoutube as IconProp}
-                                      className="fa-fw"
-                                    />
-                                  </a>
-                                )}
-                                {!!profile.linkedinLink && (
-                                  <a
-                                    href={profile.linkedinLink}
-                                    target="_blank"
-                                    className="max-w-max mr-2 ml-0 opacity-80 transition hover:opacity-100"
-                                    rel="noreferrer"
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={faLinkedin as IconProp}
-                                      className="fa-fw"
-                                    />
-                                  </a>
-                                )}
-                                {!!profile.email && (
-                                  <a
-                                    href={`mailto:${profile.email}`}
-                                    target="_blank"
-                                    className="max-w-max mr-2 ml-0 opacity-80 transition hover:opacity-100"
-                                    rel="noreferrer"
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={faEnvelope as IconProp}
-                                      className="fa-fw"
-                                    />
-                                  </a>
-                                )}
-                                {!!profile.phoneNumber && (
-                                  <a
-                                    href={`tel:${profile.phoneNumber}`}
-                                    target="_blank"
-                                    className="max-w-max mr-2 ml-0 opacity-80 transition hover:opacity-100"
-                                    rel="noreferrer"
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={faPhone as IconProp}
-                                      className="fa-fw"
-                                    />
-                                  </a>
-                                )}
-                              </nav>
+                              <SocialMediaIcons
+                                cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start gap-x-2"
+                                instagramLinkProp={
+                                  profile?.instagramLink || undefined
+                                }
+                                facebookLinkProp={
+                                  profile?.facebookLink || undefined
+                                }
+                                twitterLinkProp={
+                                  profile?.twitterLink || undefined
+                                }
+                                youtubeLinkProp={
+                                  profile?.youtubeLink || undefined
+                                }
+                                linkedinLinkProp={
+                                  profile?.linkedinLink || undefined
+                                }
+                                emailLinkProp={profile.email || undefined}
+                                phoneLinkProp={profile.phoneNumber || undefined}
+                              />
 
                               {!!profile && (
                                 <button
                                   type="button"
-                                  className="bg-none text-white px-4 md:px-2 py-2 max-w-max block no-underline my-4 w-full ml-auto border-round text-xs rounded bg-dark transition hover:bg-gradient-to-tr hover:from-primary hover:to-primary-hover uppercase group"
+                                  className="bg-none text-text-color px-4 md:px-2 py-2 max-w-max block no-underline my-4 w-full ml-auto border-round text-xs rounded bg-dark transition hover:bg-gradient-to-tr hover:from-primary hover:to-secondary uppercase group"
                                   onClick={() => {
                                     setSelctedProfile(profile);
                                     setOpen(true);
@@ -244,21 +172,21 @@ export default function Profiles({
                                 >
                                   <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex">
                                     {!!selectedProfile.name && (
-                                      <h2 className="text-center mx-auto text-2xl text-dark font-bold uppercase">
+                                      <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
                                         {selectedProfile.name}
                                       </h2>
                                     )}
 
                                     <button
                                       type="button"
-                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-dark outline outline-primary mx-auto max-w-max"
+                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline outline-primary mx-auto max-w-max"
                                       onClick={() => setOpen(false)}
                                     >
                                       <span className="sr-only">
                                         Close menu
                                       </span>
                                       <XMarkIcon
-                                        className="h-6 w-6 text-dark"
+                                        className="h-6 w-6 text-text-color"
                                         aria-hidden="true"
                                       />
                                     </button>
@@ -325,7 +253,7 @@ export default function Profiles({
                         <div className="music-border"></div>
                       </div>
                     )}
-                    <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-white group-hover:text-primary-hover">
+                    <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-secondary">
                       <span>{profile.name}</span>
                       <FontAwesomeIcon
                         icon={faArrowRight as IconProp}

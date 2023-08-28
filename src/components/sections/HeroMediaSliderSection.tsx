@@ -52,7 +52,7 @@ export default function HeroMediaSliderSection({
                   heroMediaSliderItem.sliderCssWrapper
                 }`}
               >
-                <div className="video-overlay-content headlinePrimary">
+                <div className="video-overlay-content headlinePrimary dark-section text-text-color">
                   <div
                     className={`p-4 text-${
                       heroMediaSliderItem?.textContent?.contentAlign &&
@@ -94,19 +94,19 @@ export default function HeroMediaSliderSection({
                     </Fade>
 
                     {heroMediaSliderItem?.textContent?.header && (
-                      <div className="text-shadow body-parsed-text">
+                      <div className="text-shadow body-parsed-text dark-section">
                         {parse(heroMediaSliderItem?.textContent.header.html)}
                       </div>
                     )}
 
                     {heroMediaSliderItem?.textContent?.subHeader && (
-                      <div className="body-parsed-text">
+                      <div className="body-parsed-text dark-section">
                         {parse(heroMediaSliderItem?.textContent.subHeader.html)}
                       </div>
                     )}
 
                     {heroMediaSliderItem?.textContent?.content && (
-                      <div className="body-parsed-text">
+                      <div className="body-parsed-text dark-section">
                         {parse(heroMediaSliderItem?.textContent.content.html)}
                       </div>
                     )}
@@ -135,8 +135,8 @@ export default function HeroMediaSliderSection({
                                   link={callToActionItem?.ctaLink}
                                   cssClass={`${callToActionItem.ctaClass} ${
                                     callToActionItem?.ctaPrimary
-                                      ? "border-white text-white border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
-                                      : "text-white border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
+                                      ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
+                                      : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
                                   } mr-2 max-w-max`}
                                 />
                               </div>
@@ -147,11 +147,12 @@ export default function HeroMediaSliderSection({
                     </div>
                   </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark z-[1] section-fade-invert" />
                 {!!heroMediaSliderItem?.displaySocialMedia && (
                   <div className="tagline-wrapper">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center"
+                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center gap-x-2"
                     />
                   </div>
                 )}

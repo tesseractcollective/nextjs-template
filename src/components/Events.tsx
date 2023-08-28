@@ -25,7 +25,7 @@ export default function Events({
           {events.map((event) => (
             <Link
               href={`/event/${event.eventSlug}`}
-              className="w-full flex flex-row no-underline relative mx-auto bg-primary items-center justify-center rounded-md hover:bg-primary-hover focus-visible:bg-primary-hover transition-all group"
+              className="w-full flex flex-row no-underline relative mx-auto bg-primary items-center justify-center rounded-md hover:bg-secondary focus-visible:bg-secondary transition-all group"
               key={event.eventSlug}
             >
               <div className="date-format-badge bg-white text-primary rounded-full">
@@ -36,7 +36,7 @@ export default function Events({
                   <Moment format="DD">{event.eventStartDateTime}</Moment>
                 </span>
               </div>
-              <span className="uppercase text-left py-4 text-white">
+              <span className="uppercase text-left py-4 text-text-color">
                 {event.eventTitle}
               </span>
             </Link>

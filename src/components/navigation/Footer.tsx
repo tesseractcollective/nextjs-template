@@ -43,7 +43,7 @@ export default function Footer({
   if (hideFooter === true) return null;
 
   return (
-    <footer aria-labelledby="footer-heading" className="bg-dark mt-16 mb-8">
+    <footer aria-labelledby="footer-heading" className="mt-16 mb-8">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -73,17 +73,17 @@ export default function Footer({
                     />
                   )}
                   {!!item.footerTitle && (
-                    <h3 className="text-xs font-bold text-white uppercase tracking-widest opacity-90">
+                    <h3 className="text-xs font-bold text-text-color uppercase tracking-widest opacity-90">
                       {item.footerTitle}
                     </h3>
                   )}
                   {!!item?.footerText?.html && (
-                    <div className="text-xs font-medium text-white max-w-max body-parsed-text leading-none ring-opacity-90 opacity-80">
+                    <div className="text-xs font-medium text-text-color max-w-max body-parsed-text leading-none ring-opacity-90 opacity-80">
                       {parse(item.footerText?.html)}
                     </div>
                   )}
                   {!!item?.footerIframe && (
-                    <div className="text-sm font-medium text-white max-w-max">
+                    <div className="text-sm font-medium text-text-color max-w-max">
                       {parse(item.footerIframe)}
                     </div>
                   )}
@@ -96,7 +96,7 @@ export default function Footer({
                               key={linkItem?.link}
                               link={linkItem?.link}
                               label={linkItem?.label}
-                              cssClass={`text-white opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
+                              cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
                             />
                           </div>
@@ -120,9 +120,9 @@ export default function Footer({
         <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
           <SocialMediaIcons
             siteLibrary={siteLibrary}
-            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center"
+            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-4"
           />
-          <p className="text-xs text-gray-400 uppercase text-center mb-4 opacity-70">
+          <p className="text-xs text-text-color uppercase text-center mb-4 opacity-70">
             {`© ${new Date().getFullYear()} ${!!title && title} ${
               isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
             }.`}

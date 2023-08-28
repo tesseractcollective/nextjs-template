@@ -11,6 +11,7 @@ import {
   faYoutube,
   faSoundcloud,
   faWhatsapp,
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
@@ -28,10 +29,12 @@ export interface SocialMediaIconsProps {
   pandoraLinkProp?: string;
   appleMusicLinkProp?: string;
   threadsLinkProp?: string;
+  linkedinLinkProp?: string;
   cssClass?: string;
   emailLinkProp?: string;
   whatsappLinkProp?: string;
   phoneLinkProp?: string;
+  fade?: boolean;
 }
 
 export default function SocialMediaIcons({
@@ -46,10 +49,12 @@ export default function SocialMediaIcons({
   pandoraLinkProp,
   appleMusicLinkProp,
   threadsLinkProp,
+  linkedinLinkProp,
   emailLinkProp,
   whatsappLinkProp,
   phoneLinkProp,
   cssClass,
+  fade,
 }: SocialMediaIconsProps) {
   return (
     <>
@@ -64,14 +69,15 @@ export default function SocialMediaIcons({
         pandoraLinkProp ||
         appleMusicLinkProp ||
         threadsLinkProp ||
+        linkedinLinkProp ||
         emailLinkProp ||
         whatsappLinkProp ||
         phoneLinkProp) && (
         <nav className={cssClass}>
           <Fade
-            direction="right"
-            cascade
-            damping={0.15}
+            direction={fade ? undefined : "right"}
+            cascade={fade ? undefined : true}
+            damping={fade ? undefined : 0.15}
             triggerOnce
             className=""
           >
@@ -331,7 +337,7 @@ export default function SocialMediaIcons({
               <a
                 title={siteLibrary?.contactPhone || phoneLinkProp}
                 href={`tel:${siteLibrary?.contactPhone || phoneLinkProp}`}
-                className="no-underline"
+                className="max-w-max mx-2 text-center text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -359,7 +365,7 @@ export default function SocialMediaIcons({
                         `${whatsappLinkProp}`
                       )}&text=hello`
                 }
-                className="no-underline"
+                className="max-w-max mx-2 text-center text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -381,7 +387,7 @@ export default function SocialMediaIcons({
               <a
                 title={siteLibrary?.contactEmail || emailLinkProp}
                 href={`mailto:${siteLibrary?.contactEmail || emailLinkProp}`}
-                className="no-underline"
+                className="max-w-max mx-2 text-center text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -397,6 +403,28 @@ export default function SocialMediaIcons({
                   className="fa-fw mr-2 h-4 w-4"
                 />
                 <span className="sr-only">Email</span>
+              </a>
+            )}
+            {linkedinLinkProp && (
+              <a
+                title={linkedinLinkProp}
+                href={linkedinLinkProp}
+                className="max-w-max mx-2 text-center text-link"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action: linkedinLinkProp || "",
+                    label: linkedinLinkProp,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={faLinkedin as IconProp}
+                  className="fa-fw mr-2 h-4 w-4"
+                />
+                <span className="sr-only">Linkedin</span>
               </a>
             )}
           </Fade>

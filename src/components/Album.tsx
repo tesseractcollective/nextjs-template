@@ -78,7 +78,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
               <ol role="list" className="flex items-center space-x-2">
                 <li>
                   <div className="flex items-center text-sm">
-                    <p className="flex-none text-xs text-white opacity-60">
+                    <p className="flex-none text-xs text-text-color opacity-60">
                       <time dateTime={releaseDate}>{releaseDate}</time>
                     </p>
                   </div>
@@ -87,7 +87,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
             </nav>
 
             <div className="mt-4">
-              <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h1 className="text-3xl font-bold tracking-tight text-text-color sm:text-4xl">
                 {title}
               </h1>
             </div>
@@ -95,7 +95,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
             <section aria-labelledby="information-heading" className="mt-4">
               {!!description?.html && (
                 <div className="mt-4 space-y-6">
-                  <div className="text-base text-white body-parsed-text opacity-90">
+                  <div className="text-base text-text-color body-parsed-text opacity-90">
                     {parse(description.html)}
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
                   href={albumBuyLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:ring-offset-gray-50 transition"
+                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-text-color hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-gray-50 transition"
                   onClick={() =>
                     ReactGA.event({
                       category: "Link",

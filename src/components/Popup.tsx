@@ -102,7 +102,7 @@ export default function Popup({ layout }: PopupProps) {
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex">
                   {!!header && (
-                    <h2 className="text-center mx-auto text-2xl text-dark font-bold uppercase">
+                    <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
                       {header}
                     </h2>
                   )}
@@ -154,7 +154,7 @@ export default function Popup({ layout }: PopupProps) {
                   })}
                   <button
                     type="button"
-                    className="m-2 inline-flex items-center justify-center rounded-md p-2 text-dark outline outline-primary mx-auto max-w-max"
+                    className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline outline-primary mx-auto max-w-max"
                     onClick={() => {
                       setOpen(false);
                       ReactGA.event({
@@ -166,7 +166,7 @@ export default function Popup({ layout }: PopupProps) {
                   >
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon
-                      className="h-6 w-6 text-dark"
+                      className="h-6 w-6 text-text-color"
                       aria-hidden="true"
                     />
                   </button>
@@ -179,7 +179,7 @@ export default function Popup({ layout }: PopupProps) {
       <button
         type="button"
         id="popup-trigger"
-        className={`rounded-md p-2 text-md font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 fixed left-8 bottom-8 z-[100] bg-primary ${buttonOpenCss}`}
+        className={`rounded-md p-2 text-md font-semibold text-text-color hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 fixed left-8 bottom-8 z-[100] bg-primary ${buttonOpenCss}`}
         onClick={() => {
           setOpen(true);
           ReactGA.event({

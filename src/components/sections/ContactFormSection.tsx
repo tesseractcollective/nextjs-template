@@ -115,7 +115,7 @@ export default function ContactFormSection({
                             id="Name"
                             name="Name"
                             placeholder={isSpanish ? "Nombre" : "Name"}
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-text-color ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
                           />
                         </div>
                         <div className="relative mb-2">
@@ -129,7 +129,7 @@ export default function ContactFormSection({
                             id="Phone"
                             name="Phone"
                             placeholder={isSpanish ? "Tel" : "Phone"}
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-text-color ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
                           />
                         </div>
                         <div className="relative mb-2">
@@ -142,7 +142,7 @@ export default function ContactFormSection({
                           <Field
                             id="Email"
                             name="Email"
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-text-color ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
                             placeholder="Email"
                             type="Email"
                           />
@@ -157,14 +157,15 @@ export default function ContactFormSection({
                           <Field
                             id="Message"
                             name="Message"
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-dark ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-text-color ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6"
                             placeholder={isSpanish ? "Mensaje" : "Message"}
-                            textarea
+                            component="textarea"
+                            rows="4"
                           />
                         </div>
                         <button
                           type="submit"
-                          className="flex w-full justify-center rounded-md bg-primary px-3 py-2.5 text-md font-semibold leading-6 !text-white shadow-sm hover:bg-primary-hover transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2"
+                          className="flex w-full justify-center rounded-md bg-primary px-3 py-2.5 text-md font-semibold leading-6 !text-text-color shadow-sm hover:bg-secondary transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2"
                         >
                           {isSpanish ? "Enviar" : "Submit"}
                         </button>

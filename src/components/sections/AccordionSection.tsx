@@ -20,8 +20,8 @@ export default function Accordion({ accordionData }: AccordionProps) {
             {({ open }) => (
               <div className="border border-primary rounded block">
                 {!!item.contentHeader?.html && (
-                  <Disclosure.Button className="flex w-full justify-start items-center rounded-lg px-4 py-2 text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-white focus-visible:text-white hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-600">
-                    <div className="bg-gradient-to-tr from-primary to-primary-hover relative text-white h-6 w-6 rounded-md">
+                  <Disclosure.Button className="flex w-full justify-start items-center rounded-lg px-4 py-2 text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-text-color focus-visible:text-text-color hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-600">
+                    <div className="bg-gradient-to-tr from-primary to-secondary relative text-text-color h-6 w-6 rounded-md">
                       <MinusIcon className="absolute w-6 h-6" />
                       <MinusIcon
                         className={`absolute w-6 h-6 transition-all duration-600 ${
@@ -29,7 +29,7 @@ export default function Accordion({ accordionData }: AccordionProps) {
                         }`}
                       />
                     </div>
-                    <span className="ml-3 text-white font-bold text-2xl">
+                    <span className="ml-3 text-text-color font-bold text-2xl">
                       {parse(item.contentHeader?.html)}
                     </span>
                   </Disclosure.Button>
@@ -46,7 +46,7 @@ export default function Accordion({ accordionData }: AccordionProps) {
                   {!!item.contentDescription?.html && (
                     <Disclosure.Panel
                       static
-                      className="px-6 pt-4 pb-2 text-sm text-white opacity-80 block"
+                      className="px-6 pt-4 pb-2 text-sm text-text-color opacity-80 block"
                     >
                       {!!item.contentImage?.url && (
                         <div className="relative">

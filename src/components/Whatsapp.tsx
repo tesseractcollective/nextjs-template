@@ -22,7 +22,7 @@ export default function Whatsapp({
       <button
         type="button"
         aria-label="Whatsapp"
-        className="fixed floating-whatsapp-button text-white bg-[#25D366] border-2 border-solid flex items-center align-middle z-10 rounded-full border-white aspect-1 bottom-12 md:bottom-20 left-4 md:left-8 w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
+        className="fixed floating-whatsapp-button text-text-color bg-[#25D366] border-2 border-solid flex items-center align-middle z-10 rounded-full border-white aspect-1 bottom-12 md:bottom-20 left-4 md:left-8 w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
         onClick={() => setOpen(true)}
       >
         <FontAwesomeIcon
@@ -57,7 +57,7 @@ export default function Whatsapp({
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-2xl sm:p-6 w-full bg-invert flex-col flex">
-                  <h2 className="text-center mx-auto text-2xl text-dark font-bold uppercase">
+                  <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
                     WhatsApp
                   </h2>
                   <div className="flex items-start space-x-4">
@@ -94,7 +94,7 @@ export default function Whatsapp({
                                 border: "2px solid #fff",
                                 color: "#fff",
                               }}
-                              className="bg-[#25D366] inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ml-auto w-full"
+                              className="bg-[#25D366] inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-text-color hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ml-auto w-full"
                               rel="noreferrer"
                               onClick={() => {
                                 setOpen(false);
@@ -119,7 +119,7 @@ export default function Whatsapp({
 
                   <button
                     type="button"
-                    className="m-2 inline-flex items-center justify-center rounded-md p-2 text-dark outline outline-primary mx-auto max-w-max"
+                    className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline outline-primary mx-auto max-w-max"
                     onClick={() => {
                       setOpen(false);
                       ReactGA.event({
@@ -131,7 +131,7 @@ export default function Whatsapp({
                   >
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon
-                      className="h-6 w-6 text-dark"
+                      className="h-6 w-6 text-text-color"
                       aria-hidden="true"
                     />
                   </button>

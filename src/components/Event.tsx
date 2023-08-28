@@ -74,7 +74,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
               className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
             >
               <ArrowLeftIcon
-                className="h-6 w-6 text-white mr-2"
+                className="h-6 w-6 text-text-color mr-2"
                 aria-hidden="true"
               />
               <span>{isSpanish ? "Toda Los Eventos" : "All Events"}</span>
@@ -105,7 +105,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                 </h2>
               )}
               {!!eventStartDateTime && (
-                <h3 className="flex flex-row text-2xl text-white opacity-100 font-bold mb-4">
+                <h3 className="flex flex-row text-2xl text-text-color opacity-100 font-bold mb-4">
                   <span className="flex flex-row">
                     <Moment format="MMM/DD">{eventStartDateTime}</Moment>
                   </span>
@@ -130,7 +130,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                       rel="noreferrer"
                     >
                       <MapPinIcon
-                        className="h-6 w-6 text-dark ml-2"
+                        className="h-6 w-6 text-text-color ml-2"
                         aria-hidden="true"
                       />
                     </a>
@@ -140,7 +140,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
               <section aria-labelledby="information-heading" className="mt-4">
                 {!!eventDescription?.html && (
                   <div className="mt-4 space-y-6">
-                    <div className="text-base text-white body-parsed-text opacity-90">
+                    <div className="text-base text-text-color body-parsed-text opacity-90">
                       {parse(eventDescription.html)}
                     </div>
                   </div>
@@ -173,7 +173,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                 href={eventTicketLinkDestination}
                 target="_blank"
                 rel="noreferrer"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-16 py-3 text-base font-medium text-white hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:ring-offset-gray-50 transition max-w-max mx-auto flex-row"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-16 py-3 text-base font-medium text-text-color hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-gray-50 transition max-w-max mx-auto flex-row"
                 onClick={() => {
                   ReactGA.event({
                     category: "Link",
@@ -184,7 +184,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
               >
                 <span>{eventLinkButtonText}</span>
                 <ArrowTopRightOnSquareIcon
-                  className="h-6 w-6 text-dark ml-2"
+                  className="h-6 w-6 text-text-color ml-2"
                   aria-hidden="true"
                 />
               </a>

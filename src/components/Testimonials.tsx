@@ -1,9 +1,9 @@
 import React from "react";
 import parse from "html-react-parser";
-import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import type { TestimonialFieldsFragment } from "@/graphql/generated/graphql";
-import Image from 'next/image';
+import Image from "next/image";
 
 interface TestimonialProps {
   query: string;
@@ -59,7 +59,7 @@ export default function Testimonials({
                             x={86}
                           />
                         </svg>
-                        {testimonial.testimonialText?.html && ( 
+                        {testimonial.testimonialText?.html && (
                           <blockquote className="text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
                             {parse(testimonial.testimonialText?.html)}
                           </blockquote>
@@ -77,10 +77,10 @@ export default function Testimonials({
                         </div>
                       )}
                       <figcaption className="text-base lg:col-start-1 lg:row-start-3">
-                        <div className="font-semibold text-white opacity-90 animate-fade-in-up">
+                        <div className="font-semibold text-text-color opacity-90 animate-fade-in-up">
                           {testimonial.testimonialName}
                         </div>
-                        <div className="mt-1 text-white opacity-80 animate-fade-in-up">
+                        <div className="mt-1 text-text-color opacity-80 animate-fade-in-up">
                           {testimonial.testimonialJobTitle}
                         </div>
                       </figcaption>

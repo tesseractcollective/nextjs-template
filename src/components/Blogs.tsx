@@ -55,10 +55,10 @@ export default function Blogs({
                 )}
                 <div className="flex-auto">
                   <div className="flex items-center justify-between gap-x-4">
-                    <p className="text-xs text-white opacity-80 line-clamp-1 max-w-[180px]">
+                    <p className="text-xs text-text-color opacity-80 line-clamp-1 max-w-[180px]">
                       {blogItem.title}
                     </p>
-                    {/* <p className="flex-none text-xs text-white opacity-40">
+                    {/* <p className="flex-none text-xs text-text-color opacity-40">
                       <time dateTime={blogItem.date}>{blogItem.date}</time>
                     </p> */}
                   </div>
@@ -80,7 +80,7 @@ export default function Blogs({
           <div className="flex flex-row">
             <button
               type="button"
-              className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-white mr-4"
+              className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color mr-4"
               onClick={() => swiperRef.current?.slidePrev()}
             >
               <FontAwesomeIcon
@@ -91,7 +91,7 @@ export default function Blogs({
             </button>
             <button
               type="button"
-              className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-white"
+              className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color"
               onClick={() => swiperRef.current?.slideNext()}
             >
               <FontAwesomeIcon
@@ -131,7 +131,7 @@ export default function Blogs({
                     />
                   )}
                   <div className="absolute inset-0 -z-10 bg-gradient-to-t from-dark/50 via-white/40" />
-                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary ring-inset ring-dark/10 overflow-hidden vignette transition group-hover:ring-primary-hover" />
+                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary ring-inset ring-dark/10 overflow-hidden vignette transition group-hover:ring-secondary" />
 
                   <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
                     <div className="-ml-4 flex items-center gap-x-4">
@@ -143,16 +143,16 @@ export default function Blogs({
                       </svg>
                     </div>
                   </div>
-                  <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
+                  <h3 className="mt-3 text-lg font-semibold leading-6 !text-text-color">
                     <Link
                       href={`/blog/${blogItem.blogSlug || "/blogs"}`}
-                      className="!text-white"
+                      className="!text-text-color"
                     >
                       <span className="absolute inset-0" />
                       {blogItem.title}
                     </Link>
                   </h3>
-                  <div className="absolute inset-0 bg-gradient-to-b from-primary-hover transition opacity-0 group-hover:opacity-30 z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-secondary transition opacity-0 group-hover:opacity-30 z-10" />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark transition opacity-0 group-hover:opacity-30 z-10" />
                 </article>
               </SwiperSlide>
@@ -182,7 +182,13 @@ export default function Blogs({
             {(!!blogHeader && blogHeader) || "Blogs"}
           </h2>
           <div className="mx-auto flex flex-wrap flex-row gap-8 animate-col-width items-stretch w-full my-8">
-            <Fade direction="up" triggerOnce cascade damping={0.1} className="w-full md:w=[50%] lg:w-[40%] xl:w-[31.5%] mx-auto">
+            <Fade
+              direction="up"
+              triggerOnce
+              cascade
+              damping={0.1}
+              className="w-full md:w=[50%] lg:w-[40%] xl:w-[31.5%] mx-auto"
+            >
               {FilteredBlogs?.map((blogItem) => (
                 <article
                   key={blogItem.id}
@@ -199,8 +205,8 @@ export default function Blogs({
                       className="absolute inset-0 -z-10 h-full w-full object-cover"
                     />
                   )}
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-dark via-gray-900/40 group-hover:from-primary-hover transition-all" />
-                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition ring-primary group-hover:ring-primary-hover ring-inset" />
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-dark via-gray-900/40 group-hover:from-secondary transition-all" />
+                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition ring-primary group-hover:ring-secondary ring-inset" />
 
                   <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
                     <div className="-ml-4 flex items-center gap-x-4">
@@ -212,7 +218,7 @@ export default function Blogs({
                       </svg>
                     </div>
                   </div>
-                  <h3 className="mt-3 text-lg font-semibold leading-6 !text-white">
+                  <h3 className="mt-3 text-lg font-semibold leading-6 !text-text-color">
                     <Link href={`/blog/${blogItem.blogSlug}`}>
                       <span className="absolute inset-0 z-30" />
                       {blogItem.title}

@@ -15,7 +15,7 @@ export default function VideoBox({
     <section className="container mx-auto dark-section my-8">
       <div className="mx-auto">
         {!!videoTitle && (
-          <h3 className="text-lg font-semibold leading-7 text-white text-center mb-4">
+          <h3 className="text-lg font-semibold leading-7 text-text-color text-center mb-4">
             {videoTitle}
           </h3>
         )}

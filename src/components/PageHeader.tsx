@@ -24,33 +24,31 @@ export default function PageHeader({
   return (
     <div>
       {pageWidthStyle === "Full" && (
-        <section
-          className={`relative "w-full py-4 h-[30rem] ${cssClass}`}
-        >
+        <section className={`relative "w-full py-4 h-[30rem] ${cssClass}`}>
           <div aria-hidden="true" className="relative overflow-hidden">
             {!!pageHeaderImageProp && (
               <Fade direction="up" triggerOnce>
-                  <Image
-                    src={pageHeaderImageProp}
-                    alt=""
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    className="h-[30rem] w-full object-cover object-center"
-                  />
+                <Image
+                  src={pageHeaderImageProp}
+                  alt=""
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                  className="h-[30rem] w-full object-cover object-center"
+                />
               </Fade>
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-dark" />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark section-fade-invert" />
           </div>
           <div className="absolute bottom-1/3 left-0 right-0 w-full mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
             <Fade direction="up" triggerOnce>
               {!!pageHeaderTitleProp && (
-                <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow mt-0 mb-1 py-0 text-center">
+                <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow mt-0 mb-1 py-0 text-center text-text-overlay">
                   {pageHeaderTitleProp}
                 </h1>
               )}
               {!!pageHeaderSubtitleProp && (
-                <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80">
+                <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 text-text-overlay">
                   {pageHeaderSubtitleProp}
                 </h2>
               )}

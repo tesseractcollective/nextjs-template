@@ -163,7 +163,7 @@ export default function TextContentSection({
                       "w-full md:w-6/12") ||
                     (textContentItem?.textContentWidth === "Full" &&
                       "w-full md:w-10/12")
-                  }`}
+                  } ${textContentItem?.cssClass}`}
                 >
                   <div
                     className={`h-full p-4 text-${
@@ -279,8 +279,8 @@ export default function TextContentSection({
                     label={callToActionItem.ctaLabel}
                     cssClass={`${callToActionItem.ctaClass} ${
                       callToActionItem?.ctaPrimary
-                        ? "border-white text-white border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
-                        : "text-white border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
+                        ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
+                        : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
                     } mr-2 max-w-max`}
                   />
                 </div>

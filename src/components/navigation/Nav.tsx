@@ -77,7 +77,7 @@ export default function Nav({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-dark pb-12 shadow-xl border-r-primary border-r">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto pb-12 shadow-xl border-r-primary border-r bg-bg-secondary">
                 <div className="flex px-4 pb-2 pt-5">
                   <Link
                     href="/"
@@ -106,7 +106,7 @@ export default function Nav({
                         />
                       </>
                     ) : (
-                      <span className="font-bold text-2xl text-white">
+                      <span className="font-bold text-2xl text-text-color">
                         {title}
                       </span>
                     )}
@@ -118,13 +118,14 @@ export default function Nav({
                   >
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon
-                      className="h-6 w-6 text-white"
+                      className="h-6 w-6 text-text-color"
                       aria-hidden="true"
                     />
                   </button>
                 </div>
 
                 {!!items &&
+                  items.length >= 1 &&
                   items.map((mainNavigationItem) => {
                     const hasItems = mainNavigationItem.items.length >= 1;
                     return (
@@ -139,7 +140,7 @@ export default function Nav({
                                     classNames(
                                       selected
                                         ? "border-primary text-primary"
-                                        : "border-transparent text-white",
+                                        : "border-transparent text-text-color",
                                       "flex-1 whitespace-nowrap border-dark hover:border-white border-b-2 px-1 py-4 text-base font-medium"
                                     )
                                   }
@@ -182,7 +183,7 @@ export default function Nav({
                                           key={item?.link}
                                           link={item?.link}
                                           label={item?.label}
-                                          cssClass={`mt-2 block text-xs md:text-sm font-medium text-white text-center group-hover:text-primary transition ${item?.cssClass}`}
+                                          cssClass={`mt-2 block text-xs md:text-sm font-medium text-text-color text-center group-hover:text-primary transition ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
                                           <span
@@ -211,12 +212,12 @@ export default function Nav({
                                   }
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
-                                  className="-m-2 block p-2 font-medium text-white max-w-max mx-auto"
+                                  className="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto"
                                   onClick={() => {
                                     ReactGA.event({
                                       category: "Link",
-                                      action: mainNavigationItem.link,
-                                      label: mainNavigationItem.link,
+                                      action: mainNavigationItem.link || "",
+                                      label: mainNavigationItem.link || "",
                                     });
                                   }}
                                 >
@@ -226,7 +227,7 @@ export default function Nav({
                                 <Link
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
-                                  className="-m-2 block p-2 font-medium text-white max-w-max mx-auto"
+                                  className="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto"
                                   onClick={() => {
                                     setOpen(false);
                                     ReactGA.event({
@@ -249,18 +250,18 @@ export default function Nav({
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <SocialMediaIcons
                     siteLibrary={siteLibrary}
-                    cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center"
+                    cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2"
                   />
                   <div className="text-center">
                     {!!contactName && (
-                      <p className="text-white text-xs font-bold">
+                      <p className="text-text-color text-xs font-bold">
                         <span>{contactName}</span>
                       </p>
                     )}
                     {!!contactPhone && (
                       <a
                         href={`tel:${contactPhone.replace("-", "")}`}
-                        className="text-xs block my-1 text-link !border-none hover:!border-none"
+                        className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
                       >
                         <span>{contactPhone}</span>
                       </a>
@@ -268,7 +269,7 @@ export default function Nav({
                     {!!contactEmail && (
                       <a
                         href={`mailto:${contactEmail}`}
-                        className="text-xs block my-1 text-link !border-none hover:!border-none"
+                        className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
                       >
                         <span>{contactEmail}</span>
                       </a>
@@ -282,7 +283,7 @@ export default function Nav({
                 >
                   <span className="sr-only">Close menu</span>
                   <XMarkIcon
-                    className="h-6 w-6 text-white"
+                    className="h-6 w-6 text-text-color"
                     aria-hidden="true"
                   />
                 </button>
@@ -294,11 +295,10 @@ export default function Nav({
 
       <header className="relative">
         <nav aria-label="Top">
-          <div className="bg-dark">
+          <div className="">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
               <div className="border-b border-dark">
                 <div className="flex h-16 items-center justify-between">
-                  {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max">
                     <Link
                       href="/"
@@ -325,7 +325,7 @@ export default function Nav({
                           />
                         </>
                       ) : (
-                        <span className="font-bold text-2xl text-white">
+                        <span className="font-bold text-2xl text-text-color">
                           {title}
                         </span>
                       )}
@@ -337,6 +337,7 @@ export default function Nav({
                     <Popover.Group className="inset-x-0 bottom-0 px-4 z-[99999]">
                       <div className="flex h-full justify-center space-x-8">
                         {!!items &&
+                          items.length >= 1 &&
                           items
                             .filter(
                               (mainNavigationItem) =>
@@ -359,7 +360,7 @@ export default function Nav({
                                               className={classNames(
                                                 open
                                                   ? "border-primary text-primary"
-                                                  : "border-dark text-white opacity-90 hover:text-white hover:opacity-100",
+                                                  : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
                                                 "relative z-10 -mb-px flex items-center pt-px text-xs md:text-sm font-medium transition-colors duration-200 ease-out border-dark hover:border-white border-b-2"
                                               )}
                                             >
@@ -376,7 +377,7 @@ export default function Nav({
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                           >
-                                            <Popover.Panel className="absolute inset-x-0 top-full text-xs md:text-sm text-white border-t-2 border-b-2 border-primary">
+                                            <Popover.Panel className="absolute inset-x-0 top-full text-xs md:text-sm text-text-color border-t-2 border-b-2 border-primary box-shadow">
                                               {({ close }) => (
                                                 <>
                                                   <div
@@ -384,7 +385,7 @@ export default function Nav({
                                                     aria-hidden="true"
                                                   />
 
-                                                  <div className="relative bg-dark">
+                                                  <div className="relative bg-bg-secondary">
                                                     <div className="mx-auto max-w-8xl px-8">
                                                       <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
                                                         {mainNavigationItem.items.map(
@@ -425,7 +426,7 @@ export default function Nav({
                                                                   label={
                                                                     item?.label
                                                                   }
-                                                                  cssClass={`mt-4 block font-medium text-white ${item?.cssClass}`}
+                                                                  cssClass={`mt-4 block font-medium text-text-color ${item?.cssClass}`}
                                                                   sameTab={
                                                                     item?.sameTab
                                                                   }
@@ -461,7 +462,7 @@ export default function Nav({
                                                         Close menu
                                                       </span>
                                                       <XMarkIcon
-                                                        className="h-6 w-6 text-white"
+                                                        className="h-6 w-6 text-text-color"
                                                         aria-hidden="true"
                                                       />
                                                     </button>
@@ -479,7 +480,7 @@ export default function Nav({
                                       key={mainNavigationItem?.link}
                                       link={mainNavigationItem?.link}
                                       label={mainNavigationItem?.label}
-                                      cssClass={`flex items-center text-xs md:text-sm font-medium text-white opacity-90 hover:text-white hover:opacity-100 ${mainNavigationItem?.cssClass}`}
+                                      cssClass={`flex items-center text-xs md:text-sm font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 ${mainNavigationItem?.cssClass}`}
                                       sameTab={mainNavigationItem?.sameTab}
                                     />
                                   )}
@@ -494,7 +495,7 @@ export default function Nav({
                   <div className="flex flex-1 items-center justify-between lg:hidden max-w-max">
                     <button
                       type="button"
-                      className="ml-2 rounded-md bg-dark px-2 py-1 text-white border border-white hover:border-primary transition group"
+                      className="ml-2 rounded-md px-2 py-1 text-text-color border border-white hover:border-primary transition group"
                       onClick={() => {
                         setOpen(true);
                         ReactGA.event({
@@ -536,7 +537,7 @@ export default function Nav({
                         />
                       </>
                     ) : (
-                      <span className="font-bold text-2xl text-white">
+                      <span className="font-bold text-2xl text-text-color">
                         {title}
                       </span>
                     )}
@@ -554,7 +555,7 @@ export default function Nav({
                             key={mainNavigationItem?.link}
                             link={mainNavigationItem?.link}
                             label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-xs md:text-sm font-bold text-white opacity-90 hover:text-white hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-4 py-2 rounded ${mainNavigationItem?.cssClass}`}
+                            cssClass={`flex items-center text-xs md:text-sm font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-4 py-2 rounded ${mainNavigationItem?.cssClass}`}
                             sameTab={mainNavigationItem?.sameTab}
                           />
                         ))}

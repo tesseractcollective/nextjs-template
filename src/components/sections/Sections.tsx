@@ -61,6 +61,12 @@ export default function Sections({ sectionData, siteLibrary }: SectionsProps) {
   );
   return (
     <>
+      {!!textContentData && (
+        <TextContentSection
+          textContentData={textContentData}
+          callToActionData={callToActionData}
+        />
+      )}
       {!!gridBoxData && gridBoxData?.length >= 1 && (
         <section className="container mx-auto z-20 w-10/12">
           <GridBox gridBoxData={gridBoxData} />
@@ -101,12 +107,6 @@ export default function Sections({ sectionData, siteLibrary }: SectionsProps) {
         <ContactFormSection
           contactFormData={contactFormData}
           siteLibrary={siteLibrary}
-        />
-      )}
-      {!!textContentData && (
-        <TextContentSection
-          textContentData={textContentData}
-          callToActionData={callToActionData}
         />
       )}
       {!!accordionData && <AccordionSection accordionData={accordionData} />}

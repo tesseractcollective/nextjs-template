@@ -65,7 +65,7 @@ const FormTest = () => {
             <Field id="Message" name="Message" placeholder="Message" />
             <button
               type="submit"
-              className="bg-primary-fade text-center border-primary rounded-sm border p-4"
+              className="bg-primary text-center border-primary rounded-sm border p-4"
             >
               Submit
             </button>

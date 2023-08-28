@@ -93,7 +93,17 @@ fragment siteLibraryFields on SiteLibrary {
   }
   paypalClientId
   themeColor {
-    dark {
+    background {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    backgroundSecondary {
       hex
       rgba {
         r
@@ -113,7 +123,7 @@ fragment siteLibraryFields on SiteLibrary {
       }
       css
     }
-    primaryHover {
+    secondary {
       hex
       rgba {
         r
@@ -123,7 +133,7 @@ fragment siteLibraryFields on SiteLibrary {
       }
       css
     }
-    primaryFade {
+    tertiary {
       hex
       rgba {
         r
@@ -143,7 +153,17 @@ fragment siteLibraryFields on SiteLibrary {
       }
       css
     }
-    white {
+    text {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    textOverlay {
       hex
       rgba {
         r

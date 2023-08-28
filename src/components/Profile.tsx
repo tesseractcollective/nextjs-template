@@ -54,7 +54,7 @@ export default function Profile({
           <link rel="shortcut icon" href={siteLibrary.favicon.url} />
         )}
       </Head>
-      <div className="bg-dark">
+      <div className="bg-background">
         <div aria-hidden="true" className="relative overflow-hidden">
           <Fade direction="up" triggerOnce>
             {!!profile.heroImage?.url && (
@@ -68,7 +68,7 @@ export default function Profile({
               />
             )}
           </Fade>
-          <div className="absolute inset-0 bg-gradient-to-t from-dark" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background" />
         </div>
 
         <div className="relative mx-auto -mt-12 max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
@@ -101,7 +101,7 @@ export default function Profile({
               soundcloudLinkProp={profile?.soundcloudLink || undefined}
             />
             {profile.fullBio?.html && (
-              <div className="mt-4 text-gray-500 body-parsed-text">
+              <div className="mt-4 text-text-color body-parsed-text">
                 {parse(profile.fullBio?.html)}
               </div>
             )}
@@ -112,13 +112,13 @@ export default function Profile({
         <div className="bg-invert px-4 overflow-x-hidden">
           <div className="mx-auto container relative flex flex-col md:items-center md:justify-center">
             {profile.miniBio && (
-              <div className="py-16 md:py-32 px-2 text-4xl font-bold tracking-tight transition text-white lg:text-dark md:text-5xl max-w-max text-center mx-auto">
+              <div className="px-2 text-4xl font-bold tracking-tight text-text-color md:text-5xl max-w-4xl text-center mx-auto relative block my-10 md:mt-12 md:mb-32">
                 {parse(profile.miniBio)}
               </div>
             )}
             {profile.imageGallery.length >= 1 && (
               <>
-                <div className="relative pb-0 md:pb-32">
+                <div className="relative pb-0 md:pb-32 block md:mb-16">
                   <div className="hidden md:flex min-w-max space-x-6 mx-auto lg:space-x-8">
                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
                       {profile?.imageGallery[0]?.url && (
@@ -219,31 +219,29 @@ export default function Profile({
                     </div>
                   </div>
                 </div>
-                <div className="block mb-16">
-                  <ul
-                    role="list"
-                    className="grid md:hidden grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
-                  >
-                    {profile.imageGallery.map((image) => (
-                      <li key={image?.url} className="relative">
-                        <Fade direction="up" triggerOnce cascade damping={0.1}>
-                          <div className="group aspect-h-10 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 relative">
-                            {!!image?.url && (
-                              <Image
-                                src={image?.url}
-                                alt=""
-                                className="object-center mx-auto object-cover"
-                                width={0}
-                                height={0}
-                                sizes="100%"
-                              />
-                            )}
-                          </div>
-                        </Fade>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul
+                  role="list"
+                  className="grid md:hidden grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8 mb-12"
+                >
+                  {profile.imageGallery.map((image) => (
+                    <li key={image?.url} className="relative">
+                      <Fade direction="up" triggerOnce cascade damping={0.1}>
+                        <div className="group aspect-h-10 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 relative h-24">
+                          {!!image?.url && (
+                            <Image
+                              src={image?.url}
+                              alt=""
+                              className="object-center mx-auto object-cover block"
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                            />
+                          )}
+                        </div>
+                      </Fade>
+                    </li>
+                  ))}
+                </ul>
               </>
             )}
           </div>
@@ -252,7 +250,10 @@ export default function Profile({
 
       <section className="container mx-auto">
         {!!profile?.tourWidgetiFrame && (
-          <div className="my-16 mx-auto" id="profile-tourwidget">
+          <div
+            className="my-16 mx-auto max-w-5xl px-4 rounded"
+            id="profile-tourwidget"
+          >
             {parse(profile.tourWidgetiFrame)}
           </div>
         )}
@@ -287,7 +288,7 @@ export default function Profile({
           </div>
         )}
       </section>
-      <div className="bg-white my-16">
+      <div className="bg-invert my-16">
         <section
           aria-labelledby="features-heading"
           className="relative h-70vh flex items-center"
@@ -309,11 +310,11 @@ export default function Profile({
               <div className="lg:col-start-2 text-center lg:text-left">
                 <h2
                   id="contacts-heading"
-                  className="font-medium text-dark mb-0"
+                  className="font-medium text-background mb-0"
                 >
                   {profile.name}
                 </h2>
-                <p className="mt-0 mb-4 text-3xl font-bold tracking-tight text-dark opacity-80">
+                <p className="mt-0 mb-4 text-3xl font-bold tracking-tight text-background opacity-80">
                   {siteLibrary.isSpanish ? "Contáctenos" : "Contact Details"}
                 </p>
                 <ul className="flex flex-col items-center justify-center lg:flex-row gap-y-8 gap-x-24">
@@ -332,17 +333,17 @@ export default function Profile({
                         )}
                         <div>
                           {contact.contactName && (
-                            <h3 className="text-sm lg:text-base font-bold leading-6 lg:leading-7 tracking-tight text-dark">
+                            <h3 className="text-sm lg:text-base font-bold leading-6 lg:leading-7 tracking-tight text-text-color">
                               {contact.contactName}
                             </h3>
                           )}
                           {contact.contactTitle && (
-                            <p className="text-xs lg:text-sm font-semibold leading-6 text-primary">
+                            <p className="text-xs lg:text-sm font-semibold leading-6 !text-primary">
                               {contact.contactTitle}
                             </p>
                           )}
                           <SocialMediaIcons
-                            cssClass="text-sm my-0 text-dark opacity-80 flex flex-row items-center justify-center lg:justify-start"
+                            cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2"
                             phoneLinkProp={contact?.contactPhone || undefined}
                             whatsappLinkProp={
                               contact?.contactWhatsapp || undefined
@@ -350,7 +351,7 @@ export default function Profile({
                             emailLinkProp={contact?.contactEmail || undefined}
                           />
                           {!!contact.contactAddress && (
-                            <p className="text-xs md:text-sm my-0 text-dark opacity-80 flex flex-row items-center">
+                            <p className="text-xs md:text-sm my-0 text-text-color opacity-80 flex flex-row items-center">
                               <FontAwesomeIcon
                                 icon={faLocationDot as IconProp}
                                 className="fa-fw mr-2 h-4 w-4"

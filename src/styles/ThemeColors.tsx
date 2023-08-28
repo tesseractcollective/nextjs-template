@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useEffect } from "react";
 import type { SiteLibraryFieldsFragment } from "@/graphql/generated/graphql";
 
 export interface ThemeColorsProps {
@@ -16,10 +16,20 @@ export default function ThemeColors({ siteLibrary }: ThemeColorsProps) {
       document.body.classList.add(siteLibrary?.siteLibraryJson?.siteID);
     }
 
-    if (siteLibrary?.themeColor?.dark?.hex) {
+    if (siteLibrary?.themeColor?.background?.hex) {
       document.body.style.setProperty(
         "--dark",
-        siteLibrary?.themeColor.dark.hex
+        siteLibrary?.themeColor.background.hex
+      );
+      document.body.style.setProperty(
+        "--background",
+        siteLibrary?.themeColor.background.hex
+      );
+    }
+    if (siteLibrary?.themeColor?.backgroundSecondary?.hex) {
+      document.body.style.setProperty(
+        "--background-secondary",
+        siteLibrary?.themeColor.backgroundSecondary.hex
       );
     }
     if (siteLibrary?.themeColor?.primary?.hex) {
@@ -36,21 +46,21 @@ export default function ThemeColors({ siteLibrary }: ThemeColorsProps) {
         siteLibrary.themeColor.primary.hex
       );
     }
-    if (siteLibrary?.themeColor?.primaryHover?.hex) {
+    if (siteLibrary?.themeColor?.secondary?.hex) {
       document.body.style.setProperty(
-        "--primary-hover",
-        siteLibrary.themeColor.primaryHover.hex
+        "--secondary",
+        siteLibrary.themeColor.secondary.hex
       );
       document.body.style.setProperty(
         "--swiper-pagination-bullet-inactive-color",
-        siteLibrary?.themeColor?.primaryHover.hex
+        siteLibrary?.themeColor?.secondary.hex
       );
     }
 
-    if (siteLibrary?.themeColor?.primaryFade?.hex) {
+    if (siteLibrary?.themeColor?.tertiary?.hex) {
       document.body.style.setProperty(
-        "--primary-fade",
-        siteLibrary?.themeColor.primaryFade.hex
+        "--tertiary",
+        siteLibrary?.themeColor.tertiary.hex
       );
     }
 
@@ -65,21 +75,29 @@ export default function ThemeColors({ siteLibrary }: ThemeColorsProps) {
       );
     }
 
-    if (siteLibrary?.themeColor?.white?.hex) {
+    if (siteLibrary?.themeColor?.text?.hex) {
       document.body.style.setProperty(
-        "--white",
-        siteLibrary?.themeColor.white.hex
+        "--text",
+        siteLibrary?.themeColor.text.hex
+      );
+    }
+    if (siteLibrary?.themeColor?.textOverlay?.hex) {
+      document.body.style.setProperty(
+        "--text-text-overlay",
+        siteLibrary?.themeColor.textOverlay.hex
       );
     }
   }, [
     siteLibrary?.siteCssBodyClass,
     siteLibrary?.siteLibraryJson?.siteID,
-    siteLibrary?.themeColor?.dark?.hex,
-    siteLibrary?.themeColor?.primary?.hex,
-    siteLibrary?.themeColor.primaryFade?.hex,
-    siteLibrary?.themeColor?.primaryFadeOpacity?.hex,
-    siteLibrary?.themeColor?.primaryHover?.hex,
-    siteLibrary?.themeColor?.white?.hex,
+    siteLibrary.themeColor.background.hex,
+    siteLibrary.themeColor.backgroundSecondary.hex,
+    siteLibrary.themeColor.primary.hex,
+    siteLibrary.themeColor.primaryFadeOpacity.hex,
+    siteLibrary.themeColor.secondary.hex,
+    siteLibrary.themeColor.tertiary.hex,
+    siteLibrary.themeColor.text.hex,
+    siteLibrary.themeColor.textOverlay.hex,
   ]);
   return <></>;
 }
