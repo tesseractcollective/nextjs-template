@@ -414,6 +414,7 @@ fragment pageFields on Page {
         ...GridBoxFields
         ...AccordionFields
         ...VideoBoxFields
+        ...LoopTextFields
       }
     }
   }
