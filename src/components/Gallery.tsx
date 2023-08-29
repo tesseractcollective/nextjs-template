@@ -11,68 +11,72 @@ interface GalleryProps {
 }
 
 export default function Gallery({ elements }: GalleryProps) {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 1500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    arrows: false,
-  };
   if (!elements) return <></>;
-  const finalImages = elements.gallery.map((image) => image.url);
-  return (
-    <>
-      {!!elements?.galleryLayout && elements.galleryLayout === "grid" ? (
-        <div className="my-16 magic-grid block h-full">
-          {!!elements?.gallery && elements?.gallery.length >= 1 && (
-            <div className="block px-4 max-w-5xl mx-auto">
-              <MagicGrid items={finalImages.length} gutter={25} center>
-                {finalImages.map((finalImage, index) => (
-                  <div
-                    key={finalImage}
-                    className="max-w-[300px] max-h-[440px] block mx-auto"
-                    id={`gallery-${index}`}
-                  >
-                    <Image
-                      src={finalImage}
-                      alt={`Gallery Image: ${index}`}
-                      className="h-full w-full object-cover max-w-[300px] max-h-[440px] block mx-auto"
-                      sizes="100%"
-                      width={0}
-                      height={0}
-                    />
-                  </div>
-                ))}
-              </MagicGrid>
-            </div>
-          )}
+
+  const gallery = elements.gallery;
+  const galleryLayout = elements.galleryLayout;
+
+  const finalImages = gallery.map((image) => image.url);
+  if (!finalImages) return <></>;
+  if (galleryLayout === "grid" && gallery.length >= 1) {
+    return (
+      <div className="my-16 magic-grid block h-full">
+        <div className="block px-4 max-w-5xl mx-auto">
+          <MagicGrid items={finalImages.length} gutter={25} center>
+            {finalImages.map((finalImage, index) => (
+              <div
+                key={finalImage}
+                className="max-w-[300px] max-h-[440px] block mx-auto"
+                id={`gallery-${index}`}
+              >
+                <Image
+                  src={finalImage}
+                  alt={`Gallery Image: ${index}`}
+                  className="object-cover block mx-auto h-full"
+                  sizes="100%"
+                  width={300}
+                  height={440}
+                />
+              </div>
+            ))}
+          </MagicGrid>
         </div>
-      ) : (
-        <>
-          {!!elements?.gallery && elements?.gallery.length >= 1 && (
-            <Slider {...settings} className="">
-              {elements?.gallery.map((image) => (
-                <div
-                  className="relative h-70vh md:h-screen max-h-[80vh]"
-                  key={image.url}
-                >
-                  <Image
-                    src={image.url}
-                    alt={image.url}
-                    fill
-                    sizes="100vw"
-                    style={{
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-              ))}
-            </Slider>
-          )}
-        </>
-      )}
-    </>
-  );
+      </div>
+    );
+  }
+
+  if (gallery.length >= 1) {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 1500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      arrows: false,
+    };
+
+    return (
+      <Slider {...settings} className="">
+        {gallery.map((image) => (
+          <div
+            className="relative h-70vh md:h-screen max-h-[80vh]"
+            key={image.url}
+          >
+            <Image
+              src={image.url}
+              alt={image.url}
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
+            />
+          </div>
+        ))}
+      </Slider>
+    );
+  }
+
+  return null; // No gallery items to render
 }
