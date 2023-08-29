@@ -101,6 +101,9 @@ export default function Profiles({
                                 instagramLinkProp={
                                   profile?.instagramLink || undefined
                                 }
+                                spotifyLinkProp={
+                                  profile?.spotifyLink || undefined
+                                }
                                 facebookLinkProp={
                                   profile?.facebookLink || undefined
                                 }
@@ -109,6 +112,18 @@ export default function Profiles({
                                 }
                                 youtubeLinkProp={
                                   profile?.youtubeLink || undefined
+                                }
+                                tikTokLinkProp={
+                                  profile?.tikTokLink || undefined
+                                }
+                                appleMusicLinkProp={
+                                  profile?.appleMusicLink || undefined
+                                }
+                                pandoraLinkProp={
+                                  profile?.pandoraLink || undefined
+                                }
+                                soundcloudLinkProp={
+                                  profile?.soundcloudLink || undefined
                                 }
                                 linkedinLinkProp={
                                   profile?.linkedinLink || undefined
@@ -120,7 +135,7 @@ export default function Profiles({
                               {!!profile && (
                                 <button
                                   type="button"
-                                  className="bg-none text-text-color px-4 md:px-2 py-2 max-w-max block no-underline my-4 w-full ml-auto border-round text-xs rounded bg-dark transition hover:bg-gradient-to-tr hover:from-primary hover:to-secondary uppercase group"
+                                  className="bg-none text-text-color px-4 md:px-2 py-1 max-w-max no-underline my-4 w-full ml-auto border-round text-xs rounded bg-background transition hover:bg-gradient-to-tr hover:from-primary hover:to-secondary uppercase group flex items-center justify-center"
                                   onClick={() => {
                                     setSelctedProfile(profile);
                                     setOpen(true);
@@ -131,7 +146,7 @@ export default function Profiles({
                                   </span>
                                   <FontAwesomeIcon
                                     icon={faArrowUpRightFromSquare as IconProp}
-                                    className="fa-fw fa-sm ml-2 opacity-80 group-hover:opacity-100 transition"
+                                    className="fa-fw fa-sm ml-2 opacity-80 group-hover:opacity-100 transition h-3 w-3"
                                   />
                                 </button>
                               )}
@@ -169,12 +184,117 @@ export default function Profiles({
                                   leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                                   leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                                 >
-                                  <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex">
-                                    {!!selectedProfile.name && (
-                                      <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
-                                        {selectedProfile.name}
-                                      </h2>
-                                    )}
+                                  <Dialog.Panel className="relative transform overflow-x-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-background flex-col flex max-h-[80vh] overflow-scroll">
+                                    <div className="">
+                                      <div
+                                        aria-hidden="true"
+                                        className="relative overflow-hidden"
+                                      >
+                                        {!!selectedProfile.heroImage?.url && (
+                                          <Fade direction="up" triggerOnce>
+                                            <Image
+                                              src={
+                                                selectedProfile.heroImage?.url
+                                              }
+                                              alt=""
+                                              width={0}
+                                              height={0}
+                                              sizes="100%"
+                                              className="h-[20rem] w-full object-cover object-center"
+                                            />
+                                          </Fade>
+                                        )}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-background" />
+                                      </div>
+
+                                      <div className="relative mx-auto -mt-24 max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+                                        <div className="mx-auto max-w-2xl text-center lg:max-w-4xl flex flex-col">
+                                          <Fade
+                                            direction="up"
+                                            cascade
+                                            damping={0.25}
+                                            triggerOnce
+                                          >
+                                            {selectedProfile.avatarImage
+                                              ?.url && (
+                                              <Image
+                                                src={
+                                                  selectedProfile.avatarImage
+                                                    ?.url
+                                                }
+                                                alt={
+                                                  selectedProfile?.name || ""
+                                                }
+                                                width={0}
+                                                height={0}
+                                                sizes="100%"
+                                                className="w-full max-w-[200px] mx-auto rounded-full"
+                                              />
+                                            )}
+                                            <h2 className="text-3xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase">
+                                              {selectedProfile.name}
+                                            </h2>
+                                          </Fade>
+                                          <SocialMediaIcons
+                                            cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center gap-x-2"
+                                            instagramLinkProp={
+                                              selectedProfile?.instagramLink ||
+                                              undefined
+                                            }
+                                            spotifyLinkProp={
+                                              selectedProfile?.spotifyLink ||
+                                              undefined
+                                            }
+                                            facebookLinkProp={
+                                              selectedProfile?.facebookLink ||
+                                              undefined
+                                            }
+                                            twitterLinkProp={
+                                              selectedProfile?.twitterLink ||
+                                              undefined
+                                            }
+                                            youtubeLinkProp={
+                                              selectedProfile?.youtubeLink ||
+                                              undefined
+                                            }
+                                            tikTokLinkProp={
+                                              selectedProfile?.tikTokLink ||
+                                              undefined
+                                            }
+                                            appleMusicLinkProp={
+                                              selectedProfile?.appleMusicLink ||
+                                              undefined
+                                            }
+                                            pandoraLinkProp={
+                                              selectedProfile?.pandoraLink ||
+                                              undefined
+                                            }
+                                            soundcloudLinkProp={
+                                              selectedProfile?.soundcloudLink ||
+                                              undefined
+                                            }
+                                            linkedinLinkProp={
+                                              selectedProfile?.linkedinLink ||
+                                              undefined
+                                            }
+                                            emailLinkProp={
+                                              selectedProfile.email || undefined
+                                            }
+                                            phoneLinkProp={
+                                              selectedProfile.phoneNumber ||
+                                              undefined
+                                            }
+                                          />
+                                          {selectedProfile.fullBio?.html && (
+                                            <div className="mt-4 text-text-color body-parsed-text">
+                                              {parse(
+                                                selectedProfile.fullBio?.html
+                                              )}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                                    </div>
 
                                     <button
                                       type="button"

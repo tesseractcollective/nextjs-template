@@ -8761,7 +8761,7 @@ export type LayoutBlockColumnWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type LayoutBlockColumnsectionsUnion = Accordion | CallToAction | ContactForm | GridBox | HeroMediaSlider | TextContent | VideoBox;
+export type LayoutBlockColumnsectionsUnion = Accordion | CallToAction | ContactForm | GridBox | HeroMediaSlider | LoopText | TextContent | VideoBox;
 
 export type LayoutBlockColumnsectionsUnionConnectInput = {
   Accordion?: InputMaybe<AccordionConnectInput>;
@@ -8769,6 +8769,7 @@ export type LayoutBlockColumnsectionsUnionConnectInput = {
   ContactForm?: InputMaybe<ContactFormConnectInput>;
   GridBox?: InputMaybe<GridBoxConnectInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderConnectInput>;
+  LoopText?: InputMaybe<LoopTextConnectInput>;
   TextContent?: InputMaybe<TextContentConnectInput>;
   VideoBox?: InputMaybe<VideoBoxConnectInput>;
 };
@@ -8779,6 +8780,7 @@ export type LayoutBlockColumnsectionsUnionCreateInput = {
   ContactForm?: InputMaybe<ContactFormCreateInput>;
   GridBox?: InputMaybe<GridBoxCreateInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderCreateInput>;
+  LoopText?: InputMaybe<LoopTextCreateInput>;
   TextContent?: InputMaybe<TextContentCreateInput>;
   VideoBox?: InputMaybe<VideoBoxCreateInput>;
 };
@@ -8799,6 +8801,7 @@ export type LayoutBlockColumnsectionsUnionCreateWithPositionInput = {
   ContactForm?: InputMaybe<ContactFormCreateWithPositionInput>;
   GridBox?: InputMaybe<GridBoxCreateWithPositionInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderCreateWithPositionInput>;
+  LoopText?: InputMaybe<LoopTextCreateWithPositionInput>;
   TextContent?: InputMaybe<TextContentCreateWithPositionInput>;
   VideoBox?: InputMaybe<VideoBoxCreateWithPositionInput>;
 };
@@ -8809,6 +8812,7 @@ export type LayoutBlockColumnsectionsUnionUpdateInput = {
   ContactForm?: InputMaybe<ContactFormUpdateInput>;
   GridBox?: InputMaybe<GridBoxUpdateInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderUpdateInput>;
+  LoopText?: InputMaybe<LoopTextUpdateInput>;
   TextContent?: InputMaybe<TextContentUpdateInput>;
   VideoBox?: InputMaybe<VideoBoxUpdateInput>;
 };
@@ -8830,6 +8834,7 @@ export type LayoutBlockColumnsectionsUnionUpdateManyWithNestedWhereInput = {
   ContactForm?: InputMaybe<ContactFormUpdateManyWithNestedWhereInput>;
   GridBox?: InputMaybe<GridBoxUpdateManyWithNestedWhereInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderUpdateManyWithNestedWhereInput>;
+  LoopText?: InputMaybe<LoopTextUpdateManyWithNestedWhereInput>;
   TextContent?: InputMaybe<TextContentUpdateManyWithNestedWhereInput>;
   VideoBox?: InputMaybe<VideoBoxUpdateManyWithNestedWhereInput>;
 };
@@ -8851,6 +8856,7 @@ export type LayoutBlockColumnsectionsUnionUpdateWithNestedWhereUniqueAndPosition
   ContactForm?: InputMaybe<ContactFormUpdateWithNestedWhereUniqueAndPositionInput>;
   GridBox?: InputMaybe<GridBoxUpdateWithNestedWhereUniqueAndPositionInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderUpdateWithNestedWhereUniqueAndPositionInput>;
+  LoopText?: InputMaybe<LoopTextUpdateWithNestedWhereUniqueAndPositionInput>;
   TextContent?: InputMaybe<TextContentUpdateWithNestedWhereUniqueAndPositionInput>;
   VideoBox?: InputMaybe<VideoBoxUpdateWithNestedWhereUniqueAndPositionInput>;
 };
@@ -8861,6 +8867,7 @@ export type LayoutBlockColumnsectionsUnionUpdateWithNestedWhereUniqueInput = {
   ContactForm?: InputMaybe<ContactFormUpdateWithNestedWhereUniqueInput>;
   GridBox?: InputMaybe<GridBoxUpdateWithNestedWhereUniqueInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderUpdateWithNestedWhereUniqueInput>;
+  LoopText?: InputMaybe<LoopTextUpdateWithNestedWhereUniqueInput>;
   TextContent?: InputMaybe<TextContentUpdateWithNestedWhereUniqueInput>;
   VideoBox?: InputMaybe<VideoBoxUpdateWithNestedWhereUniqueInput>;
 };
@@ -8871,6 +8878,7 @@ export type LayoutBlockColumnsectionsUnionUpsertWithNestedWhereUniqueAndPosition
   ContactForm?: InputMaybe<ContactFormUpsertWithNestedWhereUniqueAndPositionInput>;
   GridBox?: InputMaybe<GridBoxUpsertWithNestedWhereUniqueAndPositionInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderUpsertWithNestedWhereUniqueAndPositionInput>;
+  LoopText?: InputMaybe<LoopTextUpsertWithNestedWhereUniqueAndPositionInput>;
   TextContent?: InputMaybe<TextContentUpsertWithNestedWhereUniqueAndPositionInput>;
   VideoBox?: InputMaybe<VideoBoxUpsertWithNestedWhereUniqueAndPositionInput>;
 };
@@ -8881,6 +8889,7 @@ export type LayoutBlockColumnsectionsUnionUpsertWithNestedWhereUniqueInput = {
   ContactForm?: InputMaybe<ContactFormUpsertWithNestedWhereUniqueInput>;
   GridBox?: InputMaybe<GridBoxUpsertWithNestedWhereUniqueInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderUpsertWithNestedWhereUniqueInput>;
+  LoopText?: InputMaybe<LoopTextUpsertWithNestedWhereUniqueInput>;
   TextContent?: InputMaybe<TextContentUpsertWithNestedWhereUniqueInput>;
   VideoBox?: InputMaybe<VideoBoxUpsertWithNestedWhereUniqueInput>;
 };
@@ -8891,6 +8900,7 @@ export type LayoutBlockColumnsectionsUnionWhereInput = {
   ContactForm?: InputMaybe<ContactFormWhereInput>;
   GridBox?: InputMaybe<GridBoxWhereInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderWhereInput>;
+  LoopText?: InputMaybe<LoopTextWhereInput>;
   TextContent?: InputMaybe<TextContentWhereInput>;
   VideoBox?: InputMaybe<VideoBoxWhereInput>;
 };
@@ -8901,6 +8911,7 @@ export type LayoutBlockColumnsectionsUnionWhereUniqueInput = {
   ContactForm?: InputMaybe<ContactFormWhereUniqueInput>;
   GridBox?: InputMaybe<GridBoxWhereUniqueInput>;
   HeroMediaSlider?: InputMaybe<HeroMediaSliderWhereUniqueInput>;
+  LoopText?: InputMaybe<LoopTextWhereUniqueInput>;
   TextContent?: InputMaybe<TextContentWhereUniqueInput>;
   VideoBox?: InputMaybe<VideoBoxWhereUniqueInput>;
 };
@@ -9767,6 +9778,804 @@ export type LogoTableWhereStageInput = {
 
 /** References LogoTable record uniquely */
 export type LogoTableWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+export type LoopText = {
+  __typename?: 'LoopText';
+  cssClassItem?: Maybe<Scalars['String']>;
+  cssClassStatic?: Maybe<Scalars['String']>;
+  cssClassWrapper?: Maybe<Scalars['String']>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  loopTextItem: Array<LoopTextItem>;
+  /** System stage field */
+  stage: Stage;
+  staticText?: Maybe<Scalars['String']>;
+};
+
+
+export type LoopTextLoopTextItemArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<LoopTextItemOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LoopTextItemWhereInput>;
+};
+
+export type LoopTextConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: LoopTextWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type LoopTextConnection = {
+  __typename?: 'LoopTextConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<LoopTextEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type LoopTextCreateInput = {
+  cssClassItem?: InputMaybe<Scalars['String']>;
+  cssClassStatic?: InputMaybe<Scalars['String']>;
+  cssClassWrapper?: InputMaybe<Scalars['String']>;
+  loopTextItem?: InputMaybe<LoopTextItemCreateManyInlineInput>;
+  staticText?: InputMaybe<Scalars['String']>;
+};
+
+export type LoopTextCreateManyInlineInput = {
+  /** Create and connect multiple existing LoopText documents */
+  create?: InputMaybe<Array<LoopTextCreateInput>>;
+};
+
+export type LoopTextCreateOneInlineInput = {
+  /** Create and connect one LoopText document */
+  create?: InputMaybe<LoopTextCreateInput>;
+};
+
+export type LoopTextCreateWithPositionInput = {
+  /** Document to create */
+  data: LoopTextCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type LoopTextEdge = {
+  __typename?: 'LoopTextEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: LoopText;
+};
+
+export type LoopTextItem = {
+  __typename?: 'LoopTextItem';
+  /** The unique identifier */
+  id: Scalars['ID'];
+  loopTextItemContent?: Maybe<Scalars['String']>;
+  /** System stage field */
+  stage: Stage;
+};
+
+export type LoopTextItemConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: LoopTextItemWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type LoopTextItemConnection = {
+  __typename?: 'LoopTextItemConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<LoopTextItemEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type LoopTextItemCreateInput = {
+  loopTextItemContent?: InputMaybe<Scalars['String']>;
+};
+
+export type LoopTextItemCreateManyInlineInput = {
+  /** Create and connect multiple existing LoopTextItem documents */
+  create?: InputMaybe<Array<LoopTextItemCreateInput>>;
+};
+
+export type LoopTextItemCreateOneInlineInput = {
+  /** Create and connect one LoopTextItem document */
+  create?: InputMaybe<LoopTextItemCreateInput>;
+};
+
+export type LoopTextItemCreateWithPositionInput = {
+  /** Document to create */
+  data: LoopTextItemCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type LoopTextItemEdge = {
+  __typename?: 'LoopTextItemEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: LoopTextItem;
+};
+
+/** Identifies documents */
+export type LoopTextItemManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<LoopTextItemWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<LoopTextItemWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<LoopTextItemWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  loopTextItemContent?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  loopTextItemContent_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  loopTextItemContent_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  loopTextItemContent_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  loopTextItemContent_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  loopTextItemContent_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  loopTextItemContent_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  loopTextItemContent_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  loopTextItemContent_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  loopTextItemContent_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+export enum LoopTextItemOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LoopTextItemContentAsc = 'loopTextItemContent_ASC',
+  LoopTextItemContentDesc = 'loopTextItemContent_DESC'
+}
+
+export type LoopTextItemParent = LoopText;
+
+export type LoopTextItemParentConnectInput = {
+  LoopText?: InputMaybe<LoopTextConnectInput>;
+};
+
+export type LoopTextItemParentCreateInput = {
+  LoopText?: InputMaybe<LoopTextCreateInput>;
+};
+
+export type LoopTextItemParentCreateManyInlineInput = {
+  /** Create and connect multiple existing LoopTextItemParent documents */
+  create?: InputMaybe<Array<LoopTextItemParentCreateInput>>;
+};
+
+export type LoopTextItemParentCreateOneInlineInput = {
+  /** Create and connect one LoopTextItemParent document */
+  create?: InputMaybe<LoopTextItemParentCreateInput>;
+};
+
+export type LoopTextItemParentCreateWithPositionInput = {
+  LoopText?: InputMaybe<LoopTextCreateWithPositionInput>;
+};
+
+export type LoopTextItemParentUpdateInput = {
+  LoopText?: InputMaybe<LoopTextUpdateInput>;
+};
+
+export type LoopTextItemParentUpdateManyInlineInput = {
+  /** Create and connect multiple LoopTextItemParent component instances */
+  create?: InputMaybe<Array<LoopTextItemParentCreateWithPositionInput>>;
+  /** Delete multiple LoopTextItemParent documents */
+  delete?: InputMaybe<Array<LoopTextItemParentWhereUniqueInput>>;
+  /** Update multiple LoopTextItemParent component instances */
+  update?: InputMaybe<Array<LoopTextItemParentUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple LoopTextItemParent component instances */
+  upsert?: InputMaybe<Array<LoopTextItemParentUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type LoopTextItemParentUpdateManyWithNestedWhereInput = {
+  LoopText?: InputMaybe<LoopTextUpdateManyWithNestedWhereInput>;
+};
+
+export type LoopTextItemParentUpdateOneInlineInput = {
+  /** Create and connect one LoopTextItemParent document */
+  create?: InputMaybe<LoopTextItemParentCreateInput>;
+  /** Delete currently connected LoopTextItemParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single LoopTextItemParent document */
+  update?: InputMaybe<LoopTextItemParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single LoopTextItemParent document */
+  upsert?: InputMaybe<LoopTextItemParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type LoopTextItemParentUpdateWithNestedWhereUniqueAndPositionInput = {
+  LoopText?: InputMaybe<LoopTextUpdateWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type LoopTextItemParentUpdateWithNestedWhereUniqueInput = {
+  LoopText?: InputMaybe<LoopTextUpdateWithNestedWhereUniqueInput>;
+};
+
+export type LoopTextItemParentUpsertWithNestedWhereUniqueAndPositionInput = {
+  LoopText?: InputMaybe<LoopTextUpsertWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type LoopTextItemParentUpsertWithNestedWhereUniqueInput = {
+  LoopText?: InputMaybe<LoopTextUpsertWithNestedWhereUniqueInput>;
+};
+
+export type LoopTextItemParentWhereInput = {
+  LoopText?: InputMaybe<LoopTextWhereInput>;
+};
+
+export type LoopTextItemParentWhereUniqueInput = {
+  LoopText?: InputMaybe<LoopTextWhereUniqueInput>;
+};
+
+export type LoopTextItemUpdateInput = {
+  loopTextItemContent?: InputMaybe<Scalars['String']>;
+};
+
+export type LoopTextItemUpdateManyInlineInput = {
+  /** Create and connect multiple LoopTextItem component instances */
+  create?: InputMaybe<Array<LoopTextItemCreateWithPositionInput>>;
+  /** Delete multiple LoopTextItem documents */
+  delete?: InputMaybe<Array<LoopTextItemWhereUniqueInput>>;
+  /** Update multiple LoopTextItem component instances */
+  update?: InputMaybe<Array<LoopTextItemUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple LoopTextItem component instances */
+  upsert?: InputMaybe<Array<LoopTextItemUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type LoopTextItemUpdateManyInput = {
+  loopTextItemContent?: InputMaybe<Scalars['String']>;
+};
+
+export type LoopTextItemUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: LoopTextItemUpdateManyInput;
+  /** Document search */
+  where: LoopTextItemWhereInput;
+};
+
+export type LoopTextItemUpdateOneInlineInput = {
+  /** Create and connect one LoopTextItem document */
+  create?: InputMaybe<LoopTextItemCreateInput>;
+  /** Delete currently connected LoopTextItem document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single LoopTextItem document */
+  update?: InputMaybe<LoopTextItemUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single LoopTextItem document */
+  upsert?: InputMaybe<LoopTextItemUpsertWithNestedWhereUniqueInput>;
+};
+
+export type LoopTextItemUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<LoopTextItemUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: LoopTextItemWhereUniqueInput;
+};
+
+export type LoopTextItemUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: LoopTextItemUpdateInput;
+  /** Unique document search */
+  where: LoopTextItemWhereUniqueInput;
+};
+
+export type LoopTextItemUpsertInput = {
+  /** Create document if it didn't exist */
+  create: LoopTextItemCreateInput;
+  /** Update document if it exists */
+  update: LoopTextItemUpdateInput;
+};
+
+export type LoopTextItemUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<LoopTextItemUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: LoopTextItemWhereUniqueInput;
+};
+
+export type LoopTextItemUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: LoopTextItemUpsertInput;
+  /** Unique document search */
+  where: LoopTextItemWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type LoopTextItemWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<LoopTextItemWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<LoopTextItemWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<LoopTextItemWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  loopTextItemContent?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  loopTextItemContent_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  loopTextItemContent_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  loopTextItemContent_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  loopTextItemContent_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  loopTextItemContent_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  loopTextItemContent_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  loopTextItemContent_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  loopTextItemContent_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  loopTextItemContent_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+/** References LoopTextItem record uniquely */
+export type LoopTextItemWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+/** Identifies documents */
+export type LoopTextManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<LoopTextWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<LoopTextWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<LoopTextWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  cssClassItem?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClassItem_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClassItem_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClassItem_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClassItem_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClassItem_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClassItem_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClassItem_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClassItem_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClassItem_starts_with?: InputMaybe<Scalars['String']>;
+  cssClassStatic?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClassStatic_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClassStatic_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClassStatic_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClassStatic_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClassStatic_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClassStatic_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClassStatic_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClassStatic_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClassStatic_starts_with?: InputMaybe<Scalars['String']>;
+  cssClassWrapper?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClassWrapper_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClassWrapper_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClassWrapper_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClassWrapper_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClassWrapper_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClassWrapper_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClassWrapper_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClassWrapper_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClassWrapper_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  loopTextItem_every?: InputMaybe<LoopTextItemWhereInput>;
+  loopTextItem_none?: InputMaybe<LoopTextItemWhereInput>;
+  loopTextItem_some?: InputMaybe<LoopTextItemWhereInput>;
+  staticText?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  staticText_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  staticText_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  staticText_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  staticText_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  staticText_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  staticText_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  staticText_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  staticText_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  staticText_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+export enum LoopTextOrderByInput {
+  CssClassItemAsc = 'cssClassItem_ASC',
+  CssClassItemDesc = 'cssClassItem_DESC',
+  CssClassStaticAsc = 'cssClassStatic_ASC',
+  CssClassStaticDesc = 'cssClassStatic_DESC',
+  CssClassWrapperAsc = 'cssClassWrapper_ASC',
+  CssClassWrapperDesc = 'cssClassWrapper_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  StaticTextAsc = 'staticText_ASC',
+  StaticTextDesc = 'staticText_DESC'
+}
+
+export type LoopTextParent = LayoutBlockColumn;
+
+export type LoopTextParentConnectInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnConnectInput>;
+};
+
+export type LoopTextParentCreateInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateInput>;
+};
+
+export type LoopTextParentCreateManyInlineInput = {
+  /** Create and connect multiple existing LoopTextParent documents */
+  create?: InputMaybe<Array<LoopTextParentCreateInput>>;
+};
+
+export type LoopTextParentCreateOneInlineInput = {
+  /** Create and connect one LoopTextParent document */
+  create?: InputMaybe<LoopTextParentCreateInput>;
+};
+
+export type LoopTextParentCreateWithPositionInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnCreateWithPositionInput>;
+};
+
+export type LoopTextParentUpdateInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateInput>;
+};
+
+export type LoopTextParentUpdateManyInlineInput = {
+  /** Create and connect multiple LoopTextParent component instances */
+  create?: InputMaybe<Array<LoopTextParentCreateWithPositionInput>>;
+  /** Delete multiple LoopTextParent documents */
+  delete?: InputMaybe<Array<LoopTextParentWhereUniqueInput>>;
+  /** Update multiple LoopTextParent component instances */
+  update?: InputMaybe<Array<LoopTextParentUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple LoopTextParent component instances */
+  upsert?: InputMaybe<Array<LoopTextParentUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type LoopTextParentUpdateManyWithNestedWhereInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateManyWithNestedWhereInput>;
+};
+
+export type LoopTextParentUpdateOneInlineInput = {
+  /** Create and connect one LoopTextParent document */
+  create?: InputMaybe<LoopTextParentCreateInput>;
+  /** Delete currently connected LoopTextParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single LoopTextParent document */
+  update?: InputMaybe<LoopTextParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single LoopTextParent document */
+  upsert?: InputMaybe<LoopTextParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type LoopTextParentUpdateWithNestedWhereUniqueAndPositionInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type LoopTextParentUpdateWithNestedWhereUniqueInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpdateWithNestedWhereUniqueInput>;
+};
+
+export type LoopTextParentUpsertWithNestedWhereUniqueAndPositionInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type LoopTextParentUpsertWithNestedWhereUniqueInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnUpsertWithNestedWhereUniqueInput>;
+};
+
+export type LoopTextParentWhereInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereInput>;
+};
+
+export type LoopTextParentWhereUniqueInput = {
+  LayoutBlockColumn?: InputMaybe<LayoutBlockColumnWhereUniqueInput>;
+};
+
+export type LoopTextUpdateInput = {
+  cssClassItem?: InputMaybe<Scalars['String']>;
+  cssClassStatic?: InputMaybe<Scalars['String']>;
+  cssClassWrapper?: InputMaybe<Scalars['String']>;
+  loopTextItem?: InputMaybe<LoopTextItemUpdateManyInlineInput>;
+  staticText?: InputMaybe<Scalars['String']>;
+};
+
+export type LoopTextUpdateManyInlineInput = {
+  /** Create and connect multiple LoopText component instances */
+  create?: InputMaybe<Array<LoopTextCreateWithPositionInput>>;
+  /** Delete multiple LoopText documents */
+  delete?: InputMaybe<Array<LoopTextWhereUniqueInput>>;
+  /** Update multiple LoopText component instances */
+  update?: InputMaybe<Array<LoopTextUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple LoopText component instances */
+  upsert?: InputMaybe<Array<LoopTextUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type LoopTextUpdateManyInput = {
+  cssClassItem?: InputMaybe<Scalars['String']>;
+  cssClassStatic?: InputMaybe<Scalars['String']>;
+  cssClassWrapper?: InputMaybe<Scalars['String']>;
+  staticText?: InputMaybe<Scalars['String']>;
+};
+
+export type LoopTextUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: LoopTextUpdateManyInput;
+  /** Document search */
+  where: LoopTextWhereInput;
+};
+
+export type LoopTextUpdateOneInlineInput = {
+  /** Create and connect one LoopText document */
+  create?: InputMaybe<LoopTextCreateInput>;
+  /** Delete currently connected LoopText document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single LoopText document */
+  update?: InputMaybe<LoopTextUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single LoopText document */
+  upsert?: InputMaybe<LoopTextUpsertWithNestedWhereUniqueInput>;
+};
+
+export type LoopTextUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<LoopTextUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: LoopTextWhereUniqueInput;
+};
+
+export type LoopTextUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: LoopTextUpdateInput;
+  /** Unique document search */
+  where: LoopTextWhereUniqueInput;
+};
+
+export type LoopTextUpsertInput = {
+  /** Create document if it didn't exist */
+  create: LoopTextCreateInput;
+  /** Update document if it exists */
+  update: LoopTextUpdateInput;
+};
+
+export type LoopTextUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<LoopTextUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: LoopTextWhereUniqueInput;
+};
+
+export type LoopTextUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: LoopTextUpsertInput;
+  /** Unique document search */
+  where: LoopTextWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type LoopTextWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<LoopTextWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<LoopTextWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<LoopTextWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  cssClassItem?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClassItem_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClassItem_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClassItem_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClassItem_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClassItem_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClassItem_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClassItem_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClassItem_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClassItem_starts_with?: InputMaybe<Scalars['String']>;
+  cssClassStatic?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClassStatic_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClassStatic_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClassStatic_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClassStatic_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClassStatic_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClassStatic_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClassStatic_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClassStatic_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClassStatic_starts_with?: InputMaybe<Scalars['String']>;
+  cssClassWrapper?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cssClassWrapper_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cssClassWrapper_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cssClassWrapper_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cssClassWrapper_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cssClassWrapper_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cssClassWrapper_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cssClassWrapper_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cssClassWrapper_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cssClassWrapper_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  loopTextItem_every?: InputMaybe<LoopTextItemWhereInput>;
+  loopTextItem_none?: InputMaybe<LoopTextItemWhereInput>;
+  loopTextItem_some?: InputMaybe<LoopTextItemWhereInput>;
+  staticText?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  staticText_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  staticText_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  staticText_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  staticText_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  staticText_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  staticText_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  staticText_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  staticText_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  staticText_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+/** References LoopText record uniquely */
+export type LoopTextWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
@@ -22316,7 +23125,9 @@ export type ProfilesSlugListFieldsFragment = { __typename?: 'Profile', profileSl
 
 export type ProductsSlugListFieldsFragment = { __typename?: 'Product', productSlug: string, productType: ProductType, updatedAt: any };
 
-export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, pageNavigationSelection?: PageNavigationSelection | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }>, popup?: { __typename?: 'Popup', duration?: number | null, header?: string | null, buttonOpenText?: string | null, buttonOpenCss?: string | null, openOnScroll: boolean, popupContent: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> } | null };
+export type PageFieldsFragment = { __typename?: 'Page', id: string, pageSlug?: string | null, pageNavigationSelection?: PageNavigationSelection | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'LoopText', staticText?: string | null, cssClassStatic?: string | null, cssClassItem?: string | null, cssClassWrapper?: string | null, loopTextItem: Array<{ __typename?: 'LoopTextItem', loopTextItemContent?: string | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }>, popup?: { __typename?: 'Popup', duration?: number | null, header?: string | null, buttonOpenText?: string | null, buttonOpenCss?: string | null, openOnScroll: boolean, popupContent: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'LoopText' } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> } | null };
+
+export type LoopTextFieldsFragment = { __typename?: 'LoopText', staticText?: string | null, cssClassStatic?: string | null, cssClassItem?: string | null, cssClassWrapper?: string | null, loopTextItem: Array<{ __typename?: 'LoopTextItem', loopTextItemContent?: string | null }> };
 
 export type TextContentFieldsFragment = { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null };
 
@@ -22358,12 +23169,12 @@ export type LayoutQueryVariables = Exact<{
 }>;
 
 
-export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', background: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, backgroundSecondary: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, primary: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, secondary: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, tertiary: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, primaryFadeOpacity: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, text: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, textOverlay: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventIFrame?: string | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, pageNavigationSelection?: PageNavigationSelection | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }>, popup?: { __typename?: 'Popup', duration?: number | null, header?: string | null, buttonOpenText?: string | null, buttonOpenCss?: string | null, openOnScroll: boolean, popupContent: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> } | null } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, contacts: Array<{ __typename?: 'Contact', contactName: string, contactQuery: ContactQueries, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactWhatsapp?: string | null, contactCalendly?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, products: Array<{ __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
+export type LayoutQuery = { __typename?: 'Query', siteLibrary?: { __typename?: 'SiteLibrary', id: string, title?: string | null, isSpanish?: boolean | null, facebookLink?: string | null, tikTokLink?: string | null, instagramLink?: string | null, spotifyLink?: string | null, threadsLink?: string | null, twitterLink?: string | null, youtubeLink?: string | null, pandoraLink?: string | null, appleMusicLink?: string | null, soundcloudLink?: string | null, pinterestLink?: string | null, githubLink?: string | null, linkedinLink?: string | null, siteCssBodyClass?: string | null, mailchimp?: string | null, contactEmail?: string | null, contactPhone?: string | null, contactName?: string | null, analyticsId?: string | null, siteLibraryJson?: any | null, secondaryName?: string | null, secondaryLink?: string | null, paypalClientId?: string | null, metaGoogleConsoleVerification?: string | null, metaDescription?: string | null, metaDomain?: string | null, youtubeApiKey: string, logo?: { __typename?: 'Asset', id: string, url: string } | null, secondaryLogo?: { __typename?: 'Asset', id: string, url: string } | null, themeColor: { __typename?: 'RootColor', background: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, backgroundSecondary: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, primary: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, secondary: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, tertiary: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, primaryFadeOpacity: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, text: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } }, textOverlay: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } }, favicon?: { __typename?: 'Asset', url: string } | null, metaOgImage?: { __typename?: 'Asset', url: string } | null, metaAppleTouchIcon?: { __typename?: 'Asset', url: string } | null } | null, events: Array<{ __typename?: 'Event', eventAddress?: string | null, eventAddressGoogleMapLink?: string | null, eventCityState?: string | null, eventEndDateTime?: any | null, eventIFrame?: string | null, eventFeatured?: boolean | null, eventLinkButtonText?: string | null, eventShortDescription?: string | null, eventSlug?: string | null, eventStartDateTime?: any | null, eventTicketLinkDestination?: string | null, eventTitle?: string | null, eventVenueName?: string | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, eventDescription?: { __typename?: 'RichText', html: string, raw: any } | null, eventFlyer?: { __typename?: 'Asset', id: string, url: string } | null, eventGallery: Array<{ __typename?: 'Asset', url: string, id: string }> }>, albums: Array<{ __typename?: 'Album', id: string, albumSlug?: string | null, title?: string | null, releaseDate?: any | null, albumBuyLink?: string | null, featureHomePage?: boolean | null, albumJsonData?: any | null, iFramePlayer?: string | null, albumCover?: { __typename?: 'Asset', id: string, url: string } | null, description?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, testimonials: Array<{ __typename?: 'Testimonial', id: string, updatedAt: any, testimonialName?: string | null, testimonialJobTitle?: string | null, testimonialType?: TestimonialType | null, testimonialAvatar?: { __typename?: 'Asset', url: string } | null, testimonialText?: { __typename?: 'RichText', html: string, raw: any } | null }>, blogs: Array<{ __typename?: 'Blog', id: string, blogSlug?: string | null, blogCategory?: BlogTags | null, title?: string | null, excerpt?: string | null, blogCallToActionText?: string | null, blogJson?: any | null, date?: any | null, blogCallToActionLink?: string | null, image?: { __typename?: 'Asset', id: string, url: string } | null, content?: { __typename?: 'RichText', raw: any, html: string, markdown: string, text: string } | null, blogGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }>, profiles: Array<{ __typename?: 'Profile', createdAt: any, updatedAt: any, appleMusicLink?: string | null, calendlyLink?: string | null, email?: string | null, epkLink?: string | null, facebookLink?: string | null, iFrame?: string | null, instagramLink?: string | null, role?: string | null, linkedinLink?: string | null, profileType: ProfilesSelect, miniBio?: string | null, name?: string | null, order?: number | null, pandoraLink?: string | null, phoneNumber?: string | null, primaryProfile?: boolean | null, soundcloudLink?: string | null, spotifyLink?: string | null, profileSlug?: string | null, tikTokLink?: string | null, tourWidgetiFrame?: string | null, threadsLink?: string | null, twitterLink?: string | null, websiteLink?: string | null, youtubeLink?: string | null, contactQuery: Array<ContactQueries>, profileJson?: any | null, fullBio?: { __typename?: 'RichText', html: string, raw: any } | null, avatarImage?: { __typename?: 'Asset', url: string } | null, imageGallery: Array<{ __typename?: 'Asset', url: string }>, portfolioGallery: Array<{ __typename?: 'Asset', url: string }>, videoBox: Array<{ __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }>, heroImage?: { __typename?: 'Asset', url: string } | null, profileLogo?: { __typename?: 'Asset', url: string } | null }>, page?: { __typename?: 'Page', id: string, pageSlug?: string | null, pageNavigationSelection?: PageNavigationSelection | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'LoopText', staticText?: string | null, cssClassStatic?: string | null, cssClassItem?: string | null, cssClassWrapper?: string | null, loopTextItem: Array<{ __typename?: 'LoopTextItem', loopTextItemContent?: string | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }>, popup?: { __typename?: 'Popup', duration?: number | null, header?: string | null, buttonOpenText?: string | null, buttonOpenCss?: string | null, openOnScroll: boolean, popupContent: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'LoopText' } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> } | null } | null, navigations: Array<{ __typename?: 'Navigation', navigationLayoutStyle?: NavigationLayout | null, pageNavigationSelection?: PageNavigationSelection | null, navigationLogo?: { __typename?: 'Asset', url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, primaryItem?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }>, footerColumns: Array<{ __typename?: 'FooterColumn', footerIframe?: string | null, footerTitle?: string | null, wideColumn?: boolean | null, recentBlogByCategory?: BlogTags | null, footerColumnCssWrapper?: string | null, footerImage?: { __typename?: 'Asset', url: string } | null, footerText?: { __typename?: 'RichText', html: string, raw: any } | null, footerLink: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, footerItems: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null, items: Array<{ __typename?: 'NavigationItem', link?: string | null, label?: string | null, cssClass?: string | null, sameTab?: boolean | null, image?: { __typename?: 'Asset', id: string, url: string } | null }> }> }>, contacts: Array<{ __typename?: 'Contact', contactName: string, contactQuery: ContactQueries, contactEmail?: string | null, contactTitle?: string | null, contactPhone?: string | null, contactAddress?: string | null, contactGoogleAddressLink?: string | null, contactWhatsapp?: string | null, contactCalendly?: string | null, contactAvatar?: { __typename?: 'Asset', id: string, url: string } | null }>, products: Array<{ __typename?: 'Product', name: string, productSlug: string, vendor?: string | null, price?: string | null, sku?: string | null, purchaseLink?: string | null, purchaseLabel?: string | null, enableProduct?: boolean | null, productType: ProductType, gallery: Array<{ __typename?: 'Asset', url: string }>, description?: { __typename?: 'RichText', html: string } | null }>, logoTables: Array<{ __typename?: 'LogoTable', logoName?: string | null, logoLink?: string | null, logoType?: LogoTableItem | null, logoImage?: { __typename?: 'Asset', url: string } | null }> };
 
 export type PagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, pageNavigationSelection?: PageNavigationSelection | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }>, popup?: { __typename?: 'Popup', duration?: number | null, header?: string | null, buttonOpenText?: string | null, buttonOpenCss?: string | null, openOnScroll: boolean, popupContent: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> } | null }> };
+export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, pageSlug?: string | null, pageNavigationSelection?: PageNavigationSelection | null, title?: string | null, subtitle?: string | null, pageWidthStyle?: PageWidthStyle | null, contentPageJson?: any | null, hideNav?: boolean | null, hideFooter?: boolean | null, hideHeader?: boolean | null, setHomePage?: boolean | null, noIndex?: boolean | null, whatsAppContactNumberFloatingButton?: string | null, heroImage?: { __typename?: 'Asset', url: string } | null, layoutBlocks: Array<{ __typename?: 'LayoutBlock', id: string, cssClass?: string | null, backgroundColor?: { __typename?: 'Color', hex: any, css: string, rgba: { __typename?: 'RGBA', r: any, g: any, b: any, a: any } } | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, layoutBlockColumns: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'LoopText', staticText?: string | null, cssClassStatic?: string | null, cssClassItem?: string | null, cssClassWrapper?: string | null, loopTextItem: Array<{ __typename?: 'LoopTextItem', loopTextItemContent?: string | null }> } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> }>, popup?: { __typename?: 'Popup', duration?: number | null, header?: string | null, buttonOpenText?: string | null, buttonOpenCss?: string | null, openOnScroll: boolean, popupContent: Array<{ __typename?: 'LayoutBlockColumn', id: string, htmlId?: string | null, cssClass?: string | null, hideBlockColumn?: boolean | null, backgroundImage?: { __typename?: 'Asset', url: string } | null, contentTags?: { __typename?: 'ContentTag', albumDisplayType?: AlbumQueryDisplay | null, blogCategory?: BlogTags | null, blogSectionTitle?: string | null, contactType: Array<ContactQueries>, eventDisplayLayout?: EventDisplayType | null, logoTableType?: LogoTableItem | null, productType?: ProductType | null, profileLayoutStyle?: ProfileLayoutStyle | null, profileSectionTitle?: string | null, profileType?: ProfilesSelect | null, testimonialType?: TestimonialType | null } | null, elements?: { __typename?: 'Element', stripePricingTableId?: string | null, stripePublishableKey?: string | null, displayInstagramSectionUsername?: string | null, galleryLayout?: GalleryLayout | null, standOutText?: string | null, iFrameTitle?: string | null, iFrameCode?: string | null, parallaxImage?: { __typename?: 'Asset', url: string } | null, gallery: Array<{ __typename?: 'Asset', url: string }> } | null, sections: Array<{ __typename: 'Accordion', contentHeader?: { __typename?: 'RichText', raw: any, html: string } | null, contentDescription?: { __typename?: 'RichText', raw: any, html: string } | null, videoBox?: { __typename?: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null } | { __typename: 'ContactForm', contactFormTitle?: string | null, netlifyContactForm?: boolean | null, netlifyFormFields: Array<NetlifyFormFields>, jotformUrl?: string | null, hubspotFormId?: string | null, hubspotPortalId?: string | null, cssClass?: string | null, contactFormDescription?: { __typename?: 'RichText', raw: any, html: string } | null } | { __typename: 'GridBox', boxTitle?: string | null, boxLink?: string | null, boxDescription?: { __typename?: 'RichText', raw: any, html: string } | null, boxImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'HeroMediaSlider', sliderCssWrapper?: string | null, mediaType?: MediaType | null, displaySocialMedia?: boolean | null, youtubeVideoId?: string | null, id: string, sliderMediaBackground?: { __typename?: 'Asset', url: string } | null, textContent?: { __typename?: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | null, callToAction: Array<{ __typename?: 'CallToAction', ctaLabel?: string | null, ctaLink?: string | null, ctaClass?: string | null, ctaPrimary?: boolean | null, contentAlign?: ContentAlign | null }> } | { __typename: 'LoopText' } | { __typename: 'TextContent', link?: string | null, imageStyle: Array<ImageStyle>, textContentWidth?: PageWidthStyle | null, contentAlign?: ContentAlign | null, linkImage?: boolean | null, cssClass?: string | null, header?: { __typename?: 'RichText', raw: any, html: string } | null, subHeader?: { __typename?: 'RichText', raw: any, html: string } | null, content?: { __typename?: 'RichText', raw: any, html: string } | null, contentImage?: { __typename?: 'Asset', url: string } | null } | { __typename: 'VideoBox', videoTitle?: string | null, youtubeVideoId?: string | null, vimeoVideoId?: string | null, youtubePlaylistId?: string | null }> }> } | null }> };
 
 export type PagesSlugListQueryVariables = Exact<{
   pageSlugFirst?: InputMaybe<Scalars['Int']>;
@@ -22908,6 +23719,17 @@ export const VideoBoxFieldsFragmentDoc = gql`
   youtubePlaylistId
 }
     `;
+export const LoopTextFieldsFragmentDoc = gql`
+    fragment LoopTextFields on LoopText {
+  staticText
+  loopTextItem {
+    loopTextItemContent
+  }
+  cssClassStatic
+  cssClassItem
+  cssClassWrapper
+}
+    `;
 export const PageFieldsFragmentDoc = gql`
     fragment pageFields on Page {
   id
@@ -22990,6 +23812,7 @@ export const PageFieldsFragmentDoc = gql`
         ...GridBoxFields
         ...AccordionFields
         ...VideoBoxFields
+        ...LoopTextFields
       }
     }
   }
@@ -23057,7 +23880,8 @@ ${HeroMediaSliderFieldsFragmentDoc}
 ${ContactFormFieldsFragmentDoc}
 ${GridBoxFieldsFragmentDoc}
 ${AccordionFieldsFragmentDoc}
-${VideoBoxFieldsFragmentDoc}`;
+${VideoBoxFieldsFragmentDoc}
+${LoopTextFieldsFragmentDoc}`;
 export const NavigationFieldsFragmentDoc = gql`
     fragment navigationFields on Navigation {
   navigationLayoutStyle

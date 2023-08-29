@@ -356,6 +356,7 @@ fragment pageFields on Page {
         ...GridBoxFields
         ...AccordionFields
         ...VideoBoxFields
+        ...LoopTextFields
       }
     }
   }
@@ -416,6 +417,16 @@ fragment pageFields on Page {
       }
     }
   }
+}
+
+fragment LoopTextFields on LoopText {
+  staticText
+  loopTextItem {
+    loopTextItemContent
+  }
+  cssClassStatic
+  cssClassItem
+  cssClassWrapper
 }
 
 fragment TextContentFields on TextContent {

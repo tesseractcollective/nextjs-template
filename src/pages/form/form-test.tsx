@@ -72,9 +72,10 @@ const FormTest = () => {
           </Form>
         </Formik>
       )}
-      <div className="hidden h-screen opacity-0 xl:w-3/12 -mt-12"></div>
-      <div className="hidden h-240 bg-white xl:w-6/12 xl:w-12/12 -mt-24"></div>
-      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12"></div>
+      <div className="hidden h-screen opacity-0 xl:w-3/12 -mt-12 text-7xl"></div>
+      <div className="hidden h-240 bg-white xl:w-6/12 xl:w-12/12 -mt-24 text-6xl font-light"></div>
+      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 text-5xl italic  -mt-32"></div>
+      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 text-5xl italic  -mt-48"></div>
     </>
   );
 };

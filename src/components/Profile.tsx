@@ -99,6 +99,9 @@ export default function Profile({
               appleMusicLinkProp={profile?.appleMusicLink || undefined}
               pandoraLinkProp={profile?.pandoraLink || undefined}
               soundcloudLinkProp={profile?.soundcloudLink || undefined}
+              linkedinLinkProp={profile?.linkedinLink || undefined}
+              emailLinkProp={profile.email || undefined}
+              phoneLinkProp={profile.phoneNumber || undefined}
             />
             {profile.fullBio?.html && (
               <div className="mt-4 text-text-color body-parsed-text">

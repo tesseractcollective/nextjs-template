@@ -8,6 +8,7 @@ import type {
   AccordionFieldsFragment,
   TextContentFieldsFragment,
   CallToActionFieldsFragment,
+  LoopTextFieldsFragment,
 } from "@/graphql/generated/graphql";
 import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
@@ -16,6 +17,7 @@ import ContactFormSection from "@/components/sections/ContactFormSection";
 import HeroMediaSliderSection from "@/components/sections/HeroMediaSliderSection";
 import TextContentSection from "./TextContent";
 import AccordionSection from "@/components/sections/AccordionSection";
+import LoopTextSection from "@/components/sections/LoopTextSection";
 
 type SectionsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["sections"];
@@ -59,8 +61,13 @@ export default function Sections({ sectionData, siteLibrary }: SectionsProps) {
     sections,
     "Accordion"
   );
+  const loopTextData: LoopTextFieldsFragment[] = filterSections(
+    sections,
+    "LoopText"
+  );
   return (
     <>
+      {!!loopTextData && <LoopTextSection loopTextData={loopTextData} />}
       {!!textContentData && (
         <TextContentSection
           textContentData={textContentData}
