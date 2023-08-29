@@ -66,7 +66,7 @@ export default function Profiles({
                     triggerOnce
                     damping={0.1}
                     key={profile.profileSlug}
-                    className="mx-auto max-w-sm"
+                    className="mx-auto max-w-sm w-full"
                   >
                     <>
                       <div className="animate-col-width mx-auto md:mx-0 w-full">

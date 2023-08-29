@@ -27,6 +27,29 @@
   }
 }
 
+.dark-gradient-bkg {
+  background: linear-gradient(90.35deg, var(--background) .31%, var(--background-secondary) 99.24%);
+  position: relative;
+  overflow: hidden;
+  &:before, &::after {
+    background: linear-gradient(45deg, rgba(256,256,256, 0.075) .31%, rgba(256,256,256, 0.0) 99.24%);
+    z-index: 2;
+    height: 400px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: absolute;
+    content: '';
+  }
+  &:before {
+    top: -100px;
+    left: -100px;
+  }
+  &:after {
+    bottom: -100px;
+    right: -100px;
+  }
+}
+
 .bg-gradient-primary {
   background: linear-gradient(90.35deg, var(--primary) .31%, var(--secondary) 99.24%);
   position: relative;

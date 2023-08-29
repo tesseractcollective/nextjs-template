@@ -51,7 +51,11 @@ export default function Nav({
     <div className="" id="navigation">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
+        <Dialog
+          as="div"
+          className="relative z-[1000] lg:hidden"
+          onClose={setOpen}
+        >
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -555,7 +559,7 @@ export default function Nav({
                             key={mainNavigationItem?.link}
                             link={mainNavigationItem?.link}
                             label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-xs md:text-sm font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-4 py-2 rounded ${mainNavigationItem?.cssClass}`}
+                            cssClass={`flex items-center text-xs md:text-sm font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 py-1 md:py-2 rounded ${mainNavigationItem?.cssClass}`}
                             sameTab={mainNavigationItem?.sameTab}
                           />
                         ))}
