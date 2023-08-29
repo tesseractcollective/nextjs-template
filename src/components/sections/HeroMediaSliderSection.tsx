@@ -59,7 +59,7 @@ export default function HeroMediaSliderSection({
                       heroMediaSliderItem?.textContent?.contentAlign?.toLocaleLowerCase()
                     }`}
                   >
-                    <Fade triggerOnce>
+                    <Fade triggerOnce className="w-full">
                       {heroMediaSliderItem?.textContent?.contentImage && (
                         <Image
                           width={0}

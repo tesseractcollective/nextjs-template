@@ -8274,10 +8274,13 @@ export type ImageResizeInput = {
 export enum ImageStyle {
   Border = 'border',
   Circle = 'circle',
+  Full = 'full',
   Large = 'large',
   Medium = 'medium',
   Rounded = 'rounded',
-  Small = 'small'
+  Small = 'small',
+  Xl = 'xl',
+  Xxl = 'xxl'
 }
 
 /** Transformations for Images */

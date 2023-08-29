@@ -66,7 +66,7 @@ export default function Profiles({
                     triggerOnce
                     damping={0.1}
                     key={profile.profileSlug}
-                    className="mx-auto max-w-sm w-full"
+                    className="mx-auto max-w-xs w-full"
                   >
                     <>
                       <div className="animate-col-width mx-auto md:mx-0 w-full">
@@ -154,171 +154,151 @@ export default function Profiles({
                           </div>
                         </div>
                       </div>
-                      {selectedProfile && (
-                        <Transition.Root show={open} as={Fragment}>
-                          <Dialog
-                            as="div"
-                            className="relative z-[10000]"
-                            onClose={setOpen}
-                          >
-                            <Transition.Child
-                              as={Fragment}
-                              enter="ease-out duration-300"
-                              enterFrom="opacity-0"
-                              enterTo="opacity-100"
-                              leave="ease-in duration-200"
-                              leaveFrom="opacity-100"
-                              leaveTo="opacity-0"
-                            >
-                              <div className="fixed inset-0 bg-[#27272727] transition-opacity" />
-                            </Transition.Child>
-
-                            <div className="fixed inset-0 z-10 overflow-y-auto w-full">
-                              <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                                <Transition.Child
-                                  as={Fragment}
-                                  enter="ease-out duration-300"
-                                  enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                  enterTo="opacity-100 translate-y-0 sm:scale-100"
-                                  leave="ease-in duration-200"
-                                  leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                                  leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                >
-                                  <Dialog.Panel className="relative transform overflow-x-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-background flex-col flex max-h-[80vh] overflow-scroll">
-                                    <div className="">
-                                      <div
-                                        aria-hidden="true"
-                                        className="relative overflow-hidden"
-                                      >
-                                        {!!selectedProfile.heroImage?.url && (
-                                          <Fade direction="up" triggerOnce>
-                                            <Image
-                                              src={
-                                                selectedProfile.heroImage?.url
-                                              }
-                                              alt=""
-                                              width={0}
-                                              height={0}
-                                              sizes="100%"
-                                              className="h-[20rem] w-full object-cover object-center"
-                                            />
-                                          </Fade>
-                                        )}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-background" />
-                                      </div>
-
-                                      <div className="relative mx-auto -mt-24 max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
-                                        <div className="mx-auto max-w-2xl text-center lg:max-w-4xl flex flex-col">
-                                          <Fade
-                                            direction="up"
-                                            cascade
-                                            damping={0.25}
-                                            triggerOnce
-                                          >
-                                            {selectedProfile.avatarImage
-                                              ?.url && (
-                                              <Image
-                                                src={
-                                                  selectedProfile.avatarImage
-                                                    ?.url
-                                                }
-                                                alt={
-                                                  selectedProfile?.name || ""
-                                                }
-                                                width={0}
-                                                height={0}
-                                                sizes="100%"
-                                                className="w-full max-w-[200px] mx-auto rounded-full"
-                                              />
-                                            )}
-                                            <h2 className="text-3xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase">
-                                              {selectedProfile.name}
-                                            </h2>
-                                          </Fade>
-                                          <SocialMediaIcons
-                                            cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center gap-x-2"
-                                            instagramLinkProp={
-                                              selectedProfile?.instagramLink ||
-                                              undefined
-                                            }
-                                            spotifyLinkProp={
-                                              selectedProfile?.spotifyLink ||
-                                              undefined
-                                            }
-                                            facebookLinkProp={
-                                              selectedProfile?.facebookLink ||
-                                              undefined
-                                            }
-                                            twitterLinkProp={
-                                              selectedProfile?.twitterLink ||
-                                              undefined
-                                            }
-                                            youtubeLinkProp={
-                                              selectedProfile?.youtubeLink ||
-                                              undefined
-                                            }
-                                            tikTokLinkProp={
-                                              selectedProfile?.tikTokLink ||
-                                              undefined
-                                            }
-                                            appleMusicLinkProp={
-                                              selectedProfile?.appleMusicLink ||
-                                              undefined
-                                            }
-                                            pandoraLinkProp={
-                                              selectedProfile?.pandoraLink ||
-                                              undefined
-                                            }
-                                            soundcloudLinkProp={
-                                              selectedProfile?.soundcloudLink ||
-                                              undefined
-                                            }
-                                            linkedinLinkProp={
-                                              selectedProfile?.linkedinLink ||
-                                              undefined
-                                            }
-                                            emailLinkProp={
-                                              selectedProfile.email || undefined
-                                            }
-                                            phoneLinkProp={
-                                              selectedProfile.phoneNumber ||
-                                              undefined
-                                            }
-                                          />
-                                          {selectedProfile.fullBio?.html && (
-                                            <div className="mt-4 text-text-color body-parsed-text">
-                                              {parse(
-                                                selectedProfile.fullBio?.html
-                                              )}
-                                            </div>
-                                          )}
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <button
-                                      type="button"
-                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline outline-primary mx-auto max-w-max"
-                                      onClick={() => setOpen(false)}
-                                    >
-                                      <span className="sr-only">
-                                        Close menu
-                                      </span>
-                                      <XMarkIcon
-                                        className="h-6 w-6 text-text-color"
-                                        aria-hidden="true"
-                                      />
-                                    </button>
-                                  </Dialog.Panel>
-                                </Transition.Child>
-                              </div>
-                            </div>
-                          </Dialog>
-                        </Transition.Root>
-                      )}
                     </>
                   </Fade>
                 ))}
+              {selectedProfile && (
+                <Transition.Root show={open} as={Fragment}>
+                  <Dialog
+                    as="div"
+                    className="relative z-[10000]"
+                    onClose={setOpen}
+                  >
+                    <Transition.Child
+                      as={Fragment}
+                      enter="ease-out duration-300"
+                      enterFrom="opacity-0"
+                      enterTo="opacity-100"
+                      leave="ease-in duration-200"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <div className="fixed inset-0 bg-[#27272727] transition-opacity" />
+                    </Transition.Child>
+
+                    <div className="fixed inset-0 z-10 overflow-y-auto w-full">
+                      <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <Transition.Child
+                          as={Fragment}
+                          enter="ease-out duration-300"
+                          enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                          enterTo="opacity-100 translate-y-0 sm:scale-100"
+                          leave="ease-in duration-200"
+                          leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                          leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        >
+                          <Dialog.Panel className="relative transform overflow-x-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-background flex-col flex max-h-[80vh] overflow-scroll">
+                            <div className="">
+                              <div
+                                aria-hidden="true"
+                                className="relative overflow-hidden"
+                              >
+                                {!!selectedProfile.heroImage?.url && (
+                                  <Fade direction="up" triggerOnce>
+                                    <Image
+                                      src={selectedProfile.heroImage?.url}
+                                      alt=""
+                                      width={0}
+                                      height={0}
+                                      sizes="100%"
+                                      className="h-[20rem] w-full object-cover object-center"
+                                    />
+                                  </Fade>
+                                )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-background" />
+                              </div>
+
+                              <div className="relative mx-auto -mt-24 max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+                                <div className="mx-auto max-w-2xl text-center lg:max-w-4xl flex flex-col">
+                                  <Fade
+                                    direction="up"
+                                    cascade
+                                    damping={0.25}
+                                    triggerOnce
+                                  >
+                                    {selectedProfile.avatarImage?.url && (
+                                      <Image
+                                        src={selectedProfile.avatarImage?.url}
+                                        alt={selectedProfile?.name || ""}
+                                        width={0}
+                                        height={0}
+                                        sizes="100%"
+                                        className="w-full max-w-[200px] mx-auto rounded-full"
+                                      />
+                                    )}
+                                    <h2 className="text-3xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase">
+                                      {selectedProfile.name}
+                                    </h2>
+                                  </Fade>
+                                  <SocialMediaIcons
+                                    cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center gap-x-2"
+                                    instagramLinkProp={
+                                      selectedProfile?.instagramLink ||
+                                      undefined
+                                    }
+                                    spotifyLinkProp={
+                                      selectedProfile?.spotifyLink || undefined
+                                    }
+                                    facebookLinkProp={
+                                      selectedProfile?.facebookLink || undefined
+                                    }
+                                    twitterLinkProp={
+                                      selectedProfile?.twitterLink || undefined
+                                    }
+                                    youtubeLinkProp={
+                                      selectedProfile?.youtubeLink || undefined
+                                    }
+                                    tikTokLinkProp={
+                                      selectedProfile?.tikTokLink || undefined
+                                    }
+                                    appleMusicLinkProp={
+                                      selectedProfile?.appleMusicLink ||
+                                      undefined
+                                    }
+                                    pandoraLinkProp={
+                                      selectedProfile?.pandoraLink || undefined
+                                    }
+                                    soundcloudLinkProp={
+                                      selectedProfile?.soundcloudLink ||
+                                      undefined
+                                    }
+                                    linkedinLinkProp={
+                                      selectedProfile?.linkedinLink || undefined
+                                    }
+                                    emailLinkProp={
+                                      selectedProfile.email || undefined
+                                    }
+                                    phoneLinkProp={
+                                      selectedProfile.phoneNumber || undefined
+                                    }
+                                  />
+                                  {selectedProfile.fullBio?.html && (
+                                    <div className="mt-4 text-text-color body-parsed-text">
+                                      {parse(selectedProfile.fullBio?.html)}
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+
+                            <button
+                              type="button"
+                              className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline outline-primary mx-auto max-w-max"
+                              onClick={() => setOpen(false)}
+                            >
+                              <span className="sr-only">Close menu</span>
+                              <XMarkIcon
+                                className="h-6 w-6 text-text-color"
+                                aria-hidden="true"
+                              />
+                            </button>
+                          </Dialog.Panel>
+                        </Transition.Child>
+                      </div>
+                    </div>
+                  </Dialog>
+                </Transition.Root>
+              )}
             </div>
           </section>
         </div>
