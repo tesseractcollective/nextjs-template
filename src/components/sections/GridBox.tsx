@@ -13,7 +13,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
         {gridBoxData.map((gridBoxItem) => (
           <article
             key={gridBoxItem.boxLink}
-            className="relative isolate flex overflow-hidden rounded-2xl bg-background pb-4 pt-40 sm:pt-36 group hover:cursor-pointer mx-auto h-full w-full max-w-xs"
+            className="relative isolate flex overflow-hidden rounded-2xl bg-background pb-4 pt-40 sm:pt-60 group hover:cursor-pointer mx-auto h-full w-full max-w-xs"
           >
             {!!gridBoxItem.boxImage?.url && (
               <Image
@@ -30,12 +30,12 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
             <LinkItem
               link={gridBoxItem?.boxLink}
               label={gridBoxItem?.boxTitle}
-              cssClass="text-shadow mt-3 text-lg font-semibold leading-6 w-full text-center text-text-overlay h-full"
+              cssClass="text-shadow mt-3 text-xl font-semibold leading-6 w-full text-center text-text-overlay h-full line-clamp-1 z-40"
             >
               <span className="absolute inset-0 z-50" aria-hidden="true" />
             </LinkItem>
-            <div className="absolute inset-0 bg-gradient-to-b from-secondary transition opacity-0 group-hover:opacity-30 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark transition opacity-0 group-hover:opacity-30 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-secondary transition opacity-0 group-hover:opacity-50 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark transition opacity-30 group-hover:opacity-50 z-10" />
           </article>
         ))}
       </div>

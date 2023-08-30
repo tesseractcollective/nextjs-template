@@ -117,6 +117,7 @@ export default function Nav({
                   </Link>
                   <button
                     type="button"
+                    title="Close menu"
                     className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto"
                     onClick={() => setOpen(false)}
                   >

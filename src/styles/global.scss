@@ -45,6 +45,7 @@ body {
   --swiper-theme-color: #4356A5;
   --primary-color: #e7e7e7;
   --secondary: #616EA9;
+  --tertiary: #a9a261e1;
   --primary-fade:  rgb(41, 63, 130);
   --primary-fade-opacity:  rgba(136, 136, 136, 0.5);
   --text: #000000; 
@@ -329,6 +330,9 @@ body {
 }
 
 .body-parsed-text {
+ strong { 
+    background: linear-gradient(to top, var(--tertiary) 50%, transparent 50%);
+  }
   p, li {
     opacity: 90%;
     font-size: 16px;
@@ -523,10 +527,6 @@ body {
 p, h1, h2, h3,
 h4, h5, h6  {color: var(--text);}
 
-.parse-block strong { 
-  background: linear-gradient(to top,  var(--primary-fade) 50%, transparent 50%);
-}
-
 .p-progressbar {
   height: 0.5rem !important;
 
@@ -612,6 +612,21 @@ h4, h5, h6  {color: var(--text);}
         background: linear-gradient(-90deg, transparent, var(--dark));
       }
   }
+}
+
+.swiper-horizontal {
+  touch-action: pan-y;
+}
+
+.swiper, swiper-container {
+  display: block;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .p-component-overlay {

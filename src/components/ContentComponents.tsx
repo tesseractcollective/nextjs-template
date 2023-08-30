@@ -1,3 +1,4 @@
+"use client";
 import type {
   AlbumFieldsFragment,
   BlogFieldsFragment,
@@ -17,6 +18,10 @@ import Testimonials from "@/components/Testimonials";
 import Profiles from "@/components/Profiles";
 import Products from "@/components/Products";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/thumbs";
 
 type ContentTagsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["contentTags"];
