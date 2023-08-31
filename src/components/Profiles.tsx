@@ -83,7 +83,7 @@ export default function Profiles({
                               />
                             </div>
                           )}
-                          <div className="flex flex-col items-start justify-center text-left p-4">
+                          <div className="flex flex-col items-start justify-center text-left p-4 bg-bg-secondary">
                             {!!profile.name && (
                               <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color mt-0 text-left">
                                 {profile.name}

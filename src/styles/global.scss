@@ -47,7 +47,7 @@ body {
   --secondary: #616EA9;
   --tertiary: #a9a261e1;
   --primary-fade:  rgb(41, 63, 130);
-  --primary-fade-opacity:  rgba(136, 136, 136, 0.5);
+  --primary-fade-opacity:  #88888862;
   --text: #000000; 
   --text-overlay: #ffffff; 
 }
@@ -187,7 +187,7 @@ body {
 
 .body-parsed-text {
  strong { 
-    background: linear-gradient(to top, var(--tertiary) 50%, transparent 50%);
+    background: linear-gradient(to top, var(--primary-fade-opacity) 40%, transparent 40%);
   }
   p, li {
     opacity: 90%;

@@ -78,7 +78,7 @@ const FormTest = () => {
       <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 text-5xl italic  -mt-48 "></div>
       <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-48 text-9xl"></div>
       <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-48 text-7xl"></div>
-      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-48 text-8xl"></div>
+      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-48 text-8xl rounded-r-lg -ml-24"></div>
     </>
   );
 };

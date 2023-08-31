@@ -22,120 +22,80 @@ export default function TextContentSection({
     <>
       {!!textContentData && textContentData.length >= 1 && (
         <>
-          <div className="grid w-full mx-auto">
+          <div className="mx-auto">
             {textContentData
               ?.filter((textContent) => textContent.contentAlign === "card")
               .map((textContentItem) => (
-                <div key={Math.random()} className="col-12 md:col-5 md:mx-auto">
+                <div
+                  key={textContentItem?.header?.html}
+                  className="col-12 md:col-5 md:mx-auto"
+                >
                   {textContentItem?.link ? (
-                    <div>
-                      {textContentItem.link.includes("http") ? (
-                        <a
-                          href={textContentItem?.link}
-                          target="_blank"
-                          className="flex flex-row p-2 align-items-start no-underline border-0 hover:border"
-                          rel="noreferrer"
-                        >
-                          {textContentItem?.contentImage && (
-                            <Image
-                              className="block m-0 p-0 border-round"
-                              style={{
-                                objectFit: "cover",
-                                height: "70px",
-                                width: "70px",
-                                minHeight: "70px",
-                                minWidth: "70px",
-                              }}
-                              src={textContentItem.contentImage.url}
-                              alt={textContentItem?.header?.html || ""}
-                            />
+                    <LinkItem
+                      link={textContentItem?.link}
+                      cssClass="flex flex-row p-2 align-items-start no-underline border-0 hover:border"
+                    >
+                      <>
+                        {textContentItem?.contentImage && (
+                          <Image
+                            className="block m-0 p-0 border-round"
+                            style={{
+                              objectFit: "cover",
+                              height: "70px",
+                              width: "70px",
+                              minHeight: "70px",
+                              minWidth: "70px",
+                            }}
+                            src={textContentItem.contentImage.url}
+                            alt={textContentItem?.header?.html || ""}
+                          />
+                        )}
+                        <div className="flex flex-col ml-3">
+                          {textContentItem?.header && (
+                            <div className="text-sm font-bold my-0 py-0 parsed-mb-0">
+                              {parse(textContentItem.header.html)}
+                            </div>
                           )}
-                          <div className="flex flex-col ml-3">
-                            {textContentItem?.header && (
-                              <div className="text-sm font-bold my-0 py-0 parsed-mb-0">
-                                {parse(textContentItem.header.html)}
-                              </div>
-                            )}
-                            {textContentItem?.subHeader && (
-                              <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0">
-                                {parse(textContentItem.subHeader.html)}
-                              </div>
-                            )}
-                            {textContentItem?.content && (
-                              <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 w-10">
-                                {parse(textContentItem.content.html)}
-                              </div>
-                            )}
-                          </div>
-                        </a>
-                      ) : (
-                        <Link
-                          href={textContentItem?.link}
-                          className="flex flex-row p-2 align-items-start no-underline border-0 hover:border"
-                        >
-                          {textContentItem?.contentImage && (
-                            <Image
-                              className="block m-0 p-0 border-round"
-                              style={{
-                                objectFit: "cover",
-                                height: "70px",
-                                width: "70px",
-                                minHeight: "70px",
-                                minWidth: "70px",
-                              }}
-                              src={textContentItem.contentImage.url}
-                              alt={textContentItem?.header?.html || ""}
-                            />
+                          {textContentItem?.subHeader && (
+                            <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0">
+                              {parse(textContentItem.subHeader.html)}
+                            </div>
                           )}
-                          <div className="flex flex-col ml-3">
-                            {textContentItem?.header && (
-                              <div className="text-sm font-bold my-0 py-0 parsed-mb-0">
-                                {parse(textContentItem.header.html)}
-                              </div>
-                            )}
-                            {textContentItem?.subHeader && (
-                              <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0">
-                                {parse(textContentItem.subHeader.html)}
-                              </div>
-                            )}
-                            {textContentItem?.content && (
-                              <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 w-10/12">
-                                {parse(textContentItem.content.html)}
-                              </div>
-                            )}
-                          </div>
-                        </Link>
-                      )}
-                    </div>
+                          {textContentItem?.content && (
+                            <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 w-10">
+                              {parse(textContentItem.content.html)}
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    </LinkItem>
                   ) : (
-                    <div className="flex flex-row p-2 align-items-start">
+                    <div className="flex flex-row p-2">
                       {textContentItem?.contentImage && (
-                        <Image
-                          className="block m-0 p-0 border-round"
-                          height={70}
-                          width={70}
-                          style={{
-                            objectFit: "cover",
-                            minHeight: "70px",
-                            minWidth: "70px",
-                          }}
-                          src={textContentItem.contentImage.url}
-                          alt={textContentItem?.header?.html || ""}
-                        />
+                        <div className="max-w-[70px] max-h-[70px]">
+                          <Image
+                            className="block m-0 p-0 border-round object-cover h-full w-full"
+                            height={0}
+                            width={0}
+                            sizes="100%"
+                            src={textContentItem.contentImage.url}
+                            alt={textContentItem?.header?.html || ""}
+                          />
+                        </div>
                       )}
-                      <div className="flex flex-col ml-3">
+                      <div className="flex flex-col">
                         {textContentItem?.header && (
                           <div className="text-sm font-bold my-0 py-0 parsed-mb-0">
                             {parse(textContentItem.header.html)}
                           </div>
                         )}
                         {textContentItem?.subHeader && (
-                          <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0">
+                          <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0 max-w-[200px]">
                             {parse(textContentItem.subHeader.html)}
                           </div>
                         )}
                         {textContentItem?.content && (
-                          <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 w-10/12">
+                          <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 max-w-[200px]">
                             {parse(textContentItem.content.html)}
                           </div>
                         )}
