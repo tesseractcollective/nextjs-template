@@ -3,14 +3,24 @@ import { Disclosure, Transition } from "@headlessui/react";
 import parse from "html-react-parser";
 import { MinusIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import type { AccordionFieldsFragment } from "@/graphql/generated/graphql";
+import type {
+  AccordionFieldsFragment,
+  SiteLibraryFieldsFragment,
+} from "@/graphql/generated/graphql";
+import VideoPlaylistBox from "@/components/VideoPlaylistBox";
+import VideoBox from "@/components/VideoBox";
 // import LinkItem from "@/components/LinkItem";
 
 interface AccordionProps {
   accordionData: AccordionFieldsFragment[];
+  siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export default function Accordion({ accordionData }: AccordionProps) {
+export default function Accordion({
+  accordionData,
+  siteLibrary,
+}: AccordionProps) {
+  if (!siteLibrary) return <></>;
   if (accordionData?.length === 0) return <></>;
   return (
     <div className="w-full px-4 pt-16 h-full block mx-auto">
@@ -67,6 +77,33 @@ export default function Accordion({ accordionData }: AccordionProps) {
                         </div>
                       )}
                       {parse(item.contentDescription?.html)}
+                      {!!item.videoBox && (
+                        <div key={Math.random()}>
+                          {item.videoBox?.youtubePlaylistId ? (
+                            <VideoPlaylistBox
+                              videoTitle={
+                                item.videoBox?.videoTitle || undefined
+                              }
+                              youtubePlaylistId={
+                                item.videoBox.youtubePlaylistId
+                              }
+                              youtubeApiKey={siteLibrary.youtubeApiKey}
+                            />
+                          ) : (
+                            <VideoBox
+                              videoTitle={
+                                item.videoBox?.videoTitle || undefined
+                              }
+                              vimeoVideoId={
+                                item.videoBox?.vimeoVideoId || undefined
+                              }
+                              youtubeVideoId={
+                                item.videoBox?.youtubeVideoId || undefined
+                              }
+                            />
+                          )}
+                        </div>
+                      )}
                     </Disclosure.Panel>
                   )}
                 </Transition>

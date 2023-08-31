@@ -116,7 +116,12 @@ export default function Sections({ sectionData, siteLibrary }: SectionsProps) {
           siteLibrary={siteLibrary}
         />
       )}
-      {!!accordionData && <AccordionSection accordionData={accordionData} />}
+      {!!accordionData && (
+        <AccordionSection
+          accordionData={accordionData}
+          siteLibrary={siteLibrary}
+        />
+      )}
     </>
   );
 }
