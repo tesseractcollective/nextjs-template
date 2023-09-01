@@ -4,10 +4,8 @@ import type {
   TextContentFieldsFragment,
 } from "@/graphql/generated/graphql";
 import parse from "html-react-parser";
-import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
 import LinkItem from "@/components/LinkItem";
-import ReactGA from "react-ga4";
 
 interface TextContentProps {
   textContentData: TextContentFieldsFragment[];

@@ -1,17 +1,8 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import parse from "html-react-parser";
 import {
-  faInstagram,
-  faFacebook,
-  faTwitter,
-  faYoutube,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  faEnvelope,
-  faPhone,
   faArrowUpRightFromSquare,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
@@ -102,20 +93,18 @@ export default function Profiles({
                             </div>
                           )}
                           <div className="flex flex-col items-start justify-center text-left p-4 bg-bg-secondary relative z-10 overflow-hidden">
-                            {!!profile.name && (
-                              <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color mt-0 text-left">
-                                <Fade triggerOnce direction="left">
+                            <Fade triggerOnce direction="left">
+                              {!!profile.name && (
+                                <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color mt-0 text-left">
                                   {profile.name}
-                                </Fade>
-                              </h3>
-                            )}
-                            {!!profile.role && (
-                              <h4 className="uppercase mt-0 mb-0 text-xs opacity-80 text-left line-clamp-1 w-10/12">
-                                <Fade triggerOnce direction="left">
+                                </h3>
+                              )}
+                              {!!profile.role && (
+                                <h4 className="uppercase mt-0 mb-0 text-xs opacity-80 text-left line-clamp-1 max-w-xs">
                                   {profile.role}
-                                </Fade>
-                              </h4>
-                            )}
+                                </h4>
+                              )}
+                            </Fade>
 
                             <div className="flex justify-between flex-row w-full">
                               <SocialMediaIcons
@@ -166,10 +155,6 @@ export default function Profiles({
                                   <span className="opacity-80 font-bold group-hover:opacity-100 transition">
                                     Info
                                   </span>
-                                  <FontAwesomeIcon
-                                    icon={faArrowUpRightFromSquare as IconProp}
-                                    className="fa-fw fa-sm ml-2 opacity-80 group-hover:opacity-100 transition h-3 w-3"
-                                  />
                                 </button>
                               )}
                             </div>
@@ -385,7 +370,6 @@ export default function Profiles({
                 </Fade>
               ))}
           </div>
-          <>{}</>
         </section>
       </div>
     </>
