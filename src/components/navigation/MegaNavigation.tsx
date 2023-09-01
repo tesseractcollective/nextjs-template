@@ -141,7 +141,7 @@ export default function MegaNavigation({
                                   className={({ selected }) =>
                                     classNames(
                                       selected
-                                        ? "border-primary text-teritary"
+                                        ? "border-primary text-tertiary"
                                         : "border-transparent text-text-color opacity-90",
                                       "flex-1 whitespace-nowrap border-dark hover:border-white border-b-2 px-1 py-4 text-3xl lg:text-5xl font-bold mx-auto max-w-max pointer-events-none"
                                     )

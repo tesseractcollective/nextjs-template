@@ -30,7 +30,7 @@ export default function Accordion({
             {({ open }) => (
               <div className="border border-primary rounded block">
                 {!!item.contentHeader?.html && (
-                  <Disclosure.Button className="flex w-full justify-start items-center rounded-lg px-4 py-2 text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-text-color focus-visible:text-text-color hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-600">
+                  <Disclosure.Button className="flex w-full justify-start items-center rounded-lg px-4 py-2 text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-text-color focus-visible:text-text-color hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-600 bg-bg-secondary">
                     <div className="bg-gradient-to-tr from-primary to-secondary relative text-text-color h-6 w-6 rounded-md">
                       <MinusIcon className="absolute w-6 h-6" />
                       <MinusIcon

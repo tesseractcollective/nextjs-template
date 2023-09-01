@@ -70,28 +70,50 @@ export default function Profiles({
                   >
                     <>
                       <div className="animate-col-width mx-auto md:mx-0 w-full">
-                        <div className="overflow-hidden border border-primary-fade h-full rounded profile-card w-full">
+                        <div className="overflow-hidden border border-primary-fade h-full rounded profile-card w-full relative">
                           {!!profile?.avatarImage?.url && (
-                            <div className="h-72 max-w-72 p-0 m-0 w-full">
+                            <div className="h-72 max-w-72 p-0 m-0 w-full relative">
+                              {!!profile?.profileLogo?.url && (
+                                <div>
+                                  <Fade
+                                    triggerOnce
+                                    direction="up"
+                                    className="h-10 max-w-10 p-0 m-0 absolute left-0 bottom-0 z-[9] bg-bg-secondary rounded-tr-sm border-primary-fade border-t border-r"
+                                  >
+                                    <Image
+                                      src={profile?.profileLogo?.url}
+                                      alt={(profile.name && profile.name) || ""}
+                                      className="object-cover block w-full h-full"
+                                      sizes="100%"
+                                      width={0}
+                                      height={0}
+                                    />
+                                  </Fade>
+                                </div>
+                              )}
                               <Image
                                 src={profile?.avatarImage?.url}
                                 alt={(profile.name && profile.name) || ""}
-                                className="object-cover block w-full h-full"
+                                className="object-cover block w-full h-full border-primary-fade border-b"
                                 sizes="100%"
                                 width={0}
                                 height={0}
                               />
                             </div>
                           )}
-                          <div className="flex flex-col items-start justify-center text-left p-4 bg-bg-secondary">
+                          <div className="flex flex-col items-start justify-center text-left p-4 bg-bg-secondary relative z-10 overflow-hidden">
                             {!!profile.name && (
                               <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color mt-0 text-left">
-                                {profile.name}
+                                <Fade triggerOnce direction="left">
+                                  {profile.name}
+                                </Fade>
                               </h3>
                             )}
                             {!!profile.role && (
                               <h4 className="uppercase mt-0 mb-0 text-xs opacity-80 text-left line-clamp-1 w-10/12">
-                                {profile.role}
+                                <Fade triggerOnce direction="left">
+                                  {profile.role}
+                                </Fade>
                               </h4>
                             )}
 

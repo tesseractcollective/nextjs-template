@@ -38,7 +38,7 @@ export default function PageHeader({
                 />
               </Fade>
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-dark section-fade-invert" />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary section-fade-invert" />
           </div>
           <div className="absolute bottom-1/3 left-0 right-0 w-full mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
             <Fade direction="up" triggerOnce>
@@ -48,7 +48,7 @@ export default function PageHeader({
                 </h1>
               )}
               {!!pageHeaderSubtitleProp && (
-                <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 text-text-overlay">
+                <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 text-tertiary">
                   {pageHeaderSubtitleProp}
                 </h2>
               )}

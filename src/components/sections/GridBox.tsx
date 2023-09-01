@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "@/components/LinkItem";
+import parse from "html-react-parser";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -11,7 +12,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
     <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8">
       <div className={`flex flex-wrap justify-center items-center gap-4`}>
         {gridBoxData.map((gridBoxItem) => (
-          <article
+          <div
             key={gridBoxItem.boxLink}
             className="relative isolate flex overflow-hidden rounded-2xl bg-background pb-4 pt-40 sm:pt-60 group hover:cursor-pointer mx-auto h-full w-full max-w-xs"
           >
@@ -36,7 +37,13 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
             </LinkItem>
             <div className="absolute inset-0 bg-gradient-to-b from-secondary transition opacity-0 group-hover:opacity-50 z-10" />
             <div className="absolute inset-0 bg-gradient-to-t from-dark transition opacity-30 group-hover:opacity-50 z-10" />
-          </article>
+
+            {/* {!!gridBoxItem.boxDescription?.html && (
+              <div className="body-parsed-text opacity-70 text-sm w-[80%] mx-auto block text-center">
+                {parse(gridBoxItem.boxDescription?.html)}
+              </div>
+            )} */}
+          </div>
         ))}
       </div>
     </section>
