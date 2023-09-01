@@ -74,7 +74,7 @@ export default function Profiles({
                                     <Image
                                       src={profile?.profileLogo?.url}
                                       alt={(profile.name && profile.name) || ""}
-                                      className="object-cover block w-full h-full"
+                                      className="object-contain block w-full h-full"
                                       sizes="100%"
                                       width={0}
                                       height={0}
@@ -85,10 +85,14 @@ export default function Profiles({
                               <Image
                                 src={profile?.avatarImage?.url}
                                 alt={(profile.name && profile.name) || ""}
-                                className="object-cover block w-full h-full border-primary-fade border-b"
+                                className="object-cover block w-full h-full border-primary-fade border-b cursor-pointer"
                                 sizes="100%"
                                 width={0}
                                 height={0}
+                                onClick={() => {
+                                  setSelctedProfile(profile);
+                                  setOpen(true);
+                                }}
                               />
                             </div>
                           )}

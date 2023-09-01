@@ -187,7 +187,7 @@ export default function DefaultNavigation({
                                           key={item?.link}
                                           link={item?.link}
                                           label={item?.label}
-                                          cssClass={`mt-2 block text-xs md:text-sm font-medium text-text-color text-center group-hover:text-primary transition ${item?.cssClass}`}
+                                          cssClass={`mt-2 block text-xs sm:text-sm md:text-base font-medium text-text-color text-center group-hover:text-primary transition ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
                                           <span
@@ -365,7 +365,7 @@ export default function DefaultNavigation({
                                                 open
                                                   ? "border-primary text-primary"
                                                   : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
-                                                "relative z-10 -mb-px flex items-center pt-px text-xs md:text-sm font-medium transition-colors duration-200 ease-out border-dark hover:border-white border-b-2"
+                                                "relative z-10 -mb-px flex items-center pt-px text-xs sm:text-sm md:text-base font-medium transition-colors duration-200 ease-out border-dark hover:border-white border-b-2"
                                               )}
                                             >
                                               {mainNavigationItem.label}
@@ -381,7 +381,7 @@ export default function DefaultNavigation({
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                           >
-                                            <Popover.Panel className="absolute inset-x-0 top-full text-xs md:text-sm text-text-color border-t-2 border-b-2 border-primary box-shadow">
+                                            <Popover.Panel className="absolute inset-x-0 top-full text-xs sm:text-sm md:text-base text-text-color border-t-2 border-b-2 border-primary box-shadow">
                                               {({ close }) => (
                                                 <>
                                                   <div
@@ -484,7 +484,7 @@ export default function DefaultNavigation({
                                       key={mainNavigationItem?.link}
                                       link={mainNavigationItem?.link}
                                       label={mainNavigationItem?.label}
-                                      cssClass={`flex items-center text-xs md:text-sm font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 ${mainNavigationItem?.cssClass}`}
+                                      cssClass={`flex items-center text-xs sm:text-sm md:text-base font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 ${mainNavigationItem?.cssClass}`}
                                       sameTab={mainNavigationItem?.sameTab}
                                     />
                                   )}
@@ -559,7 +559,7 @@ export default function DefaultNavigation({
                             key={mainNavigationItem?.link}
                             link={mainNavigationItem?.link}
                             label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-xs md:text-sm font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 py-1 md:py-2 rounded ${mainNavigationItem?.cssClass}`}
+                            cssClass={`flex items-center text-xs sm:text-sm md:text-base font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 py-1 md:py-2 rounded ${mainNavigationItem?.cssClass}`}
                             sameTab={mainNavigationItem?.sameTab}
                           />
                         ))}

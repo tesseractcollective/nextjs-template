@@ -4,7 +4,7 @@ import StandOutText from "@/components/StandOutText";
 import IframeBox from "@/components/IframeBox";
 import { StripePricingTable } from "@/components/StripePricingTable";
 import InstagramSection from "@/components/InstagramSection";
-import Gallery from "@/components/Gallery";
+import GallerySection from "@/components/GallerySection";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -22,7 +22,6 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
     parallaxImage,
     standOutText,
     gallery,
-    galleryLayout,
     stripePricingTableId,
     stripePublishableKey,
     displayInstagramSectionUsername,
@@ -36,7 +35,7 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
       {!!parallaxImage?.url && <Parallax parallaxImage={parallaxImage.url} />}
 
       {!!standOutText && <StandOutText standOutText={standOutText} />}
-      {!!gallery && galleryLayout && <Gallery elements={elements} />}
+      {!!gallery && <GallerySection elements={elements} />}
       {!!stripePricingTableId && stripePublishableKey && (
         <StripePricingTable
           pricingTableId={stripePricingTableId}

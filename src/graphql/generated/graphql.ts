@@ -7425,7 +7425,9 @@ export type FooterColumnWhereUniqueInput = {
 };
 
 export enum GalleryLayout {
-  Grid = 'grid'
+  Grid = 'grid',
+  Lightbox = 'lightbox',
+  Slider = 'slider'
 }
 
 export type GridBox = {

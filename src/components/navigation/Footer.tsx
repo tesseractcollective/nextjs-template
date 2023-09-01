@@ -64,7 +64,7 @@ export default function Footer({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-8 w-auto mb-4 object-cover max-w-max"
+                      className="h-8 w-auto mb-4 object-contain max-w-max"
                       alt=""
                       width={0}
                       height={0}
@@ -137,7 +137,7 @@ export default function Footer({
             >
               <Image
                 src={secondaryLogo.url}
-                className="h-full w-full mb-4 object-cover block"
+                className="h-full w-full mb-4 object-contain block"
                 alt=""
                 width={0}
                 height={0}

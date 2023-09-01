@@ -201,6 +201,10 @@ body {
       font-size: 18px;
       line-height: 30px;
     }
+    @media screen and (min-width: 1200px){ 
+      font-size: 20px;
+      line-height: 30px;
+    }
   }
   &.leading-none {
     p {
@@ -307,6 +311,20 @@ body {
   h4 {
     font-size: 1.2rem;
   }
+  h5 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+  h6 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight: 900;
+    text-transform: uppercase;
+    
+  }
   a {
     position: relative;
     color: var(--secondary);
@@ -322,6 +340,11 @@ body {
     &:hover,  &:focus {
       background-position: 0 100%;
       border-bottom: 1px solid var(--secondary);
+    }
+  }
+  &.text-text-overlay {
+    p, h1, h2, h3, h4, h6 {
+      color: var(--text-overlay) !important;
     }
   }
 } 
