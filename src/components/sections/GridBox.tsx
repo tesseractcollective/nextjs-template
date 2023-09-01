@@ -38,11 +38,11 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
             <div className="absolute inset-0 bg-gradient-to-b from-secondary transition opacity-0 group-hover:opacity-50 z-10" />
             <div className="absolute inset-0 bg-gradient-to-t from-dark transition opacity-30 group-hover:opacity-50 z-10" />
 
-            {/* {!!gridBoxItem.boxDescription?.html && (
-              <div className="body-parsed-text opacity-70 text-sm w-[80%] mx-auto block text-center">
+            {!!gridBoxItem.boxDescription?.html && (
+              <div className="body-parsed-text opacity-70 text-sm w-[80%] mx-auto block text-center text-text-color">
                 {parse(gridBoxItem.boxDescription?.html)}
               </div>
-            )} */}
+            )}
           </div>
         ))}
       </div>

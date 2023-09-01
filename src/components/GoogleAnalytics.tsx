@@ -8,7 +8,7 @@ function GoogleAnalytics({ analyticsId }: GoogleAnalyticsProps) {
   if (!analyticsId) return <></>;
   return (
     <Head>
-      {analyticsId && (
+      {/* {analyticsId && (
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
@@ -23,7 +23,7 @@ function GoogleAnalytics({ analyticsId }: GoogleAnalyticsProps) {
             gtag('config', "${analyticsId}");
           `}
         </script>
-      )}
+      )} */}
     </Head>
   );
 }

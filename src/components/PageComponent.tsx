@@ -5,7 +5,7 @@ import { LayoutQuery } from "@/graphql/generated/graphql";
 import LayoutBlocks from "@/components/LayoutBlocks";
 import ThemeColors from "@/styles/ThemeColors";
 import Script from "next/script";
-import GoogleAnalytics from "./GoogleAnalytics";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 interface Props {
   layout: LayoutQuery;
