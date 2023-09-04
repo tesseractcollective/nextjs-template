@@ -142,12 +142,6 @@
 }
 
 .parallax-container {
-  height: 40vh;
-  position: relative;
-  overflow: hidden;
-  @media only screen and (min-width: 960px)  {
-    height: 95vh;
-  }
   &.accent:before {
     content: "";
     display: block;
@@ -161,14 +155,6 @@
     box-shadow: inset 0 0 10vw 5vw #101010;
   } 
   .image-parallax {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     @supports ( -webkit-touch-callout : none)  {
       background-attachment: scroll;
     }

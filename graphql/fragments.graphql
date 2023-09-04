@@ -61,6 +61,7 @@ fragment siteLibraryFields on SiteLibrary {
   id
   title
   isSpanish
+  facebookPixelId
   facebookLink
   tikTokLink
   instagramLink
@@ -714,6 +715,7 @@ fragment contactFields on Contact {
 
 fragment productFields on Product {
   name
+  id
   productSlug
   vendor
   gallery {

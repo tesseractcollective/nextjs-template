@@ -2,6 +2,7 @@ import React from "react";
 import type { SiteLibraryFieldsFragment } from "@/graphql/generated/graphql";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import {
   faSpotify,
   faInstagram,
@@ -13,7 +14,6 @@ import {
   faWhatsapp,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import ReactGA from "react-ga4";
 
@@ -76,8 +76,8 @@ export default function SocialMediaIcons({
         <nav className={cssClass}>
           <Fade
             direction={fade ? undefined : "right"}
-            cascade={fade ? undefined : true}
-            damping={fade ? undefined : 0.15}
+            cascade={fade ? false : true}
+            damping={fade ? undefined : 0.05}
             triggerOnce
             className=""
           >

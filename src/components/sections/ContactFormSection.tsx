@@ -8,6 +8,7 @@ import type {
   ContactFormFieldsFragment,
 } from "@/graphql/generated/graphql";
 import ReactGA from "react-ga4";
+import ConfettiExplosion from "react-confetti-explosion";
 
 type FormikShape = {
   Name: string;
@@ -30,8 +31,10 @@ export default function ContactFormSection({
   siteLibrary,
 }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isExploding, setIsExploding] = React.useState(false);
   const handleSubmit = (values: FormikShape) => {
     setIsSubmitted(true);
+    setIsExploding(true);
     let url =
       "https://docs.google.com/forms/d/1iK-ZxPZ1CW_dzUY3hW-AhkDJdOND5lg46tyVH0ueOUg/formResponse?usp=pp_url&";
     [
@@ -86,11 +89,14 @@ export default function ContactFormSection({
               {!!contactFormItem.netlifyContactForm && (
                 <>
                   {isSubmitted ? (
-                    <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
-                      <p className="text-[#229a2a]">
-                        Successfully submitted form!
-                      </p>
-                    </div>
+                    <>
+                      {isExploding && <ConfettiExplosion />}
+                      <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-sm border p-4">
+                        <p className="text-[#229a2a]">
+                          Successfully submitted form!
+                        </p>
+                      </div>
+                    </>
                   ) : (
                     <Formik
                       initialValues={{
@@ -103,7 +109,10 @@ export default function ContactFormSection({
                       }}
                       onSubmit={handleSubmit}
                     >
-                      <Form className="flex flex-col px-4 w-full mx-auto gap-y-1">
+                      <Form
+                        className="flex flex-col px-4 w-full mx-auto gap-y-1"
+                        id="contact"
+                      >
                         <div className="relative mb-2">
                           <label
                             htmlFor="Name"

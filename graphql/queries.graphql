@@ -167,6 +167,9 @@ query productPage($productSlug: String!) {
   product(where: { productSlug: $productSlug }) {
     ...productFields
   }
+  products(first: 500) {
+    ...productFields
+  }
   blogs(first: 500) {
     ...blogFields
   }

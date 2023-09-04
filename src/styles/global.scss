@@ -186,9 +186,6 @@ body {
 }
 
 .body-parsed-text {
- strong { 
-    background: linear-gradient(to top, var(--primary-fade-opacity) 40%, transparent 40%);
-  }
   p, li {
     opacity: 90%;
     font-size: 16px;
@@ -229,24 +226,26 @@ body {
   ul {
     padding-inline-start: 20px;
   }
-  a {
-    position: relative;
-    margin: 0 0.25rem;
-    color: var(--secondary);
-    overflow: hidden;
-    background: linear-gradient(135deg, var(--primary), var(--text) 50%, var(--text) 50%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 250% 100%;
-    background-position: 100%;
-    transition: all 275ms ease;
-    border-bottom: 1px solid var(--secondary);
-    &:hover,  &:focus {
-      background-position: 0 100%;
-      border-bottom: 1px solid var(--secondary);
-    }
-  }
+  // a {
+  //   position: relative;
+  //   margin: 0 0.25rem;
+  //   color: var(--secondary);
+  //   overflow: hidden;
+  //   background: linear-gradient(135deg, var(--primary), var(--text) 50%, var(--text) 50%);
+  //   background-clip: text;
+  //   -webkit-background-clip: text;
+  //   -webkit-text-fill-color: transparent;
+  //   background-size: 250% 100%;
+  //   background-position: 100%;
+  //   transition: all 275ms ease;
+  //   border-bottom: 1px solid var(--secondary);
+  //   &:hover,  &:focus {
+  //     transform: skewX(-15deg);
+  //     transition: transform .3s ease-in-out;
+  //     background-position: 0 100%;
+  //     border-bottom: 1px solid var(--secondary);
+  //   }
+  // }
   table {
     border-collapse: collapse;
     width: 100%;
@@ -328,6 +327,7 @@ body {
   a {
     position: relative;
     color: var(--secondary);
+    
     overflow: hidden;
     background: linear-gradient(135deg, var(--primary), var(--text) 50%, var(--text) 50%);
     background-clip: text;
@@ -338,6 +338,8 @@ body {
     transition: all 275ms ease;
     border-bottom: 1px solid var(--secondary);
     &:hover,  &:focus {
+      transform: skewX(-15deg);
+      transition:transform .3s ease-in-out;
       background-position: 0 100%;
       border-bottom: 1px solid var(--secondary);
     }

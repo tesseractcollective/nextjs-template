@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Image from "next/image";
 import Head from "next/head";
-import VideoBox from "@/components/VideoBox";
 import {
   faDiamondTurnRight,
   faLocationDot,
@@ -18,8 +17,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Fade } from "react-awesome-reveal";
 import Profiles from "@/components/Profiles";
-import VideoPlaylistBox from "./VideoPlaylistBox";
-import SocialMediaIcons from "./SocialMediaIcons";
+import VideoPlaylistBox from "@/components/VideoPlaylistBox";
+import VideoBox from "@/components/VideoBox";
+import SocialMediaIcons from "@/components/SocialMediaIcons";
+import VCF from "@/components/VCF";
 
 export interface ProfileProps {
   profile: ProfileFieldsFragment;
@@ -345,14 +346,18 @@ export default function Profile({
                               {contact.contactTitle}
                             </p>
                           )}
-                          <SocialMediaIcons
-                            cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2"
-                            phoneLinkProp={contact?.contactPhone || undefined}
-                            whatsappLinkProp={
-                              contact?.contactWhatsapp || undefined
-                            }
-                            emailLinkProp={contact?.contactEmail || undefined}
-                          />
+                          <div className="flex flex-row items-center justify-start">
+                            <SocialMediaIcons
+                              fade={false}
+                              cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2"
+                              phoneLinkProp={contact?.contactPhone || undefined}
+                              whatsappLinkProp={
+                                contact?.contactWhatsapp || undefined
+                              }
+                              emailLinkProp={contact?.contactEmail || undefined}
+                            />
+                            {contact && <VCF contact={contact} />}
+                          </div>
                           {!!contact.contactAddress && (
                             <p className="text-xs md:text-sm my-0 text-text-color opacity-80 flex flex-row items-center">
                               <FontAwesomeIcon
