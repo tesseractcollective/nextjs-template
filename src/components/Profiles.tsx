@@ -9,7 +9,7 @@ import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import SocialMediaIcons from "./SocialMediaIcons";
+import SocialMediaIcons from "@/components/SocialMediaIcons";
 
 interface ProfilesProps {
   profileSectionTitle?: string;

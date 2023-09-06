@@ -12,14 +12,20 @@ import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import Head from "next/head";
 import LinkItem from "@/components/LinkItem";
+import Blogs from "@/components/Blogs";
 import ReactGA from "react-ga4";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/thumbs";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;
+  blogs: BlogFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export default function Blog({ blog, siteLibrary }: BlogProps) {
+export default function Blog({ blog, siteLibrary, blogs }: BlogProps) {
   const {
     title,
     content,
@@ -28,6 +34,9 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
     blogCallToActionLink,
     videoBox,
   } = blog;
+  const filteredBlogs = blogs?.filter(
+    (tempBlog) => blog.blogSlug !== tempBlog.blogSlug
+  );
   return (
     <>
       <Head>
@@ -43,7 +52,7 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
       <div className="texture-background overflow-hidden relative">
         <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
           <Link
-            href="/blogs"
+            href={`/${blog.blogCategory}`}
             onClick={() =>
               ReactGA.event({
                 category: "Link",
@@ -57,31 +66,30 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
               icon={faArrowLeft as IconProp}
               className="fa-fw h-4 w-4 mr-2"
             />
-            <span>Blogs</span>
+            <span>{blog.blogCategory}</span>
           </Link>
         </div>
-        <section className="w-10/12 md:w-8/12 mx-auto block my-4 p-4">
-          {!!image?.url && (
-            <div className="relative h-[600px]">
-              <Image
-                src={image.url}
-                alt=""
-                priority
-                className="object-center mx-auto"
-                width={0}
-                height={0}
-                sizes="100%"
-                style={{
-                  width: "auto",
-                  height: "auto",
-                  margin: "0 auto",
-                }}
-              />
-            </div>
+        <section className="max-w-5xl mx-auto block my-4 p-4">
+          <div>
+            {!!image?.url && (
+              <div className="relative h-[500px] block">
+                <Image
+                  src={image.url}
+                  alt=""
+                  priority
+                  className="object-center mx-auto h-full w-full object-cover"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
+              </div>
+            )}
+          </div>
+          {!!title && (
+            <h1 className="uppercase mb-2 gradient-text block">{title}</h1>
           )}
-          {!!title && <h1 className="uppercase mb-2 gradient-text">{title}</h1>}
           {!!content?.html && (
-            <div className="body-parsed-text">{parse(content.html)}</div>
+            <div className="body-parsed-text block">{parse(content.html)}</div>
           )}
           {!!blogCallToActionText && blogCallToActionLink && (
             <LinkItem
@@ -113,6 +121,18 @@ export default function Blog({ blog, siteLibrary }: BlogProps) {
           )}
         </section>
       </div>
+      {filteredBlogs && blog.blogCategory && (
+        <div className="relative">
+          <section className="max-w-8xl my-8 px-4 dark-section mx-auto mb-16">
+            <Blogs
+              fromHomePage={true}
+              blogs={filteredBlogs}
+              blogCategory={blog.blogCategory}
+              blogHeader={blog.blogCategory || "Blogs"}
+            />
+          </section>
+        </div>
+      )}
     </>
   );
 }

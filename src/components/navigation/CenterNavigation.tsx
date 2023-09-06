@@ -8,7 +8,7 @@ import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import SocialMediaIcons from "../SocialMediaIcons";
+import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
 

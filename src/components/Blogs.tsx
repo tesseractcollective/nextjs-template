@@ -39,7 +39,7 @@ export default function Blogs({
           {FilteredBlogs.splice(0, 4).map((blogItem) => (
             <li key={blogItem.blogSlug} className="">
               <Link
-                href={`/blog/${blogItem.blogSlug}` || "#"}
+                href={`/${blogItem.blogCategory}/${blogItem.blogSlug}` || "#"}
                 className="no-underline flex gap-x-2 items-center"
               >
                 {!!blogItem.image?.url && (
@@ -99,7 +99,7 @@ export default function Blogs({
             </button>
           </div>
         </div>
-        <div className="container py-5 blog-slider-wrapper mx-auto">
+        <div className="max-w-8xl py-5 blog-slider-wrapper mx-auto">
           <Swiper
             className="!pb-10"
             grabCursor
@@ -143,13 +143,15 @@ export default function Blogs({
                     </div>
                   </div>
                   <h3 className="mt-3 text-base font-semibold !text-text-color">
-                    <Link
-                      href={`/blog/${blogItem.blogSlug || "/blogs"}`}
-                      className="!text-text-color line-clamp-1 text-shadow"
-                    >
-                      <span className="absolute inset-0 text-shadow" />
-                      {blogItem.title}
-                    </Link>
+                    {!!blogItem.blogSlug && (
+                      <Link
+                        href={`/${blogItem.blogCategory}/${blogItem.blogSlug}`}
+                        className="!text-text-color line-clamp-1 text-shadow"
+                      >
+                        <span className="absolute inset-0 text-shadow" />
+                        {blogItem.title}
+                      </Link>
+                    )}
                   </h3>
                   <div className="absolute inset-0 bg-gradient-to-b from-secondary transition opacity-0 group-hover:opacity-30 z-10" />
                   <div className="absolute inset-0 bg-gradient-to-t from-background transition opacity-0 group-hover:opacity-30 z-10" />
@@ -160,7 +162,7 @@ export default function Blogs({
         </div>
         <div className="w-full text-center">
           <Link
-            href="/blogs"
+            href={`/${blogCategory}`}
             className="text-link flex flex-row my-1 items-center max-w-max justify-center text-sm text-center mx-auto mb-8"
           >
             <span>All {(!!blogHeader && blogHeader) || "Blogs"}</span>
@@ -218,7 +220,9 @@ export default function Blogs({
                     </div>
                   </div>
                   <h3 className="mt-3 text-lg font-semibold leading-6 !text-text-color">
-                    <Link href={`/blog/${blogItem.blogSlug}`}>
+                    <Link
+                      href={`/${blogItem.blogCategory}/${blogItem.blogSlug}`}
+                    >
                       <span className="absolute inset-0 z-30" />
                       {blogItem.title}
                     </Link>

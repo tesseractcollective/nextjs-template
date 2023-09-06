@@ -6,10 +6,10 @@ import type {
   SiteLibraryFieldsFragment,
   HeroMediaSliderFieldsFragment,
 } from "@/graphql/generated/graphql";
-import SocialMediaIcons from "../SocialMediaIcons";
+import SocialMediaIcons from "@/components/SocialMediaIcons";
 import { Fade } from "react-awesome-reveal";
 import Slider from "react-slick";
-import LinkItem from "../LinkItem";
+import LinkItem from "@/components/LinkItem";
 
 type HeroMediaSliderType = HeroMediaSliderFieldsFragment;
 
@@ -160,7 +160,7 @@ export default function HeroMediaSliderSection({
                 {!!heroMediaSliderItem?.sliderMediaBackground && (
                   <div className="main">
                     <Fade direction="up">
-                      <div className="overlay" />
+                      <div className="overlay absolute top-0 left-0 w-full h-full transition-all" />
                     </Fade>
                     {heroMediaSliderItem.mediaType === "video" && (
                       <video
@@ -175,10 +175,11 @@ export default function HeroMediaSliderSection({
                     {heroMediaSliderItem.mediaType === "image" && (
                       <Image
                         src={heroMediaSliderItem.sliderMediaBackground.url}
-                        className="hero-media-image"
+                        className="hero-media-image object-none h-full w-full object-center-top"
                         alt=""
-                        width={1920}
-                        height={1080}
+                        width={0}
+                        height={0}
+                        sizes="100%"
                       />
                     )}
                   </div>

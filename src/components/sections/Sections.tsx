@@ -15,7 +15,7 @@ import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import GridBox from "@/components/sections/GridBox";
 import ContactFormSection from "@/components/sections/ContactFormSection";
 import HeroMediaSliderSection from "@/components/sections/HeroMediaSliderSection";
-import TextContentSection from "./TextContent";
+import TextContentSection from "@/components/sections/TextContent";
 import AccordionSection from "@/components/sections/AccordionSection";
 import LoopTextSection from "@/components/sections/LoopTextSection";
 
