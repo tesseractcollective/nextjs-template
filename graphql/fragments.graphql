@@ -276,6 +276,59 @@ fragment productsSlugListFields on Product {
   updatedAt
 }
 
+fragment layoutBlockColumnFields on LayoutBlockColumn {
+  id
+  htmlId
+  cssClass
+  hideBlockColumn
+  backgroundImage {
+    url
+  }
+  contentTags {
+    albumDisplayType
+    blogCategory
+    blogSectionTitle
+    contactType
+    eventDisplayLayout
+    logoTableType
+    logoTableLayout
+    productType
+    profileLayoutStyle
+    profileSectionTitle
+    profileType
+    testimonialType
+  }
+  elements {
+    stripePricingTableId
+    stripePublishableKey
+    displayInstagramSectionUsername
+    parallaxImage {
+      url
+    }
+    galleryLayout
+    gallery(first: 500) {
+      url
+    }
+    standOutText
+    iFrameTitle
+    iFrameCode
+    parallaxImage {
+      url
+    }
+  }
+  sections(first: 100) {
+    __typename
+    ...TextContentFields
+    ...CallToActionFields
+    ...HeroMediaSliderFields
+    ...ContactFormFields
+    ...GridBoxFields
+    ...AccordionFields
+    ...VideoBoxFields
+    ...LoopTextFields
+  }
+}
+
 fragment pageFields on Page {
   id
   pageSlug
@@ -310,55 +363,7 @@ fragment pageFields on Page {
       url
     }
     layoutBlockColumns(first: 100) {
-      id
-      htmlId
-      cssClass
-      hideBlockColumn
-      backgroundImage {
-        url
-      }
-      contentTags {
-        albumDisplayType
-        blogCategory
-        blogSectionTitle
-        contactType
-        eventDisplayLayout
-        logoTableType
-        productType
-        profileLayoutStyle
-        profileSectionTitle
-        profileType
-        testimonialType
-      }
-      elements {
-        stripePricingTableId
-        stripePublishableKey
-        displayInstagramSectionUsername
-        parallaxImage {
-          url
-        }
-        galleryLayout
-        gallery(first: 500) {
-          url
-        }
-        standOutText
-        iFrameTitle
-        iFrameCode
-        parallaxImage {
-          url
-        }
-      }
-      sections(first: 100) {
-        __typename
-        ...TextContentFields
-        ...CallToActionFields
-        ...HeroMediaSliderFields
-        ...ContactFormFields
-        ...GridBoxFields
-        ...AccordionFields
-        ...VideoBoxFields
-        ...LoopTextFields
-      }
+      ...layoutBlockColumnFields
     }
   }
   popup {
@@ -368,55 +373,7 @@ fragment pageFields on Page {
     buttonOpenCss
     openOnScroll
     popupContent(first: 100) {
-      id
-      htmlId
-      cssClass
-      hideBlockColumn
-      backgroundImage {
-        url
-      }
-      contentTags {
-        albumDisplayType
-        blogCategory
-        blogSectionTitle
-        contactType
-        eventDisplayLayout
-        logoTableType
-        productType
-        profileLayoutStyle
-        profileSectionTitle
-        profileType
-        testimonialType
-      }
-      elements {
-        stripePricingTableId
-        stripePublishableKey
-        displayInstagramSectionUsername
-        parallaxImage {
-          url
-        }
-        galleryLayout
-        gallery(first: 500) {
-          url
-        }
-        standOutText
-        iFrameTitle
-        iFrameCode
-        parallaxImage {
-          url
-        }
-      }
-      sections(first: 100) {
-        __typename
-        ...TextContentFields
-        ...CallToActionFields
-        ...HeroMediaSliderFields
-        ...ContactFormFields
-        ...GridBoxFields
-        ...AccordionFields
-        ...VideoBoxFields
-        ...LoopTextFields
-      }
+      ...layoutBlockColumnFields
     }
   }
 }
@@ -515,6 +472,7 @@ fragment ContactFormFields on ContactForm {
   jotformUrl
   hubspotFormId
   hubspotPortalId
+  calendlyLink
   cssClass
 }
 
@@ -669,6 +627,7 @@ fragment profileFields on Profile {
   websiteLink
   youtubeLink
   contactQuery
+  displayVcf
   fullBio {
     html
     raw
@@ -707,6 +666,7 @@ fragment contactFields on Contact {
   contactGoogleAddressLink
   contactWhatsapp
   contactCalendly
+  contactLinkedin
   contactAvatar {
     id
     url
@@ -730,4 +690,12 @@ fragment productFields on Product {
   description {
     html
   }
+  iFrame
+  videoBox {
+    videoTitle
+    youtubeVideoId
+    vimeoVideoId
+    youtubePlaylistId
+  }
+  productJson
 }

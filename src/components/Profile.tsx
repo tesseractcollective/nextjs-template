@@ -103,6 +103,10 @@ export default function Profile({
               linkedinLinkProp={profile?.linkedinLink || undefined}
               emailLinkProp={profile.email || undefined}
               phoneLinkProp={profile.phoneNumber || undefined}
+              calendlyLinkProp={profile.calendlyLink || undefined}
+              displayVcf={profile.displayVcf || undefined}
+              avatar={profile.avatarImage?.url || undefined}
+              name={profile.name || undefined}
             />
             {profile.fullBio?.html && (
               <div className="mt-4 text-text-color body-parsed-text">
@@ -355,8 +359,16 @@ export default function Profile({
                                 contact?.contactWhatsapp || undefined
                               }
                               emailLinkProp={contact?.contactEmail || undefined}
+                              displayVcf={true}
+                              name={contact.contactName || undefined}
+                              avatar={contact.contactAvatar?.url || undefined}
+                              calendlyLinkProp={
+                                contact?.contactCalendly || undefined
+                              }
+                              linkedinLinkProp={
+                                contact?.contactLinkedin || undefined
+                              }
                             />
-                            {contact && <VCF contact={contact} />}
                           </div>
                           {!!contact.contactAddress && (
                             <p className="text-xs md:text-sm my-0 text-text-color opacity-80 flex flex-row items-center">

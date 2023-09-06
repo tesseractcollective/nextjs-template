@@ -59,6 +59,7 @@ export default function ContentComponents({
     blogSectionTitle,
     eventDisplayLayout,
     logoTableType,
+    logoTableLayout,
     productType,
     profileLayoutStyle,
     profileSectionTitle,
@@ -85,8 +86,12 @@ export default function ContentComponents({
       )}
       {!!logoTableType && logoTables.length >= 1 && (
         <div>
-          {logoTables && logoTableType && (
-            <LogoTable type={logoTableType} logoTables={logoTables} />
+          {logoTables && logoTableType && logoTableLayout && (
+            <LogoTable
+              type={logoTableType}
+              logoTables={logoTables}
+              logoTableLayout={logoTableLayout}
+            />
           )}
         </div>
       )}

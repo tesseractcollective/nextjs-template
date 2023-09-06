@@ -9,6 +9,7 @@ import type {
 } from "@/graphql/generated/graphql";
 import ReactGA from "react-ga4";
 import ConfettiExplosion from "react-confetti-explosion";
+import { InlineWidget } from "react-calendly";
 
 type FormikShape = {
   Name: string;
@@ -189,6 +190,16 @@ export default function ContactFormSection({
                   formId={contactFormItem.hubspotFormId}
                   cssClass="block w-full mx-auto"
                   loading={<div />}
+                />
+              )}
+              {!!contactFormItem?.calendlyLink && (
+                <InlineWidget
+                  url={contactFormItem.calendlyLink}
+                  styles={{
+                    height: "1000px",
+                    padding: "0 1rem",
+                    borderRadius: "16px",
+                  }}
                 />
               )}
               {!!contactFormItem?.jotformUrl && (

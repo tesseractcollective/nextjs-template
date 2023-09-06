@@ -13,6 +13,8 @@ import Image from "next/image";
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
+import VideoBox from "@/components/VideoBox";
+import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 
 // If you want you can use SCSS instead of css
 import "lightgallery/scss/lightgallery.scss";
@@ -49,6 +51,9 @@ export default function Product({
     enableProduct,
     productType,
     description,
+    iFrame,
+    videoBox,
+    productJson,
   } = product;
   if (!siteLibrary) return <></>;
   const { isSpanish, youtubeApiKey } = siteLibrary;
@@ -161,6 +166,41 @@ export default function Product({
             )}
           </div>
         </div>
+
+        {(iFrame || videoBox) && (
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">
+            <div className="relative">
+              <div
+                className="absolute inset-0 flex items-center"
+                aria-hidden="true"
+              >
+                <div className="w-full border-t border-white opacity-40 mb-4" />
+              </div>
+            </div>
+            {!!iFrame && <div className="my-8">{parse(iFrame)}</div>}
+            {!!videoBox && (
+              <div>
+                {videoBox?.map((video) => (
+                  <div key={Math.random()}>
+                    {video?.youtubePlaylistId ? (
+                      <VideoPlaylistBox
+                        videoTitle={video?.videoTitle || undefined}
+                        youtubePlaylistId={video.youtubePlaylistId}
+                        youtubeApiKey={youtubeApiKey}
+                      />
+                    ) : (
+                      <VideoBox
+                        videoTitle={video?.videoTitle || undefined}
+                        vimeoVideoId={video?.vimeoVideoId || undefined}
+                        youtubeVideoId={video?.youtubeVideoId || undefined}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {!!filteredProducts && (
           <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">

@@ -2,7 +2,11 @@ import React from "react";
 import type { SiteLibraryFieldsFragment } from "@/graphql/generated/graphql";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faPhone,
+  faCalendar,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faSpotify,
   faInstagram,
@@ -13,9 +17,11 @@ import {
   faSoundcloud,
   faWhatsapp,
   faLinkedin,
+  faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import ReactGA from "react-ga4";
+import VCF from "@/components/VCF";
 
 export interface SocialMediaIconsProps {
   siteLibrary?: SiteLibraryFieldsFragment;
@@ -26,6 +32,7 @@ export interface SocialMediaIconsProps {
   twitterLinkProp?: string;
   youtubeLinkProp?: string;
   soundcloudLinkProp?: string;
+  calendlyLinkProp?: string;
   pandoraLinkProp?: string;
   appleMusicLinkProp?: string;
   threadsLinkProp?: string;
@@ -34,7 +41,11 @@ export interface SocialMediaIconsProps {
   emailLinkProp?: string;
   whatsappLinkProp?: string;
   phoneLinkProp?: string;
+  githubLinkProp?: string;
+  avatar?: string;
+  name?: string;
   fade?: boolean;
+  displayVcf?: boolean;
 }
 
 export default function SocialMediaIcons({
@@ -52,9 +63,14 @@ export default function SocialMediaIcons({
   linkedinLinkProp,
   emailLinkProp,
   whatsappLinkProp,
+  calendlyLinkProp,
   phoneLinkProp,
+  githubLinkProp,
   cssClass,
   fade,
+  displayVcf,
+  avatar,
+  name,
 }: SocialMediaIconsProps) {
   return (
     <>
@@ -72,6 +88,9 @@ export default function SocialMediaIcons({
         linkedinLinkProp ||
         emailLinkProp ||
         whatsappLinkProp ||
+        calendlyLinkProp ||
+        githubLinkProp ||
+        displayVcf ||
         phoneLinkProp) && (
         <nav className={cssClass}>
           <Fade
@@ -426,6 +445,67 @@ export default function SocialMediaIcons({
                 />
                 <span className="sr-only">Linkedin</span>
               </a>
+            )}
+            {githubLinkProp && (
+              <a
+                title={githubLinkProp}
+                href={githubLinkProp}
+                className="max-w-max mx-2 text-center text-link"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action: githubLinkProp || "",
+                    label: githubLinkProp,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={faGithub as IconProp}
+                  className="fa-fw mr-2 h-4 w-4"
+                />
+                <span className="sr-only">GitHub</span>
+              </a>
+            )}
+            {calendlyLinkProp && (
+              <a
+                title={calendlyLinkProp}
+                href={calendlyLinkProp}
+                className="max-w-max mx-2 text-center text-link"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action: calendlyLinkProp || "",
+                    label: calendlyLinkProp,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={faCalendar as IconProp}
+                  className="fa-fw mr-2 h-4 w-4"
+                />
+                <span className="sr-only">Calendly</span>
+              </a>
+            )}
+            {displayVcf && (
+              <VCF
+                name={name || undefined}
+                phone={phoneLinkProp || undefined}
+                email={emailLinkProp || undefined}
+                linkedin={linkedinLinkProp || undefined}
+                calendly={calendlyLinkProp || undefined}
+                avatar={avatar || undefined}
+                facebook={facebookLinkProp || undefined}
+                twitterX={twitterLinkProp || undefined}
+                threads={threadsLinkProp || undefined}
+                youtube={youtubeLinkProp || undefined}
+                instagram={instagramLinkProp || undefined}
+                tiktok={tikTokLinkProp || undefined}
+                github={githubLinkProp || undefined}
+              />
             )}
           </Fade>
         </nav>

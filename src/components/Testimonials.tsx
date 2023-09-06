@@ -60,7 +60,7 @@ export default function Testimonials({
                           />
                         </svg>
                         {testimonial.testimonialText?.html && (
-                          <blockquote className="text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+                          <blockquote className="text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9 line-clamp-6">
                             {parse(testimonial.testimonialText?.html)}
                           </blockquote>
                         )}

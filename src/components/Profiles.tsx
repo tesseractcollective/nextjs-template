@@ -2,10 +2,7 @@ import React, { useState, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import parse from "html-react-parser";
-import {
-  faArrowUpRightFromSquare,
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
@@ -145,6 +142,12 @@ export default function Profiles({
                                 }
                                 emailLinkProp={profile.email || undefined}
                                 phoneLinkProp={profile.phoneNumber || undefined}
+                                displayVcf={profile.displayVcf || undefined}
+                                name={profile.name || undefined}
+                                avatar={profile.avatarImage?.url || undefined}
+                                calendlyLinkProp={
+                                  profile.calendlyLink || undefined
+                                }
                               />
 
                               {!!profile && (
@@ -198,7 +201,18 @@ export default function Profiles({
                           leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                           leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                          <Dialog.Panel className="relative transform overflow-x-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-background flex-col flex max-h-[80vh] overflow-scroll">
+                          <Dialog.Panel className="relative transform overflow-x-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:mb-8 max-w-5xl w-[95%] mx-auto bg-background flex-col flex max-h-[80vh] overflow-scroll">
+                            <button
+                              type="button"
+                              className="my-8 inline-flex items-center justify-center rounded-md text-text-overlay outline outline-text-overlay mx-auto max-w-max absolute top-[-25px] right-2 z-10"
+                              onClick={() => setOpen(false)}
+                            >
+                              <span className="sr-only">Close menu</span>
+                              <XMarkIcon
+                                className="h-6 w-6 text-text-overlay"
+                                aria-hidden="true"
+                              />
+                            </button>
                             <div className="">
                               <div
                                 aria-hidden="true"
@@ -273,6 +287,12 @@ export default function Profiles({
                                       selectedProfile?.soundcloudLink ||
                                       undefined
                                     }
+                                    emailLinkProp={
+                                      selectedProfile.email || undefined
+                                    }
+                                    phoneLinkProp={
+                                      selectedProfile.phoneNumber || undefined
+                                    }
                                     linkedinLinkProp={
                                       selectedProfile?.linkedinLink || undefined
                                     }
@@ -281,6 +301,17 @@ export default function Profiles({
                                     }
                                     phoneLinkProp={
                                       selectedProfile.phoneNumber || undefined
+                                    }
+                                    displayVcf={
+                                      selectedProfile.displayVcf || undefined
+                                    }
+                                    name={selectedProfile.name || undefined}
+                                    avatar={
+                                      selectedProfile.avatarImage?.url ||
+                                      undefined
+                                    }
+                                    calendlyLinkProp={
+                                      selectedProfile.calendlyLink || undefined
                                     }
                                   />
                                   {selectedProfile.fullBio?.html && (
@@ -294,7 +325,7 @@ export default function Profiles({
 
                             <button
                               type="button"
-                              className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline outline-primary mx-auto max-w-max"
+                              className="my-8 inline-flex items-center justify-center rounded-md text-text-color outline outline-primary mx-auto max-w-max"
                               onClick={() => setOpen(false)}
                             >
                               <span className="sr-only">Close menu</span>

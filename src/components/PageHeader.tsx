@@ -60,17 +60,17 @@ export default function PageHeader({
         <section className={`relative mx-auto max-w-8xl my-32' ${cssClass}`}>
           {(pageHeaderTitleProp || pageHeaderSubtitleProp) && (
             <div className="relative w-full mx-auto max-w-8xl p-4 my-8">
-              <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
+              <div className="flex flex-col md:flex-col items-start justify-center md:justify-start">
                 {!!pageHeaderTitleProp && (
                   <Fade direction="left" triggerOnce>
-                    <h1 className="text-3xl md:text-7xl xl:text-8xl text-shadow my-0 py-0 text-center">
+                    <h1 className="text-3xl md:text-7xl xl:text-8xl text-shadow my-0 py-0 text-center text-primary font-bold">
                       {pageHeaderTitleProp}
                     </h1>
                   </Fade>
                 )}
                 {!!pageHeaderSubtitleProp && (
                   <Fade direction="right" triggerOnce>
-                    <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 mx-auto md:mr-0 md:ml-auto md:text-right">
+                    <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 mx-auto md:mr-0 md:ml-auto md:text-right ml-4">
                       {pageHeaderSubtitleProp}
                     </h2>
                   </Fade>

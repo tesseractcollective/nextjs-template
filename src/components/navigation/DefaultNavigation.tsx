@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
@@ -26,6 +26,15 @@ export default function DefaultNavigation({
   pageNavigationSelection,
 }: NavProps) {
   const [open, setOpen] = useState(false);
+  const [small, setSmall] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", () =>
+        setSmall(window.pageYOffset > 200)
+      );
+    }
+  }, []);
 
   if (!navigations && !siteLibrary) return <></>;
   if (hideNav === true) return <></>;
@@ -46,8 +55,17 @@ export default function DefaultNavigation({
     ) || navigations[0];
 
   const { items } = navigation;
+  const primaryItems = items.filter(
+    (mainNavigationItem) => mainNavigationItem.primaryItem === true
+  );
+
   return (
-    <div className="" id="navigation">
+    <div
+      className={`sticky top-0 z-[999] bg-background left-0 right-0 nav-shadow ${
+        small ? "nav-shadow-scrolled" : ""
+      }`}
+      id="navigation"
+    >
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog
@@ -80,7 +98,7 @@ export default function DefaultNavigation({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto pb-12 shadow-xl border-r-primary border-r bg-bg-secondary">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto pb-12 shadow-xl border-r-primary border-r bg-bg-secondary theme-scroll">
                 <div className="flex px-4 pb-2 pt-5">
                   <Link
                     href="/"
@@ -143,9 +161,9 @@ export default function DefaultNavigation({
                                   className={({ selected }) =>
                                     classNames(
                                       selected
-                                        ? "border-primary text-primary"
+                                        ? "text-primary"
                                         : "border-transparent text-text-color",
-                                      "flex-1 whitespace-nowrap border-dark hover:border-white border-b-2 px-1 py-4 text-base font-medium"
+                                      "flex-1 whitespace-nowrap border-dark hover:border-white px-1 py-4 text-base font-medium"
                                     )
                                   }
                                 >
@@ -205,7 +223,7 @@ export default function DefaultNavigation({
                         )}
 
                         {!hasItems && (
-                          <div className="space-y-6 border-y border-[#2c2c2c6f] px-4 py-3">
+                          <div className="space-y-6 px-4 py-3">
                             <div className="flow-root">
                               {mainNavigationItem.link?.includes("http") ? (
                                 <a
@@ -251,7 +269,7 @@ export default function DefaultNavigation({
                     );
                   })}
 
-                <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                <div className="space-y-6 px-4 py-6">
                   <SocialMediaIcons
                     siteLibrary={siteLibrary}
                     cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2"
@@ -302,7 +320,11 @@ export default function DefaultNavigation({
           <div className="">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
               <div className="border-b border-dark">
-                <div className="flex h-16 items-center justify-between">
+                <div
+                  className={`flex items-center justify-between transition-all ${
+                    small ? "h-12" : "h-16"
+                  }`}
+                >
                   <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max">
                     <Link
                       href="/"
@@ -319,7 +341,9 @@ export default function DefaultNavigation({
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                            className={`w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all h-full ${
+                              small ? "max-h-6" : "max-h-8"
+                            }`}
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}
@@ -337,7 +361,7 @@ export default function DefaultNavigation({
                   </div>
 
                   <div className="hidden h-full lg:flex">
-                    {/* Desktop Flyout menus */}
+                    {/* START Desktop Flyout menus */}
                     <Popover.Group className="inset-x-0 bottom-0 px-4 z-[99999]">
                       <div className="flex h-full justify-center space-x-8">
                         {!!items &&
@@ -365,7 +389,15 @@ export default function DefaultNavigation({
                                                 open
                                                   ? "border-primary text-primary"
                                                   : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
-                                                "relative z-10 -mb-px flex items-center pt-px text-xs sm:text-sm md:text-base font-medium transition-colors duration-200 ease-out border-dark hover:border-white border-b-2"
+                                                `relative z-10 -mb-px flex items-center pt-px font-medium transition-colors duration-200 ease-out border-dark hover:border-white border-b-2 ${
+                                                  small
+                                                    ? "text-xs md:text-sm"
+                                                    : "text-xs sm:text-sm md:text-base"
+                                                } ${
+                                                  mainNavigationItem?.cssClass
+                                                } ${
+                                                  mainNavigationItem.cssClass
+                                                }`
                                               )}
                                             >
                                               {mainNavigationItem.label}
@@ -484,7 +516,11 @@ export default function DefaultNavigation({
                                       key={mainNavigationItem?.link}
                                       link={mainNavigationItem?.link}
                                       label={mainNavigationItem?.label}
-                                      cssClass={`flex items-center text-xs sm:text-sm md:text-base font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 ${mainNavigationItem?.cssClass}`}
+                                      cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all ${
+                                        small
+                                          ? "text-xs md:text-sm"
+                                          : "text-xs sm:text-sm md:text-base"
+                                      } ${mainNavigationItem?.cssClass}`}
                                       sameTab={mainNavigationItem?.sameTab}
                                     />
                                   )}
@@ -493,6 +529,7 @@ export default function DefaultNavigation({
                             })}
                       </div>
                     </Popover.Group>
+                    {/* END Desktop Flyout menus */}
                   </div>
 
                   {/* Mobile menu bar */}
@@ -511,7 +548,9 @@ export default function DefaultNavigation({
                     >
                       <span className="sr-only">Open menu</span>
                       <Bars3Icon
-                        className="h-6 w-6 group-hover:text-primary transition"
+                        className={`group-hover:text-primary transition-all ${
+                          small ? "h-4 w-4" : "h-6 w-6"
+                        }`}
                         aria-hidden="true"
                       />
                     </button>
@@ -532,7 +571,9 @@ export default function DefaultNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className="h-11 w-full max-w-xs mx-auto cursor-pointer object-contain"
+                          className={`w-full max-w-xs mx-auto cursor-pointer object-contain transition-all ${
+                            small ? "h-7" : "h-10"
+                          }`}
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}
@@ -547,23 +588,25 @@ export default function DefaultNavigation({
                     )}
                   </Link>
 
-                  <div className="flex flex-1 items-center justify-end max-w-max">
-                    {!!items &&
-                      items
-                        .filter(
-                          (mainNavigationItem) =>
-                            mainNavigationItem.primaryItem === true
-                        )
-                        .map((mainNavigationItem) => (
-                          <LinkItem
-                            key={mainNavigationItem?.link}
-                            link={mainNavigationItem?.link}
-                            label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-xs sm:text-sm md:text-base font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 py-1 md:py-2 rounded ${mainNavigationItem?.cssClass}`}
-                            sameTab={mainNavigationItem?.sameTab}
-                          />
-                        ))}
-                  </div>
+                  {!!primaryItems && primaryItems.length >= 1 && (
+                    <div className="flex flex-1 items-center justify-end max-w-max">
+                      {primaryItems.map((mainNavigationItem) => (
+                        <LinkItem
+                          key={mainNavigationItem?.link}
+                          link={mainNavigationItem?.link}
+                          label={mainNavigationItem?.label}
+                          cssClass={`flex items-center font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 rounded transition-all ${
+                            mainNavigationItem?.cssClass
+                          } ${
+                            small
+                              ? "text-xs md:text-sm py-0 md:py-1"
+                              : "text-xs sm:text-sm md:text-base py-1 md:py-2"
+                          }`}
+                          sameTab={mainNavigationItem?.sameTab}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

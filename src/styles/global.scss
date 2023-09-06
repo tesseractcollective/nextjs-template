@@ -107,19 +107,26 @@ body {
     transition: all 275ms ease;
     text-decoration: none;
     border-bottom: 1px solid var(--primary);
-    &.no-underline {
-      border-bottom: none;
-    }
-    svg {
-      color: var(--text);
-      transition-delay: 75ms;
-    }
     &:hover, &:focus {
       background-position: 0 100%;
       border-bottom: 1px solid var(--secondary);
       svg {
         color: var(--primary);
       }
+    }
+    &.no-underline {
+      border-bottom: none;
+      &:hover, &:focus {
+        background-position: 0 100%;
+        border-bottom: none;
+        svg {
+          color: var(--primary);
+        }
+      }
+    }
+    svg {
+      color: var(--text);
+      transition-delay: 75ms;
     }
 }
 
@@ -149,13 +156,6 @@ body {
       svg {
         color: var(--background);
         transition-delay: 75ms;
-      }
-      &:hover, &:focus {
-        background-position: 0 100%;
-        border-bottom: 1px solid var(--secondary);
-        svg {
-          color: var(--primary);
-        }
       }
   }
 }
@@ -350,6 +350,28 @@ body {
     }
   }
 } 
+
+.header-primary {
+  h1 {
+    color: var(--primary);
+  }
+} 
+.header-secondary {
+  h1 {
+    color: var(--secondary);
+  }
+} 
+.header-xl {
+h1 {
+  font-size: 4rem;
+}
+} 
+.content-w-half {
+  p {
+    width: 80%;
+  }
+}
+
 
 .p-inputtext:enabled:hover {
   border-color: var(--secondary) !important;
@@ -560,4 +582,83 @@ h4, h5, h6  {color: var(--text);}
 
 .max-w-8xl {
   max-width: 86rem;
+}
+
+
+#vendor-logos {
+  padding: 10px 0;
+  overflow: hidden;
+
+  .partner {
+    text-align: center;
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .slick-slider {
+    button {
+      color: var(--primary) !important;
+      &:before {
+        color: var(--primary) !important;
+      }
+      &:focus-visible {
+        outline: 2px solid #005fcc !important;
+      }
+    }
+  }
+
+  .slick-arrow {
+    background: var(--text-color);
+    width: 20px;
+    height: 20px;
+    font-size: 25px;
+    color: var(--text-color);
+    line-height: 40px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s, opacity 0.5s;
+    top: 45%;
+
+    &:hover {
+      background: var(--text-overlay);
+    }
+
+    &:before {
+      display: none;
+    }
+
+    @media (max-width: 576px) {
+      width: 40px;
+      height: 40px;
+      font-size: 25px;
+      line-height: 40px;
+    }
+  }
+
+  .slick-next {
+    right: -15px;
+    @media (min-width: 776px) {
+      right: 0px;
+    }
+  }
+
+  .slick-prev {
+    z-index: 1;
+    left: -15px;
+    @media (min-width: 776px) {
+      left: 0px;
+    }
+  }
+
+  .slick-track {
+    display: flex;
+    align-items: center;
+  }
+
+  .slick-slide img {
+    max-width: 300px !important;
+    min-width: 300px;
+    object-fit: cover;
+  }
 }
