@@ -296,12 +296,6 @@ export default function Profiles({
                                     linkedinLinkProp={
                                       selectedProfile?.linkedinLink || undefined
                                     }
-                                    emailLinkProp={
-                                      selectedProfile.email || undefined
-                                    }
-                                    phoneLinkProp={
-                                      selectedProfile.phoneNumber || undefined
-                                    }
                                     displayVcf={
                                       selectedProfile.displayVcf || undefined
                                     }

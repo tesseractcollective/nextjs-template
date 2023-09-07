@@ -81,11 +81,18 @@ const VCF: FC<Props> = ({
     setVCardData(vCardContent);
   }, [
     vcfData.calendly,
-    vcfData?.email,
+    vcfData.email,
     vcfData.linkedin,
     vcfData.name,
-    vcfData?.phone,
+    vcfData.phone,
     vcfData.photo,
+    vcfData.facebook,
+    vcfData.github,
+    vcfData.instagram,
+    vcfData.threads,
+    vcfData.tiktok,
+    vcfData.twitterX,
+    vcfData.youtube,
   ]);
 
   useEffect(() => {
