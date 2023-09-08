@@ -1,0 +1,37 @@
+{
+  "scrollDigitsData": {
+    "cssClass": "flex flex-col items-center justify-center mx-auto  max-w-xs text-center",
+    "scrollDigits": [
+      {
+        "end": 50,
+        "text": "SALESPEOPLE TRAINED",
+        "start": 0,
+        "digitPrefix": "",
+        "digitSuffix": "K",
+        "cssClassText": "uppercase font-manrope text-base",
+        "cssClassDigit": "text-primary text-6xl font-oswald font-bold",
+        "cssClassWrapper": "flex flex-col items-center justify-center text-center"
+      },
+      {
+        "end": 4,
+        "text": "MARKET CAP GROWTH FOR CLIENTS",
+        "start": 0,
+        "digitPrefix": "$",
+        "digitSuffix": "B+",
+        "cssClassText": "uppercase font-manrope text-base",
+        "cssClassDigit": "text-primary text-6xl font-oswald mb-4 font-bold",
+        "cssClassWrapper": "flex flex-col items-center justify-center text-center"
+      },
+      {
+        "end": 100,
+        "text": "PROMOTIONS TO EXECUTIVE ROLES THROUGH OUR COACHING PROGRAMS",
+        "start": 0,
+        "digitPrefix": "",
+        "digitSuffix": "+",
+        "cssClassText": "uppercase font-manrope text-base",
+        "cssClassDigit": "text-primary text-6xl font-oswald font-bold",
+        "cssClassWrapper": "flex flex-col items-center justify-center text-center"
+      }
+    ]
+  }
+}

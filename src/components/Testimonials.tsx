@@ -39,7 +39,7 @@ export default function Testimonials({
                   key={index}
                   className="isolate overflow-hidden px-6 lg:px-8"
                 >
-                  <div className="relative mx-auto max-w-2xl py-24 sm:py-32 lg:max-w-4xl">
+                  <div className="relative mx-auto max-w-2xl lg:max-w-4xl">
                     <div className="absolute left-1/2 top-0 -z-10 h-[50rem] w-[90rem] -translate-x-1/2 opacity-20 lg:left-36" />
                     <div className="absolute inset-y-0 right-1/2 -z-10 mr-12 w-[50vw] origin-bottom-left skew-x-[-30deg] shadow-xl shadow-primary/10 ring-1 ring-primary sm:mr-20 md:mr-0 lg:right-full lg:-mr-36 lg:origin-center opacity-5" />
                     <figure className="grid grid-cols-1 items-center gap-x-6 gap-y-8 lg:gap-x-10">

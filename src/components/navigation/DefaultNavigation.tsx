@@ -54,7 +54,7 @@ export default function DefaultNavigation({
         )
     ) || navigations[0];
 
-  const { items } = navigation;
+  const { items, navigationWrapperCssClass } = navigation;
   const primaryItems = items.filter(
     (mainNavigationItem) => mainNavigationItem.primaryItem === true
   );
@@ -63,7 +63,7 @@ export default function DefaultNavigation({
     <div
       className={`sticky top-0 z-[999] bg-background left-0 right-0 nav-shadow ${
         small ? "nav-shadow-scrolled" : ""
-      }`}
+      } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
       id="navigation"
     >
       {/* Mobile menu */}
@@ -342,7 +342,7 @@ export default function DefaultNavigation({
                           <span className="sr-only">{title}</span>
                           <Image
                             className={`w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all h-full ${
-                              small ? "max-h-6" : "max-h-8"
+                              small ? "max-h-8" : "max-h-12"
                             }`}
                             src={navigation.navigationLogo?.url}
                             alt=""

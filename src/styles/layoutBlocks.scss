@@ -787,13 +787,36 @@ body iframe {
   }
 }
 
+.-top-600px {
+  top: -600px;
+}
+
+.h-10vh {
+  min-height: 10vh;
+}
+
+.h-25vh {
+  min-height: 25vh;
+}
+
+.h-30vh {
+  min-height: 30vh;
+}
 
 .h-50vh {
   min-height: 50vh;
 }
 
+.h-60vh {
+  min-height: 60vh;
+}
+
 .h-70vh {
   min-height: 70vh;
+}
+
+.h-80vh {
+  min-height: 80vh;
 }
 
 .slick-slider.mobile-album-slick {

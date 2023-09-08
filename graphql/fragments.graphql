@@ -315,6 +315,13 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     parallaxImage {
       url
     }
+    image {
+      url
+    }
+    imageCssClass
+    htmlText
+    htmlTextCssClass
+    elementJson
   }
   sections(first: 100) {
     __typename
@@ -410,6 +417,7 @@ fragment TextContentFields on TextContent {
   contentAlign
   linkImage
   cssClass
+  htmlText
 }
 
 fragment CallToActionFields on CallToAction {
@@ -518,6 +526,8 @@ fragment VideoBoxFields on VideoBox {
 fragment navigationFields on Navigation {
   navigationLayoutStyle
   pageNavigationSelection
+  navigationWrapperCssClass
+  footerWrapperCssClass
   navigationLogo {
     url
   }

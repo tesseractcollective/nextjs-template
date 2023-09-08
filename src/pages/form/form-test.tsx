@@ -65,20 +65,20 @@ const FormTest = () => {
             <Field id="Message" name="Message" placeholder="Message" />
             <button
               type="submit"
-              className="bg-primary text-center border-primary rounded-sm border p-4"
+              className="bg-primary text-center border-primary rounded-sm border p-4 mt-24  max-w-xs"
             >
               Submit
             </button>
           </Form>
         </Formik>
       )}
-      <div className="hidden h-screen opacity-0 xl:w-3/12 -mt-12 text-7xl"></div>
-      <div className="hidden h-240 bg-white xl:w-6/12 xl:w-12/12 -mt-24 text-6xl font-light"></div>
-      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 text-6xl italic  -mt-32"></div>
-      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 text-5xl italic  -mt-48 "></div>
-      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 italic  mt-32 text-9xl -mb-24"></div>
-      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-48 text-7xl"></div>
-      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-52 text-8xl rounded-r-lg -ml-24"></div>
+      <div className="hidden h-screen opacity-0 xl:w-3/12 -mt-12 text-7xl -bottom-40 max-w-md"></div>
+      <div className="hidden h-240 bg-white xl:w-6/12 xl:w-12/12 max-w-xl -mt-24 text-6xl font-light -bottom-32"></div>
+      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 max-w-2xl text-5xl italic  -mt-32  -bottom-24"></div>
+      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 max-w-4xl text-4xl italic  -bottom-16   -mt-48 "></div>
+      <div className="hidden h-256 opacity-0 bg-white xl:w-12/12 max-w-3xl italic  mt-32 text-9xl -mb-24  -bottom-72 gap-y-32"></div>
+      <div className="hidden h-256 opacity-0 bg-white max-w-2xl italic -mt-72 text-8xl  -bottom-52 gap-y-8"></div>
+      <div className="hidden col-span-2 h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-52 text-8xl rounded-r-lg -ml-24 -bottom-60 flex-col-reverse max-w-sm gap-y-16"></div>
     </>
   );
 };

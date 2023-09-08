@@ -1,4 +1,5 @@
 import { TextLoop } from "react-text-loop-next";
+import parse from "html-react-parser";
 import type { LoopTextFieldsFragment } from "@/graphql/generated/graphql";
 
 interface LoopTextProps {
@@ -20,7 +21,8 @@ export default function LoopTextSection({ loopTextData }: LoopTextProps) {
             <TextLoop>
               {item.loopTextItem.map((loopText) => (
                 <span key={loopText.loopTextItemContent} className={itemClass}>
-                  {loopText.loopTextItemContent}
+                  {loopText.loopTextItemContent &&
+                    parse(loopText.loopTextItemContent)}
                 </span>
               ))}
             </TextLoop>

@@ -18,9 +18,11 @@ export default function LinkItem({
   if (!link) return <></>;
   return (
     <>
-      {link?.includes("http") ? (
+      {link?.includes("http") ||
+      link?.includes("#") ||
+      link?.includes("tel") ? (
         <a
-          target={sameTab ? "_self" : "_blank"}
+          target={sameTab || link?.includes("#") ? "_self" : "_blank"}
           key={label}
           href={link}
           className={cssClass || ""}

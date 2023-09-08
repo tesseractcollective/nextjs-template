@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
@@ -26,6 +26,15 @@ export default function CenterNavigation({
   pageNavigationSelection,
 }: NavProps) {
   const [open, setOpen] = useState(false);
+  const [small, setSmall] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", () =>
+        setSmall(window.pageYOffset > 400)
+      );
+    }
+  }, []);
 
   if (!navigations && !siteLibrary) return <></>;
   if (hideNav === true) return <></>;
@@ -45,10 +54,15 @@ export default function CenterNavigation({
         )
     ) || navigations[0];
 
-  const { items } = navigation;
+  const { items, navigationWrapperCssClass } = navigation;
 
   return (
-    <div className="" id="navigation">
+    <div
+      className={`sticky top-0 z-[999] bg-background left-0 right-0 nav-shadow ${
+        small ? "nav-shadow-scrolled" : ""
+      } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
+      id="navigation"
+    >
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog

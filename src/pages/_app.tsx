@@ -3,6 +3,8 @@ import Head from "next/head";
 import "@/app/tailwind.css";
 import "@/styles/global.scss";
 import "@/styles/layoutBlocks.scss";
+import "@fortawesome/fontawesome-free/css/all.css";
+import "@fortawesome/fontawesome-free/js/all.js";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

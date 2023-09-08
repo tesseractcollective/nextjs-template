@@ -36,7 +36,6 @@ export default function LayoutBlockSections({ layout }: PageProps) {
             const styleBlockBGColor = layoutBlock?.backgroundColor?.hex
               ? { background: layoutBlock.backgroundColor?.hex }
               : {};
-            console.log(styleBlockBGColor);
             return (
               <div
                 key={`layout-block-row-${parentIndex++}`}

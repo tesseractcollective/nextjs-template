@@ -40,7 +40,7 @@ function Footer({
         )
     ) || navigations[0];
 
-  const { footerColumns } = navigation;
+  const { footerColumns, footerWrapperCssClass, footerItems } = navigation;
 
   const wideColumns = footerColumns.filter(
     (footerColumn) => footerColumn?.wideColumn === true
@@ -49,7 +49,12 @@ function Footer({
     (footerColumn) => footerColumn?.wideColumn !== true
   );
   return (
-    <footer aria-labelledby="footer-heading" className="mt-16 mb-8">
+    <footer
+      aria-labelledby="footer-heading"
+      className={`mt-16 mb-8 ${
+        footerWrapperCssClass ? footerWrapperCssClass : ""
+      }`}
+    >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -124,19 +129,19 @@ function Footer({
           <div
             className={`grid place-content-between lg:grid-flow-col lg:auto-rows-min lg:grid-cols-${regularColumns.length} lg:gap-x-8 lg:gap-y-16`}
           >
-            <Fade direction="up" cascade damping={0.1} triggerOnce>
-              {regularColumns.map((item, index) => (
-                <div
-                  key={index}
-                  className={`relative my-4 md:my-0 ${
-                    item?.footerColumnCssWrapper || ""
-                  }`}
-                  id={`footer-col-${index + 1}`}
-                >
+            {regularColumns.map((item, index) => (
+              <div
+                key={index}
+                className={`relative my-4 md:my-0 ${
+                  item?.footerColumnCssWrapper || ""
+                }`}
+                id={`footer-col-${index + 1}`}
+              >
+                <Fade direction="up" cascade damping={0.1} triggerOnce>
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-8 w-auto mb-4 object-contain max-w-max"
+                      className="h-20 w-auto mb-4 object-contain max-w-max"
                       alt=""
                       width={0}
                       height={0}
@@ -183,11 +188,12 @@ function Footer({
                       listSummary
                     />
                   )}
-                </div>
-              ))}
-            </Fade>
+                </Fade>
+              </div>
+            ))}
           </div>
         )}
+        {/* Bottom Footer */}
         <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
           <SocialMediaIcons
             siteLibrary={siteLibrary}
@@ -216,6 +222,21 @@ function Footer({
               />
               <span className="sr-only">{secondaryName}</span>
             </a>
+          )}
+          {footerItems && (
+            <div className="flex flex-row items-center justify-center">
+              {footerItems.map((footerItem) => (
+                <LinkItem
+                  key={footerItem.link}
+                  label={footerItem.label}
+                  link={footerItem.link}
+                  cssClass={`max-w-max mb-4 mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
+                    footerItem.cssClass ? footerItem.cssClass : ""
+                  }`}
+                  sameTab={footerItem.sameTab}
+                ></LinkItem>
+              ))}
+            </div>
           )}
           <a
             href={`https://lnza.me/?${encodeURIComponent(

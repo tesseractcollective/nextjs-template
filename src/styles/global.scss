@@ -3,9 +3,28 @@ body {
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: 'Poppins', sans-serif !important;
   // outline: 2px lime solid !important;
+}
+
+.liquid-theme {
+  h1, h2, h3, h1 *, h2 *, h3 * {
+    font-family: 'Oswald', sans-serif !important;
+  }
+  h4, h5, h6, span, div, p, button, a {
+    font-family: 'Manrope', sans-serif !important;
+  }
+  .font-manrope {
+    font-family: 'Manrope', sans-serif !important;
+  }
+  .font-oswald {
+    font-family: 'Oswald', sans-serif !important;
+  }
 }
 
 ::selection  {
@@ -351,6 +370,11 @@ body {
   }
 } 
 
+.all-text-dark {
+  p, h1, h2, h3, h4, h6, a, button {
+    color: var(--dark) !important;
+  }
+}
 .header-primary {
   h1 {
     color: var(--primary);
@@ -361,14 +385,34 @@ body {
     color: var(--secondary);
   }
 } 
-.header-xl {
-h1 {
-  font-size: 4rem;
+.h3-primary {
+  h3 {
+    color: var(--primary) !important;
+  }
 }
+.header-xl {
+  h1 {
+    font-size: 4rem;
+  }
 } 
-.content-w-half {
+.subheader-xl {
+  h2 {
+    font-size: 3rem;
+  }
+} 
+.content-w-80_100 {
   p {
     width: 80%;
+  }
+}
+.content-w-60_100 {
+  p {
+    width: 100%;
+  }
+  @media screen and (min-width: 1200px) {
+    p {
+      width: 60%;
+    }
   }
 }
 
