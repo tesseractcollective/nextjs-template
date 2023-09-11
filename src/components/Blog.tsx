@@ -106,7 +106,7 @@ export default function Blog({
               )}
             </div>
             {!!title && (
-              <h1 className="uppercase !my-0 text-3xl md:!text-5xl gradient-text block !font-bold !text-left !no-underline !border-b-0 px-4">
+              <h1 className="uppercase !m-0 text-3xl md:!text-5xl gradient-text block !font-bold !text-left !no-underline !border-b-0 px-4">
                 {title}
               </h1>
             )}

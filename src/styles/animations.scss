@@ -218,4 +218,37 @@
     @media screen and (max-width: 800px) {
       -webkit-mask-size: 300% 50%;
               mask-size: 300% 50%;
-    }}}
+    }
+  }
+}
+
+@keyframes strike{
+  0%   { opacity: 0; }
+  50% { opacity: 100%; }
+  100% { opacity: 0%; }
+}
+
+.cross-text {
+  position: relative;
+  display: inline-block;
+  &:after,
+  &:before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--dark);
+    animation-name: strike;
+    animation-duration: 2000ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  &:before {
+    transform: rotate(20deg);
+  }
+  &:after {
+    transform: rotate(-20deg);
+  }
+}

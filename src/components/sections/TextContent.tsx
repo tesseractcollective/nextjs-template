@@ -118,24 +118,34 @@ export default function TextContentSection({
               <div
                 key={Math.random()}
                 className={`relative h-full z-20 ${
-                  textContentItem?.textContentWidth
-                } ${
-                  (textContentItem?.contentAlign === "center" && "mx-auto") ||
-                  (textContentItem?.contentAlign === "left" && "mr-auto") ||
-                  (textContentItem?.contentAlign === "right" && "ml-auto") ||
-                  (textContentItem?.contentAlign === "justify" && "mx-auto")
-                } ${
-                  (textContentItem?.textContentWidth === "Content" &&
-                    "w-full md:w-6/12") ||
-                  (textContentItem?.textContentWidth === "Full" &&
-                    "w-full md:w-10/12")
-                } ${textContentItem?.cssClass}`}
+                  textContentItem?.cssClass
+                    ? textContentItem?.cssClass
+                    : `${textContentItem?.textContentWidth} ${
+                        (textContentItem?.contentAlign === "center" &&
+                          "mx-auto") ||
+                        (textContentItem?.contentAlign === "left" &&
+                          "mr-auto") ||
+                        (textContentItem?.contentAlign === "right" &&
+                          "ml-auto") ||
+                        (textContentItem?.contentAlign === "justify" &&
+                          "mx-auto")
+                      } ${
+                        (textContentItem?.textContentWidth === "Content" &&
+                          "w-full md:w-6/12") ||
+                        (textContentItem?.textContentWidth === "Full" &&
+                          "w-full md:w-10/12")
+                      }`
+                }`}
               >
                 <div
-                  className={`h-full p-4 text-${
-                    textContentItem?.contentAlign &&
-                    textContentItem?.contentAlign?.toLocaleLowerCase()
-                  }`}
+                  className={
+                    textContentItem?.cssClass
+                      ? ""
+                      : `h-full p-4 text-${
+                          textContentItem?.contentAlign &&
+                          textContentItem?.contentAlign?.toLocaleLowerCase()
+                        }`
+                  }
                 >
                   {textContentItem?.htmlText && (
                     <div className="body-parsed-text">
@@ -231,29 +241,39 @@ export default function TextContentSection({
       {!!callToActionData && callToActionData?.length > 0 && (
         <div>
           <div
-            className={`relative h-full z-20 ${firstBlockWidth} ${
-              (firstBlockAlign === "center" && "mx-auto") ||
-              (firstBlockAlign === "left" && "mr-auto") ||
-              (firstBlockAlign === "right" && "ml-auto") ||
-              (firstBlockAlign === "justify" && "mx-auto")
-            } ${
-              (firstBlockWidth === "Content" && "w-full md:w-6/12") ||
-              (firstBlockWidth === "Full" && "w-full md:w-10/12")
-            } ${firstBlockCSSClass}`}
+            className={
+              firstBlockCSSClass
+                ? firstBlockCSSClass
+                : `relative h-full z-20 ${firstBlockWidth} ${
+                    (firstBlockAlign === "center" && "mx-auto") ||
+                    (firstBlockAlign === "left" && "mr-auto") ||
+                    (firstBlockAlign === "right" && "ml-auto") ||
+                    (firstBlockAlign === "justify" && "mx-auto")
+                  } ${
+                    (firstBlockWidth === "Content" && "w-full md:w-6/12") ||
+                    (firstBlockWidth === "Full" && "w-full md:w-10/12")
+                  }`
+            }
           >
             {callToActionData.map(
               (callToActionItem) =>
                 callToActionItem?.ctaLink && (
                   <div
                     key={callToActionItem.ctaLink}
-                    className={`p-4 gap-x-4 flex ${
-                      (callToActionItem.contentAlign === "center" &&
-                        "mx-auto") ||
-                      (callToActionItem.contentAlign === "left" && "mr-auto") ||
-                      (callToActionItem.contentAlign === "right" &&
-                        "ml-auto") ||
-                      (callToActionItem.contentAlign === "justify" && "mx-auto")
-                    }`}
+                    className={
+                      firstBlockCSSClass
+                        ? ""
+                        : `p-4 gap-x-4 flex ${
+                            (callToActionItem.contentAlign === "center" &&
+                              "mx-auto") ||
+                            (callToActionItem.contentAlign === "left" &&
+                              "mr-auto") ||
+                            (callToActionItem.contentAlign === "right" &&
+                              "ml-auto") ||
+                            (callToActionItem.contentAlign === "justify" &&
+                              "mx-auto")
+                          }`
+                    }
                   >
                     <LinkItem
                       link={callToActionItem.ctaLink}

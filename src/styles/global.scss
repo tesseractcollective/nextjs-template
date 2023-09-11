@@ -214,6 +214,9 @@ html {
   h2 {
     margin-bottom: 2em;
   }
+  h3 {
+    margin-bottom: 0.8em;
+  }
   p, li, li div {
     opacity: 95%;
     margin-top: -0.46em;
@@ -425,6 +428,21 @@ html {
 .content-w-80_100 {
   p {
     width: 80%;
+  }
+}
+.content-w-50_100 {
+  p {
+    width: 100%;
+  }
+  @media screen and (min-width: 1200px) {
+    p {
+      width: 50%;
+    }
+  }
+} 
+.content-large {
+  p {
+    font-size: 28px!important;
   }
 }
 .content-w-60_100 {
