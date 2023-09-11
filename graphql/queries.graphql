@@ -193,6 +193,9 @@ query blogPage($blogSlug: String!) {
   blogs(first: 500) {
     ...blogFields
   }
+  contacts(first: 500) {
+    ...contactFields
+  }
   siteLibrary(where: { signature: "lnzame" }) {
     ...siteLibraryFields
   }

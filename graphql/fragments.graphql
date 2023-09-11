@@ -30,6 +30,7 @@ fragment blogFields on Blog {
   blogSlug
   blogCategory
   title
+  authorQuery
   excerpt
   image {
     id

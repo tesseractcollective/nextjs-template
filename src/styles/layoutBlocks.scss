@@ -315,6 +315,11 @@
       left: initial;
     }
   }
+  &.texture-faded {
+    &:after {
+      opacity: 0.5;
+    }
+  }
 }
 
 .hero-container {

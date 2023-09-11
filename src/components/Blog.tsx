@@ -1,6 +1,7 @@
 import type {
   BlogFieldsFragment,
   SiteLibraryFieldsFragment,
+  ContactFieldsFragment,
 } from "@/graphql/generated/graphql";
 import parse from "html-react-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,14 +19,25 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
+import SocialMediaIcons from "./SocialMediaIcons";
+import {
+  faDiamondTurnRight,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;
   blogs: BlogFieldsFragment[];
+  contacts: ContactFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export default function Blog({ blog, siteLibrary, blogs }: BlogProps) {
+export default function Blog({
+  blog,
+  siteLibrary,
+  blogs,
+  contacts,
+}: BlogProps) {
   const {
     title,
     content,
@@ -33,9 +45,13 @@ export default function Blog({ blog, siteLibrary, blogs }: BlogProps) {
     blogCallToActionText,
     blogCallToActionLink,
     videoBox,
+    authorQuery,
   } = blog;
   const filteredBlogs = blogs?.filter(
     (tempBlog) => blog.blogSlug !== tempBlog.blogSlug
+  );
+  const filteredContacts = contacts?.filter((contact) =>
+    blog?.authorQuery.includes(contact.contactQuery)
   );
   return (
     <>
@@ -49,47 +65,137 @@ export default function Blog({ blog, siteLibrary, blogs }: BlogProps) {
           <link rel="shortcut icon" href={siteLibrary.favicon.url} />
         )}
       </Head>
-      <div className="texture-background overflow-hidden relative">
-        <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
-          <Link
-            href={`/${blog.blogCategory}`}
-            onClick={() =>
-              ReactGA.event({
-                category: "Link",
-                action: "Visit Blogs",
-                label: "Visit Blogs",
-              })
-            }
-            className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
-          >
-            <FontAwesomeIcon
-              icon={faArrowLeft as IconProp}
-              className="fa-fw h-4 w-4 mr-2"
-            />
-            <span>{blog.blogCategory}</span>
-          </Link>
-        </div>
-        <section className="max-w-5xl mx-auto block my-4 p-4">
-          <div>
-            {!!image?.url && (
-              <div className="relative h-[500px] block">
-                <Image
-                  src={image.url}
-                  alt=""
-                  priority
-                  className="object-center mx-auto h-full w-full object-cover"
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                />
+      <div className="texture-background texture-faded overflow-hidden relative">
+        {blog.blogCategory && (
+          <div className="mx-auto block mt-2 px-4 text-center">
+            <Link
+              href={`/${blog.blogCategory}`}
+              onClick={() =>
+                ReactGA.event({
+                  category: "Link",
+                  action: "Visit Blogs",
+                  label: "Visit Blogs",
+                })
+              }
+              className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
+            >
+              <FontAwesomeIcon
+                icon={faArrowLeft as IconProp}
+                className="fa-fw h-4 w-4 mr-2"
+              />
+              <span>{blog.blogCategory}</span>
+            </Link>
+          </div>
+        )}
+
+        <section className="max-w-5xl mx-auto block my-4">
+          <div className="flex flex-col blog-meta gap-y-8 mb-12">
+            <div>
+              {!!image?.url && (
+                <div className="relative h-80 md:h-[500px] block">
+                  <Image
+                    src={image.url}
+                    alt=""
+                    priority
+                    className="object-center mx-auto h-full w-full object-cover block rounded-t-xl"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                  />
+                </div>
+              )}
+            </div>
+            {!!title && (
+              <h1 className="uppercase !my-0 text-3xl md:!text-5xl gradient-text block !font-bold !text-left !no-underline !border-b-0 px-4">
+                {title}
+              </h1>
+            )}
+            {!!filteredContacts && (
+              <div className="mx-auto px-4 flex flex-row flex-wrap w-full">
+                <div className="lg:col-start-2 text-center lg:text-left">
+                  <ul className="flex flex-col items-center justify-center lg:flex-row gap-y-8 gap-x-24">
+                    {filteredContacts?.map((contact) => (
+                      <li key={contact.contactName}>
+                        <div className="flex items-center gap-x-4 lg:gap-x-6  justify-center lg:justify-start text-center lg:text-left lg:flex-row">
+                          {contact?.contactAvatar?.url && (
+                            <Image
+                              className="h-14 lg:h-16 w-14 lg:w-16 rounded-full object-cover"
+                              src={contact.contactAvatar.url}
+                              alt=""
+                              width={64}
+                              height={64}
+                              sizes="100%"
+                            />
+                          )}
+                          <div>
+                            {contact.contactName && (
+                              <h3 className="text-sm lg:text-base font-bold leading-6 lg:leading-7 tracking-tight text-text-color">
+                                {contact.contactName}
+                              </h3>
+                            )}
+                            {contact.contactTitle && (
+                              <p className="text-xs lg:text-sm font-semibold leading-6 !text-primary">
+                                {contact.contactTitle}
+                              </p>
+                            )}
+                            <div className="flex flex-row items-center justify-start">
+                              <SocialMediaIcons
+                                fade={false}
+                                cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2"
+                                phoneLinkProp={
+                                  contact?.contactPhone || undefined
+                                }
+                                whatsappLinkProp={
+                                  contact?.contactWhatsapp || undefined
+                                }
+                                emailLinkProp={
+                                  contact?.contactEmail || undefined
+                                }
+                                displayVcf={true}
+                                name={contact.contactName || undefined}
+                                avatar={contact.contactAvatar?.url || undefined}
+                                calendlyLinkProp={
+                                  contact?.contactCalendly || undefined
+                                }
+                                linkedinLinkProp={
+                                  contact?.contactLinkedin || undefined
+                                }
+                              />
+                            </div>
+                            {!!contact.contactAddress && (
+                              <p className="text-xs md:text-sm my-0 text-text-color opacity-80 flex flex-row items-center">
+                                <FontAwesomeIcon
+                                  icon={faLocationDot as IconProp}
+                                  className="fa-fw mr-2 h-4 w-4"
+                                />
+                                <span>{contact.contactAddress}</span>
+                                {contact?.contactGoogleAddressLink && (
+                                  <a
+                                    href={contact.contactGoogleAddressLink}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    <FontAwesomeIcon
+                                      icon={faDiamondTurnRight as IconProp}
+                                      className="fa-fw ml-2 h-4 w-4"
+                                    />
+                                  </a>
+                                )}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             )}
           </div>
-          {!!title && (
-            <h1 className="uppercase mb-2 gradient-text block">{title}</h1>
-          )}
           {!!content?.html && (
-            <div className="body-parsed-text block">{parse(content.html)}</div>
+            <div className="body-parsed-text block px-4">
+              {parse(content.html)}
+            </div>
           )}
           {!!blogCallToActionText && blogCallToActionLink && (
             <LinkItem
