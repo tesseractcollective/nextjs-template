@@ -71,8 +71,10 @@ export default function Blogs({
     return (
       <>
         <div className="flex flex-row w-full items-center justify-between px-2">
-          <h3 className="text-2xl md:text-4xl opacity-80 uppercase text-left">
-            {(!!blogHeader && blogHeader) || "Blogs"}
+          <h3 className="text-2xl md:text-4xl opacity-100 uppercase text-left">
+            {(!!blogHeader && blogHeader.includes("s")
+              ? blogHeader
+              : `${blogHeader}s`) || "Blogs"}
           </h3>
           <div className="flex flex-row">
             <button
@@ -165,7 +167,12 @@ export default function Blogs({
             href={`/${blogCategory}`}
             className="text-link flex flex-row my-1 items-center max-w-max justify-center text-sm text-center mx-auto mb-8"
           >
-            <span>All {(!!blogHeader && blogHeader) || "Blogs"}</span>
+            <span className="uppercase">
+              All{" "}
+              {(!!blogHeader && blogHeader.includes("s")
+                ? blogHeader
+                : `${blogHeader}s`) || "Blogs"}
+            </span>
             <FontAwesomeIcon
               icon={faArrowRight as IconProp}
               className="fa-fw ml-2 my-0 h-4 w-4"

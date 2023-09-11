@@ -92,7 +92,7 @@ export default function SocialMediaIcons({
         githubLinkProp ||
         displayVcf ||
         phoneLinkProp) && (
-        <nav className={cssClass}>
+        <nav className={`social-media-icons-element ${cssClass}`}>
           <Fade
             direction={fade ? undefined : "right"}
             cascade={fade ? false : true}
@@ -104,7 +104,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.instagramLink || instagramLinkProp}
                 target="_blank"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 title="Instagram"
                 rel="noreferrer"
                 onClick={() =>
@@ -127,7 +127,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.spotifyLink || spotifyLinkProp}
                 target="_blank"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 title="Spotify"
                 rel="noreferrer"
                 onClick={() =>
@@ -149,7 +149,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.facebookLink || facebookLinkProp}
                 target="_blank"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 title="Facebook"
                 rel="noreferrer"
                 onClick={() =>
@@ -171,7 +171,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.twitterLink || twitterLinkProp}
                 target="_blank"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 title="Twitter"
                 rel="noreferrer"
                 onClick={() =>
@@ -193,7 +193,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.youtubeLink || youtubeLinkProp}
                 target="_blank"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 title="Youtube"
                 rel="noreferrer"
                 onClick={() =>
@@ -216,7 +216,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.tikTokLink || tikTokLinkProp}
                 target="_blank"
                 title="TikTok"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -238,7 +238,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.threadsLink || threadsLinkProp}
                 target="_blank"
                 title="Threads"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -264,7 +264,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.appleMusicLink || appleMusicLinkProp}
                 target="_blank"
                 title="Apple Music"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -301,7 +301,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.pandoraLink || pandoraLinkProp}
                 target="_blank"
                 title="Pandora"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -332,7 +332,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.soundcloudLink || soundcloudLinkProp}
                 title="Soundcloud"
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -356,7 +356,7 @@ export default function SocialMediaIcons({
               <a
                 title={siteLibrary?.contactPhone || phoneLinkProp}
                 href={`tel:${siteLibrary?.contactPhone || phoneLinkProp}`}
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -384,7 +384,7 @@ export default function SocialMediaIcons({
                         `${whatsappLinkProp}`
                       )}&text=hello`
                 }
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -406,7 +406,7 @@ export default function SocialMediaIcons({
               <a
                 title={siteLibrary?.contactEmail || emailLinkProp}
                 href={`mailto:${siteLibrary?.contactEmail || emailLinkProp}`}
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -428,7 +428,7 @@ export default function SocialMediaIcons({
               <a
                 title={linkedinLinkProp}
                 href={linkedinLinkProp}
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -450,7 +450,7 @@ export default function SocialMediaIcons({
               <a
                 title={githubLinkProp}
                 href={githubLinkProp}
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -472,7 +472,7 @@ export default function SocialMediaIcons({
               <a
                 title={calendlyLinkProp}
                 href={calendlyLinkProp}
-                className="max-w-max mx-2 text-center text-link"
+                className="max-w-max mx-2 text-center !text-link"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>

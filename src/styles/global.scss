@@ -1,3 +1,5 @@
+@import "./animations.scss";
+
 body {
   background: var(--dark);
   margin: 0;
@@ -18,6 +20,7 @@ html {
 .liquid-theme {
   h1, h2, h3, h1 *, h2 *, h3 * {
     font-family: 'Oswald', sans-serif !important;
+    font-weight: bold;
   }
   h4, h5, h6, span, div, p, button, a {
     font-family: 'Manrope', sans-serif !important;
@@ -580,6 +583,15 @@ h4, h5, h6  {color: var(--text);}
   }
 }
 
+.bg-bg-secondary .blog-slider-wrapper {
+  .swiper-wrapper::after {
+    background: linear-gradient(90deg, transparent, var(--background-secondary));
+  }
+  .swiper-wrapper::before {
+    background: linear-gradient(-90deg, transparent, var(--background-secondary));
+  }
+}
+
 .nested-pb-0 {
   .container.py-8 {
     padding-top: 2rem !important;
@@ -723,5 +735,16 @@ h4, h5, h6  {color: var(--text);}
     max-width: 300px !important;
     min-width: 300px;
     object-fit: cover;
+  }
+}
+
+
+.social-share-icons {
+  button {
+    filter: saturate(0);
+    transition: all 200ms ease;
+    &:hover {
+      filter: saturate(1);
+    }
   }
 }

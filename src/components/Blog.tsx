@@ -24,6 +24,7 @@ import {
   faDiamondTurnRight,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
+import SocialShare from "@/components/elements/SocialShare";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;
@@ -45,7 +46,6 @@ export default function Blog({
     blogCallToActionText,
     blogCallToActionLink,
     videoBox,
-    authorQuery,
   } = blog;
   const filteredBlogs = blogs?.filter(
     (tempBlog) => blog.blogSlug !== tempBlog.blogSlug
@@ -92,7 +92,7 @@ export default function Blog({
           <div className="flex flex-col blog-meta gap-y-8 mb-12">
             <div>
               {!!image?.url && (
-                <div className="relative h-80 md:h-[500px] block">
+                <div className="relative h-80 md:h-[500px] block px-0 md:px-4 transition-all">
                   <Image
                     src={image.url}
                     alt=""
@@ -227,8 +227,9 @@ export default function Blog({
           )}
         </section>
       </div>
+      <SocialShare />
       {filteredBlogs && blog.blogCategory && (
-        <div className="relative">
+        <div className="relative bg-bg-secondary py-6">
           <section className="max-w-8xl my-8 px-4 dark-section mx-auto mb-16">
             <Blogs
               fromHomePage={true}
