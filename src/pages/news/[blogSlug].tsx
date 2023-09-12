@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 export default function BlogSlug({ blogPage }: { blogPage: BlogPageQuery }) {
   if (!blogPage.blog || !blogPage.siteLibrary) return <></>;
-  const { siteLibrary, navigations, blogs, blog } = blogPage;
+  const { siteLibrary, navigations, blogs, blog, contacts } = blogPage;
   return (
     <>
       <ThemeColors siteLibrary={siteLibrary} />
@@ -35,7 +35,12 @@ export default function BlogSlug({ blogPage }: { blogPage: BlogPageQuery }) {
         navigations={navigations}
         hideNav={false}
       />
-      <Blog blog={blog} siteLibrary={siteLibrary} blogs={blogs} />
+      <Blog
+        blog={blog}
+        siteLibrary={siteLibrary}
+        blogs={blogs}
+        contacts={contacts}
+      />
       <Footer
         siteLibrary={siteLibrary}
         navigations={navigations}

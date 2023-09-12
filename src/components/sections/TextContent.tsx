@@ -87,7 +87,7 @@ export default function TextContentSection({
                       </div>
                     )}
                     {textContentItem?.htmlText && (
-                      <div className="body-parsed-text">
+                      <div className="text-content-item-html">
                         {parse(textContentItem?.htmlText)}
                       </div>
                     )}
@@ -148,7 +148,7 @@ export default function TextContentSection({
                   }
                 >
                   {textContentItem?.htmlText && (
-                    <div className="body-parsed-text">
+                    <div className="text-content-item-html">
                       {parse(textContentItem?.htmlText)}
                     </div>
                   )}
@@ -262,8 +262,8 @@ export default function TextContentSection({
                     key={callToActionItem.ctaLink}
                     className={
                       firstBlockCSSClass
-                        ? ""
-                        : `p-4 gap-x-4 flex ${
+                        ? "call-to-action-items "
+                        : `call-to-action-items p-4 gap-x-4 flex ${
                             (callToActionItem.contentAlign === "center" &&
                               "mx-auto") ||
                             (callToActionItem.contentAlign === "left" &&

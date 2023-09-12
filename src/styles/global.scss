@@ -1,4 +1,5 @@
 @import "./animations.scss";
+@import "./liquidsmarts.scss";
 
 body {
   background: var(--dark);
@@ -210,6 +211,22 @@ html {
   border-bottom: 2px solid var(--secondary);
 }
 
+.content-max-w-8xl {
+  .body-parsed-text, .call-to-action-items {
+    max-width: 86rem;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    @media screen and (min-width: 480px) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    @media screen and (min-width: 976px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    }
+  }
+}
 .body-parsed-text {
   h2 {
     margin-bottom: 2em;
