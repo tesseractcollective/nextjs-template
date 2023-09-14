@@ -56,6 +56,7 @@ fragment blogFields on Blog {
     vimeoVideoId
     youtubePlaylistId
   }
+  blogHtml
 }
 
 fragment siteLibraryFields on SiteLibrary {
@@ -238,6 +239,12 @@ fragment testimonialFields on Testimonial {
     raw
   }
   testimonialType
+  starCount
+  testimonialLogo {
+    url
+  }
+  testimonialLink
+  testimonialLinkLabel
 }
 
 fragment logoTableFields on LogoTable {

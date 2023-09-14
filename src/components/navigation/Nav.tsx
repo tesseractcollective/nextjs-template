@@ -6,6 +6,7 @@ import type {
 import CenterNavigation from "@/components/navigation/CenterNavigation";
 import DefaultNavigation from "@/components/navigation/DefaultNavigation";
 import MegaNavigation from "@/components/navigation/MegaNavigation";
+import MinimalNavigation from "@/components/navigation/MinimalNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -46,6 +47,16 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "mega")
     return (
       <MegaNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "minimal")
+    return (
+      <MinimalNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

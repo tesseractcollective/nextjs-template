@@ -4,6 +4,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { TestimonialFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
+import StarCount from "./StarCount";
 
 interface TestimonialProps {
   query: string;
@@ -59,6 +60,9 @@ export default function Testimonials({
                             x={86}
                           />
                         </svg>
+                        {testimonial?.starCount && (
+                          <StarCount number={testimonial?.starCount} />
+                        )}
                         {testimonial.testimonialText?.html && (
                           <blockquote className="text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9 line-clamp-6">
                             {parse(testimonial.testimonialText?.html)}
@@ -71,8 +75,8 @@ export default function Testimonials({
                             className="rounded-xl bg-primary-50 lg:rounded-3xl object-cover w-12 md:w-72 h-12 md:h-72 animate-fade-in-up"
                             src={testimonial.testimonialAvatar?.url}
                             alt={testimonial.testimonialName || ""}
-                            width={288}
-                            height={288}
+                            width={266}
+                            height={266}
                           />
                         </div>
                       )}

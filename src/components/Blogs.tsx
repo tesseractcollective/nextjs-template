@@ -184,7 +184,7 @@ export default function Blogs({
 
   return (
     <div>
-      {!!blogs && (
+      {!!FilteredBlogs && (
         <div className="blog-wrapper">
           <h2 className="text-center">
             {(!!blogHeader && blogHeader) || "Blogs"}
@@ -200,7 +200,7 @@ export default function Blogs({
               {FilteredBlogs?.map((blogItem) => (
                 <article
                   key={blogItem.id}
-                  className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 lg:pt-80 group transition w-full h-full"
+                  className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 lg:pt-80 group transition-all w-full h-full"
                 >
                   {!!blogItem.image?.url && (
                     <Image
@@ -214,7 +214,7 @@ export default function Blogs({
                     />
                   )}
                   <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-gray-900/40 group-hover:from-secondary transition-all" />
-                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition ring-primary group-hover:ring-secondary ring-inset" />
+                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition-all ring-primary group-hover:ring-secondary ring-inset" />
 
                   <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
                     <div className="-ml-4 flex items-center gap-x-4">

@@ -18,7 +18,7 @@ export default function LoopTextSection({ loopTextData }: LoopTextProps) {
             className={item?.cssClassWrapper || ""}
           >
             <h3 className={item?.cssClassStatic || ""}>{item.staticText}</h3>
-            <TextLoop>
+            <TextLoop springConfig={{ stiffness: 180, damping: 8 }}>
               {item.loopTextItem.map((loopText) => (
                 <span key={loopText.loopTextItemContent} className={itemClass}>
                   {loopText.loopTextItemContent &&

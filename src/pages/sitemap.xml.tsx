@@ -1,8 +1,6 @@
 import { GetServerSideProps } from "next";
 import { sdkClient } from "@/lib/graphql-client";
-import type {
-  PagesSlugListQuery,
-} from "@/graphql/generated/graphql";
+import type { PagesSlugListQuery } from "@/graphql/generated/graphql";
 import { createSitemap, createSitemapXml } from "@/lib/sitemapHelpers";
 
 export default function Sitemap() {

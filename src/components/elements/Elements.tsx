@@ -34,7 +34,7 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
     htmlTextCssClass,
     elementJson,
   } = elements;
-
+  console.log("iFrameCode", iFrameCode);
   return (
     <>
       {!!iFrameCode && (
@@ -43,16 +43,16 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
       {!!parallaxImage?.url && <Parallax parallaxImage={parallaxImage.url} />}
 
       {!!standOutText && <StandOutText standOutText={standOutText} />}
-      {!!image?.url && (
-        <ElementImage
-          image={image.url}
-          imageCssClass={imageCssClass || undefined}
-        />
-      )}
       {!!htmlText && (
         <HTMLText
           htmlText={htmlText}
           htmlTextCssClass={htmlTextCssClass || undefined}
+        />
+      )}
+      {!!image?.url && (
+        <ElementImage
+          image={image.url}
+          imageCssClass={imageCssClass || undefined}
         />
       )}
       {!!gallery && <GallerySection elements={elements} />}

@@ -175,7 +175,7 @@ export default function HeroMediaSliderSection({
                     {heroMediaSliderItem.mediaType === "image" && (
                       <Image
                         src={heroMediaSliderItem.sliderMediaBackground.url}
-                        className="hero-media-image object-none h-full w-full object-center-top"
+                        className="hero-media-image object-cover h-full w-full object-center-top"
                         alt=""
                         width={0}
                         height={0}

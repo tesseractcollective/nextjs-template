@@ -1,4 +1,4 @@
-.wave-text span{
+.wave-text span.wave-target {
   --c1: var(--primary);
   --c2: var(--secondary);
   font-weight: 900;
@@ -238,17 +238,59 @@
     top: 50%;
     left: 0;
     width: 100%;
-    height: 2px;
-    background: var(--dark);
-    animation-name: strike;
-    animation-duration: 2000ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+    height: 6px;
+    background: maroon;
   }
   &:before {
     transform: rotate(20deg);
   }
   &:after {
     transform: rotate(-20deg);
+  }
+}
+
+a.hover-chevron {
+  transition: all 200ms ease;
+  &:after {
+    content: ' ';
+    display: inline-block;
+    border-bottom: 1px solid var(--secondary);
+    border-right: 1px solid var(--secondary);
+    height: 0px;
+    width: 0px;
+    margin-left: 4px;
+    position: absolute;
+    transform: rotate(-45deg);
+    opacity: 0;
+    transition: all 200ms ease;
+    top: 39%;
+    left: 50%;
+  }
+  &:hover, &:focus-within {
+   background: var(--dark) !important;
+    &:after {
+      content: ' ';
+      display: inline-block;
+      border-bottom: 2px solid var(--secondary);
+      border-right: 2px solid var(--secondary);
+      height: 10px;
+      width: 10px;
+      margin-left: 4px;
+      transform: rotate(-45deg);
+      opacity: 100;
+      left: 89%;
+    }
+  }
+  &.hover-chevron-primary-border {
+    &:after {
+      border-bottom: 2px solid var(--primary);
+      border-right: 2px solid var(--primary);
+    }
+  }
+  &.hover-chevron-white-border {
+    &:after {
+      border-bottom: 2px solid var(--text-overlay);
+      border-right: 2px solid var(--text-overlay);
+    }
   }
 }

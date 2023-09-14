@@ -794,6 +794,7 @@ body iframe {
 
 .-top-600px {
   top: -600px;
+  z-index: -1;
 }
 
 .h-10vh {
@@ -816,12 +817,28 @@ body iframe {
   min-height: 60vh;
 }
 
+.h-60vh-max {
+  max-height: 60vh;
+}
+
 .h-70vh {
   min-height: 70vh;
 }
 
 .h-80vh {
   min-height: 80vh;
+}
+
+.h-100vh {
+  min-height: 100vh;
+}
+
+.h-105vh {
+  min-height: 105vh;
+}
+
+.h-110vh {
+  min-height: 110vh;
 }
 
 .slick-slider.mobile-album-slick {

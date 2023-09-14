@@ -42,16 +42,16 @@ export default function GallerySection({ elements }: GalleryProps) {
             {finalImages.map((finalImage, index) => (
               <div
                 key={finalImage}
-                className="max-w-[300px] max-h-[440px] block mx-auto"
+                className="w-[280px] h-[280px] block mx-auto overflow-hidden"
                 id={`gallery-${index}`}
               >
                 <Image
                   src={finalImage}
                   alt={`Gallery Image: ${index}`}
-                  className="object-cover block mx-auto h-full"
+                  className="object-cover block mx-auto h-full w-full"
                   sizes="100%"
-                  width={300}
-                  height={440}
+                  width={0}
+                  height={0}
                 />
               </div>
             ))}

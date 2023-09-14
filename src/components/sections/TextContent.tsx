@@ -30,7 +30,7 @@ export default function TextContentSection({
     <>
       {!!textContentData && textContentData.length >= 1 && (
         <>
-          <div className="grid grid-cols-2 gap-8 block">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 translate-all">
             {textCards.map((textContentItem) => (
               <div key={textContentItem?.header?.html} className="mx-auto">
                 {textContentItem?.link ? (
@@ -220,7 +220,7 @@ export default function TextContentSection({
                   </Fade>
                   <Fade direction="up" triggerOnce>
                     {textContentItem?.subHeader && (
-                      <div className="body-parsed-text mb-8">
+                      <div className="body-parsed-text mb-0">
                         {parse(textContentItem.subHeader.html)}
                       </div>
                     )}
@@ -278,11 +278,15 @@ export default function TextContentSection({
                     <LinkItem
                       link={callToActionItem.ctaLink}
                       label={callToActionItem.ctaLabel}
-                      cssClass={`${callToActionItem.ctaClass || ""} ${
-                        callToActionItem.ctaPrimary
-                          ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
-                          : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
-                      } mr-2 max-w-max`}
+                      cssClass={
+                        callToActionItem?.ctaClass
+                          ? callToActionItem.ctaClass
+                          : `${
+                              callToActionItem.ctaPrimary
+                                ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
+                                : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
+                            } mr-2 max-w-max`
+                      }
                     />
                   </div>
                 )

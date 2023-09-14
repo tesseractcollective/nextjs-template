@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Duttons</title>
+    <link
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+      rel="stylesheet"
+    />
+    <meta name="robots" content="noindex">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      body {
+      background-color:#222222;
+      }
+      tb1 { color: #000000; font-family: Arial; font-size: 1.2em; font-weight: bold;
+
+      }
+      t2 { color: #000000; font-family: Arial; font-size: 10pt; font-weight: bold; }
+      t2a { color: #000000; font-family: Arial; font-size: 10pt; font-weight: normal; }
+      .tx { color: #000000; font-family: Arial; font-size: 1.2em; font-weight: bold;
+
+      }
+      .tx1 { color: #000000; font-family: Arial; font-size: 1.2em; font-weight: bold;
+
+      }
+      input[type="text"] { color: #000000; font-family: Arial; font-size: 1.2em; font-weight: bold;
+
+      }
+      t1 { color: #FFFFFF; font-family: Arial; font-size: 1.2em; font-weight: bold;
+
+
+      }
+      p { color: #FFFFFF; font-family: Arial; font-size: 1.2em; font-weight: bold;
+
+
+      }
+      H3 { color: #FFFFFF; }
+      input[type=text] { color: #000000; font-family: Arial; font-size: 1.2em; font-weight: bold;
+
+
+      }
+      #b1 {
+        background:-webkit-gradient(linear, LEFT TOP, LEFT BOTTOM, COLOR-stop(0.05, #d6ad5a), COLOR-stop(1, #e8cb90));
+        background:-moz-linear-gradient(TOP, #d6ad5a 5%, #e8cb90 100%);
+        background:-webkit-linear-gradient(TOP, #d6ad5a 5%, #e8cb90 100%);
+        background:-o-linear-gradient(TOP, #d6ad5a 5%, #e8cb90 100%);
+        background:-ms-linear-gradient(TOP, #d6ad5a 5%, #e8cb90 100%);
+        background:linear-gradient(TO BOTTOM, #d6ad5a 5%, #e8cb90 100%);
+        FILTER:PROGID:dximagetransform.microsoft.gradient(startcolorstr="#d6ad5a", endcolorstr="#e8cb90",gradienttype=0);
+        background-COLOR:#d6ad5a;
+        BORDER:1px solid #785510;
+            BORDER-radius:12px;
+        DISPLAY:inline-BLOCK;
+        CURSOR:pointer;
+        COLOR:#000000;
+        FONT-family:arial;
+        FONT-SIZE:15px;
+        FONT-weight:bold;
+        padding:8px 24px;
+        TEXT-decoration:NONE;
+        word-wrap; break-word;
+        max-width: 100%; min-width: 100px;
+      }
+      #b1:hover {
+        background:-webkit-gradient(linear, LEFT TOP, LEFT BOTTOM, COLOR-stop(0.05, #e8cb90), COLOR-stop(1, #d6ad5a));
+        background:-moz-linear-gradient(TOP, #e8cb90 5%, #d6ad5a 100%);
+        background:-webkit-linear-gradient(TOP, #e8cb90 5%, #d6ad5a 100%);
+        background:-o-linear-gradient(TOP, #e8cb90 5%, #d6ad5a 100%);
+        background:-ms-linear-gradient(TOP, #e8cb90 5%, #d6ad5a 100%);
+        background:linear-gradient(TO BOTTOM, #e8cb90 5%, #d6ad5a 100%);
+        FILTER:PROGID:dximagetransform.microsoft.gradient(startcolorstr="#e8cb90", endcolorstr="#d6ad5a",gradienttype=0);
+        background-COLOR:#e8cb90;
+      }
+      #b1:ACTIVE {
+        position:RELATIVE;
+        TOP:1px;
+      }
+
+      #b2 {
+        background:-webkit-gradient(linear, LEFT TOP, LEFT BOTTOM, COLOR-stop(0.05, #d6ad5a), COLOR-stop(1, #e8cb90));
+        background:-moz-linear-gradient(TOP, #d6ad5a 5%, #e8cb90 100%);
+        background:-webkit-linear-gradient(TOP, #d6ad5a 5%, #e8cb90 100%);
+        background:-o-linear-gradient(TOP, #d6ad5a 5%, #e8cb90 100%);
+        background:-ms-linear-gradient(TOP, #d6ad5a 5%, #e8cb90 100%);
+        background:linear-gradient(TO BOTTOM, #d6ad5a 5%, #e8cb90 100%);
+        FILTER:PROGID:dximagetransform.microsoft.gradient(startcolorstr="#d6ad5a", endcolorstr="#e8cb90",gradienttype=0);
+        background-COLOR:#d6ad5a;
+        BORDER:1px solid #785510;
+            BORDER-radius:12px;
+        DISPLAY:inline-BLOCK;
+        CURSOR:pointer;
+        COLOR:#000000;
+        FONT-family:arial;
+        FONT-SIZE:12px;
+        FONT-weight:bold;
+        padding:4px 12px;
+        TEXT-decoration:NONE;
+      }
+      #b2:hover {
+        background:-webkit-gradient(linear, LEFT TOP, LEFT BOTTOM, COLOR-stop(0.05, #e8cb90), COLOR-stop(1, #d6ad5a));
+        background:-moz-linear-gradient(TOP, #e8cb90 5%, #d6ad5a 100%);
+        background:-webkit-linear-gradient(TOP, #e8cb90 5%, #d6ad5a 100%);
+        background:-o-linear-gradient(TOP, #e8cb90 5%, #d6ad5a 100%);
+        background:-ms-linear-gradient(TOP, #e8cb90 5%, #d6ad5a 100%);
+        background:linear-gradient(TO BOTTOM, #e8cb90 5%, #d6ad5a 100%);
+        FILTER:PROGID:dximagetransform.microsoft.gradient(startcolorstr="#e8cb90", endcolorstr="#d6ad5a",gradienttype=0);
+        background-COLOR:#e8cb90;
+      }
+      #b2:ACTIVE {
+        position:RELATIVE;
+        TOP:1px;
+      }
+      t2 {color: #ffffff;}
+      form {    display: inline;}
+      #listtop { font-family:Arial; font-size:12px; font-weight:bold; color:#FFFFFF }
+      #listbody { font-family:Arial; font-size:18px; font-weight:bold; color:#FFFFFF }
+      table { font-family:Arial; font-size:18px; font-weight:bold; color:#FFFFFF }
+      @media screen and (max-width:767px)  {
+      .center-btn-lng { white-space: normal; word-wrap: break-word; }
+      }
+      @media screen and (max-width: 980px) {
+      table,
+      tbody { display: block; width: 100%; }
+      table,
+      #listtop {font-size: 14px; }
+      .top-header td,
+      .top-header table,
+      .top-header tbody,
+      .top-header tr,
+      .top-header,
+      .center-content-sec,
+      .details-sec,
+      .calendar-sec,
+      .details-sec tr,
+      .details-sec td,
+      .calendar-sec-grid,
+      #listtop { display: block; }
+      #va { display: block-block; width: 100%; padding: 10px 0px; text-align: center; margin: 0px; }
+      #listtop td,
+      #listtop tr { display: block; width: 100%; padding: 0px; }
+      #listtop img { width: 100%; }
+      #listtop tr div { padding: 10px 10px 0px 10px; }
+      }
+      @media (min-width: 981px) and (max-width: 1199px) {
+      table,
+      tbody { display: block; width: 100%; }
+      .top-header td,
+      .top-header table,
+      .top-header tbody,
+      .top-header tr,
+      .top-header,
+      .center-content-sec,
+      .details-sec,
+      .details-sec tr,
+      .details-sec td { display: block; }
+      }
+      .details-sec,
+      .calendar-sec { width: 100%; display: block; max-width: 870px; margin: auto; }
+      #va { margin-bottom: 15px; display: block-block; width: 100%; }
+      .legend1 {   background-color: DarkViolet; color: white; font-family:arial; font-weight:bold; }
+      .legend2 {   background-color: magenta; color: white; font-family:arial; font-weight:bold; }
+      .legend3 { background-color: darkturquoise; color: black; font-family:arial; font-weight:bold; }
+      .legend4 { background-color: darkblue; color: white; font-family:arial; font-weight:bold; }
+      .legend5 { background-color: darkgreen; color: white; font-family:arial; font-weight:bold; }
+      .legend6 { background-color: darkred; color: white; font-family:arial; font-weight:bold; }
+      .legend7 { background-color: yellow; color: black; font-family:arial; font-weight:bold; }
+      .lpast { background-color: lightgray; color: white; font-family:arial; font-weight:bold; }
+      a { color: white; font-family: Arial; font-size: 18px; text-decoration:none; }
+      a:link { color: white; }
+      a:visited { color: white; }
+      a:hover { color: white; }
+      a:active { color:white; }
+      th { text-align: center; font-family:arial; font-size:24px; background-color:lightgray; color:black; }
+      td { text-align: center; font-family:arial; font-size:18px; color:black; }
+      .cal-page { border-style:ridge; border-width:thin; box-shadow: 5px 5px 5px lightgray; width:300px; display:inline-block;
+      vertical-align:top; background-color:white;}
+      .cal-space { width:300px; border-style:none; display:flex; height: 100%; }
+    </style>
+    <script>
+      let nx = window.innerWidth;
+      let bsn = "The Duttons";
+    </script>
+    <script>
+      let pqr = "xfile=&altmethod=Y&lfilter=N&xven=DEF1&swidth=1920";
+    </script>
+  </head>
+  <body>
+    <form
+      action="https://duttons.completeticketing.co/foxisapi.dll/getcal.xo.getcalm"
+      id="ctsq"
+      method="post"
+      name="ctsq"
+    >
+      <input id="swo" name="swidth" type="hidden" value="1920" />
+      <input name="agentid" type="hidden" value="0" />
+      <input name="agentname" type="hidden" value="" />
+      <input name="attachid" type="hidden" value="0" />
+      <input name="xfile" type="hidden" value="TheDutto02" />
+      <input name="xven" type="hidden" value="DEF1" />
+      <input name="lfilter" type="hidden" value="Y" />
+      <input name="dcode" type="hidden" value="" />
+      <input name="altmethod" type="hidden" value="Y" />
+      <input style="visibility: hidden" type="submit" value="submit" />
+    </form>
+    <script>
+      var n1 = screen.width;
+      var str = navigator.userAgent.toLowerCase();
+      var patt = new RegExp(
+        "android|webos|iphone|ipad|ipod|blackberry|bb|playbook|iemobile|kindle|silk|opera mini|mobile"
+      );
+      var ismobile = patt.test(str);
+      if (ismobile) {
+        document.getElementById("swo").value = nx;
+        document.forms["ctsq"].submit();
+      }
+    </script>
+    <script>
+      var lyt = "xfile=&altmethod=Y&lfilter=N&xven=DEF1&swidth=1920;";
+    </script>
+    <font color="#999999" size="-2">GC.23.8.2</font><br />
+    <center>
+      <table cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+          <td width="1%"></td>
+          <td width="98%"></td>
+          <td width="1%"></td>
+        </tr>
+        <tr class="top-header">
+          <td align="center" colspan="3">
+            <!-- Start Tracker -->
+            <!--Note: 2021-01-20, Tim
+This code installed 2019-01-31
+For Brent Powers with NW Arkansas Gazette Ad Campaigns
+Investigating a little, they seem to be using services
+Called Telium and/or Trade Desk for Tag Managment for
+i.e. Facebook pixel, etc.
+-->
+            <!--<script src="https://js.adsrvr.org/up_loader.1.1.0.js" type="text/javascript">
+</script>-->
+            <!--<script type="text/javascript">
+    ttd_dom_ready(
+        function() {
+            if (typeof TTDUniversalPixelApi === 'function') {
+                var universalPixelApi = new TTDUniversalPixelApi();
+                universalPixelApi.init(
+                    "dqfv3nl",
+                    ["jpljw05"],
+                    "https://insight.adsrvr.org/track/up"
+                );
+            }
+        });
+</script>-->
+            <!-- End Tracker -->
+            <!-- Google Tag Manager -->
+            <script>
+              (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                  "gtm.start": new Date().getTime(),
+                  event: "gtm.js",
+                });
+                var f = d.getElementsByTagName(s)[0],
+                  j = d.createElement(s),
+                  dl = l != "dataLayer" ? "&l=" + l : "";
+                j.async = true;
+                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                f.parentNode.insertBefore(j, f);
+              })(window, document, "script", "dataLayer", "GTM-53CC6KW");
+            </script>
+            <!-- End Google Tag Manager -->
+            <!-- Google Tag Manager (noscript) -->
+            <noscript
+              ><iframe
+                height="0"
+                src="https://www.googletagmanager.com/ns.html?id=GTM-53CC6KW"
+                style="display: none; visibility: hidden"
+                width="0"
+              ></iframe
+            ></noscript>
+            <!-- End Google Tag Manager (noscript) -->
+          </td>
+        </tr>
+        <tr class="center-content-sec">
+          <td align="center"></td>
+          <td align="center">
+            <center>
+              <p style="color: #fff; margin-bottom: 16px;">
+               Dutton Family Theater Branson<br />
+                
+                    3454 W 76 Country Blvd<br />
+                    Branson, MO 65616<br />
+                    (417) 332-2772<br />
+         
+                    Please click a date to select your tickets for The
+                         Duttons<br />
+              </p>
+              <br />
+              <div style="display: flex; flex-direction: row; flex-wrap: wrap; margin-bottom: 16px; gap: 8px; justify-content: center; align-items: center;">
+                  <span class="legend1" style="border-radius: 10px; padding: 10px"
+                    >8:00 PM</span
+                  >
+                  <span class="legend2" style="border-radius: 10px; padding: 10px"
+                    >2:00 PM</span
+                  >
+                  <span class="legend3" style="border-radius: 10px; padding: 10px"
+                    >2:00 PM & 8:00 PM</span
+                  >
+              </div>
+              <div style="display: flex; flex-direction: row; flex-wrap: wrap; margin-bottom: 16px; gap: 8px; justify-content: center; align-items: center;">
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">September 2023</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>1</td>
+                              <td>2</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>4</td>
+                              <td>5</td>
+                              <td>6</td>
+                              <td>7</td>
+                              <td>8</td>
+                              <td>9</td>
+                            </tr>
+                            <tr>
+                              <td>10</td>
+                              <td>11</td>
+                              <td>12</td>
+                              <td>13</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','09/14/23','N')"
+                                  style="cursor: pointer"
+                                  >14</a
+                                >
+                              </td>
+                              <td>15</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','09/16/23','N')"
+                                  style="cursor: pointer"
+                                  >16</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>17</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','09/18/23','N')"
+                                  style="cursor: pointer"
+                                  >18</a
+                                >
+                              </td>
+                              <td>19</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','09/20/23','N')"
+                                  style="cursor: pointer"
+                                  >20</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','09/21/23','N')"
+                                  style="cursor: pointer"
+                                  >21</a
+                                >
+                              </td>
+                              <td>22</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','09/23/23','N')"
+                                  style="cursor: pointer"
+                                  >23</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>24</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','09/25/23','N')"
+                                  style="cursor: pointer"
+                                  >25</a
+                                >
+                              </td>
+                              <td>26</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','09/27/23','N')"
+                                  style="cursor: pointer"
+                                  >27</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','09/28/23','N')"
+                                  style="cursor: pointer"
+                                  >28</a
+                                >
+                              </td>
+                              <td>29</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','09/30/23','N')"
+                                  style="cursor: pointer"
+                                  >30</a
+                                >
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+            
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">October 2023</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/02/23','N')"
+                                  style="cursor: pointer"
+                                  >2</a
+                                >
+                              </td>
+                              <td>3</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','10/04/23','N')"
+                                  style="cursor: pointer"
+                                  >4</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/05/23','N')"
+                                  style="cursor: pointer"
+                                  >5</a
+                                >
+                              </td>
+                              <td>6</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/07/23','N')"
+                                  style="cursor: pointer"
+                                  >7</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>8</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/09/23','N')"
+                                  style="cursor: pointer"
+                                  >9</a
+                                >
+                              </td>
+                              <td>10</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','10/11/23','N')"
+                                  style="cursor: pointer"
+                                  >11</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/12/23','N')"
+                                  style="cursor: pointer"
+                                  >12</a
+                                >
+                              </td>
+                              <td>13</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/14/23','N')"
+                                  style="cursor: pointer"
+                                  >14</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>15</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/16/23','N')"
+                                  style="cursor: pointer"
+                                  >16</a
+                                >
+                              </td>
+                              <td>17</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','10/18/23','N')"
+                                  style="cursor: pointer"
+                                  >18</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/19/23','N')"
+                                  style="cursor: pointer"
+                                  >19</a
+                                >
+                              </td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','10/20/23','N')"
+                                  style="cursor: pointer"
+                                  >20</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/21/23','N')"
+                                  style="cursor: pointer"
+                                  >21</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>22</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/23/23','N')"
+                                  style="cursor: pointer"
+                                  >23</a
+                                >
+                              </td>
+                              <td>24</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','10/25/23','N')"
+                                  style="cursor: pointer"
+                                  >25</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/26/23','N')"
+                                  style="cursor: pointer"
+                                  >26</a
+                                >
+                              </td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','10/27/23','N')"
+                                  style="cursor: pointer"
+                                  >27</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/28/23','N')"
+                                  style="cursor: pointer"
+                                  >28</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>29</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','10/30/23','N')"
+                                  style="cursor: pointer"
+                                  >30</a
+                                >
+                              </td>
+                              <td>31</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+              
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">November 2023</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/01/23','N')"
+                                  style="cursor: pointer"
+                                  >1</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/02/23','N')"
+                                  style="cursor: pointer"
+                                  >2</a
+                                >
+                              </td>
+                              <td class="legend3">
+                                <a
+                                  onclick="showclicka('The Duttons','11/03/23','Y')"
+                                  style="cursor: pointer"
+                                  >3</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/04/23','N')"
+                                  style="cursor: pointer"
+                                  >4</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/06/23','N')"
+                                  style="cursor: pointer"
+                                  >6</a
+                                >
+                              </td>
+                              <td class="legend3">
+                                <a
+                                  onclick="showclicka('The Duttons','11/07/23','Y')"
+                                  style="cursor: pointer"
+                                  >7</a
+                                >
+                              </td>
+                              <td class="legend3">
+                                <a
+                                  onclick="showclicka('The Duttons','11/08/23','Y')"
+                                  style="cursor: pointer"
+                                  >8</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/09/23','N')"
+                                  style="cursor: pointer"
+                                  >9</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/10/23','N')"
+                                  style="cursor: pointer"
+                                  >10</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/11/23','N')"
+                                  style="cursor: pointer"
+                                  >11</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>12</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/13/23','N')"
+                                  style="cursor: pointer"
+                                  >13</a
+                                >
+                              </td>
+                              <td class="legend3">
+                                <a
+                                  onclick="showclicka('The Duttons','11/14/23','Y')"
+                                  style="cursor: pointer"
+                                  >14</a
+                                >
+                              </td>
+                              <td class="legend3">
+                                <a
+                                  onclick="showclicka('The Duttons','11/15/23','Y')"
+                                  style="cursor: pointer"
+                                  >15</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/16/23','N')"
+                                  style="cursor: pointer"
+                                  >16</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/17/23','N')"
+                                  style="cursor: pointer"
+                                  >17</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/18/23','N')"
+                                  style="cursor: pointer"
+                                  >18</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>19</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/20/23','N')"
+                                  style="cursor: pointer"
+                                  >20</a
+                                >
+                              </td>
+                              <td>21</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','11/22/23','N')"
+                                  style="cursor: pointer"
+                                  >22</a
+                                >
+                              </td>
+                              <td>23</td>
+                              <td>24</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/25/23','N')"
+                                  style="cursor: pointer"
+                                  >25</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>26</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/27/23','N')"
+                                  style="cursor: pointer"
+                                  >27</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/28/23','N')"
+                                  style="cursor: pointer"
+                                  >28</a
+                                >
+                              </td>
+                              <td class="legend3">
+                                <a
+                                  onclick="showclicka('The Duttons','11/29/23','Y')"
+                                  style="cursor: pointer"
+                                  >29</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','11/30/23','N')"
+                                  style="cursor: pointer"
+                                  >30</a
+                                >
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+           
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">December 2023</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','12/01/23','N')"
+                                  style="cursor: pointer"
+                                  >1</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','12/02/23','N')"
+                                  style="cursor: pointer"
+                                  >2</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','12/04/23','N')"
+                                  style="cursor: pointer"
+                                  >4</a
+                                >
+                              </td>
+                              <td>5</td>
+                              <td class="legend3">
+                                <a
+                                  onclick="showclicka('The Duttons','12/06/23','Y')"
+                                  style="cursor: pointer"
+                                  >6</a
+                                >
+                              </td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','12/07/23','N')"
+                                  style="cursor: pointer"
+                                  >7</a
+                                >
+                              </td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','12/08/23','N')"
+                                  style="cursor: pointer"
+                                  >8</a
+                                >
+                              </td>
+                              <td>9</td>
+                            </tr>
+                            <tr>
+                              <td>10</td>
+                              <td class="legend1">
+                                <a
+                                  onclick="showclicka('TheDutto02','12/11/23','N')"
+                                  style="cursor: pointer"
+                                  >11</a
+                                >
+                              </td>
+                              <td>12</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','12/13/23','N')"
+                                  style="cursor: pointer"
+                                  >13</a
+                                >
+                              </td>
+                              <td>14</td>
+                              <td>15</td>
+                              <td>16</td>
+                            </tr>
+                            <tr>
+                              <td>17</td>
+                              <td>18</td>
+                              <td>19</td>
+                              <td>20</td>
+                              <td>21</td>
+                              <td>22</td>
+                              <td>23</td>
+                            </tr>
+                            <tr>
+                              <td>24</td>
+                              <td>25</td>
+                              <td>26</td>
+                              <td>27</td>
+                              <td>28</td>
+                              <td>29</td>
+                              <td>30</td>
+                            </tr>
+                            <tr>
+                              <td>31</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+             
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">January 2024</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>3</td>
+                              <td>4</td>
+                              <td>5</td>
+                              <td>6</td>
+                            </tr>
+                            <tr>
+                              <td>7</td>
+                              <td>8</td>
+                              <td>9</td>
+                              <td>10</td>
+                              <td>11</td>
+                              <td>12</td>
+                              <td>13</td>
+                            </tr>
+                            <tr>
+                              <td>14</td>
+                              <td>15</td>
+                              <td>16</td>
+                              <td>17</td>
+                              <td>18</td>
+                              <td>19</td>
+                              <td>20</td>
+                            </tr>
+                            <tr>
+                              <td>21</td>
+                              <td>22</td>
+                              <td>23</td>
+                              <td>24</td>
+                              <td>25</td>
+                              <td>26</td>
+                              <td>27</td>
+                            </tr>
+                            <tr>
+                              <td>28</td>
+                              <td>29</td>
+                              <td>30</td>
+                              <td>31</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+               
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">February 2024</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>3</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>5</td>
+                              <td>6</td>
+                              <td>7</td>
+                              <td>8</td>
+                              <td>9</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>11</td>
+                              <td>12</td>
+                              <td>13</td>
+                              <td>14</td>
+                              <td>15</td>
+                              <td>16</td>
+                              <td>17</td>
+                            </tr>
+                            <tr>
+                              <td>18</td>
+                              <td>19</td>
+                              <td>20</td>
+                              <td>21</td>
+                              <td>22</td>
+                              <td>23</td>
+                              <td>24</td>
+                            </tr>
+                            <tr>
+                              <td>25</td>
+                              <td>26</td>
+                              <td>27</td>
+                              <td>28</td>
+                              <td>29</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+         
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">March 2024</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>1</td>
+                              <td>2</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>4</td>
+                              <td>5</td>
+                              <td>6</td>
+                              <td>7</td>
+                              <td>8</td>
+                              <td>9</td>
+                            </tr>
+                            <tr>
+                              <td>10</td>
+                              <td>11</td>
+                              <td>12</td>
+                              <td>13</td>
+                              <td>14</td>
+                              <td>15</td>
+                              <td>16</td>
+                            </tr>
+                            <tr>
+                              <td>17</td>
+                              <td>18</td>
+                              <td>19</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','03/20/24','N')"
+                                  style="cursor: pointer"
+                                  >20</a
+                                >
+                              </td>
+                              <td>21</td>
+                              <td>22</td>
+                              <td>23</td>
+                            </tr>
+                            <tr>
+                              <td>24</td>
+                              <td>25</td>
+                              <td>26</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','03/27/24','N')"
+                                  style="cursor: pointer"
+                                  >27</a
+                                >
+                              </td>
+                              <td>28</td>
+                              <td>29</td>
+                              <td>30</td>
+                            </tr>
+                            <tr>
+                              <td>31</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+           
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">April 2024</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>3</td>
+                              <td>4</td>
+                              <td>5</td>
+                              <td>6</td>
+                            </tr>
+                            <tr>
+                              <td>7</td>
+                              <td>8</td>
+                              <td>9</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','04/10/24','N')"
+                                  style="cursor: pointer"
+                                  >10</a
+                                >
+                              </td>
+                              <td>11</td>
+                              <td>12</td>
+                              <td>13</td>
+                            </tr>
+                            <tr>
+                              <td>14</td>
+                              <td>15</td>
+                              <td>16</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','04/17/24','N')"
+                                  style="cursor: pointer"
+                                  >17</a
+                                >
+                              </td>
+                              <td>18</td>
+                              <td>19</td>
+                              <td>20</td>
+                            </tr>
+                            <tr>
+                              <td>21</td>
+                              <td>22</td>
+                              <td>23</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','04/24/24','N')"
+                                  style="cursor: pointer"
+                                  >24</a
+                                >
+                              </td>
+                              <td>25</td>
+                              <td>26</td>
+                              <td>27</td>
+                            </tr>
+                            <tr>
+                              <td>28</td>
+                              <td>29</td>
+                              <td>30</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+             
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">May 2024</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','05/01/24','N')"
+                                  style="cursor: pointer"
+                                  >1</a
+                                >
+                              </td>
+                              <td>2</td>
+                              <td>3</td>
+                              <td>4</td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td>6</td>
+                              <td>7</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','05/08/24','N')"
+                                  style="cursor: pointer"
+                                  >8</a
+                                >
+                              </td>
+                              <td>9</td>
+                              <td>10</td>
+                              <td>11</td>
+                            </tr>
+                            <tr>
+                              <td>12</td>
+                              <td>13</td>
+                              <td>14</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','05/15/24','N')"
+                                  style="cursor: pointer"
+                                  >15</a
+                                >
+                              </td>
+                              <td>16</td>
+                              <td>17</td>
+                              <td>18</td>
+                            </tr>
+                            <tr>
+                              <td>19</td>
+                              <td>20</td>
+                              <td>21</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','05/22/24','N')"
+                                  style="cursor: pointer"
+                                  >22</a
+                                >
+                              </td>
+                              <td>23</td>
+                              <td>24</td>
+                              <td>25</td>
+                            </tr>
+                            <tr>
+                              <td>26</td>
+                              <td>27</td>
+                              <td>28</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','05/29/24','N')"
+                                  style="cursor: pointer"
+                                  >29</a
+                                >
+                              </td>
+                              <td>30</td>
+                              <td>31</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+             
+                <div class="cal-page">
+                  <center>
+                    <table border="1" cellspacing="10" width="300">
+                      <tr>
+                        <td>
+                          <table border="0" cellpadding="2" width="100%">
+                            <tr>
+                              <th colspan="7">June 2024</th>
+                            </tr>
+                            <tr>
+                              <th>S</th>
+                              <th>M</th>
+                              <th>T</th>
+                              <th>W</th>
+                              <th>T</th>
+                              <th>F</th>
+                              <th>S</th>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>3</td>
+                              <td>4</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','06/05/24','N')"
+                                  style="cursor: pointer"
+                                  >5</a
+                                >
+                              </td>
+                              <td>6</td>
+                              <td>7</td>
+                              <td>8</td>
+                            </tr>
+                            <tr>
+                              <td>9</td>
+                              <td>10</td>
+                              <td>11</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','06/12/24','N')"
+                                  style="cursor: pointer"
+                                  >12</a
+                                >
+                              </td>
+                              <td>13</td>
+                              <td>14</td>
+                              <td>15</td>
+                            </tr>
+                            <tr>
+                              <td>16</td>
+                              <td>17</td>
+                              <td>18</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','06/19/24','N')"
+                                  style="cursor: pointer"
+                                  >19</a
+                                >
+                              </td>
+                              <td>20</td>
+                              <td>21</td>
+                              <td>22</td>
+                            </tr>
+                            <tr>
+                              <td>23</td>
+                              <td>24</td>
+                              <td>25</td>
+                              <td class="legend2">
+                                <a
+                                  onclick="showclicka('TheDutto01','06/26/24','N')"
+                                  style="cursor: pointer"
+                                  >26</a
+                                >
+                              </td>
+                              <td>27</td>
+                              <td>28</td>
+                              <td>29</td>
+                            </tr>
+                            <tr>
+                              <td>30</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </div>
+              </div>
+    
+              <form
+                action="https://duttons.completeticketing.co/foxisapi.dll/gs2.xo.getshows2"
+                id="bxx"
+                method="post"
+                name="bxx"
+              >
+                <input name="agentid" type="hidden" value="0" />
+                <input name="agentname" type="hidden" value="" />
+                <input name="lfilter" type="hidden" value="N" />
+                <input name="attachid" type="hidden" value="0" />
+                <input id="xshfile" name="xfile" type="hidden" value="" />
+                <input id="xshdate" name="xdate" type="hidden" value="" />
+                <input id="xameth" name="altmethod" type="hidden" value="Y" />
+                <input name="dcode" type="hidden" value="" />
+                <input id="sw5" name="swidth" type="hidden" value="1920" />
+                <input
+                  id="bx1"
+                  style="visibility: hidden"
+                  type="submit"
+                  value=""
+                />
+              </form>
+              <form
+                action="https://duttons.completeticketing.co/foxisapi.dll/gs2.xo.gsu"
+                id="bxa"
+                method="post"
+                name="bxa"
+              >
+                <input name="agentid" type="hidden" value="0" />
+                <input name="agentname" type="hidden" value="" />
+                <input name="lfilter" type="hidden" value="N" />
+                <input name="attachid" type="hidden" value="0" />
+                <input id="xshshowu" name="xshow" type="hidden" value="" />
+                <input id="xshfileu" name="xfile" type="hidden" value="" />
+                <input id="xshdateu" name="xdate" type="hidden" value="" />
+                <input id="xamethu" name="altmethod" type="hidden" value="Y" />
+                <input name="dcode" type="hidden" value="" />
+                <input id="sw5u" name="swidth" type="hidden" value="1920" />
+                <input
+                  id="bx1"
+                  style="visibility: hidden"
+                  type="submit"
+                  value=""
+                />
+              </form>
+              <script>
+                function showclicka(fn, pd, flg) {
+                  if (flg == "Y") {
+                    document.getElementById("xshdateu").value = pd;
+                    document.getElementById("sw5u").value = nx;
+                    document.getElementById("xamethu").value = flg;
+                    document.getElementById("xshshowu").value = fn;
+                    document.getElementById("bxa").submit();
+                  } else {
+                    document.getElementById("xshdate").value = pd;
+                    document.getElementById("sw5").value = nx;
+                    document.getElementById("xameth").value = flg;
+                    document.getElementById("xshfile").value = fn;
+                    document.getElementById("bxx").submit();
+                  }
+                }
+              </script>
+            </center>
+          </td>
+          <td align="center"></td>
+        </tr>
+      </table>
+  </body>
+</html>
