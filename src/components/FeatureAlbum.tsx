@@ -114,7 +114,7 @@ export default function FeatureAlbum({
       {albumDisplayType === "all" && (
         <section className="px-2 mx-0">
           <section className="container py-5 feature-album-slider-wrapper mx-auto">
-            <h2 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center">
+            <h2 className="text-2xl md:text-4xl mx-auto opacity-90 uppercase text-center font-bold mb-4">
               {isSpanish ? "Música" : "Music"}
             </h2>
             <div

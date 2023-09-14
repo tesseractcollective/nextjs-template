@@ -185,8 +185,8 @@ export default function Blogs({
   return (
     <div>
       {!!FilteredBlogs && (
-        <div className="blog-wrapper">
-          <h2 className="text-center">
+        <div className="blog-wrapper my-16">
+          <h2 className="text-2xl md:text-4xl mx-auto opacity-90 uppercase text-center font-bold mb-4">
             {(!!blogHeader && blogHeader) || "Blogs"}
           </h2>
           <div className="mx-auto flex flex-wrap flex-row gap-8 animate-col-width items-stretch w-full my-8">

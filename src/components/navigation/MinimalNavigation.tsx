@@ -559,7 +559,7 @@ export default function MinimalNavigation({
                                               {({ close }) => (
                                                 <>
                                                   <div className="relative top-[2px]bg-bg-dark">
-                                                    <div className="flex flex-col py-2 border-t border-primary px-2  border-[#1c1c1c] border min-w-[200px]">
+                                                    <div className="flex flex-col py-2 border-t border-primary px-2  border-[#1c1c1c] border min-w-[200px bg-dark">
                                                       {mainNavigationItem.items.map(
                                                         (item) => (
                                                           <div
