@@ -1,4 +1,49 @@
-const showData = {
+import { Event } from "../components/Calendar/calendarHelpers";
+
+export async function getDuttonEventsClient({ timeoutSeconds }: { timeoutSeconds: number }): Promise<Event[]> {
+  const response = await fetch(
+    `/theduttons-shows.json?timeout=${timeoutSeconds}`
+  );
+  return response.json();
+}
+
+export async function getDuttonEventsServer(
+  { timeoutSeconds }: { timeoutSeconds: number }
+): Promise<Event[]> {
+  let showData = showDataBackup;
+
+  const abortController = new AbortController();
+  try {
+    setTimeout(() => abortController.abort(), timeoutSeconds * 1000);
+    const response = await fetch(
+      "https://duttons.completeticketing.co/foxisapi.dll/ctapi.xo.getinfo",
+      { signal: abortController.signal }
+    );
+    showData = await response.json();
+  } catch (error: any) {
+    console.log("unable to fetch show data, using backupData instead");
+  }
+
+  const events: Event[] = [];
+
+  showData.showinfo.forEach((showInfo) => {
+    showInfo.dates.forEach((date) => {
+      events.push({
+        kind: showInfo.showid,
+        name: showInfo.showname,
+        date: date.showdate,
+        time: showInfo.showtime,
+        location: showInfo.showname.includes("AZ") ? "Mesa, AZ" : "Branson, MO",
+      });
+    });
+  });
+
+  events.sort((a, b) => a.date.localeCompare(b.date));
+
+  return events;
+}
+
+export const showDataBackup = {
   showinfo: [
     {
       showname: "The Duttons",
@@ -952,5 +997,3 @@ const showData = {
     },
   ],
 };
-
-export default showData;
