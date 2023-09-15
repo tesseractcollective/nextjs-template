@@ -830,3 +830,12 @@ h4, h5, h6  {color: var(--text);}
   -webkit-user-select: none;
   user-select: none;
 }
+
+.lg-next, .lg-prev {
+  color: var(--primary) !important;
+}
+
+.flex-fill::after {
+  content: "";
+  flex: auto;
+}

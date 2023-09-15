@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Slider from "react-slick";
 import MagicGrid from "react-magic-grid";
-import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 import LightGallery from "lightgallery/react";
 
 // import styles
@@ -17,19 +16,19 @@ import "lightgallery/scss/lg-zoom.scss";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
 
-type ElementsType =
-  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
-
 interface GalleryProps {
-  elements: ElementsType;
+  galleryData?: { __typename?: "Asset" | undefined; url: string }[];
+  galleryLayoutData?: string;
 }
 
-export default function GallerySection({ elements }: GalleryProps) {
-  // const [index, setIndex] = React.useState(-1);
-  if (!elements) return <></>;
+export default function GallerySection({
+  galleryData,
+  galleryLayoutData,
+}: GalleryProps) {
+  if (!galleryData || !galleryLayoutData) return <></>;
 
-  const gallery = elements.gallery;
-  const galleryLayout = elements.galleryLayout;
+  const gallery = galleryData;
+  const galleryLayout = galleryLayoutData;
 
   const finalImages = gallery.map((image) => image.url);
   if (!finalImages) return <></>;

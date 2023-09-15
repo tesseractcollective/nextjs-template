@@ -118,21 +118,21 @@ export default function Blogs({
               <SwiperSlide key={blogItem.blogSlug}>
                 <article
                   key={blogItem.id}
-                  className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-background px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 h-full group max-w-2xl w-full"
+                  className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 lg:pt-80 group transition-all w-full h-full"
                 >
                   {!!blogItem.image?.url && (
                     <Image
                       src={blogItem.image.url}
                       alt=""
-                      fill
-                      sizes="100%"
-                      className="absolute inset-0 -z-10 h-full w-full object-cover vignette object-center"
                       width={0}
                       height={0}
+                      sizes="100%"
+                      style={{ width: "100%" }}
+                      className="absolute inset-0 -z-10 h-full w-full object-cover"
                     />
                   )}
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background/50 via-white/40" />
-                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary ring-inset ring-background/10 overflow-hidden vignette transition group-hover:ring-secondary" />
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-gray-900/40 group-hover:from-secondary transition-all" />
+                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition-all ring-primary group-hover:ring-secondary ring-inset" />
 
                   <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
                     <div className="-ml-4 flex items-center gap-x-4">
@@ -144,19 +144,14 @@ export default function Blogs({
                       </svg>
                     </div>
                   </div>
-                  <h3 className="mt-3 text-base font-semibold !text-text-color">
-                    {!!blogItem.blogSlug && (
-                      <Link
-                        href={`/${blogItem.blogCategory}/${blogItem.blogSlug}`}
-                        className="!text-text-color line-clamp-1 text-shadow"
-                      >
-                        <span className="absolute inset-0 text-shadow" />
-                        {blogItem.title}
-                      </Link>
-                    )}
+                  <h3 className="mt-3 text-lg font-semibold leading-6 !text-text-color">
+                    <Link
+                      href={`/${blogItem.blogCategory}/${blogItem.blogSlug}`}
+                    >
+                      <span className="absolute inset-0 z-30" />
+                      {blogItem.title}
+                    </Link>
                   </h3>
-                  <div className="absolute inset-0 bg-gradient-to-b from-secondary transition opacity-0 group-hover:opacity-30 z-10" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background transition opacity-0 group-hover:opacity-30 z-10" />
                 </article>
               </SwiperSlide>
             ))}
@@ -194,7 +189,7 @@ export default function Blogs({
               direction="up"
               triggerOnce
               cascade
-              damping={0.1}
+              damping={0.015}
               className="w-full md:w=[50%] lg:w-[40%] xl:w-[31.5%] mx-auto"
             >
               {FilteredBlogs?.map((blogItem) => (

@@ -25,6 +25,7 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
     parallaxImage,
     standOutText,
     gallery,
+    galleryLayout,
     stripePricingTableId,
     stripePublishableKey,
     displayInstagramSectionUsername,
@@ -55,7 +56,12 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
           imageCssClass={imageCssClass || undefined}
         />
       )}
-      {!!gallery && <GallerySection elements={elements} />}
+      {!!gallery && (
+        <GallerySection
+          galleryData={gallery}
+          galleryLayoutData={galleryLayout || undefined}
+        />
+      )}
       {!!stripePricingTableId && stripePublishableKey && (
         <StripePricingTable
           pricingTableId={stripePricingTableId}

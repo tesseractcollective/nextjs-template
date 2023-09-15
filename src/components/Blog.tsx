@@ -25,6 +25,7 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import SocialShare from "@/components/elements/SocialShare";
+import GallerySection from "@/components/GallerySection";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;
@@ -46,6 +47,8 @@ export default function Blog({
     blogCallToActionText,
     blogCallToActionLink,
     videoBox,
+    blogGallery,
+    blogHtml,
   } = blog;
   const filteredBlogs = blogs?.filter(
     (tempBlog) => blog.blogSlug !== tempBlog.blogSlug
@@ -197,11 +200,14 @@ export default function Blog({
               {parse(content.html)}
             </div>
           )}
+          {!!blogHtml && (
+            <div className="body-parsed-text block px-4">{parse(blogHtml)}</div>
+          )}
           {!!blogCallToActionText && blogCallToActionLink && (
             <LinkItem
+              link={blogCallToActionLink}
               label={blogCallToActionText}
-              cssClass={blogCallToActionLink}
-              link="border-dark border px-4 md:px-8 py-3 theme-button mx-auto max-w-max block no-underline my-4 font-bold w-full"
+              cssClass="flex items-center justify-center font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-4 md:px-6 rounded transition-all text-2xl py-2 md:py-3 uppercase text-center max-w-max mx-auto"
             />
           )}
           {!!videoBox && (
@@ -224,6 +230,12 @@ export default function Blog({
                 </div>
               ))}
             </div>
+          )}
+          {!!blogGallery && (
+            <GallerySection
+              galleryData={blogGallery}
+              galleryLayoutData="lightbox"
+            />
           )}
         </section>
       </div>
