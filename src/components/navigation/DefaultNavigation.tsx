@@ -29,11 +29,16 @@ export default function DefaultNavigation({
   const [small, setSmall] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", () =>
-        setSmall(window.pageYOffset > 400)
-      );
-    }
+    const handleScroll = () => {
+      setSmall(window.pageYOffset > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      // Clean up the event listener when the component unmounts
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   if (!navigations && !siteLibrary) return <></>;

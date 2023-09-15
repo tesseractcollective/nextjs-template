@@ -52,7 +52,7 @@ export default function Profiles({
                     direction="up"
                     cascade
                     triggerOnce
-                    damping={0.1}
+                    damping={0.015}
                     key={profile.profileSlug}
                     className="mx-auto max-w-xs w-full"
                   >
@@ -248,7 +248,7 @@ export default function Profiles({
                                         width={0}
                                         height={0}
                                         sizes="100%"
-                                        className="w-full max-w-[200px] mx-auto rounded-full"
+                                        className="w-[180px] h-[180px] object-cover mx-auto rounded-[100%] border-2 border-primary"
                                       />
                                     )}
                                     <h2 className="text-3xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase">
