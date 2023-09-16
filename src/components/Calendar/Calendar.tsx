@@ -7,7 +7,6 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 export interface CalendarProps {
   events: Event[];
   createMonthsForNoEvents: boolean;
-  showType: string;
 }
 
 function classNames(...classes: (string | boolean | undefined)[]) {
@@ -31,29 +30,29 @@ export default function Calendar(props: CalendarProps) {
   // const arizonaDuttons01 = "DuttonsA03 - 7pm Arizona";
   // const arizonaDuttons02 = "DuttonsA04 - 2pm Arizona";
 
-  const bransonEvents = events.filter((event) =>
-    event.kind.includes("TheDutton0")
-  );
-  const jesusEvents = events.filter((event) =>
-    event.kind.includes("WhereJes0")
-  );
-  const mesaEvents = events.filter((event) => event.kind.includes("DuttonsA0"));
+  // const bransonEvents = events.filter((event) =>
+  //   event.kind.includes("TheDutton0")
+  // );
+  // const jesusEvents = events.filter((event) =>
+  //   event.kind.includes("WhereJes0")
+  // );
+  // const mesaEvents = events.filter((event) => event.kind.includes("DuttonsA0"));
 
-  // let filteredEvents: Event[];
-  switch (props.showType) {
-    case "branson":
-      events = bransonEvents;
-      break;
-    case "jesus":
-      events = jesusEvents;
-      break;
-    case "mesa":
-      events = mesaEvents;
-      break;
-    default:
-      events = events;
-      break;
-  }
+  // // let filteredEvents: Event[];
+  // switch (props.showType) {
+  //   case "branson":
+  //     events = bransonEvents;
+  //     break;
+  //   case "jesus":
+  //     events = jesusEvents;
+  //     break;
+  //   case "mesa":
+  //     events = mesaEvents;
+  //     break;
+  //   default:
+  //     events = events;
+  //     break;
+  // }
 
   console.log(
     "events",

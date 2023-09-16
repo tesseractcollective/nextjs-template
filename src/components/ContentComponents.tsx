@@ -71,6 +71,64 @@ export default function ContentComponents({
     testimonialType,
     showType,
   } = contentTags;
+
+  if (!!showType && !!eventsData) {
+    console.log("showType", showType);
+    console.log(
+      "eventsDataType",
+      eventsData.map((eventsDataItem) => eventsDataItem.kind)
+    );
+    const filteredData = eventsData.filter((item) =>
+      item.kind.includes(showType)
+    );
+    console.log("filteredData", filteredData);
+  }
+  const jesusEvents =
+    eventsData &&
+    eventsData.filter((event) => event.kind.includes("WhereJes0"));
+  const mesaEvents =
+    eventsData &&
+    eventsData.filter((event) => event.kind.includes("DuttonsA0"));
+
+  // const eventTypesToFilter = ["TheDutton0", "WhereJes0", "DuttonsA0"];
+
+  // const filteredEvents =
+  //   eventsData?.filter((event) =>
+  //     eventTypesToFilter.some((showType) => event.kind.includes(showType))
+  //   ) || [];
+
+  // filteredEvents now contains events that match any of the specified event types.
+
+  // let filteredEvents: Event[] = [];
+  // if (showType === "branson") {
+  //   filteredEvents = bransonEvents;
+  // }
+  // if (showType === "mesa") {
+  //   filteredEvents = mesaEvents;
+  // }
+  // if (showType === "jesus") {
+  //   filteredEvents = jesusEvents;
+  // }
+  // let filteredEvents: Event[] = [];
+
+  // if (eventsData) {
+  //   if (showType === "branson") {
+  //     filteredEvents = eventsData.filter((event) =>
+  //       event.kind.includes("TheDutton0")
+  //     );
+  //   } else if (showType === "mesa") {
+  //     filteredEvents = eventsData.filter((event) =>
+  //       event.kind.includes("DuttonsA0")
+  //     );
+  //   } else if (showType === "jesus") {
+  //     filteredEvents = eventsData.filter((event) =>
+  //       event.kind.includes("WhereJes0")
+  //     );
+  //   } else if (showType === undefined) {
+  //     filteredEvents = eventsData;
+  //   }
+  // }
+
   return (
     <>
       {!!testimonials && testimonialType && (
@@ -138,14 +196,8 @@ export default function ContentComponents({
             profileType={profileType}
           />
         )}
-      {!!showType && eventsData && (
-        <>
-          <Calendar
-            events={eventsData}
-            createMonthsForNoEvents={true}
-            showType={showType}
-          />
-        </>
+      {!!eventsData && (
+        <Calendar events={eventsData} createMonthsForNoEvents={true} />
       )}
     </>
   );

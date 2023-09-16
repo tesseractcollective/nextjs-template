@@ -19876,10 +19876,14 @@ export type ScheduledReleaseWhereUniqueInput = {
 };
 
 export enum ShowType {
+  DuttonsA0 = 'DuttonsA0',
+  TheDutton0 = 'TheDutton0',
+  WhereJes0 = 'WhereJes0',
   All = 'all',
   Arizona = 'arizona',
   Branson = 'branson',
-  Jesus = 'jesus'
+  Jesus = 'jesus',
+  Mesa = 'mesa'
 }
 
 export type SiteLibrary = Node & {
