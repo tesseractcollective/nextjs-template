@@ -21,7 +21,7 @@ export default function CalendarPage({ events }: { events: Event[] }) {
   const [latestEvents, setLatestEvents] = useState(events);
 
   useEffect(() => {
-    console.log('useEffect fetch');
+    console.log("useEffect fetch");
     getDuttonEventsClient({ timeoutSeconds: 5 })
       .then((events) => {
         setLatestEvents(events);

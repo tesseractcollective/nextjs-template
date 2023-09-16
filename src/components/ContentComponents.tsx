@@ -18,6 +18,8 @@ import Testimonials from "@/components/Testimonials";
 import Profiles from "@/components/Profiles";
 import Products from "@/components/Products";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
+import { Event } from "@/components/Calendar/calendarHelpers";
+import Calendar from "@/components/Calendar/Calendar";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -38,6 +40,7 @@ interface ContentTagsProps {
   contacts: ContactFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
   page: PageFieldsFragment;
+  eventsData?: Event[];
 }
 
 export default function ContentComponents({
@@ -51,6 +54,7 @@ export default function ContentComponents({
   siteLibrary,
   page,
   albums,
+  eventsData,
 }: ContentTagsProps) {
   if (!contentTags || !siteLibrary) return <></>;
   const {
@@ -65,6 +69,7 @@ export default function ContentComponents({
     profileSectionTitle,
     profileType,
     testimonialType,
+    showType,
   } = contentTags;
   return (
     <>
@@ -133,6 +138,15 @@ export default function ContentComponents({
             profileType={profileType}
           />
         )}
+      {!!showType && eventsData && (
+        <>
+          <Calendar
+            events={eventsData}
+            createMonthsForNoEvents={true}
+            showType={showType}
+          />
+        </>
+      )}
     </>
   );
 }

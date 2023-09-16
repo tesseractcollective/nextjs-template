@@ -35,7 +35,6 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
     htmlTextCssClass,
     elementJson,
   } = elements;
-  console.log("iFrameCode", iFrameCode);
   return (
     <>
       {!!iFrameCode && (

@@ -26,9 +26,11 @@ html {
 .z-100 {
   z-index: 100;
 }
+
 .z-200 {
   z-index: 200;
 }
+
 .z-300 {
   z-index: 300;
 }
@@ -69,7 +71,9 @@ html {
 
 :root {
   --background: #000000;
+  --background-bright: brightness(var(--background, 120%));
   --background-secondary: #272727;
+  --background-secondary-bright: brightness(var(--background-secondary, 120%));
   --primary: #e2e2e2;
   --swiper-theme-color: #4356A5;
   --primary-color: #e7e7e7;
@@ -79,6 +83,16 @@ html {
   --primary-fade-opacity:  #88888862;
   --text: #000000; 
   --text-overlay: #ffffff; 
+}
+
+.bg-bg-bright {
+  background: var(--background);
+   backdrop-filter: brightness(150%);
+}
+
+.bg-bg-secondary-bright {
+  background: var(--background-secondary);
+   backdrop-filter: brightness(150%);
 }
 
 .text-shadow {

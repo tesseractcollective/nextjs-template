@@ -305,6 +305,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     profileSectionTitle
     profileType
     testimonialType
+    showType
   }
   elements {
     stripePricingTableId

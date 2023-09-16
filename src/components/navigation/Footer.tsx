@@ -64,7 +64,7 @@ function Footer({
             <Fade direction="up" cascade damping={0.1} triggerOnce>
               {wideColumns.map((item, index) => (
                 <div
-                  key={index}
+                  key={`footer-col-${index++}`}
                   className={`flex items-center mx-auto justify-center text-center relative my-4 md:my-0 flex-col ${
                     item?.footerColumnCssWrapper || ""
                   }`}
@@ -98,11 +98,14 @@ function Footer({
                   )}
                   <ul className="mt-6 space-y-6 max-w-max">
                     {item.footerLink.map((linkItem, index) => (
-                      <li key={index} className="text-sm max-w-max">
+                      <li
+                        key={`footer-link-${index++}`}
+                        className="text-sm max-w-max"
+                      >
                         {!!linkItem.link && (
                           <div className="max-w-max">
                             <LinkItem
-                              key={linkItem?.link}
+                              key={`footer-link-item-${index++}`}
                               link={linkItem?.link}
                               label={linkItem?.label}
                               cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
@@ -131,11 +134,11 @@ function Footer({
           >
             {regularColumns.map((item, index) => (
               <div
-                key={index}
+                key={`regular-column-${index++}`}
                 className={`relative my-4 md:my-0 ${
                   item?.footerColumnCssWrapper || ""
                 }`}
-                id={`footer-col-${index + 1}`}
+                id={`footer-col-${index++}`}
               >
                 <Fade direction="up" cascade damping={0.1} triggerOnce>
                   {!!item.footerImage?.url && (
@@ -166,11 +169,14 @@ function Footer({
                   )}
                   <ul className="mt-6 space-y-6 max-w-max">
                     {item.footerLink.map((linkItem, index) => (
-                      <li key={index} className="text-sm max-w-max">
+                      <li
+                        key={`footer-link-col-item-${index++}`}
+                        className="text-sm max-w-max"
+                      >
                         {!!linkItem.link && (
                           <div className="max-w-max">
                             <LinkItem
-                              key={linkItem?.link}
+                              key={`footer-link-column-item-${index++}`}
                               link={linkItem?.link}
                               label={linkItem?.label}
                               cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
@@ -225,9 +231,9 @@ function Footer({
           )}
           {footerItems && (
             <div className="flex flex-row items-center justify-center">
-              {footerItems.map((footerItem) => (
+              {footerItems.map((footerItem, index) => (
                 <LinkItem
-                  key={footerItem.link}
+                  key={`${footerItem.link}-${index++}`}
                   label={footerItem.label}
                   link={footerItem.link}
                   cssClass={`max-w-max mb-4 mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
