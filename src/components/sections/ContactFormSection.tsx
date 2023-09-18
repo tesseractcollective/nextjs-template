@@ -78,7 +78,7 @@ export default function ContactFormSection({
               }`}
             >
               {!!contactFormItem?.contactFormTitle && (
-                <div className="body-parsed-text text-center mb-0">
+                <div className="text-2xl md:text-4xl mx-auto opacity-90 uppercase text-center font-bold mb-4">
                   {parse(contactFormItem.contactFormTitle)}
                 </div>
               )}
