@@ -47,7 +47,7 @@ export default function HeroMediaSliderSection({
             {heroMediaSliderData.map((heroMediaSliderItem, index) => (
               <section
                 key={`${heroMediaSliderItem.id}-${index++}`}
-                className={`video-wrapper dark-section transition-all ${
+                className={`hero-media-slider video-wrapper dark-section transition-all ${
                   heroMediaSliderItem?.sliderCssWrapper &&
                   heroMediaSliderItem.sliderCssWrapper
                 }`}
