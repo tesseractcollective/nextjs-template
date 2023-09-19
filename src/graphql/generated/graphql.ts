@@ -19877,6 +19877,7 @@ export type ScheduledReleaseWhereUniqueInput = {
 
 export enum ShowType {
   DuttonsA0 = 'DuttonsA0',
+  TheDutto0 = 'TheDutto0',
   TheDutton0 = 'TheDutton0',
   WhereJes0 = 'WhereJes0',
   All = 'all',

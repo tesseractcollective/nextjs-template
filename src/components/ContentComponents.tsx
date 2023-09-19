@@ -72,23 +72,22 @@ export default function ContentComponents({
     showType,
   } = contentTags;
 
-  if (!!showType && !!eventsData) {
-    console.log("showType", showType);
-    console.log(
-      "eventsDataType",
-      eventsData.map((eventsDataItem) => eventsDataItem.kind)
-    );
-    const filteredData = eventsData.filter((item) =>
-      item.kind.includes(showType)
-    );
-    console.log("filteredData", filteredData);
-  }
-  const jesusEvents =
+  const filteredData =
     eventsData &&
-    eventsData.filter((event) => event.kind.includes("WhereJes0"));
-  const mesaEvents =
-    eventsData &&
-    eventsData.filter((event) => event.kind.includes("DuttonsA0"));
+    eventsData.filter((item) => item.kind.includes(showType || ""));
+  // console.log("filteredData", filteredData);
+
+  // const bransonEvents =
+  //   eventsData &&
+  //   eventsData.length >= 1 &&
+  //   eventsData.filter((event) => event.kind.includes("TheDutton0"));
+  // console.log(bransonEvents);
+  // const jesusEvents =
+  //   eventsData &&
+  //   eventsData.filter((event) => event.kind.includes("WhereJes0"));
+  // const mesaEvents =
+  //   eventsData &&
+  //   eventsData.filter((event) => event.kind.includes("DuttonsA0"));
 
   // const eventTypesToFilter = ["TheDutton0", "WhereJes0", "DuttonsA0"];
 
@@ -196,8 +195,8 @@ export default function ContentComponents({
             profileType={profileType}
           />
         )}
-      {!!eventsData && (
-        <Calendar events={eventsData} createMonthsForNoEvents={true} />
+      {!!filteredData && filteredData.length >= 1 && (
+        <Calendar events={filteredData} createMonthsForNoEvents={true} />
       )}
     </>
   );
