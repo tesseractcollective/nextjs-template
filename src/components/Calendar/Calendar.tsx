@@ -1,6 +1,12 @@
 import { useState, useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Event, createCalendarMonthsForEvents } from "./calendarHelpers";
+import {
+  CalendarDate,
+  Event,
+  LegendKey,
+  createCalendarMonthsForEvents,
+  legendKeysForMonths,
+} from "./calendarHelpers";
 import type { Swiper as SwiperType } from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -18,8 +24,52 @@ export interface CalendarProps {
   createMonthsForNoEvents: boolean;
 }
 
+interface CalendarDayComponentProps {
+  day: CalendarDate;
+  legendKeyClasses: { [key: string]: string };
+}
+
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
+}
+
+function CalendarDayComponent(props: CalendarDayComponentProps) {
+  const { day, legendKeyClasses } = props;
+  let className: string;
+  if (!day.isCurrentMonth) {
+    className = "!bg-bg";
+  } else if (day.legendKey.name === "No Shows") {
+    className = "bg-bg-secondary cursor-default focus:not-sr-only";
+  } else {
+    className = legendKeyClasses[day.legendKey.name] ?? "bg-primary-fade";
+  }
+  return (
+    <button
+      key={day.date}
+      type="button"
+      disabled={day.events.length === 0}
+      className={classNames(
+        "relative py-1.5 focus:z-10 transition-all group text-text-color",
+        className
+      )}
+    >
+      <time
+        dateTime={day.date}
+        className={classNames(
+          // events.length > 0
+          //   ? "bg-secondary hover:bg-primary cursor-pointer"
+          //   : "cursor-default !bg-bg-secondary",
+          "relative py-1.5 focus:z-10 transition-all ",
+          day.isToday && "bg-primary font-semibold text-white",
+          "mx-auto flex h-7 w-7 items-center justify-center rounded-full relative"
+        )}
+      >
+        <span className="date-digit">
+          {day.date.split("-").pop()?.replace(/^0/, "")}
+        </span>
+      </time>
+    </button>
+  );
 }
 
 export default function Calendar(props: CalendarProps) {
@@ -31,6 +81,21 @@ export default function Calendar(props: CalendarProps) {
     events,
     props.createMonthsForNoEvents
   );
+  const legendKeys = legendKeysForMonths(months).filter(key => key.name !== "No Shows");
+  const legendKeyClassesOptions = [
+    "bg-[#7B6E7B]",
+    "bg-[#BF27FF]",
+    "bg-[#1427FF]",
+    "bg-primary",
+    "bg-secondary",
+  ];
+  const legendKeyClasses: { [key: string]: string } = {};
+  legendKeys.forEach((key, index) => {
+    const className = legendKeyClassesOptions[index] ?? "bg-secondary";
+    console.log(`className for key ${key.name}: ${className}`);
+    legendKeyClasses[key.name] = className;
+  });
+
   const swiperRef = useRef<SwiperType>();
   // const bransonDuttons2pm = "TheDutto01 - 2:00pm";
   // const bransonDuttons8pm = "TheDutto02 - 8:00pm";
@@ -79,20 +144,22 @@ export default function Calendar(props: CalendarProps) {
     <div className="relative max-w-8xl mx-auto w-full">
       <div className="flex flex-row items-center justify-between max-w-8xl mx-auto w-full px-8">
         <div className="legend flex items-center justify-center gap-x-8">
-          <div className="legend-item flex flex-col items-center justify-center my-4 mx-2">
-            <span className="h-6 w-6 bg-primary-fade mb-1 rounded-full"></span>
-            <span className="text-center text-text-color text-sm">1 Show</span>
-          </div>
-          <div className="legend-item flex flex-col items-center justify-center my-4 mx-2">
-            <span className="h-6 w-6 bg-secondary mb-1 rounded-full"></span>
-            <span className="text-center text-text-color text-sm">2 Shows</span>
-          </div>
-          <div className="legend-item flex flex-col items-center justify-center my-4 mx-2">
-            <span className="h-6 w-6 bg-tertiary mb-1 rounded-full"></span>
-            <span className="text-center text-text-color text-sm">
-              3+ Shows
-            </span>
-          </div>
+          {legendKeys.map((key) => {
+            const className = legendKeyClasses[key.name] ?? "bg-primary-fade";
+            return (
+              <div
+                key={key.name}
+                className="legend-item flex flex-col items-center justify-center my-4 mx-2"
+              >
+                <span
+                  className={classNames("h-6 w-6 mb-1 rounded-full", className)}
+                ></span>
+                <span className="text-center text-text-color text-sm">
+                  {key.name}
+                </span>
+              </div>
+            );
+          })}
         </div>
         <button
           onClick={() => setCalendarDisplayTypeGrid(!calendarDisplayTypeGrid)}
@@ -155,56 +222,13 @@ export default function Calendar(props: CalendarProps) {
                       <div>S</div>
                     </div>
                     <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-bg-secondary text-md shadow max-h-max auto-rows-max">
-                      {month.days.map((day, dayIdx) => {
-                        const events = day.events;
-
-                        return (
-                          <button
-                            key={day.date}
-                            type="button"
-                            disabled={events.length > 0 ? false : true}
-                            className={classNames(
-                              "relative py-1.5 focus:z-10 transition-all group text-text-color",
-                              day.isCurrentMonth ? "bg-bg-secondary" : "!bg-bg",
-                              dayIdx === 0 && "rounded-tl-lg",
-                              dayIdx === 6 && "rounded-tr-lg",
-                              dayIdx === month.days.length - 7 &&
-                                "rounded-bl-lg",
-                              dayIdx === month.days.length - 1 &&
-                                "rounded-br-lg",
-                              events.length === 1
-                                ? "bg-primary-fade hover:bg-primary cursor-pointer"
-                                : "cursor-default focus:not-sr-only",
-                              events.length === 2
-                                ? "bg-secondary hover:bg-primary cursor-pointer"
-                                : "cursor-default focus:not-sr-only",
-                              events.length >= 3
-                                ? "bg-tertiary hover:bg-primary cursor-pointer"
-                                : "cursor-default focus:not-sr-only"
-                            )}
-                          >
-                            <time
-                              dateTime={day.date}
-                              className={classNames(
-                                // events.length > 0
-                                //   ? "bg-secondary hover:bg-primary cursor-pointer"
-                                //   : "cursor-default !bg-bg-secondary",
-                                "relative py-1.5 focus:z-10 transition-all ",
-                                day.isToday &&
-                                  "bg-primary font-semibold text-white",
-                                "mx-auto flex h-7 w-7 items-center justify-center rounded-full relative"
-                              )}
-                            >
-                              <span className="date-digit">
-                                {day.date.split("-").pop()?.replace(/^0/, "")}
-                              </span>
-                              <span className="absolute -right-1 top-0">
-                                {events.length > 0 ? " *" : ""}
-                              </span>
-                            </time>
-                          </button>
-                        );
-                      })}
+                      {month.days.map((day) => (
+                        <CalendarDayComponent
+                          key={day.date}
+                          day={day}
+                          legendKeyClasses={legendKeyClasses}
+                        />
+                      ))}
                     </div>
                   </section>
                 )

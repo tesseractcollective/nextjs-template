@@ -1,5 +1,15 @@
 import moment from "moment";
 
+export interface ShowDateKey {
+  name: string;
+  times: string[]
+}
+
+export interface LegendKey {
+  name: string;
+  shows: ShowDateKey[];
+}
+
 export interface Month {
   name: string;
   days: CalendarDate[];
@@ -11,6 +21,7 @@ export interface CalendarDate {
   isCurrentMonth?: boolean;
   isToday?: boolean;
   events: Event[];
+  legendKey: LegendKey;
 }
 
 export interface Event {
@@ -19,6 +30,36 @@ export interface Event {
   name: string;
   kind: string;
   location: string;
+}
+
+export function createLegendKeyForEvents(events: Event[]): LegendKey {
+  let date = "";
+  for (let event of events) {
+    if (!date) {
+      date = event.date;
+    }
+    if (date !== event.date) {
+      throw new Error("unable to create legend key for multiple dates");
+    }
+  }
+
+  const sortedEvents = events.toSorted((a, b) => a.time.localeCompare(b.time));
+  const shows: { [key: string]: ShowDateKey } = {};
+
+  sortedEvents.forEach(event => {
+    if (!shows[event.name]) {
+      shows[event.name] = { name: event.name, times: [event.time]};
+    };
+    if (!shows[event.name].times.find(time => time === event.time)) {
+      shows[event.name].times.push(event.time);
+    }
+  });
+
+  const keyName = Object.values(shows).map(show => `${show.name} ${show.times.join(", ")}`).join(", ") || "No Shows";
+  return {
+    name: keyName,
+    shows: Object.values(shows)
+  };
 }
 
 export function createCalendarMonthsForEvents(
@@ -58,6 +99,16 @@ export function createCalendarMonthsForEvents(
   return months;
 }
 
+export function legendKeysForMonths(months: Month[]): LegendKey[] {
+  const keys: { [key: string]: LegendKey} = {};
+  months.forEach(month => {
+    month.days.forEach(day => {
+      keys[day.legendKey.name] = day.legendKey;
+    });
+  });
+  return Object.values(keys);
+}
+
 export function createCalendarMonth(
   momentDate: moment.Moment,
   events: Event[]
@@ -67,10 +118,12 @@ export function createCalendarMonth(
 
   const addDate = (momentDate: moment.Moment, isCurrentMonth?: boolean) => {
     const date = momentDate.format("YYYY-MM-DD");
+    const eventsForDate = events.filter((event) => event.date === date);
     dates.push({
       date,
       weekday: momentDate.weekday(),
-      events: events.filter((event) => event.date === date),
+      events: eventsForDate,
+      legendKey: createLegendKeyForEvents(eventsForDate),
       isCurrentMonth,
     });
   };
