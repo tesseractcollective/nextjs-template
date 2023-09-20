@@ -294,3 +294,121 @@ a.hover-chevron {
     }
   }
 }
+
+
+
+.revealing-image {
+	/* Create View Timeline */
+	view-timeline-name: --revealing-image;
+	view-timeline-axis: block;
+	/* Attach animation, linked to the  View Timeline */
+	animation: linear reveal both;
+	animation-timeline: --revealing-image;
+	/* Tweak range when effect should run*/
+	animation-range: entry 15% cover 25%;
+}
+
+@keyframes reveal {
+	from {
+		opacity: 0;
+		clip-path: inset(45% 20% 45% 20%);
+	}
+	to {
+		opacity: 1;
+		clip-path: inset(0% 0% 0% 0%);
+	}
+}
+
+.zoom-image-out.hero-media-slider .main img {
+	/* Create View Timeline */
+	view-timeline-name: --zoom-image;
+	view-timeline-axis: block;
+	/* Attach animation, linked to the  View Timeline */
+	animation: linear zoom both;
+	animation-timeline: --zoom-image;
+	/* Tweak range when effect should run*/
+  animation-range: 10% exit 90%;
+}
+
+@keyframes zoom {
+  0% {
+    zoom: 1;
+    // translate: -50% -100% 0;
+}
+
+80% {
+    opacity: 0.10;
+}
+100% {
+    // translate: -50% -60% 0;
+    scale: 3.5;
+    opacity: 0.10;
+    rotate: -6deg;
+}
+}
+
+// .zoom-image-in {
+// 	/* Create View Timeline */
+// 	view-timeline-name: --zoom-image;
+// 	view-timeline-axis: block;
+// 	/* Attach animation, linked to the  View Timeline */
+// 	animation: linear zoomIn both;
+// 	animation-timeline: --zoom-image;
+// 	/* Tweak range when effect should run*/
+// 	animation-range: entry 0% cover 15%;
+// }
+
+// @keyframes zoomIn {
+// 	0% {
+//     translate: -50% -60% 0;
+//     scale: 3.5;
+//     opacity: 0;
+//     rotate: -6deg;
+//     }
+//     80% {
+//         opacity: 0.10;
+//     }
+//     100% {
+//       zoom: 1;
+//       translate: -50% -100% 0;
+//   }
+// }
+
+// https://codepen.io/girish/pen/dgWqBr
+.marquee-container {
+  min-height: 30px;
+  overflow: hidden;
+  line-height: 30px;
+  .marquee {
+    top: 0;
+    left: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%
+  }
+}
+
+
+.floating { 
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 15px); }
+  100%   { transform: translate(0, -0px); }   
+}
