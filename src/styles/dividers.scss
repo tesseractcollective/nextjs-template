@@ -1,0 +1,79 @@
+.skew-diagonal {
+  transform: skewY(-3deg);
+}
+
+:root {
+  --width: 300px;
+  --height: 100px;
+  --top-color: var(--dark);
+  --bottom-color: var(--dark);
+}
+
+.slant-y {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #2c3e50;
+  z-index: 0;
+  transform: skewY(-6deg);
+  transform-origin: top left;
+}
+
+.slant-t {
+  position: relative;
+  -webkit-clip-path: polygon(0% 0%, 100% 10%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 10%, 100% 100%, 0% 100%); 
+  padding-top: 40px !important;
+}
+
+.slant-t {
+  position: relative;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 30px 0;
+  margin-top: 200px;
+}
+
+.slant-t:after{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: top left;
+  transform: skewY(4deg);
+}
+
+.slant-b {
+  position: relative;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 30px 0;
+  margin-bottom: 200px;
+}
+
+.slant-b:after{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: top left;
+  transform: skewY(4deg);
+}

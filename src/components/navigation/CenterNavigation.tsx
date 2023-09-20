@@ -58,8 +58,10 @@ export default function CenterNavigation({
 
   return (
     <div
-      className={`sticky top-0 z-[999] bg-background left-0 right-0 nav-shadow ${
-        small ? "nav-shadow-scrolled" : ""
+      className={`fixed top-0 z-[999] left-0 right-0 transition-all ${
+        small
+          ? "nav-shadow nav-shadow-scrolled bg-dark top-0"
+          : "bg-[#00000000]"
       } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
       id="navigation"
     >
@@ -316,11 +318,7 @@ export default function CenterNavigation({
         <nav aria-label="Top">
           <div className="">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
-              <div className="border-b border-dark">
-                <SocialMediaIcons
-                  siteLibrary={siteLibrary}
-                  cssClass="m-0 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-4 overflow-hidden h-8 opacity-40"
-                />
+              <div className="my-2">
                 <div className="flex h-16 items-center justify-between flex-row-reverse lg:flex-col w-full">
                   <div className="hidden lg:flex lg:flex-1 items-start lg:items-center  cursor-pointer max-w-max justify-start">
                     <Link
@@ -562,6 +560,10 @@ export default function CenterNavigation({
                   </Link>
                 </div>
               </div>
+              <SocialMediaIcons
+                siteLibrary={siteLibrary}
+                cssClass="m-0 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-0 overflow-hidden h-8 opacity-40"
+              />
             </div>
           </div>
         </nav>
