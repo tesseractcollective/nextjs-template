@@ -331,6 +331,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     htmlText
     htmlTextCssClass
     elementJson
+    mapLatLong
   }
   sections(first: 100) {
     __typename
