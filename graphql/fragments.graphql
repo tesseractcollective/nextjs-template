@@ -87,6 +87,7 @@ fragment siteLibraryFields on SiteLibrary {
   contactPhone
   contactName
   analyticsId
+  mapKey
   siteLibraryJson
   secondaryName
   secondaryLink
@@ -330,6 +331,10 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     htmlText
     htmlTextCssClass
     elementJson
+    mapLatLong {
+      longitude
+      latitude
+    }
   }
   sections(first: 100) {
     __typename

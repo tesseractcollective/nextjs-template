@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Slider from "react-slick";
-import MagicGrid from "react-magic-grid";
 import LightGallery from "lightgallery/react";
 
 // import styles
@@ -36,25 +35,25 @@ export default function GallerySection({
   if (galleryLayout === "grid" && gallery.length >= 1) {
     return (
       <div className="my-16 magic-grid block h-full">
-        <div className="block px-4 max-w-5xl mx-auto">
-          <MagicGrid items={finalImages.length} gutter={25} center>
+        <div className="block px-4 max-w-8xl mx-auto">
+          <div className="grid grid-cols-3 gap-8">
             {finalImages.map((finalImage, index) => (
               <div
                 key={finalImage}
-                className="w-[280px] h-[280px] block mx-auto overflow-hidden"
+                className=" aspect-1 block mx-auto overflow-hidden"
                 id={`gallery-${index}`}
               >
                 <Image
                   src={finalImage}
                   alt={`Gallery Image: ${index}`}
-                  className="object-cover block mx-auto h-full w-full"
+                  className="object-cover block mx-auto h-full w-full aspect-1"
                   sizes="100%"
                   width={0}
                   height={0}
                 />
               </div>
             ))}
-          </MagicGrid>
+          </div>
         </div>
       </div>
     );

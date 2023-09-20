@@ -93,7 +93,10 @@ export default function LayoutBlockSections({ layout }: PageProps) {
                           siteLibrary={siteLibrary}
                           page={page}
                         />
-                        <Elements elements={layoutBlockColumn.elements} />
+                        <Elements
+                          elements={layoutBlockColumn.elements}
+                          siteLibrary={siteLibrary}
+                        />
                       </div>
                     );
                   }

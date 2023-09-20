@@ -4,3 +4,5 @@ declare module "react-slick";
 declare module "react-magic-grid";
 declare module "react-netlify-forms";
 declare module "@fortawesome/fontawesome-free/js/all.js";
+import "mapbox-gl/dist/mapbox-gl.css";
+declare module "@types/mapbox-gl";
