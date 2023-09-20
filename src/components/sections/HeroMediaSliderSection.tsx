@@ -27,10 +27,10 @@ export default function HeroMediaSliderSection({
   const settings = {
     dots: true,
     infinite: true,
-    speed: 1500,
+    speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: heroMediaSliderData.length === 1 ? false : true,
     arrows: false,
     draggable: true,
     pauseOnHover: true,

@@ -1,5 +1,4 @@
-import { useState, useRef } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { useState, useRef, useEffect } from "react";
 import {
   CalendarDate,
   Event,
@@ -24,6 +23,12 @@ export interface CalendarProps {
   createMonthsForNoEvents: boolean;
 }
 
+// interface CalendarMonthComponentProps {
+//   months: [{ [key: string]: string }];
+//   month: { [key: string]: string };
+//   monthIdx: number;
+//   createForNoEvents: boolean;
+// }
 interface CalendarDayComponentProps {
   day: CalendarDate;
   legendKeyClasses: { [key: string]: string };
@@ -33,32 +38,77 @@ function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
+// function CalendarMonthComponent(props: CalendarMonthComponentProps) {
+//   const { months, month, monthIdx } = props;
+//   return (
+//     <section
+//       key={monthIdx}
+//       className={classNames(
+//         monthIdx === months.length - 1 && "hidden md:block",
+//         "text-center calendar-block h-full flex flex-col ring-1 ring-text-color rounded m-4"
+//       )}
+//     >
+//       <h2 className="text-md font-semibold text-text-color mt-0 mb-0 uppercase block py-2">
+//         {`${month.name}`}
+//       </h2>
+//       <div className="grid grid-cols-7 text-xs leading-6 text-text-color">
+//         <div>M</div>
+//         <div>T</div>
+//         <div>W</div>
+//         <div>T</div>
+//         <div>F</div>
+//         <div>S</div>
+//         <div>S</div>
+//       </div>
+//       <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-bg-secondary text-md shadow max-h-max auto-rows-max">
+//         {month.days.map((day) => (
+//           <CalendarDayComponent
+//             key={day.date}
+//             day={day}
+//             legendKeyClasses={legendKeyClasses}
+//           />
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
+
 function CalendarDayComponent(props: CalendarDayComponentProps) {
   const { day, legendKeyClasses } = props;
   let className: string;
   if (!day.isCurrentMonth) {
     className = "!bg-bg";
   } else if (day.legendKey.name === "No Shows") {
-    className = "bg-bg-secondary cursor-default focus:not-sr-only";
+    className =
+      "bg-bg-secondary cursor-default focus:not-sr-only hover:!bg-bg-secondary focus:!bg-bg-secondary";
   } else {
     className = legendKeyClasses[day.legendKey.name] ?? "bg-primary-fade";
   }
   return (
     <button
       key={day.date}
+      onClick={() =>
+        console.log(
+          `Clicked: ${day.date} ${day.events.map(
+            (event) => `${event.name} - ${event.location} at ${event.time}`
+          )}`
+        )
+      }
       type="button"
+      title={`Info 
+      Date: ${day.date}
+      ${day.events.map(
+        (event) => `${event.name} - ${event.location} at ${event.time}`
+      )}`}
       disabled={day.events.length === 0}
       className={classNames(
-        "relative py-1.5 focus:z-10 transition-all group text-text-color",
+        "relative py-1.5 focus:z-10 transition-all group text-text-color hover:bg-primary focus:bg-primary hover:rounded-md focus:rounded-md",
         className
       )}
     >
       <time
         dateTime={day.date}
         className={classNames(
-          // events.length > 0
-          //   ? "bg-secondary hover:bg-primary cursor-pointer"
-          //   : "cursor-default !bg-bg-secondary",
           "relative py-1.5 focus:z-10 transition-all ",
           day.isToday && "bg-primary font-semibold text-white",
           "mx-auto flex h-7 w-7 items-center justify-center rounded-full relative"
@@ -81,13 +131,19 @@ export default function Calendar(props: CalendarProps) {
     events,
     props.createMonthsForNoEvents
   );
-  const legendKeys = legendKeysForMonths(months).filter(key => key.name !== "No Shows");
+  const legendKeys = legendKeysForMonths(months).filter(
+    (key) => key.name !== "No Shows"
+  );
   const legendKeyClassesOptions = [
-    "bg-[#7B6E7B]",
-    "bg-[#BF27FF]",
-    "bg-[#1427FF]",
-    "bg-primary",
+    "bg-primary-fade",
     "bg-secondary",
+    "bg-tertiary",
+    "bg-[#be860c]",
+    "bg-[#BF27FF]",
+    "bg-[#14dcff]",
+    "bg-[#40d500]",
+    "bg-[#a68aed]",
+    "bg-[#ba6161]",
   ];
   const legendKeyClasses: { [key: string]: string } = {};
   legendKeys.forEach((key, index) => {
@@ -97,64 +153,42 @@ export default function Calendar(props: CalendarProps) {
   });
 
   const swiperRef = useRef<SwiperType>();
-  // const bransonDuttons2pm = "TheDutto01 - 2:00pm";
-  // const bransonDuttons8pm = "TheDutto02 - 8:00pm";
-  // const whereJesus01 = "WhereJes01 - 10:00am";
-  // const whereJesus02 = "WhereJes02 - 2:00pm";
-  // const whereJesus03 = "WhereJes03 - 7:30pm";
-  // const arizonaDuttons01 = "DuttonsA03 - 7pm Arizona";
-  // const arizonaDuttons02 = "DuttonsA04 - 2pm Arizona";
 
-  // const bransonEvents = events.filter((event) =>
-  //   event.kind.includes("TheDutton0")
-  // );
-  // const jesusEvents = events.filter((event) =>
-  //   event.kind.includes("WhereJes0")
-  // );
-  // const mesaEvents = events.filter((event) => event.kind.includes("DuttonsA0"));
-
-  // // let filteredEvents: Event[];
-  // switch (props.showType) {
-  //   case "branson":
-  //     events = bransonEvents;
-  //     break;
-  //   case "jesus":
-  //     events = jesusEvents;
-  //     break;
-  //   case "mesa":
-  //     events = mesaEvents;
-  //     break;
-  //   default:
-  //     events = events;
-  //     break;
-  // }
-
-  console.log(
-    "events",
-    events.map((event) => event)
+  const currentYear = months.filter((month, index) =>
+    month.name.includes(`${new Date().getFullYear()}`)
   );
 
-  const allMonths = months;
-  const nextThreeMonths = months.filter((month, index) => index < 3);
-  console.log("allMonths", allMonths);
-  console.log("months", months);
-  console.log("nextThreeMonths", nextThreeMonths);
+  const EventHeader = events[0].name;
+
+  useEffect(() => {
+    if (!!currentYear && currentYear.length === 0) {
+      setCalendarDisplayTypeGrid(false);
+    }
+  }, [currentYear]);
 
   return (
     <div className="relative max-w-8xl mx-auto w-full">
-      <div className="flex flex-row items-center justify-between max-w-8xl mx-auto w-full px-8">
-        <div className="legend flex items-center justify-center gap-x-8">
+      {!!EventHeader && (
+        <h2 className="text-2xl md:text-4xl mx-auto opacity-90 uppercase text-center font-bold mb-4 mt-16">
+          {EventHeader}
+        </h2>
+      )}
+      <div className="legend-wrapper flex flex-col md:flex-row items-center md:items-center justify-between max-w-8xl mx-auto w-full px-8 gap-y-6">
+        <div className="legend gap-2 grid grid-cols-2 md:grid-cols-3">
           {legendKeys.map((key) => {
             const className = legendKeyClasses[key.name] ?? "bg-primary-fade";
             return (
               <div
                 key={key.name}
-                className="legend-item flex flex-col items-center justify-center my-4 mx-2"
+                className="legend-item flex flex-row items-center justify-start"
               >
                 <span
-                  className={classNames("h-6 w-6 mb-1 rounded-full", className)}
+                  className={classNames(
+                    "h-4 md:h-6 w-4 md:w-6 mb-1 rounded-full flex",
+                    className
+                  )}
                 ></span>
-                <span className="text-center text-text-color text-sm">
+                <span className="text-text-color text-xs ml-2 text-left max-w-[10rem] flex">
                   {key.name}
                 </span>
               </div>
@@ -162,21 +196,22 @@ export default function Calendar(props: CalendarProps) {
           })}
         </div>
         <button
+          title="Toggle calendar from Month to Year view"
           onClick={() => setCalendarDisplayTypeGrid(!calendarDisplayTypeGrid)}
-          className="flex flex-row items-center font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 rounded border-1 border-primary cursor-pointer bg-secondary px-2 md:px-4 transition-all text-base py-1 md:py-2 text-center mx-0"
+          className="flex flex-row items-center text-text-color opacity-90 rounded cursor-pointer ring-1 ring-text-color px-2 md:px-4 transition-all text-base py-1 md:py-2 text-center mx-0 hover:text-primary hover:ring-primary hover:opacity-100 focus:text-primary focus:ring-primary focus:opacity-100"
           type="button"
         >
-          <span>{calendarDisplayTypeGrid ? "Slider" : "Grid"}</span>
+          <span>{calendarDisplayTypeGrid ? "Month View" : "Year View"}</span>
           <span>
             {calendarDisplayTypeGrid ? (
               <FontAwesomeIcon
                 icon={faCalendar as IconProp}
-                className="fa-fw my-0 text-xl h-4 w-4"
+                className="fa-fw my-0 py-0 ml-2 h-4 w-4"
               />
             ) : (
               <FontAwesomeIcon
                 icon={faCalendarDays as IconProp}
-                className="fa-fw my-0 text-xl h-4 w-4"
+                className="fa-fw my-0 py-0 ml-2 h-4 w-4"
               />
             )}
           </span>
@@ -186,68 +221,52 @@ export default function Calendar(props: CalendarProps) {
         <>
           <div className="block relative">
             <div className="relative max-w-8xl mx-auto grid grid-cols-1 gap-x-14 lg:grid-cols-2 xl:grid-cols-3 px-4 gap-y-8 transition-all">
-              {/* <button
-            type="button"
-            className="absolute -left-1.5 -top-1 flex items-center justify-center p-1.5 text-text-color hover:text-gray-500"
-          >
-            <span className="sr-only">Previous month</span>
-            <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className="absolute -right-1.5 -top-1 flex items-center justify-center p-1.5 text-text-color hover:text-gray-500"
-          >
-            <span className="sr-only">Next month</span>
-            <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-          </button> */}
-              {(monthLimit ? nextThreeMonths : allMonths).map(
-                (month, monthIdx) => (
-                  <section
-                    key={monthIdx}
-                    className={classNames(
-                      monthIdx === months.length - 1 && "hidden md:block",
-                      "text-center calendar-block h-full flex flex-col ring-1 ring-text-color rounded m-4"
-                    )}
-                  >
-                    <h2 className="text-md font-semibold text-text-color mt-0 mb-0 uppercase block py-2">
-                      {`${month.name}`}
-                    </h2>
-                    <div className="grid grid-cols-7 text-xs leading-6 text-text-color">
-                      <div>M</div>
-                      <div>T</div>
-                      <div>W</div>
-                      <div>T</div>
-                      <div>F</div>
-                      <div>S</div>
-                      <div>S</div>
-                    </div>
-                    <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-bg-secondary text-md shadow max-h-max auto-rows-max">
-                      {month.days.map((day) => (
-                        <CalendarDayComponent
-                          key={day.date}
-                          day={day}
-                          legendKeyClasses={legendKeyClasses}
-                        />
-                      ))}
-                    </div>
-                  </section>
-                )
-              )}
+              {(monthLimit ? currentYear : months).map((month, monthIdx) => (
+                <section
+                  key={monthIdx}
+                  className={classNames(
+                    monthIdx === months.length - 1 && "hidden md:block",
+                    "text-center calendar-block h-full flex flex-col ring-1 ring-text-color rounded m-4"
+                  )}
+                >
+                  <h2 className="text-md font-semibold text-text-color mt-0 mb-0 uppercase block py-2">
+                    {`${month.name}`}
+                  </h2>
+                  <div className="grid grid-cols-7 text-xs leading-6 text-text-color">
+                    <div>M</div>
+                    <div>T</div>
+                    <div>W</div>
+                    <div>T</div>
+                    <div>F</div>
+                    <div>S</div>
+                    <div>S</div>
+                  </div>
+                  <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-bg-secondary text-md shadow max-h-max auto-rows-max">
+                    {month.days.map((day) => (
+                      <CalendarDayComponent
+                        key={day.date}
+                        day={day}
+                        legendKeyClasses={legendKeyClasses}
+                      />
+                    ))}
+                  </div>
+                </section>
+              ))}
             </div>
           </div>
           <div className="block mt-12 mb-4">
             <button
               onClick={() => setMonthLimit(!monthLimit)}
-              className="flex items-center font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 rounded border-1 border-primary cursor-pointer bg-secondary px-2 md:px-4 transition-all text-base py-1 md:py-2 mx-auto text-center my-8"
+              className="flex flex-row items-center text-text-color opacity-90 rounded cursor-pointer ring-1 ring-text-color px-2 md:px-4 transition-all text-base py-1 md:py-2 text-center hover:text-primary hover:ring-primary hover:opacity-100 focus:text-primary focus:ring-primary focus:opacity-100 mx-auto"
               type="button"
             >
               <span>{monthLimit ? "See All Dates" : "See Less Dates"}</span>
               <span>
-                <ChevronDownIcon
-                  className={`h-5 w-5 transition-all ${
+                <FontAwesomeIcon
+                  icon={faChevronDown as IconProp}
+                  className={`fa-fw h-4 w-4 transition-all my-0 py-0 ml-2 ${
                     monthLimit ? "rotate-0" : "rotate-180"
                   }`}
-                  aria-hidden="true"
                 />
               </span>
             </button>
@@ -264,10 +283,12 @@ export default function Calendar(props: CalendarProps) {
                     ? blogHeader
                     : `${blogHeader}s`) || "Blogs"}
                 </h3> */}
+              </div>
+              <div className="max-w-8xl w-full calendar-slider-wrapper mx-auto py-4 px-4">
                 <div className="flex flex-row items-center justify-center max-w-max mx-auto">
                   <button
                     type="button"
-                    className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color mr-4"
+                    className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-80 hover:opacity-100 text-text-color mr-4 hover:text-primary focus:text-primary"
                     onClick={() => swiperRef.current?.slidePrev()}
                   >
                     <FontAwesomeIcon
@@ -278,7 +299,7 @@ export default function Calendar(props: CalendarProps) {
                   </button>
                   <button
                     type="button"
-                    className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color"
+                    className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-80 hover:opacity-100 text-text-color hover:text-primary focus:text-primary"
                     onClick={() => swiperRef.current?.slideNext()}
                   >
                     <FontAwesomeIcon
@@ -288,8 +309,6 @@ export default function Calendar(props: CalendarProps) {
                     <span className="sr-only">Move Calendar Rotation Next</span>
                   </button>
                 </div>
-              </div>
-              <div className="max-w-8xl blog-slider-wrapper mx-auto py-4 px-4">
                 <Swiper
                   className="!pb-10"
                   grabCursor
@@ -297,7 +316,7 @@ export default function Calendar(props: CalendarProps) {
                   onBeforeInit={(swiper) => {
                     swiperRef.current = swiper;
                   }}
-                  pagination
+                  pagination={{ clickable: true }}
                   autoplay
                   slidesPerView={1}
                   spaceBetween={30}
@@ -323,61 +342,13 @@ export default function Calendar(props: CalendarProps) {
                           <div>S</div>
                         </div>
                         <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-bg-secondary text-md shadow max-h-max auto-rows-max">
-                          {month.days.map((day, dayIdx) => {
-                            const events = day.events;
-
-                            return (
-                              <button
-                                key={day.date}
-                                type="button"
-                                disabled={events.length > 0 ? false : true}
-                                className={classNames(
-                                  "relative py-1.5 focus:z-10 transition-all group text-text-color",
-                                  day.isCurrentMonth
-                                    ? "bg-bg-secondary"
-                                    : "!bg-bg",
-                                  dayIdx === 0 && "rounded-tl-lg",
-                                  dayIdx === 6 && "rounded-tr-lg",
-                                  dayIdx === month.days.length - 7 &&
-                                    "rounded-bl-lg",
-                                  dayIdx === month.days.length - 1 &&
-                                    "rounded-br-lg",
-                                  events.length === 1
-                                    ? "bg-primary-fade hover:bg-primary cursor-pointer"
-                                    : "cursor-default focus:not-sr-only",
-                                  events.length === 2
-                                    ? "bg-secondary hover:bg-primary cursor-pointer"
-                                    : "cursor-default focus:not-sr-only",
-                                  events.length >= 3
-                                    ? "bg-tertiary hover:bg-primary cursor-pointer"
-                                    : "cursor-default focus:not-sr-only"
-                                )}
-                              >
-                                <time
-                                  dateTime={day.date}
-                                  className={classNames(
-                                    // events.length > 0
-                                    //   ? "bg-secondary hover:bg-primary cursor-pointer"
-                                    //   : "cursor-default !bg-bg-secondary",
-                                    "relative py-1.5 focus:z-10 transition-all ",
-                                    day.isToday &&
-                                      "bg-primary font-semibold text-white",
-                                    "mx-auto flex h-7 w-7 items-center justify-center rounded-full relative"
-                                  )}
-                                >
-                                  <span className="date-digit">
-                                    {day.date
-                                      .split("-")
-                                      .pop()
-                                      ?.replace(/^0/, "")}
-                                  </span>
-                                  <span className="absolute -right-1 top-0">
-                                    {events.length > 0 ? " *" : ""}
-                                  </span>
-                                </time>
-                              </button>
-                            );
-                          })}
+                          {month.days.map((day) => (
+                            <CalendarDayComponent
+                              key={day.date}
+                              day={day}
+                              legendKeyClasses={legendKeyClasses}
+                            />
+                          ))}
                         </div>
                       </section>
                     </SwiperSlide>

@@ -252,9 +252,7 @@ function Footer({
             rel="noreferrer"
             className="max-w-max mb-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
           >
-            {isSpanish
-              ? "Hecho a mano por Ricardo Bautista"
-              : "Hand crafted by Ricardo Bautista"}
+            {isSpanish ? "Hecho a mano por Ricardo" : "Hand crafted by Ricardo"}
           </a>
         </div>
       </div>
