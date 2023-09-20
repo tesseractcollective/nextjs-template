@@ -1,4 +1,7 @@
-import type { PageFieldsFragment } from "@/graphql/generated/graphql";
+import type {
+  PageFieldsFragment,
+  SiteLibraryFieldsFragment,
+} from "@/graphql/generated/graphql";
 import Parallax from "@/components/Parallax";
 import StandOutText from "@/components/StandOutText";
 import IframeBox from "@/components/IframeBox";
@@ -8,15 +11,17 @@ import GallerySection from "@/components/GallerySection";
 import HTMLText from "@/components/elements/HTMLText";
 import ElementImage from "@/components/elements/ElementImage";
 import ScrollDigits from "@/components/elements/ScrollDigits";
+import MapBoxMap from "@/components/elements/MapBoxMap";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
 
 interface ElementsProps {
   elements: ElementsType;
+  siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export default function LayoutBlocks({ elements }: ElementsProps) {
+export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
   if (!elements) return <></>;
 
   const {
@@ -34,6 +39,7 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
     htmlText,
     htmlTextCssClass,
     elementJson,
+    mapLatLong,
   } = elements;
   return (
     <>
@@ -73,6 +79,16 @@ export default function LayoutBlocks({ elements }: ElementsProps) {
       {!!elementJson?.scrollDigitsData && (
         <ScrollDigits scrollDigitData={elementJson.scrollDigitsData} />
       )}
+      {!!mapLatLong &&
+        !!siteLibrary?.mapKey &&
+        !!mapLatLong?.longitude &&
+        !!mapLatLong?.longitude && (
+          <MapBoxMap
+            lat={mapLatLong.latitude}
+            long={mapLatLong.longitude}
+            mapKey={siteLibrary.mapKey}
+          />
+        )}
     </>
   );
 }

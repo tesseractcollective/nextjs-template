@@ -96,7 +96,10 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                           page={page}
                           eventsData={eventsData}
                         />
-                        <Elements elements={layoutBlockColumn.elements} />
+                        <Elements
+                          elements={layoutBlockColumn.elements}
+                          siteLibrary={siteLibrary}
+                        />
                       </div>
                     );
                   }
