@@ -42,8 +42,8 @@ export function createLegendKeyForEvents(events: Event[]): LegendKey {
       throw new Error("unable to create legend key for multiple dates");
     }
   }
-
-  const sortedEvents = events.toSorted((a, b) => a.time.localeCompare(b.time));
+  const sortedEvents = [...events];
+  sortedEvents.sort((a, b) => a.time.localeCompare(b.time));
   const shows: { [key: string]: ShowDateKey } = {};
 
   sortedEvents.forEach((event) => {
