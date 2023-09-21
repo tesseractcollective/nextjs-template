@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { Fragment, useState, useRef, useEffect } from "react";
 import {
   CalendarDate,
   Event,
@@ -17,7 +17,15 @@ import {
   faChevronDown,
   faCalendar,
   faCalendarDays,
+  faArrowUpRightFromSquare,
+  faXmark,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
+import { Dialog, Transition } from "@headlessui/react";
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import ReactGA from "react-ga4";
+import Moment from "react-moment";
+
 export interface CalendarProps {
   events: Event[];
   createMonthsForNoEvents: boolean;
@@ -75,6 +83,7 @@ function classNames(...classes: (string | boolean | undefined)[]) {
 
 function CalendarDayComponent(props: CalendarDayComponentProps) {
   const { day, legendKeyClasses } = props;
+  const [open, setOpen] = useState<boolean>(false);
   let className: string;
   if (!day.isCurrentMonth) {
     className = "!bg-bg";
@@ -85,40 +94,199 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
     className = legendKeyClasses[day.legendKey.name] ?? "bg-primary-fade";
   }
   return (
-    <button
+    <div
       key={day.date}
-      onClick={() =>
-        console.log(
-          `Clicked: ${day.date} ${day.events.map(
-            (event) => `${event.name} - ${event.location} at ${event.time}`
-          )}`
-        )
-      }
-      type="button"
-      title={`Info 
-      Date: ${day.date}
-      ${day.events.map(
-        (event) => `${event.name} - ${event.location} at ${event.time}`
-      )}`}
-      disabled={day.events.length === 0}
       className={classNames(
         "relative py-1.5 focus:z-10 transition-all group text-text-color hover:bg-primary focus:bg-primary hover:rounded-md focus:rounded-md",
         className
       )}
     >
-      <time
-        dateTime={day.date}
-        className={classNames(
-          "relative py-1.5 focus:z-10 transition-all ",
-          day.isToday && "bg-primary font-semibold text-white",
-          "mx-auto flex h-7 w-7 items-center justify-center rounded-full relative"
-        )}
+      <button
+        onClick={() => {
+          setOpen(true);
+          ReactGA.event({
+            category: "Link",
+            action: "Open Popup",
+            label: "Open Popup",
+          });
+        }}
+        type="button"
+        title={`Info 
+        Date: ${day.date}
+        ${day.events.map(
+          (event) => `${event.name} - ${event.location} at ${event.time}`
+        )}`}
+        disabled={day.events.length === 0}
+        // className={classNames(
+        //   "focus:z-10 transition-all group text-text-color hover:bg-primary focus:bg-primary hover:rounded-md focus:rounded-md",
+        //   className
+        // )}
       >
-        <span className="date-digit">
-          {day.date.split("-").pop()?.replace(/^0/, "")}
-        </span>
-      </time>
-    </button>
+        <span className="absolute inset-x-0 -top-px bottom-0" />
+        <time
+          dateTime={day.date}
+          className={classNames(
+            "relative py-1.5 focus:z-10 transition-all ",
+            day.isToday && "bg-primary font-semibold text-white",
+            "mx-auto flex h-7 w-7 items-center justify-center rounded-full relative"
+          )}
+        >
+          <span className="date-digit">
+            {day.date.split("-").pop()?.replace(/^0/, "")}
+          </span>
+        </time>
+      </button>
+      <Transition.Root show={open} as={Fragment}>
+        <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-[#00000032] transition-opacity" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 z-10 overflow-y-auto w-full">
+            <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-xl sm:p-6 w-full bg-invert flex-col flex">
+                  {!!day.date && (
+                    <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
+                      <Moment format="MMM/dddd DD/YYYY">{day.date}</Moment>
+                    </h2>
+                  )}
+                  {/* Event List */}
+                  <ul role="list" className="divide-y divide-bg-secondary my-8">
+                    {day.events.map((event) => (
+                      <li
+                        key={event.name}
+                        className="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-primary group rounded cursor-pointer ring-[#00000033] ring-1 hover:ring-dark my-2"
+                      >
+                        <div className="flex min-w-0 gap-x-4">
+                          <div className="min-w-0 flex-auto">
+                            <p className="text-sm font-semibold leading-6 text-bg-secondary">
+                              <a href={`#/${event.name}`}>
+                                <span className="absolute inset-x-0 -top-px bottom-0" />
+                                {event.name}
+                              </a>
+                            </p>
+                            <p className="text-sm leading-6 text-bg-secondary">
+                              <span className="absolute inset-x-0 -top-px bottom-0" />
+                              {event.location}
+                            </p>
+                            <p className="text-sm leading-6 text-bg-secondary">
+                              <span className="absolute inset-x-0 -top-px bottom-0" />
+                              {event.time}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex shrink-0 items-center gap-x-4">
+                          {/* <div className="hidden sm:flex sm:flex-col sm:items-end">
+                            <p className="text-sm leading-6 text-gray-900">
+                              {event.location}
+                            </p>
+                          </div> */}
+                          <div className="flex flex-col">
+                            <p className="flex flex-row items-center text-text-color opacity-90 rounded cursor-pointer px-2 md:px-4 transition-all text-base py-1 md:py-2 text-center mx-0 group-hover:text-primary group-hover:opacity-100 group-focus:text-primary group-focus:opacity-100">
+                              <span>Buy Tickets</span>
+                              <span>
+                                <FontAwesomeIcon
+                                  icon={faArrowUpRightFromSquare as IconProp}
+                                  className="fa-fw my-0 py-0 ml-2 h-4 w-4"
+                                />
+                              </span>
+                            </p>
+                            <p className="text-[8px] text-center">
+                              Sold by completeticketing.co
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  {/* Promo Cards */}
+                  <div
+                    className={classNames(
+                      "group relative bg-white p-6 ring-[#00000000] ring-2 focus-within:ring-2 focus-within:ring-inset focus-within:ring-bg-secondary rounded px-4 hover:bg-secondary focus:bg-secondary transition-all"
+                    )}
+                  >
+                    <div>
+                      <span
+                        className={classNames("inline-flex rounded-lg p-3")}
+                      >
+                        <FontAwesomeIcon
+                          icon={faUsers as IconProp}
+                          className="fa-fw my-0 py-0 h-4 w-4"
+                        />
+                      </span>
+                    </div>
+                    <div className="mt-8">
+                      <h3 className="text-base font-semibold leading-6 text-gray-900">
+                        <a href={`#`} className="focus:outline-none">
+                          {/* Extend touch target to entire panel */}
+                          <span
+                            className="absolute inset-0"
+                            aria-hidden="true"
+                          />
+                          Group Sales
+                        </a>
+                      </h3>
+                      <p className="mt-2 text-sm text-gray-500">
+                        Buying tickets for 20+? Click here to checkout group
+                        sales!
+                      </p>
+                    </div>
+                    <span
+                      className="pointer-events-none absolute right-6 top-6 text-dark group-hover:text-bg-secondary"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        className="h-6 w-6"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+                      </svg>
+                    </span>
+                  </div>
+                  {/* Close Menu */}
+                  <button
+                    type="button"
+                    className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs"
+                    onClick={() => {
+                      setOpen(false);
+                      ReactGA.event({
+                        category: "Link",
+                        action: "Close Popup",
+                        label: "Close Popup",
+                      });
+                    }}
+                  >
+                    <span>Close menu</span>
+                    <FontAwesomeIcon
+                      icon={faXmark as IconProp}
+                      className="fa-fw my-0 py-0 ml-2 h-4 w-4"
+                    />
+                  </button>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
+    </div>
   );
 }
 

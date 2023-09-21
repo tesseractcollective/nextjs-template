@@ -2,7 +2,7 @@ import moment from "moment";
 
 export interface ShowDateKey {
   name: string;
-  times: string[]
+  times: string[];
 }
 
 export interface LegendKey {
@@ -46,19 +46,22 @@ export function createLegendKeyForEvents(events: Event[]): LegendKey {
   const sortedEvents = events.toSorted((a, b) => a.time.localeCompare(b.time));
   const shows: { [key: string]: ShowDateKey } = {};
 
-  sortedEvents.forEach(event => {
+  sortedEvents.forEach((event) => {
     if (!shows[event.name]) {
-      shows[event.name] = { name: event.name, times: [event.time]};
-    };
-    if (!shows[event.name].times.find(time => time === event.time)) {
+      shows[event.name] = { name: event.name, times: [event.time] };
+    }
+    if (!shows[event.name].times.find((time) => time === event.time)) {
       shows[event.name].times.push(event.time);
     }
   });
 
-  const keyName = Object.values(shows).map(show => `${show.name} ${show.times.join(", ")}`).join(", ") || "No Shows";
+  const keyName =
+    Object.values(shows)
+      .map((show) => `${show.name} ${show.times.join(", ")}`)
+      .join(", ") || "No Shows";
   return {
     name: keyName,
-    shows: Object.values(shows)
+    shows: Object.values(shows),
   };
 }
 
@@ -75,7 +78,7 @@ export function createCalendarMonthsForEvents(
 
     currentMonth = start.month();
     let currentYear = start.year();
-    while(currentMonth !== end.month() || currentYear !== end.year()) {
+    while (currentMonth !== end.month() || currentYear !== end.year()) {
       const monthDate = moment({ month: currentMonth, year: currentYear });
       months.push(createCalendarMonth(monthDate, events));
       if (currentMonth === 11) {
@@ -100,9 +103,9 @@ export function createCalendarMonthsForEvents(
 }
 
 export function legendKeysForMonths(months: Month[]): LegendKey[] {
-  const keys: { [key: string]: LegendKey} = {};
-  months.forEach(month => {
-    month.days.forEach(day => {
+  const keys: { [key: string]: LegendKey } = {};
+  months.forEach((month) => {
+    month.days.forEach((day) => {
       keys[day.legendKey.name] = day.legendKey;
     });
   });
