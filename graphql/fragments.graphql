@@ -221,6 +221,7 @@ fragment eventFields on Event {
   eventTicketLinkDestination
   eventTitle
   eventVenueName
+  eventShowType
   eventGallery {
     url
     id
@@ -299,6 +300,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     blogSectionTitle
     contactType
     eventDisplayLayout
+    eventShowType
     logoTableType
     logoTableLayout
     productType
@@ -306,6 +308,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     profileSectionTitle
     profileType
     testimonialType
+    parentPageType
   }
   elements {
     stripePricingTableId

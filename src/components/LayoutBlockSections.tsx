@@ -3,12 +3,14 @@ import type { LayoutQuery } from "@/graphql/generated/graphql";
 import Sections from "@/components/sections/Sections";
 import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
+import { Event } from "@/components/Calendar/calendarHelpers";
 
 interface PageProps {
   layout: LayoutQuery;
+  eventsData?: Event[];
 }
 
-export default function LayoutBlockSections({ layout }: PageProps) {
+export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
   if (!layout) return <></>;
   const {
     siteLibrary,
@@ -92,6 +94,7 @@ export default function LayoutBlockSections({ layout }: PageProps) {
                           albums={albums}
                           siteLibrary={siteLibrary}
                           page={page}
+                          eventsData={eventsData}
                         />
                         <Elements
                           elements={layoutBlockColumn.elements}

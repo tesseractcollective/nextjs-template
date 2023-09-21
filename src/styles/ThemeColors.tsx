@@ -67,11 +67,11 @@ export default function ThemeColors({ siteLibrary }: ThemeColorsProps) {
     if (siteLibrary?.themeColor?.primaryFadeOpacity?.hex) {
       document.body.style.setProperty(
         "--primary-fade-opacity",
-        `${siteLibrary?.themeColor.primaryFadeOpacity.hex}85`
+        `${siteLibrary?.themeColor.primaryFadeOpacity.hex}75`
       );
       document.body.style.setProperty(
         "--tw-ring-color",
-        `${siteLibrary?.themeColor.primaryFadeOpacity.hex}85`
+        `${siteLibrary?.themeColor.primaryFadeOpacity.hex}75`
       );
     }
 

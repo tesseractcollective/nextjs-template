@@ -6,12 +6,14 @@ import Whatsapp from "@/components/Whatsapp";
 import PageHeader from "@/components/PageHeader";
 import Popup from "@/components/Popup";
 import LayoutBlockSections from "@/components/LayoutBlockSections";
+import { Event } from "@/components/Calendar/calendarHelpers";
 
 interface PageProps {
   layout: LayoutQuery;
+  events?: Event[];
 }
 
-export default function LayoutBlocks({ layout }: PageProps) {
+export default function LayoutBlocks({ layout, events }: PageProps) {
   if (!layout) return <></>;
   const { siteLibrary, page, navigations, blogs } = layout;
   if (!siteLibrary) return <></>;
@@ -35,7 +37,7 @@ export default function LayoutBlocks({ layout }: PageProps) {
           hideHeader={page?.hideHeader || undefined}
         />
       )}
-      <LayoutBlockSections layout={layout} />
+      <LayoutBlockSections layout={layout} eventsData={events} />
       {page?.whatsAppContactNumberFloatingButton && (
         <Whatsapp contactNumber={page.whatsAppContactNumberFloatingButton} />
       )}

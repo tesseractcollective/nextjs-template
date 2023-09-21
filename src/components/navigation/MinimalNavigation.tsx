@@ -246,7 +246,7 @@ export default function MinimalNavigation({
                                 direction="up"
                                 triggerOnce
                                 cascade
-                                damping={0.1}
+                                damping={0.05}
                               >
                                 {mainNavigationItem.link?.includes("http") ? (
                                   <a
@@ -296,7 +296,7 @@ export default function MinimalNavigation({
                                 direction="left"
                                 triggerOnce
                                 cascade
-                                damping={0.1}
+                                damping={0.05}
                               >
                                 {mainNavigationItem.link?.includes("http") ? (
                                   <a
@@ -343,7 +343,7 @@ export default function MinimalNavigation({
                                       direction="left"
                                       triggerOnce
                                       cascade
-                                      damping={0.1}
+                                      damping={0.05}
                                     >
                                       {item.link?.includes("http") ? (
                                         <a
@@ -392,7 +392,7 @@ export default function MinimalNavigation({
                   })}
 
                 <div className="space-y-6 px-4 py-6">
-                  <Fade direction="up" triggerOnce cascade damping={0.1}>
+                  <Fade direction="up" triggerOnce cascade damping={0.05}>
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
                       cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2"

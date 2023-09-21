@@ -296,7 +296,7 @@ export default function DefaultNavigation({
                 <div className="space-y-6 px-4 py-6">
                   <SocialMediaIcons
                     siteLibrary={siteLibrary}
-                    cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2"
+                    cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap"
                   />
                   <div className="text-center">
                     {!!contactName && (

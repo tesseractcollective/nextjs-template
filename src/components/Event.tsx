@@ -11,6 +11,7 @@ import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import Head from "next/head";
 import Events from "@/components/Events";
+import GallerySection from "@/components/GallerySection";
 import {
   ArrowTopRightOnSquareIcon,
   MapPinIcon,
@@ -49,7 +50,6 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
   const filteredEvents = events?.filter(
     (tempEvent) => eventSlug !== tempEvent.eventSlug
   );
-  console.log(eventGallery);
   return (
     <>
       <Head>
@@ -222,6 +222,12 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                   </div>
                 ))}
               </div>
+            )}
+            {!!eventGallery && (
+              <GallerySection
+                galleryData={eventGallery}
+                galleryLayoutData="lightbox"
+              />
             )}
           </div>
         )}

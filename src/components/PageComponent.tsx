@@ -6,12 +6,14 @@ import LayoutBlocks from "@/components/LayoutBlocks";
 import ThemeColors from "@/styles/ThemeColors";
 import Script from "next/script";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Event } from "@/components/Calendar/calendarHelpers";
 
 interface Props {
   layout: LayoutQuery;
+  events?: Event[];
 }
 
-const PageComponent: FC<Props> = ({ layout }) => {
+const PageComponent: FC<Props> = ({ layout, events }) => {
   if (!layout.siteLibrary) return <div />;
 
   const {
@@ -74,7 +76,7 @@ const PageComponent: FC<Props> = ({ layout }) => {
       </Head>
       {!!analyticsId && <GoogleAnalytics analyticsId={analyticsId} />}
       <ThemeColors siteLibrary={layout.siteLibrary} />
-      <LayoutBlocks layout={layout} />
+      <LayoutBlocks layout={layout} events={events} />
     </>
   );
 };

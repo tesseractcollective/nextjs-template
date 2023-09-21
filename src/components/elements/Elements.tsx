@@ -41,7 +41,6 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
     elementJson,
     mapLatLong,
   } = elements;
-
   return (
     <>
       {!!iFrameCode && (
