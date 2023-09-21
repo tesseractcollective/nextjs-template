@@ -11,6 +11,9 @@ import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -524,7 +527,7 @@ export default function DefaultNavigation({
                                                   <div className="absolute top-0 right-0 ml-auto">
                                                     <button
                                                       type="button"
-                                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 outline outline-primary z-50"
+                                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs"
                                                       onClick={() => {
                                                         close();
                                                         ReactGA.event({
@@ -536,12 +539,12 @@ export default function DefaultNavigation({
                                                         });
                                                       }}
                                                     >
-                                                      <span className="sr-only">
-                                                        Close menu
-                                                      </span>
-                                                      <XMarkIcon
-                                                        className="h-6 w-6 text-text-color"
-                                                        aria-hidden="true"
+                                                      <span>Close menu</span>
+                                                      <FontAwesomeIcon
+                                                        icon={
+                                                          faXmark as IconProp
+                                                        }
+                                                        className="fa-fw my-0 py-0 ml-2 h-4 w-4"
                                                       />
                                                     </button>
                                                   </div>
