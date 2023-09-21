@@ -30,11 +30,11 @@ export default function Accordion({
                 <div className="border-b border-primary block">
                   {!!item.contentHeader?.html && (
                     <Disclosure.Button className="flex w-full justify-between items-center rounded-md text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-text-color focus-visible:text-text-color hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-600 bg-bg-secondary overflow-hidden relative px-4">
-                      <span className="ml-3 text-text-color font-bold text-2xl py-2">
+                      <span className="ml-3 text-text-color font-bold text-base md:text-xl py-4 w-[90%]">
                         {parse(item.contentHeader?.html)}
                       </span>
                       <div
-                        className={`relative text-text-color h-6 w-6 rounded-full transition ${
+                        className={`relative text-text-color h-6 w-6 rounded-[100%] transition ${
                           open
                             ? "bg-gradient-to-tr from-primary to-secondary bg-opacity-100"
                             : "bg-gradient-to-tr from-transparent to-transparent bg-opacity-0"
@@ -61,7 +61,7 @@ export default function Accordion({
                     {!!item.contentDescription?.html && (
                       <Disclosure.Panel
                         static
-                        className="px-6 pt-4 pb-2 text-sm text-text-color opacity-80 block"
+                        className="px-6 py-6 text-sm text-text-color opacity-80 block"
                       >
                         {!!item.contentImage?.url && (
                           <div className="relative">

@@ -195,7 +195,7 @@ export default function ContentComponents({
             profileType={profileType}
           />
         )}
-      {!!filteredData && filteredData.length >= 1 && (
+      {!!showType && !!filteredData && filteredData.length >= 1 && (
         <Calendar events={filteredData} createMonthsForNoEvents={true} />
       )}
     </>
