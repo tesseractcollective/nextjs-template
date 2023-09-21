@@ -69,64 +69,12 @@ export default function ContentComponents({
     profileSectionTitle,
     profileType,
     testimonialType,
-    showType,
+    eventShowType,
   } = contentTags;
 
-  const filteredData =
+  const filteredCalendarData =
     eventsData &&
-    eventsData.filter((item) => item.kind.includes(showType || ""));
-  // console.log("filteredData", filteredData);
-
-  // const bransonEvents =
-  //   eventsData &&
-  //   eventsData.length >= 1 &&
-  //   eventsData.filter((event) => event.kind.includes("TheDutton0"));
-  // console.log(bransonEvents);
-  // const jesusEvents =
-  //   eventsData &&
-  //   eventsData.filter((event) => event.kind.includes("WhereJes0"));
-  // const mesaEvents =
-  //   eventsData &&
-  //   eventsData.filter((event) => event.kind.includes("DuttonsA0"));
-
-  // const eventTypesToFilter = ["TheDutton0", "WhereJes0", "DuttonsA0"];
-
-  // const filteredEvents =
-  //   eventsData?.filter((event) =>
-  //     eventTypesToFilter.some((showType) => event.kind.includes(showType))
-  //   ) || [];
-
-  // filteredEvents now contains events that match any of the specified event types.
-
-  // let filteredEvents: Event[] = [];
-  // if (showType === "branson") {
-  //   filteredEvents = bransonEvents;
-  // }
-  // if (showType === "mesa") {
-  //   filteredEvents = mesaEvents;
-  // }
-  // if (showType === "jesus") {
-  //   filteredEvents = jesusEvents;
-  // }
-  // let filteredEvents: Event[] = [];
-
-  // if (eventsData) {
-  //   if (showType === "branson") {
-  //     filteredEvents = eventsData.filter((event) =>
-  //       event.kind.includes("TheDutton0")
-  //     );
-  //   } else if (showType === "mesa") {
-  //     filteredEvents = eventsData.filter((event) =>
-  //       event.kind.includes("DuttonsA0")
-  //     );
-  //   } else if (showType === "jesus") {
-  //     filteredEvents = eventsData.filter((event) =>
-  //       event.kind.includes("WhereJes0")
-  //     );
-  //   } else if (showType === undefined) {
-  //     filteredEvents = eventsData;
-  //   }
-  // }
+    eventsData.filter((item) => item.kind.includes(eventShowType || ""));
 
   return (
     <>
@@ -195,9 +143,14 @@ export default function ContentComponents({
             profileType={profileType}
           />
         )}
-      {!!showType && !!filteredData && filteredData.length >= 1 && (
-        <Calendar events={filteredData} createMonthsForNoEvents={true} />
-      )}
+      {!!eventShowType &&
+        !!filteredCalendarData &&
+        filteredCalendarData.length >= 1 && (
+          <Calendar
+            events={filteredCalendarData}
+            createMonthsForNoEvents={true}
+          />
+        )}
     </>
   );
 }
