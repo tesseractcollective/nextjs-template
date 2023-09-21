@@ -4,8 +4,10 @@ import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 import ReactGA from "react-ga4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 interface PopupProps {
   layout: LayoutQuery;
 }
@@ -73,6 +75,16 @@ export default function Popup({ layout }: PopupProps) {
   //     8000);
   // }
   // isScrolled && setOpen(true);
+
+  const handleClosePopup = () => {
+    setOpen(false);
+    ReactGA.event({
+      category: "Link",
+      action: "Close Popup",
+      label: "Close Popup",
+    });
+  };
+
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
@@ -147,27 +159,23 @@ export default function Popup({ layout }: PopupProps) {
                             siteLibrary={siteLibrary}
                             page={page}
                           />
-                          <Elements elements={popupBlock.elements} />
+                          <Elements
+                            elements={popupBlock.elements}
+                            siteLibrary={siteLibrary}
+                          />
                         </div>
                       </div>
                     );
                   })}
                   <button
                     type="button"
-                    className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline outline-primary mx-auto max-w-max"
-                    onClick={() => {
-                      setOpen(false);
-                      ReactGA.event({
-                        category: "Link",
-                        action: "Close Popup",
-                        label: "Close Popup",
-                      });
-                    }}
+                    className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs"
+                    onClick={handleClosePopup}
                   >
-                    <span className="sr-only">Close menu</span>
-                    <XMarkIcon
-                      className="h-6 w-6 text-text-color"
-                      aria-hidden="true"
+                    <span>Close menu</span>
+                    <FontAwesomeIcon
+                      icon={faXmark as IconProp}
+                      className="fa-fw my-0 py-0 ml-2 h-4 w-4"
                     />
                   </button>
                 </Dialog.Panel>
