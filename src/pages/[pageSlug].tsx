@@ -31,14 +31,17 @@ export default function Page(
   const [latestEvents, setLatestEvents] = useState(events);
 
   useEffect(() => {
-    console.log("useEffect fetch");
-    getDuttonEventsClient({ timeoutSeconds: 5 })
-      .then((events) => {
-        setLatestEvents(events);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    console.log("useEffect fetch Start");
+    if (typeof window !== "undefined") {
+      // Only run this code on the client-side
+      getDuttonEventsClient({ timeoutSeconds: 5 })
+        .then((events) => {
+          setLatestEvents(events);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, []);
 
   return <PageComponent layout={layout} events={latestEvents} />;

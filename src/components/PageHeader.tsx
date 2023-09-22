@@ -43,7 +43,7 @@ export default function PageHeader({
           <div className="absolute bottom-1/3 left-0 right-0 w-full mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
             <Fade direction="up" triggerOnce>
               {!!pageHeaderTitleProp && (
-                <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow mt-0 mb-1 py-0 text-center text-text-overlay">
+                <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold">
                   {pageHeaderTitleProp}
                 </h1>
               )}
@@ -57,20 +57,22 @@ export default function PageHeader({
         </section>
       )}
       {pageWidthStyle === "Content" && (
-        <section className={`relative mx-auto max-w-8xl mt-4 ' ${cssClass}`}>
+        <section
+          className={`relative mx-auto max-w-8xl px-4 sm:px-6 lg:px-8' ${cssClass}`}
+        >
           {(pageHeaderTitleProp || pageHeaderSubtitleProp) && (
-            <div className="relative w-full mx-auto max-w-8xl p-4 my-8">
-              <div className="flex flex-col md:flex-col items-start justify-center md:justify-start">
+            <div className="relative w-full mx-auto p-4 my-8">
+              <div className="flex flex-col md:flex-col items-center md:items-start justify-center md:justify-start w-full">
                 {!!pageHeaderTitleProp && (
                   <Fade direction="left" triggerOnce>
-                    <h1 className="text-3xl md:text-7xl xl:text-8xl text-shadow my-0 py-0 text-center text-primary font-bold">
+                    <h1 className="text-3xl md:text-7xl xl:text-8xl text-shadow my-0 py-0 text-center md:text-left text-primary font-bold w-full mx-auto">
                       {pageHeaderTitleProp}
                     </h1>
                   </Fade>
                 )}
                 {!!pageHeaderSubtitleProp && (
                   <Fade direction="right" triggerOnce>
-                    <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 mx-auto md:mr-0 md:ml-auto md:text-right ml-4">
+                    <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 md:text-left md:ml-4 w-full">
                       {pageHeaderSubtitleProp}
                     </h2>
                   </Fade>
@@ -87,7 +89,7 @@ export default function PageHeader({
                   width={0}
                   height={0}
                   sizes="100%"
-                  className="h-[30rem] w-full object-cover object-center mb-8"
+                  className="h-[26rem] w-full object-cover object-center mb-8"
                 />
               )}
             </div>

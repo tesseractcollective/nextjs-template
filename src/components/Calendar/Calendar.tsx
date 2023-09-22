@@ -297,7 +297,6 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
 export default function Calendar(props: CalendarProps) {
   const [monthLimit, setMonthLimit] = useState(true);
   const [calendarDisplayTypeGrid, setCalendarDisplayTypeGrid] = useState(true);
-  console.log("calendarDisplayTypeGrid", calendarDisplayTypeGrid);
   let events = props.events ?? [];
   const months = createCalendarMonthsForEvents(
     events,
@@ -320,7 +319,6 @@ export default function Calendar(props: CalendarProps) {
   const legendKeyClasses: { [key: string]: string } = {};
   legendKeys.forEach((key, index) => {
     const className = legendKeyClassesOptions[index] ?? "bg-secondary";
-    console.log(`className for key ${key.name}: ${className}`);
     legendKeyClasses[key.name] = className;
   });
 
