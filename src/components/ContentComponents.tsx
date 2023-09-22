@@ -17,6 +17,7 @@ import FeatureAlbum from "@/components/FeatureAlbum";
 import Testimonials from "@/components/Testimonials";
 import Profiles from "@/components/Profiles";
 import Products from "@/components/Products";
+import ContactsSection from "@/components/ContactsSection";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 import { Event } from "@/components/Calendar/calendarHelpers";
 import Calendar from "@/components/Calendar/Calendar";
@@ -55,6 +56,7 @@ export default function ContentComponents({
   page,
   albums,
   eventsData,
+  contacts,
 }: ContentTagsProps) {
   if (!contentTags || !siteLibrary) return <></>;
   const {
@@ -70,6 +72,7 @@ export default function ContentComponents({
     profileType,
     testimonialType,
     eventShowType,
+    contactType,
   } = contentTags;
 
   const filteredCalendarData =
@@ -151,6 +154,9 @@ export default function ContentComponents({
             createMonthsForNoEvents={true}
           />
         )}
+      {!!contactType && contacts && contacts.length >= 1 && (
+        <ContactsSection contactTypes={contactType} contactsData={contacts} />
+      )}
     </>
   );
 }

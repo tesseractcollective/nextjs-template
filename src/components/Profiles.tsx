@@ -58,7 +58,7 @@ export default function Profiles({
                   >
                     <>
                       <div className="animate-col-width mx-auto md:mx-0 w-full">
-                        <div className="overflow-hidden border border-primary-fade h-full rounded profile-card w-full relative">
+                        <div className="overflow-hidden border border-primary-fade h-full rounded profile-card w-full relative group hover:border-primary transition-all">
                           {!!profile?.avatarImage?.url && (
                             <div className="h-72 max-w-72 p-0 m-0 w-full relative">
                               {!!profile?.profileLogo?.url && (
@@ -96,12 +96,24 @@ export default function Profiles({
                           <div className="flex flex-col items-start justify-center text-left p-4 bg-bg-secondary relative z-10 overflow-hidden">
                             <Fade triggerOnce direction="left">
                               {!!profile.name && (
-                                <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color mt-0 text-left">
+                                <h3
+                                  className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color mt-0 text-left cursor-pointer group-hover:text-primary transition-all"
+                                  onClick={() => {
+                                    setSelctedProfile(profile);
+                                    setOpen(true);
+                                  }}
+                                >
                                   {profile.name}
                                 </h3>
                               )}
                               {!!profile.role && (
-                                <h4 className="uppercase mt-0 mb-0 text-xs opacity-80 text-left line-clamp-1 max-w-xs">
+                                <h4
+                                  className="uppercase mt-0 mb-0 text-xs opacity-80 text-left line-clamp-1 max-w-xs cursor-pointer group-hover:text-primary transition-all"
+                                  onClick={() => {
+                                    setSelctedProfile(profile);
+                                    setOpen(true);
+                                  }}
+                                >
                                   {profile.role}
                                 </h4>
                               )}
@@ -109,7 +121,7 @@ export default function Profiles({
 
                             <div className="flex justify-between flex-row w-full">
                               <SocialMediaIcons
-                                cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start gap-x-2"
+                                cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start"
                                 instagramLinkProp={
                                   profile?.instagramLink || undefined
                                 }
@@ -153,7 +165,7 @@ export default function Profiles({
                               {!!profile && (
                                 <button
                                   type="button"
-                                  className="bg-none text-text-color px-4 md:px-2 py-1 max-w-max no-underline my-4 w-full ml-auto border-round text-xs rounded bg-background transition hover:bg-gradient-to-tr hover:from-primary hover:to-secondary uppercase group flex items-center justify-center"
+                                  className="bg-none text-text-color px-4 md:px-2 py-1 max-w-max no-underline my-4 w-full ml-auto border-round text-xs rounded bg-background transition-all hover:bg-gradient-to-tr hover:from-primary hover:to-secondary uppercase group flex items-center justify-center group-hover:bg-gradient-to-tr group-hover:from-primary group-hover:to-secondary"
                                   onClick={() => {
                                     setSelctedProfile(profile);
                                     setOpen(true);

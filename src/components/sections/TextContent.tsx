@@ -154,7 +154,7 @@ export default function TextContentSection({
                   )}
                   <div>
                     {textContentItem?.contentImage && (
-                      <Fade direction="up" triggerOnce>
+                      <Fade triggerOnce>
                         <>
                           {textContentItem.linkImage ? (
                             <LinkItem
@@ -211,21 +211,21 @@ export default function TextContentSection({
                       </Fade>
                     )}
                   </div>
-                  <Fade direction="up" triggerOnce>
+                  <Fade triggerOnce>
                     {textContentItem?.header && (
                       <div className="body-parsed-text mb-0">
                         {parse(textContentItem.header.html)}
                       </div>
                     )}
                   </Fade>
-                  <Fade direction="up" triggerOnce>
+                  <Fade triggerOnce>
                     {textContentItem?.subHeader && (
                       <div className="body-parsed-text mb-0">
                         {parse(textContentItem.subHeader.html)}
                       </div>
                     )}
                   </Fade>
-                  <Fade direction="up" triggerOnce>
+                  <Fade triggerOnce>
                     {textContentItem?.content && (
                       <div className="body-parsed-text">
                         {parse(textContentItem.content.html)}

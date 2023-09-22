@@ -291,20 +291,23 @@ html {
   table {
     border-collapse: collapse;
     width: 100%;
+    border-radius: 8px !important;
     td, th {
       border: 1px solid var(--text);
-      padding: 8px;
+      padding: 16px 8px;
       p {
         text-align: center;
+        line-height: initial;
+        margin: auto !important;
       }
     }
     tr {
       text-align: center;
       &:nth-child(even) {
-        background-color: #f2f2f239; 
+        background-color: #f1f1f111; 
         }
       &:hover { 
-        background-color: #f2f2f239; 
+        background-color: var(--background-secondary); 
       }
     }
     th {

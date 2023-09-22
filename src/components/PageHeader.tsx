@@ -57,7 +57,7 @@ export default function PageHeader({
         </section>
       )}
       {pageWidthStyle === "Content" && (
-        <section className={`relative mx-auto max-w-8xl my-32' ${cssClass}`}>
+        <section className={`relative mx-auto max-w-8xl mt-4 ' ${cssClass}`}>
           {(pageHeaderTitleProp || pageHeaderSubtitleProp) && (
             <div className="relative w-full mx-auto max-w-8xl p-4 my-8">
               <div className="flex flex-col md:flex-col items-start justify-center md:justify-start">
@@ -87,7 +87,7 @@ export default function PageHeader({
                   width={0}
                   height={0}
                   sizes="100%"
-                  className="h-[30rem] w-full object-cover object-center"
+                  className="h-[30rem] w-full object-cover object-center mb-8"
                 />
               )}
             </div>

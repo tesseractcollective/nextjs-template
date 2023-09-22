@@ -524,10 +524,10 @@ export default function DefaultNavigation({
                                                       </div>
                                                     </div>
                                                   </div>
-                                                  <div className="absolute top-0 right-0 ml-auto">
+                                                  <div className="absolute top-0 right-0 ml-auto z-10">
                                                     <button
                                                       type="button"
-                                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs"
+                                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:outline-primary mx-auto max-w-max uppercase text-xs hover:bg-dark"
                                                       onClick={() => {
                                                         close();
                                                         ReactGA.event({
