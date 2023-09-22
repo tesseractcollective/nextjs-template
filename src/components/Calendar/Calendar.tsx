@@ -25,6 +25,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import ReactGA from "react-ga4";
 import Moment from "react-moment";
+import Link from "next/link";
 
 export interface CalendarProps {
   events: Event[];
@@ -234,14 +235,17 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
                     </div>
                     <div className="mt-8">
                       <h3 className="text-base font-semibold leading-6 text-gray-900">
-                        <a href={`#`} className="focus:outline-none">
+                        <Link
+                          href="/group-sales"
+                          className="focus:outline-none"
+                        >
                           {/* Extend touch target to entire panel */}
                           <span
                             className="absolute inset-0"
                             aria-hidden="true"
                           />
                           Group Sales
-                        </a>
+                        </Link>
                       </h3>
                       <p className="mt-2 text-sm text-gray-500">
                         Buying tickets for 20+? Click here to checkout group
