@@ -34,6 +34,7 @@ export async function getDuttonEventsServer(
         date: date.showdate,
         time: showInfo.showtime,
         location: showInfo.showname.includes("AZ") ? "Mesa, AZ" : "Branson, MO",
+        link: `https://duttons.completeticketing.co/foxisapi.dll/gs2.xo.gsj?showdate=${date.showdate}&showid=${showInfo.showid}`,
       });
     });
   });

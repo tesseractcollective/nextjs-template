@@ -1,11 +1,5 @@
-import { Fragment, useState, useRef, useEffect } from "react";
-import {
-  CalendarDate,
-  Event,
-  LegendKey,
-  createCalendarMonthsForEvents,
-  legendKeysForMonths,
-} from "./calendarHelpers";
+import { Fragment, useState, useRef, useEffect, SyntheticEvent } from "react";
+import Link from "next/link";
 import type { Swiper as SwiperType } from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,22 +16,22 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
-import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import ReactGA from "react-ga4";
 import Moment from "react-moment";
 import Link from "next/link";
+
+import {
+  CalendarDate,
+  Event,
+  createCalendarMonthsForEvents,
+  legendKeysForMonths,
+} from "./calendarHelpers";
 
 export interface CalendarProps {
   events: Event[];
   createMonthsForNoEvents: boolean;
 }
 
-// interface CalendarMonthComponentProps {
-//   months: [{ [key: string]: string }];
-//   month: { [key: string]: string };
-//   monthIdx: number;
-//   createForNoEvents: boolean;
-// }
 interface CalendarDayComponentProps {
   day: CalendarDate;
   legendKeyClasses: { [key: string]: string };
@@ -46,41 +40,6 @@ interface CalendarDayComponentProps {
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
-
-// function CalendarMonthComponent(props: CalendarMonthComponentProps) {
-//   const { months, month, monthIdx } = props;
-//   return (
-//     <section
-//       key={monthIdx}
-//       className={classNames(
-//         monthIdx === months.length - 1 && "hidden md:block",
-//         "text-center calendar-block h-full flex flex-col ring-1 ring-text-color rounded m-4"
-//       )}
-//     >
-//       <h2 className="text-md font-semibold text-text-color mt-0 mb-0 uppercase block py-2">
-//         {`${month.name}`}
-//       </h2>
-//       <div className="grid grid-cols-7 text-xs leading-6 text-text-color">
-//         <div>M</div>
-//         <div>T</div>
-//         <div>W</div>
-//         <div>T</div>
-//         <div>F</div>
-//         <div>S</div>
-//         <div>S</div>
-//       </div>
-//       <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-bg-secondary text-md shadow max-h-max auto-rows-max">
-//         {month.days.map((day) => (
-//           <CalendarDayComponent
-//             key={day.date}
-//             day={day}
-//             legendKeyClasses={legendKeyClasses}
-//           />
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
 
 function CalendarDayComponent(props: CalendarDayComponentProps) {
   const { day, legendKeyClasses } = props;
@@ -94,6 +53,12 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
   } else {
     className = legendKeyClasses[day.legendKey.name] ?? "bg-primary-fade";
   }
+
+  const openEventLink = (e: SyntheticEvent, event: Event) => {
+    e.preventDefault();
+    window.open(event.link, "_blank");
+  }
+
   return (
     <div
       key={day.date}
@@ -118,10 +83,6 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
           (event) => `${event.name} - ${event.location} at ${event.time}`
         )}`}
         disabled={day.events.length === 0}
-        // className={classNames(
-        //   "focus:z-10 transition-all group text-text-color hover:bg-primary focus:bg-primary hover:rounded-md focus:rounded-md",
-        //   className
-        // )}
       >
         <span className="absolute inset-x-0 -top-px bottom-0" />
         <time
@@ -171,100 +132,89 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
                   {/* Event List */}
                   <ul role="list" className="divide-y divide-bg-secondary my-8">
                     {day.events.map((event) => (
-                      <li
-                        key={event.name}
-                        className="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-primary group rounded cursor-pointer ring-[#00000033] ring-1 hover:ring-dark my-2"
-                      >
-                        <div className="flex min-w-0 gap-x-4">
-                          <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-semibold leading-6 text-bg-secondary">
-                              <a href={`#/${event.name}`}>
-                                <span className="absolute inset-x-0 -top-px bottom-0" />
-                                {event.name}
-                              </a>
-                            </p>
-                            <p className="text-sm leading-6 text-bg-secondary">
-                              <span className="absolute inset-x-0 -top-px bottom-0" />
-                              {event.location}
-                            </p>
-                            <p className="text-sm leading-6 text-bg-secondary">
-                              <span className="absolute inset-x-0 -top-px bottom-0" />
-                              {event.time}
-                            </p>
+                      <li key={event.name + event.time}>
+                        <a
+                          onClick={(e) => openEventLink(e, event)}
+                          href={event.link}
+                        >
+                          <div className="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-primary group rounded ring-[#00000033] ring-1 hover:ring-dark my-2">
+                            <div className="flex min-w-0 gap-x-4">
+                              <div className="min-w-0 flex-auto">
+                                <p className="text-sm font-semibold leading-6 text-bg-secondary">
+                                  {event.name}
+                                </p>
+                                <p className="text-sm leading-6 text-bg-secondary">
+                                  {event.location}
+                                </p>
+                                <p className="text-sm leading-6 text-bg-secondary">
+                                  {event.time}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex shrink-0 items-center gap-x-4">
+                              <div className="flex flex-col">
+                                <p className="flex flex-row items-center text-text-color opacity-90 rounded cursor-pointer px-2 md:px-4 transition-all text-base py-1 md:py-2 text-center mx-0 group-hover:text-primary group-hover:opacity-100 group-focus:text-primary group-focus:opacity-100">
+                                  <span>Buy Tickets</span>
+                                  <span>
+                                    <FontAwesomeIcon
+                                      icon={
+                                        faArrowUpRightFromSquare as IconProp
+                                      }
+                                      className="fa-fw my-0 py-0 ml-2 h-4 w-4"
+                                    />
+                                  </span>
+                                </p>
+                                <p className="text-[8px] text-center">
+                                  Sold by completeticketing.co
+                                </p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div className="flex shrink-0 items-center gap-x-4">
-                          {/* <div className="hidden sm:flex sm:flex-col sm:items-end">
-                            <p className="text-sm leading-6 text-gray-900">
-                              {event.location}
-                            </p>
-                          </div> */}
-                          <div className="flex flex-col">
-                            <p className="flex flex-row items-center text-text-color opacity-90 rounded cursor-pointer px-2 md:px-4 transition-all text-base py-1 md:py-2 text-center mx-0 group-hover:text-primary group-hover:opacity-100 group-focus:text-primary group-focus:opacity-100">
-                              <span>Buy Tickets</span>
-                              <span>
-                                <FontAwesomeIcon
-                                  icon={faArrowUpRightFromSquare as IconProp}
-                                  className="fa-fw my-0 py-0 ml-2 h-4 w-4"
-                                />
-                              </span>
-                            </p>
-                            <p className="text-[8px] text-center">
-                              Sold by completeticketing.co
-                            </p>
-                          </div>
-                        </div>
+                        </a>
                       </li>
                     ))}
                   </ul>
                   {/* Promo Cards */}
-                  <div
-                    className={classNames(
-                      "group relative bg-white p-6 ring-[#00000000] ring-2 focus-within:ring-2 focus-within:ring-inset focus-within:ring-bg-secondary rounded px-4 hover:bg-secondary focus:bg-secondary transition-all"
-                    )}
-                  >
-                    <div>
+                  <Link href="/group-sales">
+                    <div
+                      className={classNames(
+                        "group relative bg-white p-6 ring-[#00000033] ring-1 hover:ring-dark focus-within:ring-2 focus-within:ring-inset focus-within:ring-bg-secondary rounded px-4 hover:bg-secondary focus:bg-secondary transition-all"
+                      )}
+                    >
+                      <div>
+                        <span
+                          className={classNames("inline-flex rounded-lg p-3")}
+                        >
+                          <FontAwesomeIcon
+                            icon={faUsers as IconProp}
+                            className="fa-fw my-0 py-0 h-4 w-4"
+                          />
+                        </span>
+                      </div>
+                      <div className="mt-8">
+                        <h3 className="text-base font-semibold leading-6 text-gray-900">
+                          Group Sales
+                        </h3>
+                        <p className="mt-2 text-sm text-gray-500">
+                          Buying tickets for 20+? Click here to checkout group
+                          sales!
+                        </p>
+                      </div>
                       <span
-                        className={classNames("inline-flex rounded-lg p-3")}
+                        className="pointer-events-none absolute right-6 top-6 text-dark group-hover:text-bg-secondary"
+                        aria-hidden="true"
                       >
-                        <FontAwesomeIcon
-                          icon={faUsers as IconProp}
-                          className="fa-fw my-0 py-0 h-4 w-4"
-                        />
+                        <svg
+                          className="h-6 w-6"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+                        </svg>
                       </span>
                     </div>
-                    <div className="mt-8">
-                      <h3 className="text-base font-semibold leading-6 text-gray-900">
-                        <Link
-                          href="/group-sales"
-                          className="focus:outline-none"
-                        >
-                          {/* Extend touch target to entire panel */}
-                          <span
-                            className="absolute inset-0"
-                            aria-hidden="true"
-                          />
-                          Group Sales
-                        </Link>
-                      </h3>
-                      <p className="mt-2 text-sm text-gray-500">
-                        Buying tickets for 20+? Click here to checkout group
-                        sales!
-                      </p>
-                    </div>
-                    <span
-                      className="pointer-events-none absolute right-6 top-6 text-dark group-hover:text-bg-secondary"
-                      aria-hidden="true"
-                    >
-                      <svg
-                        className="h-6 w-6"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
-                      </svg>
-                    </span>
-                  </div>
+                  </Link>
+
                   {/* Close Menu */}
                   <button
                     type="button"

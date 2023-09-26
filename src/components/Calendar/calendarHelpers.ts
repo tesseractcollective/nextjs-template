@@ -30,6 +30,7 @@ export interface Event {
   name: string;
   kind: string;
   location: string;
+  link: string;
 }
 
 export function createLegendKeyForEvents(events: Event[]): LegendKey {
