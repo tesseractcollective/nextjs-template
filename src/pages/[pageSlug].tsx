@@ -10,6 +10,11 @@ import {
 import { useEffect, useState } from "react";
 import { Event } from "@/components/Calendar/calendarHelpers";
 
+interface PageProps {
+  layout: LayoutQuery;
+  events: Event[];
+}
+
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const pageSlug = params?.pageSlug as string;
   const layout: LayoutQuery = await sdkClient.layout({
@@ -24,10 +29,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 
-export default function Page(
-  { layout }: { layout: LayoutQuery },
-  { events }: { events: Event[] }
-) {
+export default function Page({ layout, events }: PageProps) {
   const [latestEvents, setLatestEvents] = useState(events);
 
   useEffect(() => {
