@@ -6127,6 +6127,11 @@ react-loader-spinner@^5.3.4:
     styled-components "^5.3.5"
     styled-tools "^1.7.2"
 
+react-loading-skeleton@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.3.1.tgz#cd6e3a626ee86c76a46c14e2379243f2f8834e1b"
+  integrity sha512-NilqqwMh2v9omN7LteiDloEVpFyMIa0VGqF+ukqp0ncVlYu1sKYbYGX9JEl+GtOT9TKsh04zCHAbavnQ2USldA==
+
 react-magic-grid@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-magic-grid/-/react-magic-grid-1.2.1.tgz#f6fade97a9582991f01a96e4fbd63b37587893e5"

@@ -562,7 +562,7 @@ export default function CenterNavigation({
               </div>
               <SocialMediaIcons
                 siteLibrary={siteLibrary}
-                cssClass="m-0 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-0 overflow-hidden h-8 opacity-40"
+                cssClass="m-0 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-0 h-8 opacity-40"
               />
             </div>
           </div>

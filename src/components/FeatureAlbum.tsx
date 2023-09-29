@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import parse from "html-react-parser";
@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import useViewport from "@/app/hooks/useViewport";
+// import Skeleton from "react-loading-skeleton";
 
 export interface FeatureAlbumProps {
   albums: AlbumFieldsFragment[];
@@ -27,6 +28,7 @@ export default function FeatureAlbum({
   siteLibrary,
   albumDisplayType,
 }: FeatureAlbumProps) {
+  const [isLoading, setIsLoading] = useState(true);
   const { isMobile } = useViewport();
   const swiperRef = useRef<SwiperType>();
   if (!siteLibrary) return <></>;
@@ -226,7 +228,7 @@ export default function FeatureAlbum({
                     key={albumItem.albumSlug}
                     className="mx-auto !animate-col-width w-28 sm:w-32 md:w-64"
                   >
-                    {!!albumItem.albumSlug && (
+                    {!!albumItem.albumSlug && albumItem.albumCover?.url && (
                       <Link
                         href={`/music/${albumItem.albumSlug}`}
                         onClick={() =>
@@ -238,21 +240,25 @@ export default function FeatureAlbum({
                         }
                         className="max-w-max block no-underline album-item mx-auto relative p-1 hover:p-2 focus:p-2"
                       >
-                        {!!albumItem.albumCover?.url && (
-                          <Image
-                            src={albumItem.albumCover.url}
-                            alt={(albumItem.title && albumItem.title) || ""}
-                            className="mx-auto mb-2 w-full block box-shadow border-round"
-                            height={400}
-                            width={400}
-                            style={{
-                              maxHeight: "400px",
-                              maxWidth: "400px",
-                              objectFit: "cover",
-                              aspectRatio: 1,
-                            }}
-                          />
-                        )}
+                        {/* {isLoading 
+                        ?
+                        <Skeleton    height={400}
+                        width={400}/>
+                        } */}
+                        <Image
+                          src={albumItem.albumCover.url}
+                          alt={(albumItem.title && albumItem.title) || ""}
+                          className="mx-auto mb-2 w-full block box-shadow border-round"
+                          height={400}
+                          width={400}
+                          style={{
+                            maxHeight: "400px",
+                            maxWidth: "400px",
+                            objectFit: "cover",
+                            aspectRatio: 1,
+                          }}
+                        />
+
                         <p className="text-xs mt-0 mb-4 text-center uppercase">
                           {albumItem.title}
                         </p>
