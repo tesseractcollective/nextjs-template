@@ -527,7 +527,7 @@ export default function DefaultNavigation({
                                                   <div className="absolute top-0 right-0 ml-auto z-10">
                                                     <button
                                                       type="button"
-                                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:outline-primary mx-auto max-w-max uppercase text-xs hover:bg-dark"
+                                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-xs hover:bg-dark group"
                                                       onClick={() => {
                                                         close();
                                                         ReactGA.event({
@@ -544,7 +544,7 @@ export default function DefaultNavigation({
                                                         icon={
                                                           faXmark as IconProp
                                                         }
-                                                        className="fa-fw my-0 py-0 ml-2 h-4 w-4"
+                                                        className="fa-fw my-0 py-0 ml-2 h-4 w-4 group-hover:rotate-90 transition-all"
                                                       />
                                                     </button>
                                                   </div>

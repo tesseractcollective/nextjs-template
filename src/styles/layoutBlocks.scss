@@ -102,9 +102,6 @@
 
 .hero-bg, .background-image-featured {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -872,6 +869,7 @@ body iframe {
 
 .h-130vh {
   min-height: 130vh;
+  overflow: hidden;
 }
 
 .h-140vh {

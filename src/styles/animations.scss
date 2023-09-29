@@ -412,3 +412,37 @@ a.hover-chevron {
   50%  { transform: translate(0, 15px); }
   100%   { transform: translate(0, -0px); }   
 }
+
+.infinite-spin {
+  -webkit-animation: spinning 10s linear infinite;
+  animation: spinning 10s linear infinite;
+  margin-top: 5rem;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.small-image {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.h-300px {
+  height: 300px;
+}
+
+.offset-image {
+  left: -150px !important;
+  top: -250px !important;
+}
+
+.bg-tan {
+  margin-top: -15px;
+  background-color: #f1decf;
+}

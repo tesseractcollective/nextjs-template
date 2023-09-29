@@ -1,0 +1,19 @@
+.space-theme {
+  h1, h2, h3, h1 *, h2 *, h3 * {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
+  }
+  h4, h5, h6, span, div, p, button, a {
+    font-family: 'Space Grotesk', sans-serif !important;
+  }
+}
+
+.lora-theme {
+  h1, h2, h3, h1 *, h2 *, h3 * {
+    font-family: 'Lora', serif!important;
+    font-weight: bold;
+  }
+  h4, h5, h6, span, div, p, button, a {
+    font-family: 'Lora', serif!important;
+  }
+}

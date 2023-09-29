@@ -247,6 +247,7 @@ fragment testimonialFields on Testimonial {
   }
   testimonialLink
   testimonialLinkLabel
+  testimonialSourceLink
 }
 
 fragment logoTableFields on LogoTable {

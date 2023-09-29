@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import parse from "html-react-parser";
@@ -8,6 +8,13 @@ import type {
   AlbumFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
+import type { Swiper as SwiperType } from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import useViewport from "@/app/hooks/useViewport";
 
 export interface FeatureAlbumProps {
   albums: AlbumFieldsFragment[];
@@ -20,6 +27,8 @@ export default function FeatureAlbum({
   siteLibrary,
   albumDisplayType,
 }: FeatureAlbumProps) {
+  const { isMobile } = useViewport();
+  const swiperRef = useRef<SwiperType>();
   if (!siteLibrary) return <></>;
   const { isSpanish } = siteLibrary;
   if (!albums) return <></>;
@@ -163,6 +172,95 @@ export default function FeatureAlbum({
                   )}
                 </Fade>
               ))}
+            </div>
+          </section>
+        </section>
+      )}
+      {albumDisplayType === "slider" && (
+        <section className="px-2 mx-0">
+          <section className="container py-5 feature-album-slider-wrapper mx-auto">
+            <div className="mt-16 flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 max-w-8xl mx-auto">
+              <h2 className="text-2xl md:text-4xl mx-auto md:mx-0 opacity-90 uppercase text-center md:text-left font-bold mb-4">
+                {isSpanish ? "Música" : "Music"}
+              </h2>
+              <div className="flex flex-row">
+                <button
+                  type="button"
+                  className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color mr-4 hover:rotate-6"
+                  onClick={() => swiperRef.current?.slidePrev()}
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowLeft as IconProp}
+                    className="fa-fw my-0 text-xl h-8 w-8"
+                  />
+                  <span className="sr-only">Move Blog Rotation Back</span>
+                </button>
+                <button
+                  type="button"
+                  className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color hover:-rotate-6"
+                  onClick={() => swiperRef.current?.slideNext()}
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowRight as IconProp}
+                    className="fa-fw my-0 text-xl h-8 w-8"
+                  />
+                  <span className="sr-only">Move Blog Rotation Next</span>
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-row flex-wrap items-start justify-center mb-16">
+              <Swiper
+                className="!pb-10"
+                grabCursor
+                loop
+                modules={[Navigation, Pagination]}
+                onBeforeInit={(swiper) => {
+                  swiperRef.current = swiper;
+                }}
+                autoplay
+                slidesPerView={isMobile ? 1 : 3}
+                spaceBetween={30}
+              >
+                {albums.map((albumItem) => (
+                  <SwiperSlide
+                    key={albumItem.albumSlug}
+                    className="mx-auto !animate-col-width w-28 sm:w-32 md:w-64"
+                  >
+                    {!!albumItem.albumSlug && (
+                      <Link
+                        href={`/music/${albumItem.albumSlug}`}
+                        onClick={() =>
+                          ReactGA.event({
+                            category: "Link",
+                            action: `Visit ${albumItem.title}`,
+                            label: albumItem.title || "",
+                          })
+                        }
+                        className="max-w-max block no-underline album-item mx-auto relative p-1 hover:p-2 focus:p-2"
+                      >
+                        {!!albumItem.albumCover?.url && (
+                          <Image
+                            src={albumItem.albumCover.url}
+                            alt={(albumItem.title && albumItem.title) || ""}
+                            className="mx-auto mb-2 w-full block box-shadow border-round"
+                            height={400}
+                            width={400}
+                            style={{
+                              maxHeight: "400px",
+                              maxWidth: "400px",
+                              objectFit: "cover",
+                              aspectRatio: 1,
+                            }}
+                          />
+                        )}
+                        <p className="text-xs mt-0 mb-4 text-center uppercase">
+                          {albumItem.title}
+                        </p>
+                      </Link>
+                    )}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </section>
         </section>
