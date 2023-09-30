@@ -91,16 +91,6 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
                 {title}
               </h1>
             </div>
-
-            <section aria-labelledby="information-heading" className="mt-4">
-              {!!description?.html && (
-                <div className="mt-4 space-y-6">
-                  <div className="text-base text-text-color body-parsed-text opacity-90">
-                    {parse(description.html)}
-                  </div>
-                </div>
-              )}
-            </section>
           </div>
 
           {!!albumCover?.url && title && (
@@ -144,6 +134,19 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
             )}
           </div>
         </div>
+
+        <section
+          aria-labelledby="information-heading"
+          className="mt-4 text-center mx-auto max-w-5xl"
+        >
+          {!!description?.html && (
+            <div className="mt-4 space-y-6">
+              <div className="text-base text-text-color body-parsed-text opacity-90">
+                {parse(description.html)}
+              </div>
+            </div>
+          )}
+        </section>
 
         {(iFramePlayer || videoBox) && (
           <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">

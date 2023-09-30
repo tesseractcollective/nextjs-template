@@ -238,7 +238,7 @@ export default function FeatureAlbum({
                             label: albumItem.title || "",
                           })
                         }
-                        className="max-w-max block no-underline album-item mx-auto relative p-1 hover:p-2 focus:p-2"
+                        className="max-w-max block no-underline album-item mx-auto relative p-1 group transition-all"
                       >
                         {/* {isLoading 
                         ?
@@ -248,7 +248,7 @@ export default function FeatureAlbum({
                         <Image
                           src={albumItem.albumCover.url}
                           alt={(albumItem.title && albumItem.title) || ""}
-                          className="mx-auto mb-2 w-full block box-shadow border-round"
+                          className="mx-auto mb-2 w-full block box-shadow border-round grayscale-0 hover:grayscale group-hover:grayscale group-focus:grayscale transition-all"
                           height={400}
                           width={400}
                           style={{
@@ -259,7 +259,7 @@ export default function FeatureAlbum({
                           }}
                         />
 
-                        <p className="text-xs mt-0 mb-4 text-center uppercase">
+                        <p className="text-sm font-semibold mt-0 mb-4 text-center uppercase group-hover:text-primary group-focus:text-primary transition-all">
                           {albumItem.title}
                         </p>
                       </Link>

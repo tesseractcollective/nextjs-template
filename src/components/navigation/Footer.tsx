@@ -110,7 +110,21 @@ function Footer({
                               label={linkItem?.label}
                               cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
-                            />
+                            >
+                              <>
+                                {!!linkItem.image?.url && (
+                                  <Image
+                                    src={linkItem.image?.url}
+                                    className="h-20 w-auto mb-4 object-contain max-w-max"
+                                    alt=""
+                                    width={0}
+                                    height={0}
+                                    sizes="100%"
+                                    style={{ width: "100%" }}
+                                  />
+                                )}
+                              </>
+                            </LinkItem>
                           </div>
                         )}
                       </li>
