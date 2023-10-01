@@ -339,7 +339,7 @@ export default function DefaultNavigation({
         </Dialog>
       </Transition.Root>
 
-      <header className="relative">
+      <header className="relative z-2">
         <nav aria-label="Top">
           <div className="">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
@@ -457,22 +457,17 @@ export default function DefaultNavigation({
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                           >
-                                            <Popover.Panel className="absolute inset-x-0 top-full text-xs sm:text-sm md:text-base text-text-color border-t-2 border-b-2 border-primary box-shadow">
+                                            <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-8xl mx-auto rounded-xl">
                                               {({ close }) => (
                                                 <>
-                                                  <div
-                                                    className="absolute inset-0 top-1/2 bg-dark shadow"
-                                                    aria-hidden="true"
-                                                  />
-
-                                                  <div className="relative bg-bg-secondary">
+                                                  <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md">
                                                     <div className="mx-auto max-w-8xl px-8">
-                                                      <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-8">
+                                                      <div className="grid grid-cols-3 gap-y-10 py-8">
                                                         {mainNavigationItem.items.map(
                                                           (item) => (
                                                             <div
                                                               key={item.label}
-                                                              className="group relative max-w-[14rem] block mx-auto w-full"
+                                                              className="group relative max-w-[12rem] block mx-auto w-full"
                                                               onClick={() =>
                                                                 close()
                                                               }
@@ -524,7 +519,7 @@ export default function DefaultNavigation({
                                                       </div>
                                                     </div>
                                                   </div>
-                                                  <div className="absolute top-0 right-0 ml-auto z-10">
+                                                  <div className="absolute bottom-2 right-2 ml-auto z-10">
                                                     <button
                                                       type="button"
                                                       className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-xs hover:bg-dark group"
@@ -548,6 +543,19 @@ export default function DefaultNavigation({
                                                       />
                                                     </button>
                                                   </div>
+                                                  <div
+                                                    className="fixed inset-0 bg-[#1a1a1a0f] transition-opacity z-0 backdrop-blur-sm top-[50px]"
+                                                    onClick={() => {
+                                                      close();
+                                                      ReactGA.event({
+                                                        category: "Link",
+                                                        action:
+                                                          "Close Mobile Menu",
+                                                        label:
+                                                          "Close Mobile Menu",
+                                                      });
+                                                    }}
+                                                  />
                                                 </>
                                               )}
                                             </Popover.Panel>

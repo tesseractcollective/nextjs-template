@@ -84,17 +84,17 @@ export default function CenterNavigation({
               />
             </Transition.Child>
 
-            <div className="fixed inset-0 z-40 flex">
+            <div className="fixed inset-0 z-40 flex justify-end">
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
-                enterFrom="-translate-x-full"
-                enterTo="translate-x-0"
+                enterFrom="translate-x-full"
+                enterTo="-translate-x-0"
                 leave="transition ease-in-out duration-300 transform"
-                leaveFrom="translate-x-0"
-                leaveTo="-translate-x-full"
+                leaveFrom="-translate-x-0"
+                leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto pb-12 shadow-xl border-r-primary border-r bg-bg-secondary">
+                <Dialog.Panel className="relative flex w-full max-w-md flex-col overflow-y-auto pb-12 shadow-xl border-l-primary border-l bg-bg-secondary">
                   <div className="flex px-4 pb-2 pt-5">
                     <Link
                       href="/"
@@ -113,7 +113,7 @@ export default function CenterNavigation({
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                            className="h-12 w-auto max-w-xs mx-auto cursor-pointer object-contain"
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}
@@ -131,12 +131,12 @@ export default function CenterNavigation({
                     <button
                       type="button"
                       title="Close menu"
-                      className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto"
+                      className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto group"
                       onClick={() => setOpen(false)}
                     >
                       <span className="sr-only">Close menu</span>
                       <XMarkIcon
-                        className="h-6 w-6 text-text-color"
+                        className="h-6 w-6 text-text-color transition-all group-hover:rotate-90 group-hover:text-primary"
                         aria-hidden="true"
                       />
                     </button>
@@ -219,7 +219,7 @@ export default function CenterNavigation({
                           )}
 
                           {!hasItems && (
-                            <div className="space-y-6 border-y border-[#2c2c2c6f] px-4 py-3">
+                            <div className="space-y-6 border-y border-[#2c2c2c31] px-4 py-3">
                               <div className="flow-root">
                                 {mainNavigationItem.link?.includes("http") ? (
                                   <a
@@ -232,6 +232,7 @@ export default function CenterNavigation({
                                     href={mainNavigationItem.link || "/"}
                                     className="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto"
                                     onClick={() => {
+                                      setOpen(false);
                                       ReactGA.event({
                                         category: "Link",
                                         action: mainNavigationItem.link || "",
@@ -245,7 +246,7 @@ export default function CenterNavigation({
                                   <Link
                                     key={mainNavigationItem.label}
                                     href={mainNavigationItem.link || "/"}
-                                    className="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto"
+                                    className="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto text-xl w-[90%] hover:text-primary transition-all"
                                     onClick={() => {
                                       setOpen(false);
                                       ReactGA.event({
@@ -268,7 +269,7 @@ export default function CenterNavigation({
                   <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2"
+                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color"
                     />
                     <div className="text-center">
                       {!!contactName && (
@@ -296,14 +297,16 @@ export default function CenterNavigation({
                   </div>
                   <button
                     type="button"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto"
+                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color mx-auto group"
                     onClick={() => setOpen(false)}
                   >
-                    <span className="sr-only">Close menu</span>
                     <XMarkIcon
-                      className="h-6 w-6 text-text-color"
+                      className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90"
                       aria-hidden="true"
                     />
+                    <span className="text-text-color ml-2 group-hover:text-primary transition-all">
+                      Close menu
+                    </span>
                   </button>
                 </Dialog.Panel>
               </Transition.Child>
@@ -313,9 +316,9 @@ export default function CenterNavigation({
 
         <header className="relative">
           <nav aria-label="Top">
-            <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
-              <div className="my-2">
-                <div className="flex items-center  justify-start md:justify-center flex-row relative">
+            <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 mb-2">
+              <div className="mt-2">
+                <div className="flex items-center justify-start md:justify-center flex-row relative">
                   <Link
                     href="/"
                     className="justify-self-center"
@@ -347,7 +350,7 @@ export default function CenterNavigation({
                       </span>
                     )}
                   </Link>
-                  {/* Mobile menu bar */}
+                  {/* Desktop menu bar */}
                   <div className="max-w-max absolute right-0">
                     <button
                       type="button"
@@ -372,7 +375,7 @@ export default function CenterNavigation({
               </div>
               <SocialMediaIcons
                 siteLibrary={siteLibrary}
-                cssClass="m-0 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-0 h-8 opacity-40"
+                cssClass="-mt-2 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-0 h-8 opacity-40"
               />
             </div>
           </nav>
