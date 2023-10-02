@@ -7,7 +7,7 @@ interface VideoBoxProps {
   youtubeApiKey: string;
 }
 
-export default function VideoBox({
+export default function VideoPlaylistBox({
   videoTitle,
   youtubePlaylistId,
   youtubeApiKey,
@@ -20,13 +20,6 @@ export default function VideoBox({
             {videoTitle}
           </h3>
         )}
-        {/* <div className="sr-only">
-          <YouTubePlaylist
-            apiKey={youtubeApiKey}
-            playlistId="PLPZMiBBzqLb0MrkNOy93YQmoQ1Nb2mkZO"
-            uniqueName="sr-only"
-          />
-        </div> */}
         <YouTubePlaylist
           apiKey={youtubeApiKey}
           playlistId={youtubePlaylistId}

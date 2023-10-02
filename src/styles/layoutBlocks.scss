@@ -920,3 +920,14 @@ body iframe {
     }
   }
 }
+
+.playlist-box {
+  div[class^='css-'], div[class*='css-'] {   
+    figure img {
+      // outline: red 2px solid;
+      h1 {
+        color: var(--text);
+      }
+    }
+  }
+}

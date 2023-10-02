@@ -106,7 +106,7 @@ export default function DefaultNavigation({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto pb-12 shadow-xl border-r-primary border-r bg-bg-secondary theme-scroll">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto pb-12 shadow-xl bg-bg-secondary theme-scroll">
                 <div className="flex px-4 pb-2 pt-5">
                   <Link
                     href="/"
@@ -162,36 +162,21 @@ export default function DefaultNavigation({
                       <div key={mainNavigationItem.label}>
                         {hasItems && (
                           <Tab.Group as="div" className="mt-2">
-                            <div className="border-b border-primary">
+                            <div className="">
                               <Tab.List className="-mb-px flex space-x-8 px-4">
                                 <Tab
                                   key={mainNavigationItem.label}
                                   className={({ selected }) =>
                                     classNames(
                                       selected
-                                        ? "text-primary"
+                                        ? "font-bold text-text-color"
                                         : "border-transparent text-text-color",
-                                      "flex-1 whitespace-nowrap border-dark hover:border-white px-1 py-4 text-base font-medium flex flex-row"
+                                      "flex-1 whitespace-nowrap border-dark hover:border-white px-1 pt-4 text-base flex flex-row",
+                                      "text-center mx-auto items-center justify-center cursor-default opacity-80 border-b border-primary-fade max-w-max"
                                     )
                                   }
                                 >
                                   <span>{mainNavigationItem.label}</span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className={`ml-2 w-4 h-4 transition-all ${
-                                      open ? "rotate-180" : "rotate-0"
-                                    }`}
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                                    />
-                                  </svg>
                                 </Tab>
                               </Tab.List>
                             </div>
@@ -200,7 +185,7 @@ export default function DefaultNavigation({
                                 key={mainNavigationItem.label}
                                 className="space-y-12 px-4 py-6"
                               >
-                                <div className="grid grid-cols-2 gap-x-4 gap-y-10">
+                                <div className="grid grid-cols-2 gap-x-4 gap-y-6">
                                   {mainNavigationItem.items.map((item) => (
                                     <div
                                       key={item.label}
@@ -273,7 +258,7 @@ export default function DefaultNavigation({
                                 <Link
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
-                                  className="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto"
+                                  className="-m-2 block p-2 font-bold text-text-color max-w-max mx-auto"
                                   onClick={() => {
                                     setOpen(false);
                                     ReactGA.event({
@@ -324,14 +309,16 @@ export default function DefaultNavigation({
                 </div>
                 <button
                   type="button"
-                  className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto"
+                  className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto group transition-all"
                   onClick={() => setOpen(false)}
                 >
-                  <span className="sr-only">Close menu</span>
                   <XMarkIcon
-                    className="h-6 w-6 text-text-color"
+                    className="h-6 w-6 text-text-color group-hover:text-primary group-hover:rotate-180 transition-all"
                     aria-hidden="true"
                   />
+                  <span className="text-text-color group-hover:text-primary pl-1 transition-all group-hover:pl-2">
+                    Close menu
+                  </span>
                 </button>
               </Dialog.Panel>
             </Transition.Child>
@@ -413,7 +400,7 @@ export default function DefaultNavigation({
                                                 open
                                                   ? "border-primary text-primary"
                                                   : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
-                                                `relative z-10 -mb-px flex items-center pt-px font-medium transition-colors duration-200 ease-out border-dark hover:border-white border-b-2 ${
+                                                `relative z-10 -mb-px flex items-center pt-px transition-colors duration-200 ease-out border-dark hover:border-white border-b-2 uppercase font-semibold ${
                                                   small
                                                     ? "text-xs md:text-sm"
                                                     : "text-xs sm:text-sm md:text-base"
@@ -431,7 +418,7 @@ export default function DefaultNavigation({
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 fill="none"
                                                 viewBox="0 0 24 24"
-                                                strokeWidth={1.5}
+                                                strokeWidth={3}
                                                 stroke="currentColor"
                                                 className={`ml-2 w-4 h-4 transition-all ${
                                                   open
@@ -502,7 +489,7 @@ export default function DefaultNavigation({
                                                                   label={
                                                                     item?.label
                                                                   }
-                                                                  cssClass={`mt-4 block font-medium text-text-color transition-all group-hover:text-primary ${item?.cssClass}`}
+                                                                  cssClass={`mt-4 block font-semibold text-text-color transition-all group-hover:text-primary ${item?.cssClass}`}
                                                                   sameTab={
                                                                     item?.sameTab
                                                                   }
@@ -522,7 +509,7 @@ export default function DefaultNavigation({
                                                   <div className="absolute bottom-0 right-2 ml-auto z-10">
                                                     <button
                                                       type="button"
-                                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-xs hover:bg-dark group"
+                                                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-xs hover:bg-dark group focus-within:bg-dark focus-within:ring-1 ring-primary"
                                                       onClick={() => {
                                                         close();
                                                         ReactGA.event({
@@ -534,13 +521,15 @@ export default function DefaultNavigation({
                                                         });
                                                       }}
                                                     >
-                                                      <span>Close menu</span>
                                                       <FontAwesomeIcon
                                                         icon={
                                                           faXmark as IconProp
                                                         }
-                                                        className="fa-fw my-0 py-0 ml-2 h-4 w-4 group-hover:rotate-90 transition-all"
+                                                        className="fa-fw my-0 py-0 h-4 w-4 group-hover:rotate-90 transition-all"
                                                       />
+                                                      <span className="ml-2">
+                                                        Close menu
+                                                      </span>
                                                     </button>
                                                   </div>
                                                   <div
@@ -569,7 +558,7 @@ export default function DefaultNavigation({
                                       key={mainNavigationItem?.link}
                                       link={mainNavigationItem?.link}
                                       label={mainNavigationItem?.label}
-                                      cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all ${
+                                      cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold ${
                                         small
                                           ? "text-xs md:text-sm"
                                           : "text-xs sm:text-sm md:text-base"
@@ -648,7 +637,7 @@ export default function DefaultNavigation({
                           key={mainNavigationItem?.link}
                           link={mainNavigationItem?.link}
                           label={mainNavigationItem?.label}
-                          cssClass={`flex items-center font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 rounded transition-all ${
+                          cssClass={`flex items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 rounded transition-all ${
                             mainNavigationItem?.cssClass
                           } ${
                             small
