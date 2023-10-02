@@ -457,17 +457,17 @@ export default function DefaultNavigation({
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                           >
-                                            <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-8xl mx-auto rounded-xl">
+                                            <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
                                               {({ close }) => (
                                                 <>
                                                   <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md">
                                                     <div className="mx-auto max-w-8xl px-8">
-                                                      <div className="grid grid-cols-3 gap-y-10 py-8">
+                                                      <div className="zgrid zgrid-cols-3 zgap-y-10 zpy-8 flex flex-row items-center justify-start flex-wrap gap-4 py-8">
                                                         {mainNavigationItem.items.map(
                                                           (item) => (
                                                             <div
                                                               key={item.label}
-                                                              className="group relative max-w-[12rem] block mx-auto w-full"
+                                                              className="group relative max-w-[12rem] block w-full"
                                                               onClick={() =>
                                                                 close()
                                                               }
@@ -519,7 +519,7 @@ export default function DefaultNavigation({
                                                       </div>
                                                     </div>
                                                   </div>
-                                                  <div className="absolute bottom-2 right-2 ml-auto z-10">
+                                                  <div className="absolute bottom-0 right-2 ml-auto z-10">
                                                     <button
                                                       type="button"
                                                       className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-xs hover:bg-dark group"
@@ -544,7 +544,7 @@ export default function DefaultNavigation({
                                                     </button>
                                                   </div>
                                                   <div
-                                                    className="fixed inset-0 bg-[#1a1a1a0f] transition-opacity z-0 backdrop-blur-sm top-[50px]"
+                                                    className="fixed inset-0 bg-[#1a1a1a0f] transition-all z-0 backdrop-blur-sm top-[54px]"
                                                     onClick={() => {
                                                       close();
                                                       ReactGA.event({

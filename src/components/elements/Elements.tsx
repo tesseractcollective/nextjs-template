@@ -11,6 +11,7 @@ import GallerySection from "@/components/GallerySection";
 import HTMLText from "@/components/elements/HTMLText";
 import ElementImage from "@/components/elements/ElementImage";
 import ScrollDigits from "@/components/elements/ScrollDigits";
+import Timeline from "@/components/elements/Timeline";
 import MapBoxMap from "@/components/elements/MapBoxMap";
 
 type ElementsType =
@@ -78,6 +79,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       )}
       {!!elementJson?.scrollDigitsData && (
         <ScrollDigits scrollDigitData={elementJson.scrollDigitsData} />
+      )}
+      {!!elementJson?.timelineData && (
+        <Timeline timelineData={elementJson.timelineData} />
       )}
       {!!mapLatLong &&
         !!siteLibrary?.mapKey &&

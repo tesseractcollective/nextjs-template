@@ -430,7 +430,7 @@ html {
 .bg-invert {
   background-color: var(--text);
   * {
-    color: var(--background);
+    color: var(--background) !important;
   }
     .text-link {
       position: relative;

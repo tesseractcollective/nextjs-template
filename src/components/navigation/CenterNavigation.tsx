@@ -79,7 +79,7 @@ export default function CenterNavigation({
               leaveTo="opacity-0"
             >
               <div
-                className="fixed inset-0 bg-dark opacity-60"
+                className="fixed inset-0 bg-dark opacity-60 backdrop-blur-xl"
                 aria-hidden="true"
               />
             </Transition.Child>

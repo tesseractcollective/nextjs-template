@@ -9,7 +9,7 @@ interface LoopTextProps {
 export default function LoopTextSection({ loopTextData }: LoopTextProps) {
   if (loopTextData?.length === 0) return <></>;
   return (
-    <div className="my-16">
+    <div className="loop-text-section">
       {loopTextData.map((item) => {
         const itemClass = item?.cssClassItem || "";
         return (
