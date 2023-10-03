@@ -2684,7 +2684,8 @@ export enum BlogOrderByInput {
 
 export enum BlogTags {
   Blog = 'blog',
-  Music = 'music'
+  Music = 'music',
+  News = 'news'
 }
 
 export type BlogUpdateInput = {
@@ -4550,7 +4551,10 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Admin = 'admin'
+  Admin = 'admin',
+  BransonBoxOffice = 'bransonBoxOffice',
+  DuttonOffice = 'duttonOffice',
+  MesaBoxOffice = 'mesaBoxOffice'
 }
 
 export type ContactUpdateInput = {
@@ -6927,7 +6931,15 @@ export enum EventOrderByInput {
 }
 
 export enum EventShowType {
-  Default = 'default'
+  DuttonsA0 = 'DuttonsA0',
+  TheDutto0 = 'TheDutto0',
+  TheDutton0 = 'TheDutton0',
+  WhereJes0 = 'WhereJes0',
+  All = 'all',
+  Arizona = 'arizona',
+  Branson = 'branson',
+  Jesus = 'jesus',
+  Mesa = 'mesa'
 }
 
 export type EventUpdateInput = {
@@ -16475,7 +16487,11 @@ export type ProfileEdge = {
 
 export enum ProfileLayoutStyle {
   CardLink = 'cardLink',
-  CardModal = 'cardModal'
+  CardModal = 'cardModal',
+  Grid = 'grid',
+  Offset = 'offset',
+  Record = 'record',
+  Universal = 'universal'
 }
 
 /** Identifies documents */
@@ -22192,6 +22208,7 @@ export enum TestimonialOrderByInput {
 }
 
 export enum TestimonialType {
+  Online = 'online',
   Review = 'review',
   Sponsor = 'sponsor'
 }

@@ -353,13 +353,301 @@ export default function Profiles({
         ;
       </>
     );
+  if (profileLayoutStyle === "universal")
+    return (
+      <>
+        <div className="relative texture-background overflow-hidden">
+          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+            <div className="w-full lg:5/12 xl:w-4/12 transition">
+              {!!profileSectionTitle && (
+                <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition">
+                  {profileSectionTitle}
+                </h3>
+              )}
+            </div>
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full  lg:7/12 xl:w-8/12 mx-auto lg:mx-0 transition">
+              {profiles
+                .filter(
+                  (profile) =>
+                    profile?.profileType?.toLowerCase() ===
+                    profileType?.toLowerCase()
+                )
+                .map((profile) => (
+                  <Fade
+                    direction="up"
+                    cascade
+                    triggerOnce
+                    damping={0.1}
+                    key={profile.profileSlug}
+                    className="mx-auto"
+                  >
+                    <Link
+                      href={`/${profile.profileType?.toLowerCase()}/${
+                        profile.profileSlug
+                      }`}
+                      className="profile-card h-full no-underline mx-auto relative mb-4 inline-block max-w-max group"
+                      key={profile.profileSlug}
+                    >
+                      {!!profile.avatarImage?.url && (
+                        <div className="relative">
+                          <Image
+                            src={profile.avatarImage?.url}
+                            alt=""
+                            className="profile-card-image object-center mb-2 transition max-w-xs w-full transition-rounded"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                          />
+                          <div className="music-border"></div>
+                        </div>
+                      )}
+                      <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-secondary">
+                        <span>{profile.name}</span>
+                        <FontAwesomeIcon
+                          icon={faArrowRight as IconProp}
+                          className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:w-4 group-hover:opacity-100"
+                        />
+                      </p>
+                    </Link>
+                  </Fade>
+                ))}
+            </div>
+          </section>
+        </div>
+      </>
+    );
+  if (profileLayoutStyle === "offset")
+    return (
+      <>
+        <div className="relative texture-background overflow-hidden">
+          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+            <div className="w-full lg:5/12 xl:w-4/12 transition">
+              {!!profileSectionTitle && (
+                <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition">
+                  {profileSectionTitle}
+                </h3>
+              )}
+            </div>
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full  lg:7/12 xl:w-8/12 mx-auto lg:mx-0 transition">
+              {profiles
+                .filter(
+                  (profile) =>
+                    profile?.profileType?.toLowerCase() ===
+                    profileType?.toLowerCase()
+                )
+                .map((profile) => (
+                  <Fade
+                    direction="up"
+                    cascade
+                    triggerOnce
+                    damping={0.1}
+                    key={profile.profileSlug}
+                    className="mx-auto"
+                  >
+                    <Link
+                      href={`/${profile.profileType?.toLowerCase()}/${
+                        profile.profileSlug
+                      }`}
+                      className="profile-card h-full no-underline mx-auto relative mb-4 inline-block max-w-max group"
+                      key={profile.profileSlug}
+                    >
+                      {!!profile.avatarImage?.url && (
+                        <div className="relative">
+                          <Image
+                            src={profile.avatarImage?.url}
+                            alt=""
+                            className="profile-card-image object-center mb-2 transition max-w-xs w-full transition-rounded"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                          />
+                          <div className="music-border"></div>
+                        </div>
+                      )}
+                      <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-secondary">
+                        <span>{profile.name}</span>
+                        <FontAwesomeIcon
+                          icon={faArrowRight as IconProp}
+                          className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:w-4 group-hover:opacity-100"
+                        />
+                      </p>
+                    </Link>
+                  </Fade>
+                ))}
+            </div>
+          </section>
+        </div>
+      </>
+    );
+  if (profileLayoutStyle === "grid")
+    return (
+      <>
+        <div className="relative">
+          <section className="my-16 mx-auto w-full dark-section flex flex-wrap">
+            <div className="w-full transition">
+              {!!profileSectionTitle && (
+                <h3 className="text-2xl md:text-5xl mx-auto opacity-80 uppercase text-center font-bold mb-8">
+                  {profileSectionTitle}
+                </h3>
+              )}
+            </div>
+            <div className="flex flex-row flex-wrap w-full mx-0 transition">
+              {profiles
+                .filter(
+                  (profile) =>
+                    profile?.profileType?.toLowerCase() ===
+                    profileType?.toLowerCase()
+                )
+                .map((profile) => (
+                  <div
+                    key={profile.profileSlug}
+                    tabIndex={0}
+                    className="block w-2/4 md:w-1/3 lg:w-1/4 transition-all relative profile-hover"
+                  >
+                    {!!profile.avatarImage?.url && (
+                      <div
+                        className="profile h-0 bg-center bg-no-repeat bg-cover pb-[100%]"
+                        style={{
+                          backgroundImage: `url(${profile.avatarImage?.url})`,
+                        }}
+                      >
+                        <div className="profile-overlay p-5 absolute inset-0">
+                          <div className="absolute top-5 left-5 z-[2]">
+                            <SocialMediaIcons
+                              cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start text-text-color gap-x-2"
+                              instagramLinkProp={
+                                profile?.instagramLink || undefined
+                              }
+                              spotifyLinkProp={
+                                profile?.spotifyLink || undefined
+                              }
+                              facebookLinkProp={
+                                profile?.facebookLink || undefined
+                              }
+                              twitterLinkProp={
+                                profile?.twitterLink || undefined
+                              }
+                              youtubeLinkProp={
+                                profile?.youtubeLink || undefined
+                              }
+                              tikTokLinkProp={profile?.tikTokLink || undefined}
+                              appleMusicLinkProp={
+                                profile?.appleMusicLink || undefined
+                              }
+                              pandoraLinkProp={
+                                profile?.pandoraLink || undefined
+                              }
+                              soundcloudLinkProp={
+                                profile?.soundcloudLink || undefined
+                              }
+                              linkedinLinkProp={
+                                profile?.linkedinLink || undefined
+                              }
+                              emailLinkProp={profile.email || undefined}
+                              phoneLinkProp={profile.phoneNumber || undefined}
+                              displayVcf={profile.displayVcf || undefined}
+                              name={profile.name || undefined}
+                              avatar={profile.avatarImage?.url || undefined}
+                              calendlyLinkProp={
+                                profile.calendlyLink || undefined
+                              }
+                            />
+                          </div>
+                          {profile.profileSlug && profile.profileType && (
+                            <Link
+                              href={`/${profile.profileType?.toLowerCase()}/${
+                                profile.profileSlug
+                              }`}
+                              tabIndex={0}
+                              className="absolute bottom-5 left-5 my-0 py-0 flex flex-row items-center justify-center text-left mx-auto text-text-color hover:text-secondary text-lg md:text-xl lg:text-2xl font-bold transition-all group z-[2] overflow-hidden focus:text-secondary"
+                            >
+                              <span>{profile.name}</span>
+                              <FontAwesomeIcon
+                                icon={faArrowRight as IconProp}
+                                className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:w-4 group-hover:opacity-100 -ml-2 group-hover:ml-2 transition-all group-focus:w-4 group-focus:opacity-100 group-focus:h-4 group-focus:ml-2"
+                              />
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+            </div>
+          </section>
+        </div>
+      </>
+    );
+  if (profileLayoutStyle === "record")
+    return (
+      <>
+        <div className="relative texture-background overflow-hidden record">
+          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+            <div className="w-full lg:5/12 xl:w-4/12 transition">
+              {!!profileSectionTitle && (
+                <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition">
+                  {profileSectionTitle}
+                </h3>
+              )}
+            </div>
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full  lg:7/12 xl:w-8/12 mx-auto lg:mx-0 transition">
+              {profiles
+                .filter(
+                  (profile) =>
+                    profile?.profileType?.toLowerCase() ===
+                    profileType?.toLowerCase()
+                )
+                .map((profile) => (
+                  <Fade
+                    direction="up"
+                    cascade
+                    triggerOnce
+                    damping={0.1}
+                    key={profile.profileSlug}
+                    className="mx-auto"
+                  >
+                    <Link
+                      href={`/${profile.profileType?.toLowerCase()}/${
+                        profile.profileSlug
+                      }`}
+                      className="profile-card h-full no-underline mx-auto relative mb-4 inline-block max-w-max group"
+                      key={profile.profileSlug}
+                    >
+                      {!!profile.avatarImage?.url && (
+                        <div className="relative">
+                          <Image
+                            src={profile.avatarImage?.url}
+                            alt=""
+                            className="profile-card-image object-center mb-2 transition max-w-xs w-full transition-rounded"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                          />
+                          <div className="music-border"></div>
+                        </div>
+                      )}
+                      <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-secondary">
+                        <span>{profile.name}</span>
+                        <FontAwesomeIcon
+                          icon={faArrowRight as IconProp}
+                          className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:w-4 group-hover:opacity-100"
+                        />
+                      </p>
+                    </Link>
+                  </Fade>
+                ))}
+            </div>
+          </section>
+        </div>
+      </>
+    );
   return (
     <>
       <div className="relative texture-background overflow-hidden">
         <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
           <div className="w-full lg:5/12 xl:w-4/12 transition">
             {!!profileSectionTitle && (
-              <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition">
+              <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition-all">
                 {profileSectionTitle}
               </h3>
             )}
@@ -400,7 +688,7 @@ export default function Profiles({
                         <div className="music-border"></div>
                       </div>
                     )}
-                    <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-secondary">
+                    <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-secondary group-focus:text-secondary">
                       <span>{profile.name}</span>
                       <FontAwesomeIcon
                         icon={faArrowRight as IconProp}

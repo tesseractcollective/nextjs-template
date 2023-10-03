@@ -252,7 +252,7 @@
   }
 }
 
-.music .profile-card {
+.record .profile-card {
   position: relative;
   img.profile-card-image {
     border-radius: 100%;
@@ -268,7 +268,7 @@
   }
 }
 
-.music .music-border {
+.record .record-border {
   position: absolute;
   inset: 0 0 0 0;
   z-index: 10;
@@ -282,6 +282,32 @@
     transform: scale(0.9) rotate(15deg) translateZ(0) !important;
     box-shadow: 0 0 0 2px var(--primary);
     opacity: 0.5;
+  }
+}
+
+.profile-hover {
+  &:before {
+    transition: all 200ms ease-in-out;
+  }
+  .profile-overlay {
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+  }
+  &:hover, &:focus-within {
+    .profile-overlay {
+      opacity: 1;
+      z-index: 2;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(0deg,rgba(0,0,0,.2),rgba(0,0,0,.2));
+      pointer-events: none;
+    }
   }
 }
 
