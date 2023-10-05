@@ -214,7 +214,7 @@ export default function DefaultNavigation({
                                           key={item?.link}
                                           link={item?.link}
                                           label={item?.label}
-                                          cssClass={`mt-2 block text-xs sm:text-sm md:text-base font-medium text-text-color text-center group-hover:text-primary transition ${item?.cssClass}`}
+                                          cssClass={`mt-2 block text-xs sm:text-sm font-medium text-text-color text-center group-hover:text-primary transition ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
                                           <span
@@ -444,7 +444,7 @@ export default function DefaultNavigation({
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                           >
-                                            <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
+                                            <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl overflow-scroll">
                                               {({ close }) => (
                                                 <>
                                                   <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md">
@@ -489,7 +489,7 @@ export default function DefaultNavigation({
                                                                   label={
                                                                     item?.label
                                                                   }
-                                                                  cssClass={`mt-4 block font-semibold text-text-color transition-all group-hover:text-primary ${item?.cssClass}`}
+                                                                  cssClass={`mt-4 block font-semibold text-text-color transition-all group-hover:text-primary text-sm ${item?.cssClass}`}
                                                                   sameTab={
                                                                     item?.sameTab
                                                                   }

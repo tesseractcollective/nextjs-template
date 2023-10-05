@@ -3,6 +3,7 @@
 @import "./buttons.scss";
 @import "./dividers.scss";
 @import "./font-themes.scss";
+@import "./text-effects.scss";
 
 body {
   background: var(--dark);
@@ -429,6 +430,9 @@ html {
 
 .bg-invert {
   background-color: var(--text);
+  &.text-only {
+    background-color: inherit;
+  }
   * {
     color: var(--background) !important;
   }
