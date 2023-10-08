@@ -366,7 +366,7 @@ export default function Profiles({
                   </h3>
                 )}
               </div>
-              <div className="flex flex-row flex-wrap w-full transition max-w-8xl px-6 md:px-6 mx-auto gap-2">
+              <div className="flex flex-row flex-wrap w-full transition max-w-8xl px-6 md:px-6 mx-auto gap-8">
                 {profiles
                   .filter(
                     (profile) =>
@@ -385,19 +385,19 @@ export default function Profiles({
                             href={`/${profile.profileType?.toLowerCase()}/${
                               profile.profileSlug
                             }`}
-                            className="profile-universal h-0 bg-center bg-no-repeat bg-cover pb-[100%] rounded-4xl block border-transparent group-hover:border-text-color border grayscale group-hover:grayscale-0 transition-all"
+                            className="profile-universal h-0 bg-center bg-no-repeat bg-cover pb-[100%] rounded-xl block grayscale group-hover:grayscale-0 transition-all"
                             style={{
                               backgroundImage: `url(${profile.avatarImage?.url})`,
                             }}
                           />
                         )}
-                      <div className="p-5">
+                      <div className="p-2">
                         {profile.profileSlug && profile.profileType && (
                           <Link
                             href={`/${profile.profileType?.toLowerCase()}/${
                               profile.profileSlug
                             }`}
-                            className="relative my-0 py-0 text-left mx-auto text-text-color text-lg md:text-2xl lg:!text-3xl !font-bold transition-all z-[2] group-focus:gradient-text text-zink !no-underline !border-none group-hover:text-primary"
+                            className="relative my-0 py-0 text-left mx-auto text-text-color text-lg md:text-2xl lg:!text-3xl !font-bold transition-all z-[2] group-focus:gradient-text text-zink !no-underline !border-none group-hover:text-primary uppercase"
                           >
                             {profile.name}
                           </Link>

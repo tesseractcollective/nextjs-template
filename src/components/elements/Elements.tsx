@@ -13,6 +13,7 @@ import ElementImage from "@/components/elements/ElementImage";
 import ScrollDigits from "@/components/elements/ScrollDigits";
 import Timeline from "@/components/elements/Timeline";
 import MapBoxMap from "@/components/elements/MapBoxMap";
+import DrumPadComponent from "./DrumPadComponent";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -83,6 +84,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!elementJson?.timelineData && (
         <Timeline timelineData={elementJson.timelineData} />
       )}
+      {!!elementJson?.displayDrumPad && <DrumPadComponent />}
       {!!mapLatLong &&
         !!siteLibrary?.mapKey &&
         !!mapLatLong?.longitude &&

@@ -1,0 +1,28 @@
+{
+  "timelineData": {
+    "cssClass": "cssClass",
+    "timelineItems": [
+      {
+        "year": "2023",
+        "header": "header",
+        "subheader": "subheader",
+        "content": "content",
+        "cssClass": "cssClass"
+      },
+      {
+        "year": "2022",
+        "header": "header",
+        "subheader": "subheader",
+        "content": "content",
+        "cssClass": "cssClass"
+      },
+      {
+        "year": "2021",
+        "header": "header",
+        "subheader": "subheader",
+        "content": "content",
+        "cssClass": "cssClass"
+      }
+    ]
+  }
+}
