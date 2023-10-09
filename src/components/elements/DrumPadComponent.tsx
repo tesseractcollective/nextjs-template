@@ -94,15 +94,15 @@ class DrumPad extends Component<DrumPadProps> {
   }
 }
 
-interface AppState {
+interface DrumPadState {
   display: string;
 }
 
-class DrumPadComponent extends Component<{}, AppState> {
+class DrumPadComponent extends Component<{}, DrumPadState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      display: "Let's JAM",
+      display: "MAKE A BEAT",
     };
   }
 

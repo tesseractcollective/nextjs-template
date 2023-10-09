@@ -75,7 +75,7 @@ export default function MegaNavigation({
             leaveTo="opacity-0"
           >
             <div
-              className="fixed inset-0 bg-[#000] opacity-60"
+              className="fixed inset-0 bg-[#000] opacity-60 backdrop-blur-lg"
               aria-hidden="true"
             />
           </Transition.Child>
@@ -90,7 +90,7 @@ export default function MegaNavigation({
               leaveFrom="-translate-x-0"
               leaveTo="translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-8xl flex-col overflow-y-auto pb-12 shadow-xl border-l-primary border-l bg-bg-secondary">
+              <Dialog.Panel className="relative flex w-full max-w-6xl flex-col overflow-y-auto pb-12 shadow-xl border-l-primary border-l bg-bg-secondary">
                 <div className="flex px-4 pb-2 pt-5">
                   <Link
                     href="/"
@@ -129,12 +129,12 @@ export default function MegaNavigation({
                   <button
                     type="button"
                     title="Close menu"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto"
+                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto group transition-all"
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon
-                      className="h-6 w-6 text-text-color"
+                      className="h-6 w-6 text-text-color group-hover:text-primary group-hover:rotate-180 transition-all"
                       aria-hidden="true"
                     />
                   </button>
@@ -199,7 +199,7 @@ export default function MegaNavigation({
                                           key={item?.link}
                                           link={item?.link}
                                           label={item?.label}
-                                          cssClass={`mt-2 text-right block text-sm sm:text-xl lg:text-4xl font-semibold text-text-color text-center group-hover:text-primary transition ${item?.cssClass}`}
+                                          cssClass={`mt-2 text-right block text-sm sm:text-xl lg:text-4xl font-semibold text-text-color text-center group-hover:text-primary transition hover:italic ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
                                           <span
@@ -228,7 +228,7 @@ export default function MegaNavigation({
                                   }
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
-                                  className="-m-2 block p-2 font-bold text-text-color max-w-max ml-auto text-3xl lg:text-5xl hover:text-primary transition"
+                                  className="-m-2 block p-2 font-bold text-text-color max-w-max ml-auto text-3xl lg:text-5xl hover:text-primary transition-all hover:italic"
                                   onClick={() => {
                                     ReactGA.event({
                                       category: "Link",
@@ -243,7 +243,7 @@ export default function MegaNavigation({
                                 <Link
                                   key={mainNavigationItem.label}
                                   href={mainNavigationItem.link || "/"}
-                                  className="-m-2 block p-2 font-bold text-text-color max-w-max mx-auto text-3xl lg:text-5xl hover:text-primary transition"
+                                  className="block p-2 font-bold text-text-color max-w-max mx-auto text-3xl lg:text-5xl hover:text-primary transition-all hover:-skew-x-12"
                                   onClick={() => {
                                     setOpen(false);
                                     ReactGA.event({
@@ -294,14 +294,16 @@ export default function MegaNavigation({
                 </div>
                 <button
                   type="button"
-                  className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto"
+                  className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto group transition-all"
                   onClick={() => setOpen(false)}
                 >
-                  <span className="sr-only">Close menu</span>
                   <XMarkIcon
-                    className="h-6 w-6 text-text-color"
+                    className="h-6 w-6 text-text-color group-hover:text-primary group-hover:rotate-180 transition-all"
                     aria-hidden="true"
                   />
+                  <span className="text-text-color group-hover:text-primary pl-1 transition-all group-hover:pl-2">
+                    Close menu
+                  </span>
                 </button>
               </Dialog.Panel>
             </Transition.Child>
