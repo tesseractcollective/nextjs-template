@@ -44,7 +44,7 @@ interface DrumPadProps {
   id: string;
   letter: string;
   src: string;
-  cssClass: string;
+  className: string;
   handleDisplay: (display: string) => void;
 }
 
