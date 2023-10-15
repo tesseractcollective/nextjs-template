@@ -322,7 +322,7 @@ export default function CenterNavigation({
           <nav aria-label="Top">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 mb-2">
               <div className="mt-2">
-                <div className="flex items-center justify-start md:justify-center flex-row relative">
+                <div className="flex items-center justify-center flex-row relative">
                   <Link
                     href="/"
                     className="justify-self-center transition-all cursor-pointer"
