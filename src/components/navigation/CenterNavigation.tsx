@@ -205,7 +205,7 @@ export default function CenterNavigation({
                                             key={item?.link}
                                             link={item?.link}
                                             label={item?.label}
-                                            cssClass={`mt-2 block text-xs md:text-sm font-medium text-text-color text-center group-hover:text-primary transition ${item?.cssClass}`}
+                                            cssClass={`mt-2 block text-xs md:text-sm font-medium text-text-color text-center group-hover:!text-primary !transition-all !cursor-pointer ${item?.cssClass}`}
                                             sameTab={item?.sameTab}
                                           >
                                             <span

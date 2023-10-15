@@ -15,7 +15,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import useViewport from "@/app/hooks/useViewport";
-// import Skeleton from "react-loading-skeleton";
 
 export interface FeatureAlbumProps {
   albums: AlbumFieldsFragment[];
@@ -240,17 +239,15 @@ export default function FeatureAlbum({
                         }
                         className="max-w-max block no-underline album-item mx-auto relative p-1 group transition-all"
                       >
-                        {/* {isLoading 
-                        ?
-                        <Skeleton    height={400}
-                        width={400}/>
-                        } */}
                         <Image
                           src={albumItem.albumCover.url}
                           alt={(albumItem.title && albumItem.title) || ""}
                           className="mx-auto mb-2 w-full block box-shadow border-round grayscale-0 hover:grayscale group-hover:grayscale group-focus:grayscale transition-all"
                           height={400}
                           width={400}
+                          // placeholder="blur"
+                          // blurDataURL="/assets/square-placeholder.jpg"
+                          priority
                           style={{
                             maxHeight: "400px",
                             maxWidth: "400px",

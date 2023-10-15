@@ -69,7 +69,7 @@ export default function Profile({
                 width={0}
                 height={0}
                 sizes="100%"
-                className="h-[38rem] w-full object-cover object-center"
+                className="h-[38rem] w-full object-cover object-center transition-all"
               />
             </Fade>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background h-[33%]" />

@@ -9,6 +9,7 @@ import "@/app/tailwind.css";
 import ThemeColors from "@/styles/ThemeColors";
 import Profile from "@/components/Profile";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Fade } from "react-awesome-reveal";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const profilePage: ProfilePageQuery = await sdkClient.profilePage({
@@ -40,12 +41,14 @@ export default function ProfileSlug({
         navigations={navigations}
         hideNav={false}
       />
-      <Profile
-        profile={profile}
-        siteLibrary={siteLibrary}
-        contacts={contacts}
-        profiles={profiles}
-      />
+      <Fade triggerOnce>
+        <Profile
+          profile={profile}
+          siteLibrary={siteLibrary}
+          contacts={contacts}
+          profiles={profiles}
+        />
+      </Fade>
       <Footer
         siteLibrary={siteLibrary}
         navigations={navigations}
