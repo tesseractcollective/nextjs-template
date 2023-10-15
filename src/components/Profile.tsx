@@ -424,7 +424,7 @@ export default function Profile({
       {!!profiles && profile.profileType && (
         <Profiles
           profiles={filteredProfiles}
-          profileLayoutStyle="cardLink"
+          profileLayoutStyle="grid"
           profileSectionTitle={profile.profileType}
           profileType={profile.profileType}
         />
