@@ -21,6 +21,8 @@ import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import VideoBox from "@/components/VideoBox";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import VCF from "@/components/VCF";
+import SpotifyQuery from "@/components/ArtistInfo";
+import ArtistInfo from "@/components/ArtistInfo";
 
 export interface ProfileProps {
   profile: ProfileFieldsFragment;
@@ -44,7 +46,9 @@ export default function Profile({
   return (
     <>
       <Head>
-        {!!profile?.name && <title>{profile.name}</title>}
+        {!!profile?.name && (
+          <title>{`${profile.name} - ${siteLibrary.title}`}</title>
+        )}
         {!!profile.heroImage?.url && (
           <meta property="og:image" content={profile.heroImage?.url} />
         )}
@@ -56,9 +60,9 @@ export default function Profile({
         )}
       </Head>
       <div className="bg-background">
-        <div aria-hidden="true" className="relative overflow-hidden">
-          <Fade direction="up" triggerOnce>
-            {!!profile.heroImage?.url && (
+        {!!profile.heroImage?.url && (
+          <div aria-hidden="true" className="relative overflow-hidden">
+            <Fade direction="up" triggerOnce>
               <Image
                 src={profile.heroImage?.url}
                 alt=""
@@ -67,12 +71,16 @@ export default function Profile({
                 sizes="100%"
                 className="h-[38rem] w-full object-cover object-center"
               />
-            )}
-          </Fade>
-          <div className="absolute inset-0 bg-gradient-to-t from-background" />
-        </div>
+            </Fade>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background h-[33%]" />
+          </div>
+        )}
 
-        <div className="relative mx-auto -mt-12 max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+        <div
+          className={`relative mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8 ${
+            !!profile.heroImage?.url ? "-mt-12" : "mt-0"
+          }`}
+        >
           <div className="mx-auto max-w-2xl text-center lg:max-w-4xl flex flex-col">
             <Fade direction="up" cascade damping={0.25} triggerOnce>
               {profile.profileLogo?.url && (
@@ -85,7 +93,7 @@ export default function Profile({
                   className="w-full max-w-xs mx-auto"
                 />
               )}
-              <h2 className="text-3xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase">
+              <h2 className="text-3xl !font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase">
                 {profile.name}
               </h2>
             </Fade>
@@ -108,6 +116,12 @@ export default function Profile({
               avatar={profile.avatarImage?.url || undefined}
               name={profile.name || undefined}
             />
+            {!!profile.name && (
+              <ArtistInfo
+                artistId="0TnOYISbd1XYRBk9myaseg"
+                clientId="cd926e12c97646b487d5e831548f1585"
+              />
+            )}
             {profile.fullBio?.html && (
               <div className="mt-4 text-text-color body-parsed-text">
                 {parse(profile.fullBio?.html)}
@@ -296,111 +310,117 @@ export default function Profile({
           </div>
         )}
       </section>
-      <div className="bg-invert my-16">
-        <section
-          aria-labelledby="features-heading"
-          className="relative h-70vh flex items-center"
-        >
-          {profile.avatarImage?.url && (
-            <div className="aspect-h-3 aspect-w-3 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-16">
-              <Image
-                src={profile.avatarImage.url}
-                alt={profile?.name || ""}
-                width={0}
-                height={0}
-                sizes="100%"
-                className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-              />
-            </div>
-          )}
-          {!!filteredContacts && (
-            <div className="mx-auto px-4 pb-24 pt-16 sm:px-6 sm:pb-32 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:pt-32">
-              <div className="lg:col-start-2 text-center lg:text-left">
-                <h2
-                  id="contacts-heading"
-                  className="font-medium text-background mb-0"
-                >
-                  {profile.name}
-                </h2>
-                <p className="mt-0 mb-4 text-3xl font-bold tracking-tight text-background opacity-80">
-                  {siteLibrary.isSpanish ? "Contáctenos" : "Contact Details"}
-                </p>
-                <ul className="flex flex-col items-center justify-center lg:flex-row gap-y-8 gap-x-24">
-                  {filteredContacts?.map((contact) => (
-                    <li key={contact.contactName}>
-                      <div className="flex items-center gap-x-4 lg:gap-x-6 flex-col justify-center lg:justify-start text-center lg:text-left lg:flex-row">
-                        {contact?.contactAvatar?.url && (
-                          <Image
-                            className="h-14 lg:h-16 w-14 lg:w-16 rounded-full object-cover"
-                            src={contact.contactAvatar.url}
-                            alt=""
-                            width={64}
-                            height={64}
-                            sizes="100%"
-                          />
-                        )}
-                        <div>
-                          {contact.contactName && (
-                            <h3 className="text-sm lg:text-base font-bold leading-6 lg:leading-7 tracking-tight text-text-color">
-                              {contact.contactName}
-                            </h3>
-                          )}
-                          {contact.contactTitle && (
-                            <p className="text-xs lg:text-sm font-semibold leading-6 !text-primary">
-                              {contact.contactTitle}
-                            </p>
-                          )}
-                          <div className="flex flex-row items-center justify-start">
-                            <SocialMediaIcons
-                              fade={false}
-                              cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2"
-                              phoneLinkProp={contact?.contactPhone || undefined}
-                              whatsappLinkProp={
-                                contact?.contactWhatsapp || undefined
-                              }
-                              emailLinkProp={contact?.contactEmail || undefined}
-                              displayVcf={true}
-                              name={contact.contactName || undefined}
-                              avatar={contact.contactAvatar?.url || undefined}
-                              calendlyLinkProp={
-                                contact?.contactCalendly || undefined
-                              }
-                              linkedinLinkProp={
-                                contact?.contactLinkedin || undefined
-                              }
-                            />
-                          </div>
-                          {!!contact.contactAddress && (
-                            <p className="text-xs md:text-sm my-0 text-text-color opacity-80 flex flex-row items-center">
-                              <FontAwesomeIcon
-                                icon={faLocationDot as IconProp}
-                                className="fa-fw mr-2 h-4 w-4"
-                              />
-                              <span>{contact.contactAddress}</span>
-                              {contact?.contactGoogleAddressLink && (
-                                <a
-                                  href={contact.contactGoogleAddressLink}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                >
-                                  <FontAwesomeIcon
-                                    icon={faDiamondTurnRight as IconProp}
-                                    className="fa-fw ml-2 h-4 w-4"
-                                  />
-                                </a>
-                              )}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+      {!!filteredContacts && filteredContacts.length >= 1 && (
+        <div className="bg-invert my-16">
+          <section
+            aria-labelledby="features-heading"
+            className="relative h-80vh flex items-center"
+          >
+            {profile.avatarImage?.url && (
+              <div className="aspect-h-3 aspect-w-3 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-16">
+                <Image
+                  src={profile.avatarImage.url}
+                  alt={profile?.name || ""}
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                />
               </div>
-            </div>
-          )}
-        </section>
-      </div>
+            )}
+            {!!filteredContacts && (
+              <div className="mx-auto px-4 pb-24 pt-16 sm:px-6 sm:pb-32 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:pt-32">
+                <div className="lg:col-start-2 text-center lg:text-left">
+                  <h2
+                    id="contacts-heading"
+                    className="font-medium text-background mb-0"
+                  >
+                    {profile.name}
+                  </h2>
+                  <p className="mt-0 mb-4 text-3xl font-bold tracking-tight text-background opacity-80">
+                    {siteLibrary.isSpanish ? "Contáctenos" : "Contact Details"}
+                  </p>
+                  <ul className="flex flex-col items-center justify-center lg:flex-row gap-y-8 gap-x-24">
+                    {filteredContacts?.map((contact) => (
+                      <li key={contact.contactName}>
+                        <div className="flex items-center gap-x-4 lg:gap-x-6 flex-col justify-center lg:justify-start text-center lg:text-left lg:flex-row">
+                          {contact?.contactAvatar?.url && (
+                            <Image
+                              className="h-14 lg:h-16 w-14 lg:w-16 rounded-full object-cover"
+                              src={contact.contactAvatar.url}
+                              alt=""
+                              width={64}
+                              height={64}
+                              sizes="100%"
+                            />
+                          )}
+                          <div>
+                            {contact.contactName && (
+                              <h3 className="text-sm lg:text-base font-bold leading-6 lg:leading-7 tracking-tight text-text-color">
+                                {contact.contactName}
+                              </h3>
+                            )}
+                            {contact.contactTitle && (
+                              <p className="text-xs lg:text-sm font-semibold leading-6 !text-primary">
+                                {contact.contactTitle}
+                              </p>
+                            )}
+                            <div className="flex flex-row items-center justify-start">
+                              <SocialMediaIcons
+                                fade={false}
+                                cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2"
+                                phoneLinkProp={
+                                  contact?.contactPhone || undefined
+                                }
+                                whatsappLinkProp={
+                                  contact?.contactWhatsapp || undefined
+                                }
+                                emailLinkProp={
+                                  contact?.contactEmail || undefined
+                                }
+                                displayVcf={true}
+                                name={contact.contactName || undefined}
+                                avatar={contact.contactAvatar?.url || undefined}
+                                calendlyLinkProp={
+                                  contact?.contactCalendly || undefined
+                                }
+                                linkedinLinkProp={
+                                  contact?.contactLinkedin || undefined
+                                }
+                              />
+                            </div>
+                            {!!contact.contactAddress && (
+                              <p className="text-xs md:text-sm my-0 text-text-color opacity-80 flex flex-row items-center">
+                                <FontAwesomeIcon
+                                  icon={faLocationDot as IconProp}
+                                  className="fa-fw mr-2 h-4 w-4"
+                                />
+                                <span>{contact.contactAddress}</span>
+                                {contact?.contactGoogleAddressLink && (
+                                  <a
+                                    href={contact.contactGoogleAddressLink}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    <FontAwesomeIcon
+                                      icon={faDiamondTurnRight as IconProp}
+                                      className="fa-fw ml-2 h-4 w-4"
+                                    />
+                                  </a>
+                                )}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </section>
+        </div>
+      )}
       {!!profiles && profile.profileType && (
         <Profiles
           profiles={filteredProfiles}

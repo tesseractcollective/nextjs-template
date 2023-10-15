@@ -773,11 +773,21 @@ body iframe {
 }
 
 .hero-media-slider  {
-  &.no-fade {
+  &.no-fade, &.fade-none {
       .absolute.bg-gradient-to-t.section-fade-invert {
         background-image: unset !important;
         position: unset !important;
         inset: unset !important;
+      }   
+  }
+  &.fade-dark {
+      .absolute.bg-gradient-to-t.section-fade-invert {
+        --tw-gradient-from: #00000070 var(--tw-gradient-from-position);
+        --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        background-image: linear-gradient(to top, var(--tw-gradient-stops));
+        position: absolute !important;
+        inset: 0 0 0 0 !important;
       }   
   }
 }

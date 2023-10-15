@@ -429,6 +429,28 @@ a.hover-chevron {
 .bg-tan {
   margin-top: -15px;
   background-color: #f1decf;
+  padding: 1em 0.5em;
+  @media screen and (min-width: 990px) {
+    padding: 0em 0em;
+  }
+}
+
+.frontera-spinner {
+  z-index: 1;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.comienzo-wrapper-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  @media screen and (min-width: 990px) {
+    align-items: start;
+    justify-content: center;
+  }
 }
 
 .bg-motion {
