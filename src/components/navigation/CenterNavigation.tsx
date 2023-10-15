@@ -106,8 +106,8 @@ export default function CenterNavigation({
                           label: "Visit Home",
                         });
                       }}
-                      className="cursor-pointer"
-                      id={`nav-logo-mobile-panel-${title}`}
+                      className="cursor-pointer transition-all"
+                      id={`nav-logo-mobile-panel-${title?.replace(" ", "-")}`}
                     >
                       {navigation?.navigationLogo ? (
                         <>
@@ -130,11 +130,15 @@ export default function CenterNavigation({
                     </Link>
                     <button
                       type="button"
-                      title="Close menu"
+                      title={
+                        siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"
+                      }
                       className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto group"
                       onClick={() => setOpen(false)}
                     >
-                      <span className="sr-only">Close menu</span>
+                      <span className="sr-only">
+                        {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
+                      </span>
                       <XMarkIcon
                         className="h-6 w-6 text-text-color transition-all group-hover:rotate-90 group-hover:text-primary"
                         aria-hidden="true"
@@ -305,7 +309,7 @@ export default function CenterNavigation({
                       aria-hidden="true"
                     />
                     <span className="text-text-color ml-2 group-hover:text-primary transition-all">
-                      Close menu
+                      {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
                     </span>
                   </button>
                 </Dialog.Panel>
@@ -321,7 +325,7 @@ export default function CenterNavigation({
                 <div className="flex items-center justify-start md:justify-center flex-row relative">
                   <Link
                     href="/"
-                    className="justify-self-center"
+                    className="justify-self-center transition-all cursor-pointer"
                     id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
                     onClick={() => {
                       ReactGA.event({
@@ -335,7 +339,7 @@ export default function CenterNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className="h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                          className="h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}
@@ -375,7 +379,7 @@ export default function CenterNavigation({
               </div>
               <SocialMediaIcons
                 siteLibrary={siteLibrary}
-                cssClass="-mt-2 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-0 h-8 opacity-40"
+                cssClass="mt-2 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-0 h-8 opacity-40"
               />
             </div>
           </nav>
