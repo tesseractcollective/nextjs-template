@@ -868,3 +868,61 @@ h4, h5, h6  {color: var(--text);}
   content: "";
   flex: auto;
 }
+
+.no-shadow-swiper .swiper-slide-shadow.swiper-slide-shadow-cards {
+  background: none !important;
+}
+
+// TEXT STYLES
+.text-10xl {
+  font-size: 8rem;
+  line-height: 1;
+}
+
+.text-12xl {
+  font-size: 10rem;
+  line-height: 1;
+}
+
+.link--leda {
+  overflow: hidden;
+  line-height: 2;
+  font-family: orpheuspro, serif;
+  font-weight: 700;
+}
+
+.link--leda::before {
+  height: 2px;
+  top: calc(100% - 5px);
+  transform-origin: 100% 50%;
+  transform: scale3d(0, 1, 1);
+  transition: transform 0.3s cubic-bezier(0.5, 0.5, 0.3, 1);
+}
+
+.link--leda:hover::before {
+  transform-origin: 0% 50%;
+  transform: scale3d(1, 1, 1);
+}
+
+.link--leda::after {
+  content: attr(data-text);
+  height: 100%;
+  top: 0;
+  background: none;
+  transform-origin: 100% 50%;
+  transform: translate3d(150%, 0, 0);
+  transition: transform 0.3s cubic-bezier(0.5, 0.5, 0.3, 1);
+}
+
+.link--leda:hover::after {
+  transform: translate3d(0, 0, 0);
+}
+
+.link--leda span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.5, 0.5, 0.3, 1);
+}
+
+.link--leda:hover span {
+  transform: translate3d(-150%, 0, 0);
+}

@@ -12,9 +12,6 @@ import {
   faDiamondTurnRight,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import { Fade } from "react-awesome-reveal";
 import Profiles from "@/components/Profiles";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";

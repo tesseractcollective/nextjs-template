@@ -717,8 +717,10 @@ export enum AlbumOrderByInput {
 
 export enum AlbumQueryDisplay {
   All = 'all',
+  Compact = 'compact',
   Featured = 'featured',
-  Slider = 'slider'
+  Slider = 'slider',
+  Stacked = 'stacked'
 }
 
 export type AlbumUpdateInput = {
@@ -2684,8 +2686,7 @@ export enum BlogOrderByInput {
 
 export enum BlogTags {
   Blog = 'blog',
-  Music = 'music',
-  News = 'news'
+  Music = 'music'
 }
 
 export type BlogUpdateInput = {
@@ -4551,10 +4552,7 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Admin = 'admin',
-  BransonBoxOffice = 'bransonBoxOffice',
-  DuttonOffice = 'duttonOffice',
-  MesaBoxOffice = 'mesaBoxOffice'
+  Admin = 'admin'
 }
 
 export type ContactUpdateInput = {
@@ -6931,15 +6929,7 @@ export enum EventOrderByInput {
 }
 
 export enum EventShowType {
-  DuttonsA0 = 'DuttonsA0',
-  TheDutto0 = 'TheDutto0',
-  TheDutton0 = 'TheDutton0',
-  WhereJes0 = 'WhereJes0',
-  All = 'all',
-  Arizona = 'arizona',
-  Branson = 'branson',
-  Jesus = 'jesus',
-  Mesa = 'mesa'
+  Default = 'default'
 }
 
 export type EventUpdateInput = {
@@ -13705,7 +13695,8 @@ export enum NavigationLayout {
   Mega = 'mega',
   Minimal = 'minimal',
   Space = 'space',
-  Start = 'start'
+  Start = 'start',
+  Vertical = 'vertical'
 }
 
 /** Identifies documents */
@@ -22208,7 +22199,6 @@ export enum TestimonialOrderByInput {
 }
 
 export enum TestimonialType {
-  Online = 'online',
   Review = 'review',
   Sponsor = 'sponsor'
 }

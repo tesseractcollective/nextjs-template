@@ -15,10 +15,6 @@ import Head from "next/head";
 import LinkItem from "@/components/LinkItem";
 import Blogs from "@/components/Blogs";
 import ReactGA from "react-ga4";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/thumbs";
 import SocialMediaIcons from "./SocialMediaIcons";
 import {
   faDiamondTurnRight,

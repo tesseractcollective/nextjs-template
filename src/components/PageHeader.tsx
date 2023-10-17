@@ -24,7 +24,7 @@ export default function PageHeader({
   return (
     <div>
       {pageWidthStyle === "Full" && (
-        <section className={`relative "w-full py-4 h-[30rem] ${cssClass}`}>
+        <section className={`relative "w-full pb-4 h-[30rem] ${cssClass}`}>
           <div aria-hidden="true" className="relative overflow-hidden">
             {!!pageHeaderImageProp && (
               <Fade direction="up" triggerOnce>

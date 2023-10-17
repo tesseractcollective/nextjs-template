@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import useViewport from "@/app/hooks/useViewport";
+import { EffectCards } from "swiper/modules";
 
 export interface FeatureAlbumProps {
   albums: AlbumFieldsFragment[];
@@ -27,7 +28,6 @@ export default function FeatureAlbum({
   siteLibrary,
   albumDisplayType,
 }: FeatureAlbumProps) {
-  const [isLoading, setIsLoading] = useState(true);
   const { isMobile } = useViewport();
   const swiperRef = useRef<SwiperType>();
   if (!siteLibrary) return <></>;
@@ -259,6 +259,62 @@ export default function FeatureAlbum({
                         <p className="text-sm font-semibold mt-0 mb-4 text-center uppercase group-hover:text-primary group-focus:text-primary transition-all">
                           {albumItem.title}
                         </p>
+                      </Link>
+                    )}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </section>
+        </section>
+      )}
+      {albumDisplayType === "stacked" && (
+        <section className="px-2 mx-0">
+          <section className="container py-5 feature-album-slider-wrapper mx-auto relative z-5">
+            <div className="flex flex-row flex-wrap items-start justify-center my-16">
+              <Swiper
+                className="!pb-10 px-4 md:max-w-8xl no-shadow-swiper"
+                effect={"cards"}
+                grabCursor={true}
+                modules={[EffectCards]}
+              >
+                {albums.map((albumItem) => (
+                  <SwiperSlide
+                    key={albumItem.albumSlug}
+                    className="w-28 sm:w-32 md:w-64"
+                  >
+                    {!!albumItem.albumSlug && albumItem.albumCover?.url && (
+                      <Link
+                        href={`/music/${albumItem.albumSlug}`}
+                        onClick={() =>
+                          ReactGA.event({
+                            category: "Link",
+                            action: `Visit ${albumItem.title}`,
+                            label: albumItem.title || "",
+                          })
+                        }
+                        className="max-w-max block no-underline album-item mx-auto relative p-1 group transition-all"
+                      >
+                        <Image
+                          src={albumItem.albumCover.url}
+                          alt={(albumItem.title && albumItem.title) || ""}
+                          className="mx-auto mb-2 w-full block box-shadow-small border-round grayscale-0 hover:grayscale group-hover:grayscale group-focus:grayscale transition-all"
+                          height={400}
+                          width={400}
+                          // placeholder="blur"
+                          // blurDataURL="/assets/square-placeholder.jpg"
+                          priority
+                          style={{
+                            maxHeight: "400px",
+                            maxWidth: "400px",
+                            objectFit: "cover",
+                            aspectRatio: 1,
+                          }}
+                        />
+
+                        {/* <p className="text-sm font-semibold mt-0 mb-4 text-center uppercase group-hover:text-primary group-focus:text-primary transition-all">
+                          {albumItem.title}
+                        </p> */}
                       </Link>
                     )}
                   </SwiperSlide>

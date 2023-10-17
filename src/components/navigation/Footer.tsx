@@ -107,7 +107,6 @@ function Footer({
                             <LinkItem
                               key={`footer-link-item-${index++}`}
                               link={linkItem?.link}
-                              label={linkItem?.label}
                               cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
                             >
@@ -122,6 +121,9 @@ function Footer({
                                     sizes="100%"
                                     style={{ width: "100%" }}
                                   />
+                                )}
+                                {!!linkItem?.label && (
+                                  <>{parse(linkItem?.label)}</>
                                 )}
                               </>
                             </LinkItem>
@@ -217,7 +219,7 @@ function Footer({
         <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
           <SocialMediaIcons
             siteLibrary={siteLibrary}
-            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-4"
+            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap md:gap-x-2"
           />
           <p className="text-xs text-text-color uppercase text-center mb-4 opacity-70">
             {`© ${new Date().getFullYear()} ${title || ""} ${

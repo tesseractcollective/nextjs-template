@@ -21,10 +21,11 @@ import ContactsSection from "@/components/ContactsSection";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 import { Event } from "@/components/Calendar/calendarHelpers";
 import Calendar from "@/components/Calendar/Calendar";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/thumbs";
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
+// import "swiper/css/thumbs";
+// import "swiper/css/effect-cards";
 
 type ContentTagsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["contentTags"];

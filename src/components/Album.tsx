@@ -51,7 +51,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
           <link rel="shortcut icon" href={siteLibrary.favicon.url} />
         )}
       </Head>
-      <div className="bg-dark">
+      <div className="bg-dark mt-16">
         <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
           <Link
             href="/music"
@@ -71,7 +71,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
             <span>{isSpanish ? "Toda La Música" : "All Music"}</span>
           </Link>
         </div>
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-12 lg:grid lg:max-w-8xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-12 lg:grid lg:max-w-8xl lg:grid-cols-2 lg:gap-x-8 lg:px-8 relative">
           {/* Product details */}
           <div className="lg:max-w-lg lg:self-end">
             <nav aria-label="Breadcrumb">
@@ -94,7 +94,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
           </div>
 
           {!!albumCover?.url && title && (
-            <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
+            <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-start relative lg:sticky right-0 top-0">
               <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
                 <Image
                   src={albumCover?.url}
@@ -114,17 +114,17 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
 
           <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
             {!!albumBuyLink && (
-              <div className="mt-10">
+              <div className="my-10">
                 <a
                   href={albumBuyLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-text-color hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-gray-50 transition"
+                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base text-text-color hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-gray-50 transition-all font-bold uppercase"
                   onClick={() =>
                     ReactGA.event({
                       category: "Link",
-                      action: albumBuyLink || "",
-                      label: albumBuyLink || "",
+                      action: albumBuyLink,
+                      label: albumBuyLink,
                     })
                   }
                 >
@@ -132,21 +132,20 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
                 </a>
               </div>
             )}
+            <section
+              aria-labelledby="information-heading"
+              className="mx-auto max-w-5xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8"
+            >
+              {!!description?.html && (
+                <div className="mt-4 space-y-6">
+                  <div className="text-base text-text-color body-parsed-text opacity-90">
+                    {parse(description.html)}
+                  </div>
+                </div>
+              )}
+            </section>
           </div>
         </div>
-
-        <section
-          aria-labelledby="information-heading"
-          className="mt-4 text-center mx-auto max-w-5xl"
-        >
-          {!!description?.html && (
-            <div className="mt-4 space-y-6">
-              <div className="text-base text-text-color body-parsed-text opacity-90">
-                {parse(description.html)}
-              </div>
-            </div>
-          )}
-        </section>
 
         {(iFramePlayer || videoBox) && (
           <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">

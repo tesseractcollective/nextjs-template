@@ -6,6 +6,7 @@ interface LinkItemProps {
   cssClass?: string | null;
   sameTab?: boolean | null;
   children?: string | JSX.Element;
+  onClick?: () => void;
 }
 
 export default function LinkItem({
@@ -14,6 +15,7 @@ export default function LinkItem({
   cssClass,
   sameTab,
   children,
+  onClick,
 }: LinkItemProps) {
   if (!link) return <></>;
   return (
@@ -26,13 +28,14 @@ export default function LinkItem({
           key={label}
           href={link}
           className={cssClass || ""}
-          onClick={() =>
+          onClick={() => {
             ReactGA.event({
               category: "Link",
               action: link || "",
               label: label || "",
-            })
-          }
+            });
+            if (onClick) onClick();
+          }}
         >
           {children}
           {!!label && <>{label}</>}
@@ -42,13 +45,14 @@ export default function LinkItem({
           key={label}
           href={link}
           className={cssClass || ""}
-          onClick={() =>
+          onClick={() => {
             ReactGA.event({
               category: "Link",
               action: link || "",
               label: label || "",
-            })
-          }
+            });
+            if (onClick) onClick();
+          }}
         >
           {children}
           {!!label && <>{label}</>}
