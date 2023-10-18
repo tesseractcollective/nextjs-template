@@ -80,7 +80,7 @@ const FormTest = () => {
       <div className="hidden h-60 opacity-0 bg-white xl:w-12/12 max-w-3xl italic  mt-32 text-9xl -mb-24  -bottom-72 gap-y-32"></div>
       <div className="hidden h-256 opacity-0 bg-white max-w-2xl italic -mt-72 text-8xl  -bottom-52 gap-y-8 "></div>
       <div className="hidden col-span-2 h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-52 text-8xl rounded-r-lg -ml-24 -bottom-60 flex-col-reverse gap-y-16 max-w-6xl whitespace-nowrap"></div>
-      <div className="hidden col-span-2 h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-52 text-8xl rounded-r-lg -ml-24 top-0 py-12 whitespace-nowrap -bottom-60 flex-col-reverse max-w-sm gap-y-16 "></div>
+      <div className="hidden col-span-2 h-256 opacity-0 bg-white xl:w-12/12 italic  -mt-52 text-8xl rounded-r-lg -ml-24 top-0 py-12 whitespace-nowrap -bottom-60 flex-col-reverse max-w-sm gap-y-16 z-0"></div>
     </>
   );
 };

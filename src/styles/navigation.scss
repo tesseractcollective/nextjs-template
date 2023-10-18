@@ -1,0 +1,15 @@
+.vertical-nav-desktop {
+  padding: 5px 15px;
+  transition: all 200ms ease;
+  writing-mode: vertical-rl;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  height: calc(100vh - 80px);
+  margin: 80px 16px 0 0;
+  a span {
+    mix-blend-mode: multiply;
+  }
+  // outline: 1px solid red;
+
+}

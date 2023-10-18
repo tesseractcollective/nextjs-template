@@ -60,8 +60,8 @@ export default function CenterNavigation({
     <>
       <div
         className={`fixed top-0 z-[999] left-0 right-0 transition-all ${
-          small ? "znav-shadow znav-shadow-scrolled ztop-0" : "zbg-[#00000000]"
-        } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
+          navigationWrapperCssClass ? navigationWrapperCssClass : ""
+        }`}
         id="navigation"
       >
         {/* Mobile menu */}
@@ -223,44 +223,15 @@ export default function CenterNavigation({
                           {!hasItems && (
                             <div className="space-y-6 border-y border-[#2c2c2c31] px-4 py-3">
                               <div className="flow-root">
-                                {mainNavigationItem.link?.includes("http") ? (
-                                  <a
-                                    target={
-                                      mainNavigationItem?.sameTab
-                                        ? "_self"
-                                        : "_blank"
-                                    }
-                                    key={mainNavigationItem.label}
-                                    href={mainNavigationItem.link || "/"}
-                                    className="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto"
-                                    onClick={() => {
-                                      setOpen(false);
-                                      ReactGA.event({
-                                        category: "Link",
-                                        action: mainNavigationItem.link || "",
-                                        label: mainNavigationItem.link || "",
-                                      });
-                                    }}
-                                  >
-                                    {mainNavigationItem.label}
-                                  </a>
-                                ) : (
-                                  <Link
-                                    key={mainNavigationItem.label}
-                                    href={mainNavigationItem.link || "/"}
-                                    className="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto text-xl w-[90%] hover:text-primary transition-all"
-                                    onClick={() => {
-                                      setOpen(false);
-                                      ReactGA.event({
-                                        category: "Link",
-                                        action: "Visit Home",
-                                        label: "Visit Home",
-                                      });
-                                    }}
-                                  >
-                                    {mainNavigationItem.label}
-                                  </Link>
-                                )}
+                                <LinkItem
+                                  key={mainNavigationItem.label}
+                                  link={mainNavigationItem.link || "/"}
+                                  sameTab={mainNavigationItem?.sameTab}
+                                  cssClass="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto text-xl w-[90%] hover:text-primary transition-all"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  <span>{mainNavigationItem.label}</span>
+                                </LinkItem>
                               </div>
                             </div>
                           )}
@@ -383,83 +354,13 @@ export default function CenterNavigation({
           </nav>
         </header>
         {/* DIV */}
-        <div className="absolute hidden md:flex flex-row -right-14 rotate-90 top-[11em] gap-x-4">
+        <div className="hidden md:flex md:fixed vertical-nav-desktop">
           {!!items &&
             items.length >= 1 &&
             items.map((mainNavigationItem) => {
               const hasItems = mainNavigationItem.items.length >= 1;
               return (
                 <div key={mainNavigationItem.label} className="">
-                  {/* {hasItems && (
-                      <Tab.Group as="div" className="mt-2">
-                        <div className="border-b border-primary">
-                          <Tab.List className="-mb-px flex space-x-8 px-4">
-                            <Tab
-                              key={mainNavigationItem.label}
-                              className={({ selected }) =>
-                                classNames(
-                                  selected
-                                    ? "border-primary text-primary"
-                                    : "border-transparent text-text-color",
-                                  "flex-1 whitespace-nowrap border-dark hover:border-white border-b-2 px-1 py-4 text-base font-medium"
-                                )
-                              }
-                            >
-                              {mainNavigationItem.label}
-                            </Tab>
-                          </Tab.List>
-                        </div>
-                        <Tab.Panels as={Fragment}>
-                          <Tab.Panel
-                            key={mainNavigationItem.label}
-                            className="space-y-12 px-4 py-6"
-                          >
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-10">
-                              {mainNavigationItem.items.map((item) => (
-                                <div
-                                  key={item.label}
-                                  className="group relative"
-                                >
-                                  <div className="overflow-hidden rounded-md bg-gray-100 group-hover:opacity-80 transition opacity-100">
-                                    {!!item?.image?.url && (
-                                      <Image
-                                        src={item.image.url}
-                                        alt={item.label || ""}
-                                        width={140}
-                                        height={140}
-                                        className="object-cover"
-                                        sizes="100%"
-                                        style={{
-                                          maxHeight: "400px",
-                                          maxWidth: "400px",
-                                          objectFit: "cover",
-                                          aspectRatio: 1,
-                                        }}
-                                      />
-                                    )}
-                                  </div>
-                                  {!!item?.link && (
-                                    <LinkItem
-                                      key={item?.link}
-                                      link={item?.link}
-                                      label={item?.label}
-                                      cssClass={`mt-2 block text-xs md:text-sm font-medium text-text-color text-center group-hover:!text-primary !transition-all !cursor-pointer ${item?.cssClass}`}
-                                      sameTab={item?.sameTab}
-                                    >
-                                      <span
-                                        className="absolute inset-0 z-10"
-                                        aria-hidden="true"
-                                      />
-                                    </LinkItem>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          </Tab.Panel>
-                        </Tab.Panels>
-                      </Tab.Group>
-                    )} */}
-
                   {!hasItems && (
                     <div className="">
                       <LinkItem

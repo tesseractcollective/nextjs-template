@@ -94,7 +94,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
           </div>
 
           {!!albumCover?.url && title && (
-            <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-start relative lg:sticky right-0 top-0">
+            <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-start relative lg:sticky right-0 top-2">
               <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
                 <Image
                   src={albumCover?.url}

@@ -270,19 +270,16 @@ export default function FeatureAlbum({
       )}
       {albumDisplayType === "stacked" && (
         <section className="px-2 mx-0">
-          <section className="container py-5 feature-album-slider-wrapper mx-auto relative z-5">
-            <div className="flex flex-row flex-wrap items-start justify-center my-16">
+          <section className="container py-5 feature-album-slider-wrapper mx-auto relative z-20">
+            <div className="my-16">
               <Swiper
-                className="!pb-10 px-4 md:max-w-8xl no-shadow-swiper"
+                className="!pb-10 px-4 md:max-w-3xl no-shadow-swiper"
                 effect={"cards"}
                 grabCursor={true}
                 modules={[EffectCards]}
               >
                 {albums.map((albumItem) => (
-                  <SwiperSlide
-                    key={albumItem.albumSlug}
-                    className="w-28 sm:w-32 md:w-64"
-                  >
+                  <SwiperSlide key={albumItem.albumSlug} className="">
                     {!!albumItem.albumSlug && albumItem.albumCover?.url && (
                       <Link
                         href={`/music/${albumItem.albumSlug}`}

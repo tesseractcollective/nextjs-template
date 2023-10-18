@@ -5,6 +5,7 @@
 @import "./font-themes.scss";
 @import "./text-effects.scss";
 @import "./drumpad.scss";
+@import "./navigation.scss";
 
 body {
   background: var(--dark);
@@ -853,7 +854,15 @@ h4, h5, h6  {color: var(--text);}
 }
 
 .element-image {
-  -khtml-user-select: none;
+  -html-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.select-none {
+  -html-user-select: none;
   -o-user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -873,6 +882,10 @@ h4, h5, h6  {color: var(--text);}
   background: none !important;
 }
 
+.-z-1 {
+  z-index: -1;
+}
+
 // TEXT STYLES
 .text-10xl {
   font-size: 8rem;
@@ -882,6 +895,15 @@ h4, h5, h6  {color: var(--text);}
 .text-12xl {
   font-size: 10rem;
   line-height: 1;
+}
+
+.text-14xl {
+  line-height: 1;
+  font-size: 8rem;
+  transition: font-size 200ms ease;
+  @media only screen and (min-width: 960px)  {
+    font-size: 12rem;
+  }
 }
 
 .link--leda {
