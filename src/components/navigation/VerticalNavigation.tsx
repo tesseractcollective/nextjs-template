@@ -92,7 +92,7 @@ export default function CenterNavigation({
                 leaveFrom="-translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="relative flex w-full max-w-md flex-col overflow-y-auto pb-12 shadow-xl border-l-primary border-l bg-bg-secondary">
+                <Dialog.Panel className="relative flex w-full max-w-[80vw] md:max-w-md flex-col overflow-y-auto pb-12 shadow-xl border-l-primary border-l bg-bg-secondary transition-all">
                   <div className="flex px-4 pb-2 pt-5">
                     <Link
                       href="/"
@@ -242,7 +242,7 @@ export default function CenterNavigation({
                   <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color"
+                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap"
                     />
                     <div className="text-center">
                       {!!contactName && (

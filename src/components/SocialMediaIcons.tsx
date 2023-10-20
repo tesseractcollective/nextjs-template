@@ -119,7 +119,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faInstagram as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Instagram</span>
               </a>
@@ -141,7 +141,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faSpotify as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Spotify</span>
               </a>
@@ -163,7 +163,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faFacebook as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Facebook</span>
               </a>
@@ -185,7 +185,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faTwitter as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Twitter</span>
               </a>
@@ -207,7 +207,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faYoutube as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Youtube</span>
               </a>
@@ -229,7 +229,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faTiktok as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">TikTok</span>
               </a>
@@ -251,7 +251,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faThreads as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Threads</span>
               </a>
@@ -280,7 +280,7 @@ export default function SocialMediaIcons({
                   x="0px"
                   y="0px"
                   viewBox="0 0 512 512"
-                  className="svg-inline--fa fa-music fa-fw h-4 w-4"
+                  className="svg-inline--fa fa-music fa-fw h-5 w-5"
                   xmlSpace="preserve"
                 >
                   <g>
@@ -314,7 +314,7 @@ export default function SocialMediaIcons({
                   aria-hidden="true"
                   width="32"
                   height="32"
-                  className="svg-inline--fa fa-music fa-fw h-4 w-4"
+                  className="svg-inline--fa fa-music fa-fw h-5 w-5"
                   viewBox="0 0 32 32"
                 >
                   <path
@@ -343,7 +343,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faSoundcloud as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                   aria-hidden="true"
                 />
                 <span className="sr-only">Soundcloud</span>
@@ -366,7 +366,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faPhone as IconProp}
-                  className="fa-fw mx-auto h-4 w-4"
+                  className="fa-fw mx-auto h-5 w-5"
                 />
                 <span className="sr-only">Phone Number</span>
               </a>
@@ -394,7 +394,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faWhatsapp as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Whatsapp</span>
               </a>
@@ -416,7 +416,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faEnvelope as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Email</span>
               </a>
@@ -438,7 +438,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faLinkedin as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Linkedin</span>
               </a>
@@ -460,7 +460,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faGithub as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">GitHub</span>
               </a>
@@ -482,7 +482,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faCalendar as IconProp}
-                  className="fa-fw h-4 w-4"
+                  className="fa-fw h-5 w-5"
                 />
                 <span className="sr-only">Calendly</span>
               </a>

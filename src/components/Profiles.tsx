@@ -524,7 +524,7 @@ export default function Profiles({
                       <div className="profile-overlay p-5 absolute inset-0">
                         <div className="absolute top-5 left-5 z-[2]">
                           <SocialMediaIcons
-                            cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start text-text-color gap-x-2"
+                            cssClass="hidden sm:flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start text-primary gap-x-2 flex-wrap text-shadow"
                             instagramLinkProp={
                               profile?.instagramLink || undefined
                             }
@@ -559,12 +559,12 @@ export default function Profiles({
                               profile.profileSlug
                             }`}
                             tabIndex={0}
-                            className="absolute bottom-5 left-5 my-0 py-0 flex flex-row items-center justify-center text-left mx-auto text-text-color hover:text-secondary text-lg md:text-xl lg:text-2xl font-bold transition-all group z-[2] overflow-hidden focus:text-secondary"
+                            className="absolute bottom-3 md:bottom-5 left-3 md:left-5 my-0 py-0 flex flex-row items-center justify-center text-left mx-auto text-primary hover:text-secondary text-base sm:text-lg md:text-xl lg:text-2xl font-bold transition-all group z-[2] overflow-hidden focus:text-secondary text-shadow"
                           >
                             <span>{profile.name}</span>
                             <FontAwesomeIcon
                               icon={faArrowRight as IconProp}
-                              className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:w-4 group-hover:opacity-100 -ml-2 group-hover:ml-2 transition-all group-focus:w-4 group-focus:opacity-100 group-focus:h-4 group-focus:ml-2"
+                              className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:sm:w-4 group-hover:sm:opacity-100 -ml-2 group-hover:sm:ml-2 transition-all group-focus:sm:w-4 group-focus:sm:opacity-100 group-focus:sm:h-4 group-focus:sm:ml-2"
                             />
                           </Link>
                         )}

@@ -899,8 +899,11 @@ h4, h5, h6  {color: var(--text);}
 
 .text-14xl {
   line-height: 1;
-  font-size: 8rem;
+  font-size: 6rem;
   transition: font-size 200ms ease;
+  @media only screen and (min-width: 540px)  {
+    font-size: 8rem;
+  }
   @media only screen and (min-width: 960px)  {
     font-size: 12rem;
   }

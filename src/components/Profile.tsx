@@ -17,9 +17,9 @@ import Profiles from "@/components/Profiles";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import VideoBox from "@/components/VideoBox";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
-import VCF from "@/components/VCF";
-import SpotifyQuery from "@/components/ArtistInfo";
-import ArtistInfo from "@/components/ArtistInfo";
+// import VCF from "@/components/VCF";
+// import SpotifyQuery from "@/components/ArtistInfo";
+// import ArtistInfo from "@/components/ArtistInfo";
 
 export interface ProfileProps {
   profile: ProfileFieldsFragment;
@@ -95,7 +95,7 @@ export default function Profile({
               </h2>
             </Fade>
             <SocialMediaIcons
-              cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center"
+              cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4"
               instagramLinkProp={profile?.instagramLink || undefined}
               spotifyLinkProp={profile?.spotifyLink || undefined}
               facebookLinkProp={profile?.facebookLink || undefined}
@@ -113,14 +113,14 @@ export default function Profile({
               avatar={profile.avatarImage?.url || undefined}
               name={profile.name || undefined}
             />
-            {!!profile.name && (
+            {/* {!!profile.name && (
               <ArtistInfo
                 artistId="0TnOYISbd1XYRBk9myaseg"
                 clientId="cd926e12c97646b487d5e831548f1585"
               />
-            )}
+            )} */}
             {profile.fullBio?.html && (
-              <div className="mt-4 text-text-color body-parsed-text">
+              <div className="mt-4 text-text-color body-parsed-text text-left sm:text-center">
                 {parse(profile.fullBio?.html)}
               </div>
             )}

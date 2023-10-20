@@ -125,7 +125,7 @@ export default function ContactFormSection({
                             id="Name"
                             name="Name"
                             placeholder={isSpanish ? "Nombre" : "Name"}
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-text-color ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
                           />
                         </div>
                         <div className="relative mb-2">
@@ -167,7 +167,7 @@ export default function ContactFormSection({
                           <Field
                             id="Message"
                             name="Message"
-                            className="block w-full rounded-md border-0 pt-5 pr-10 text-text-color ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6"
+                            className="block w-full rounded-md border-0 pt-5 pr-10 text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6"
                             placeholder={isSpanish ? "Mensaje" : "Message"}
                             component="textarea"
                             rows="4"
