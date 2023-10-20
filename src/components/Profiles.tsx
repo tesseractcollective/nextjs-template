@@ -612,7 +612,7 @@ export default function Profiles({
                         <Image
                           src={profile.avatarImage?.url}
                           alt=""
-                          className="profile-card-image object-center mb-2 transition max-w-xs w-full transition-rounded"
+                          className="profile-card-image object-center mb-2 transition max-w-xs w-full transition-rounded grayscale-0 group-hover:grayscale"
                           width={0}
                           height={0}
                           sizes="100%"
@@ -620,12 +620,8 @@ export default function Profiles({
                         <div className="record-border"></div>
                       </div>
                     )}
-                    <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-secondary">
+                    <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-primary uppercase font-bold opacity-0 group-hover:opacity-100 absolute inset-0 z-[2] text-base md:text-lg lg:text-xl">
                       <span>{profile.name}</span>
-                      <FontAwesomeIcon
-                        icon={faArrowRight as IconProp}
-                        className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:w-4 group-hover:opacity-100"
-                      />
                     </p>
                   </Link>
                 </Fade>

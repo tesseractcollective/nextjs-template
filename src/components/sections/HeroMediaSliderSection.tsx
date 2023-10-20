@@ -27,7 +27,6 @@ export default function HeroMediaSliderSection({
   const settings = {
     dots: true,
     infinite: true,
-    speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: heroMediaSliderData.length === 1 ? false : true,
@@ -53,6 +52,12 @@ export default function HeroMediaSliderSection({
                 }`}
               >
                 <div className="video-overlay-content headlinePrimary dark-section text-text-color">
+                  {!!heroMediaSliderItem?.displaySocialMedia && (
+                    <SocialMediaIcons
+                      siteLibrary={siteLibrary}
+                      cssClass="absolute z-[80] bottom-10 left-0 right-0 mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center gap-x-2 !text-secondary"
+                    />
+                  )}
                   <div
                     className={`p-4 text-${
                       heroMediaSliderItem?.textContent?.contentAlign &&
@@ -149,14 +154,6 @@ export default function HeroMediaSliderSection({
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-dark z-[1] section-fade-invert" />
-                {!!heroMediaSliderItem?.displaySocialMedia && (
-                  <div className="tagline-wrapper">
-                    <SocialMediaIcons
-                      siteLibrary={siteLibrary}
-                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center gap-x-2"
-                    />
-                  </div>
-                )}
                 {!!heroMediaSliderItem?.sliderMediaBackground && (
                   <div className="main">
                     <Fade direction="up">

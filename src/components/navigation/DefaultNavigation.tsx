@@ -444,12 +444,12 @@ export default function DefaultNavigation({
                                             leaveFrom="opacity-100"
                                             leaveTo="opacity-0"
                                           >
-                                            <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl overflow-scroll">
+                                            <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
                                               {({ close }) => (
                                                 <>
-                                                  <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md">
-                                                    <div className="mx-auto max-w-8xl px-8">
-                                                      <div className="zgrid zgrid-cols-3 zgap-y-10 zpy-8 flex flex-row items-center justify-start flex-wrap gap-4 py-8">
+                                                  <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md max-w-8xl">
+                                                    <div className="mx-auto px-8 w-full h-full overflow-scroll max-h-[80vh]">
+                                                      <div className="flex flex-row items-center justify-start flex-wrap gap-4 py-8">
                                                         {mainNavigationItem.items.map(
                                                           (item) => (
                                                             <div
@@ -631,17 +631,17 @@ export default function DefaultNavigation({
                   </Link>
 
                   {!!primaryItems && primaryItems.length >= 1 && (
-                    <div className="flex flex-1 items-center justify-end max-w-max">
+                    <div className="flex flex-1 items-center justify-end max-w-max py">
                       {primaryItems.map((mainNavigationItem) => (
                         <LinkItem
                           key={mainNavigationItem?.link}
                           link={mainNavigationItem?.link}
                           label={mainNavigationItem?.label}
-                          cssClass={`flex items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 rounded transition-all ${
+                          cssClass={`flex items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 rounded transition-all uppercase ${
                             mainNavigationItem?.cssClass
                           } ${
                             small
-                              ? "text-xs md:text-sm py-0 md:py-1"
+                              ? "text-xs md:text-sm py-[0.15rem] md:py-1"
                               : "text-xs sm:text-sm md:text-base py-1 md:py-2"
                           }`}
                           sameTab={mainNavigationItem?.sameTab}

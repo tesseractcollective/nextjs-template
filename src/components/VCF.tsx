@@ -117,13 +117,13 @@ const VCF: FC<Props> = ({
           link.click();
           document.body.removeChild(link);
         }}
-        className="max-w-max text-center text-link flex mx-auto border-none no-underline"
+        className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
         type="button"
         title="Download Contact Vcard"
       >
         <FontAwesomeIcon
           icon={faAddressCard as IconProp}
-          className="fa-fw mr-2 h-4 w-4"
+          className="fa-fw h-5 w-5"
         />
         <span className="sr-only">Download Contact Vcard</span>
       </button>

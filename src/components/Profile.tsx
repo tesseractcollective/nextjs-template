@@ -95,7 +95,7 @@ export default function Profile({
               </h2>
             </Fade>
             <SocialMediaIcons
-              cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4"
+              cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4 text-text-color"
               instagramLinkProp={profile?.instagramLink || undefined}
               spotifyLinkProp={profile?.spotifyLink || undefined}
               facebookLinkProp={profile?.facebookLink || undefined}

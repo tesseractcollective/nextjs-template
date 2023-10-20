@@ -509,7 +509,7 @@ body iframe {
     cursor: pointer;
     font-size: 1.5rem;
     border-bottom: none;
-    color: var(--text);
+    color: inherit;
     &:hover, &:focus-within {
       border-bottom: none;
       color: var(--secondary) !important;
