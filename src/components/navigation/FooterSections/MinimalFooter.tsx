@@ -9,37 +9,25 @@ import parse from "html-react-parser";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import Blogs from "@/components/Blogs";
 import { Fade } from "react-awesome-reveal";
-import MinimalFooter from "./FooterSections/MinimalFooter";
 
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;
-  navigations: NavigationFieldsFragment[];
+  navigation: NavigationFieldsFragment;
   blogs: BlogFieldsFragment[];
   hideFooter?: boolean;
   pageNavigationSelection?: string;
 }
 
-function Footer({
+function MinimalFooter({
   siteLibrary,
-  navigations,
+  navigation,
   hideFooter,
   blogs,
-  pageNavigationSelection,
 }: FooterProps) {
-  if (!navigations || !siteLibrary || hideFooter) return null;
+  if (!navigation || !siteLibrary || hideFooter) return null;
 
   const { isSpanish, title, secondaryLink, secondaryLogo, secondaryName } =
     siteLibrary;
-
-  const navigation =
-    navigations.find(
-      (navigationTemp) =>
-        navigationTemp?.pageNavigationSelection &&
-        pageNavigationSelection &&
-        navigationTemp?.pageNavigationSelection.includes(
-          pageNavigationSelection
-        )
-    ) || navigations[0];
 
   const { footerColumns, footerWrapperCssClass, footerItems } = navigation;
 
@@ -49,29 +37,17 @@ function Footer({
   const regularColumns = footerColumns.filter(
     (footerColumn) => footerColumn?.wideColumn !== true
   );
-  if (navigation.navigationLayoutStyle !== "start")
-    return (
-      <MinimalFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || undefined}
-      />
-    );
   return (
     <footer
       aria-labelledby="footer-heading"
-      className={`mt-16 mb-8 ${
-        footerWrapperCssClass ? footerWrapperCssClass : ""
-      }`}
+      className={`my-8 ${footerWrapperCssClass ? footerWrapperCssClass : ""}`}
     >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
       <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
         {wideColumns?.length >= 1 && (
-          <div className={`flex items-center justify-center w-full mb-16`}>
+          <div className={`flex items-center justify-center w-full`}>
             <Fade direction="up" cascade damping={0.1} triggerOnce>
               {wideColumns.map((item, index) => (
                 <div
@@ -205,10 +181,26 @@ function Footer({
                             <LinkItem
                               key={`footer-link-column-item-${index++}`}
                               link={linkItem?.link}
-                              label={linkItem?.label}
                               cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
-                            />
+                            >
+                              <>
+                                {!!linkItem.image?.url && (
+                                  <Image
+                                    src={linkItem.image?.url}
+                                    className="h-20 w-auto mb-4 object-contain max-w-max"
+                                    alt=""
+                                    width={0}
+                                    height={0}
+                                    sizes="100%"
+                                    style={{ width: "100%" }}
+                                  />
+                                )}
+                                {!!linkItem?.label && (
+                                  <>{parse(linkItem?.label)}</>
+                                )}
+                              </>
+                            </LinkItem>
                           </div>
                         )}
                       </li>
@@ -227,16 +219,11 @@ function Footer({
           </div>
         )}
         {/* Bottom Footer */}
-        <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
+        <div className="my-8 flex flex-col flex-wrap justify-center w-full mx-auto">
           <SocialMediaIcons
             siteLibrary={siteLibrary}
-            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap md:gap-x-2"
+            cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap md:gap-x-2"
           />
-          <p className="text-xs text-text-color uppercase text-center mb-4 opacity-70">
-            {`© ${new Date().getFullYear()} ${title || ""} ${
-              isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
-            }.`}
-          </p>
           {secondaryLogo?.url && secondaryLink && secondaryName && (
             <a
               href={secondaryLink}
@@ -263,7 +250,7 @@ function Footer({
                   key={`${footerItem.link}-${index++}`}
                   label={footerItem.label}
                   link={footerItem.link}
-                  cssClass={`max-w-max mb-4 mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
+                  cssClass={`max-w-max my-2 mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
                     footerItem.cssClass ? footerItem.cssClass : ""
                   }`}
                   sameTab={footerItem.sameTab}
@@ -271,20 +258,29 @@ function Footer({
               ))}
             </div>
           )}
-          <a
-            href={`https://lnza.me/?${encodeURIComponent(
-              title || "" + " fan"
-            )}`}
-            target="_blank"
-            rel="noreferrer"
-            className="max-w-max mb-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
-          >
-            {isSpanish ? "Hecho a mano por Ricardo" : "Hand crafted by Ricardo"}
-          </a>
+          <div className="flex flex-col md:flex-row justify-center md:justify-between w-full items-center">
+            <p className="text-xs text-text-color uppercase text-center md:text-left mx-auto md:ml-0 md:mr-auto opacity-70 flex items-center h-full">
+              {`© ${new Date().getFullYear()} ${title || ""} ${
+                isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
+              }.`}
+            </p>
+            <a
+              href={`https://lnza.me/?${encodeURIComponent(
+                title || "" + " fan"
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
+            >
+              {isSpanish
+                ? "Hecho a mano por Ricardo"
+                : "Hand crafted by Ricardo"}
+            </a>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
 
-export default Footer;
+export default MinimalFooter;

@@ -14,9 +14,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import Profiles from "@/components/Profiles";
-import VideoPlaylistBox from "@/components/VideoPlaylistBox";
-import VideoBox from "@/components/VideoBox";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
+import VideoSection from "@/components/VideoSection";
 // import VCF from "@/components/VCF";
 // import SpotifyQuery from "@/components/ArtistInfo";
 // import ArtistInfo from "@/components/ArtistInfo";
@@ -281,31 +280,14 @@ export default function Profile({
             {parse(profile.iFrame)}
           </div>
         )}
-        {!!profile?.videoBox && (
-          <div>
-            {profile.videoBox?.map((video) => (
-              <div
-                key={Math.random()}
-                className="my-16 mx-auto px-4 max-w-5xl"
-                id={`profile-videbox-${video?.videoTitle}`}
-              >
-                {video?.youtubePlaylistId ? (
-                  <VideoPlaylistBox
-                    videoTitle={video?.videoTitle || undefined}
-                    youtubePlaylistId={video.youtubePlaylistId}
-                    youtubeApiKey={siteLibrary.youtubeApiKey}
-                  />
-                ) : (
-                  <VideoBox
-                    videoTitle={video?.videoTitle || undefined}
-                    vimeoVideoId={video?.vimeoVideoId || undefined}
-                    youtubeVideoId={video?.youtubeVideoId || undefined}
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        )}
+        {!!siteLibrary?.youtubeApiKey &&
+          !!profile?.videoBox &&
+          profile?.videoBox.length >= 1 && (
+            <VideoSection
+              videoData={profile?.videoBox}
+              youtubeApiKey={siteLibrary.youtubeApiKey}
+            />
+          )}
       </section>
       {!!filteredContacts && filteredContacts.length >= 1 && (
         <div className="bg-invert my-16">

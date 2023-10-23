@@ -511,6 +511,7 @@ fragment GridBoxFields on GridBox {
   boxImage {
     url
   }
+  boxDisplay
 }
 
 fragment AccordionFields on Accordion {

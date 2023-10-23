@@ -173,18 +173,24 @@ export default function Profiles({
                             />
 
                             {!!profile && (
-                              <button
-                                type="button"
-                                className="bg-none text-text-color px-4 md:px-2 py-1 max-w-max no-underline my-4 w-full ml-auto border-round text-xs rounded bg-background transition-all hover:bg-gradient-to-tr hover:from-primary hover:to-secondary uppercase group flex items-center justify-center group-hover:bg-gradient-to-tr group-hover:from-primary group-hover:to-secondary"
-                                onClick={() => {
-                                  setSelctedProfile(profile);
-                                  setOpen(true);
-                                }}
+                              <Fade
+                                direction="right"
+                                triggerOnce
+                                className="max-w-max ml-auto"
                               >
-                                <span className="opacity-80 font-bold group-hover:opacity-100 transition">
-                                  Info
-                                </span>
-                              </button>
+                                <button
+                                  type="button"
+                                  className="bg-none text-text-color px-4 md:px-2 py-1 no-underline my-4 w-full border-round text-xs rounded bg-background transition-all hover:bg-gradient-to-tr hover:from-primary hover:to-secondary uppercase group flex items-center justify-center group-hover:bg-gradient-to-tr group-hover:from-primary group-hover:to-secondary"
+                                  onClick={() => {
+                                    setSelctedProfile(profile);
+                                    setOpen(true);
+                                  }}
+                                >
+                                  <span className="opacity-80 font-bold group-hover:opacity-100 transition">
+                                    Info
+                                  </span>
+                                </button>
+                              </Fade>
                             )}
                           </div>
                         </div>
@@ -241,7 +247,7 @@ export default function Profiles({
                                 className="relative overflow-hidden"
                               >
                                 {!!selectedProfile.heroImage?.url && (
-                                  <Fade direction="up" triggerOnce>
+                                  <Fade direction="down" triggerOnce>
                                     <Image
                                       src={selectedProfile.heroImage?.url}
                                       alt=""

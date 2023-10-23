@@ -10,14 +10,13 @@ import type {
   CallToActionFieldsFragment,
   LoopTextFieldsFragment,
 } from "@/graphql/generated/graphql";
-import VideoBox from "@/components/VideoBox";
-import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import GridBox from "@/components/sections/GridBox";
 import ContactFormSection from "@/components/sections/ContactFormSection";
 import HeroMediaSliderSection from "@/components/sections/HeroMediaSliderSection";
 import TextContentSection from "@/components/sections/TextContent";
 import AccordionSection from "@/components/sections/AccordionSection";
 import LoopTextSection from "@/components/sections/LoopTextSection";
+import VideoSection from "@/components/VideoSection";
 
 type SectionsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["sections"];
@@ -79,30 +78,11 @@ export default function Sections({ sectionData, siteLibrary }: SectionsProps) {
           <GridBox gridBoxData={gridBoxData} />
         </section>
       )}
-      {!!siteLibrary.youtubeApiKey && (
-        <>
-          {!!videoData && videoData.length >= 1 && (
-            <section className="container mx-auto z-20 w-10/12">
-              {videoData?.map((video) => (
-                <div key={Math.random()}>
-                  {video?.youtubePlaylistId ? (
-                    <VideoPlaylistBox
-                      videoTitle={video?.videoTitle || undefined}
-                      youtubePlaylistId={video.youtubePlaylistId}
-                      youtubeApiKey={siteLibrary.youtubeApiKey}
-                    />
-                  ) : (
-                    <VideoBox
-                      videoTitle={video?.videoTitle || undefined}
-                      vimeoVideoId={video?.vimeoVideoId || undefined}
-                      youtubeVideoId={video?.youtubeVideoId || undefined}
-                    />
-                  )}
-                </div>
-              ))}
-            </section>
-          )}
-        </>
+      {!!siteLibrary?.youtubeApiKey && !!videoData && videoData.length >= 1 && (
+        <VideoSection
+          videoData={videoData}
+          youtubeApiKey={siteLibrary.youtubeApiKey}
+        />
       )}
       {!!heroMediaSliderData && siteLibrary && (
         <HeroMediaSliderSection
