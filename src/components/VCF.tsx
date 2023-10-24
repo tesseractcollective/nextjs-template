@@ -117,7 +117,7 @@ const VCF: FC<Props> = ({
           link.click();
           document.body.removeChild(link);
         }}
-        className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+        className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer flex"
         type="button"
         title="Download Contact Vcard"
       >
