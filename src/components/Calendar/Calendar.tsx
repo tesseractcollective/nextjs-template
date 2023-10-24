@@ -319,12 +319,12 @@ export default function Calendar(props: CalendarProps) {
                 {`${month.name}`}
               </h2>
               <div className="grid grid-cols-7 text-xs leading-6 text-text-color">
+                <div>S</div>
                 <div>M</div>
                 <div>T</div>
                 <div>W</div>
                 <div>T</div>
                 <div>F</div>
-                <div>S</div>
                 <div>S</div>
               </div>
               <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-bg-secondary text-md shadow max-h-max auto-rows-max">

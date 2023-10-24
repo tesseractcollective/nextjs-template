@@ -34,6 +34,17 @@ export default function Profiles({
         profile?.profileType?.toLowerCase() === profileType?.toLowerCase()
     )
     .sort((profileA, profileB) => {
+      const orderA = profileA.order || 99;
+      const orderB = profileB.order || 99;
+
+      if (orderA < orderB) {
+        return -1;
+      }
+      if (orderA > orderB) {
+        return 1;
+      }
+
+      // If orders are equal, sort by name
       const nameA = profileA.name?.toLowerCase() || "";
       const nameB = profileB.name?.toLowerCase() || "";
 
@@ -369,6 +380,110 @@ export default function Profiles({
         ;
       </>
     );
+  if (profileLayoutStyle === "team")
+    return (
+      <>
+        <div className="">
+          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+            <div className="w-full transition">
+              {!!profileSectionTitle && (
+                <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center transition mb-16">
+                  {profileSectionTitle}
+                </h3>
+              )}
+            </div>
+            <div className="flex items-center justify-center gap-4 w-full mx-auto lg:mx-0 transition flex-wrap">
+              {FilteredProfiles.map((profile) => (
+                <Fade
+                  direction="up"
+                  cascade
+                  triggerOnce
+                  damping={0.015}
+                  key={profile.profileSlug}
+                  className="max-w-xs w-full"
+                >
+                  <>
+                    <div className="animate-col-width mx-auto md:mx-0 w-full">
+                      <div className="overflow-hidden h-full rounded profile-card w-full relative">
+                        {!!profile?.avatarImage?.url && (
+                          <div className="p-0 m-0 w-full relative">
+                            <Image
+                              src={profile?.avatarImage?.url}
+                              alt={(profile.name && profile.name) || ""}
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                              className="w-[180px] h-[180px] object-cover mx-auto rounded-[100%] border-2 border-primary"
+                            />
+                          </div>
+                        )}
+                        <div className="flex flex-col items-center justify-center text-center p-4 relative z-10 overflow-hidden">
+                          <Fade triggerOnce direction="left">
+                            {!!profile.name && (
+                              <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color mt-0 text-center">
+                                {profile.name}
+                              </h3>
+                            )}
+                            {!!profile.role && (
+                              <h4 className="uppercase mt-0 mb-0 text-xs opacity-80 text-center line-clamp-1 max-w-xs">
+                                {profile.role}
+                              </h4>
+                            )}
+                          </Fade>
+
+                          <div className="flex justify-between flex-row w-full">
+                            <SocialMediaIcons
+                              cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-center"
+                              instagramLinkProp={
+                                profile?.instagramLink || undefined
+                              }
+                              spotifyLinkProp={
+                                profile?.spotifyLink || undefined
+                              }
+                              facebookLinkProp={
+                                profile?.facebookLink || undefined
+                              }
+                              twitterLinkProp={
+                                profile?.twitterLink || undefined
+                              }
+                              youtubeLinkProp={
+                                profile?.youtubeLink || undefined
+                              }
+                              tikTokLinkProp={profile?.tikTokLink || undefined}
+                              appleMusicLinkProp={
+                                profile?.appleMusicLink || undefined
+                              }
+                              pandoraLinkProp={
+                                profile?.pandoraLink || undefined
+                              }
+                              soundcloudLinkProp={
+                                profile?.soundcloudLink || undefined
+                              }
+                              linkedinLinkProp={
+                                profile?.linkedinLink || undefined
+                              }
+                              emailLinkProp={profile.email || undefined}
+                              phoneLinkProp={profile.phoneNumber || undefined}
+                              displayVcf={profile.displayVcf || undefined}
+                              name={profile.name || undefined}
+                              avatar={profile.avatarImage?.url || undefined}
+                              calendlyLinkProp={
+                                profile.calendlyLink || undefined
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                </Fade>
+              ))}
+            </div>
+          </section>
+        </div>
+        ;
+      </>
+    );
   if (profileLayoutStyle === "universal")
     return (
       <>
@@ -578,6 +693,49 @@ export default function Profiles({
                     </div>
                   )}
                 </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </>
+    );
+  if (profileLayoutStyle === "vertical")
+    return (
+      <>
+        <div className="relative">
+          <section className="my-16 mx-auto w-full dark-section flex flex-wrap">
+            <div className="w-full transition">
+              {!!profileSectionTitle && (
+                <h3 className="text-2xl md:text-5xl mx-auto opacity-80 uppercase text-center font-bold mb-8">
+                  {profileSectionTitle}
+                </h3>
+              )}
+            </div>
+            <div className="profile-vertical-gallery">
+              {FilteredProfiles.map((profile) => (
+                <Link
+                  key={profile.profileSlug}
+                  className="relative group"
+                  href={`/${profile.profileType?.toLowerCase()}/${
+                    profile.profileSlug
+                  }`}
+                >
+                  {!!profile.avatarImage?.url && (
+                    <Image
+                      sizes="100%"
+                      src={profile.avatarImage?.url}
+                      alt={profile.name || ""}
+                      width={0}
+                      height={0}
+                    />
+                  )}
+                  <p
+                    className="absolute z-40 bottom-0 p-0 m-0 font-bold uppercase left-0 text-4xl group-hover:text-primary transition-all"
+                    style={{ writingMode: "vertical-rl" }}
+                  >
+                    {profile.name}
+                  </p>
+                </Link>
               ))}
             </div>
           </section>

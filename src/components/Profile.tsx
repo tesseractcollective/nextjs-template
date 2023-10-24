@@ -89,7 +89,7 @@ export default function Profile({
                   className="w-full max-w-xs mx-auto"
                 />
               )}
-              <h2 className="text-3xl !font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase">
+              <h2 className="text-3xl !font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase pt-1">
                 {profile.name}
               </h2>
             </Fade>
@@ -319,7 +319,7 @@ export default function Profile({
                   <p className="mt-0 mb-4 text-3xl font-bold tracking-tight text-background opacity-80">
                     {siteLibrary.isSpanish ? "Contáctenos" : "Contact Details"}
                   </p>
-                  <ul className="flex flex-col items-center justify-center lg:flex-row gap-y-8 gap-x-24">
+                  <ul className="flex flex-col items-center justify-start lg:flex-row gap-y-8 gap-x-24 flex-wrap">
                     {filteredContacts?.map((contact) => (
                       <li key={contact.contactName}>
                         <div className="flex items-center gap-x-4 lg:gap-x-6 flex-col justify-center lg:justify-start text-center lg:text-left lg:flex-row">
@@ -327,7 +327,7 @@ export default function Profile({
                             <Image
                               className="h-14 lg:h-16 w-14 lg:w-16 rounded-full object-cover"
                               src={contact.contactAvatar.url}
-                              alt=""
+                              alt={contact.contactName}
                               width={64}
                               height={64}
                               sizes="100%"
@@ -340,7 +340,7 @@ export default function Profile({
                               </h3>
                             )}
                             {contact.contactTitle && (
-                              <p className="text-xs lg:text-sm font-semibold leading-6 !text-primary">
+                              <p className="text-xs lg:text-sm font-light leading-6 !text-primary w-11/12">
                                 {contact.contactTitle}
                               </p>
                             )}

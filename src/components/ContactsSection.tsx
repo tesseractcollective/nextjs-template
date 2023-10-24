@@ -30,12 +30,14 @@ export default function ContactsSection({
     <section className="mx-auto max-w-8xl my-8 w-full px-8">
       <ul
         role="list"
-        className="flex flex-wrap flex-row items-center justify-center"
+        className={`flex flex-wrap flex-row items-center gap-x-4 gap-y-4 mx-auto w-full ${
+          filteredContacts.length <= 2 ? "justify-center" : "justify-center"
+        }`}
       >
         {filteredContacts.map((contact) => (
           <li
             key={contact.contactQuery}
-            className="col-span-1 divide-y divide-bg-secondary rounded-lg bg-text-color shadow max-w-sm w-full"
+            className="divide-y divide-bg-secondary rounded-lg bg-text-color shadow max-w-sm w-full"
           >
             <div className="flex w-full items-center justify-between space-x-6 p-6">
               <div className="flex-1 truncate">
@@ -50,7 +52,7 @@ export default function ContactsSection({
                   </p>
                 )}
                 <SocialMediaIcons
-                  cssClass="mt-0 mb-0 w-full flex flex-row !social-icons !items-center !justify-center"
+                  cssClass="mt-0 mb-0 w-full flex flex-row !social-icons !items-center !justify-start"
                   linkedinLinkProp={contact?.contactLinkedin || undefined}
                   calendlyLinkProp={contact.contactCalendly || undefined}
                   displayVcf={true}
