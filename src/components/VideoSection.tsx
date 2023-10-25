@@ -39,11 +39,13 @@ export default function VideoSection({
         <>
           {videoDataLength ? (
             <>
-              <VideoBox
-                videoTitle={videoData[0]?.videoTitle || undefined}
-                vimeoVideoId={videoData[0]?.vimeoVideoId || undefined}
-                youtubeVideoId={videoData[0]?.youtubeVideoId || undefined}
-              />
+              {videoData[0].youtubePlaylistId === undefined && (
+                <VideoBox
+                  videoTitle={videoData[0]?.videoTitle || undefined}
+                  vimeoVideoId={videoData[0]?.vimeoVideoId || undefined}
+                  youtubeVideoId={videoData[0]?.youtubeVideoId || undefined}
+                />
+              )}
             </>
           ) : (
             <div className="relative flex flex-row items-center justify-center w-full gap-x-2 z-40">

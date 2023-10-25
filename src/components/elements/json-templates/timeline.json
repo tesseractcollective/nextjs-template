@@ -1,27 +1,86 @@
 {
   "timelineData": {
-    "cssClass": "cssClass",
+    "cssClass": "",
     "timelineItems": [
       {
         "year": "2023",
-        "header": "header",
-        "subheader": "subheader",
-        "content": "content",
-        "cssClass": "cssClass"
+        "image": "https://media.graphassets.com/kltavXciQlaYbysQAgCb",
+        "header": "@nuevo_regimen",
+        "subheader": "#aztecarecords",
+        "content": "En la casa 🗣️ #nuevoregimen",
+        "cssClass": ""
       },
       {
         "year": "2022",
-        "header": "header",
-        "subheader": "subheader",
-        "content": "content",
-        "cssClass": "cssClass"
+        "image": "https://media.graphassets.com/KKCodQMyQ0aPOIYfevnK",
+        "header": "#banda614",
+        "subheader": "",
+        "content": "Bienvenidos ! @labanda614 a la compañía 🔥🍾 esperen pronto música nueva",
+        "cssClass": ""
       },
       {
         "year": "2021",
-        "header": "header",
-        "subheader": "subheader",
-        "content": "content",
-        "cssClass": "cssClass"
+        "image": "https://media.graphassets.com/8gykDpkcSMaRoMC1ZQv1",
+        "header": "@bmi",
+        "subheader": "@lamaquinarianortena",
+        "content": "@saxykeith @aztecarecords 🙏🏼🙏🏼🙏🏼",
+        "cssClass": ""
+      },
+      {
+        "year": "2021",
+        "image": "https://media.graphassets.com/OVp5G57RQCKrG4ZQ5vu3",
+        "header": "@sesaclatina",
+        "subheader": "@lamaquinarianortena",
+        "content": "🙏🏼Gracias a Dios!! @aztecarecords",
+        "cssClass": ""
+      },
+      {
+        "year": "2018",
+        "image": "https://media.graphassets.com/aggYIui1QVi0yC7tTd2i",
+        "header": "Premios #sesac",
+        "subheader": "#sesaclatina",
+        "content": "@lamaquinarianortena",
+        "cssClass": ""
+      },
+      {
+        "year": "2018",
+        "image": "https://media.graphassets.com/0VyvzMzySQyk69mgVBwJ",
+        "header": "BMI",
+        "subheader": "Premios 2018",
+        "content": "@aztecarecords @lamaquinarianortena",
+        "cssClass": ""
+      },
+      {
+        "year": "2017",
+        "image": "https://media.graphassets.com/GVxLbXksQj2etmG7JjmI",
+        "header": "#EnergyBoys",
+        "subheader": "Flash Back Friday",
+        "content": "#fbf. Seguimos jóvenes 😂😂 @adrian_zamarripa",
+        "cssClass": ""
+      },
+      {
+        "year": "2012",
+        "image": "",
+        "header": "Digital",
+        "subheader": "Inicios",
+        "content": "El inicio de la era de la distribución digital para la compañía",
+        "cssClass": ""
+      },
+      {
+        "year": "2012",
+        "image": "",
+        "header": "Premios Texas",
+        "subheader": "Austin, TX",
+        "content": "Grupos son galardonados en la octava edición de los Premios Texas que se llevaron acabo en Austin, Tx",
+        "cssClass": ""
+      },
+      {
+        "year": "2011",
+        "image": "",
+        "header": "El Inicio",
+        "subheader": "Texas",
+        "content": "Azteca Records comienza  como sello discográfico con la firma de La Maquinaria Norteña, La Energia norteña, Grupo Vizzio y La Reunión Norteña, a un año de su creación",
+        "cssClass": ""
       }
     ]
   }

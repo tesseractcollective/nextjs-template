@@ -1,4 +1,6 @@
 import parse from "html-react-parser";
+import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
 
 export interface TimelineType {
   cssClass: string;
@@ -7,6 +9,7 @@ export interface TimelineType {
 
 export interface TimelineItem {
   year: string;
+  image: string;
   header: string;
   subheader: string;
   content: string;
@@ -47,21 +50,35 @@ export default function Timeline({ timelineData }: TimelineProps) {
                             index % 2 == 0 ? "sm:pr-8" : "sm:pl-8"
                           }`}
                         >
-                          <div className="p-4 bg-white rounded shadow">
-                            {!!timelineItem.header && (
-                              <h2 className="font-bold">
-                                {parse(timelineItem.header)}
-                              </h2>
-                            )}
-                            {!!timelineItem.subheader && (
-                              <h3 className="font-bold">
-                                {parse(timelineItem.subheader)}
-                              </h3>
-                            )}
-                            {!!timelineItem.content && (
-                              <p>{parse(timelineItem.content)}</p>
-                            )}
-                          </div>
+                          <Fade direction="up" triggerOnce>
+                            <div className="p-4 bg-white rounded shadow">
+                              {!!timelineItem.image && (
+                                <div className=" aspect-1 block mx-auto overflow-hidden">
+                                  <Image
+                                    src={timelineItem.image}
+                                    alt={timelineItem.header || ""}
+                                    className="object-cover block mx-auto h-full w-full aspect-1"
+                                    sizes="100%"
+                                    width={0}
+                                    height={0}
+                                  />
+                                </div>
+                              )}
+                              {!!timelineItem.header && (
+                                <h2 className="font-bold">
+                                  {parse(timelineItem.header)}
+                                </h2>
+                              )}
+                              {!!timelineItem.subheader && (
+                                <h3 className="font-bold">
+                                  {parse(timelineItem.subheader)}
+                                </h3>
+                              )}
+                              {!!timelineItem.content && (
+                                <p>{parse(timelineItem.content)}</p>
+                              )}
+                            </div>
+                          </Fade>
                         </div>
                       </div>
                       <div className="rounded-full bg-primary border-white border-4 w-12 h-12 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center text-text-color">
