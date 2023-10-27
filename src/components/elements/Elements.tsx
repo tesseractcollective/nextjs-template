@@ -14,6 +14,7 @@ import ScrollDigits from "@/components/elements/ScrollDigits";
 import Timeline from "@/components/elements/Timeline";
 import MapBoxMap from "@/components/elements/MapBoxMap";
 import DrumPadComponent from "./DrumPadComponent";
+import BandsInTownApi from "@/components/BandsInTownApi";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -42,6 +43,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
     htmlTextCssClass,
     elementJson,
     mapLatLong,
+    bandsInTownKey,
   } = elements;
   return (
     <>
@@ -95,6 +97,12 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             mapKey={siteLibrary.mapKey}
           />
         )}
+      {!!siteLibrary.title && !!bandsInTownKey && (
+        <BandsInTownApi
+          apiKey={bandsInTownKey}
+          artistName={siteLibrary.title}
+        />
+      )}
     </>
   );
 }

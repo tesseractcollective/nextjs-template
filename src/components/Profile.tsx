@@ -16,6 +16,8 @@ import { Fade } from "react-awesome-reveal";
 import Profiles from "@/components/Profiles";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import VideoSection from "@/components/VideoSection";
+import BandsInTownApi from "./BandsInTownApi";
+import SpotifyAlbums from "./SpotifyAlbums";
 // import VCF from "@/components/VCF";
 // import SpotifyQuery from "@/components/ArtistInfo";
 // import ArtistInfo from "@/components/ArtistInfo";
@@ -265,7 +267,13 @@ export default function Profile({
           </div>
         </div>
       </div>
-
+      {profile?.name && profile?.bandsInTownKey && (
+        <BandsInTownApi
+          apiKey={profile.bandsInTownKey}
+          artistName={profile.name}
+        />
+      )}
+      {/* {!!profile.name && <SpotifyAlbums artistId="4aXXDj9aZnlshx7mzj3W1N" />} */}
       <section className="container mx-auto">
         {!!profile?.tourWidgetiFrame && (
           <div
@@ -372,9 +380,11 @@ export default function Profile({
                               <p className="text-xs md:text-sm my-0 text-text-color opacity-80 flex flex-row items-center">
                                 <FontAwesomeIcon
                                   icon={faLocationDot as IconProp}
-                                  className="fa-fw mr-2 h-4 w-4"
+                                  className="fa-fw mr-2 h-5 w-5 flex"
                                 />
-                                <span>{contact.contactAddress}</span>
+                                <span className="max-w-[140px]">
+                                  {contact.contactAddress}
+                                </span>
                                 {contact?.contactGoogleAddressLink && (
                                   <a
                                     href={contact.contactGoogleAddressLink}
@@ -383,7 +393,7 @@ export default function Profile({
                                   >
                                     <FontAwesomeIcon
                                       icon={faDiamondTurnRight as IconProp}
-                                      className="fa-fw ml-2 h-4 w-4"
+                                      className="fa-fw ml-2 h-5 w-5 flex"
                                     />
                                   </a>
                                 )}

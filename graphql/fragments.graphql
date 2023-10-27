@@ -339,6 +339,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
       longitude
       latitude
     }
+    bandsInTownKey
   }
   sections(first: 100) {
     __typename
@@ -473,6 +474,7 @@ fragment HeroMediaSliderFields on HeroMediaSlider {
     contentAlign
     linkImage
     cssClass
+    htmlText
   }
   callToAction(first: 50) {
     ctaLabel
@@ -682,6 +684,8 @@ fragment profileFields on Profile {
   profileLogo {
     url
   }
+  bandsInTownKey
+  profilePageLayoutStyle
 }
 
 fragment contactFields on Contact {

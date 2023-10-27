@@ -17,3 +17,13 @@
     font-family: 'Lora', serif!important;
   }
 }
+
+.playfair-theme {
+  h1, h2, h3, h1 *, h2 *, h3 * {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: bold;
+  }
+  h4, h5, h6, span, div, p, button, a {
+    font-family: 'Playfair Display', serif !important;
+  }
+}

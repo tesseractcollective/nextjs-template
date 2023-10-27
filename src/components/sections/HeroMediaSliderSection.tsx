@@ -46,12 +46,12 @@ export default function HeroMediaSliderSection({
             {heroMediaSliderData.map((heroMediaSliderItem, index) => (
               <section
                 key={`${heroMediaSliderItem.id}-${index++}`}
-                className={`hero-media-slider video-wrapper dark-section transition-all ${
+                className={`hero-media-slider video-wrapper  transition-all ${
                   heroMediaSliderItem?.sliderCssWrapper &&
                   heroMediaSliderItem.sliderCssWrapper
                 }`}
               >
-                <div className="video-overlay-content headlinePrimary dark-section text-text-color">
+                <div className="video-overlay-content headlinePrimary  text-text-color">
                   {!!heroMediaSliderItem?.displaySocialMedia && (
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
@@ -100,20 +100,25 @@ export default function HeroMediaSliderSection({
                     </Fade>
 
                     {heroMediaSliderItem?.textContent?.header && (
-                      <div className="text-shadow body-parsed-text dark-section">
+                      <div className="text-shadow body-parsed-text ">
                         {parse(heroMediaSliderItem?.textContent.header.html)}
                       </div>
                     )}
 
                     {heroMediaSliderItem?.textContent?.subHeader && (
-                      <div className="body-parsed-text dark-section">
+                      <div className="body-parsed-text ">
                         {parse(heroMediaSliderItem?.textContent.subHeader.html)}
                       </div>
                     )}
 
                     {heroMediaSliderItem?.textContent?.content && (
-                      <div className="body-parsed-text dark-section">
+                      <div className="body-parsed-text ">
                         {parse(heroMediaSliderItem?.textContent.content.html)}
+                      </div>
+                    )}
+                    {heroMediaSliderItem?.textContent?.htmlText && (
+                      <div className="body-parsed-text ">
+                        {parse(heroMediaSliderItem?.textContent.htmlText)}
                       </div>
                     )}
 

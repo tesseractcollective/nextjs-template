@@ -12,7 +12,7 @@ export default function VideoBox({
   vimeoVideoId,
 }: VideoBoxProps) {
   return (
-    <section className="container mx-auto dark-section my-8">
+    <section className="container mx-auto  my-8">
       <div className="mx-auto">
         {!!videoTitle && (
           <h3 className="text-lg font-semibold leading-7 text-text-color text-center mb-4 px-4">

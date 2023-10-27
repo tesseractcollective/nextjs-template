@@ -67,10 +67,7 @@ export default function ContactFormSection({
   return (
     <>
       {contactFormData.map((contactFormItem, index) => (
-        <section
-          className="container grid mx-auto my-8 dark-section"
-          key={index}
-        >
+        <section className="container grid mx-auto my-8 " key={index}>
           <div className="w-full md:w-8/12 mx-auto">
             <div
               className={`border-round p-2 mx-auto ${

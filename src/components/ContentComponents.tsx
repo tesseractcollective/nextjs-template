@@ -111,7 +111,7 @@ export default function ContentComponents({
       )}
       {!!blogs && blogCategory && (
         <div className="relative texture-background texture-right overflow-hidden">
-          <section className="container my-8 px-4 dark-section mx-auto">
+          <section className="container my-8 px-4  mx-auto">
             <Blogs
               fromHomePage={page.setHomePage || false}
               blogs={blogs}

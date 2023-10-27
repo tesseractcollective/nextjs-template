@@ -61,7 +61,7 @@ export default function Profiles({
     return (
       <>
         <div className="relative texture-background overflow-hidden">
-          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12  flex flex-wrap">
             <div className="w-full transition">
               {!!profileSectionTitle && (
                 <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center transition mb-16">
@@ -384,7 +384,7 @@ export default function Profiles({
     return (
       <>
         <div className="">
-          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12  flex flex-wrap">
             <div className="w-full transition">
               {!!profileSectionTitle && (
                 <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center transition mb-16">
@@ -489,7 +489,7 @@ export default function Profiles({
       <>
         <>
           <div className="relative">
-            <section className="my-16 mx-auto w-full dark-section flex flex-wrap">
+            <section className="my-16 mx-auto w-full  flex flex-wrap">
               <div className="w-full transition">
                 {!!profileSectionTitle && (
                   <h3 className="text-2xl md:text-5xl mx-auto opacity-80 uppercase text-center font-bold mb-8">
@@ -563,7 +563,7 @@ export default function Profiles({
     return (
       <>
         <div className="relative texture-background overflow-hidden">
-          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12  flex flex-wrap">
             <div className="w-full lg:5/12 xl:w-4/12 transition">
               {!!profileSectionTitle && (
                 <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition">
@@ -620,7 +620,7 @@ export default function Profiles({
     return (
       <>
         <div className="relative">
-          <section className="my-16 mx-auto w-full dark-section flex flex-wrap">
+          <section className="my-16 mx-auto w-full  flex flex-wrap">
             <div className="w-full transition">
               {!!profileSectionTitle && (
                 <h3 className="text-2xl md:text-5xl mx-auto opacity-80 uppercase text-center font-bold mb-8">
@@ -682,7 +682,9 @@ export default function Profiles({
                             tabIndex={0}
                             className="absolute bottom-3 md:bottom-5 left-3 md:left-5 my-0 py-0 flex flex-row items-center justify-center text-left mx-auto text-primary hover:text-secondary text-base sm:text-lg md:text-xl lg:text-2xl font-bold transition-all group z-[2] overflow-hidden focus:text-secondary text-shadow"
                           >
-                            <span>{profile.name}</span>
+                            <span className="max-w-[17rem]">
+                              {profile.name}
+                            </span>
                             <FontAwesomeIcon
                               icon={faArrowRight as IconProp}
                               className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:sm:w-4 group-hover:sm:opacity-100 -ml-2 group-hover:sm:ml-2 transition-all group-focus:sm:w-4 group-focus:sm:opacity-100 group-focus:sm:h-4 group-focus:sm:ml-2"
@@ -703,7 +705,7 @@ export default function Profiles({
     return (
       <>
         <div className="relative">
-          <section className="my-16 mx-auto w-full dark-section flex flex-wrap">
+          <section className="my-16 mx-auto w-full  flex flex-wrap">
             <div className="w-full transition">
               {!!profileSectionTitle && (
                 <h3 className="text-2xl md:text-5xl mx-auto opacity-80 uppercase text-center font-bold mb-8">
@@ -746,7 +748,7 @@ export default function Profiles({
     return (
       <>
         <div className="relative texture-background overflow-hidden record">
-          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+          <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12  flex flex-wrap">
             <div className="w-full lg:5/12 xl:w-4/12 transition">
               {!!profileSectionTitle && (
                 <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition">
@@ -798,7 +800,7 @@ export default function Profiles({
   return (
     <>
       <div className="relative texture-background overflow-hidden">
-        <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12 dark-section flex flex-wrap">
+        <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12  flex flex-wrap">
           <div className="w-full lg:5/12 xl:w-4/12 transition">
             {!!profileSectionTitle && (
               <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition-all">

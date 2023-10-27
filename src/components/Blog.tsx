@@ -238,7 +238,7 @@ export default function Blog({
       <SocialShare />
       {filteredBlogs && blog.blogCategory && (
         <div className="relative bg-bg-secondary py-6">
-          <section className="max-w-8xl my-8 px-4 dark-section mx-auto mb-16">
+          <section className="max-w-8xl my-8 px-4  mx-auto mb-16">
             <Blogs
               fromHomePage={true}
               blogs={filteredBlogs}

@@ -74,7 +74,7 @@ function MinimalFooter({
                     </h3>
                   )}
                   {!!item?.footerText?.html && (
-                    <div className="text-xs font-medium text-text-color max-w-max body-parsed-text leading-none ring-opacity-90 opacity-80">
+                    <div className="text-xs font-medium text-text-color max-w-lg body-parsed-text leading-none ring-opacity-90 opacity-80">
                       {parse(item.footerText?.html)}
                     </div>
                   )}
@@ -250,7 +250,7 @@ function MinimalFooter({
                   key={`${footerItem.link}-${index++}`}
                   label={footerItem.label}
                   link={footerItem.link}
-                  cssClass={`max-w-max my-2 mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
+                  cssClass={`max-w-max my-2 mx-4 text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
                     footerItem.cssClass ? footerItem.cssClass : ""
                   }`}
                   sameTab={footerItem.sameTab}
@@ -258,8 +258,8 @@ function MinimalFooter({
               ))}
             </div>
           )}
-          <div className="flex flex-col md:flex-row justify-center md:justify-between w-full items-center">
-            <p className="text-xs text-text-color uppercase text-center md:text-left mx-auto md:ml-0 md:mr-auto opacity-70 flex items-center h-full">
+          <div className="flex flex-col md:flex-row justify-center md:justify-between w-full items-center my-8">
+            <p className="text-xs text-text-color uppercase text-center md:text-left mx-auto md:ml-0 md:mr-auto opacity-70 flex items-center h-full text-[10px]">
               {`© ${new Date().getFullYear()} ${title || ""} ${
                 isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
               }.`}

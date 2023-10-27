@@ -495,3 +495,17 @@ a.hover-chevron {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+
+
+@keyframes popAnimation { 
+  0%   {transform: scale(1)  rotate(0deg);}
+  12%  {transform: scale(.5) rotate(0);}
+  25% {transform: scale(.5) rotate(0deg);}
+  50%  {transform: scale(.5) rotate(540deg);}
+  75% {transform: scale(.5) rotate(0deg);}
+  100%   {transform: scale(1)  rotate(0deg);}
+}
+
+.pop {    
+  animation: popAnimation 12s infinite forwards;
+}

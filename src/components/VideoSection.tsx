@@ -39,11 +39,16 @@ export default function VideoSection({
         <>
           {videoDataLength ? (
             <>
-              {videoData[0].youtubePlaylistId === undefined && (
+              {videoData[0].youtubePlaylistId === null && (
                 <VideoBox
                   videoTitle={videoData[0]?.videoTitle || undefined}
                   vimeoVideoId={videoData[0]?.vimeoVideoId || undefined}
-                  youtubeVideoId={videoData[0]?.youtubeVideoId || undefined}
+                  youtubeVideoId={
+                    videoData[0]?.youtubeVideoId?.replace(
+                      "https://www.youtube.com/watch?v=",
+                      ""
+                    ) || undefined
+                  }
                 />
               )}
             </>
@@ -72,15 +77,21 @@ export default function VideoSection({
                 slidesPerView={1}
                 spaceBetween={30}
               >
-                {videoData.map((video) => (
-                  <SwiperSlide key={video?.videoTitle}>
-                    <VideoBox
-                      videoTitle={video?.videoTitle || undefined}
-                      vimeoVideoId={video?.vimeoVideoId || undefined}
-                      youtubeVideoId={video?.youtubeVideoId || undefined}
-                    />
-                  </SwiperSlide>
-                ))}
+                {videoData.map((video) => {
+                  const scrubbedId = video?.youtubeVideoId?.replace(
+                    "https://www.youtube.com/watch?v=",
+                    ""
+                  );
+                  return (
+                    <SwiperSlide key={video?.videoTitle}>
+                      <VideoBox
+                        videoTitle={video?.videoTitle || undefined}
+                        vimeoVideoId={video?.vimeoVideoId || undefined}
+                        youtubeVideoId={scrubbedId || undefined}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
               </Swiper>
               <button
                 type="button"

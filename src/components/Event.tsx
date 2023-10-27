@@ -66,7 +66,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
           <link rel="shortcut icon" href={siteLibrary.favicon.url} />
         )}
       </Head>
-      <section className="container dark-section mx-auto">
+      <section className="container  mx-auto">
         <div className="relative w-10/12 mx-auto mt-2 mb-4 md:my-8">
           <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
             <Link

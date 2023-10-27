@@ -129,7 +129,6 @@
   }
 }
 
-
 .dynamic-feature-section {
   .dynamic-featured-image-display {
    max-height: 350px;
@@ -809,15 +808,6 @@ body iframe {
 }
 
 .date-format-badge {
-  position: absolute;
-  inset: auto auto -2px 20px;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-width: 60px;
-  min-height: 60px;
   span {
     text-transform: uppercase;
     padding: 0;

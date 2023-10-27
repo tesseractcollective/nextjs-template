@@ -81,7 +81,7 @@ export default function Timeline({ timelineData }: TimelineProps) {
                           </Fade>
                         </div>
                       </div>
-                      <div className="rounded-full bg-primary border-white border-4 w-12 h-12 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center text-text-color">
+                      <div className="rounded-full bg-primary border-white border-2 w-12 h-12 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center text-text-color font-bold">
                         {timelineItem.year}
                       </div>
                     </div>
