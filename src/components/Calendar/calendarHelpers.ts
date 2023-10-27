@@ -147,7 +147,7 @@ export function createCalendarMonth(
 
   if (to.weekday() !== 6) {
     for (let m = moment(to); m.weekday() !== 0; m.add(1, "day")) {
-      addDate(m, true);
+      addDate(m);
     }
   }
 
