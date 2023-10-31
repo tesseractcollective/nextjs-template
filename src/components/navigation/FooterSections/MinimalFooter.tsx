@@ -106,6 +106,7 @@ function MinimalFooter({
                                     alt=""
                                     width={0}
                                     height={0}
+                                    priority
                                     sizes="100%"
                                     style={{ width: "100%" }}
                                   />
