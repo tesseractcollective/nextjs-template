@@ -34,6 +34,7 @@ export interface CalendarProps {
 interface CalendarDayComponentProps {
   day: CalendarDate;
   legendKeyClasses: { [key: string]: string };
+  showDatesOutsideCurrentMonth?: boolean;
 }
 
 function classNames(...classes: (string | boolean | undefined)[]) {
@@ -41,7 +42,7 @@ function classNames(...classes: (string | boolean | undefined)[]) {
 }
 
 function CalendarDayComponent(props: CalendarDayComponentProps) {
-  const { day, legendKeyClasses } = props;
+  const { day, legendKeyClasses, showDatesOutsideCurrentMonth } = props;
   const [open, setOpen] = useState<boolean>(false);
   let className: string;
   if (!day.isCurrentMonth) {
@@ -81,7 +82,7 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
         ${day.events.map(
           (event) => `${event.name} - ${event.location} at ${event.time}`
         )}`}
-        disabled={day.events.length === 0}
+        disabled={day.events.length === 0 || !day.isCurrentMonth}
       >
         <span className="absolute inset-x-0 -top-px bottom-0" />
         <time
@@ -92,9 +93,11 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
             "mx-auto flex h-7 w-7 items-center justify-center rounded-full relative"
           )}
         >
-          <span className="date-digit">
-            {day.date.split("-").pop()?.replace(/^0/, "")}
-          </span>
+          {(day.isCurrentMonth || showDatesOutsideCurrentMonth) && (
+            <span className="date-digit">
+              {day.date.split("-").pop()?.replace(/^0/, "")}
+            </span>
+          )}
         </time>
       </button>
       <Transition.Root show={open} as={Fragment}>
