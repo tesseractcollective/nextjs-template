@@ -69,7 +69,7 @@ export default function DefaultNavigation({
 
   return (
     <div
-      className={`sticky top-0 z-[999] bg-background left-0 right-0 nav-shadow ${
+      className={`sticky top-0 z-[999] bg-background left-0 right-0 nav-shadow transition-all ${
         small ? "nav-shadow-scrolled" : ""
       } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
       id="navigation"
@@ -400,7 +400,7 @@ export default function DefaultNavigation({
                                                 open
                                                   ? "border-primary text-primary"
                                                   : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
-                                                `relative z-10 -mb-px flex items-center pt-px transition-colors duration-200 ease-out border-dark hover:border-white border-b-2 uppercase font-semibold ${
+                                                `relative z-10 -mb-px flex items-center pt-px transition-all duration-200 ease-out border-dark hover:border-white border-b-2 uppercase font-semibold ${
                                                   small
                                                     ? "text-xs md:text-sm"
                                                     : "text-xs sm:text-sm md:text-base"
@@ -621,6 +621,7 @@ export default function DefaultNavigation({
                           width={0}
                           height={0}
                           sizes="100%"
+                          priority
                         />
                       </>
                     ) : (

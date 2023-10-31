@@ -8,6 +8,7 @@ import DefaultNavigation from "@/components/navigation/DefaultNavigation";
 import MegaNavigation from "@/components/navigation/MegaNavigation";
 import MinimalNavigation from "@/components/navigation/MinimalNavigation";
 import VerticalNavigation from "@/components/navigation/VerticalNavigation";
+import ReverseNavigation from "@/components/navigation/ReverseNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -68,6 +69,15 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "vertical")
     return (
       <VerticalNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+  if (navigation.navigationLayoutStyle === "reverse")
+    return (
+      <ReverseNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

@@ -261,7 +261,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.appleMusicLink || appleMusicLinkProp}
                 target="_blank"
                 title="Apple Music"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className="max-w-max mx-auto text-center !text-link transition-all cursor-pointer"
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -280,7 +280,7 @@ export default function SocialMediaIcons({
                   x="0px"
                   y="0px"
                   viewBox="0 0 512 512"
-                  className="svg-inline--fa fa-music fa-fw h-5 w-5"
+                  className="svg-inline--fa fa-music fa-fw h-5 w-5 relative top-[-3px]"
                   xmlSpace="preserve"
                 >
                   <g>
@@ -314,7 +314,7 @@ export default function SocialMediaIcons({
                   aria-hidden="true"
                   width="32"
                   height="32"
-                  className="svg-inline--fa fa-music fa-fw h-5 w-5"
+                  className="svg-inline--fa fa-music fa-fw h-5 w-5 relative top-[-3px]"
                   viewBox="0 0 32 32"
                 >
                   <path

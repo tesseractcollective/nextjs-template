@@ -51,6 +51,7 @@
     "gsap": "^3.12.2",
     "html-react-parser": "^4.0.0",
     "lightgallery": "^2.7.1",
+    "locomotive-scroll": "^4.1.4",
     "magic-grid": "^3.2.4",
     "mapbox-gl": "^2.15.0",
     "moment": "^2.29.4",

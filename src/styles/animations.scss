@@ -324,6 +324,37 @@ a.hover-chevron {
   }
 }
 
+// .expand-image {
+//   /* Create View Timeline */
+//   outline: red 1px solid !important;
+//   view-timeline-name: --revealing-image;
+//   view-timeline-axis: block;
+//   /* Attach animation, linked to the  View Timeline */
+//   animation: linear reveal both;
+//   animation-timeline: --revealing-image;
+//   /* Tweak range when effect should run*/
+//   animation-range: 5% exit 100%;
+// }
+
+// @keyframes reveal {
+//   from {
+//     opacity: 1;
+//     clip-path: inset(90% 75% 90% 75%);
+//   }
+//   to {
+//     opacity: 0.5;
+//     clip-path: inset(0% 0% 0% 0%);
+//   }
+// }
+
+
+.no-clip {
+  clip-path: inset(0% 0% 0% 0%);
+}
+.clip-image {
+  clip-path: inset(15% 37vw 15% 37vw);
+}
+
 .zoom-image-out.hero-media-slider .main img {
   /* Create View Timeline */
   view-timeline-name: --zoom-image;
@@ -499,13 +530,11 @@ a.hover-chevron {
 
 @keyframes popAnimation { 
   0%   {transform: scale(1)  rotate(0deg);}
-  12%  {transform: scale(.5) rotate(0);}
-  25% {transform: scale(.5) rotate(0deg);}
-  50%  {transform: scale(.5) rotate(540deg);}
-  75% {transform: scale(.5) rotate(0deg);}
+  50%  {transform: scale(.5) rotate(1260deg);}
+  // 50%  {transform: scale(1) rotate(2520deg);}
   100%   {transform: scale(1)  rotate(0deg);}
 }
 
 .pop {    
-  animation: popAnimation 12s infinite forwards;
+  animation: popAnimation 8s infinite alternate-reverse;
 }

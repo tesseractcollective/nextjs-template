@@ -62,6 +62,7 @@ function MinimalFooter({
                       src={item.footerImage?.url}
                       className="h-8 w-auto mb-4 object-contain max-w-max mx-auto"
                       alt=""
+                      priority
                       width={0}
                       height={0}
                       sizes="100%"

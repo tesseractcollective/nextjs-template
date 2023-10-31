@@ -32,6 +32,9 @@ fragment blogFields on Blog {
   title
   authorQuery
   excerpt
+  audioBlog {
+    url
+  }
   image {
     id
     url
@@ -686,6 +689,7 @@ fragment profileFields on Profile {
   }
   bandsInTownKey
   profilePageLayoutStyle
+  externalLink
 }
 
 fragment contactFields on Contact {

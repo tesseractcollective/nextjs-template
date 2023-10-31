@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import Image from "next/image";
 import type {
@@ -22,6 +22,20 @@ export default function HeroMediaSliderSection({
   heroMediaSliderData,
   siteLibrary,
 }: HeroMediaSliderProps): ReactElement {
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScroll(window.pageYOffset > 150);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      // Clean up the event listener when the component unmounts
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   if (!siteLibrary) return <></>;
   if (!heroMediaSliderData) return <></>;
   const settings = {
@@ -106,18 +120,18 @@ export default function HeroMediaSliderSection({
                     )}
 
                     {heroMediaSliderItem?.textContent?.subHeader && (
-                      <div className="body-parsed-text ">
+                      <div className="body-parsed-text">
                         {parse(heroMediaSliderItem?.textContent.subHeader.html)}
                       </div>
                     )}
 
                     {heroMediaSliderItem?.textContent?.content && (
-                      <div className="body-parsed-text ">
+                      <div className="body-parsed-text">
                         {parse(heroMediaSliderItem?.textContent.content.html)}
                       </div>
                     )}
                     {heroMediaSliderItem?.textContent?.htmlText && (
-                      <div className="body-parsed-text ">
+                      <div className="body-parsed-text">
                         {parse(heroMediaSliderItem?.textContent.htmlText)}
                       </div>
                     )}
@@ -178,6 +192,18 @@ export default function HeroMediaSliderSection({
                       <Image
                         src={heroMediaSliderItem.sliderMediaBackground.url}
                         className="hero-media-image object-cover h-full w-full object-center-top"
+                        alt=""
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                      />
+                    )}
+                    {heroMediaSliderItem.mediaType === "expand" && (
+                      <Image
+                        src={heroMediaSliderItem.sliderMediaBackground.url}
+                        className={`transition-all hero-media-image object-cover h-full w-full object-center-top no-clip sticky top-[10%] ${
+                          scroll ? "clip-image grayscale" : "grayscale-0"
+                        }`}
                         alt=""
                         width={0}
                         height={0}

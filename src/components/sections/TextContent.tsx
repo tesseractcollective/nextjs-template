@@ -6,6 +6,7 @@ import type {
 import parse from "html-react-parser";
 import { Fade } from "react-awesome-reveal";
 import LinkItem from "@/components/LinkItem";
+import TextContentPins from "./TextContentPins";
 
 interface TextContentProps {
   textContentData: TextContentFieldsFragment[];
@@ -22,9 +23,14 @@ export default function TextContentSection({
   const textBlocks = textContentData?.filter(
     (textContent) => textContent.contentAlign !== "card"
   );
+  const textPins = textContentData?.filter(
+    (textContent) => textContent.textContentWidth === "parallax"
+  );
   const firstBlockAlign = textBlocks[0]?.contentAlign ?? "left";
   const firstBlockWidth = textBlocks[0]?.textContentWidth ?? "Content";
   const firstBlockCSSClass = textBlocks[0]?.cssClass ?? "";
+
+  if (textPins && textPins.length >= 1) return <TextContentPins />;
 
   return (
     <>
