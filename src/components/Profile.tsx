@@ -12,7 +12,7 @@ import {
   faDiamondTurnRight,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 import Profiles from "@/components/Profiles";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import VideoSection from "@/components/VideoSection";
@@ -73,60 +73,61 @@ export default function Profile({
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background h-[33%]" />
           </div>
         )}
-
-        <div
-          className={`relative mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8 ${
-            !!profile.heroImage?.url ? "-mt-12" : "mt-0"
-          }`}
-        >
-          <div className="mx-auto max-w-2xl text-center lg:max-w-4xl flex flex-col">
-            <Fade direction="up" cascade damping={0.25} triggerOnce>
-              {profile.profileLogo?.url && (
-                <Image
-                  src={profile.profileLogo?.url}
-                  alt={profile?.name || ""}
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                  className="w-full max-w-xs mx-auto"
-                />
-              )}
-              <h2 className="text-3xl !font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase pt-1">
-                {profile.name}
-              </h2>
-            </Fade>
-            <SocialMediaIcons
-              cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4 text-text-color"
-              instagramLinkProp={profile?.instagramLink || undefined}
-              spotifyLinkProp={profile?.spotifyLink || undefined}
-              facebookLinkProp={profile?.facebookLink || undefined}
-              twitterLinkProp={profile?.twitterLink || undefined}
-              youtubeLinkProp={profile?.youtubeLink || undefined}
-              tikTokLinkProp={profile?.tikTokLink || undefined}
-              appleMusicLinkProp={profile?.appleMusicLink || undefined}
-              pandoraLinkProp={profile?.pandoraLink || undefined}
-              soundcloudLinkProp={profile?.soundcloudLink || undefined}
-              linkedinLinkProp={profile?.linkedinLink || undefined}
-              emailLinkProp={profile.email || undefined}
-              phoneLinkProp={profile.phoneNumber || undefined}
-              calendlyLinkProp={profile.calendlyLink || undefined}
-              displayVcf={profile.displayVcf || undefined}
-              avatar={profile.avatarImage?.url || undefined}
-              name={profile.name || undefined}
-            />
-            {/* {!!profile.name && (
+        <Zoom triggerOnce>
+          <div
+            className={`relative mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8 ${
+              !!profile.heroImage?.url ? "-mt-12" : "mt-0"
+            }`}
+          >
+            <div className="mx-auto max-w-2xl text-center lg:max-w-4xl flex flex-col">
+              <Fade direction="up" cascade damping={0.25} triggerOnce>
+                {profile.profileLogo?.url && (
+                  <Image
+                    src={profile.profileLogo?.url}
+                    alt={profile?.name || ""}
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    className="w-full max-w-xs mx-auto"
+                  />
+                )}
+                <h2 className="text-3xl !font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase pt-1">
+                  {profile.name}
+                </h2>
+              </Fade>
+              <SocialMediaIcons
+                cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4 text-text-color"
+                instagramLinkProp={profile?.instagramLink || undefined}
+                spotifyLinkProp={profile?.spotifyLink || undefined}
+                facebookLinkProp={profile?.facebookLink || undefined}
+                twitterLinkProp={profile?.twitterLink || undefined}
+                youtubeLinkProp={profile?.youtubeLink || undefined}
+                tikTokLinkProp={profile?.tikTokLink || undefined}
+                appleMusicLinkProp={profile?.appleMusicLink || undefined}
+                pandoraLinkProp={profile?.pandoraLink || undefined}
+                soundcloudLinkProp={profile?.soundcloudLink || undefined}
+                linkedinLinkProp={profile?.linkedinLink || undefined}
+                emailLinkProp={profile.email || undefined}
+                phoneLinkProp={profile.phoneNumber || undefined}
+                calendlyLinkProp={profile.calendlyLink || undefined}
+                displayVcf={profile.displayVcf || undefined}
+                avatar={profile.avatarImage?.url || undefined}
+                name={profile.name || undefined}
+              />
+              {/* {!!profile.name && (
               <ArtistInfo
                 artistId="0TnOYISbd1XYRBk9myaseg"
                 clientId="cd926e12c97646b487d5e831548f1585"
               />
             )} */}
-            {profile.fullBio?.html && (
-              <div className="mt-4 text-text-color body-parsed-text text-left sm:text-center">
-                {parse(profile.fullBio?.html)}
-              </div>
-            )}
+              {profile.fullBio?.html && (
+                <div className="mt-4 text-text-color body-parsed-text text-left sm:text-center">
+                  {parse(profile.fullBio?.html)}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </Zoom>
       </div>
       <div className="py-8">
         <div className="bg-invert px-4 overflow-x-hidden">

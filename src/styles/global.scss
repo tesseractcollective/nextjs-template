@@ -91,6 +91,26 @@ html {
   --text-overlay: #ffffff; 
 }
 
+.bg-bg-80 {
+  background-color: rgba(var(--background), .8);
+}
+
+.bg-after {
+ &:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: var(--background);
+  opacity: 50%;
+  top:0;
+  bottom: 0;
+  max-height: 80px;
+  z-index: -1;
+  // outline: red;
+ }
+}
+
 .bg-bg-bright {
   background: var(--background);
    backdrop-filter: brightness(150%);
@@ -98,7 +118,7 @@ html {
 
 .bg-bg-secondary-bright {
   background: var(--background-secondary);
-   backdrop-filter: brightness(150%);
+  backdrop-filter: brightness(150%);
 }
 
 .text-shadow {

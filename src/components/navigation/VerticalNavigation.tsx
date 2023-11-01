@@ -77,7 +77,7 @@ export default function CenterNavigation({
               leaveTo="opacity-0"
             >
               <div
-                className="fixed inset-0 bg-dark opacity-60 backdrop-blur-xl"
+                className="fixed inset-0 bg-[#000000be] opacity-60 backdrop-blur-md"
                 aria-hidden="true"
               />
             </Transition.Child>
@@ -92,7 +92,7 @@ export default function CenterNavigation({
                 leaveFrom="-translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="relative flex w-full max-w-[80vw] md:max-w-md flex-col overflow-y-auto pb-12 shadow-xl border-l-primary border-l bg-bg-secondary transition-all">
+                <Dialog.Panel className="relative flex w-full max-w-[80vw] md:max-w-md flex-col overflow-y-auto pb-12 shadow-xl border-l-primary border-l bg-bg transition-all">
                   <div className="flex px-4 pb-2 pt-5">
                     <Link
                       href="/"
@@ -111,13 +111,13 @@ export default function CenterNavigation({
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-12 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                            className="h-12 w-auto max-w-max md:mx-auto cursor-pointer object-contain"
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}
                             height={0}
                             sizes="100%"
-                            style={{ width: "100%" }}
+                            // style={{ width: "100%" }}
                           />
                         </>
                       ) : (
@@ -152,7 +152,7 @@ export default function CenterNavigation({
                         <div key={mainNavigationItem.label}>
                           {hasItems && (
                             <Tab.Group as="div" className="mt-2">
-                              <div className="border-b border-primary">
+                              <div className="">
                                 <Tab.List className="-mb-px flex space-x-8 px-4">
                                   <Tab
                                     key={mainNavigationItem.label}
@@ -161,7 +161,7 @@ export default function CenterNavigation({
                                         selected
                                           ? "border-primary text-primary"
                                           : "border-transparent text-text-color",
-                                        "flex-1 whitespace-nowrap border-dark hover:border-white border-b-2 px-1 py-4 text-base font-medium"
+                                        "flex-1 whitespace-nowrap px-1 py-4 text-base font-medium"
                                       )
                                     }
                                   >
@@ -294,7 +294,8 @@ export default function CenterNavigation({
                 <div className="flex items-center justify-start flex-row relative">
                   <Link
                     href="/"
-                    className="justify-self-center transition-all cursor-pointer"
+                    className="justify-start]p[]-;p md:justify-self-center transition-all 
+                      }cursor-pointer"
                     id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
                     onClick={() => {
                       ReactGA.event({

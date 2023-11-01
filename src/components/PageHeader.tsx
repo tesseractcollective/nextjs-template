@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 interface PageHeaderProps {
   pageHeaderTitleProp?: string;
   pageHeaderSubtitleProp?: string;
@@ -57,7 +57,7 @@ export default function PageHeader({
         </section>
       )}
       {pageWidthStyle === "parallax" && (
-        <>
+        <Zoom triggerOnce>
           <section className="pt-44 pb-44 relative bg-[#000]">
             <div
               className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
@@ -78,7 +78,7 @@ export default function PageHeader({
               )}
             </Fade>
           </section>
-        </>
+        </Zoom>
       )}
       {pageWidthStyle === "angled" && (
         <div className={`bg relative ${cssClass}`}>
@@ -110,18 +110,20 @@ export default function PageHeader({
                 </div>
               </div>
             </div>
-            {!!pageHeaderImageProp && (
-              <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-                <Image
-                  className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
-                  src={pageHeaderImageProp}
-                  alt=""
-                  sizes="100%"
-                  width={0}
-                  height={0}
-                />
-              </div>
-            )}
+            <Fade triggerOnce>
+              {!!pageHeaderImageProp && (
+                <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+                  <Image
+                    className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
+                    src={pageHeaderImageProp}
+                    alt=""
+                    sizes="100%"
+                    width={0}
+                    height={0}
+                  />
+                </div>
+              )}
+            </Fade>
           </div>
         </div>
       )}

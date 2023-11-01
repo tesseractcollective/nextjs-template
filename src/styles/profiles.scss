@@ -1,29 +1,11 @@
 .profile-vertical-gallery {
-  --n: 1; /* number of rows*/
-  --m: 5; /* number of columns */
-  --g: 0px;  /* control the gap */
-  --f: .8;   /* control the scale factor */
-  
-  display: grid;
-  gap: var(--g);
-  width: 100vw;
-  height: 100vh;
-  grid-template-columns: repeat(var(--m),auto);
+  .vertical-profile {
+    max-height: 75vh;
+    p {
+      @media screen and (min-width: 976px)  {
+        writing-mode: vertical-rl;
+      }
+    }
+  }
 }
 
-.profile-vertical-gallery a img {
-  width: 0;
-  height: 0;
-  min-height: 100%;
-  min-width: 100%;
-  object-fit: cover;
-  cursor: pointer;
-  filter: grayscale(100%);
-  transition: .35s linear;
-}
-
-.profile-vertical-gallery a img:hover{
-  filter: grayscale(0);
-  width:  calc(100vh*var(--f)/var(--n));
-  height: calc(100vw*var(--f)/var(--m));
-}

@@ -713,14 +713,17 @@ export default function Profiles({
                 </h3>
               )}
             </div>
-            <div className="profile-vertical-gallery">
+            <div className="profile-vertical-gallery flex items-start justify-center my-16 flex-col lg:flex-row relative w-full min-h-[75vh]">
               {FilteredProfiles.map((profile) => (
                 <Link
                   key={profile.profileSlug}
-                  className="relative group"
-                  href={`/${profile.profileType?.toLowerCase()}/${
-                    profile.profileSlug
-                  }`}
+                  className="relative group vertical-profile h-[28rem] w-full lg:w-[20vw] hover:lg:w-[60vw] transition-all lg:h-full"
+                  href={
+                    profile.externalLink ||
+                    `/${profile.profileType?.toLowerCase()}/${
+                      profile.profileSlug
+                    }`
+                  }
                 >
                   {!!profile.avatarImage?.url && (
                     <Image
@@ -729,12 +732,10 @@ export default function Profiles({
                       alt={profile.name || ""}
                       width={0}
                       height={0}
+                      className="grayscale group-hover:grayscale-0 transition-all object-cover h-full w-full overflow-hidden"
                     />
                   )}
-                  <p
-                    className="absolute z-40 bottom-0 p-0 m-0 font-bold uppercase left-0 text-4xl group-hover:text-primary transition-all"
-                    style={{ writingMode: "vertical-rl" }}
-                  >
+                  <p className="absolute z-40 bottom-0 p-0 m-0 font-bold uppercase left-0 text-4xl group-hover:text-primary transition-all">
                     {profile.name}
                   </p>
                 </Link>

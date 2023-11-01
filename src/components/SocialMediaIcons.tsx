@@ -12,13 +12,13 @@ import {
   faInstagram,
   faFacebook,
   faTiktok,
-  faTwitter,
   faYoutube,
   faSoundcloud,
   faWhatsapp,
   faLinkedin,
   faGithub,
   faThreads,
+  faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import ReactGA from "react-ga4";
@@ -173,7 +173,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.twitterLink || twitterLinkProp}
                 target="_blank"
                 className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
-                title="Twitter"
+                title="X - Twitter"
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -184,10 +184,10 @@ export default function SocialMediaIcons({
                 }
               >
                 <FontAwesomeIcon
-                  icon={faTwitter as IconProp}
+                  icon={faXTwitter as IconProp}
                   className="fa-fw h-5 w-5 flex"
                 />
-                <span className="sr-only">Twitter</span>
+                <span className="sr-only">X - Twitter</span>
               </a>
             )}
             {(siteLibrary?.youtubeLink || youtubeLinkProp) && (
@@ -280,7 +280,7 @@ export default function SocialMediaIcons({
                   x="0px"
                   y="0px"
                   viewBox="0 0 512 512"
-                  className="svg-inline--fa fa-music fa-fw h-5 w-5 relative top-[-3px]"
+                  className="svg-inline--fa fa-music fa-fw h-5 w-5 relative"
                   xmlSpace="preserve"
                 >
                   <g>
@@ -314,7 +314,7 @@ export default function SocialMediaIcons({
                   aria-hidden="true"
                   width="32"
                   height="32"
-                  className="svg-inline--fa fa-music fa-fw h-5 w-5 relative top-[-3px]"
+                  className="svg-inline--fa fa-music fa-fw h-5 w-5 relative"
                   viewBox="0 0 32 32"
                 >
                   <path

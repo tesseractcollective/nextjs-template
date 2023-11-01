@@ -69,10 +69,11 @@ export default function DefaultNavigation({
 
   return (
     <div
-      className={`sticky top-0 z-[999] bg-background left-0 right-0 nav-shadow transition-all ${
+      className={`sticky top-0 z-[999] bg-after left-0 right-0 nav-shadow transition-all backdrop-blur-md ${
         small ? "nav-shadow-scrolled" : ""
       } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
       id="navigation"
+      // style={{ backgroundOpacity: "50%" }}
     >
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
@@ -172,7 +173,7 @@ export default function DefaultNavigation({
                                         ? "font-bold text-text-color"
                                         : "border-transparent text-text-color",
                                       "flex-1 whitespace-nowrap border-dark hover:border-white px-1 pt-4 text-base flex flex-row",
-                                      "text-center mx-auto items-center justify-center cursor-default opacity-80 border-b border-primary-fade max-w-max"
+                                      "text-center mx-auto items-center justify-center cursor-default opacity-80 max-w-max"
                                     )
                                   }
                                 >
@@ -330,7 +331,7 @@ export default function DefaultNavigation({
         <nav aria-label="Top">
           <div className="">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
-              <div className="border-b border-dark">
+              <div className="">
                 <div
                   className={`flex items-center justify-between transition-all ${
                     small ? "h-12" : "h-16"
@@ -400,7 +401,7 @@ export default function DefaultNavigation({
                                                 open
                                                   ? "border-primary text-primary"
                                                   : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
-                                                `relative z-10 -mb-px flex items-center pt-px transition-all duration-200 ease-out border-dark hover:border-white border-b-2 uppercase font-semibold ${
+                                                `relative z-10 -mb-px flex items-center pt-px transition-all duration-200 ease-out uppercase font-semibold ${
                                                   small
                                                     ? "text-xs md:text-sm"
                                                     : "text-xs sm:text-sm md:text-base"

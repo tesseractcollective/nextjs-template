@@ -38,8 +38,11 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
         />
       )}
       <LayoutBlockSections layout={layout} eventsData={events} />
-      {page?.whatsAppContactNumberFloatingButton && (
-        <Whatsapp contactNumber={page.whatsAppContactNumberFloatingButton} />
+      {page?.whatsAppContactNumberFloatingButton && siteLibrary?.isSpanish && (
+        <Whatsapp
+          contactNumber={page.whatsAppContactNumberFloatingButton}
+          isSpanish={siteLibrary.isSpanish}
+        />
       )}
       {navigations && siteLibrary && (
         <Footer
