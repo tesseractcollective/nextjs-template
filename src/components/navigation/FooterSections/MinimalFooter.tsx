@@ -224,7 +224,7 @@ function MinimalFooter({
         <div className="my-8 flex flex-col flex-wrap justify-center w-full mx-auto">
           <SocialMediaIcons
             siteLibrary={siteLibrary}
-            cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap md:gap-x-2"
+            cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
           />
           {secondaryLogo?.url && secondaryLink && secondaryName && (
             <a

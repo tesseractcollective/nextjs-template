@@ -538,3 +538,40 @@ a.hover-chevron {
 .pop {    
   animation: popAnimation 8s infinite alternate-reverse;
 }
+
+.flip-scale-up-diag-1 {
+  -webkit-animation-name: flip-scale-up-diag-1 0.5s;
+  animation-name: flip-scale-up-diag-1;
+  animation-duration: 5.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@-webkit-keyframes flip-scale-up-diag-1 {
+  0% {
+    -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
+            transform: scale(1) rotate3d(1, 1, 0, 0deg);
+  }
+  10% {
+    -webkit-transform: scale(3) rotate3d(1, 1, 0, 359deg);
+            transform: scale(3) rotate3d(1, 1, 0, 359deg);
+  }
+  20% {
+    -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
+            transform: scale(1) rotate3d(1, 1, 0, 0deg);
+  }
+}
+@keyframes flip-scale-up-diag-1 {
+  0% {
+    -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
+            transform: scale(1) rotate3d(1, 1, 0, 0deg);
+  }
+  10% {
+    -webkit-transform: scale(3) rotate3d(1, 1, 0, 359deg);
+            transform: scale(3) rotate3d(1, 1, 0, 359deg);
+  }
+  20% {
+    -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
+            transform: scale(1) rotate3d(1, 1, 0, 0deg);
+  }
+}

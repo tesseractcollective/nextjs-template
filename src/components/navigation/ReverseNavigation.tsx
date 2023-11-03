@@ -5,12 +5,13 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
+import { Fade } from "react-awesome-reveal";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -254,7 +255,7 @@ export default function CenterNavigation({
                   <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap"
+                      cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
                     />
                     <div className="text-center">
                       {!!contactName && (
@@ -319,11 +320,12 @@ export default function CenterNavigation({
                   <div className="max-w-max  left-0">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="mt-2 w-full hidden md:flex flex-row social-icons-row items-center justify-center text-text-color gap-x-0 h-8"
+                      cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
                     />
                     <button
                       type="button"
-                      className="rounded-md px-2 py-1 text-text-color border border-white hover:border-primary transition-all group fixed bottom-5 right-5 md:hidden "
+                      className="px-2 py-1 text-text-color border border-white hover:border-primary transition-all group fixed bottom-5 right-5 md:hidden skew-x-[6deg]  hover:skew-x-[-6deg]"
+                      title="Open Mobile Menu"
                       onClick={() => {
                         setOpen(true);
                         ReactGA.event({
@@ -334,8 +336,8 @@ export default function CenterNavigation({
                       }}
                     >
                       <span className="sr-only">Open menu</span>
-                      <Bars3Icon
-                        className="h-6 w-6 group-hover:text-primary transition"
+                      <Bars3BottomLeftIcon
+                        className="h-6 w-6 group-hover:text-primary transition-all rotate-180 skew-x-[6deg] group-hover:skew-x-[-6deg] group-hover:rotate-0"
                         aria-hidden="true"
                       />
                     </button>
@@ -379,28 +381,30 @@ export default function CenterNavigation({
         </header>
         {/* DIV */}
         <div className="hidden md:flex md:fixed absolute bottom-10 left-4">
-          {!!items &&
-            items.length >= 1 &&
-            items.map((mainNavigationItem) => {
-              const hasItems = mainNavigationItem.items.length >= 1;
-              return (
-                <div key={mainNavigationItem.label} className="">
-                  {!hasItems && (
-                    <div className="">
-                      <LinkItem
-                        key={mainNavigationItem.label}
-                        link={mainNavigationItem.link || "/"}
-                        sameTab={mainNavigationItem?.sameTab}
-                        cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
-                        onClick={() => setOpen(false)}
-                      >
-                        <span>{mainNavigationItem.label}</span>
-                      </LinkItem>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+          <Fade direction="up" triggerOnce cascade damping={0.05}>
+            {!!items &&
+              items.length >= 1 &&
+              items.map((mainNavigationItem) => {
+                const hasItems = mainNavigationItem.items.length >= 1;
+                return (
+                  <div key={mainNavigationItem.label} className="">
+                    {!hasItems && (
+                      <div className="">
+                        <LinkItem
+                          key={mainNavigationItem.label}
+                          link={mainNavigationItem.link || "/"}
+                          sameTab={mainNavigationItem?.sameTab}
+                          cssClass="m-2 p-2 text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase text-shadow font-bold"
+                          onClick={() => setOpen(false)}
+                        >
+                          <span>{mainNavigationItem.label}</span>
+                        </LinkItem>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+          </Fade>
         </div>
         {/* DIV */}
       </div>

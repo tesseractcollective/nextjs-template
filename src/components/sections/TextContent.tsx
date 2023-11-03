@@ -4,7 +4,7 @@ import type {
   TextContentFieldsFragment,
 } from "@/graphql/generated/graphql";
 import parse from "html-react-parser";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 import LinkItem from "@/components/LinkItem";
 import TextContentPins from "./TextContentPins";
 
@@ -93,9 +93,11 @@ export default function TextContentSection({
                       </div>
                     )}
                     {textContentItem?.htmlText && (
-                      <div className="text-content-item-html">
-                        {parse(textContentItem?.htmlText)}
-                      </div>
+                      <Fade triggerOnce>
+                        <div className="text-content-item-html">
+                          {parse(textContentItem?.htmlText)}
+                        </div>
+                      </Fade>
                     )}
                     <div className="flex flex-col">
                       {textContentItem?.header && (
@@ -154,9 +156,11 @@ export default function TextContentSection({
                   }
                 >
                   {textContentItem?.htmlText && (
-                    <div className="text-content-item-html">
-                      {parse(textContentItem?.htmlText)}
-                    </div>
+                    <Zoom triggerOnce>
+                      <div className="text-content-item-html">
+                        {parse(textContentItem?.htmlText)}
+                      </div>
+                    </Zoom>
                   )}
                   <div>
                     {textContentItem?.contentImage && (

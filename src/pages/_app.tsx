@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
+import "swiper/css/effect-coverflow";
 // import "swiper/css/effect-cards";
 
 export default function App({ Component, pageProps }: AppProps) {
