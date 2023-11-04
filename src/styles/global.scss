@@ -973,3 +973,12 @@ h4, h5, h6  {color: var(--text);}
 .link--leda:hover span {
   transform: translate3d(-150%, 0, 0);
 }
+
+
+.scale-down-80 {
+  transform: scale(0.8);
+  transition: all 200ms ease;
+  @media only screen and (min-width: 960px) {
+    transform: scale(1);
+  }
+}

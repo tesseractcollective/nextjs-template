@@ -25,9 +25,14 @@ type Event = {
 type EventListProps = {
   apiKey: string;
   artistName: string;
+  isSpanish?: boolean;
 };
 
-const BandsInTownApi: React.FC<EventListProps> = ({ apiKey, artistName }) => {
+const BandsInTownApi: React.FC<EventListProps> = ({
+  apiKey,
+  artistName,
+  isSpanish,
+}) => {
   const removeAccents = (artistName: string) =>
     artistName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   const scrubbedArtistName = removeAccents(artistName);
@@ -57,9 +62,9 @@ const BandsInTownApi: React.FC<EventListProps> = ({ apiKey, artistName }) => {
 
   return (
     <div className="container mx-auto relative z-10">
-      <ul className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-10/12 mx-auto py-8 gap-y-4">
-        {Array.isArray(events) && events.length > 0 ? (
-          events.map((event) => (
+      {Array.isArray(events) && events.length > 0 ? (
+        <ul className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-10/12 mx-auto py-8 gap-y-4">
+          {events.map((event) => (
             <a
               href={event.offers[0]?.url}
               target="_blank"
@@ -81,11 +86,13 @@ const BandsInTownApi: React.FC<EventListProps> = ({ apiKey, artistName }) => {
                 <span>{event.venue.location}</span>
               </p>
             </a>
-          ))
-        ) : (
-          <li>No upcoming events</li>
-        )}
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-center">
+          {isSpanish ? "No hay eventos próximos" : "No upcoming events"}
+        </p>
+      )}
     </div>
   );
 };

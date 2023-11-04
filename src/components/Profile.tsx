@@ -272,6 +272,7 @@ export default function Profile({
         <BandsInTownApi
           apiKey={profile.bandsInTownKey}
           artistName={profile.name}
+          isSpanish={siteLibrary?.isSpanish || false}
         />
       )}
       {/* {!!profile.name && <SpotifyAlbums artistId="4aXXDj9aZnlshx7mzj3W1N" />} */}

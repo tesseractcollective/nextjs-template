@@ -5,12 +5,13 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, Bars3BottomRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
+import { Zoom } from "react-awesome-reveal";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -86,11 +87,11 @@ export default function CenterNavigation({
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
-                enterFrom="translate-x-full"
-                enterTo="-translate-x-0"
+                enterFrom="translate-x-full blur-xl"
+                enterTo="-translate-x-0 blur-0"
                 leave="transition ease-in-out duration-300 transform"
-                leaveFrom="-translate-x-0"
-                leaveTo="translate-x-full"
+                leaveFrom="-translate-x-0 blur-0"
+                leaveTo="translate-x-full blur-xl"
               >
                 <Dialog.Panel
                   className="relative flex w-full max-w-[80vw] md:max-w-md flex-col overflow-y-auto pb-12 shadow-xl border-l-primary border-l bg-bg
@@ -107,7 +108,7 @@ export default function CenterNavigation({
                           label: "Visit Home",
                         });
                       }}
-                      className="cursor-pointer transition-all"
+                      className="cursor-pointer transition-all hover:skew-x-[16deg] hover:skew-y-[16deg]"
                       id={`nav-logo-mobile-panel-${title?.replace(" ", "-")}`}
                     >
                       {navigation?.navigationLogo ? (
@@ -224,13 +225,13 @@ export default function CenterNavigation({
                           )}
 
                           {!hasItems && (
-                            <div className="space-y-6 border-y border-[#2c2c2c31] px-4 py-3">
+                            <div className="space-y-6 px-4 py-3">
                               <div className="flow-root">
                                 <LinkItem
                                   key={mainNavigationItem.label}
                                   link={mainNavigationItem.link || "/"}
                                   sameTab={mainNavigationItem?.sameTab}
-                                  cssClass="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto text-xl w-[90%] hover:text-primary transition-all"
+                                  cssClass="block p-2 text-text-color max-w-max mx-auto text-3xl w-[90%] transition-all uppercase font-bold hover:text-primary hover:skew-x-[16deg] hover:skew-y-[16deg] focus:text-primary focus:skew-x-[16deg] focus:skew-y-[16deg]"
                                   onClick={() => setOpen(false)}
                                 >
                                   <span>{mainNavigationItem.label}</span>
@@ -245,7 +246,7 @@ export default function CenterNavigation({
                   <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap md:gap-x-2"
+                      cssClass="my-4 grid grid-cols-5 social-icons-row items-center justify-center text-text-color gap-2"
                     />
                     <div className="text-center">
                       {!!contactName && (
@@ -273,7 +274,7 @@ export default function CenterNavigation({
                   </div>
                   <button
                     type="button"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color mx-auto group"
+                    className="flex items-center justify-center rounded-md p-2 text-text-color mx-auto group"
                     onClick={() => setOpen(false)}
                   >
                     <XMarkIcon
@@ -331,31 +332,36 @@ export default function CenterNavigation({
                   <div className="max-w-max absolute right-0">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-1 md:gap-x-2"
+                      cssClass="my-4 w-full social-icons-row text-text-color flex flex-row flex-wrap items-center justify-end gap-x-2 max-w-[140px md:max-w-[300px]"
                     />
-                    <button
-                      type="button"
-                      className="rounded-md px-2 py-1 text-text-color border border-white hover:border-primary transition-all group flex md:hidden"
-                      onClick={() => {
-                        setOpen(true);
-                        ReactGA.event({
-                          category: "Link",
-                          action: "Open Mobile Menu",
-                          label: "Open Mobile Menu",
-                        });
-                      }}
-                    >
-                      <span className="sr-only">Open menu</span>
-                      <Bars3Icon
-                        className="h-6 w-6 group-hover:text-primary transition"
-                        aria-hidden="true"
-                      />
-                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </nav>
+          <Zoom className="fixed bottom-10 right-5 md:hidden">
+            <button
+              type="button"
+              className="rounded-full px-2 py-2 text-text-color border border-white hover:border-primary transition-all group bg-dark hover:rotate-180 relative"
+              onClick={() => {
+                setOpen(true);
+                ReactGA.event({
+                  category: "Link",
+                  action: "Open Mobile Menu",
+                  label: "Open Mobile Menu",
+                });
+              }}
+            >
+              <Bars3BottomRightIcon
+                className="h-7 w-7 group-hover:text-primary transition-all group-hover:opacity-50"
+                aria-hidden="true"
+              />
+              <span className="text-xs group-hover:opacity-100 absolute top-[-20px] rotate-180 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                Menu
+              </span>
+              <span className="sr-only">Menu</span>
+            </button>
+          </Zoom>
         </header>
         {/* DIV */}
         <div className="hidden md:flex md:fixed vertical-nav-desktop">

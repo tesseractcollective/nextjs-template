@@ -9,7 +9,12 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  EffectCoverflow,
+  Autoplay,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -371,8 +376,8 @@ export default function FeatureAlbum({
       {albumDisplayType === "skew" && (
         <section className="px-2 mx-0 overflow-hidden">
           <Zoom triggerOnce>
-            <section className="py-36 mx-auto">
-              <div className="flex flex-row flex-wrap items-start justify-center my-8 rotate-[10deg] w-[120%] -ml-16 feature-album-slider-wrapper">
+            <section className="py-16 md:py-36 mx-auto">
+              <div className="flex flex-row flex-wrap items-start justify-center my-4 md:my-8 rotate-[10deg] skew-x-6 w-[120%] -ml-16 feature-album-slider-wrapper">
                 <Swiper
                   effect={"coverflow"}
                   grabCursor={true}
@@ -386,9 +391,14 @@ export default function FeatureAlbum({
                     slideShadows: false,
                   }}
                   pagination={true}
-                  modules={[EffectCoverflow, Pagination]}
+                  modules={[EffectCoverflow, Pagination, Autoplay]}
                   className="mx-0"
                   loop={true}
+                  autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }}
                 >
                   {albums.map((albumItem) => (
                     <SwiperSlide
@@ -405,7 +415,7 @@ export default function FeatureAlbum({
                               label: albumItem.title || "",
                             })
                           }
-                          className="block no-underline album-item mx-auto relative group transition-all"
+                          className="block no-underline album-item mx-auto relative group transition-all hover:skew-x-[-2deg] hover:rotate-[-2deg]"
                         >
                           <Image
                             src={albumItem.albumCover.url}

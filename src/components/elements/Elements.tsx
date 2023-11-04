@@ -101,6 +101,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
         <BandsInTownApi
           apiKey={bandsInTownKey}
           artistName={siteLibrary.title}
+          isSpanish={siteLibrary?.isSpanish || false}
         />
       )}
     </>

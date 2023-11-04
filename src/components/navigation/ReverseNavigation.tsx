@@ -87,13 +87,13 @@ export default function CenterNavigation({
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
-                enterFrom="translate-y-full"
-                enterTo="-translate-y-0"
+                enterFrom="translate-y-full translate-x-full blur-xl"
+                enterTo="-translate-y-0 -translate-x-0 blur-0"
                 leave="transition ease-in-out duration-300 transform"
-                leaveFrom="-translate-y-0"
-                leaveTo="translate-y-full"
+                leaveFrom="-translate-y-0 -translate-x-0 blur-0"
+                leaveTo="translate-y-full translate-x-full blur-xl"
               >
-                <Dialog.Panel className="relative flex w-full max-h-[90vh] max-w-[90vw] md:max-w-md flex-col overflow-y-auto pb-12 shadow-xl border-primary border-t border-l bg-bg transition-all isolate rounded-tl-xl">
+                <Dialog.Panel className="relative flex w-full h-full max-h-[90vh] max-w-[90vw] md:max-w-md flex-col overflow-y-auto pb-12 shadow-xl border-primary border-t border-l bg-bg transition-all isolate">
                   <div
                     className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                     aria-hidden="true"
@@ -234,13 +234,13 @@ export default function CenterNavigation({
                           )}
 
                           {!hasItems && (
-                            <div className="space-y-6 border-y border-[#2c2c2c31] px-4 py-3">
+                            <div className="space-y-6 px-4 py-3">
                               <div className="flow-root">
                                 <LinkItem
                                   key={mainNavigationItem.label}
                                   link={mainNavigationItem.link || "/"}
                                   sameTab={mainNavigationItem?.sameTab}
-                                  cssClass="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto text-xl w-[90%] hover:text-primary transition-all"
+                                  cssClass="block py-2 p-2 text-text-color max-w-max mr-auto text-3xl w-[90%] transition-all uppercase font-bold hover:text-primary focus:text-primary  hover:scale-y-[0.9] focus:scale-y-[0.9] hover:tracking-wider focus:tracking-wider"
                                   onClick={() => setOpen(false)}
                                 >
                                   <span>{mainNavigationItem.label}</span>
@@ -252,7 +252,7 @@ export default function CenterNavigation({
                       );
                     })}
 
-                  <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                  <div className="space-y-6 px-4 py-6">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
                       cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
@@ -317,14 +317,14 @@ export default function CenterNavigation({
             <div className="mx-auto px-4 sm:px-6 lg:px-8 mb-2">
               <div className="mt-2 relative">
                 <div className="flex items-center justify-between flex-row relative">
-                  <div className="max-w-max  left-0">
+                  <div className="max-w-max left-0">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
+                      cssClass="my-4 w-full social-icons-row text-text-color flex flex-row flex-wrap items-center justify-end gap-x-2 max-w-[120px md:max-w-[300px]"
                     />
                     <button
                       type="button"
-                      className="px-2 py-1 text-text-color border border-white hover:border-primary transition-all group fixed bottom-5 right-5 md:hidden skew-x-[6deg]  hover:skew-x-[-6deg]"
+                      className="px-2 py-1 text-text-color border border-white hover:border-primary transition-all group fixed bottom-5 right-5 md:hidden skew-x-[-6deg] hover:skew-x-[6deg] bg-dark"
                       title="Open Mobile Menu"
                       onClick={() => {
                         setOpen(true);
@@ -337,7 +337,7 @@ export default function CenterNavigation({
                     >
                       <span className="sr-only">Open menu</span>
                       <Bars3BottomLeftIcon
-                        className="h-6 w-6 group-hover:text-primary transition-all rotate-180 skew-x-[6deg] group-hover:skew-x-[-6deg] group-hover:rotate-0"
+                        className="h-6 w-6 group-hover:text-primary transition-all rotate-180 skew-x-[-6deg] group-hover:skew-x-[6deg] group-hover:rotate-0"
                         aria-hidden="true"
                       />
                     </button>
@@ -358,7 +358,7 @@ export default function CenterNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className="h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
+                          className="h-12 sm:h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}
@@ -394,7 +394,7 @@ export default function CenterNavigation({
                           key={mainNavigationItem.label}
                           link={mainNavigationItem.link || "/"}
                           sameTab={mainNavigationItem?.sameTab}
-                          cssClass="m-2 p-2 text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase text-shadow font-bold"
+                          cssClass="m-2 px-2 py-4 text-text-color max-w-max mx-auto text-xl transition-all uppercase text-shadow font-bold relative hover:text-primary hover:top-[-6px] focus:text-primary  focus:top-[-6px] top-0"
                           onClick={() => setOpen(false)}
                         >
                           <span>{mainNavigationItem.label}</span>
