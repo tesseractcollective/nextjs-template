@@ -1,10 +1,13 @@
 import React, { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
 import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
@@ -56,11 +59,11 @@ export default function VideoSection({
             <div className="relative flex flex-row items-center justify-center w-full gap-x-2 z-40">
               <button
                 type="button"
-                className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color"
+                className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-80 hover:opacity-100 text-text-color"
                 onClick={() => swiperRef.current?.slidePrev()}
               >
                 <FontAwesomeIcon
-                  icon={faArrowLeft as IconProp}
+                  icon={faChevronLeft as IconProp}
                   className="fa-fw my-0 text-xl h-5 md:h-8 w-5 md:w-8"
                 />
                 <span className="sr-only">Move Video Rotation Back</span>
@@ -69,11 +72,15 @@ export default function VideoSection({
                 className="!pb-10 max-w-5xl mx-auto w-full flex px-4"
                 grabCursor
                 loop
-                modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination, Autoplay]}
                 onBeforeInit={(swiper) => {
                   swiperRef.current = swiper;
                 }}
-                autoplay
+                autoplay={{
+                  delay: 5000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
                 slidesPerView={1}
                 spaceBetween={30}
               >
@@ -95,11 +102,11 @@ export default function VideoSection({
               </Swiper>
               <button
                 type="button"
-                className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color"
+                className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-80 hover:opacity-100 text-text-color"
                 onClick={() => swiperRef.current?.slideNext()}
               >
                 <FontAwesomeIcon
-                  icon={faArrowRight as IconProp}
+                  icon={faChevronRight as IconProp}
                   className="fa-fw my-0 text-xl h-5 md:h-8 w-5 md:w-8"
                 />
                 <span className="sr-only">Move Video Rotation Next</span>

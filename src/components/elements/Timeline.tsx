@@ -30,7 +30,7 @@ export default function Timeline({ timelineData }: TimelineProps) {
       {timelineItems?.length >= 1 && (
         <>
           <div className="py-6 flex flex-col justify-center sm:py-12">
-            <div className="py-3 sm:max-w-xl sm:mx-auto w-full px-2 sm:px-0">
+            <div className="py-3 sm:max-w-3xl sm:mx-auto w-full px-2 sm:px-0">
               <div className="relative text-text-color antialiased text-sm">
                 {/* <!-- Vertical bar running through middle --> */}
                 <div className="hidden sm:block w-1 bg-secondary absolute h-full left-1/2 transform -translate-x-1/2"></div>

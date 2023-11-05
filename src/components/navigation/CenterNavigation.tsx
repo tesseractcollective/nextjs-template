@@ -82,7 +82,7 @@ export default function CenterNavigation({
               leaveTo="opacity-0 blur-xl"
             >
               <div
-                className="fixed inset-0 bg-[#000] opacity-60 backdrop-blur-lg"
+                className="fixed inset-0 bg-[#000] opacity-80 backdrop-blur-lg"
                 aria-hidden="true"
               />
             </Transition.Child>
@@ -91,13 +91,13 @@ export default function CenterNavigation({
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
-                enterFrom="translate-x-full"
-                enterTo="-translate-x-0"
+                enterFrom="translate-x-full blur-xl"
+                enterTo="-translate-x-0 blur-0"
                 leave="transition ease-in-out duration-300 transform"
-                leaveFrom="-translate-x-0"
-                leaveTo="translate-x-full"
+                leaveFrom="-translate-x-0 blur-0"
+                leaveTo="translate-x-full blur-xl"
               >
-                <Dialog.Panel className="relative flex w-full max-w-6xl flex-col overflow-y-auto pb-12 shadow-xl bg-after isolate overflow-hidden border-l border-text-color">
+                <Dialog.Panel className="relative flex w-full max-w-6xl flex-col overflow-y-auto pb-12 shadow-xl bg-after isolate overflow-hidden border-l border-text-color backdrop-blur-lg">
                   <div
                     className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                     aria-hidden="true"
@@ -110,7 +110,7 @@ export default function CenterNavigation({
                       }}
                     />
                   </div>
-                  <div className="flex px-4 pb-2 pt-5">
+                  <div className="flex px-4 pb-2 pt-5 justify-between">
                     <Link
                       href="/"
                       onClick={() => {
@@ -121,7 +121,7 @@ export default function CenterNavigation({
                           label: "Visit Home",
                         });
                       }}
-                      className="cursor-pointer"
+                      className="cursor-pointer transition-all"
                       id={`nav-logo-mobile-panel-${title
                         ?.toLowerCase()
                         .replace(" ", "-")}`}
@@ -148,7 +148,7 @@ export default function CenterNavigation({
                     <button
                       type="button"
                       title="Close menu"
-                      className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto group transition-all"
+                      className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 group transition-all"
                       onClick={() => setOpen(false)}
                     >
                       <span className="sr-only">Close menu</span>
@@ -260,7 +260,7 @@ export default function CenterNavigation({
                       );
                     })}
 
-                  <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                  <div className="space-y-6 px-4 py-6">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
                       cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2"
@@ -291,7 +291,7 @@ export default function CenterNavigation({
                   </div>
                   <button
                     type="button"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto group transition-all"
+                    className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto group transition-all"
                     onClick={() => setOpen(false)}
                   >
                     <XMarkIcon
@@ -322,12 +322,12 @@ export default function CenterNavigation({
 
         <header className="relative">
           <nav aria-label="Top">
-            <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 mb-2">
+            <div className="mx-auto max-w-12xl px-4 sm:px-6 lg:px-8 mb-2">
               <div className="mt-2">
-                <div className="flex items-center justify-between flex-row relative w-full">
+                <div className="flex items-center justify-center flex-row relative w-full">
                   <SocialMediaIcons
                     siteLibrary={siteLibrary}
-                    cssClass="max-w-max md:flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2 opacity-40 hidden"
+                    cssClass="max-w-max md:flex flex-row social-icons-row items-center justify-center text-primary gap-x-2 opacity-40 hidden absolute left-0"
                   />
                   <Link
                     href="/"
@@ -361,10 +361,11 @@ export default function CenterNavigation({
                     )}
                   </Link>
                   {/* Desktop menu bar */}
-                  <div className="max-w-max">
+                  <div className="absolute right-0 max-w-max">
                     <button
                       type="button"
-                      className="rounded-md px-2 py-1 text-text-color group hover:text-primary transition-all cursor-pointer"
+                      title="menu"
+                      className="rounded-md px-2 py-1 text-primary group hover:text-secondary transition-all cursor-pointer relative"
                       onClick={() => {
                         setOpen(true);
                         ReactGA.event({
@@ -376,9 +377,12 @@ export default function CenterNavigation({
                     >
                       <span className="sr-only">Open menu</span>
                       <Bars3BottomRightIcon
-                        className="h-6 w-6 group-hover:text-primary transition"
+                        className="h-6 w-6 group-hover:text-secondary transition-all group-hover:rotate-180"
                         aria-hidden="true"
                       />
+                      <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                        Menu
+                      </span>
                     </button>
                   </div>
                 </div>
