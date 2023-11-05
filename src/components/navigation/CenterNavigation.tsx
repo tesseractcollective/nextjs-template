@@ -75,11 +75,11 @@ export default function CenterNavigation({
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
+              enterFrom="opacity-0 blur-xl"
+              enterTo="opacity-100 blur-0"
               leave="transition-opacity ease-linear duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
+              leaveFrom="opacity-100 blur-0"
+              leaveTo="opacity-0 blur-xl"
             >
               <div
                 className="fixed inset-0 bg-[#000] opacity-60 backdrop-blur-lg"
@@ -324,7 +324,11 @@ export default function CenterNavigation({
           <nav aria-label="Top">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 mb-2">
               <div className="mt-2">
-                <div className="flex items-center justify-center flex-row relative">
+                <div className="flex items-center justify-between flex-row relative w-full">
+                  <SocialMediaIcons
+                    siteLibrary={siteLibrary}
+                    cssClass="max-w-max md:flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2 opacity-40 hidden"
+                  />
                   <Link
                     href="/"
                     className="justify-self-center transition-all cursor-pointer"
@@ -357,7 +361,7 @@ export default function CenterNavigation({
                     )}
                   </Link>
                   {/* Desktop menu bar */}
-                  <div className="max-w-max absolute right-0">
+                  <div className="max-w-max">
                     <button
                       type="button"
                       className="rounded-md px-2 py-1 text-text-color group hover:text-primary transition-all cursor-pointer"
@@ -379,15 +383,11 @@ export default function CenterNavigation({
                   </div>
                 </div>
               </div>
-              <SocialMediaIcons
-                siteLibrary={siteLibrary}
-                cssClass="mt-2 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-0 h-8 opacity-40"
-              />
             </div>
           </nav>
         </header>
       </div>
-      <div className="pb-28"></div>
+      <div className="pb-20"></div>
     </>
   );
 }
