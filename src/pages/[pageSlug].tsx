@@ -1,5 +1,4 @@
-"use client";
-import { GetStaticProps } from "next";
+import { GetStaticProps, GetStaticPaths } from "next";
 import { sdkClient } from "@/lib/graphql-client";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 import PageComponent from "@/components/PageComponent";
@@ -14,6 +13,13 @@ interface PageProps {
   layout: LayoutQuery;
   events: Event[];
 }
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  // Fetch the possible values for [pageSlug]
+  const slugs = ["slug1", "slug2", "slug3"]; // Replace with your actual slug values
+  const paths = slugs.map((slug) => ({ params: { pageSlug: slug } }));
+  return { paths, fallback: false }; // You can adjust the 'fallback' option as needed
+};
 
 export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const pageSlug = params?.pageSlug as string;
