@@ -13,6 +13,7 @@ import ElementImage from "@/components/elements/ElementImage";
 import ScrollDigits from "@/components/elements/ScrollDigits";
 import Timeline from "@/components/elements/Timeline";
 import MapBoxMap from "@/components/elements/MapBoxMap";
+import MapBoxMaps from "@/components/elements/MapBoxMaps";
 import DrumPadComponent from "./DrumPadComponent";
 import BandsInTownApi from "@/components/BandsInTownApi";
 
@@ -45,6 +46,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
     mapLatLong,
     bandsInTownKey,
   } = elements;
+
   return (
     <>
       {!!iFrameCode && (
@@ -96,6 +98,17 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             long={mapLatLong.longitude}
             mapKey={siteLibrary.mapKey}
           />
+        )}
+      {!!siteLibrary?.mapKey &&
+        !!elementJson?.locations &&
+        !!siteLibrary?.metaAppleTouchIcon && (
+          <div className="max-w-8xl mx-auto flex h-full w-full">
+            <MapBoxMaps
+              locations={elementJson.locations}
+              mapKey={siteLibrary.mapKey}
+              icon={siteLibrary?.metaAppleTouchIcon.url}
+            />
+          </div>
         )}
       {!!siteLibrary.title && !!bandsInTownKey && (
         <BandsInTownApi

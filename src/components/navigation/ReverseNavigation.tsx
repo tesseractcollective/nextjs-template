@@ -124,7 +124,7 @@ export default function CenterNavigation({
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-12 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                            className="h-8 md:h-12 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}
@@ -320,7 +320,7 @@ export default function CenterNavigation({
                   <div className="max-w-max left-0">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="my-4 w-full social-icons-row text-text-color flex flex-row flex-wrap items-center justify-end gap-x-2 max-w-[120px md:max-w-[300px]"
+                      cssClass="my-4 w-full social-icons-row text-text-color flex flex-row flex-wrap items-center justify-start gap-x-2 max-w-[120px] md:max-w-[300px]"
                     />
                     <button
                       type="button"
@@ -344,7 +344,7 @@ export default function CenterNavigation({
                   </div>
                   <Link
                     href="/"
-                    className="justify-self-center transition-all cursor-pointer"
+                    className="items-center justify-self-center transition-all cursor-pointer"
                     id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
                     onClick={() => {
                       ReactGA.event({
@@ -358,7 +358,7 @@ export default function CenterNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className="h-12 sm:h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
+                          className="h-9 sm:h-12 md:h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}
@@ -408,7 +408,7 @@ export default function CenterNavigation({
         </div>
         {/* DIV */}
       </div>
-      {/* <div className="pb-28"></div> */}
+      {/* <div className="pb-4"></div> */}
     </>
   );
 }

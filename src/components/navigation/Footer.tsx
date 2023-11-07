@@ -162,7 +162,7 @@ function Footer({
             {regularColumns.map((item, index) => (
               <div
                 key={`regular-column-${index++}`}
-                className={`relative my-4 md:my-0 ${
+                className={`relative my-4 lg:my-0 ${
                   item?.footerColumnCssWrapper || ""
                 }`}
                 id={`footer-col-${index++}`}
@@ -230,7 +230,7 @@ function Footer({
         <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
           <SocialMediaIcons
             siteLibrary={siteLibrary}
-            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap md:gap-x-2"
+            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
           />
           <p className="text-xs text-text-color uppercase text-center mb-4 opacity-70">
             {`© ${new Date().getFullYear()} ${title || ""} ${

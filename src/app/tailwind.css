@@ -16,9 +16,9 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
+  background-color: var(--text);
   border-radius: 14px;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--text);
 }
 
 @tailwind components;
