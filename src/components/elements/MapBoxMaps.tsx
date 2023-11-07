@@ -1,12 +1,9 @@
-import { useState, useMemo } from "react";
-import { createRoot } from "react-dom/client";
+import { useState } from "react";
 import Image from "next/image";
 import Map, {
   Marker,
   Popup,
-  NavigationControl,
   FullscreenControl,
-  ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -32,7 +29,7 @@ interface MapBoxMapsProps {
 }
 
 function MapBoxMaps({ mapKey, locations, icon }: MapBoxMapsProps) {
-  const [popupInfo, setPopupInfo] = useState<Location>() || null;
+  const [popupInfo, setPopupInfo] = useState<Location | null>(null);
   if (!mapKey || !locations || locations.length === 0) return null;
   return (
     <Map
@@ -48,8 +45,6 @@ function MapBoxMaps({ mapKey, locations, icon }: MapBoxMapsProps) {
     >
       <GeolocateControl position="top-left" />
       <FullscreenControl position="top-left" />
-      {/* <NavigationControl position="top-left" /> */}
-      {/* <ScaleControl /> */}
       {locations.map((location, index) => (
         <Marker
           key={`marker-${index}`}
@@ -66,18 +61,18 @@ function MapBoxMaps({ mapKey, locations, icon }: MapBoxMapsProps) {
           <div className="relative">
             <FontAwesomeIcon
               icon={faLocationDot as IconProp}
-              className="fa-fw h-12 w-12  scale-[2.5] text-primary stroke-[#000000a7] stroke-[15"
+              className="fa-fw h-12 w-12  scale-[2.5] text-primary stroke-[#000000a7] stroke-[15]"
             />
-            {/* {!!icon && (
+            {!!icon && (
               <Image
                 src={icon}
                 height={0}
                 width={0}
                 alt=""
                 sizes="100%"
-                className="absolute z-10 w-5 h-5 top-2 object-cover rounded-[100%]"
+                className="absolute z-20 w-full h-9 block top-0 object-contain !rounded-[100%] !p-0 !m-0"
               />
-            )} */}
+            )}
           </div>
         </Marker>
       ))}
@@ -88,18 +83,26 @@ function MapBoxMaps({ mapKey, locations, icon }: MapBoxMapsProps) {
           latitude={Number(popupInfo.latitude)}
           onClose={() => setPopupInfo(null)}
         >
-          <div>
-            {popupInfo.city}, {popupInfo.state} |{" "}
-            <a target="_blank" href={popupInfo.googleMapLink}>
-              {popupInfo.label}
+          <div className="flex flex-col p-2">
+            <span className="font-bold  text-lg">{popupInfo.label}</span>
+            <span className="">{popupInfo.address}</span>
+            <span className="">
+              {popupInfo.city}, {popupInfo.state}
+            </span>
+            <a
+              target="_blank"
+              href={popupInfo.googleMapLink}
+              className="bg-primary p-1 mt-2 text-center rounded-md"
+            >
+              Info
             </a>
           </div>
           {popupInfo?.image && (
             <Image
-              alt={popupInfo.label || ""}
               width={0}
-              src={popupInfo.image}
               height={0}
+              alt={popupInfo.label || ""}
+              src={popupInfo.image}
               className="h-36 w-full object-cover"
             />
           )}
