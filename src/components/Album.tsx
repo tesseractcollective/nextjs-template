@@ -51,7 +51,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
           <link rel="shortcut icon" href={siteLibrary.favicon.url} />
         )}
       </Head>
-      <div className="bg-dark mt-16">
+      <div className="bg-dark py-20">
         <div className="w-10/12 md:w-8/12 mx-auto block my-2 p-2 text-center">
           <Link
             href="/music"

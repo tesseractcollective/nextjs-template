@@ -84,7 +84,7 @@ export default function ContentComponents({
     <>
       {!!testimonials && testimonialType && (
         <section
-          className="container mx-auto z-20 w-10/12"
+          className="max-w-8xl mx-auto z-20 w-full relative"
           id={`testimonial-${testimonialType}`}
         >
           <Testimonials testimonials={testimonials} query={testimonialType} />
@@ -92,7 +92,7 @@ export default function ContentComponents({
       )}
       {!!products && productType && (
         <section
-          className="container mx-auto z-20 w-10/12"
+          className="max-w-8xl mx-auto z-20 w-full relative"
           id={`product-${productType}`}
         >
           <Products products={products} type={productType} />
@@ -129,7 +129,7 @@ export default function ContentComponents({
         />
       )}
       {!!events && !!eventDisplayLayout && (
-        <section className="container my-4 mx-auto">
+        <section className="max-w-8xl w-full my-4 mx-auto">
           <Events
             displayEventsStyleGridOrSlider={eventDisplayLayout || "grid"}
             events={events}

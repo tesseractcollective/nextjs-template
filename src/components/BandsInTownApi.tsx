@@ -59,9 +59,9 @@ const BandsInTownApi: React.FC<EventListProps> = ({
   }, [apiKey, artistName]);
 
   return (
-    <div className="container mx-auto relative z-10">
+    <div className="max-w-8xl w-full mx-auto relative z-10 p-4">
       {Array.isArray(events) && events.length > 0 ? (
-        <ul className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-10/12 mx-auto py-8 gap-y-4">
+        <ul className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto py-8 gap-y-4">
           {events.map((event) => (
             <a
               href={event.offers[0]?.url}

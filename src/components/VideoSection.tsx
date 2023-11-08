@@ -24,7 +24,7 @@ export default function VideoSection({
   const videoDataLength = videoData.length === 1;
   const swiperRef = useRef<SwiperType>();
   return (
-    <section className="container mx-auto z-20 w-10/12">
+    <section className="max-w-8xl mx-auto z-20 w-full relative">
       {videoData?.map((video) => (
         <div key={Math.random()}>
           {video?.youtubePlaylistId ? (

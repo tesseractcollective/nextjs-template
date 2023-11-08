@@ -7,7 +7,7 @@ import type {
   HeroMediaSliderFieldsFragment,
 } from "@/graphql/generated/graphql";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 import Slider from "react-slick";
 import LinkItem from "@/components/LinkItem";
 
@@ -199,16 +199,18 @@ export default function HeroMediaSliderSection({
                       />
                     )}
                     {heroMediaSliderItem.mediaType === "expand" && (
-                      <Image
-                        src={heroMediaSliderItem.sliderMediaBackground.url}
-                        className={`transition-all hero-media-image object-cover h-full w-full object-center-top no-clip sticky top-[10%] ${
-                          scroll ? "clip-image grayscale" : "grayscale-0"
-                        }`}
-                        alt=""
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                      />
+                      <Zoom triggerOnce>
+                        <Image
+                          src={heroMediaSliderItem.sliderMediaBackground.url}
+                          className={`transition-all hero-media-image object-cover h-full w-full object-center-top no-clip sticky top-[10%] ${
+                            scroll ? "clip-image grayscale" : "grayscale-0"
+                          }`}
+                          alt=""
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                        />
+                      </Zoom>
                     )}
                   </div>
                 )}

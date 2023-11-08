@@ -509,6 +509,31 @@ a.hover-chevron {
   }
 }
 
+.text-motion {
+  background: linear-gradient(
+    -90deg,
+    var(--primary),
+    var(--secondary),
+    var(--tertiary),
+    var(--secondary),
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  background-size: 250% auto;
+  // animation: textShine 5s ease-in-out infinite alternate;
+}
+
+// @keyframes textShine {
+//   0% {
+//     transform: rotate(30deg);
+//   }
+//   100% {
+//     transform: rotate(30deg);
+//   }
+// }
+
 .vertical-text {
   width: auto !important;
   writing-mode: vertical-rl;
@@ -551,27 +576,35 @@ a.hover-chevron {
   0% {
     -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
             transform: scale(1) rotate3d(1, 1, 0, 0deg);
+            color: var(--primary);
+            filter: blur(0);
   }
   10% {
     -webkit-transform: scale(3) rotate3d(1, 1, 0, 359deg);
             transform: scale(3) rotate3d(1, 1, 0, 359deg);
+            filter: blur(0.5);
+            
   }
   20% {
     -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
             transform: scale(1) rotate3d(1, 1, 0, 0deg);
+            filter: blur(0);
   }
 }
 @keyframes flip-scale-up-diag-1 {
   0% {
     -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
             transform: scale(1) rotate3d(1, 1, 0, 0deg);
+               filter: blur(0);
   }
   10% {
     -webkit-transform: scale(3) rotate3d(1, 1, 0, 359deg);
             transform: scale(3) rotate3d(1, 1, 0, 359deg);
+            filter: blur(0.5);
   }
   20% {
     -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
             transform: scale(1) rotate3d(1, 1, 0, 0deg);
+            filter: blur(0);
   }
 }

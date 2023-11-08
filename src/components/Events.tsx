@@ -21,7 +21,7 @@ export default function Events({
     <div>
       {(displayEventsStyleGridOrSlider === "grid" ||
         displayEventsStyleGridOrSlider === undefined) && (
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-10/12 mx-auto">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto w-full">
           {events.map((event) => (
             <Link
               href={`/event/${event.eventSlug}`}

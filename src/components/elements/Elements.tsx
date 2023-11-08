@@ -122,15 +122,13 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
         !!siteLibrary.title &&
         !!bandsInTownKey &&
         !!siteLibrary?.metaAppleTouchIcon && (
-          <div className="bandsintownmapbox max-w-8xl mx-auto flex h-full w-full relative z-30 p-8 rounded-md my-16">
-            <BandsInTownMapBox
-              apiKey={bandsInTownKey}
-              artistName={siteLibrary.title}
-              mapKey={siteLibrary.mapKey}
-              icon={siteLibrary?.metaAppleTouchIcon.url}
-              isSpanish={siteLibrary?.isSpanish || false}
-            />
-          </div>
+          <BandsInTownMapBox
+            apiKey={bandsInTownKey}
+            artistName={siteLibrary.title}
+            mapKey={siteLibrary.mapKey}
+            icon={siteLibrary?.metaAppleTouchIcon.url}
+            isSpanish={siteLibrary?.isSpanish || false}
+          />
         )}
     </>
   );
