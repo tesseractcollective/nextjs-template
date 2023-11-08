@@ -13,7 +13,8 @@ import ElementImage from "@/components/elements/ElementImage";
 import ScrollDigits from "@/components/elements/ScrollDigits";
 import Timeline from "@/components/elements/Timeline";
 import MapBoxMap from "@/components/elements/MapBoxMap";
-import MapBoxMaps from "@/components/elements/MapBoxMaps";
+import MapBoxesMap from "@/components/elements/MapBoxesMap";
+import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
 import DrumPadComponent from "./DrumPadComponent";
 import BandsInTownApi from "@/components/BandsInTownApi";
 
@@ -102,8 +103,8 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!siteLibrary?.mapKey &&
         !!elementJson?.locations &&
         !!siteLibrary?.metaAppleTouchIcon && (
-          <div className="max-w-8xl mx-auto flex h-full w-full">
-            <MapBoxMaps
+          <div className="max-w-8xl mx-auto flex h-full w-full p-4 rounded-md">
+            <MapBoxesMap
               locations={elementJson.locations}
               mapKey={siteLibrary.mapKey}
               icon={siteLibrary?.metaAppleTouchIcon.url}
@@ -117,6 +118,20 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           isSpanish={siteLibrary?.isSpanish || false}
         />
       )}
+      {!!siteLibrary?.mapKey &&
+        !!siteLibrary.title &&
+        !!bandsInTownKey &&
+        !!siteLibrary?.metaAppleTouchIcon && (
+          <div className="bandsintownmapbox max-w-8xl mx-auto flex h-full w-full relative z-30 p-8 rounded-md my-16">
+            <BandsInTownMapBox
+              apiKey={bandsInTownKey}
+              artistName={siteLibrary.title}
+              mapKey={siteLibrary.mapKey}
+              icon={siteLibrary?.metaAppleTouchIcon.url}
+              isSpanish={siteLibrary?.isSpanish || false}
+            />
+          </div>
+        )}
     </>
   );
 }

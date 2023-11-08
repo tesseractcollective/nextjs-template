@@ -22,15 +22,19 @@ interface Location {
   googleMapLink: string;
 }
 
-interface MapBoxMapsProps {
+interface MapBoxesMapProps {
   mapKey: string;
   icon: string;
   locations: Location[];
 }
 
-function MapBoxMaps({ mapKey, locations, icon }: MapBoxMapsProps) {
-  const [popupInfo, setPopupInfo] = useState<Location | null>(null);
-  if (!mapKey || !locations || locations.length === 0) return null;
+function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
+  const [popupInfo, setPopupInfo] = useState<Location | null>();
+
+  if (!mapKey || !locations || locations.length === 0) {
+    return null;
+  }
+
   return (
     <Map
       mapboxAccessToken={mapKey}
@@ -39,43 +43,45 @@ function MapBoxMaps({ mapKey, locations, icon }: MapBoxMapsProps) {
         latitude: locations[0].latitude,
         zoom: 6,
       }}
-      scrollZoom={true}
+      scrollZoom={false}
       style={{ height: "800px", width: "100%", display: "block" }}
       mapStyle="mapbox://styles/mapbox/streets-v12"
     >
       <GeolocateControl position="top-left" />
       <FullscreenControl position="top-left" />
-      {locations.map((location, index) => (
-        <Marker
-          key={`marker-${index}`}
-          longitude={location.longitude}
-          latitude={location.latitude}
-          anchor="bottom"
-          onClick={(e) => {
-            // If we let the click event propagates to the map, it will immediately close the popup
-            // with `closeOnClick: true`
-            e.originalEvent.stopPropagation();
-            setPopupInfo(location);
-          }}
-        >
-          <div className="relative">
-            <FontAwesomeIcon
-              icon={faLocationDot as IconProp}
-              className="fa-fw h-12 w-12  scale-[2.5] text-primary stroke-[#000000a7] stroke-[15]"
-            />
-            {!!icon && (
-              <Image
-                src={icon}
-                height={0}
-                width={0}
-                alt=""
-                sizes="100%"
-                className="absolute z-20 w-full h-9 block top-0 object-contain !rounded-[100%] !p-0 !m-0"
+      {locations.map((location, index) => {
+        const { longitude, latitude } = location;
+        return (
+          <Marker
+            key={`marker-${index}`}
+            longitude={longitude}
+            latitude={latitude}
+            anchor="bottom"
+            onClick={(e) => {
+              e.originalEvent.stopPropagation();
+              setPopupInfo(location);
+            }}
+          >
+            <div className="relative shadow-md">
+              <FontAwesomeIcon
+                icon={faLocationDot as IconProp}
+                className="fa-fw h-12 w-12 scale-[2.5] text-primary stroke-[#000000a7] stroke-[15]"
               />
-            )}
-          </div>
-        </Marker>
-      ))}
+              {!!icon && (
+                <Image
+                  src={icon}
+                  height={0}
+                  width={0}
+                  alt=""
+                  sizes="100%"
+                  className="absolute z-20 w-full h-9 block top-0 object-contain !rounded-[100%] !p-0 !m-0"
+                />
+              )}
+            </div>
+          </Marker>
+        );
+      })}
+
       {popupInfo && (
         <Popup
           anchor="top"
@@ -84,9 +90,9 @@ function MapBoxMaps({ mapKey, locations, icon }: MapBoxMapsProps) {
           onClose={() => setPopupInfo(null)}
         >
           <div className="flex flex-col p-2">
-            <span className="font-bold  text-lg">{popupInfo.label}</span>
-            <span className="">{popupInfo.address}</span>
-            <span className="">
+            <span className="font-bold text-lg">{popupInfo.label}</span>
+            <span>{popupInfo.address}</span>
+            <span>
               {popupInfo.city}, {popupInfo.state}
             </span>
             <a
@@ -97,7 +103,7 @@ function MapBoxMaps({ mapKey, locations, icon }: MapBoxMapsProps) {
               Info
             </a>
           </div>
-          {popupInfo?.image && (
+          {popupInfo.image && (
             <Image
               width={0}
               height={0}
@@ -112,4 +118,4 @@ function MapBoxMaps({ mapKey, locations, icon }: MapBoxMapsProps) {
   );
 }
 
-export default MapBoxMaps;
+export default MapBoxesMap;
