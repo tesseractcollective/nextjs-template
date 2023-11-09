@@ -93,7 +93,7 @@ function BandsInTownMapBox({
             }}
             scrollZoom={false}
             style={{
-              height: "700px",
+              height: "60vh",
               width: "100%",
               display: "block",
               borderRadius: "8px",

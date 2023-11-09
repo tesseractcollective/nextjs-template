@@ -329,10 +329,10 @@ export default function CenterNavigation({
                     )}
                   </Link>
                   {/* Desktop menu bar */}
-                  <div className="max-w-max absolute right-0">
+                  <div className="max-w-max absolute right-0 transition-all top-[0.05rem] sm:top-0">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="my-4 w-full social-icons-row text-text-color flex flex-row flex-wrap items-center justify-end gap-x-2 max-w-[140px md:max-w-[300px]"
+                      cssClass="my-4 w-28 sm:w-36 md:w-full social-icons-row text-text-color flex flex-row flex-wrap items-center justify-end gap-x-2"
                     />
                   </div>
                 </div>

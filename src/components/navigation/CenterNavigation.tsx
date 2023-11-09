@@ -242,7 +242,7 @@ export default function CenterNavigation({
                                   key={mainNavigationItem.label}
                                   sameTab={mainNavigationItem?.sameTab}
                                   link={mainNavigationItem.link || "/"}
-                                  cssClass="block p-2 font-bold text-text-color max-w-max mx-auto text-3xl lg:text-5xl hover:text-primary transition-all hover:-skew-x-12"
+                                  cssClass="block p-2 font-bold text-text-color max-w-max mx-auto text-3xl lg:text-5xl text-center hover:text-primary transition-all hover:-skew-x-12"
                                   onClick={() => {
                                     ReactGA.event({
                                       category: "Link",
