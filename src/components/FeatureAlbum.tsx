@@ -190,9 +190,6 @@ export default function FeatureAlbum({
       {albumDisplayType === "record" && (
         <section className="px-2 mx-0">
           <section className="container py-5 overflow-hidden mx-auto">
-            <h2 className="text-2xl md:text-4xl mx-auto opacity-90 uppercase text-center font-bold mb-4">
-              {isSpanish ? "Música" : "Music"}
-            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 w-full mx-auto max-w-8xl gap-y-0 md:gap-y-8">
               {albums.map((albumItem) => (
                 <Link

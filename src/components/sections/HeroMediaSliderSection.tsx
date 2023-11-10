@@ -91,7 +91,7 @@ export default function HeroMediaSliderSection({
                     heroMediaSliderItem.sliderCssWrapper
                   }`}
                 >
-                  <div className="heromediaslider-overlay-content headlinePrimary  text-text-color">
+                  <div className="heromediaslider-overlay-content headlinePrimary  text-text-color flex items-center justify-center flex-col h-full w-full m-auto text-center absolute z-30 p-4">
                     <div
                       className={`swiper-no-swiping relative p-4 text-${
                         heroMediaSliderItem?.textContent?.contentAlign &&
@@ -198,8 +198,8 @@ export default function HeroMediaSliderSection({
                       </div>
                     </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-b from-dark z-1 section-fade-invert h-16 opacity-70" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark z-1 section-fade-invert" />
+                  <div className="absolute bg-gradient-to-b from-dark z-20 section-fade-invert h-16 opacity-70 left-0 right-0 top-0" />
+                  <div className="absolute bg-gradient-to-t from-dark z-20 section-fade-invert h-16 opacity-70 bottom-0 left-0 right-0" />
                   {!!heroMediaSliderItem?.sliderMediaBackground && (
                     <div className="main">
                       <Fade direction="up">
@@ -219,11 +219,13 @@ export default function HeroMediaSliderSection({
                       {heroMediaSliderItem.mediaType === "image" && (
                         <Image
                           src={heroMediaSliderItem.sliderMediaBackground.url}
-                          className="hero-media-image object-cover h-full w-full object-center-top select-none absolute inset-0"
+                          className="hero-media-image object-cover h-full w-full object-center-top select-none absolute inset-0 z-1"
                           alt=""
                           width={0}
                           height={0}
                           sizes="100%"
+                          priority
+                          quality={90}
                         />
                       )}
                       {heroMediaSliderItem.mediaType === "expand" && (
@@ -236,6 +238,8 @@ export default function HeroMediaSliderSection({
                           width={0}
                           height={0}
                           sizes="100%"
+                          priority
+                          quality={90}
                         />
                       )}
                     </div>

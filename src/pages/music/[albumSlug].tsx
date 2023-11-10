@@ -9,6 +9,7 @@ import "@/styles/global.scss";
 import "@/styles/layoutBlocks.scss";
 import ThemeColors from "@/styles/ThemeColors";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Zoom } from "react-awesome-reveal";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const albumPage: AlbumPageQuery = await sdkClient.albumPage({
@@ -39,13 +40,15 @@ export default function AlbumSlug({
         navigations={navigations}
         hideNav={false}
       />
-      <Album album={album} siteLibrary={siteLibrary} albums={albums} />
-      <Footer
-        siteLibrary={siteLibrary}
-        navigations={navigations}
-        hideFooter={false}
-        blogs={blogs}
-      />
+      <Zoom triggerOnce className="relative">
+        <Album album={album} siteLibrary={siteLibrary} albums={albums} />
+        <Footer
+          siteLibrary={siteLibrary}
+          navigations={navigations}
+          hideFooter={false}
+          blogs={blogs}
+        />
+      </Zoom>
     </>
   );
 }

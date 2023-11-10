@@ -657,17 +657,6 @@ body iframe {
   }
 
   .heromediaslider-overlay-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    padding: 4rem 2rem;
-    margin: auto;
-    text-align: center;
-    z-index: 100 !important;
-    position: absolute;
     &.align-bottom {
       @media screen and (max-width: 960px) {
         justify-content: flex-end;
@@ -761,14 +750,14 @@ body iframe {
 
 .hero-media-slider  {
   &.no-fade, &.fade-none {
-      .absolute.bg-gradient-to-t.section-fade-invert {
+      .absolute.bg-gradient-to-t.section-fade-invert, .absolute.bg-gradient-to-b.section-fade-invert {
         background-image: unset !important;
         position: unset !important;
         inset: unset !important;
       }   
   }
   &.fade-dark {
-      .absolute.bg-gradient-to-t.section-fade-invert {
+      .absolute.bg-gradient-to-t.section-fade-invert,  .absolute.bg-gradient-to-b.section-fade-invert {
         --tw-gradient-from: #00000070 var(--tw-gradient-from-position);
         --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
         --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
@@ -965,4 +954,13 @@ body iframe {
       transform: rotate(3deg) !important;
     }
   }
+}
+
+
+.bg-fade-bg {
+  background: linear-gradient(0deg,var(--background) 0%,var(--background-secondary) 100%);
+}
+
+.bg-fade-secondary {
+  background: linear-gradient(180deg,var(--background) 0%,var(--background-secondary) 100%);
 }

@@ -97,20 +97,8 @@ export default function CenterNavigation({
                 leaveFrom="-translate-x-0 blur-0"
                 leaveTo="translate-x-full blur-xl"
               >
-                <Dialog.Panel className="relative flex w-full max-w-6xl flex-col overflow-y-auto pb-12 shadow-xl bg-after isolate overflow-hidden border-l border-text-color backdrop-blur-lg">
-                  <div
-                    className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-                    aria-hidden="true"
-                  >
-                    <div
-                      className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary to-secondary opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                      style={{
-                        clipPath:
-                          "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-                      }}
-                    />
-                  </div>
-                  <div className="flex px-4 pb-2 pt-5 justify-between">
+                <Dialog.Panel className="relative flex w-full max-w-6xl flex-col overflow-y-auto py-6 shadow-xl bg-after isolate overflow-hidden border-l border-text-color backdrop-blur-lg">
+                  <div className="flex px-4 py-5 z-10 items-center justify-between relative max-w-6xl">
                     <Link
                       href="/"
                       onClick={() => {
@@ -121,7 +109,7 @@ export default function CenterNavigation({
                           label: "Visit Home",
                         });
                       }}
-                      className="cursor-pointer transition-all"
+                      className="cursor-pointer transition-all max-w-max relative left-2"
                       id={`nav-logo-mobile-panel-${title
                         ?.toLowerCase()
                         .replace(" ", "-")}`}
@@ -130,13 +118,12 @@ export default function CenterNavigation({
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                            className="h-8 w-full max-w-[120px] cursor-pointer object-contain"
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}
                             height={0}
                             sizes="100%"
-                            style={{ width: "100%" }}
                           />
                         </>
                       ) : (
@@ -148,7 +135,7 @@ export default function CenterNavigation({
                     <button
                       type="button"
                       title="Close menu"
-                      className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 group transition-all"
+                      className="inline-flex items-center justify-center rounded-md text-gray-400 group transition-all relative right-2"
                       onClick={() => setOpen(false)}
                     >
                       <span className="sr-only">Close menu</span>
@@ -235,27 +222,34 @@ export default function CenterNavigation({
                             </Tab.Group>
                           )}
 
-                          {!hasItems && (
-                            <div className="space-y-6 px-4 py-3">
-                              <div className="flow-root">
-                                <LinkItem
-                                  key={mainNavigationItem.label}
-                                  sameTab={mainNavigationItem?.sameTab}
-                                  link={mainNavigationItem.link || "/"}
-                                  cssClass="block p-2 font-bold text-text-color max-w-max mx-auto text-3xl lg:text-5xl text-center hover:text-primary transition-all hover:-skew-x-12"
-                                  onClick={() => {
-                                    ReactGA.event({
-                                      category: "Link",
-                                      action: mainNavigationItem.link || "",
-                                      label: mainNavigationItem.link || "",
-                                    });
-                                  }}
-                                >
-                                  {mainNavigationItem?.label || ""}
-                                </LinkItem>
+                          <Fade
+                            triggerOnce
+                            direction="left"
+                            cascade
+                            damping={0.15}
+                          >
+                            {!hasItems && (
+                              <div className="space-y-6 px-4 py-3">
+                                <div className="flow-root">
+                                  <LinkItem
+                                    key={mainNavigationItem.label}
+                                    sameTab={mainNavigationItem?.sameTab}
+                                    link={mainNavigationItem.link || "/"}
+                                    cssClass="block p-2 font-bold text-text-color max-w-max mx-auto text-3xl lg:text-5xl text-center hover:text-primary transition-all hover:-skew-x-12"
+                                    onClick={() => {
+                                      ReactGA.event({
+                                        category: "Link",
+                                        action: mainNavigationItem.link || "",
+                                        label: mainNavigationItem.link || "",
+                                      });
+                                    }}
+                                  >
+                                    {mainNavigationItem?.label || ""}
+                                  </LinkItem>
+                                </div>
                               </div>
-                            </div>
-                          )}
+                            )}
+                          </Fade>
                         </div>
                       );
                     })}

@@ -9,7 +9,6 @@ import {
 } from "@/data/theDuttonsShowData";
 import { useEffect, useState } from "react";
 import { Event } from "@/components/Calendar/calendarHelpers";
-
 interface PageProps {
   layout: LayoutQuery;
   events: Event[];

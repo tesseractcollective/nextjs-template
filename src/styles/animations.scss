@@ -350,9 +350,9 @@ a.hover-chevron {
 
 .no-clip {
   clip-path: inset(0% 0% 0% 0%);
-}
-.clip-image {
-  clip-path: inset(15% 37vw 15% 37vw);
+  &.clip-image {
+    clip-path: inset(150px 150px 150px 150px);
+  }
 }
 
 .zoom-image-out.hero-media-slider .main img {

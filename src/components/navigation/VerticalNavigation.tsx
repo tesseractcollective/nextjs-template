@@ -83,18 +83,18 @@ export default function CenterNavigation({
               />
             </Transition.Child>
 
-            <div className="fixed inset-0 z-40 flex justify-end">
+            <div className="fixed inset-0 z-40 flex items-end">
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
-                enterFrom="translate-x-full blur-xl"
-                enterTo="-translate-x-0 blur-0"
+                enterFrom="translate-y-full blur-xl"
+                enterTo="-translate-y-0 blur-0"
                 leave="transition ease-in-out duration-300 transform"
-                leaveFrom="-translate-x-0 blur-0"
-                leaveTo="translate-x-full blur-xl"
+                leaveFrom="-translate-y-0 blur-0"
+                leaveTo="translate-y-full blur-xl"
               >
                 <Dialog.Panel
-                  className="relative flex w-full max-w-[80vw] md:max-w-md flex-col overflow-y-auto pb-12 shadow-xl border-l-primary border-l bg-bg
+                  className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-12 shadow-xl border-t-primary border-t bg-bg
                  transition-all"
                 >
                   <div className="flex px-4 pb-2 pt-5">
@@ -109,13 +109,13 @@ export default function CenterNavigation({
                         });
                       }}
                       className="cursor-pointer transition-all hover:skew-x-[16deg] hover:skew-y-[16deg]"
-                      id={`nav-logo-mobile-panel-${title?.replace(" ", "-")}`}
+                      id={`nav-logo-mobile-panel`}
                     >
                       {navigation?.navigationLogo ? (
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-12 w-auto max-w-max md:mx-auto cursor-pointer object-contain"
+                            className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}
@@ -246,7 +246,7 @@ export default function CenterNavigation({
                   <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="my-4 grid grid-cols-5 social-icons-row items-center justify-center text-text-color gap-2"
+                      cssClass="my-4 grid grid-cols-5 social-icons-row items-center justify-center text-text-color gap-2 overflow-hidden"
                     />
                     <div className="text-center">
                       {!!contactName && (
@@ -293,13 +293,12 @@ export default function CenterNavigation({
 
         <header className="relative">
           <nav aria-label="Top">
-            <div className="mx-auto px-4 sm:px-6 lg:px-8 mb-2">
+            <div className="mx-auto px-4 sm:px-6 mb-2">
               <div className="mt-2 relative">
-                <div className="flex items-center justify-start flex-row relative">
+                <div className="flex items-center justify-between flex-row relative">
                   <Link
                     href="/"
-                    className="justify-start]p[]-;p md:justify-self-center transition-all 
-                      }cursor-pointer"
+                    className="max-w-max absolute left-0 top-[0.05rem] sm:top-0 transition-all cursor-pointer"
                     id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
                     onClick={() => {
                       ReactGA.event({
@@ -313,13 +312,12 @@ export default function CenterNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className="h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
+                          className="w-[120px] md:w-[160px] max-h-[80px] cursor-pointer object-contain transition-all mr-auto"
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}
                           height={0}
                           sizes="100%"
-                          style={{ width: "100%" }}
                         />
                       </>
                     ) : (

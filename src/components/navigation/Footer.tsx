@@ -84,12 +84,12 @@ function Footer({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-8 w-auto mb-4 object-contain max-w-max mx-auto"
+                      className="h-16 w-full mb-4 object-contain max-w-max"
                       alt=""
                       width={0}
                       height={0}
+                      priority
                       sizes="100%"
-                      style={{ width: "100%" }}
                     />
                   )}
                   {!!item.footerTitle && (
@@ -171,12 +171,12 @@ function Footer({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-20 w-auto mb-4 object-contain max-w-max"
+                      className="h-16 w-full mb-4 object-contain max-w-max"
                       alt=""
                       width={0}
                       height={0}
+                      priority
                       sizes="100%"
-                      style={{ width: "100%" }}
                     />
                   )}
                   {!!item.footerTitle && (

@@ -101,14 +101,14 @@ export default function DefaultNavigation({
             <Transition.Child
               as={Fragment}
               enter="transition ease-in-out duration-300 transform"
-              enterFrom="-translate-x-full"
-              enterTo="translate-x-0"
+              enterFrom="-translate-x-full blur-xl"
+              enterTo="translate-x-0 blur-0"
               leave="transition ease-in-out duration-300 transform"
-              leaveFrom="translate-x-0"
-              leaveTo="-translate-x-full"
+              leaveFrom="translate-x-0 blur-0"
+              leaveTo="-translate-x-full blur-xl"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto pb-12 shadow-xl bg-bg-secondary theme-scroll">
-                <div className="flex px-4 pb-2 pt-5">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto py-6 shadow-xl bg-bg-secondary theme-scroll">
+                <div className="flex px-4 pb-5 pt-5 justify-between items-center relative w-full">
                   <Link
                     href="/"
                     onClick={() => {
@@ -119,20 +119,19 @@ export default function DefaultNavigation({
                         label: "Visit Home",
                       });
                     }}
-                    className="cursor-pointer"
-                    id={`nav-logo-mobile-panel-${title}`}
+                    className="cursor-pointer transition-all max-w-max absolute left-0 w-full"
+                    id={`nav-logo-mobile-panel`}
                   >
                     {navigation?.navigationLogo ? (
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                          className="h-10 w-full cursor-pointer object-contain relative left-0"
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}
                           height={0}
                           sizes="100%"
-                          style={{ width: "100%" }}
                         />
                       </>
                     ) : (
@@ -144,7 +143,7 @@ export default function DefaultNavigation({
                   <button
                     type="button"
                     title="Close menu"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto"
+                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto absolute right-0"
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close menu</span>

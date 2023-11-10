@@ -344,8 +344,8 @@ export default function CenterNavigation({
                   </div>
                   <Link
                     href="/"
-                    className="items-center justify-self-center transition-all cursor-pointer"
-                    id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
+                    className="transition-all cursor-pointer absolute top-5 md:top-1 right-0"
+                    id="nav-logo-desktop"
                     onClick={() => {
                       ReactGA.event({
                         category: "Link",
@@ -358,13 +358,12 @@ export default function CenterNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className="h-9 sm:h-12 md:h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
+                          className="w-[120px] md:w-[160px] cursor-pointer object-contain transition-all block"
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}
                           height={0}
                           sizes="100%"
-                          style={{ width: "100%" }}
                         />
                       </>
                     ) : (

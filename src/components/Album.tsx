@@ -36,7 +36,6 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
   const filteredAlbums = albums?.filter(
     (tempAlbum) => album.albumSlug !== tempAlbum.albumSlug
   );
-  console.log(albumJsonData);
   return (
     <>
       <Head>
