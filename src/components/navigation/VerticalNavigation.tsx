@@ -78,7 +78,7 @@ export default function CenterNavigation({
               leaveTo="opacity-0"
             >
               <div
-                className="fixed inset-0 bg-[#000000be] opacity-60 backdrop-blur-md"
+                className="fixed inset-0 bg-[#000000c7] opacity-60 backdrop-blur-xl"
                 aria-hidden="true"
               />
             </Transition.Child>
@@ -97,7 +97,7 @@ export default function CenterNavigation({
                   className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-12 shadow-xl border-t-primary border-t bg-bg
                  transition-all"
                 >
-                  <div className="flex px-4 pb-2 pt-5">
+                  <div className="flex mt-4 ml-4 px-4 pb-2 pt-5 items-center justify-start">
                     <Link
                       href="/"
                       onClick={() => {
@@ -108,7 +108,7 @@ export default function CenterNavigation({
                           label: "Visit Home",
                         });
                       }}
-                      className="cursor-pointer transition-all hover:skew-x-[16deg] hover:skew-y-[16deg]"
+                      className="cursor-pointer transition-all hover:skew-x-[8deg] hover:skew-y-[8deg]"
                       id={`nav-logo-mobile-panel`}
                     >
                       {navigation?.navigationLogo ? (
@@ -130,22 +130,6 @@ export default function CenterNavigation({
                         </span>
                       )}
                     </Link>
-                    <button
-                      type="button"
-                      title={
-                        siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"
-                      }
-                      className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto group"
-                      onClick={() => setOpen(false)}
-                    >
-                      <span className="sr-only">
-                        {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
-                      </span>
-                      <XMarkIcon
-                        className="h-6 w-6 text-text-color transition-all group-hover:rotate-90 group-hover:text-primary"
-                        aria-hidden="true"
-                      />
-                    </button>
                   </div>
 
                   {!!items &&
@@ -155,83 +139,67 @@ export default function CenterNavigation({
                       return (
                         <div key={mainNavigationItem.label}>
                           {hasItems && (
-                            <Tab.Group as="div" className="mt-2">
-                              <div className="">
-                                <Tab.List className="-mb-px flex space-x-8 px-4">
-                                  <Tab
-                                    key={mainNavigationItem.label}
-                                    className={({ selected }) =>
-                                      classNames(
-                                        selected
-                                          ? "border-primary text-primary"
-                                          : "border-transparent text-text-color",
-                                        "flex-1 whitespace-nowrap px-1 py-4 text-base font-medium"
-                                      )
-                                    }
-                                  >
-                                    {mainNavigationItem.label}
-                                  </Tab>
-                                </Tab.List>
-                              </div>
-                              <Tab.Panels as={Fragment}>
-                                <Tab.Panel
-                                  key={mainNavigationItem.label}
-                                  className="space-y-12 px-4 py-6"
-                                >
-                                  <div className="grid grid-cols-2 gap-x-4 gap-y-10">
-                                    {mainNavigationItem.items.map((item) => (
-                                      <div
-                                        key={item.label}
-                                        className="group relative"
-                                      >
-                                        <div className="overflow-hidden rounded-md bg-gray-100 group-hover:opacity-80 transition opacity-100">
+                            <div className="space-y-6 px-4 py-3 mt-4 ml-4">
+                              <h2
+                                key={mainNavigationItem.label}
+                                className="block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold text-left border-b border-text-color opacity-70"
+                              >
+                                {mainNavigationItem.label}
+                              </h2>
+
+                              <div key={mainNavigationItem.label} className="">
+                                <div className="">
+                                  {mainNavigationItem.items.map((item) => (
+                                    <div
+                                      key={item.label}
+                                      className="group relative"
+                                    >
+                                      {!!item?.link && (
+                                        <LinkItem
+                                          key={item?.link}
+                                          link={item?.link}
+                                          label={item?.label}
+                                          cssClass={`block text-text-color max-w-max  text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
+                                          sameTab={item?.sameTab}
+                                        >
                                           {!!item?.image?.url && (
                                             <Image
                                               src={item.image.url}
                                               alt={item.label || ""}
-                                              width={140}
-                                              height={140}
-                                              className="object-cover"
+                                              width={60}
+                                              height={60}
+                                              className="object-cover mr-4"
                                               sizes="100%"
                                               style={{
-                                                maxHeight: "400px",
-                                                maxWidth: "400px",
+                                                maxHeight: "60px",
+                                                maxWidth: "60px",
                                                 objectFit: "cover",
                                                 aspectRatio: 1,
                                               }}
                                             />
                                           )}
-                                        </div>
-                                        {!!item?.link && (
-                                          <LinkItem
-                                            key={item?.link}
-                                            link={item?.link}
-                                            label={item?.label}
-                                            cssClass={`mt-2 block text-xs md:text-sm font-medium text-text-color text-center group-hover:!text-primary !transition-all !cursor-pointer ${item?.cssClass}`}
-                                            sameTab={item?.sameTab}
-                                          >
-                                            <span
-                                              className="absolute inset-0 z-10"
-                                              aria-hidden="true"
-                                            />
-                                          </LinkItem>
-                                        )}
-                                      </div>
-                                    ))}
-                                  </div>
-                                </Tab.Panel>
-                              </Tab.Panels>
-                            </Tab.Group>
+
+                                          <span
+                                            className="absolute inset-0 z-10"
+                                            aria-hidden="true"
+                                          />
+                                        </LinkItem>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
                           )}
 
                           {!hasItems && (
-                            <div className="space-y-6 px-4 py-3">
-                              <div className="flow-root">
+                            <div className="space-y-6 px-4 py-3 mt-4 ml-4">
+                              <div className="max-w-max">
                                 <LinkItem
                                   key={mainNavigationItem.label}
                                   link={mainNavigationItem.link || "/"}
                                   sameTab={mainNavigationItem?.sameTab}
-                                  cssClass="block p-2 text-text-color max-w-max mx-auto text-3xl w-[90%] transition-all uppercase font-bold hover:text-primary hover:skew-x-[16deg] hover:skew-y-[16deg] focus:text-primary focus:skew-x-[16deg] focus:skew-y-[16deg]"
+                                  cssClass="block py-2 text-text-color max-w-max mx-auto text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
                                   onClick={() => setOpen(false)}
                                 >
                                   <span>{mainNavigationItem.label}</span>
@@ -243,12 +211,12 @@ export default function CenterNavigation({
                       );
                     })}
 
-                  <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                  <div className="space-y-6 px-4 py-6 mt-4 ml-4">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
-                      cssClass="my-4 grid grid-cols-5 social-icons-row items-center justify-center text-text-color gap-2 overflow-hidden"
+                      cssClass="my-2 mx-0 grid grid-cols-10 social-icons-row items-center justify-start text-text-color gap-2 overflow-hidden mr-auto py-0 max-w-max gap-x-4"
                     />
-                    <div className="text-center">
+                    <div className="text-left">
                       {!!contactName && (
                         <p className="text-text-color text-xs font-bold">
                           <span>{contactName}</span>
@@ -257,34 +225,36 @@ export default function CenterNavigation({
                       {!!contactPhone && (
                         <a
                           href={`tel:${contactPhone.replace("-", "")}`}
-                          className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
+                          className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
                         >
-                          <span>{contactPhone}</span>
+                          <span className="font-semibold">{contactPhone}</span>
                         </a>
                       )}
                       {!!contactEmail && (
                         <a
                           href={`mailto:${contactEmail}`}
-                          className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
+                          className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
                         >
-                          <span>{contactEmail}</span>
+                          <span className="font-semibold">{contactEmail}</span>
                         </a>
                       )}
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    className="flex items-center justify-center rounded-md p-2 text-text-color mx-auto group"
-                    onClick={() => setOpen(false)}
-                  >
-                    <XMarkIcon
-                      className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90"
-                      aria-hidden="true"
-                    />
-                    <span className="text-text-color ml-2 group-hover:text-primary transition-all">
-                      {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
-                    </span>
-                  </button>
+                  <div className="flex justify-end items-center w-full px-6">
+                    <button
+                      type="button"
+                      className="flex items-center justify-center rounded-md p-2 text-text-color group flex-col text-center ml-auto max-w-max text-xs"
+                      onClick={() => setOpen(false)}
+                    >
+                      <XMarkIcon
+                        className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
+                        aria-hidden="true"
+                      />
+                      <span className="text-text-color group-hover:text-primary transition-all uppercase text-center text-xs flex">
+                        {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
+                      </span>
+                    </button>
+                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -327,7 +297,7 @@ export default function CenterNavigation({
                     )}
                   </Link>
                   {/* Desktop menu bar */}
-                  <div className="max-w-max absolute right-0 transition-all top-[0.05rem] sm:top-0">
+                  <div className="max-w-max absolute right-[0.7rem] transition-all top-[0.05rem] sm:top-0">
                     <SocialMediaIcons
                       siteLibrary={siteLibrary}
                       cssClass="my-4 w-28 sm:w-36 md:w-full social-icons-row text-text-color flex flex-row flex-wrap items-center justify-end gap-x-2"
@@ -369,6 +339,19 @@ export default function CenterNavigation({
               const hasItems = mainNavigationItem.items.length >= 1;
               return (
                 <div key={mainNavigationItem.label} className="">
+                  {hasItems && (
+                    <div className="">
+                      <LinkItem
+                        key={mainNavigationItem.label}
+                        link={mainNavigationItem.link || "/"}
+                        sameTab={mainNavigationItem?.sameTab}
+                        cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
+                        onClick={() => setOpen(true)}
+                      >
+                        <span>{mainNavigationItem.label}</span>
+                      </LinkItem>
+                    </div>
+                  )}
                   {!hasItems && (
                     <div className="">
                       <LinkItem

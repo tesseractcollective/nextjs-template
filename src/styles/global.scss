@@ -354,6 +354,7 @@ html {
     font-size: 2.4rem;
     padding-left: 24px;
     font-weight: bold;
+    color: var(--text);
     em {
       font-size: 1.2rem;
       font-weight: 400;
@@ -486,8 +487,14 @@ html {
 }
 
 .all-text-dark {
-  p, h1, h2, h3, h4, h6, a, button {
+  p, h1, h2, h3, h4, h6, a, button, blockquote {
     color: var(--dark) !important;
+  }
+}
+
+.all-text-white {
+  p, h1, h2, h3, h4, h6, a, button, blockquote {
+    color: var(--text) !important;
   }
 }
 .header-primary {

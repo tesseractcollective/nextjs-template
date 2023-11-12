@@ -8,7 +8,6 @@ interface LinkItemProps {
   children?: string | JSX.Element;
   onClick?: () => void;
 }
-
 export default function LinkItem({
   link,
   label,
@@ -18,42 +17,37 @@ export default function LinkItem({
   onClick,
 }: LinkItemProps) {
   if (!link) return <></>;
+
+  const target =
+    sameTab || link?.includes("#") || link?.includes("tel:")
+      ? "_self"
+      : "_blank";
+
+  const handleEvent = () => {
+    ReactGA.event({
+      category: "Link",
+      action: link || "",
+      label: label || "",
+    });
+    if (onClick) onClick();
+  };
+
   return (
     <>
       {link?.includes("http") ||
       link?.includes("#") ||
-      link?.includes("tel") ? (
+      link?.includes("tel:") ? (
         <a
-          target={sameTab || link?.includes("#") ? "_self" : "_blank"}
-          key={label}
+          target={target}
           href={link}
           className={cssClass || ""}
-          onClick={() => {
-            ReactGA.event({
-              category: "Link",
-              action: link || "",
-              label: label || "",
-            });
-            if (onClick) onClick();
-          }}
+          onClick={handleEvent}
         >
           {children}
           {!!label && <>{label}</>}
         </a>
       ) : (
-        <Link
-          key={label}
-          href={link}
-          className={cssClass || ""}
-          onClick={() => {
-            ReactGA.event({
-              category: "Link",
-              action: link || "",
-              label: label || "",
-            });
-            if (onClick) onClick();
-          }}
-        >
+        <Link href={link} className={cssClass || ""} onClick={handleEvent}>
           {children}
           {!!label && <>{label}</>}
         </Link>
