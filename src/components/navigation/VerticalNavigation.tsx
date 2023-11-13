@@ -162,22 +162,24 @@ export default function CenterNavigation({
                                           cssClass={`block text-text-color max-w-max  text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
-                                          {!!item?.image?.url && (
-                                            <Image
-                                              src={item.image.url}
-                                              alt={item.label || ""}
-                                              width={60}
-                                              height={60}
-                                              className="object-cover mr-4"
-                                              sizes="100%"
-                                              style={{
-                                                maxHeight: "60px",
-                                                maxWidth: "60px",
-                                                objectFit: "cover",
-                                                aspectRatio: 1,
-                                              }}
-                                            />
-                                          )}
+                                          <>
+                                            {item?.image?.url && (
+                                              <Image
+                                                src={item.image.url}
+                                                alt={item.label || ""}
+                                                width={60}
+                                                height={60}
+                                                className="object-cover mr-4"
+                                                sizes="100%"
+                                                style={{
+                                                  maxHeight: "60px",
+                                                  maxWidth: "60px",
+                                                  objectFit: "cover",
+                                                  aspectRatio: 1,
+                                                }}
+                                              />
+                                            )}
+                                          </>
 
                                           <span
                                             className="absolute inset-0 z-10"
@@ -346,7 +348,7 @@ export default function CenterNavigation({
                         link={mainNavigationItem.link || "/"}
                         sameTab={mainNavigationItem?.sameTab}
                         cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
-                        onClick={() => setOpen(true)}
+                        onClick={() => setOpen(false)}
                       >
                         <span>{mainNavigationItem.label}</span>
                       </LinkItem>

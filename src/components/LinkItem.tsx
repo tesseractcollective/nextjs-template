@@ -5,9 +5,10 @@ interface LinkItemProps {
   label?: string | null;
   cssClass?: string | null;
   sameTab?: boolean | null;
-  children?: string | JSX.Element;
+  children?: string | JSX.Element | JSX.Element[] | string[];
   onClick?: () => void;
 }
+
 export default function LinkItem({
   link,
   label,

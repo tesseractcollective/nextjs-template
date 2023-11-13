@@ -8,7 +8,10 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import useViewport from "@/app/hooks/useViewport";
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -19,7 +22,7 @@ export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
   const swiperRef = useRef<SwiperType>();
   return (
     <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8">
-      <div className="max-w-8xl py-5 blog-slider-wrapper mx-auto">
+      <div className="max-w-8xl py-5 grid-slider-wrapper mx-auto">
         <div className="flex flex-row items-center justify-between">
           <button
             type="button"
@@ -27,10 +30,10 @@ export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
             onClick={() => swiperRef.current?.slidePrev()}
           >
             <FontAwesomeIcon
-              icon={faArrowLeft as IconProp}
+              icon={faChevronLeft as IconProp}
               className="fa-fw my-0 text-xl h-4 w-4"
             />
-            <span className="sr-only">Move Blog Rotation Back</span>
+            <span className="sr-only">Move Rotation Back</span>
           </button>
           <Swiper
             className="!pb-10 flex-wrap"
@@ -41,7 +44,7 @@ export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
               swiperRef.current = swiper;
             }}
             autoplay
-            slidesPerView={isMobile ? 1 : isDesktop ? 2 : 4}
+            slidesPerView={isMobile ? 1 : isDesktop ? 2 : 3}
             spaceBetween={30}
           >
             {gridBoxData.map((gridBoxItem) => (
@@ -88,14 +91,14 @@ export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
           </Swiper>
           <button
             type="button"
-            className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color"
+            className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color mr-4"
             onClick={() => swiperRef.current?.slideNext()}
           >
             <FontAwesomeIcon
-              icon={faArrowRight as IconProp}
+              icon={faChevronRight as IconProp}
               className="fa-fw my-0 text-xl h-4 w-4"
             />
-            <span className="sr-only">Move Blog Rotation Next</span>
+            <span className="sr-only">Move Rotation Back</span>
           </button>
         </div>
       </div>

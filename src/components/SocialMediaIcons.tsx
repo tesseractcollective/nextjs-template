@@ -19,6 +19,7 @@ import {
   faGithub,
   faThreads,
   faXTwitter,
+  faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import ReactGA from "react-ga4";
@@ -485,6 +486,28 @@ export default function SocialMediaIcons({
                   className="fa-fw h-5 w-5 flex"
                 />
                 <span className="sr-only">Calendly</span>
+              </a>
+            )}
+            {siteLibrary?.siteLibraryJson?.googleMapLink && (
+              <a
+                href={siteLibrary.siteLibraryJson.googleMapLink}
+                target="_blank"
+                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                title="Google Map"
+                rel="noreferrer"
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action: siteLibrary.siteLibraryJson.googleMapLink,
+                    label: siteLibrary.siteLibraryJson.googleMapLink,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={faGoogle as IconProp}
+                  className="fa-fw h-5 w-5 flex"
+                />
+                <span className="sr-only">Google Map</span>
               </a>
             )}
             {displayVcf && (
