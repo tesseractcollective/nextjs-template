@@ -198,8 +198,8 @@ export default function HeroMediaSliderSection({
                       </div>
                     </div>
                   </div>
-                  <div className="absolute bg-gradient-to-b from-dark z-20 section-fade-invert h-16 opacity-70 left-0 right-0 top-0" />
-                  <div className="absolute bg-gradient-to-t from-dark z-20 section-fade-invert h-16 opacity-70 bottom-0 left-0 right-0" />
+                  <div className="absolute bg-gradient-to-b from-dark z-20 section-fade-invert h-32 opacity-70 left-0 right-0 top-0" />
+                  <div className="absolute bg-gradient-to-t from-dark z-20 section-fade-invert h-72 opacity-70 bottom-0 left-0 right-0" />
                   {!!heroMediaSliderItem?.sliderMediaBackground && (
                     <div className="main">
                       <Fade direction="up">

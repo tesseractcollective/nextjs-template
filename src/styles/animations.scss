@@ -522,6 +522,31 @@ a.hover-chevron {
   }
 }
 
+.bg-motion-dark-vertical {
+  background: linear-gradient(
+    0deg,
+    var(--background),
+    var(--background-secondary),
+    var(--background),
+    var(--background-secondary),
+  );
+  background-size: 100% 500%;
+  animation: gradientVertical 15s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientVertical {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 00%;
+  }
+}
+
 .text-motion {
   background: linear-gradient(
     -90deg,

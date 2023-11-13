@@ -8,25 +8,7 @@ import StarCount from "./StarCount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import TripAdvisor from "../../public/svg/tripadvisor.svg";
-import {
-  faEnvelope,
-  faPhone,
-  faCalendar,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faSpotify,
-  faInstagram,
-  faFacebook,
-  faTiktok,
-  faTwitter,
-  faYoutube,
-  faSoundcloud,
-  faWhatsapp,
-  faLinkedin,
-  faGithub,
-  faThreads,
-  faGoogle,
-} from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 interface TestimonialProps {
   query: string;
   testimonials: TestimonialFieldsFragment[];
@@ -115,7 +97,7 @@ export default function Testimonials({
                               <a
                                 href={testimonial.testimonialSourceLink}
                                 target="_blank"
-                                className="max-w-max mx-auto  text-center !text-link"
+                                className="max-w-max mx-auto text-text-color text-center !text-link"
                                 title="Instagram"
                                 rel="noreferrer"
                               >

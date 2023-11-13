@@ -190,7 +190,7 @@ export default function FeatureAlbum({
       {albumDisplayType === "record" && (
         <section className="px-2 mx-0">
           <section className="container py-5 overflow-hidden mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 w-full mx-auto max-w-8xl gap-y-0 md:gap-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 w-full mx-auto max-w-8xl gap-y-0 md:gap-y-8">
               {albums.map((albumItem) => (
                 <Link
                   href={`/music/${albumItem.albumSlug}`}

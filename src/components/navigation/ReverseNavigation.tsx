@@ -117,20 +117,19 @@ export default function CenterNavigation({
                           label: "Visit Home",
                         });
                       }}
-                      className="cursor-pointer transition-all"
-                      id={`nav-logo-mobile-panel-${title?.replace(" ", "-")}`}
+                      className="cursor-pointer transition-all ml-2 mr-auto max-w-[140px]"
+                      id="nav-logo-mobile-panel"
                     >
                       {navigation?.navigationLogo ? (
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-8 md:h-12 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
+                            className="h-8 md:h-12 w-auto max-w-[140px] ml-0 mr-auto cursor-pointer object-contain transition-all px-0"
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}
                             height={0}
                             sizes="100%"
-                            style={{ width: "100%" }}
                           />
                         </>
                       ) : (

@@ -14,6 +14,7 @@ import "lightgallery/scss/lg-zoom.scss";
 // import plugins if you need
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
+import { Fade } from "react-awesome-reveal";
 
 interface GalleryProps {
   galleryData?: { __typename?: "Asset" | undefined; url: string }[];
@@ -37,22 +38,24 @@ export default function GallerySection({
       <div className="my-16 magic-grid block h-full">
         <div className="block px-4 max-w-8xl mx-auto">
           <div className="grid grid-cols-3 gap-8">
-            {finalImages.map((finalImage, index) => (
-              <div
-                key={finalImage}
-                className=" aspect-1 block mx-auto overflow-hidden"
-                id={`gallery-${index}`}
-              >
-                <Image
-                  src={finalImage}
-                  alt={`Gallery Image: ${index}`}
-                  className="object-cover block mx-auto h-full w-full aspect-1"
-                  sizes="100%"
-                  width={0}
-                  height={0}
-                />
-              </div>
-            ))}
+            <Fade triggerOnce cascade damping={0.05} direction="up">
+              {finalImages.map((finalImage, index) => (
+                <div
+                  key={finalImage}
+                  className=" aspect-1 block mx-auto overflow-hidden"
+                  id={`gallery-${index}`}
+                >
+                  <Image
+                    src={finalImage}
+                    alt={`Gallery Image: ${index}`}
+                    className="object-cover block mx-auto h-full w-full aspect-1"
+                    sizes="100%"
+                    width={0}
+                    height={0}
+                  />
+                </div>
+              ))}
+            </Fade>
           </div>
         </div>
       </div>
