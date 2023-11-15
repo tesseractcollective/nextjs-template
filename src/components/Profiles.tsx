@@ -522,13 +522,13 @@ export default function Profiles({
                           href={`/${profile.profileType?.toLowerCase()}/${
                             profile.profileSlug
                           }`}
-                          className="relative my-0 py-0 text-left mx-auto text-text-color text-lg md:text-2xl lg:!text-3xl !font-bold transition-all z-[2] group-focus:gradient-text text-zink !no-underline !border-none group-hover:text-primary uppercase"
+                          className="relative my-0 py-0 text-left mx-auto text-text-color text-lg md:text-2xl lg:!text-3xl !font-bold transition-all z-[2] group-focus:gradient-text text-zink !no-underline !border-none group-hover:text-primary uppercase profile-universal-text"
                         >
                           {profile.name}
                         </Link>
                       )}
                       <SocialMediaIcons
-                        cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start text-text-color gap-x-1"
+                        cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start text-text-color gap-x-1 rotate-icons"
                         instagramLinkProp={profile?.instagramLink || undefined}
                         spotifyLinkProp={profile?.spotifyLink || undefined}
                         facebookLinkProp={profile?.facebookLink || undefined}
@@ -645,7 +645,7 @@ export default function Profiles({
                       <div className="profile-overlay p-5 absolute inset-0">
                         <div className="absolute top-5 left-5 z-[2]">
                           <SocialMediaIcons
-                            cssClass="hidden sm:flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start text-primary gap-x-2 flex-wrap text-shadow"
+                            cssClass="hidden sm:flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start text-primary gap-x-2 flex-wrap text-shadow rotate-icon"
                             instagramLinkProp={
                               profile?.instagramLink || undefined
                             }
@@ -680,7 +680,7 @@ export default function Profiles({
                               profile.profileSlug
                             }`}
                             tabIndex={0}
-                            className="absolute bottom-3 md:bottom-5 left-3 md:left-5 my-0 py-0 flex flex-row items-center justify-center text-left mx-auto text-primary hover:text-secondary text-base sm:text-lg md:text-xl lg:text-2xl font-bold transition-all group z-[2] overflow-hidden focus:text-secondary text-shadow"
+                            className="absolute bottom-3 md:bottom-5 left-3 md:left-5 my-0 py-0 flex flex-row items-center justify-center text-left mx-auto text-primary hover:!text-secondary text-base sm:text-lg md:text-xl lg:text-2xl font-bold transition-all group z-[2] overflow-hidden focus:!text-secondary text-shadow"
                           >
                             <span className="max-w-[17rem]">
                               {profile.name}

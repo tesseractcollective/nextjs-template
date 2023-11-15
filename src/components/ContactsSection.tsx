@@ -47,13 +47,13 @@ export default function ContactsSection({
                   </h3>
                 </div>
                 {!!contact?.contactTitle && (
-                  <p className="mt-1 truncate text-sm text-bg-secondary">
+                  <p className="mt-1 truncate text-sm text-dark opacity-80">
                     {contact.contactTitle}
                   </p>
                 )}
                 <SocialMediaIcons
-                  cssClass="mt-0 mb-0 w-full flex flex-row !social-icons !items-center !justify-start"
-                  linkedinLinkProp={contact?.contactLinkedin || undefined}
+                  cssClass="mt-1 mb-0 w-full flex flex-row !social-icons !items-center !justify-start text-dark gap-x-2"
+                  linkedinLinkProp={contact?.contactLinkedin || ""}
                   calendlyLinkProp={contact.contactCalendly || undefined}
                   displayVcf={true}
                   avatar={contact.contactAvatar?.url || undefined}
@@ -74,28 +74,26 @@ export default function ContactsSection({
             <div>
               <div className="-mt-px flex divide-x divide-bg-secondary">
                 <div className="flex w-0 flex-1">
-                  <a
-                    href={`mailto:${contact.contactEmail}`}
-                    className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-none py-4 text-sm font-semibold text-bg-secondary"
-                  >
-                    <EnvelopeIcon
-                      className="h-5 w-5 text-bg-secondary"
-                      aria-hidden="true"
-                    />
-                    Email
-                  </a>
+                  {!!contact?.contactEmail && (
+                    <a
+                      href={`mailto:${contact.contactEmail}`}
+                      className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-none py-4 text-sm font-semibold text-dark opacity-80 transition-all hover:opacity-100 focus:opacity-100"
+                    >
+                      <EnvelopeIcon className="h-5 w-5" aria-hidden="true" />
+                      Email
+                    </a>
+                  )}
                 </div>
                 <div className="-ml-px flex w-0 flex-1">
-                  <a
-                    href={`tel:${contact.contactPhone}`}
-                    className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-none py-4 text-sm font-semibold text-bg-secondary"
-                  >
-                    <PhoneIcon
-                      className="h-5 w-5 text-bg-secondary"
-                      aria-hidden="true"
-                    />
-                    Call
-                  </a>
+                  {contact?.contactPhone && (
+                    <a
+                      href={`tel:${contact.contactPhone}`}
+                      className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-none py-4 text-sm font-semibold text-dark opacity-80 transition-all hover:opacity-100 focus:opacity-100"
+                    >
+                      <PhoneIcon className="h-5 w-5" aria-hidden="true" />
+                      Call
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

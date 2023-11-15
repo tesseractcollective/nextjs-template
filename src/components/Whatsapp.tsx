@@ -58,7 +58,7 @@ export default function Whatsapp({
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-[#F5F2ED] px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-2xl sm:p-6 w-full flex-col flex">
-                  <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
+                  <h2 className="text-center mx-auto text-2xl !text-[#000] font-bold uppercase">
                     WhatsApp
                   </h2>
                   <div className="flex items-start space-x-4">

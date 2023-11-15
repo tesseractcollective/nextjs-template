@@ -5,6 +5,8 @@ import Map, {
   Popup,
   FullscreenControl,
   GeolocateControl,
+  NavigationControl,
+  ScaleControl,
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -49,6 +51,8 @@ function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
     >
       <GeolocateControl position="top-left" />
       <FullscreenControl position="top-left" />
+      <NavigationControl position="top-left" showCompass={false} />
+      <ScaleControl />
       {locations.map((location, index) => {
         const { longitude, latitude } = location;
         return (
@@ -65,7 +69,7 @@ function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
             <div className="relative shadow-md">
               <FontAwesomeIcon
                 icon={faLocationDot as IconProp}
-                className="fa-fw h-12 w-12 scale-[2.5] text-primary stroke-[#000000a7] stroke-[15]"
+                className="h-12 w-12 mx-auto text-primary stroke-[#000000a7] stroke-[15]"
               />
               {!!icon && (
                 <Image
@@ -74,7 +78,7 @@ function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
                   width={0}
                   alt=""
                   sizes="100%"
-                  className="absolute z-20 w-full h-9 block top-0 object-contain !rounded-[100%] !p-0 !m-0"
+                  className="absolute z-20 w-8 h-8 left-[0.50rem] top-[0.15rem] object-contain rounded-full !p-0 !m-0"
                 />
               )}
             </div>

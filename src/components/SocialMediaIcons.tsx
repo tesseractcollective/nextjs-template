@@ -74,6 +74,7 @@ export default function SocialMediaIcons({
   avatar,
   name,
 }: SocialMediaIconsProps) {
+  console.log("linkedinLinkProp", linkedinLinkProp);
   return (
     <>
       {(siteLibrary ||
@@ -262,7 +263,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.appleMusicLink || appleMusicLinkProp}
                 target="_blank"
                 title="Apple Music"
-                className="max-w-max mx-auto text-center !text-link transition-all cursor-pointer"
+                className="max-w-max mx-auto text-center !text-link transition-all cursor-pointer flex items-center"
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -299,7 +300,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.pandoraLink || pandoraLinkProp}
                 target="_blank"
                 title="Pandora"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer flex items-center"
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({

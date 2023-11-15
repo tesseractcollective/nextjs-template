@@ -9,3 +9,17 @@
   }
 }
 
+.profile-universal-hover {
+  &:hover, &:focus {
+    .profile-universal-text {
+      color: var(--primary) !important;
+      transform: skewX(5deg) !important;
+    }
+  }
+}
+
+.rotate-icons {
+  a {
+    position: relative;
+  }
+}

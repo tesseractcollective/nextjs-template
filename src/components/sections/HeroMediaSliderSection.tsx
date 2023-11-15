@@ -199,7 +199,7 @@ export default function HeroMediaSliderSection({
                     </div>
                   </div>
                   <div className="absolute bg-gradient-to-b from-dark z-20 section-fade-invert h-32 opacity-70 left-0 right-0 top-0" />
-                  <div className="absolute bg-gradient-to-t from-dark z-20 section-fade-invert h-72 opacity-70 bottom-0 left-0 right-0" />
+                  <div className="absolute bg-gradient-to-t from-dark z-20 section-fade-invert h-72 bottom-0 left-0 right-0 w-full" />
                   {!!heroMediaSliderItem?.sliderMediaBackground && (
                     <div className="main">
                       <Fade direction="up">
@@ -213,7 +213,7 @@ export default function HeroMediaSliderSection({
                           muted
                           playsInline
                           aria-hidden="true"
-                          className="absolute inset-0"
+                          className="absolute inset-0 z-1"
                         />
                       )}
                       {heroMediaSliderItem.mediaType === "image" && (
