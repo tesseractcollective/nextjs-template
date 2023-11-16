@@ -74,7 +74,6 @@ export default function SocialMediaIcons({
   avatar,
   name,
 }: SocialMediaIconsProps) {
-  console.log("linkedinLinkProp", linkedinLinkProp);
   return (
     <>
       {(siteLibrary ||

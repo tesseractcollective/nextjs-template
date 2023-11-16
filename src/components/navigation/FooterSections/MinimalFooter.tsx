@@ -69,7 +69,7 @@ function MinimalFooter({
                     />
                   )}
                   {!!item.footerTitle && (
-                    <h3 className="text-xs font-bold text-text-color uppercase tracking-widest opacity-90">
+                    <h3 className="text-xs font-bold text-text-color uppercase tracking-widest opacity-90 mb-2">
                       {item.footerTitle}
                     </h3>
                   )}

@@ -1,6 +1,6 @@
 import React from "react";
 import parse from "html-react-parser";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { TestimonialFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
@@ -27,12 +27,16 @@ export default function Testimonials({
         <div className="testimonial-slider-wrapper w-full mx-auto my-16">
           <Swiper
             grabCursor
-            loop
-            modules={[Navigation, Pagination]}
+            loop={true}
+            autoplay={{
+              delay: 4500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            modules={[Navigation, Pagination, Autoplay]}
             pagination={{
               clickable: true,
             }}
-            autoplay
             slidesPerView={1}
             spaceBetween={30}
             className="w-full"
@@ -93,29 +97,32 @@ export default function Testimonials({
                           <div className="mt-2">
                             {testimonial.testimonialSourceLink.includes(
                               "goo"
-                            ) && (
-                              <a
-                                href={testimonial.testimonialSourceLink}
-                                target="_blank"
-                                className="max-w-max mx-auto text-text-color text-center !text-link"
-                                title="Instagram"
-                                rel="noreferrer"
-                              >
-                                <FontAwesomeIcon
-                                  icon={faGoogle as IconProp}
-                                  className="fa-fw h-4 w-4"
-                                />
-                                <span className="sr-only">Google Review</span>
-                              </a>
-                            )}
+                            ) ||
+                              (testimonial.testimonialSourceLink.includes(
+                                "g.co"
+                              ) && (
+                                <a
+                                  href={testimonial.testimonialSourceLink}
+                                  target="_blank"
+                                  className="max-w-max mx-auto text-text-color text-center !text-link transition-all cursor-pointer"
+                                  title="Google"
+                                  rel="noreferrer"
+                                >
+                                  <FontAwesomeIcon
+                                    icon={faGoogle as IconProp}
+                                    className="fa-fw h-4 w-4"
+                                  />
+                                  <span className="sr-only">Google Review</span>
+                                </a>
+                              ))}
                             {testimonial.testimonialSourceLink.includes(
                               "trip"
                             ) && (
                               <a
                                 href={testimonial.testimonialSourceLink}
                                 target="_blank"
-                                className="max-w-max mx-auto  text-center !text-link"
-                                title="Instagram"
+                                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                                title="TripAdvisor"
                                 rel="noreferrer"
                               >
                                 <svg

@@ -11,7 +11,7 @@ import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
-import { Zoom } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -97,166 +97,179 @@ export default function CenterNavigation({
                   className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-12 shadow-xl border-t-primary border-t bg-bg
                  transition-all"
                 >
-                  <div className="flex mt-4 ml-4 px-4 pb-2 pt-5 items-center justify-start">
-                    <Link
-                      href="/"
-                      onClick={() => {
-                        setOpen(false);
-                        ReactGA.event({
-                          category: "Link",
-                          action: "Visit Home",
-                          label: "Visit Home",
-                        });
-                      }}
-                      className="cursor-pointer transition-all hover:skew-x-[8deg] hover:skew-y-[8deg]"
-                      id={`nav-logo-mobile-panel`}
-                    >
-                      {navigation?.navigationLogo ? (
-                        <>
-                          <span className="sr-only">{title}</span>
-                          <Image
-                            className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
-                            src={navigation.navigationLogo?.url}
-                            alt=""
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            // style={{ width: "100%" }}
-                          />
-                        </>
-                      ) : (
-                        <span className="font-bold text-2xl text-text-color">
-                          {title}
-                        </span>
-                      )}
-                    </Link>
-                  </div>
+                  <Fade direction="down" triggerOnce>
+                    <div className="flex mt-4 ml-4 px-4 pb-2 pt-5 items-center justify-start">
+                      <Link
+                        href="/"
+                        onClick={() => {
+                          setOpen(false);
+                          ReactGA.event({
+                            category: "Link",
+                            action: "Visit Home",
+                            label: "Visit Home",
+                          });
+                        }}
+                        className="cursor-pointer transition-all hover:skew-x-[8deg] hover:skew-y-[8deg]"
+                        id={`nav-logo-mobile-panel`}
+                      >
+                        {navigation?.navigationLogo ? (
+                          <>
+                            <span className="sr-only">{title}</span>
+                            <Image
+                              className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
+                              src={navigation.navigationLogo?.url}
+                              alt=""
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                              // style={{ width: "100%" }}
+                            />
+                          </>
+                        ) : (
+                          <span className="font-bold text-2xl text-text-color">
+                            {title}
+                          </span>
+                        )}
+                      </Link>
+                    </div>
+                  </Fade>
 
-                  {!!items &&
-                    items.length >= 1 &&
-                    items.map((mainNavigationItem) => {
-                      const hasItems = mainNavigationItem.items.length >= 1;
-                      return (
-                        <div key={mainNavigationItem.label}>
-                          {hasItems && (
-                            <div className="space-y-6 px-4 py-3 mt-4 ml-4">
-                              <h2
-                                key={mainNavigationItem.label}
-                                className="block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold text-left border-b border-text-color opacity-70"
-                              >
-                                {mainNavigationItem.label}
-                              </h2>
+                  <Fade triggerOnce cascade direction="left" damping={0.05}>
+                    {!!items &&
+                      items.length >= 1 &&
+                      items.map((mainNavigationItem) => {
+                        const hasItems = mainNavigationItem.items.length >= 1;
+                        return (
+                          <div key={mainNavigationItem.label}>
+                            {hasItems && (
+                              <div className="space-y-6 px-4 py-3 mt-4 ml-4">
+                                <h2
+                                  key={mainNavigationItem.label}
+                                  className="block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold text-left border-b border-text-color opacity-70"
+                                >
+                                  {mainNavigationItem.label}
+                                </h2>
 
-                              <div key={mainNavigationItem.label} className="">
-                                <div className="">
-                                  {mainNavigationItem.items.map((item) => (
-                                    <div
-                                      key={item.label}
-                                      className="group relative"
-                                    >
-                                      {!!item?.link && (
-                                        <LinkItem
-                                          key={item?.link}
-                                          link={item?.link}
-                                          label={item?.label}
-                                          cssClass={`block text-text-color max-w-max  text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
-                                          sameTab={item?.sameTab}
-                                        >
-                                          <>
-                                            {item?.image?.url && (
-                                              <Image
-                                                src={item.image.url}
-                                                alt={item.label || ""}
-                                                width={60}
-                                                height={60}
-                                                className="object-cover mr-4"
-                                                sizes="100%"
-                                                style={{
-                                                  maxHeight: "60px",
-                                                  maxWidth: "60px",
-                                                  objectFit: "cover",
-                                                  aspectRatio: 1,
-                                                }}
-                                              />
-                                            )}
-                                          </>
+                                <div
+                                  key={mainNavigationItem.label}
+                                  className=""
+                                >
+                                  <div className="">
+                                    {mainNavigationItem.items.map((item) => (
+                                      <div
+                                        key={item.label}
+                                        className="group relative"
+                                      >
+                                        {!!item?.link && (
+                                          <LinkItem
+                                            key={item?.link}
+                                            link={item?.link}
+                                            label={item?.label}
+                                            cssClass={`block text-text-color max-w-max  text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
+                                            sameTab={item?.sameTab}
+                                          >
+                                            <>
+                                              {item?.image?.url && (
+                                                <Image
+                                                  src={item.image.url}
+                                                  alt={item.label || ""}
+                                                  width={60}
+                                                  height={60}
+                                                  className="object-cover mr-4"
+                                                  sizes="100%"
+                                                  style={{
+                                                    maxHeight: "60px",
+                                                    maxWidth: "60px",
+                                                    objectFit: "cover",
+                                                    aspectRatio: 1,
+                                                  }}
+                                                />
+                                              )}
+                                            </>
 
-                                          <span
-                                            className="absolute inset-0 z-10"
-                                            aria-hidden="true"
-                                          />
-                                        </LinkItem>
-                                      )}
-                                    </div>
-                                  ))}
+                                            <span
+                                              className="absolute inset-0 z-10"
+                                              aria-hidden="true"
+                                            />
+                                          </LinkItem>
+                                        )}
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          )}
+                            )}
 
-                          {!hasItems && (
-                            <div className="space-y-6 px-4 py-3 mt-4 ml-4">
-                              <div className="max-w-max">
-                                <LinkItem
-                                  key={mainNavigationItem.label}
-                                  link={mainNavigationItem.link || "/"}
-                                  sameTab={mainNavigationItem?.sameTab}
-                                  cssClass="block py-2 text-text-color max-w-max mx-auto text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
-                                  onClick={() => setOpen(false)}
-                                >
-                                  <span>{mainNavigationItem.label}</span>
-                                </LinkItem>
+                            {!hasItems && (
+                              <div className="space-y-6 px-4 py-3 mt-4 ml-4">
+                                <div className="max-w-max">
+                                  <LinkItem
+                                    key={mainNavigationItem.label}
+                                    link={mainNavigationItem.link || "/"}
+                                    sameTab={mainNavigationItem?.sameTab}
+                                    cssClass="block py-2 text-text-color max-w-max mx-auto text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
+                                    onClick={() => setOpen(false)}
+                                  >
+                                    <span>{mainNavigationItem.label}</span>
+                                  </LinkItem>
+                                </div>
                               </div>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
+                            )}
+                          </div>
+                        );
+                      })}
+                  </Fade>
 
-                  <div className="space-y-6 px-4 py-6 mt-4 ml-4">
-                    <SocialMediaIcons
-                      siteLibrary={siteLibrary}
-                      cssClass="my-2 mx-0 grid grid-cols-10 social-icons-row items-center justify-start text-text-color gap-2 overflow-hidden mr-auto py-0 max-w-max gap-x-4"
-                    />
-                    <div className="text-left">
-                      {!!contactName && (
-                        <p className="text-text-color text-xs font-bold">
-                          <span>{contactName}</span>
-                        </p>
-                      )}
-                      {!!contactPhone && (
-                        <a
-                          href={`tel:${contactPhone.replace("-", "")}`}
-                          className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
-                        >
-                          <span className="font-semibold">{contactPhone}</span>
-                        </a>
-                      )}
-                      {!!contactEmail && (
-                        <a
-                          href={`mailto:${contactEmail}`}
-                          className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
-                        >
-                          <span className="font-semibold">{contactEmail}</span>
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex justify-end items-center w-full px-6">
-                    <button
-                      type="button"
-                      className="flex items-center justify-center rounded-md p-2 text-text-color group flex-col text-center ml-auto max-w-max text-xs"
-                      onClick={() => setOpen(false)}
-                    >
-                      <XMarkIcon
-                        className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
-                        aria-hidden="true"
+                  <Fade triggerOnce direction="up">
+                    <div className="space-y-6 px-4 py-6 mt-4 ml-4">
+                      <SocialMediaIcons
+                        siteLibrary={siteLibrary}
+                        cssClass="my-2 mx-0 grid grid-cols-10 social-icons-row items-center justify-start text-text-color gap-2 overflow-hidden mr-auto py-0 max-w-max gap-x-4"
                       />
-                      <span className="text-text-color group-hover:text-primary transition-all uppercase text-center text-xs flex">
-                        {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
-                      </span>
-                    </button>
-                  </div>
+                      <div className="text-left">
+                        {!!contactName && (
+                          <p className="text-text-color text-xs font-bold">
+                            <span>{contactName}</span>
+                          </p>
+                        )}
+                        {!!contactPhone && (
+                          <a
+                            href={`tel:${contactPhone.replace("-", "")}`}
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                          >
+                            <span className="font-semibold">
+                              {contactPhone}
+                            </span>
+                          </a>
+                        )}
+                        {!!contactEmail && (
+                          <a
+                            href={`mailto:${contactEmail}`}
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                          >
+                            <span className="font-semibold">
+                              {contactEmail}
+                            </span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex justify-end items-center w-full px-6">
+                      <button
+                        type="button"
+                        className="flex items-center justify-center rounded-md p-2 text-text-color group flex-col text-center ml-auto max-w-max text-xs"
+                        onClick={() => setOpen(false)}
+                      >
+                        <XMarkIcon
+                          className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
+                          aria-hidden="true"
+                        />
+                        <span className="text-text-color group-hover:text-primary transition-all uppercase text-center text-xs flex">
+                          {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
+                        </span>
+                      </button>
+                    </div>
+                  </Fade>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -334,42 +347,45 @@ export default function CenterNavigation({
           </Zoom>
         </header>
         {/* DIV */}
+
         <div className="hidden md:flex md:fixed vertical-nav-desktop">
-          {!!items &&
-            items.length >= 1 &&
-            items.map((mainNavigationItem) => {
-              const hasItems = mainNavigationItem.items.length >= 1;
-              return (
-                <div key={mainNavigationItem.label} className="">
-                  {hasItems && (
-                    <div className="">
-                      <LinkItem
-                        key={mainNavigationItem.label}
-                        link={mainNavigationItem.link || "/"}
-                        sameTab={mainNavigationItem?.sameTab}
-                        cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
-                        onClick={() => setOpen(false)}
-                      >
-                        <span>{mainNavigationItem.label}</span>
-                      </LinkItem>
-                    </div>
-                  )}
-                  {!hasItems && (
-                    <div className="">
-                      <LinkItem
-                        key={mainNavigationItem.label}
-                        link={mainNavigationItem.link || "/"}
-                        sameTab={mainNavigationItem?.sameTab}
-                        cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
-                        onClick={() => setOpen(false)}
-                      >
-                        <span>{mainNavigationItem.label}</span>
-                      </LinkItem>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+          <Fade direction="right" triggerOnce cascade damping={0.05}>
+            {!!items &&
+              items.length >= 1 &&
+              items.map((mainNavigationItem) => {
+                const hasItems = mainNavigationItem.items.length >= 1;
+                return (
+                  <div className="" key={mainNavigationItem.label}>
+                    {hasItems && (
+                      <div className="">
+                        <LinkItem
+                          key={mainNavigationItem.label}
+                          link={mainNavigationItem.link || "/"}
+                          sameTab={mainNavigationItem?.sameTab}
+                          cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
+                          onClick={() => setOpen(false)}
+                        >
+                          <span>{mainNavigationItem.label}</span>
+                        </LinkItem>
+                      </div>
+                    )}
+                    {!hasItems && (
+                      <div className="">
+                        <LinkItem
+                          key={mainNavigationItem.label}
+                          link={mainNavigationItem.link || "/"}
+                          sameTab={mainNavigationItem?.sameTab}
+                          cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
+                          onClick={() => setOpen(false)}
+                        >
+                          <span>{mainNavigationItem.label}</span>
+                        </LinkItem>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+          </Fade>
         </div>
         {/* DIV */}
       </div>

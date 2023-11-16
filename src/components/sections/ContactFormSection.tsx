@@ -75,12 +75,12 @@ export default function ContactFormSection({
               }`}
             >
               {!!contactFormItem?.contactFormTitle && (
-                <h3 className="text-2xl md:text-4xl mx-auto opacity-90 uppercase text-center font-bold mb-4">
+                <h3 className="text-2xl md:text-4xl mx-auto opacity-90 uppercase text-center font-bold mt-4 mb-4">
                   {parse(contactFormItem?.contactFormTitle)}
                 </h3>
               )}
               {!!contactFormItem?.contactFormDescription && (
-                <div className="body-parsed-text text-center mx-auto w-10">
+                <div className="body-parsed-text text-center mx-auto max-w-3xl mb-0">
                   {parse(contactFormItem.contactFormDescription.html)}
                 </div>
               )}

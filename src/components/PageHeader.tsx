@@ -81,9 +81,9 @@ export default function PageHeader({
         </Zoom>
       )}
       {pageWidthStyle === "angled" && (
-        <div className={`bg relative ${cssClass}`}>
+        <div className={`bg-bg relative ${cssClass}`}>
           <div className="relative">
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-7xl bg-bg">
               <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
                 <svg
                   className="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-bg lg:block"
@@ -110,20 +110,22 @@ export default function PageHeader({
                 </div>
               </div>
             </div>
-            <Fade triggerOnce>
-              {!!pageHeaderImageProp && (
-                <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-                  <Image
-                    className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
-                    src={pageHeaderImageProp}
-                    alt=""
-                    sizes="100%"
-                    width={0}
-                    height={0}
-                  />
-                </div>
-              )}
-            </Fade>
+            {!!pageHeaderImageProp && (
+              <Fade
+                triggerOnce
+                direction="up"
+                className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 z-0"
+              >
+                <Image
+                  className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
+                  src={pageHeaderImageProp}
+                  alt=""
+                  sizes="100%"
+                  width={0}
+                  height={0}
+                />
+              </Fade>
+            )}
           </div>
         </div>
       )}
