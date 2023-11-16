@@ -165,7 +165,7 @@ export default function CenterNavigation({
                                             key={item?.link}
                                             link={item?.link}
                                             label={item?.label}
-                                            cssClass={`block text-text-color max-w-max  text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
+                                            cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
                                             sameTab={item?.sameTab}
                                           >
                                             <>
@@ -201,13 +201,13 @@ export default function CenterNavigation({
                             )}
 
                             {!hasItems && (
-                              <div className="space-y-6 px-4 py-3 mt-4 ml-4">
+                              <div className="space-y-6 px-4 py-1 mt-4 ml-4">
                                 <div className="max-w-max">
                                   <LinkItem
                                     key={mainNavigationItem.label}
                                     link={mainNavigationItem.link || "/"}
                                     sameTab={mainNavigationItem?.sameTab}
-                                    cssClass="block py-2 text-text-color max-w-max mx-auto text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
+                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
                                     onClick={() => setOpen(false)}
                                   >
                                     <span>{mainNavigationItem.label}</span>
