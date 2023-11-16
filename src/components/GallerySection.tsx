@@ -68,6 +68,7 @@ export default function GallerySection({
         <div className="flex px-4 max-w-5xl mx-auto">
           <LightGallery
             speed={500}
+            download={false}
             plugins={[lgThumbnail, lgZoom]}
             elementClassNames="flex flex-wrap flex-row w-full gap-4 mx-auto items-center justify-center"
           >
@@ -76,7 +77,6 @@ export default function GallerySection({
                 <Image
                   src={finalImage}
                   alt={`Gallery Image: ${index + 1}`}
-                  // className="object-cover block mx-auto h-full"
                   sizes="100%"
                   width={300}
                   height={300}
