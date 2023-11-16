@@ -93,11 +93,13 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!mapLatLong &&
         !!siteLibrary?.mapKey &&
         !!mapLatLong?.longitude &&
-        !!mapLatLong?.longitude && (
+        !!mapLatLong?.longitude &&
+        !!siteLibrary?.metaAppleTouchIcon && (
           <MapBoxMap
             lat={mapLatLong.latitude}
             long={mapLatLong.longitude}
             mapKey={siteLibrary.mapKey}
+            icon={siteLibrary?.metaAppleTouchIcon.url}
           />
         )}
       {!!siteLibrary?.mapKey &&

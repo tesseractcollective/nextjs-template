@@ -62,8 +62,8 @@ export default function ContactsSection({
               </div>
               {contact?.contactAvatar?.url && (
                 <Image
-                  className="h-14 lg:h-16 w-14 lg:w-16 rounded-full object-cover"
                   src={contact.contactAvatar.url}
+                  className="h-14 lg:h-16 w-14 lg:w-16 rounded-full object-cover"
                   alt=""
                   width={64}
                   height={64}

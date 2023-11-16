@@ -1,26 +1,24 @@
 "use client";
 import { GetServerSideProps } from "next";
-import { sdkClient } from "@/lib/graphql-client";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
-import PageComponent from "@/components/PageComponent";
+import dynamic from "next/dynamic";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const layout: LayoutQuery = await sdkClient.layout({
-    pageSlug: "home",
-  });
+  const { sdkClient } = await import("@/lib/graphql-client");
+  const layout = await sdkClient.layout({ pageSlug: "home" });
   return {
-    props: {
-      layout,
-    },
+    props: { layout },
   };
 };
 
-export default function Page({ layout }: { layout: LayoutQuery }) {
-  // if (!layout)
-  //   return (
-  //     <div className="h-screen flex items-center justify-center w-full bg-[#d50d0d]">
-  //       <h1 className="text-[#fff]">Loading...</h1>
-  //     </div>
-  //   );
-  return <PageComponent layout={layout} />;
+const PageComponent = dynamic(() => import("@/components/PageComponent"));
+
+interface PageProps {
+  layout: LayoutQuery;
 }
+
+const Page = ({ layout }: PageProps) => {
+  return <PageComponent layout={layout} />;
+};
+
+export default Page;
