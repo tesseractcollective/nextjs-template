@@ -14,6 +14,7 @@ import ReactGA from "react-ga4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Fade } from "react-awesome-reveal";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -92,7 +93,7 @@ export default function DefaultNavigation({
             leaveTo="opacity-0"
           >
             <div
-              className="fixed inset-0 bg-dark opacity-60"
+              className="fixed inset-0 bg-dark opacity-60 backdrop-blur-xl"
               aria-hidden="true"
             />
           </Transition.Child>
@@ -107,116 +108,104 @@ export default function DefaultNavigation({
               leaveFrom="translate-x-0 blur-0"
               leaveTo="-translate-x-full blur-xl"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto py-6 shadow-xl bg-bg-secondary theme-scroll">
-                <div className="flex px-4 pb-5 pt-5 justify-between items-center relative w-full">
-                  <Link
-                    href="/"
-                    onClick={() => {
-                      setOpen(false);
-                      ReactGA.event({
-                        category: "Link",
-                        action: "Visit Home",
-                        label: "Visit Home",
-                      });
-                    }}
-                    className="cursor-pointer transition-all max-w-max absolute left-0 w-full"
-                    id={`nav-logo-mobile-panel`}
-                  >
-                    {navigation?.navigationLogo ? (
-                      <>
-                        <span className="sr-only">{title}</span>
-                        <Image
-                          className="h-10 w-full cursor-pointer object-contain relative left-0"
-                          src={navigation.navigationLogo?.url}
-                          alt=""
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                        />
-                      </>
-                    ) : (
-                      <span className="font-bold text-2xl text-text-color">
-                        {title}
-                      </span>
-                    )}
-                  </Link>
-                  <button
-                    type="button"
-                    title="Close menu"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto absolute right-0"
-                    onClick={() => setOpen(false)}
-                  >
-                    <span className="sr-only">Close menu</span>
-                    <XMarkIcon
-                      className="h-6 w-6 text-text-color"
-                      aria-hidden="true"
-                    />
-                  </button>
-                </div>
-
-                {!!items &&
-                  items.length >= 1 &&
-                  items.map((mainNavigationItem) => {
-                    const hasItems = mainNavigationItem.items.length >= 1;
-                    return (
-                      <div key={mainNavigationItem.label}>
-                        {hasItems && (
-                          <Tab.Group as="div" className="mt-2">
-                            <div className="">
-                              <Tab.List className="-mb-px flex space-x-8 px-4">
-                                <Tab
-                                  key={mainNavigationItem.label}
-                                  className={({ selected }) =>
-                                    classNames(
-                                      selected
-                                        ? "font-bold text-text-color"
-                                        : "border-transparent text-text-color",
-                                      "flex-1 whitespace-nowrap border-dark hover:border-white px-1 pt-4 text-base flex flex-row",
-                                      "text-center mx-auto items-center justify-center cursor-default opacity-80 max-w-max"
-                                    )
-                                  }
-                                >
-                                  <span>{mainNavigationItem.label}</span>
-                                </Tab>
-                              </Tab.List>
-                            </div>
-                            <Tab.Panels as={Fragment}>
-                              <Tab.Panel
+              <Dialog.Panel className="relative flex w-full max-w-sm flex-col overflow-y-auto py-6 shadow-xl bg-bg-secondary theme-scroll">
+                <Fade triggerOnce cascade direction="down" damping={0.05}>
+                  <div className="flex px-4 pb-5 pt-5 justify-between items-center relative w-full">
+                    <Link
+                      href="/"
+                      onClick={() => {
+                        setOpen(false);
+                        ReactGA.event({
+                          category: "Link",
+                          action: "Visit Home",
+                          label: "Visit Home",
+                        });
+                      }}
+                      className="cursor-pointer transition-all max-w-max absolute left-0 w-full ml-4"
+                      id={`nav-logo-mobile-panel`}
+                    >
+                      {navigation?.navigationLogo ? (
+                        <>
+                          <span className="sr-only">{title}</span>
+                          <Image
+                            className="h-10 w-full cursor-pointer object-contain relative left-0"
+                            src={navigation.navigationLogo?.url}
+                            alt=""
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                          />
+                        </>
+                      ) : (
+                        <span className="font-bold text-2xl text-text-color">
+                          {title}
+                        </span>
+                      )}
+                    </Link>
+                    <button
+                      type="button"
+                      title="Close menu"
+                      className="mr-4 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto absolute right-0 border-text-color group"
+                      onClick={() => setOpen(false)}
+                    >
+                      <span className="sr-only">Close menu</span>
+                      <XMarkIcon
+                        className="h-6 w-6 text-text-color transition-all group-hover:rotate-180"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                </Fade>
+                <Fade triggerOnce cascade direction="left" damping={0.05}>
+                  {!!items &&
+                    items.length >= 1 &&
+                    items.map((mainNavigationItem) => {
+                      const hasItems = mainNavigationItem.items.length >= 1;
+                      return (
+                        <div key={mainNavigationItem.label}>
+                          {hasItems && (
+                            <div className="space-y-2 px-4 py-3 mt-4 ml-4">
+                              <h2
                                 key={mainNavigationItem.label}
-                                className="space-y-12 px-4 py-6"
+                                className="block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold text-left border-text-color opacity-70 mb-0 pb-0"
                               >
-                                <div className="grid grid-cols-2 gap-x-4 gap-y-6">
+                                {mainNavigationItem.label}
+                              </h2>
+
+                              <div key={mainNavigationItem.label} className="">
+                                <div className="">
                                   {mainNavigationItem.items.map((item) => (
                                     <div
                                       key={item.label}
                                       className="group relative"
                                     >
-                                      <div className="overflow-hidden rounded-md bg-gray-100 group-hover:opacity-80 transition opacity-100">
-                                        {!!item?.image?.url && (
-                                          <Image
-                                            src={item.image.url}
-                                            alt={item.label || ""}
-                                            width={140}
-                                            height={140}
-                                            className="object-cover"
-                                            sizes="100%"
-                                            style={{
-                                              maxHeight: "400px",
-                                              maxWidth: "400px",
-                                              objectFit: "cover",
-                                              aspectRatio: 1,
-                                            }}
-                                          />
-                                        )}
-                                      </div>
                                       {!!item?.link && (
                                         <LinkItem
                                           key={item?.link}
                                           link={item?.link}
                                           label={item?.label}
-                                          cssClass={`mt-2 block text-xs sm:text-sm font-medium text-text-color text-center group-hover:text-primary transition ${item?.cssClass}`}
+                                          cssClass={`my-2 block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold hover:text-primary  focus:text-primary text-left flex flex-row items-center ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
+                                          <>
+                                            {item?.image?.url && (
+                                              <Image
+                                                src={item.image.url}
+                                                alt={item.label || ""}
+                                                width={50}
+                                                height={50}
+                                                className="object-cover mr-2"
+                                                sizes="100%"
+                                                style={{
+                                                  maxHeight: "50px",
+                                                  maxWidth: "50px",
+                                                  objectFit: "cover",
+                                                  aspectRatio: 1,
+                                                }}
+                                              />
+                                            )}
+                                          </>
+
                                           <span
                                             className="absolute inset-0 z-10"
                                             aria-hidden="true"
@@ -226,100 +215,73 @@ export default function DefaultNavigation({
                                     </div>
                                   ))}
                                 </div>
-                              </Tab.Panel>
-                            </Tab.Panels>
-                          </Tab.Group>
-                        )}
-
-                        {!hasItems && (
-                          <div className="space-y-6 px-4 py-3">
-                            <div className="flow-root">
-                              {mainNavigationItem.link?.includes("http") ? (
-                                <a
-                                  target={
-                                    mainNavigationItem?.sameTab
-                                      ? "_self"
-                                      : "_blank"
-                                  }
-                                  key={mainNavigationItem.label}
-                                  href={mainNavigationItem.link || "/"}
-                                  className="-m-2 block p-2 font-medium text-text-color max-w-max mx-auto"
-                                  onClick={() => {
-                                    ReactGA.event({
-                                      category: "Link",
-                                      action: mainNavigationItem.link || "",
-                                      label: mainNavigationItem.link || "",
-                                    });
-                                  }}
-                                >
-                                  {mainNavigationItem.label}
-                                </a>
-                              ) : (
-                                <Link
-                                  key={mainNavigationItem.label}
-                                  href={mainNavigationItem.link || "/"}
-                                  className="-m-2 block p-2 font-bold text-text-color max-w-max mx-auto"
-                                  onClick={() => {
-                                    setOpen(false);
-                                    ReactGA.event({
-                                      category: "Link",
-                                      action: "Visit Home",
-                                      label: "Visit Home",
-                                    });
-                                  }}
-                                >
-                                  {mainNavigationItem.label}
-                                </Link>
-                              )}
+                              </div>
                             </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                          )}
 
-                <div className="space-y-6 px-4 py-6">
-                  <SocialMediaIcons
-                    siteLibrary={siteLibrary}
-                    cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
-                  />
-                  <div className="text-center">
-                    {!!contactName && (
-                      <p className="text-text-color text-xs font-bold">
-                        <span>{contactName}</span>
-                      </p>
-                    )}
-                    {!!contactPhone && (
-                      <a
-                        href={`tel:${contactPhone.replace("-", "")}`}
-                        className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
-                      >
-                        <span>{contactPhone}</span>
-                      </a>
-                    )}
-                    {!!contactEmail && (
-                      <a
-                        href={`mailto:${contactEmail}`}
-                        className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
-                      >
-                        <span>{contactEmail}</span>
-                      </a>
-                    )}
+                          {!hasItems && (
+                            <div className="space-y-6 px-4 py-1 mt-4 ml-4">
+                              <div className="max-w-max">
+                                <LinkItem
+                                  key={mainNavigationItem.label}
+                                  link={mainNavigationItem.link || "/"}
+                                  sameTab={mainNavigationItem?.sameTab}
+                                  cssClass="block py-1 text-text-color max-w-max mx-auto text-2xl w-full transition-all uppercase font-bold hover:text-primary focus:text-primary text-left"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  <span>{mainNavigationItem.label}</span>
+                                </LinkItem>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                </Fade>
+                <Fade triggerOnce cascade direction="up" damping={0.05}>
+                  <div className="space-y-6 px-4 py-6">
+                    <SocialMediaIcons
+                      siteLibrary={siteLibrary}
+                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
+                    />
+                    <div className="text-center">
+                      {!!contactName && (
+                        <p className="text-text-color text-xs font-bold">
+                          <span>{contactName}</span>
+                        </p>
+                      )}
+                      {!!contactPhone && (
+                        <a
+                          href={`tel:${contactPhone.replace("-", "")}`}
+                          className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
+                        >
+                          <span>{contactPhone}</span>
+                        </a>
+                      )}
+                      {!!contactEmail && (
+                        <a
+                          href={`mailto:${contactEmail}`}
+                          className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
+                        >
+                          <span>{contactEmail}</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <button
-                  type="button"
-                  className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto group transition-all"
-                  onClick={() => setOpen(false)}
-                >
-                  <XMarkIcon
-                    className="h-6 w-6 text-text-color group-hover:text-primary group-hover:rotate-180 transition-all"
-                    aria-hidden="true"
-                  />
-                  <span className="text-text-color group-hover:text-primary pl-1 transition-all group-hover:pl-2">
-                    Close menu
-                  </span>
-                </button>
+                  <button
+                    type="button"
+                    className="-m-2 ml-auto flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto group transition-all"
+                    onClick={() => setOpen(false)}
+                  >
+                    <XMarkIcon
+                      className="h-6 w-6 text-text-color group-hover:text-primary group-hover:rotate-180 transition-all"
+                      aria-hidden="true"
+                    />
+                    <span className="text-text-color group-hover:text-primary pl-1 transition-all group-hover:pl-2">
+                      Close menu
+                    </span>
+                  </button>
+                </Fade>
               </Dialog.Panel>
             </Transition.Child>
           </div>

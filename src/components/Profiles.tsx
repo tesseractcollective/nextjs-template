@@ -705,7 +705,7 @@ export default function Profiles({
     return (
       <>
         <div className="relative">
-          <section className="my-16 mx-auto w-full  flex flex-wrap">
+          <section className="my-16 mx-auto w-full flex flex-wrap">
             <div className="w-full transition">
               {!!profileSectionTitle && (
                 <h3 className="text-2xl md:text-5xl mx-auto opacity-80 uppercase text-center font-bold mb-8">
@@ -717,7 +717,7 @@ export default function Profiles({
               {FilteredProfiles.map((profile) => (
                 <Link
                   key={profile.profileSlug}
-                  className="relative group vertical-profile h-[28rem] w-full lg:w-[20vw] hover:lg:w-[60vw] transition-all lg:h-full"
+                  className="relative group vertical-profile h-[28rem] w-full lg:w-[20vw] hover:lg:w-[60vw] transition-all lg:h-full cursor-pointer"
                   href={
                     profile.externalLink ||
                     `/${profile.profileType?.toLowerCase()}/${

@@ -66,10 +66,10 @@ function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
               setPopupInfo(location);
             }}
           >
-            <div className="relative shadow-md">
+            <div className="relative">
               <FontAwesomeIcon
                 icon={faLocationDot as IconProp}
-                className="h-12 w-12 mx-auto text-primary stroke-[#000000a7] stroke-[15]"
+                className="h-12 w-12 mx-auto text-primary stroke-[#000000a7] stroke-[15"
               />
               {!!icon && (
                 <Image

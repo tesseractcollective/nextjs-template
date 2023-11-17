@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Fade, Zoom } from "react-awesome-reveal";
+import { Fade, Zoom, Slide } from "react-awesome-reveal";
 interface PageHeaderProps {
   pageHeaderTitleProp?: string;
   pageHeaderSubtitleProp?: string;
@@ -55,6 +55,150 @@ export default function PageHeader({
             </Fade>
           </div>
         </section>
+      )}
+      {pageWidthStyle === "wavy" && (
+        <Zoom triggerOnce>
+          <section className="pt-44 pb-44 relative bg-[#000]">
+            <div
+              className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
+              style={{
+                backgroundImage: `url(${pageHeaderImageProp})`,
+              }}
+            ></div>
+            <Fade direction="up" triggerOnce>
+              {!!pageHeaderTitleProp && (
+                <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold uppercase">
+                  {pageHeaderTitleProp}
+                </h1>
+              )}
+              {!!pageHeaderSubtitleProp && (
+                <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-lg opacity-80 text-tertiary">
+                  {pageHeaderSubtitleProp}
+                </h2>
+              )}
+            </Fade>
+          </section>
+        </Zoom>
+      )}
+      {pageWidthStyle === "split" && (
+        <div className="relative overflow-hidden">
+          <Slide triggerOnce direction="left" className="relative">
+            <section className="mb-20 md:mb-0 pt-44 pb-44 relative z-0 bg-primary all-text-white h-50vh md:h-70vh w-full md:w-[90vw] lg:w-[70vw]">
+              <Fade
+                direction="up"
+                triggerOnce
+                className="absolute z-30 -bottom-30 md:bottom-[-5px] md:h-full right-[25%] md:right-[-6%]"
+              >
+                {!!pageHeaderImageProp && (
+                  <Image
+                    src={pageHeaderImageProp}
+                    alt=""
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    className="h-full w-full object-contain object-center"
+                  />
+                )}
+              </Fade>
+              <div className="flex flex-col items-center md:items-start justify-start md:justify-start md:w-full px-4 relative z-20 mx-auto md:mr-16 xl:ml-[17rem] text-center md:text-left -top-[7rem] md:top-0">
+                {!!pageHeaderTitleProp && (
+                  <Fade
+                    direction="left"
+                    triggerOnce
+                    className="text-center mx-auto md:text-left md:mx-0"
+                  >
+                    <h1 className="text-3xl md:text-7xl xl:text-14xl my-0 py-0 text-center sm:text-left text-white font-bold w-full mx-auto">
+                      {pageHeaderTitleProp}
+                    </h1>
+                  </Fade>
+                )}
+                {!!pageHeaderSubtitleProp && (
+                  <Fade
+                    direction="left"
+                    triggerOnce
+                    className="text-center mx-auto md:text-left md:mx-0"
+                  >
+                    <h2 className="my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 md:text-left mx-auto md:ml-4 md:mr-0 w-full text-text-overlay">
+                      {pageHeaderSubtitleProp}
+                    </h2>
+                  </Fade>
+                )}
+              </div>
+            </section>
+          </Slide>
+        </div>
+      )}
+      {pageWidthStyle === "video" && (
+        <Zoom triggerOnce>
+          <section className="pt-44 pb-44 relative bg-[#000]">
+            <div
+              className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
+              style={{
+                backgroundImage: `url(${pageHeaderImageProp})`,
+              }}
+            ></div>
+            <Fade direction="up" triggerOnce>
+              {!!pageHeaderTitleProp && (
+                <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold uppercase">
+                  {pageHeaderTitleProp}
+                </h1>
+              )}
+              {!!pageHeaderSubtitleProp && (
+                <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-lg opacity-80 text-tertiary">
+                  {pageHeaderSubtitleProp}
+                </h2>
+              )}
+            </Fade>
+          </section>
+        </Zoom>
+      )}
+      {pageWidthStyle === "sharp" && (
+        <Zoom triggerOnce>
+          <section className="pt-44 pb-44 relative bg-[#000]">
+            <div
+              className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
+              style={{
+                backgroundImage: `url(${pageHeaderImageProp})`,
+              }}
+            ></div>
+            <Fade direction="up" triggerOnce>
+              {!!pageHeaderTitleProp && (
+                <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold uppercase">
+                  {pageHeaderTitleProp}
+                </h1>
+              )}
+              {!!pageHeaderSubtitleProp && (
+                <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-lg opacity-80 text-tertiary">
+                  {pageHeaderSubtitleProp}
+                </h2>
+              )}
+            </Fade>
+          </section>
+        </Zoom>
+      )}
+      {pageWidthStyle === "diagonal" && (
+        <Zoom triggerOnce>
+          <section className="pt-44 pb-44 relative bg-[#000]">
+            <div
+              className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
+              style={{
+                backgroundImage: `url(${pageHeaderImageProp})`,
+              }}
+            ></div>
+            <Fade direction="up" triggerOnce>
+              {!!pageHeaderTitleProp && (
+                <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold uppercase">
+                  {pageHeaderTitleProp}
+                </h1>
+              )}
+              {!!pageHeaderSubtitleProp && (
+                <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-lg opacity-80 text-tertiary">
+                  {pageHeaderSubtitleProp}
+                </h2>
+              )}
+            </Fade>
+          </section>
+        </Zoom>
       )}
       {pageWidthStyle === "parallax" && (
         <Zoom triggerOnce>

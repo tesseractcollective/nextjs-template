@@ -36,6 +36,64 @@ export default function Nav({
         )
     ) || navigations[0];
 
+  if (navigation.navigationLayoutStyle === "dual")
+    return (
+      <CenterNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+  if (navigation.navigationLayoutStyle === "dashboard")
+    return (
+      <CenterNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+  if (navigation.navigationLayoutStyle === "progress")
+    return (
+      <CenterNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "space")
+    return (
+      <DefaultNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "between")
+    return (
+      <DefaultNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "universal")
+    return (
+      <CenterNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
   if (navigation.navigationLayoutStyle === "center")
     return (
       <CenterNavigation

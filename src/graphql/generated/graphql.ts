@@ -336,7 +336,7 @@ export type Aggregate = {
   count: Scalars['Int'];
 };
 
-export type Album = Node & {
+export type Album = Entity & Node & {
   __typename?: 'Album';
   albumBuyLink?: Maybe<Scalars['String']>;
   albumCover?: Maybe<Asset>;
@@ -1037,7 +1037,7 @@ export type AlbumWhereUniqueInput = {
 };
 
 /** Asset system model */
-export type Asset = Node & {
+export type Asset = Entity & Node & {
   __typename?: 'Asset';
   albumCoverAlbum: Array<Album>;
   audioBlogBlog: Array<Blog>;
@@ -2251,7 +2251,7 @@ export type BatchPayload = {
 };
 
 /** Blog Enteries */
-export type Blog = Node & {
+export type Blog = Entity & Node & {
   __typename?: 'Blog';
   audioBlog?: Maybe<Asset>;
   authorQuery: Array<ContactQueries>;
@@ -3568,7 +3568,7 @@ export type ConnectPositionInput = {
   start?: InputMaybe<Scalars['Boolean']>;
 };
 
-export type Contact = Node & {
+export type Contact = Entity & Node & {
   __typename?: 'Contact';
   contactAddress?: Maybe<Scalars['String']>;
   contactAvatar?: Maybe<Asset>;
@@ -4590,7 +4590,17 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Admin = 'admin'
+  Academia = 'academia',
+  AlfredoS = 'alfredoS',
+  Azteca = 'azteca',
+  Carlos = 'carlos',
+  DanielP = 'danielP',
+  FranciscoB = 'franciscoB',
+  NormaD = 'normaD',
+  PacoB = 'pacoB',
+  SaulR = 'saulR',
+  TonyM = 'tonyM',
+  VictorM = 'victorM'
 }
 
 export type ContactUpdateInput = {
@@ -6469,7 +6479,7 @@ export type Entity = {
   stage: Stage;
 };
 
-/** This enumeration holds all typenames that implement the Entity interface. Components implement the Entity interface. At the moment models are not supported, models are listed in this enum to avoid an empty enum without any components. */
+/** This enumeration holds all typenames that implement the Entity interface. Components and models implement the Entity interface. */
 export enum EntityTypeName {
   Accordion = 'Accordion',
   Album = 'Album',
@@ -6510,7 +6520,7 @@ export enum EntityTypeName {
   VideoBox = 'VideoBox'
 }
 
-/** Allows to specify input to query components directly */
+/** Allows to specify input to query models and components directly */
 export type EntityWhereInput = {
   /** The ID of an object */
   id: Scalars['ID'];
@@ -6519,7 +6529,7 @@ export type EntityWhereInput = {
   typename: EntityTypeName;
 };
 
-export type Event = Node & {
+export type Event = Entity & Node & {
   __typename?: 'Event';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -9887,7 +9897,7 @@ export type LocationInput = {
   longitude: Scalars['Float'];
 };
 
-export type LogoTable = Node & {
+export type LogoTable = Entity & Node & {
   __typename?: 'LogoTable';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -10016,6 +10026,7 @@ export type LogoTableEdge = {
 };
 
 export enum LogoTableItem {
+  Pros = 'pros',
   Sponsor = 'sponsor'
 }
 
@@ -11195,7 +11206,6 @@ export type LoopTextWhereUniqueInput = {
 };
 
 export enum MediaType {
-  Expand = 'expand',
   Image = 'image',
   Video = 'video',
   Youtube = 'youtube'
@@ -13201,7 +13211,7 @@ export type MutationUpsertTestimonialArgs = {
   where: TestimonialWhereUniqueInput;
 };
 
-export type Navigation = Node & {
+export type Navigation = Entity & Node & {
   __typename?: 'Navigation';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -13864,12 +13874,16 @@ export type NavigationItemWhereUniqueInput = {
 export enum NavigationLayout {
   Between = 'between',
   Center = 'center',
+  Dashboard = 'dashboard',
+  Dual = 'dual',
   Mega = 'mega',
   Minimal = 'minimal',
+  Progress = 'progress',
   Reverse = 'reverse',
   Space = 'space',
   Start = 'start',
   Transparent = 'transparent',
+  Universal = 'universal',
   Vertical = 'vertical'
 }
 
@@ -14304,7 +14318,7 @@ export type Node = {
   stage: Stage;
 };
 
-export type Page = Node & {
+export type Page = Entity & Node & {
   __typename?: 'Page';
   contentPageJson?: Maybe<Scalars['Json']>;
   /** The time the document was created */
@@ -15076,8 +15090,13 @@ export enum PageWidthStyle {
   Content = 'Content',
   Full = 'Full',
   Angled = 'angled',
+  Diagonal = 'diagonal',
   Modern = 'modern',
-  Parallax = 'parallax'
+  Parallax = 'parallax',
+  Sharp = 'sharp',
+  Split = 'split',
+  Video = 'video',
+  Wavy = 'wavy'
 }
 
 export enum ParentPage {
@@ -15566,7 +15585,7 @@ export type PopupWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type Product = Node & {
+export type Product = Entity & Node & {
   __typename?: 'Product';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -16410,7 +16429,7 @@ export type ProductWhereUniqueInput = {
   productSlug?: InputMaybe<Scalars['String']>;
 };
 
-export type Profile = Node & {
+export type Profile = Entity & Node & {
   __typename?: 'Profile';
   appleMusicLink?: Maybe<Scalars['String']>;
   avatarImage?: Maybe<Asset>;
@@ -19219,7 +19238,7 @@ export type RootColorWhereUniqueInput = {
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperation = Node & {
+export type ScheduledOperation = Entity & Node & {
   __typename?: 'ScheduledOperation';
   affectedDocuments: Array<ScheduledOperationAffectedDocument>;
   /** The time the document was created */
@@ -19654,7 +19673,7 @@ export type ScheduledOperationWhereUniqueInput = {
 };
 
 /** Scheduled Release system model */
-export type ScheduledRelease = Node & {
+export type ScheduledRelease = Entity & Node & {
   __typename?: 'ScheduledRelease';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -20233,7 +20252,7 @@ export type ScheduledReleaseWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type SiteLibrary = Node & {
+export type SiteLibrary = Entity & Node & {
   __typename?: 'SiteLibrary';
   analyticsId?: Maybe<Scalars['String']>;
   appleMusicLink?: Maybe<Scalars['String']>;
@@ -22126,7 +22145,7 @@ export enum SystemDateTimeFieldVariation {
   Localization = 'LOCALIZATION'
 }
 
-export type Testimonial = Node & {
+export type Testimonial = Entity & Node & {
   __typename?: 'Testimonial';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -23366,7 +23385,7 @@ export type UnpublishLocaleInput = {
 };
 
 /** User system model */
-export type User = Node & {
+export type User = Entity & Node & {
   __typename?: 'User';
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
