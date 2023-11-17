@@ -9,6 +9,7 @@ import MegaNavigation from "@/components/navigation/MegaNavigation";
 import MinimalNavigation from "@/components/navigation/MinimalNavigation";
 import VerticalNavigation from "@/components/navigation/VerticalNavigation";
 import ReverseNavigation from "@/components/navigation/ReverseNavigation";
+import DualNavigation from "@/components/navigation/DualNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -38,7 +39,7 @@ export default function Nav({
 
   if (navigation.navigationLayoutStyle === "dual")
     return (
-      <CenterNavigation
+      <DualNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}
