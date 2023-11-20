@@ -11206,6 +11206,7 @@ export type LoopTextWhereUniqueInput = {
 };
 
 export enum MediaType {
+  Expand = 'expand',
   Image = 'image',
   Video = 'video',
   Youtube = 'youtube'
