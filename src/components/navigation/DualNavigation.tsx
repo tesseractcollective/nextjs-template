@@ -70,7 +70,7 @@ export default function DualNavigation({
 
   return (
     <div
-      className={`bg-bg sticky top-0 z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md ${
+      className={`bg-bg fixed top-0 z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow  dark-shadow ${
         small ? "nav-shadow-scrolled" : ""
       } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
       id="navigation"
@@ -288,12 +288,12 @@ export default function DualNavigation({
         </Dialog>
       </Transition.Root>
 
-      <header className=" relative z-2">
+      <header className="overflow-hidden relative z-2">
         <nav aria-label="Top">
           <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
             <div
               className={`flex items-center justify-between transition-all ${
-                small ? "h-16 mb-0" : "h-24 mb-4"
+                small ? "h-16 mb-0" : "h-24 mb-0"
               }`}
             >
               <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max">
@@ -414,8 +414,10 @@ export default function DualNavigation({
             {/* start */}
             <Popover.Group
               className={`${
-                small ? "opacity-0 scale-y-0" : "opacity-1 scale-y-1"
-              } transition-all inset-x-0 bottom-0 z-[99999]`}
+                small
+                  ? "h-0 opacity-0 translate-y-60 blur-sm"
+                  : "h-full opacity-1 translate-y-0 blur-0"
+              } transition-all inset-x-0 bottom-0 z-[0] flex flex-row items-center justify-between w-full`}
             >
               <div className="flex h-full justify-start space-x-8">
                 {!!items &&
@@ -583,10 +585,15 @@ export default function DualNavigation({
                               sameTab={mainNavigationItem?.sameTab}
                             />
                           )}
+                          {/* INSERT */}
                         </div>
                       );
                     })}
               </div>
+              <SocialMediaIcons
+                siteLibrary={siteLibrary}
+                cssClass="my-2 mx-0 social-icons-row items-center justify-start text-text-color gap-x-2 overflow-hidden py-0 max-w-max gap-x-4 flex"
+              />
             </Popover.Group>
             {/* stop */}
           </div>

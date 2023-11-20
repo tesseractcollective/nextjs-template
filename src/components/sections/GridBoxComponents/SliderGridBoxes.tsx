@@ -4,7 +4,7 @@ import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "@/components/LinkItem";
 import parse from "html-react-parser";
 import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -13,6 +13,7 @@ import {
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import useViewport from "@/app/hooks/useViewport";
+import { Fade } from "react-awesome-reveal";
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
 }
@@ -38,30 +39,37 @@ export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
           <Swiper
             className="!pb-10 flex-wrap"
             grabCursor
-            loop
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, Pagination, Autoplay]}
+            loop={true}
+            centerInsufficientSlides
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
-            autoplay
             slidesPerView={isMobile ? 1 : isDesktop ? 2 : 3}
             spaceBetween={30}
           >
             {gridBoxData.map((gridBoxItem) => (
               <SwiperSlide key={gridBoxItem.boxLink}>
                 <div className="relative isolate flex flex-col overflow-hidden rounded-2xl bg-background pb-4 pt-40 sm:pt-60 group hover:cursor-pointer mx-auto h-full w-full max-w-xs self-stretch">
-                  {!!gridBoxItem.boxImage?.url && (
-                    <Image
-                      src={gridBoxItem.boxImage.url}
-                      alt={gridBoxItem.boxTitle || ""}
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      className="absolute inset-0 -z-10 h-full w-full object-cover vignette object-center"
-                    />
-                  )}
+                  <Fade triggerOnce>
+                    {!!gridBoxItem.boxImage?.url && (
+                      <Image
+                        src={gridBoxItem.boxImage.url}
+                        alt={gridBoxItem.boxTitle || ""}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        className="absolute inset-0 -z-10 h-full w-full object-cover vignette object-center"
+                      />
+                    )}
+                  </Fade>
                   <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background/50 via-text-color/40" />
-                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary-fade ring-inset ring-dark/10 overflow-hidden transition group-hover:ring-secondary" />
+                  <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary-fade ring-inset group-hover:ring-dark/10 overflow-hidden transition group-hover:ring-secondary" />
                   <LinkItem
                     link={gridBoxItem?.boxLink}
                     cssClass="text-shadow mt-3 text-xl leading-6 w-full text-center text-text-overlay h-full z-40 self-stretch"

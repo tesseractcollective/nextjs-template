@@ -104,6 +104,13 @@
     -moz-box-shadow: 0px 17px 17px -17px var(--background-secondary);
     box-shadow: 0px 17px 17px -17px var(--background-secondary);
   }
+  &.dark-shadow {
+    &.nav-shadow-scrolled {
+      -webkit-box-shadow: 0px 17px 17px -17px var(--background);
+      -moz-box-shadow: 0px 17px 17px -17px var(--background);
+      box-shadow: 0px 17px 17px -17px var(--background);
+    }
+  }
 }
 
 .hero-bg, .background-image-featured {
