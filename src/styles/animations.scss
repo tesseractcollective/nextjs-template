@@ -409,6 +409,51 @@ a.hover-chevron {
   }
 }
 
+.animate-marquee-reverse {
+  animation: marqueeReverse 25s linear infinite;
+}
+.animate-marquee-reverse2 {
+  animation: marqueeReverse2 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes marqueeReverse {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes marqueeReverse2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 .floating {
   animation-name: floating;
   animation-duration: 3s;

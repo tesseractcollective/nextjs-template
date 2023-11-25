@@ -10,6 +10,8 @@ import MinimalNavigation from "@/components/navigation/MinimalNavigation";
 import VerticalNavigation from "@/components/navigation/VerticalNavigation";
 import ReverseNavigation from "@/components/navigation/ReverseNavigation";
 import DualNavigation from "@/components/navigation/DualNavigation";
+import DashboardNavigation from "@/components/navigation/DashboardNavigation";
+import SpaceNavigation from "@/components/navigation/SpaceNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -48,7 +50,7 @@ export default function Nav({
     );
   if (navigation.navigationLayoutStyle === "dashboard")
     return (
-      <CenterNavigation
+      <DashboardNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}
@@ -67,7 +69,7 @@ export default function Nav({
 
   if (navigation.navigationLayoutStyle === "space")
     return (
-      <DefaultNavigation
+      <SpaceNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

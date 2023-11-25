@@ -254,6 +254,13 @@ export default function TextContentSection({
                     )}
                   </Fade>
                 </div>
+                {textContentItem?.htmlText && (
+                  <Fade triggerOnce>
+                    <div className="text-content-item-html">
+                      {parse(textContentItem?.htmlText)}
+                    </div>
+                  </Fade>
+                )}
               </div>
             ))}
           </div>

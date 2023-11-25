@@ -23,7 +23,7 @@ export interface NavProps {
   pageNavigationSelection?: string;
 }
 
-export default function DualNavigation({
+export default function DashboardNavigation({
   navigations,
   siteLibrary,
   hideNav,

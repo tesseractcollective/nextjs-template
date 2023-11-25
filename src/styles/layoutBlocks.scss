@@ -974,12 +974,3 @@ body iframe {
     }
   }
 }
-
-
-.bg-fade-bg {
-  background: linear-gradient(0deg,var(--background) 0%,var(--background-secondary) 100%);
-}
-
-.bg-fade-secondary {
-  background: linear-gradient(180deg,var(--background) 0%,var(--background-secondary) 100%);
-}
