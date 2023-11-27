@@ -463,13 +463,13 @@ a.hover-chevron {
 
 @keyframes floating {
   0% {
-    transform: translate(0, 0px);
+    transform: translate(0, 0px) !important;
   }
   50% {
-    transform: translate(0, 15px);
+    transform: translate(0, 15px) !important;
   }
   100% {
-    transform: translate(0, -0px);
+    transform: translate(0, -0px) !important;
   }
 }
 

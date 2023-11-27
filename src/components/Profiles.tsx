@@ -562,7 +562,7 @@ export default function Profiles({
   if (profileLayoutStyle === "offset")
     return (
       <>
-        <div className="relative texture-background overflow-hidden">
+        <div className="relative texture-background overflow-hidden offset-profiles">
           <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12  flex flex-wrap">
             <div className="w-full lg:5/12 xl:w-4/12 transition">
               {!!profileSectionTitle && (
@@ -752,7 +752,7 @@ export default function Profiles({
           <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12  flex flex-wrap">
             <div className="w-full lg:5/12 xl:w-4/12 transition">
               {!!profileSectionTitle && (
-                <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition">
+                <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition-all font-bold">
                   {profileSectionTitle}
                 </h3>
               )}

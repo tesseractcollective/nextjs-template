@@ -32,6 +32,9 @@ interface MapBoxesMapProps {
 
 function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
   const [popupInfo, setPopupInfo] = useState<Location | null>();
+  const [selectedMarkerIndex, setSelectedMarkerIndex] = useState<number | null>(
+    null
+  );
 
   if (!mapKey || !locations || locations.length === 0) {
     return null;
@@ -46,7 +49,12 @@ function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
         zoom: 6,
       }}
       scrollZoom={false}
-      style={{ height: "800px", width: "100%", display: "block" }}
+      style={{
+        height: "800px",
+        width: "100%",
+        display: "block",
+        borderRadius: "16px",
+      }}
       mapStyle="mapbox://styles/mapbox/streets-v12"
     >
       <GeolocateControl position="top-left" />
@@ -64,12 +72,13 @@ function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
             onClick={(e) => {
               e.originalEvent.stopPropagation();
               setPopupInfo(location);
+              setSelectedMarkerIndex(index);
             }}
           >
             <div className="relative">
               <FontAwesomeIcon
                 icon={faLocationDot as IconProp}
-                className="h-12 w-12 mx-auto text-primary stroke-[#000000a7] stroke-[15"
+                className="h-12 w-12 mx-auto text-primary stroke-[#000000a7] stroke-[15]"
               />
               {!!icon && (
                 <Image
@@ -94,7 +103,17 @@ function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
           onClose={() => setPopupInfo(null)}
         >
           <div className="flex flex-col p-2">
-            <span className="font-bold text-lg">{popupInfo.label}</span>
+            {popupInfo.image && (
+              <Image
+                width={0}
+                height={0}
+                sizes="100%"
+                alt={popupInfo.label || ""}
+                src={popupInfo.image}
+                className="h-36 w-full object-cover"
+              />
+            )}
+            <span className="font-bold text-md">{popupInfo.label}</span>
             <span>{popupInfo.address}</span>
             <span>
               {popupInfo.city}, {popupInfo.state}
@@ -102,20 +121,11 @@ function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
             <a
               target="_blank"
               href={popupInfo.googleMapLink}
-              className="bg-primary p-1 mt-2 text-center rounded-md"
+              className="bg-primary p-1 mt-2 text-center rounded-md font-bold uppercase text-text-color"
             >
               Info
             </a>
           </div>
-          {popupInfo.image && (
-            <Image
-              width={0}
-              height={0}
-              alt={popupInfo.label || ""}
-              src={popupInfo.image}
-              className="h-36 w-full object-cover"
-            />
-          )}
         </Popup>
       )}
     </Map>

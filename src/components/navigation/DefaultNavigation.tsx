@@ -410,13 +410,13 @@ export default function DefaultNavigation({
                                               {({ close }) => (
                                                 <>
                                                   <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md max-w-8xl">
-                                                    <div className="mx-auto px-8 w-full h-full overflow-scroll max-h-[80vh]">
-                                                      <div className="flex flex-row items-center justify-start flex-wrap gap-4 py-8">
+                                                    <div className="mx-auto py-8 px-4 xl:px-8 w-full h-full max-h-[85vh] overflow-scroll">
+                                                      <div className="flex flex-row items-center justify-start flex-wrap gap-4">
                                                         {mainNavigationItem.items.map(
                                                           (item) => (
                                                             <div
                                                               key={item.label}
-                                                              className="group relative max-w-[12rem] block w-full"
+                                                              className="group relative max-w-[8rem] xl:max-w-[12rem] block w-full transition-all"
                                                               onClick={() =>
                                                                 close()
                                                               }
@@ -451,7 +451,7 @@ export default function DefaultNavigation({
                                                                   label={
                                                                     item?.label
                                                                   }
-                                                                  cssClass={`mt-4 block font-semibold text-text-color transition-all group-hover:text-primary text-sm ${item?.cssClass}`}
+                                                                  cssClass={`mt-4 block font-semibold text-text-color transition-all group-hover:text-primary text-xs xl:text-sm ${item?.cssClass}`}
                                                                   sameTab={
                                                                     item?.sameTab
                                                                   }
@@ -495,15 +495,14 @@ export default function DefaultNavigation({
                                                     </button>
                                                   </div>
                                                   <div
-                                                    className="fixed inset-0 bg-[#1a1a1a0f] transition-all z-0 backdrop-blur-sm top-[54px]"
+                                                    className="fixed inset-0 bg-[#00000070] transition-all z-0 backdrop-blur-xl top-[54px] min-h-[100vh] h-full"
                                                     onClick={() => {
                                                       close();
                                                       ReactGA.event({
                                                         category: "Link",
                                                         action:
-                                                          "Close Mobile Menu",
-                                                        label:
-                                                          "Close Mobile Menu",
+                                                          "Close Nav Menu",
+                                                        label: "Close Nav Menu",
                                                       });
                                                     }}
                                                   />

@@ -13875,6 +13875,7 @@ export type NavigationItemWhereUniqueInput = {
 export enum NavigationLayout {
   Between = 'between',
   Center = 'center',
+  Circle = 'circle',
   Dashboard = 'dashboard',
   Dual = 'dual',
   Mega = 'mega',
@@ -20299,6 +20300,7 @@ export type SiteLibrary = Entity & Node & {
   signature?: Maybe<Scalars['String']>;
   /** CSS Class added to body */
   siteCssBodyClass?: Maybe<Scalars['String']>;
+  siteId: Scalars['String'];
   siteLibraryJson?: Maybe<Scalars['Json']>;
   siteTheme?: Maybe<SiteTheme>;
   snapchatLink?: Maybe<Scalars['String']>;
@@ -20450,6 +20452,7 @@ export type SiteLibraryCreateInput = {
   secondaryName?: InputMaybe<Scalars['String']>;
   signature?: InputMaybe<Scalars['String']>;
   siteCssBodyClass?: InputMaybe<Scalars['String']>;
+  siteId: Scalars['String'];
   siteLibraryJson?: InputMaybe<Scalars['Json']>;
   siteTheme?: InputMaybe<SiteTheme>;
   snapchatLink?: InputMaybe<Scalars['String']>;
@@ -20981,6 +20984,25 @@ export type SiteLibraryManyWhereInput = {
   siteCssBodyClass_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   siteCssBodyClass_starts_with?: InputMaybe<Scalars['String']>;
+  siteId?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  siteId_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  siteId_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  siteId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  siteId_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  siteId_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  siteId_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  siteId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  siteId_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  siteId_starts_with?: InputMaybe<Scalars['String']>;
   /** All values containing the given json path. */
   siteLibraryJson_json_path_exists?: InputMaybe<Scalars['String']>;
   /**
@@ -21240,6 +21262,8 @@ export enum SiteLibraryOrderByInput {
   SignatureDesc = 'signature_DESC',
   SiteCssBodyClassAsc = 'siteCssBodyClass_ASC',
   SiteCssBodyClassDesc = 'siteCssBodyClass_DESC',
+  SiteIdAsc = 'siteId_ASC',
+  SiteIdDesc = 'siteId_DESC',
   SiteThemeAsc = 'siteTheme_ASC',
   SiteThemeDesc = 'siteTheme_DESC',
   SnapchatLinkAsc = 'snapchatLink_ASC',
@@ -21293,6 +21317,7 @@ export type SiteLibraryUpdateInput = {
   secondaryName?: InputMaybe<Scalars['String']>;
   signature?: InputMaybe<Scalars['String']>;
   siteCssBodyClass?: InputMaybe<Scalars['String']>;
+  siteId?: InputMaybe<Scalars['String']>;
   siteLibraryJson?: InputMaybe<Scalars['Json']>;
   siteTheme?: InputMaybe<SiteTheme>;
   snapchatLink?: InputMaybe<Scalars['String']>;
@@ -21347,6 +21372,7 @@ export type SiteLibraryUpdateManyInput = {
   secondaryLink?: InputMaybe<Scalars['String']>;
   secondaryName?: InputMaybe<Scalars['String']>;
   siteCssBodyClass?: InputMaybe<Scalars['String']>;
+  siteId?: InputMaybe<Scalars['String']>;
   siteLibraryJson?: InputMaybe<Scalars['Json']>;
   siteTheme?: InputMaybe<SiteTheme>;
   snapchatLink?: InputMaybe<Scalars['String']>;
@@ -21902,6 +21928,25 @@ export type SiteLibraryWhereInput = {
   siteCssBodyClass_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   siteCssBodyClass_starts_with?: InputMaybe<Scalars['String']>;
+  siteId?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  siteId_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  siteId_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  siteId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  siteId_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  siteId_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  siteId_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  siteId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  siteId_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  siteId_starts_with?: InputMaybe<Scalars['String']>;
   /** All values containing the given json path. */
   siteLibraryJson_json_path_exists?: InputMaybe<Scalars['String']>;
   /**

@@ -176,6 +176,28 @@ export default function Whatsapp({
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
+              <div className="absolute bottom-12">
+                <button
+                  type="button"
+                  className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-xs hover:bg-dark group focus-within:bg-dark focus-within:ring-1 ring-primary"
+                  onClick={() => {
+                    setOpen(false);
+                    ReactGA.event({
+                      category: "Link",
+                      action: "Close Whatsapp Menu",
+                      label: "Close Whatsapp Menu",
+                    });
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faTimes as IconProp}
+                    className="fa-fw my-0 py-0 h-4 w-4 group-hover:rotate-90 transition-all"
+                  />
+                  <span className="ml-2">{`${
+                    isSpanish ? "Cerrar" : "Close"
+                  } WhatsApp`}</span>
+                </button>
+              </div>
             </div>
           </div>
         </Dialog>

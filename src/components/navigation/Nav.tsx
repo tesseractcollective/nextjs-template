@@ -12,6 +12,7 @@ import ReverseNavigation from "@/components/navigation/ReverseNavigation";
 import DualNavigation from "@/components/navigation/DualNavigation";
 import DashboardNavigation from "@/components/navigation/DashboardNavigation";
 import SpaceNavigation from "@/components/navigation/SpaceNavigation";
+import CircleNavigation from "@/components/navigation/CircleNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -80,6 +81,16 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "between")
     return (
       <DefaultNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "circle")
+    return (
+      <CircleNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

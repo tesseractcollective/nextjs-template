@@ -11,3 +11,16 @@
     mix-blend-mode: multiply;
   }
 }
+
+.psuedo-circle {
+  // position: relative; 
+  // &:before {
+  //   background: var(--background);
+  //   height: 150px;
+  //   width: 150px;
+  //   border-radius: 50%;
+  //   content: '';
+  //   z-index: -1;
+  //   position: fixed;
+  // }
+}
