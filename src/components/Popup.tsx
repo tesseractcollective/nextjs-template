@@ -157,7 +157,6 @@ export default function Popup({ layout }: PopupProps) {
                             blogs={blogs}
                             albums={albums}
                             siteLibrary={siteLibrary}
-                            page={page}
                           />
                           <Elements
                             elements={popupBlock.elements}
