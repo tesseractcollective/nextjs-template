@@ -488,6 +488,10 @@ body iframe {
     width: 100%;
   }
   &.dynamic-medium {
+    scale: 0.8;
+    @media only screen and (min-width: 540px) {
+      scale: 1;
+    }
     max-width: 400px;
     width: 100%;
   }

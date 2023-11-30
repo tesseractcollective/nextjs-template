@@ -257,9 +257,10 @@ export default function Products({
               {filteredProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="w-72 bg-text-color shadow-md rounded-xl duration-300 hover:scale-105 hover:shadow-xl focus-within:scale-105 focus-within:shadow-xl"
+                  className="w-full md:w-72 bg-text-color shadow-md rounded-xl duration-300 hover:md:scale-105 hover:shadow-xl focus-within:scale-105 focus-within:shadow-xl px-1 md:px-2 overflow-hidden max-w-sm"
                 >
                   <LinkItem
+                    cssClass="flex flex-row md:flex-col items-center justify-between md:justify-center"
                     link={
                       product.purchaseLink
                         ? product.purchaseLink
@@ -277,32 +278,30 @@ export default function Products({
                             ]?.url
                           }
                           alt={product.name}
-                          className="h-80 w-72 object-cover rounded-t-xl"
+                          className="aspect-1 w-full max-w-[90px] md:max-w-full object-cover rounded-t-xl"
                           width={0}
                           height={0}
                         />
                       )}
-                      <div className="px-4 py-3 w-72">
-                        {product?.purchaseLink && (
-                          <span className="text-dark mr-3 uppercase text-xs">
+                      <div className="px-2 md:px-4 py-3 max-w-[140px] md:max-w-full w-full md:w-72">
+                        {product?.vendor && (
+                          <span className="text-dark md:mr-3 uppercase text-xs">
                             {product.vendor}
                           </span>
                         )}
-                        <p className="text-lg font-bold text-dark truncate block capitalize">
+                        <p className="text-xs md:text-lg font-bold text-dark truncate block capitalize">
                           {product.name}
                         </p>
-                        <div className="flex items-center">
-                          <p className="text-lg font-semibold text-bg cursor-auto my-3">
+                        <div className="flex items-center md:my-3">
+                          <p className="text-md md:text-lg font-semibold text-bg cursor-auto">
                             {`$${product.price}`}
                           </p>
                           {!!product?.purchaseLink && (
-                            <div className="ml-auto">
-                              <ArrowTopRightOnSquareIcon
-                                title={product?.purchaseLink}
-                                className="h-6 w-6 text-dark ml-2"
-                                aria-hidden="true"
-                              />
-                            </div>
+                            <ArrowTopRightOnSquareIcon
+                              title={product?.purchaseLink}
+                              className="h-6 w-6 text-dark ml-auto max-w-max"
+                              aria-hidden="true"
+                            />
                           )}
                         </div>
                       </div>

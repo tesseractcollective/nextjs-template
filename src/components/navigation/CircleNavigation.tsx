@@ -513,13 +513,13 @@ export default function CircleNavigation({
 
             {/* START Desktop Flyout menus */}
             {!!primaryItems && primaryItems.length >= 1 && (
-              <div className="h-full flex flex-row items-center justify-end gap-x-4 max-w-max ml-auto">
+              <div className="h-full flex flex-col-reverse md:flex-row items-center justify-center md:justify-end gap-x-4 max-w-max ml-auto gap-y-1 md:gap-y-0">
                 {primaryItems.map((mainNavigationItem) => (
                   <LinkItem
                     key={mainNavigationItem?.link}
                     link={mainNavigationItem?.link}
                     label={mainNavigationItem?.label}
-                    cssClass={`flex justify-center  items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-auto ${
+                    cssClass={`flex justify-center  items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
                       mainNavigationItem?.cssClass
                     } ${
                       small
@@ -531,7 +531,7 @@ export default function CircleNavigation({
                 ))}
                 <SocialMediaIcons
                   siteLibrary={siteLibrary}
-                  cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
+                  cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
                 />
               </div>
             )}

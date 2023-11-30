@@ -908,6 +908,10 @@ h4, h5, h6  {color: var(--text);}
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  scale: 0.9;
+  @media only screen and (min-width: 540px) {
+    scale: 1;
+  } 
 }
 
 .select-none {
@@ -946,9 +950,21 @@ h4, h5, h6  {color: var(--text);}
   line-height: 1;
 }
 
+.text-5xl {
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: all 200ms ease;
+  @media only screen and (min-width: 540px) {
+    font-size: 3rem;
+  }
+}
+
 .text-14xl {
-  font-size: 12vw;
   transition: font-size 200ms ease;
+  font-size: 1.5rem;
+  @media only screen and (min-width: 540px)  {
+    font-size: 12vw;
+  }
   @media only screen and (min-width: 960px)  {
     font-size: 9vw;
   }

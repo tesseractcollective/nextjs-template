@@ -108,7 +108,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!siteLibrary?.mapKey &&
         !!elementJson?.locations &&
         !!siteLibrary?.metaAppleTouchIcon && (
-          <div className="max-w-8xl mx-auto flex h-full w-full p-4 rounded-md">
+          <div className="max-w-8xl mx-auto flex h-full w-full px-8 md:p-4 rounded-md">
             <MapBoxesMap
               locations={elementJson.locations}
               mapKey={siteLibrary.mapKey}
