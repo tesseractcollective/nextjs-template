@@ -22,6 +22,11 @@ fragment albumFields on Album {
     youtubeVideoId
     vimeoVideoId
     youtubePlaylistId
+    thumbnail {
+      url
+    }
+    thumbnailType
+    videoDisplayLayout
   }
 }
 
@@ -58,12 +63,39 @@ fragment blogFields on Blog {
     youtubeVideoId
     vimeoVideoId
     youtubePlaylistId
+    thumbnail {
+      url
+    }
+    thumbnailType
+    videoDisplayLayout
   }
   blogHtml
+  blogHeroStyle
+  layoutBlocks(first: 100) {
+    id
+    cssClass
+    backgroundColor {
+      hex
+      rgba {
+        r
+        g
+        b
+        a
+      }
+      css
+    }
+    backgroundImage {
+      url
+    }
+    layoutBlockColumns(first: 100) {
+      ...layoutBlockColumnFields
+    }
+  }
 }
 
 fragment siteLibraryFields on SiteLibrary {
   id
+  siteId
   title
   isSpanish
   facebookPixelId
@@ -207,6 +239,11 @@ fragment eventFields on Event {
     youtubeVideoId
     vimeoVideoId
     youtubePlaylistId
+    thumbnail {
+      url
+    }
+    thumbnailType
+    videoDisplayLayout
   }
   eventDescription {
     html
@@ -313,6 +350,8 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     profileType
     testimonialType
     parentPageType
+    productLayoutStyle
+    blogLayoutStyle
   }
   elements {
     stripePricingTableId
@@ -533,6 +572,11 @@ fragment AccordionFields on Accordion {
     youtubeVideoId
     vimeoVideoId
     youtubePlaylistId
+    thumbnailType
+    thumbnail {
+      url
+    }
+    videoDisplayLayout
   }
   contentImage {
     url
@@ -544,6 +588,11 @@ fragment VideoBoxFields on VideoBox {
   youtubeVideoId
   vimeoVideoId
   youtubePlaylistId
+  thumbnail {
+    url
+  }
+  thumbnailType
+  videoDisplayLayout
 }
 
 fragment navigationFields on Navigation {
@@ -680,6 +729,11 @@ fragment profileFields on Profile {
     youtubeVideoId
     vimeoVideoId
     youtubePlaylistId
+    thumbnail {
+      url
+    }
+    thumbnailType
+    videoDisplayLayout
   }
   heroImage {
     url
@@ -732,6 +786,11 @@ fragment productFields on Product {
     youtubeVideoId
     vimeoVideoId
     youtubePlaylistId
+    thumbnail {
+      url
+    }
+    thumbnailType
+    videoDisplayLayout
   }
   productJson
 }

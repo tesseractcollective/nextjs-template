@@ -60,7 +60,7 @@ function MinimalFooter({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-10 w-full mb-4 object-contain max-w-max"
+                      className="h-20 w-full mb-4 object-contain max-w-max"
                       alt=""
                       width={0}
                       height={0}
@@ -74,7 +74,7 @@ function MinimalFooter({
                     </h3>
                   )}
                   {!!item?.footerText?.html && (
-                    <div className="text-xs font-medium text-text-color max-w-lg body-parsed-text leading-none ring-opacity-90 opacity-80">
+                    <div className="text-xs font-medium text-text-color max-w-lg body-parsed-text leading-none ring-opacity-90 opacity-90">
                       {parse(item.footerText?.html)}
                     </div>
                   )}
@@ -124,7 +124,7 @@ function MinimalFooter({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      listSummary
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </div>
@@ -212,7 +212,7 @@ function MinimalFooter({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      listSummary
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </Fade>

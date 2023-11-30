@@ -26,6 +26,9 @@ query layout(
   testimonials(first: $testimonialFirst, orderBy: $testimonialOrderBy) {
     ...testimonialFields
   }
+  logoTables(first: $logoTableFirst, orderBy: $logoTableOrderBy) {
+    ...logoTableFields
+  }
   blogs(first: $blogFirst, orderBy: $blogOrderBy) {
     ...blogFields
   }
@@ -43,9 +46,6 @@ query layout(
   }
   products(first: $productFirst) {
     ...productFields
-  }
-  logoTables(first: $logoTableFirst, orderBy: $logoTableOrderBy) {
-    ...logoTableFields
   }
 }
 query pages {
@@ -201,6 +201,24 @@ query blogPage($blogSlug: String!) {
   }
   navigations {
     ...navigationFields
+  }
+  albums(first: 50) {
+    ...albumFields
+  }
+  events(first: 50) {
+    ...eventFields
+  }
+  profiles(first: 50) {
+    ...profileFields
+  }
+  products(first: 50) {
+    ...productFields
+  }
+  testimonials(first: 50, orderBy: updatedAt_DESC) {
+    ...testimonialFields
+  }
+  logoTables(first: 50, orderBy: logoName_ASC) {
+    ...logoTableFields
   }
 }
 query albumPage(

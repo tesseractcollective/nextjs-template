@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 export default function Page({ layout }: PageProps) {
   const [latestEvents, setLatestEvents] = useState<Event[]>([]); // Set default value to an empty array
-  const isDuttons = layout.siteLibrary?.siteLibraryJson.siteID === "theduttons";
+  const isDuttons = layout.siteLibrary?.siteId === "duttons";
 
   useEffect(() => {
     console.log("useEffect fetch Start");

@@ -17,6 +17,7 @@ export interface BlogsProps {
   blogs: BlogFieldsFragment[];
   blogCategory: string;
   listSummary?: boolean;
+  blogLayoutStyle?: string;
 }
 
 export default function Blogs({

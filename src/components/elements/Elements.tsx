@@ -15,6 +15,7 @@ import Timeline from "@/components/elements/Timeline";
 import MapBoxMap from "@/components/elements/MapBoxMap";
 import MapBoxesMap from "@/components/elements/MapBoxesMap";
 import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
+import CardLocations from "@/components/elements/CardLocations";
 import DrumPadComponent from "./DrumPadComponent";
 import BandsInTownApi from "@/components/BandsInTownApi";
 
@@ -47,7 +48,6 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
     mapLatLong,
     bandsInTownKey,
   } = elements;
-
   return (
     <>
       {!!iFrameCode && (
@@ -88,6 +88,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       )}
       {!!elementJson?.timelineData && (
         <Timeline timelineData={elementJson.timelineData} />
+      )}
+      {!!elementJson?.cardLocationsData && (
+        <CardLocations cardLocationsData={elementJson.cardLocationsData} />
       )}
       {!!elementJson?.displayDrumPad && <DrumPadComponent />}
       {!!mapLatLong &&

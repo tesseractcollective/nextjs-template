@@ -34,14 +34,13 @@ interface ContentTagsProps {
   contentTags: ContentTagsType;
   events: EventFieldsFragment[];
   testimonials: TestimonialFieldsFragment[];
-  profiles: ProfileFieldsFragment[];
   logoTables: LogoTableFieldsFragment[];
+  profiles: ProfileFieldsFragment[];
   products: ProductFieldsFragment[];
   blogs: BlogFieldsFragment[];
   albums: AlbumFieldsFragment[];
   contacts: ContactFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
-  page: PageFieldsFragment;
   eventsData?: Event[];
 }
 
@@ -54,7 +53,6 @@ export default function ContentComponents({
   products,
   blogs,
   siteLibrary,
-  page,
   albums,
   eventsData,
   contacts,
@@ -64,10 +62,12 @@ export default function ContentComponents({
     albumDisplayType,
     blogCategory,
     blogSectionTitle,
+    blogLayoutStyle,
     eventDisplayLayout,
     logoTableType,
     logoTableLayout,
     productType,
+    productLayoutStyle,
     profileLayoutStyle,
     profileSectionTitle,
     profileType,
@@ -90,12 +90,16 @@ export default function ContentComponents({
           <Testimonials testimonials={testimonials} query={testimonialType} />
         </section>
       )}
-      {!!products && productType && (
+      {!!products && productType && productLayoutStyle && (
         <section
           className="max-w-8xl mx-auto z-20 w-full relative"
           id={`product-${productType}`}
         >
-          <Products products={products} type={productType} />
+          <Products
+            products={products}
+            type={productType}
+            productLayoutStyle={productLayoutStyle}
+          />
         </section>
       )}
       {!!logoTableType && logoTables.length >= 1 && (
@@ -109,14 +113,14 @@ export default function ContentComponents({
           )}
         </div>
       )}
-      {!!blogs && blogCategory && (
+      {!!blogs && blogCategory && blogLayoutStyle && (
         <div className="relative texture-background texture-right overflow-hidden">
           <section className="container my-8 px-4  mx-auto">
             <Blogs
-              fromHomePage={page.setHomePage || false}
               blogs={blogs}
               blogCategory={blogCategory}
               blogHeader={blogSectionTitle || "Blogs"}
+              blogLayoutStyle={blogLayoutStyle || "slider"}
             />
           </section>
         </div>

@@ -43,7 +43,7 @@ export default function GallerySection({
 
   if (galleryLayout === "grid" && gallery.length >= 1) {
     return (
-      <div className="my-16 magic-grid block h-full">
+      <div className="my-0 magic-grid block h-full">
         <div className="block px-4 max-w-8xl mx-auto">
           <div className="grid grid-cols-3 gap-8">
             <Fade triggerOnce cascade damping={0.05} direction="up">
@@ -73,7 +73,7 @@ export default function GallerySection({
   if (galleryLayout === "lightbox" && gallery.length >= 1) {
     return (
       <div className="my-16 magic-grid block h-full">
-        <div className="flex px-4 max-w-5xl mx-auto">
+        <div className="flex px-4 max-w-8xl mx-auto">
           <LightGallery
             speed={500}
             download={false}
@@ -81,13 +81,18 @@ export default function GallerySection({
             elementClassNames="flex flex-wrap flex-row w-full gap-4 mx-auto items-center justify-center"
           >
             {finalImages.map((finalImage, index) => (
-              <a href={finalImage} key={finalImage} className="flex flex-wrap">
+              <a
+                href={finalImage}
+                key={finalImage}
+                className="flex flex-wrap max-w-[280px] aspect-1 transition-all hover:cursor-pointer"
+              >
                 <Image
                   src={finalImage}
                   alt={`Gallery Image: ${index + 1}`}
                   sizes="100%"
-                  width={300}
-                  height={300}
+                  width={0}
+                  height={0}
+                  className="h-full w-full object-cover"
                 />
               </a>
             ))}

@@ -5,7 +5,7 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
@@ -14,7 +14,7 @@ import ReactGA from "react-ga4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -71,19 +71,17 @@ export default function CircleNavigation({
   return (
     <>
       <div
-        className={`bg-bg fixed top-0 z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow  dark-shadow ${
-          small ? "nav-shadow-scrolled bg-bg-secondary" : "bg-bg"
+        className={`bg-bg fixed top-0 z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow  dark-shadow border ${
+          small
+            ? "nav-shadow-scrolled bg-bg-secondary border-b-bg"
+            : "bg-bg border-b-secondary"
         } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
         id="navigation"
         // style={{ backgroundOpacity: "50%" }}
       >
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
-          <Dialog
-            as="div"
-            className="relative z-[1000] lg:hidden"
-            onClose={setOpen}
-          >
+          <Dialog as="div" className="relative z-[1000]" onClose={setOpen}>
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -94,24 +92,27 @@ export default function CircleNavigation({
               leaveTo="opacity-0"
             >
               <div
-                className="fixed inset-0 bg-dark opacity-60 backdrop-blur-xl"
+                className="fixed inset-0 bg-[#000000c7] opacity-60 backdrop-blur-xl"
                 aria-hidden="true"
               />
             </Transition.Child>
 
-            <div className="fixed inset-0 z-40 flex">
+            <div className="fixed inset-0 z-40 flex items-end">
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
-                enterFrom="-translate-x-full blur-xl"
-                enterTo="translate-x-0 blur-0"
+                enterFrom="translate-y-full blur-xl"
+                enterTo="-translate-y-0 blur-0"
                 leave="transition ease-in-out duration-300 transform"
-                leaveFrom="translate-x-0 blur-0"
-                leaveTo="-translate-x-full blur-xl"
+                leaveFrom="-translate-y-0 blur-0"
+                leaveTo="translate-y-full blur-xl"
               >
-                <Dialog.Panel className="relative flex w-full max-w-sm flex-col overflow-y-auto py-6 shadow-xl bg-bg-secondary theme-scroll">
-                  <Fade triggerOnce cascade direction="down" damping={0.05}>
-                    <div className="flex px-4 pb-5 pt-5 justify-between items-center relative w-full">
+                <Dialog.Panel
+                  className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-12 shadow-xl border-t-primary border-t bg-bg
+                 transition-all"
+                >
+                  <Fade direction="down" triggerOnce>
+                    <div className="flex mt-4 ml-4 px-4 pb-2 pt-5 items-center justify-start">
                       <Link
                         href="/"
                         onClick={() => {
@@ -122,19 +123,20 @@ export default function CircleNavigation({
                             label: "Visit Home",
                           });
                         }}
-                        className="cursor-pointer transition-all max-w-max absolute left-0 w-full ml-4"
+                        className="cursor-pointer transition-all hover:skew-x-[8deg] hover:skew-y-[8deg]"
                         id={`nav-logo-mobile-panel`}
                       >
                         {navigation?.navigationLogo ? (
                           <>
                             <span className="sr-only">{title}</span>
                             <Image
-                              className="h-10 w-full cursor-pointer object-contain relative left-0"
+                              className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
                               src={navigation.navigationLogo?.url}
                               alt=""
                               width={0}
                               height={0}
                               sizes="100%"
+                              // style={{ width: "100%" }}
                             />
                           </>
                         ) : (
@@ -143,20 +145,9 @@ export default function CircleNavigation({
                           </span>
                         )}
                       </Link>
-                      <button
-                        type="button"
-                        title="Close menu"
-                        className="mr-4 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto absolute right-0 border-text-color group"
-                        onClick={() => setOpen(false)}
-                      >
-                        <span className="sr-only">Close menu</span>
-                        <XMarkIcon
-                          className="h-6 w-6 text-text-color transition-all group-hover:rotate-180"
-                          aria-hidden="true"
-                        />
-                      </button>
                     </div>
                   </Fade>
+
                   <Fade triggerOnce cascade direction="left" damping={0.05}>
                     {!!items &&
                       items.length >= 1 &&
@@ -165,10 +156,10 @@ export default function CircleNavigation({
                         return (
                           <div key={mainNavigationItem.label}>
                             {hasItems && (
-                              <div className="space-y-2 px-4 py-3 mt-4 ml-4">
+                              <div className="space-y-6 px-4 py-3 mt-4 ml-4">
                                 <h2
                                   key={mainNavigationItem.label}
-                                  className="block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold text-left border-text-color opacity-70 mb-0 pb-0"
+                                  className="block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold text-left border-b border-text-color opacity-70"
                                 >
                                   {mainNavigationItem.label}
                                 </h2>
@@ -188,7 +179,7 @@ export default function CircleNavigation({
                                             key={item?.link}
                                             link={item?.link}
                                             label={item?.label}
-                                            cssClass={`my-2 block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold hover:text-primary  focus:text-primary text-left flex flex-row items-center ${item?.cssClass}`}
+                                            cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
                                             sameTab={item?.sameTab}
                                           >
                                             <>
@@ -196,13 +187,13 @@ export default function CircleNavigation({
                                                 <Image
                                                   src={item.image.url}
                                                   alt={item.label || ""}
-                                                  width={50}
-                                                  height={50}
-                                                  className="object-cover mr-2"
+                                                  width={60}
+                                                  height={60}
+                                                  className="object-cover mr-4"
                                                   sizes="100%"
                                                   style={{
-                                                    maxHeight: "50px",
-                                                    maxWidth: "50px",
+                                                    maxHeight: "60px",
+                                                    maxWidth: "60px",
                                                     objectFit: "cover",
                                                     aspectRatio: 1,
                                                   }}
@@ -230,7 +221,7 @@ export default function CircleNavigation({
                                     key={mainNavigationItem.label}
                                     link={mainNavigationItem.link || "/"}
                                     sameTab={mainNavigationItem?.sameTab}
-                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-2xl w-full transition-all uppercase font-bold hover:text-primary focus:text-primary text-left"
+                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
                                     onClick={() => setOpen(false)}
                                   >
                                     <span>{mainNavigationItem.label}</span>
@@ -242,13 +233,14 @@ export default function CircleNavigation({
                         );
                       })}
                   </Fade>
-                  <Fade triggerOnce cascade direction="up" damping={0.05}>
-                    <div className="space-y-6 px-4 py-6">
+
+                  <Fade triggerOnce direction="up">
+                    <div className="space-y-6 px-4 py-6 mt-4 ml-4">
                       <SocialMediaIcons
                         siteLibrary={siteLibrary}
-                        cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
+                        cssClass="my-2 mx-0 grid grid-cols-10 social-icons-row items-center justify-start text-text-color gap-2 overflow-hidden mr-auto py-0 max-w-max gap-x-4"
                       />
-                      <div className="text-center">
+                      <div className="text-left">
                         {!!contactName && (
                           <p className="text-text-color text-xs font-bold">
                             <span>{contactName}</span>
@@ -257,34 +249,40 @@ export default function CircleNavigation({
                         {!!contactPhone && (
                           <a
                             href={`tel:${contactPhone.replace("-", "")}`}
-                            className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
                           >
-                            <span>{contactPhone}</span>
+                            <span className="font-semibold">
+                              {contactPhone}
+                            </span>
                           </a>
                         )}
                         {!!contactEmail && (
                           <a
                             href={`mailto:${contactEmail}`}
-                            className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
                           >
-                            <span>{contactEmail}</span>
+                            <span className="font-semibold">
+                              {contactEmail}
+                            </span>
                           </a>
                         )}
                       </div>
                     </div>
-                    <button
-                      type="button"
-                      className="-m-2 ml-auto flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto group transition-all"
-                      onClick={() => setOpen(false)}
-                    >
-                      <XMarkIcon
-                        className="h-6 w-6 text-text-color group-hover:text-primary group-hover:rotate-180 transition-all"
-                        aria-hidden="true"
-                      />
-                      <span className="text-text-color group-hover:text-primary pl-1 transition-all group-hover:pl-2">
-                        Close menu
-                      </span>
-                    </button>
+                    <div className="flex justify-end items-center w-full px-6">
+                      <button
+                        type="button"
+                        className="flex items-center justify-center rounded-md p-2 text-text-color group flex-col text-center ml-auto max-w-max text-xs"
+                        onClick={() => setOpen(false)}
+                      >
+                        <XMarkIcon
+                          className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
+                          aria-hidden="true"
+                        />
+                        <span className="text-text-color group-hover:text-primary transition-all uppercase text-center text-xs flex">
+                          {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
+                        </span>
+                      </button>
+                    </div>
                   </Fade>
                 </Dialog.Panel>
               </Transition.Child>
@@ -295,15 +293,15 @@ export default function CircleNavigation({
         <header className="overflow-hidden relative z-2">
           <nav
             aria-label="Top"
-            className={`px-12 w-full grid grid-cols-3 transition-all mx-auto ${
+            className={`px-4 md:px-12 w-full grid grid-cols-2 md:grid-cols-3 transition-all mx-auto ${
               small ? "h-16 mb-0" : "h-24 mb-0"
             }`}
           >
             {/* start */}
             <Popover.Group
-              className={`inset-x-0 bottom-0 z-[0] flex flex-row items-center justify-between w-full max-w-max`}
+              className={`inset-x-0 bottom-0 z-[0] hidden md:flex  flex-row items-center justify-between w-full max-w-max`}
             >
-              <div className="flex h-full justify-start space-x-8">
+              <div className="hidden md:flex h-full justify-start space-x-8">
                 {!!items &&
                   items.length >= 1 &&
                   items
@@ -479,7 +477,9 @@ export default function CircleNavigation({
 
             <Link
               href="/"
-              className="flex items-center justify-center mx-auto psuedo-circle"
+              className={`cursor-pointer transition-all flex items-center justify-center mr-auto md:mx-auto psuedo-circle ${
+                small ? "small-psuedo-circle" : ""
+              }`}
               id={`nav-logo-desktop`}
               onClick={() => {
                 ReactGA.event({
@@ -494,7 +494,7 @@ export default function CircleNavigation({
                   <span className="sr-only">{title}</span>
                   <Image
                     className={`w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all h-full ${
-                      small ? "max-h-12" : "max-h-20"
+                      small ? "max-h-12 rotate-[360deg]" : "max-h-20 rotate-0"
                     }`}
                     src={navigation.navigationLogo?.url}
                     alt=""
@@ -513,13 +513,13 @@ export default function CircleNavigation({
 
             {/* START Desktop Flyout menus */}
             {!!primaryItems && primaryItems.length >= 1 && (
-              <div className="hidden h-full md:flex flex-row items-center justify-end gap-x-4 max-w-max ml-auto">
+              <div className="h-full flex flex-row items-center justify-end gap-x-4 max-w-max ml-auto">
                 {primaryItems.map((mainNavigationItem) => (
                   <LinkItem
                     key={mainNavigationItem?.link}
                     link={mainNavigationItem?.link}
                     label={mainNavigationItem?.label}
-                    cssClass={`flex justify-center  items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-4 hover:rounded-xl transition-all uppercase my-auto ${
+                    cssClass={`flex justify-center  items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-auto ${
                       mainNavigationItem?.cssClass
                     } ${
                       small
@@ -529,36 +529,41 @@ export default function CircleNavigation({
                     sameTab={mainNavigationItem?.sameTab}
                   />
                 ))}
+                <SocialMediaIcons
+                  siteLibrary={siteLibrary}
+                  cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
+                />
               </div>
             )}
 
             {/* Mobile menu bar */}
-            <div className="flex flex-1 items-center justify-between lg:hidden max-w-max">
-              <button
-                type="button"
-                className="ml-2 rounded-md px-2 py-1 text-text-color border border-white hover:border-primary transition group"
-                onClick={() => {
-                  setOpen(true);
-                  ReactGA.event({
-                    category: "Link",
-                    action: "Open Mobile Menu",
-                    label: "Open Mobile Menu",
-                  });
-                }}
-              >
-                <span className="sr-only">Open menu</span>
-                <Bars3Icon
-                  className={`group-hover:text-primary transition-all ${
-                    small ? "h-4 w-4" : "h-6 w-6"
-                  }`}
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
           </nav>
         </header>
       </div>
       <div className="h-24"></div>
+      <Zoom className="fixed bottom-10 right-5 md:hidden z-[999]">
+        <button
+          type="button"
+          className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-primary transition-all group hover:rotate-180 relative aspect-1 bg-small"
+          onClick={() => {
+            setOpen(true);
+            ReactGA.event({
+              category: "Link",
+              action: "Open Mobile Menu",
+              label: "Open Mobile Menu",
+            });
+          }}
+        >
+          <Bars3BottomRightIcon
+            className="h-7 w-7 group-hover:text-primary transition-all group-hover:opacity-50"
+            aria-hidden="true"
+          />
+          <span className="text-xs group-hover:opacity-100 absolute top-[-20px] rotate-180 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-20">
+            Menu
+          </span>
+          <span className="sr-only">Menu</span>
+        </button>
+      </Zoom>
     </>
   );
 }

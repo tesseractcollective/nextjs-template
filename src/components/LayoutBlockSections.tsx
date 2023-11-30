@@ -93,7 +93,6 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                           blogs={blogs}
                           albums={albums}
                           siteLibrary={siteLibrary}
-                          page={page}
                           eventsData={eventsData}
                         />
                         <Elements

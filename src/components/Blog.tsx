@@ -2,6 +2,12 @@ import type {
   BlogFieldsFragment,
   SiteLibraryFieldsFragment,
   ContactFieldsFragment,
+  EventFieldsFragment,
+  ProductFieldsFragment,
+  AlbumFieldsFragment,
+  ProfileFieldsFragment,
+  TestimonialFieldsFragment,
+  LogoTableFieldsFragment,
 } from "@/graphql/generated/graphql";
 import parse from "html-react-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,8 +15,6 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
-import VideoBox from "@/components/VideoBox";
-import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import Head from "next/head";
 import LinkItem from "@/components/LinkItem";
 import Blogs from "@/components/Blogs";
@@ -22,12 +26,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import SocialShare from "@/components/elements/SocialShare";
 import GallerySection from "@/components/GallerySection";
+import VideoSection from "./VideoSection";
+import Sections from "@/components/sections/Sections";
+import ContentComponents from "@/components/ContentComponents";
+import Elements from "@/components/elements/Elements";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;
   blogs: BlogFieldsFragment[];
+  siteLibrary?: SiteLibraryFieldsFragment;
   contacts: ContactFieldsFragment[];
-  siteLibrary: SiteLibraryFieldsFragment;
+  events: EventFieldsFragment[];
+  products: ProductFieldsFragment[];
+  profiles: ProfileFieldsFragment[];
+  albums: AlbumFieldsFragment[];
+  testimonials: TestimonialFieldsFragment[];
+  logoTables: LogoTableFieldsFragment[];
 }
 
 export default function Blog({
@@ -35,6 +49,12 @@ export default function Blog({
   siteLibrary,
   blogs,
   contacts,
+  events,
+  profiles,
+  albums,
+  products,
+  testimonials,
+  logoTables,
 }: BlogProps) {
   const {
     title,
@@ -45,6 +65,7 @@ export default function Blog({
     videoBox,
     blogGallery,
     blogHtml,
+    layoutBlocks,
   } = blog;
   const filteredBlogs = blogs?.filter(
     (tempBlog) => blog.blogSlug !== tempBlog.blogSlug
@@ -206,27 +227,14 @@ export default function Blog({
               cssClass="flex items-center justify-center font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-4 md:px-6 rounded transition-all text-2xl py-2 md:py-3 uppercase text-center max-w-max mx-auto"
             />
           )}
-          {!!videoBox && (
-            <div>
-              {videoBox?.map((video) => (
-                <div key={Math.random()}>
-                  {video?.youtubePlaylistId ? (
-                    <VideoPlaylistBox
-                      videoTitle={video?.videoTitle || undefined}
-                      youtubePlaylistId={video.youtubePlaylistId}
-                      youtubeApiKey={siteLibrary.youtubeApiKey}
-                    />
-                  ) : (
-                    <VideoBox
-                      videoTitle={video?.videoTitle || undefined}
-                      vimeoVideoId={video?.vimeoVideoId || undefined}
-                      youtubeVideoId={video?.youtubeVideoId || undefined}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
+          {!!siteLibrary?.youtubeApiKey &&
+            !!videoBox &&
+            videoBox.length >= 1 && (
+              <VideoSection
+                videoData={videoBox}
+                youtubeApiKey={siteLibrary.youtubeApiKey}
+              />
+            )}
           {!!blogGallery && (
             <GallerySection
               galleryData={blogGallery}
@@ -235,6 +243,89 @@ export default function Blog({
           )}
         </section>
       </div>
+      {layoutBlocks && layoutBlocks.length >= 1 && (
+        <>
+          {layoutBlocks.map((layoutBlock, parentIndex) => {
+            const totalColumns = layoutBlock.layoutBlockColumns.length;
+            const styleBlockBGImage = layoutBlock?.backgroundImage?.url
+              ? { backgroundImage: `url(${layoutBlock.backgroundImage.url})` }
+              : {};
+            const styleBlockBGColor = layoutBlock?.backgroundColor?.hex
+              ? { background: layoutBlock.backgroundColor?.hex }
+              : {};
+            return (
+              <div
+                key={`layout-block-row-${parentIndex++}`}
+                id={`layout-block-row-${parentIndex++ + 1}`}
+                className={`w-full flex flex-wrap ${layoutBlock.cssClass} ${
+                  layoutBlock?.backgroundImage?.url
+                    ? "background-image-featured"
+                    : ""
+                }`}
+                style={styleBlockBGColor || styleBlockBGImage}
+              >
+                {layoutBlock.layoutBlockColumns.map(
+                  (layoutBlockColumn, index) => {
+                    const styleBGImage = layoutBlockColumn?.backgroundImage?.url
+                      ? {
+                          backgroundImage: `url(${layoutBlockColumn.backgroundImage.url})`,
+                        }
+                      : {};
+                    return (
+                      <div
+                        id={
+                          layoutBlockColumn?.htmlId ||
+                          `layout-block-${parentIndex}-column-${index + 1}`
+                        }
+                        key={Math.random()}
+                        className={`${
+                          layoutBlockColumn?.hideBlockColumn ? "hidden" : ""
+                        } flex justify-center mx-0 px-0 w-full flex-auto  dynamic-feature-section flex-col xl:w-${
+                          12 / totalColumns
+                        }/12 ${
+                          layoutBlockColumn?.cssClass
+                            ? layoutBlockColumn?.cssClass
+                            : ""
+                        } ${
+                          layoutBlockColumn?.backgroundImage?.url
+                            ? "background-image-featured"
+                            : ""
+                        } `}
+                        style={styleBGImage}
+                      >
+                        {!!siteLibrary && (
+                          <>
+                            <Sections
+                              sectionData={layoutBlockColumn.sections}
+                              siteLibrary={siteLibrary}
+                            />
+                            <ContentComponents
+                              contentTags={layoutBlockColumn.contentTags}
+                              events={events}
+                              contacts={contacts}
+                              testimonials={testimonials}
+                              profiles={profiles}
+                              logoTables={logoTables}
+                              products={products}
+                              blogs={blogs}
+                              albums={albums}
+                              siteLibrary={siteLibrary}
+                            />
+                            <Elements
+                              elements={layoutBlockColumn.elements}
+                              siteLibrary={siteLibrary}
+                            />
+                          </>
+                        )}
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            );
+          })}
+        </>
+      )}
       <SocialShare />
       {filteredBlogs && blog.blogCategory && (
         <div className="relative bg-bg-secondary py-6">
@@ -244,6 +335,7 @@ export default function Blog({
               blogs={filteredBlogs}
               blogCategory={blog.blogCategory}
               blogHeader={blog.blogCategory || "Blogs"}
+              blogLayoutStyle="slider"
             />
           </section>
         </div>

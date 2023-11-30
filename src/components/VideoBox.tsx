@@ -4,12 +4,18 @@ interface VideoBoxProps {
   videoTitle?: string;
   youtubeVideoId?: string;
   vimeoVideoId?: string;
+  thumbnail?: string;
+  thumbnailType?: string;
+  videoDisplayLayout?: string;
 }
 
 export default function VideoBox({
   videoTitle,
   youtubeVideoId,
   vimeoVideoId,
+  thumbnail,
+  thumbnailType,
+  videoDisplayLayout,
 }: VideoBoxProps) {
   return (
     <section className="max-w-8xl w-full mx-auto my-8 px-4">

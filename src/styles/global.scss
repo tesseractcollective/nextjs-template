@@ -132,6 +132,11 @@ html {
    backdrop-filter: brightness(150%);
 }
 
+.bg-bg-third {
+  background: var(--tertiary);
+  backdrop-filter: brightness(150%);
+}
+
 .bg-bg-secondary-bright {
   background: var(--background-secondary);
   backdrop-filter: brightness(150%);
@@ -942,7 +947,7 @@ h4, h5, h6  {color: var(--text);}
 }
 
 .text-14xl {
-  font-size: 14vw;
+  font-size: 12vw;
   transition: font-size 200ms ease;
   @media only screen and (min-width: 960px)  {
     font-size: 9vw;

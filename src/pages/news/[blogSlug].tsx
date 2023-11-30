@@ -40,6 +40,12 @@ export default function BlogSlug({ blogPage }: { blogPage: BlogPageQuery }) {
         siteLibrary={siteLibrary}
         blogs={blogs}
         contacts={contacts}
+        logoTables={blogPage?.logoTables}
+        testimonials={blogPage?.testimonials}
+        albums={blogPage?.albums}
+        events={blogPage?.events}
+        profiles={blogPage?.profiles}
+        products={blogPage?.products}
       />
       <Footer
         siteLibrary={siteLibrary}

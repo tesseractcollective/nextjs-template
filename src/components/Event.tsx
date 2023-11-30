@@ -8,6 +8,7 @@ import Moment from "react-moment";
 import Link from "next/link";
 import Image from "next/image";
 import VideoBox from "@/components/VideoBox";
+import VideoSection from "@/components/VideoSection";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import Head from "next/head";
 import Events from "@/components/Events";
@@ -202,27 +203,14 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
               </div>
             </div>
             {!!eventIFrame && <div className="my-8">{parse(eventIFrame)}</div>}
-            {!!videoBox && (
-              <div>
-                {videoBox?.map((video) => (
-                  <div key={Math.random()}>
-                    {video?.youtubePlaylistId ? (
-                      <VideoPlaylistBox
-                        videoTitle={video?.videoTitle || undefined}
-                        youtubePlaylistId={video.youtubePlaylistId}
-                        youtubeApiKey={youtubeApiKey}
-                      />
-                    ) : (
-                      <VideoBox
-                        videoTitle={video?.videoTitle || undefined}
-                        vimeoVideoId={video?.vimeoVideoId || undefined}
-                        youtubeVideoId={video?.youtubeVideoId || undefined}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
+            {!!siteLibrary?.youtubeApiKey &&
+              !!videoBox &&
+              videoBox.length >= 1 && (
+                <VideoSection
+                  videoData={videoBox}
+                  youtubeApiKey={siteLibrary.youtubeApiKey}
+                />
+              )}
             {!!eventGallery && (
               <GallerySection
                 galleryData={eventGallery}

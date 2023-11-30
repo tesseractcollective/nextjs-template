@@ -6,8 +6,7 @@ import type {
   AccordionFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import VideoPlaylistBox from "@/components/VideoPlaylistBox";
-import VideoBox from "@/components/VideoBox";
+import VideoSection from "@/components/VideoSection";
 
 interface AccordionProps {
   accordionData: AccordionFieldsFragment[];
@@ -86,32 +85,11 @@ export default function Accordion({
                           </div>
                         )}
                         {parse(item.contentDescription?.html)}
-                        {!!item.videoBox && (
-                          <div key={Math.random()}>
-                            {item.videoBox?.youtubePlaylistId ? (
-                              <VideoPlaylistBox
-                                videoTitle={
-                                  item.videoBox?.videoTitle || undefined
-                                }
-                                youtubePlaylistId={
-                                  item.videoBox.youtubePlaylistId
-                                }
-                                youtubeApiKey={siteLibrary.youtubeApiKey}
-                              />
-                            ) : (
-                              <VideoBox
-                                videoTitle={
-                                  item.videoBox?.videoTitle || undefined
-                                }
-                                vimeoVideoId={
-                                  item.videoBox?.vimeoVideoId || undefined
-                                }
-                                youtubeVideoId={
-                                  item.videoBox?.youtubeVideoId || undefined
-                                }
-                              />
-                            )}
-                          </div>
+                        {!!siteLibrary?.youtubeApiKey && !!item?.videoBox && (
+                          <VideoSection
+                            videoData={item?.videoBox[0]}
+                            youtubeApiKey={siteLibrary.youtubeApiKey}
+                          />
                         )}
                       </Disclosure.Panel>
                     )}

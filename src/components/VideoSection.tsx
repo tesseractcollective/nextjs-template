@@ -52,6 +52,11 @@ export default function VideoSection({
                       ""
                     ) || undefined
                   }
+                  thumbnail={videoData[0]?.thumbnail?.url || undefined}
+                  thumbnailType={videoData[0]?.thumbnailType || undefined}
+                  videoDisplayLayout={
+                    videoData[0]?.videoDisplayLayout || undefined
+                  }
                 />
               )}
             </>
@@ -94,7 +99,12 @@ export default function VideoSection({
                       <VideoBox
                         videoTitle={video?.videoTitle || undefined}
                         vimeoVideoId={video?.vimeoVideoId || undefined}
-                        youtubeVideoId={scrubbedId || undefined}
+                        youtubeVideoId={video?.youtubeVideoId || undefined}
+                        thumbnail={video?.thumbnail?.url || undefined}
+                        thumbnailType={video?.thumbnailType || undefined}
+                        videoDisplayLayout={
+                          video?.videoDisplayLayout || undefined
+                        }
                       />
                     </SwiperSlide>
                   );

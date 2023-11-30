@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Fade, Zoom, Slide } from "react-awesome-reveal";
+import parse from "html-react-parser";
 interface PageHeaderProps {
   pageHeaderTitleProp?: string;
   pageHeaderSubtitleProp?: string;
@@ -228,9 +229,9 @@ export default function PageHeader({
         <div className={`bg-bg relative ${cssClass}`}>
           <div className="relative">
             <div className="mx-auto max-w-7xl bg-bg">
-              <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
+              <div className="relative z-10 pt-14 w-full max-w-4xl lg:max-w-2xl">
                 <svg
-                  className="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-bg lg:block"
+                  className="absolute inset-y-0 -left-[70%] md:-left-[60%] lg:-left-[40%] xl:left-0 h-full w-full translate-x-1/2 transform fill-bg block"
                   viewBox="0 0 100 100"
                   preserveAspectRatio="none"
                   aria-hidden="true"
@@ -238,19 +239,21 @@ export default function PageHeader({
                   <polygon points="0,0 90,0 50,100 0,100" />
                 </svg>
 
-                <div className="relative px-6 py-32 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
-                  <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-                    {!!pageHeaderTitleProp && (
-                      <h1 className="text-4xl font-bold tracking-tight text-text-color sm:text-6xl">
-                        {pageHeaderTitleProp}
-                      </h1>
-                    )}
-                    {!!pageHeaderSubtitleProp && (
-                      <p className="mt-6 text-lg leading-8 text-text-color">
-                        {pageHeaderSubtitleProp}
-                      </p>
-                    )}
-                  </div>
+                <div className="relative px-8 py-56 pr-0">
+                  <Fade triggerOnce direction="down">
+                    <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
+                      {!!pageHeaderTitleProp && (
+                        <h1 className="text-4xl font-bold tracking-tight text-text-color sm:text-6xl">
+                          {pageHeaderTitleProp}
+                        </h1>
+                      )}
+                      {!!pageHeaderSubtitleProp && (
+                        <p className="mt-6 text-lg leading-8 text-text-color">
+                          {parse(pageHeaderSubtitleProp)}
+                        </p>
+                      )}
+                    </div>
+                  </Fade>
                 </div>
               </div>
             </div>
@@ -258,10 +261,10 @@ export default function PageHeader({
               <Fade
                 triggerOnce
                 direction="up"
-                className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 z-0"
+                className="absolute inset-y-0 right-0 w-2/3 xl:w-1/2 z-0"
               >
                 <Image
-                  className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
+                  className="aspect-[3/2] object-cover aspect-auto h-full w-full"
                   src={pageHeaderImageProp}
                   alt=""
                   sizes="100%"

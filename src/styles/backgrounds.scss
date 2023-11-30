@@ -1,25 +1,10 @@
 .checkerboard {
   width: 100%;
-  height: 200px;
-  background-color: #fff;
-  background-image: linear-gradient(
-      45deg,
-      #000 25%,
-      transparent 25%,
-      transparent 75%,
-      #000 75%,
-      #000
-    ),
-    linear-gradient(
-      -45deg,
-      #000 25%,
-      transparent 25%,
-      transparent 75%,
-      #000 75%,
-      #000
-    );
-  background-size: 60px 60px;
-  background-repeat: repeat;
+  height: 100px;
+	background-color: #ffffff;
+	background-image:  repeating-linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000), repeating-linear-gradient(45deg, #000000 25%, #ffffff 25%, #ffffff 75%, #000000 75%, #000000);
+	background-position: 0 0, 50px 50px;
+	background-size: 100px 100px;
 }
 
 .picnic {
@@ -67,7 +52,15 @@
 }
 
 .bg-fade-secondary {
-  background: linear-gradient(180deg,var(--background) 0%,var(--background-secondary) 100%);
+  background: linear-gradient(180deg, var(--background) 0%,var(--background-secondary) 100%);
+}
+
+.bg-fade-secondary-reverse {
+  background: linear-gradient(180deg, var(--background-secondary) 0%,var(--background) 100%);
+}
+
+.bg-fade-third {
+  background: linear-gradient(180deg, var(--background) 0%,var(--tertiary) 100%);
 }
 
 .bg-fade-dark-primary {
@@ -76,4 +69,62 @@
 
 .bg-fade-dark-secondary {
   background: linear-gradient(180deg, #000 0%,var(--secondary) 100%);
+}
+
+.bg-paper {
+	background-color: #e5e5f7;
+	background-image:  linear-gradient(var(--background) 2px, transparent 2px), linear-gradient(90deg, var(--background) 2px, transparent 2px), linear-gradient(var(--background) 1px, transparent 1px), linear-gradient(90deg, var(--background) 1px, #e5e5f7 1px);
+	background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+	background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+.bg-wavy {
+	background-color: #ffffff;
+	background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #ffffff 10px ), repeating-linear-gradient( var(--background-secondary)55, var(--background-secondary) );
+}
+
+.bg-rhombus {
+	background-color: #ffffff;
+	background-image:  linear-gradient(135deg, var(--background-secondary) 25%, transparent 25%), linear-gradient(225deg, var(--background-secondary) 25%, transparent 25%), linear-gradient(45deg, var(--background-secondary) 25%, transparent 25%), linear-gradient(315deg, var(--background-secondary) 25%, #ffffff 25%);
+	background-position:  10px 0, 10px 0, 0 0, 0 0;
+	background-size: 10px 10px;
+	background-repeat: repeat;
+}
+
+.bg-zigzag {
+	background-color: #ffffff;
+	background-image:  linear-gradient(135deg, var(--background-secondary) 25%, transparent 25%), linear-gradient(225deg, var(--background-secondary) 25%, transparent 25%), linear-gradient(45deg, var(--background-secondary) 25%, transparent 25%), linear-gradient(315deg, var(--background-secondary) 25%, #ffffff 25%);
+	background-position:  10px 0, 10px 0, 0 0, 0 0;
+	background-size: 20px 20px;
+	background-repeat: repeat;
+}
+
+.bg-zigzag3d {
+	background-color: #ffffff;
+	background: linear-gradient(135deg, var(--background-secondary)55 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, var(--background-secondary) 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, var(--background-secondary)55 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, var(--background-secondary) 25%, #ffffff 25%) 0px 0/ 20px 20px;
+}
+
+.bg-circles {
+	background-color: #ffffff;
+	background-image: radial-gradient(circle at center center, var(--background-secondary), #ffffff), repeating-radial-gradient(circle at center center, var(--background-secondary), var(--background-secondary), 10px, transparent 20px, transparent 10px);
+	background-blend-mode: multiply;
+}
+
+.bg-isometric {
+	background-color: #ffffff;
+	background-image:  linear-gradient(30deg, var(--background-secondary) 12%, transparent 12.5%, transparent 87%, var(--background-secondary) 87.5%, var(--background-secondary)), linear-gradient(150deg, var(--background-secondary) 12%, transparent 12.5%, transparent 87%, var(--background-secondary) 87.5%, var(--background-secondary)), linear-gradient(30deg, var(--background-secondary) 12%, transparent 12.5%, transparent 87%, var(--background-secondary) 87.5%, var(--background-secondary)), linear-gradient(150deg, var(--background-secondary) 12%, transparent 12.5%, transparent 87%, var(--background-secondary) 87.5%, var(--background-secondary)), linear-gradient(60deg, var(--primary-fade-opacity) 25%, transparent 25.5%, transparent 75%, var(--primary-fade-opacity) 75%, var(--primary-fade-opacity)), linear-gradient(60deg, var(--primary-fade-opacity) 25%, transparent 25.5%, transparent 75%, var(--primary-fade-opacity) 75%, var(--primary-fade-opacity));
+	background-size: 20px 35px;
+	background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+}
+
+.bg-cross {
+	background-color: #ffffff;
+	background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 25px 25px, linear-gradient(var(--background-secondary) 2px, transparent 2px) 0 -1px, linear-gradient(90deg, var(--background-secondary) 2px, #ffffff 2px) -1px 0;
+	background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+}
+
+.bg-boxes {
+	background-color: #ffffff;
+	background-image:  linear-gradient(var(--background-secondary) 1px, transparent 1px), linear-gradient(to right, var(--background-secondary) 1px, #ffffff 1px);
+	background-size: 20px 20px;
 }

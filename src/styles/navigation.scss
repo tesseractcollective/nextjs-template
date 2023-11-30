@@ -13,14 +13,35 @@
 }
 
 .psuedo-circle {
-  // position: relative; 
-  // &:before {
-  //   background: var(--background);
-  //   height: 150px;
-  //   width: 150px;
-  //   border-radius: 50%;
-  //   content: '';
-  //   z-index: -1;
-  //   position: fixed;
-  // }
+  position: relative; 
+  cursor: pointer;
+  &:before {
+    background: var(--background);
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    content: '';
+    z-index: -2;
+    position: fixed;
+    transition: all 200ms ease;
+    border: var(--background-secondary) 2px solid;
+  }
+  &:hover {
+    &:before {
+      border: var(--primary) 2px solid;
+    }
+  }
+  &.small-psuedo-circle {
+    &:before {
+      background: var(--background-secondary);
+      height: 95px;
+      width: 95px;
+      border: var(--background) 2px solid;
+    }
+    &:hover {
+      &:before {
+        border: var(--tertiary) 2px solid;
+      }
+    }
+  }
 }

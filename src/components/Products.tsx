@@ -182,20 +182,71 @@ import Image from "next/image";
 import parse from "html-react-parser";
 import LinkItem from "./LinkItem";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { Fade } from "react-awesome-reveal";
 
 interface ProductsProps {
   profileSectionTitle?: string;
   type?: string;
   products?: ProductFieldsFragment[];
+  productLayoutStyle: string;
 }
 
-export default function Products({ type, products }: ProductsProps) {
+export default function Products({
+  type,
+  products,
+  productLayoutStyle,
+}: ProductsProps) {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   if (!products) return <></>;
   const filteredProducts = products.filter(
     (product) => product?.productType?.toLowerCase() === type?.toLowerCase()
   );
 
+  if (productLayoutStyle === "compact")
+    return (
+      <>
+        {filteredProducts && filteredProducts.length && (
+          <div className="bg-bg-primary">
+            <div className="mx-auto max-w-2xl px-4 py-8 max-w-8xl">
+              <h2 className="sr-only">Products</h2>
+              <Fade direction="left" triggerOnce>
+                <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 place-items-center">
+                  {filteredProducts.map((product) => (
+                    <div
+                      key={product.id}
+                      className="flex flex-row bg-text-color all-text-dark p-4 rounded items-center gap-x-4 w-full"
+                    >
+                      {product?.gallery[0] && (
+                        <Image
+                          className="h-16 lg:h-20 w-16 lg:w-20 rounded-full object-cover"
+                          width={72}
+                          height={72}
+                          sizes="100%"
+                          src={product.gallery[0].url}
+                          alt={product.name || ""}
+                        />
+                      )}
+                      <div className="flex flex-col">
+                        {product.name && (
+                          <div className="text-sm font-bold my-0 py-0 parsed-mb-0">
+                            {parse(product.name)}
+                          </div>
+                        )}
+                        {product?.description && (
+                          <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0 max-w-[200px] lowercase">
+                            {parse(product.description.html)}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Fade>
+            </div>
+          </div>
+        )}
+      </>
+    );
   return (
     <>
       {filteredProducts && filteredProducts.length && (

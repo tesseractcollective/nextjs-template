@@ -272,7 +272,7 @@ export default function TextContentSection({
             className={
               firstBlockCSSClass
                 ? firstBlockCSSClass
-                : `relative h-full z-20 ${firstBlockWidth} ${
+                : `relative h-full z-20 flex flex-row flex-wrap ${firstBlockWidth} ${
                     (firstBlockAlign === "center" && "mx-auto") ||
                     (firstBlockAlign === "left" && "mr-auto") ||
                     (firstBlockAlign === "right" && "ml-auto") ||
@@ -291,7 +291,7 @@ export default function TextContentSection({
                     className={
                       firstBlockCSSClass
                         ? "call-to-action-items "
-                        : `call-to-action-items p-4 gap-x-4 flex ${
+                        : `call-to-action-items p-4 gap-x-4 flex flex-row ${
                             (callToActionItem.contentAlign === "center" &&
                               "mx-auto") ||
                             (callToActionItem.contentAlign === "left" &&

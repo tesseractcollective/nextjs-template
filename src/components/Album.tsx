@@ -9,10 +9,9 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import ReactGA from "react-ga4";
 import Link from "next/link";
 import Image from "next/image";
-import VideoBox from "@/components/VideoBox";
-import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import FeatureAlbum from "@/components/FeatureAlbum";
 import Head from "next/head";
+import VideoSection from "./VideoSection";
 
 export interface AlbumProps {
   album: AlbumFieldsFragment;
@@ -159,27 +158,14 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
             {!!iFramePlayer && (
               <div className="my-8">{parse(iFramePlayer)}</div>
             )}
-            {!!videoBox && (
-              <div>
-                {videoBox?.map((video) => (
-                  <div key={Math.random()}>
-                    {video?.youtubePlaylistId ? (
-                      <VideoPlaylistBox
-                        videoTitle={video?.videoTitle || undefined}
-                        youtubePlaylistId={video.youtubePlaylistId}
-                        youtubeApiKey={youtubeApiKey}
-                      />
-                    ) : (
-                      <VideoBox
-                        videoTitle={video?.videoTitle || undefined}
-                        vimeoVideoId={video?.vimeoVideoId || undefined}
-                        youtubeVideoId={video?.youtubeVideoId || undefined}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
+            {!!siteLibrary?.youtubeApiKey &&
+              !!videoBox &&
+              videoBox.length >= 1 && (
+                <VideoSection
+                  videoData={videoBox}
+                  youtubeApiKey={siteLibrary.youtubeApiKey}
+                />
+              )}
           </div>
         )}
         {!!albums && (

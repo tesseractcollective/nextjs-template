@@ -1,29 +1,33 @@
 import { sdkClient } from "@/lib/graphql-client";
+import Product from "@/components/Product";
 import Footer from "@/components/navigation/Footer";
 import Nav from "@/components/navigation/Nav";
-import { BlogPageQuery } from "@/graphql/generated/graphql";
+import { ProductPageQuery } from "@/graphql/generated/graphql";
 import { GetServerSideProps } from "next";
+import "@/app/tailwind.css";
 import "@/styles/global.scss";
 import "@/styles/layoutBlocks.scss";
-import "@/app/tailwind.css";
 import ThemeColors from "@/styles/ThemeColors";
-import Blog from "@/components/Blog";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const blogPage: BlogPageQuery = await sdkClient.blogPage({
-    blogSlug: params?.blogSlug as string,
+  const productPage: ProductPageQuery = await sdkClient.productPage({
+    productSlug: params?.productSlug as string,
   });
   return {
     props: {
-      blogPage,
+      productPage,
     },
   };
 };
 
-export default function BlogSlug({ blogPage }: { blogPage: BlogPageQuery }) {
-  if (!blogPage.blog || !blogPage.siteLibrary) return <></>;
-  const { siteLibrary, navigations, blogs, blog, contacts } = blogPage;
+export default function ProductSlug({
+  productPage,
+}: {
+  productPage: ProductPageQuery;
+}) {
+  if (!productPage.product || !productPage.siteLibrary) return <></>;
+  const { siteLibrary, navigations, blogs, product, products } = productPage;
   return (
     <>
       <ThemeColors siteLibrary={siteLibrary} />
@@ -35,17 +39,10 @@ export default function BlogSlug({ blogPage }: { blogPage: BlogPageQuery }) {
         navigations={navigations}
         hideNav={false}
       />
-      <Blog
-        blog={blog}
+      <Product
+        product={product}
         siteLibrary={siteLibrary}
-        blogs={blogs}
-        contacts={contacts}
-        logoTables={blogPage?.logoTables}
-        testimonials={blogPage?.testimonials}
-        albums={blogPage?.albums}
-        events={blogPage?.events}
-        profiles={blogPage?.profiles}
-        products={blogPage?.products}
+        products={products}
       />
       <Footer
         siteLibrary={siteLibrary}

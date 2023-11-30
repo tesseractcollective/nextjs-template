@@ -147,7 +147,7 @@ function Footer({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      listSummary
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </div>
@@ -218,7 +218,7 @@ function Footer({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      listSummary
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </Fade>
