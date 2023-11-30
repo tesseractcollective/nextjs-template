@@ -477,8 +477,8 @@ export default function CircleNavigation({
 
             <Link
               href="/"
-              className={`cursor-pointer transition-all flex items-center justify-center mr-auto md:mx-auto psuedo-circle ${
-                small ? "small-psuedo-circle" : ""
+              className={`cursor-pointer transition-all flex items-center justify-center mr-auto md:mx-auto psuedo-circle max-w-[100px] ${
+                small ? "small-psuedo-circle max-w-[80px]" : ""
               }`}
               id={`nav-logo-desktop`}
               onClick={() => {
@@ -513,7 +513,7 @@ export default function CircleNavigation({
 
             {/* START Desktop Flyout menus */}
             {!!primaryItems && primaryItems.length >= 1 && (
-              <div className="h-full flex flex-col-reverse md:flex-row items-center justify-center md:justify-end gap-x-4 max-w-max ml-auto gap-y-1 md:gap-y-0">
+              <div className="h-full flex flex-col-reverse sm:flex-row items-center justify-center md:justify-end gap-x-4 max-w-max ml-auto gap-y-1 md:gap-y-0">
                 {primaryItems.map((mainNavigationItem) => (
                   <LinkItem
                     key={mainNavigationItem?.link}
@@ -544,7 +544,7 @@ export default function CircleNavigation({
       <Zoom className="fixed bottom-10 right-5 md:hidden z-[999]">
         <button
           type="button"
-          className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-primary transition-all group hover:rotate-180 relative aspect-1 bg-small"
+          className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-tertiary transition-all group hover:rotate-[-30deg] relative aspect-1 bg-small"
           onClick={() => {
             setOpen(true);
             ReactGA.event({
@@ -555,10 +555,10 @@ export default function CircleNavigation({
           }}
         >
           <Bars3BottomRightIcon
-            className="h-7 w-7 group-hover:text-primary transition-all group-hover:opacity-50"
+            className="h-7 w-7 group-hover:text-dark transition-all group-hover:opacity-50"
             aria-hidden="true"
           />
-          <span className="text-xs group-hover:opacity-100 absolute top-[-20px] rotate-180 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-20">
+          <span className="text-xs group-hover:opacity-100 absolute top-[50px] rotate-0 opacity-40 transition-all uppercase font-bold  text-center left-0 right-0 z-20 text-shadow">
             Menu
           </span>
           <span className="sr-only">Menu</span>

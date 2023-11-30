@@ -260,7 +260,7 @@ export default function Products({
                   className="w-full md:w-72 bg-text-color shadow-md rounded-xl duration-300 hover:md:scale-105 hover:shadow-xl focus-within:scale-105 focus-within:shadow-xl px-1 md:px-2 overflow-hidden max-w-sm"
                 >
                   <LinkItem
-                    cssClass="flex flex-row md:flex-col items-center justify-between md:justify-center"
+                    cssClass="flex flex-row md:flex-col items-center justify-start md:justify-center"
                     link={
                       product.purchaseLink
                         ? product.purchaseLink
@@ -283,13 +283,13 @@ export default function Products({
                           height={0}
                         />
                       )}
-                      <div className="px-2 md:px-4 py-3 max-w-[140px] md:max-w-full w-full md:w-72">
+                      <div className="px-2 md:px-4 py-3 w-full">
                         {product?.vendor && (
                           <span className="text-dark md:mr-3 uppercase text-xs">
                             {product.vendor}
                           </span>
                         )}
-                        <p className="text-xs md:text-lg font-bold text-dark truncate block capitalize">
+                        <p className="text-sm md:text-lg font-bold text-dark truncate block capitalize">
                           {product.name}
                         </p>
                         <div className="flex items-center md:my-3">
