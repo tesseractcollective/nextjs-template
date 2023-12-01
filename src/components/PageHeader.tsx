@@ -229,9 +229,17 @@ export default function PageHeader({
         <div className={`bg-bg relative ${cssClass}`}>
           <div className="relative">
             <div className="mx-auto max-w-7xl bg-bg">
-              <div className="relative z-10 pt-14 w-full max-w-4xl lg:max-w-2xl">
+              <div className="relative z-10 pt-14 w-full lg:max-w-4xl xl:max-w-2xl">
                 <svg
-                  className="absolute inset-y-0 -left-[70%] md:-left-[60%] lg:-left-[40%] xl:left-0 h-full w-full translate-x-1/2 transform fill-bg block"
+                  className="block absolute bottom-0 h-72 w-full transform fill-bg lg:hidden"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <polygon points="100 15, 100 100,0 100,0 39" />
+                </svg>
+                <svg
+                  className="hidden lg:absolute inset-y-0 lg:-left-[50%] xl:left-0 h-full w-full translate-x-1/2 transform fill-bg lg:block"
                   viewBox="0 0 100 100"
                   preserveAspectRatio="none"
                   aria-hidden="true"
@@ -260,8 +268,8 @@ export default function PageHeader({
             {!!pageHeaderImageProp && (
               <Fade
                 triggerOnce
-                direction="up"
-                className="absolute inset-y-0 right-0 w-2/3 xl:w-1/2 z-0"
+                direction="right"
+                className="absolute inset-y-0 right-0 w-full lg:w-2/3 xl:w-1/2 z-0"
               >
                 <Image
                   className="aspect-[3/2] object-cover aspect-auto h-full w-full"
