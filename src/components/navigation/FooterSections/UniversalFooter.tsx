@@ -9,38 +9,25 @@ import parse from "html-react-parser";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import Blogs from "@/components/Blogs";
 import { Fade } from "react-awesome-reveal";
-import MinimalFooter from "./FooterSections/MinimalFooter";
-import UniversalFooter from "./FooterSections/UniversalFooter";
 
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;
-  navigations: NavigationFieldsFragment[];
+  navigation: NavigationFieldsFragment;
   blogs: BlogFieldsFragment[];
   hideFooter?: boolean;
   pageNavigationSelection?: string;
 }
 
-function Footer({
+function UniversalFooter({
   siteLibrary,
-  navigations,
+  navigation,
   hideFooter,
   blogs,
-  pageNavigationSelection,
 }: FooterProps) {
-  if (!navigations || !siteLibrary || hideFooter) return null;
+  if (!navigation || !siteLibrary || hideFooter) return null;
 
   const { isSpanish, title, secondaryLink, secondaryLogo, secondaryName } =
     siteLibrary;
-
-  const navigation =
-    navigations.find(
-      (navigationTemp) =>
-        navigationTemp?.pageNavigationSelection &&
-        pageNavigationSelection &&
-        navigationTemp?.pageNavigationSelection.includes(
-          pageNavigationSelection
-        )
-    ) || navigations[0];
 
   const { footerColumns, footerWrapperCssClass, footerItems } = navigation;
 
@@ -50,39 +37,26 @@ function Footer({
   const regularColumns = footerColumns.filter(
     (footerColumn) => footerColumn?.wideColumn !== true
   );
-  if (navigation.navigationLayoutStyle === "universal")
-    return (
-      <UniversalFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || undefined}
-      />
-    );
-  if (navigation.navigationLayoutStyle !== "start")
-    return (
-      <MinimalFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || undefined}
-      />
-    );
   return (
     <footer
       aria-labelledby="footer-heading"
-      className={`mt-16 mb-8 ${
+      className={`transition-all my-8 md:my-0 ${
         footerWrapperCssClass ? footerWrapperCssClass : ""
       }`}
     >
+      <div className="fixed left-0 right-0 bg-after backdrop-blur-md max-w-max mx-auto px-2 bottom-[-1px] z-[500]">
+        <SocialMediaIcons
+          siteLibrary={siteLibrary}
+          cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap divide-x divide-secondary border-secondary border"
+          iconClass="!px-0 !mx-0"
+        />
+      </div>
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4">
         {wideColumns?.length >= 1 && (
-          <div className={`flex items-center justify-center w-full mb-16`}>
+          <div className={`flex items-center justify-center w-full`}>
             <Fade direction="up" cascade damping={0.1} triggerOnce>
               {wideColumns.map((item, index) => (
                 <div
@@ -95,7 +69,7 @@ function Footer({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-16 w-full mb-4 object-contain max-w-max"
+                      className="h-20 w-full mb-4 object-contain max-w-max"
                       alt=""
                       width={0}
                       height={0}
@@ -104,12 +78,12 @@ function Footer({
                     />
                   )}
                   {!!item.footerTitle && (
-                    <h3 className="text-xs font-bold text-text-color uppercase tracking-widest opacity-90">
+                    <h3 className="text-xs font-bold text-text-color uppercase tracking-widest opacity-90 mb-2">
                       {item.footerTitle}
                     </h3>
                   )}
                   {!!item?.footerText?.html && (
-                    <div className="text-xs font-medium text-text-color max-w-max body-parsed-text leading-none ring-opacity-90 opacity-80">
+                    <div className="text-xs font-medium text-text-color max-w-lg body-parsed-text leading-none ring-opacity-90 opacity-90">
                       {parse(item.footerText?.html)}
                     </div>
                   )}
@@ -140,6 +114,7 @@ function Footer({
                                     alt=""
                                     width={0}
                                     height={0}
+                                    priority
                                     sizes="100%"
                                     style={{ width: "100%" }}
                                   />
@@ -158,7 +133,7 @@ function Footer({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      blogLayoutStyle="compact"
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </div>
@@ -173,7 +148,7 @@ function Footer({
             {regularColumns.map((item, index) => (
               <div
                 key={`regular-column-${index++}`}
-                className={`relative my-4 lg:my-0 ${
+                className={`relative my-4 md:my-0 ${
                   item?.footerColumnCssWrapper || ""
                 }`}
                 id={`footer-col-${index++}`}
@@ -216,10 +191,27 @@ function Footer({
                             <LinkItem
                               key={`footer-link-column-item-${index++}`}
                               link={linkItem?.link}
-                              label={linkItem?.label}
                               cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
-                            />
+                            >
+                              <>
+                                {!!linkItem.image?.url && (
+                                  <Image
+                                    src={linkItem.image?.url}
+                                    className="h-20 w-auto mb-4 object-contain max-w-max"
+                                    alt=""
+                                    width={0}
+                                    height={0}
+                                    priority
+                                    sizes="100%"
+                                    style={{ width: "100%" }}
+                                  />
+                                )}
+                                {!!linkItem?.label && (
+                                  <>{parse(linkItem?.label)}</>
+                                )}
+                              </>
+                            </LinkItem>
                           </div>
                         )}
                       </li>
@@ -229,7 +221,7 @@ function Footer({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      blogLayoutStyle="compact"
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </Fade>
@@ -238,16 +230,7 @@ function Footer({
           </div>
         )}
         {/* Bottom Footer */}
-        <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
-          <SocialMediaIcons
-            siteLibrary={siteLibrary}
-            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
-          />
-          <p className="text-xs text-text-color uppercase text-center mb-4 opacity-70">
-            {`© ${new Date().getFullYear()} ${title || ""} ${
-              isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
-            }.`}
-          </p>
+        <div className="my-0 flex flex-col flex-wrap justify-center w-full mx-auto">
           {secondaryLogo?.url && secondaryLink && secondaryName && (
             <a
               href={secondaryLink}
@@ -263,39 +246,64 @@ function Footer({
                 width={0}
                 height={0}
                 sizes="100%"
+                priority
               />
               <span className="sr-only">{secondaryName}</span>
             </a>
           )}
-          {footerItems && (
+          {/* {footerItems && (
             <div className="flex flex-row items-center justify-center">
               {footerItems.map((footerItem, index) => (
                 <LinkItem
                   key={`${footerItem.link}-${index++}`}
                   label={footerItem.label}
                   link={footerItem.link}
-                  cssClass={`max-w-max mb-4 mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
+                  cssClass={`max-w-max my-2 mx-4 text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
                     footerItem.cssClass ? footerItem.cssClass : ""
                   }`}
                   sameTab={footerItem.sameTab}
                 ></LinkItem>
               ))}
             </div>
-          )}
-          <a
-            href={`https://lnza.me/?${encodeURIComponent(
-              title || "" + " fan"
-            )}`}
-            target="_blank"
-            rel="noreferrer"
-            className="max-w-max mb-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
-          >
-            {isSpanish ? "Hecho a mano por Ricardo" : "Hand crafted by Ricardo"}
-          </a>
+          )} */}
+          <div className="flex flex-col md:flex-row justify-center md:justify-between w-full items-center my-0">
+            <p className="text-xs text-text-color uppercase text-center md:text-left mx-auto md:ml-0 md:mr-auto opacity-70 flex items-center h-full text-[10px]">
+              {`© ${new Date().getFullYear()} ${title || ""} ${
+                isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
+              }.`}
+            </p>
+            <div className="flex flex-row items-center">
+              {footerItems && (
+                <div className="flex flex-row items-center justify-center slashes">
+                  {footerItems.map((footerItem, index) => (
+                    <LinkItem
+                      key={`${footerItem.link}-${index++}`}
+                      label={footerItem.label}
+                      link={footerItem.link}
+                      cssClass={`footer-link-item max-w-max my-2 mx-0 text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
+                        footerItem.cssClass ? footerItem.cssClass : ""
+                      }`}
+                      sameTab={footerItem.sameTab}
+                    ></LinkItem>
+                  ))}
+                </div>
+              )}
+              {/* <a
+                href={`https://lnza.me/?${encodeURIComponent(
+                  title || "" + " fan"
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+                className="max-w-max text-[12px] text-color-secondary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
+              >
+                LANZA/ME
+              </a> */}
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
 
-export default Footer;
+export default UniversalFooter;

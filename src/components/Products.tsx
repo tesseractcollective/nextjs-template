@@ -1,187 +1,19 @@
-// import React from "react";
-// import type { ProductFieldsFragment } from "@/graphql/generated/graphql";
-// import Image from "next/image";
-// import parse from "html-react-parser";
-// import Link from "next/link";
-// import LinkItem from "./LinkItem";
-
-// interface ProductsProps {
-//   profileSectionTitle?: string;
-//   type?: string;
-//   products?: ProductFieldsFragment[];
-// }
-
-// export default function Products({ type, products }: ProductsProps) {
-//   if (!products) return <></>;
-//   const filteredProducts = products.filter(
-//     (product) => product?.productType?.toLowerCase() === type?.toLowerCase()
-//   );
-//   return (
-//     <>
-//       {filteredProducts && filteredProducts.length && (
-//         <div className="bg-bg-primary">
-//           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-//             <h2 className="sr-only">Products</h2>
-
-//             <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
-//               {filteredProducts.map((product) => (
-//                 <div
-//                   key={product.id}
-//                   className="group relative flex flex-col overflow-hidden rounded-lg border border-text-color bg-white"
-//                 >
-//                   <LinkItem
-//                     link={
-//                       product.purchaseLink
-//                         ? product.purchaseLink
-//                         : `/product/${product.productSlug}`
-//                     }
-//                   >
-//                     <div className="aspect-h-4 aspect-w-3 bg-text-color sm:aspect-none group-hover:opacity-75 sm:h-96">
-//                       {product.gallery[0].url && (
-//                         <Image
-//                           sizes="100%"
-//                           src={product.gallery[0].url}
-//                           alt={product.name}
-//                           className="h-full w-full object-cover object-center sm:h-full sm:w-full"
-//                           width={0}
-//                           height={0}
-//                         />
-//                       )}
-//                     </div>
-//                   </LinkItem>
-// <div className="flex flex-1 flex-col space-y-2 p-4">
-//   <h3 className="text-sm font-medium text-text-color">
-//     <LinkItem
-//       label={product.name}
-//       link={
-//         product.purchaseLink
-//           ? product.purchaseLink
-//           : `/product/${product.productSlug}`
-//       }
-//     />
-//   </h3>
-
-//   {product.description?.html && (
-//     <div className="text-sm text-text-color opacity-80">
-//       {parse(product.description?.html)}
-//     </div>
-//   )}
-//   <div className="flex flex-1 flex-col justify-end">
-//     <p className="text-base font-medium text-text-color">
-//       {product.price}
-//     </p>
-//   </div>
-// </div>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
-
-// import React, { useState } from "react";
-// import type { ProductFieldsFragment } from "@/graphql/generated/graphql";
-// import Image from "next/image";
-// import parse from "html-react-parser";
-// import LinkItem from "./LinkItem";
-
-// interface ProductsProps {
-//   profileSectionTitle?: string;
-//   type?: string;
-//   products?: ProductFieldsFragment[];
-// }
-
-// export default function Products({ type, products }: ProductsProps) {
-//   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
-//   if (!products) return <></>;
-//   const filteredProducts = products.filter(
-//     (product) => product?.productType?.toLowerCase() === type?.toLowerCase()
-//   );
-
-//   return (
-//     <>
-//       {filteredProducts && filteredProducts.length && (
-//         <div className="bg-bg-primary">
-//           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-//             <h2 className="sr-only">Products</h2>
-
-//             <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
-//               {filteredProducts.map((product) => (
-//                 <div
-//                   key={product.id}
-//                   className="group relative flex flex-col overflow-hidden rounded-lg border border-text-color bg-white"
-//                   onMouseEnter={() => setHoveredProductId(product.id)}
-//                   onMouseLeave={() => setHoveredProductId(null)}
-//                   onFocus={() => setHoveredProductId(product.id)}
-//                   onBlur={() => setHoveredProductId(null)}
-//                 >
-//                   <LinkItem
-//                     link={
-//                       product.purchaseLink
-//                         ? product.purchaseLink
-//                         : `/product/${product.productSlug}`
-//                     }
-//                   >
-//                     <div
-//                       className="aspect-h-4 aspect-w-3 bg-text-color sm:aspect-none group-hover:opacity-75 sm:h-96"
-//                       style={{
-//                         transition: "opacity 0.3s ease",
-//                       }}
-//                     >
-//                       {product.gallery[hoveredProductId === product.id ? 1 : 0]
-//                         ?.url && (
-//                         <Image
-//                           sizes="100%"
-//                           src={
-//                             product.gallery[
-//                               hoveredProductId === product.id ? 1 : 0
-//                             ]?.url
-//                           }
-//                           alt={product.name}
-//                           className="h-full w-full object-cover object-center sm:h-full sm:w-full"
-//                           width={0}
-//                           height={0}
-//                         />
-//                       )}
-//                     </div>
-//                   </LinkItem>
-//                   <div className="flex flex-1 flex-col space-y-2 p-4">
-//                     <h3 className="text-sm font-medium text-text-color">
-//                       <LinkItem
-//                         label={product.name}
-//                         link={
-//                           product.purchaseLink
-//                             ? product.purchaseLink
-//                             : `/product/${product.productSlug}`
-//                         }
-//                       />
-//                     </h3>
-
-//                     <div className="flex flex-1 flex-col justify-end">
-//                       <p className="text-base font-medium text-text-color">
-//                         {`$${product.price}`}
-//                       </p>
-//                     </div>
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
-
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import type { ProductFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
 import parse from "html-react-parser";
+import type { Swiper as SwiperType } from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import LinkItem from "./LinkItem";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
+import useViewport from "@/app/hooks/useViewport";
 import { Fade } from "react-awesome-reveal";
 
 interface ProductsProps {
@@ -197,6 +29,8 @@ export default function Products({
   productLayoutStyle,
 }: ProductsProps) {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
+  const { isMobile, isDesktop } = useViewport();
+  const swiperRef = useRef<SwiperType>();
   if (!products) return <></>;
   const filteredProducts = products.filter(
     (product) => product?.productType?.toLowerCase() === type?.toLowerCase()
@@ -242,6 +76,125 @@ export default function Products({
                   ))}
                 </div>
               </Fade>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  if (productLayoutStyle === "slider")
+    return (
+      <>
+        {filteredProducts && filteredProducts.length && (
+          <div className="bg-bg-primary">
+            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:max-w-7xl lg:px-8">
+              <h2 className="sr-only">Products</h2>
+              <div className="flex flex-row items-center justify-between">
+                <button
+                  type="button"
+                  className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color mr-4"
+                  onClick={() => swiperRef.current?.slidePrev()}
+                >
+                  <FontAwesomeIcon
+                    icon={faChevronLeft as IconProp}
+                    className="fa-fw my-0 text-xl h-4 w-4"
+                  />
+                  <span className="sr-only">Move Rotation Back</span>
+                </button>
+                <Swiper
+                  className="flex-wrap flex items-stretch h-full"
+                  grabCursor
+                  modules={[Navigation, Pagination, Autoplay]}
+                  loop={true}
+                  centerInsufficientSlides
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }}
+                  onBeforeInit={(swiper) => {
+                    swiperRef.current = swiper;
+                  }}
+                  slidesPerView={isMobile ? 1 : isDesktop ? 2 : 3}
+                  spaceBetween={30}
+                >
+                  {filteredProducts.map((product) => (
+                    <SwiperSlide
+                      key={product.id}
+                      className="w-full md:w-72 bg-text-color shadow-md rounded-xl duration-300 hover:md:scale-95 hover:shadow-md focus-within:scale-95 focus-within:shadow-md px-1 md:px-2 overflow-hidden max-w-sm p-1 h-full self-stretch min-h-[200px]"
+                    >
+                      <LinkItem
+                        cssClass="flex flex-row md:flex-col items-center justify-start md:justify-center"
+                        link={
+                          product.purchaseLink
+                            ? product.purchaseLink
+                            : `/product/${product.productSlug}`
+                        }
+                      >
+                        <Fade direction="down" className="rounded-xl">
+                          <>
+                            {product.gallery[
+                              hoveredProductId === product.id ? 1 : 0
+                            ]?.url && (
+                              <Image
+                                sizes="100%"
+                                src={
+                                  product.gallery[
+                                    hoveredProductId === product.id ? 1 : 0
+                                  ]?.url
+                                }
+                                alt={product.name}
+                                className="aspect-1 w-full max-w-[90px] md:max-w-full object-cover !rounded-xl p-4"
+                                width={0}
+                                height={0}
+                              />
+                            )}
+                            <div className="px-2 md:px-4 py-3 w-full">
+                              {product?.vendor && (
+                                <span className="text-dark md:mr-3 uppercase text-xs">
+                                  {product.vendor}
+                                </span>
+                              )}
+                              <p className="text-sm md:text-lg font-bold text-dark truncate block capitalize">
+                                {product.name}
+                              </p>
+                              {product?.description && (
+                                <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0 max-w-[200px] lg:max-w-[90%] bg-invert line-clamp-2 min-h-[60px]">
+                                  {parse(product.description.html)}
+                                </div>
+                              )}
+                              <div className="flex items-center md:my-3">
+                                {product.price && (
+                                  <p className="text-md md:text-lg font-semibold text-bg cursor-auto">
+                                    {`$${product.price}`}
+                                  </p>
+                                )}
+                                {!!product?.purchaseLink && (
+                                  <ArrowTopRightOnSquareIcon
+                                    title={product?.purchaseLink}
+                                    className="h-6 w-6 text-dark ml-auto max-w-max"
+                                    aria-hidden="true"
+                                  />
+                                )}
+                              </div>
+                            </div>
+                          </>
+                        </Fade>
+                      </LinkItem>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                <button
+                  type="button"
+                  className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color mr-4"
+                  onClick={() => swiperRef.current?.slideNext()}
+                >
+                  <FontAwesomeIcon
+                    icon={faChevronRight as IconProp}
+                    className="fa-fw my-0 text-xl h-4 w-4"
+                  />
+                  <span className="sr-only">Move Rotation Back</span>
+                </button>
+              </div>
             </div>
           </div>
         )}

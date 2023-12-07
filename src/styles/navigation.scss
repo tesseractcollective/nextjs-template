@@ -45,3 +45,19 @@
     }
   }
 }
+
+.shadow-top {
+  -webkit-box-shadow: 0 -5px 15px #0808086b;
+  box-shadow: 0 -5px 15px #0808086b;
+  @media screen and (min-width: 976px) {
+    -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+    }
+}
+
+.slashes .footer-link-item:not(:last-child) {
+  &:after {
+    content: " /";
+    margin: 0 4px;
+  }
+}

@@ -909,6 +909,9 @@ h4, h5, h6  {color: var(--text);}
   -webkit-user-select: none;
   user-select: none;
   scale: 0.9;
+  &.bleed {
+    scale: 1;
+  }
   @media only screen and (min-width: 540px) {
     scale: 1;
   } 

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unstable-nested-components */
 import React, { useEffect } from "react";
 import type { SiteLibraryFieldsFragment } from "@/graphql/generated/graphql";
 
@@ -9,7 +8,8 @@ export interface ThemeColorsProps {
 export default function ThemeColors({ siteLibrary }: ThemeColorsProps) {
   useEffect(() => {
     if (siteLibrary?.siteCssBodyClass) {
-      document.body.classList.add(siteLibrary?.siteCssBodyClass as string);
+      const classes = siteLibrary.siteCssBodyClass.split(" ");
+      document.body.classList.add(...classes);
     }
 
     if (siteLibrary?.siteLibraryJson?.siteID) {

@@ -13,6 +13,8 @@ import DualNavigation from "@/components/navigation/DualNavigation";
 import DashboardNavigation from "@/components/navigation/DashboardNavigation";
 import SpaceNavigation from "@/components/navigation/SpaceNavigation";
 import CircleNavigation from "@/components/navigation/CircleNavigation";
+import UniversalNavigation from "@/components/navigation/UniversalNavigation";
+import ProgressNavigation from "@/components/navigation/ProgressNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -60,7 +62,7 @@ export default function Nav({
     );
   if (navigation.navigationLayoutStyle === "progress")
     return (
-      <CenterNavigation
+      <ProgressNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}
@@ -88,29 +90,9 @@ export default function Nav({
       />
     );
 
-  if (navigation.navigationLayoutStyle === "circle")
-    return (
-      <CircleNavigation
-        navigations={navigations}
-        siteLibrary={siteLibrary}
-        hideNav={hideNav}
-        pageNavigationSelection={pageNavigationSelection}
-      />
-    );
-
   if (navigation.navigationLayoutStyle === "universal")
     return (
-      <CenterNavigation
-        navigations={navigations}
-        siteLibrary={siteLibrary}
-        hideNav={hideNav}
-        pageNavigationSelection={pageNavigationSelection}
-      />
-    );
-
-  if (navigation.navigationLayoutStyle === "center")
-    return (
-      <CenterNavigation
+      <UniversalNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}
@@ -131,6 +113,26 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "minimal")
     return (
       <MinimalNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "circle")
+    return (
+      <CircleNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "center")
+    return (
+      <CenterNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

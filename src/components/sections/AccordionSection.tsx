@@ -8,7 +8,6 @@ import type {
 } from "@/graphql/generated/graphql";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import VideoBox from "@/components/VideoBox";
-import VideoSection from "@/components/VideoSection";
 
 interface AccordionProps {
   accordionData: AccordionFieldsFragment[];
@@ -22,18 +21,18 @@ export default function Accordion({
   if (!siteLibrary) return <></>;
   if (accordionData?.length === 0) return <></>;
   return (
-    <div className="w-full px-4 py-8 h-full block mx-auto">
+    <div className="w-full px-4 py-8 h-full flex items-center mx-auto max-h-max">
       <div className="mx-auto w-full rounded-2xl max-w-[800px] p-2">
         {accordionData.map((item) => {
           return (
             <Disclosure key={item.contentHeader?.html}>
               {({ open }) => (
-                <div className="border-b border-primary block">
+                <div className="border-b border-primary block rounded-md">
                   {!!item.contentHeader?.html && (
-                    <Disclosure.Button className="flex w-full justify-between items-center rounded-md text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-text-color focus-visible:text-text-color hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-700 bg-bg-secondary overflow-hidden relative px-4">
-                      <span className="ml-3 text-text-color font-bold text-base md:text-xl py-4 w-[90%]">
+                    <Disclosure.Button className="flex w-full justify-between items-center rounded-md text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-text-color focus-visible:text-text-color hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-400 bg-bg-secondary overflow-hidden relative px-4 cursor-pointer">
+                      <div className="ml-3 !text-primary all-text-primary font-bold text-base md:text-xl py-4 w-[90%] accordion-heade">
                         {parse(item.contentHeader?.html)}
-                      </span>
+                      </div>
                       <div
                         className={`relative text-text-color h-6 w-6 rounded-[100%] transition-all ${
                           open
@@ -42,12 +41,12 @@ export default function Accordion({
                         }`}
                       >
                         <MinusIcon
-                          className={`absolute w-6 h-6 transition-all duration-700 ${
+                          className={`absolute w-6 h-6 transition-all duration-400 ${
                             open ? "" : "rotate-180 transform"
                           }`}
                         />
                         <MinusIcon
-                          className={`absolute w-6 h-6 transition-all duration-700 ${
+                          className={`absolute w-6 h-6 transition-all duration-400 ${
                             open ? "" : "rotate-90 transform"
                           }`}
                         />
@@ -56,10 +55,10 @@ export default function Accordion({
                   )}
                   <Transition
                     show={open}
-                    enter="transition duration-700 ease-out"
+                    enter="transition-all duration-400 ease-out"
                     enterFrom="transform scale-95 opacity-0"
                     enterTo="transform scale-100 opacity-100"
-                    leave="transition duration-700 ease-out"
+                    leave="transition-all duration-400 ease-out"
                     leaveFrom="transform scale-100 opacity-100"
                     leaveTo="transform scale-95 opacity-0"
                   >

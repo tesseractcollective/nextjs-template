@@ -100,3 +100,13 @@
     font-family: 'Archivo Black', sans-serif !important;
   }
 }
+
+.ezcar-theme {
+  h1, h2, h3, h1 *, h2 *, h3 * {
+    font-family: 'Eczar', serif !important;
+    font-weight: bold;
+  }
+  h4, h5, h6, span, div, p,  button:not([class^="lg-"]), button, a, p strong {
+    font-family: 'Eczar', serif !important;
+  }
+}

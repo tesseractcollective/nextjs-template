@@ -40,6 +40,7 @@ export interface SocialMediaIconsProps {
   threadsLinkProp?: string;
   linkedinLinkProp?: string;
   cssClass?: string;
+  iconClass?: string;
   emailLinkProp?: string;
   whatsappLinkProp?: string;
   phoneLinkProp?: string;
@@ -73,6 +74,7 @@ export default function SocialMediaIcons({
   displayVcf,
   avatar,
   name,
+  iconClass,
 }: SocialMediaIconsProps) {
   return (
     <>
@@ -106,7 +108,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.instagramLink || instagramLinkProp}
                 target="_blank"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Instagram"
                 rel="noreferrer"
                 onClick={() =>
@@ -120,7 +122,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faInstagram as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Instagram</span>
               </a>
@@ -129,7 +131,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.spotifyLink || spotifyLinkProp}
                 target="_blank"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Spotify"
                 rel="noreferrer"
                 onClick={() =>
@@ -142,7 +144,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faSpotify as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Spotify</span>
               </a>
@@ -151,7 +153,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.facebookLink || facebookLinkProp}
                 target="_blank"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Facebook"
                 rel="noreferrer"
                 onClick={() =>
@@ -164,7 +166,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faFacebook as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Facebook</span>
               </a>
@@ -173,7 +175,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.twitterLink || twitterLinkProp}
                 target="_blank"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="X - Twitter"
                 rel="noreferrer"
                 onClick={() =>
@@ -186,7 +188,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faXTwitter as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">X - Twitter</span>
               </a>
@@ -195,7 +197,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.youtubeLink || youtubeLinkProp}
                 target="_blank"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Youtube"
                 rel="noreferrer"
                 onClick={() =>
@@ -208,7 +210,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faYoutube as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Youtube</span>
               </a>
@@ -218,7 +220,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.tikTokLink || tikTokLinkProp}
                 target="_blank"
                 title="TikTok"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -230,7 +232,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faTiktok as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">TikTok</span>
               </a>
@@ -240,7 +242,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.threadsLink || threadsLinkProp}
                 target="_blank"
                 title="Threads"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -252,7 +254,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faThreads as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Threads</span>
               </a>
@@ -330,7 +332,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.soundcloudLink || soundcloudLinkProp}
                 title="Soundcloud"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -344,7 +346,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faSoundcloud as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                   aria-hidden="true"
                 />
                 <span className="sr-only">Soundcloud</span>
@@ -367,7 +369,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faPhone as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Phone Number</span>
               </a>
@@ -382,7 +384,7 @@ export default function SocialMediaIcons({
                         `${whatsappLinkProp}`
                       )}&text=hello`
                 }
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -395,7 +397,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faWhatsapp as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Whatsapp</span>
               </a>
@@ -404,7 +406,7 @@ export default function SocialMediaIcons({
               <a
                 title={siteLibrary?.contactEmail || emailLinkProp}
                 href={`mailto:${siteLibrary?.contactEmail || emailLinkProp}`}
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -417,7 +419,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faEnvelope as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Email</span>
               </a>
@@ -426,7 +428,7 @@ export default function SocialMediaIcons({
               <a
                 title={linkedinLinkProp}
                 href={linkedinLinkProp}
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -439,7 +441,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faLinkedin as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Linkedin</span>
               </a>
@@ -448,7 +450,7 @@ export default function SocialMediaIcons({
               <a
                 title={githubLinkProp}
                 href={githubLinkProp}
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -461,7 +463,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faGithub as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">GitHub</span>
               </a>
@@ -470,7 +472,7 @@ export default function SocialMediaIcons({
               <a
                 title={calendlyLinkProp}
                 href={calendlyLinkProp}
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -483,7 +485,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faCalendar as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Calendly</span>
               </a>
@@ -492,7 +494,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary.siteLibraryJson.googleMapLink}
                 target="_blank"
-                className="max-w-max mx-auto  text-center !text-link transition-all cursor-pointer"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Google Map"
                 rel="noreferrer"
                 onClick={() =>
@@ -505,7 +507,7 @@ export default function SocialMediaIcons({
               >
                 <FontAwesomeIcon
                   icon={faGoogle as IconProp}
-                  className="fa-fw h-5 w-5 flex"
+                  className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Google Map</span>
               </a>

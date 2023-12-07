@@ -26,6 +26,7 @@ export default function Blogs({
   blogHeader,
   blogCategory,
   listSummary,
+  blogLayoutStyle,
 }: BlogsProps) {
   const { isMobile } = useViewport();
   const swiperRef = useRef<SwiperType>();
@@ -33,7 +34,7 @@ export default function Blogs({
     (blog) => blog?.blogCategory === blogCategory
   );
 
-  if (listSummary === true && !!blogs)
+  if (blogLayoutStyle === "compact" && !!blogs)
     return (
       <>
         <ul className="mt-6 space-y-6 max-w-max">
@@ -68,7 +69,7 @@ export default function Blogs({
       </>
     );
 
-  if (fromHomePage === true && !!blogs)
+  if (blogLayoutStyle === "slider" && !!blogs)
     return (
       <>
         <div className="flex flex-row w-full items-center justify-between px-2">
