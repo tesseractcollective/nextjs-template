@@ -60,7 +60,7 @@ export default function UniversalNavigation({
   return (
     <>
       <div
-        className={`sticky top-[-1px] z-[999] left-0 right-0 transition-all ${
+        className={`fixed top-[2px] z-[999] left-0 right-0 transition-all ${
           navigationWrapperCssClass ? navigationWrapperCssClass : ""
         }`}
         id="navigation"
@@ -94,11 +94,35 @@ export default function UniversalNavigation({
                 leaveTo="translate-y-full blur-xl"
               >
                 <Dialog.Panel
-                  className="relative flex w-full max-h-[100vh] flex-col overflow-y-auto pb-12 shadow-xl border-t-primary border-t bg-bg
-                 transition-all"
+                  className="relative flex w-full max-h-[100vh] flex-col overflow-y-auto pb-12 shadow-xl border-t-primary border-t bg-motion-dark
+                 transition-all h-100vh items-center justify-center"
                 >
+                  <div className="absolute right-2 max-w-max bg-bg aspect-1 border-secondary border top-[6px]">
+                    <button
+                      type="button"
+                      title="menu"
+                      className="p-2 text-primary group hover:text-secondary transition-all cursor-pointer relative"
+                      onClick={() => {
+                        setOpen(false);
+                        ReactGA.event({
+                          category: "Link",
+                          action: "Open Mobile Menu",
+                          label: "Open Mobile Menu",
+                        });
+                      }}
+                    >
+                      <XMarkIcon
+                        className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
+                        aria-hidden="true"
+                      />
+
+                      <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                        {siteLibrary.isSpanish ? "Cerrar" : "Close"}
+                      </span>
+                    </button>
+                  </div>
                   <Fade direction="down" triggerOnce>
-                    <div className="flex mt-4 ml-4 px-4 pb-2 pt-5 items-center justify-start">
+                    <div className="flex mt-0 mx-4 px-4 pb-2 pt-2 items-center justify-start">
                       <Link
                         href="/"
                         onClick={() => {
@@ -110,7 +134,7 @@ export default function UniversalNavigation({
                           });
                         }}
                         className="cursor-pointer transition-all hover:skew-x-[8deg] hover:skew-y-[8deg]"
-                        id={`nav-logo-mobile-panel`}
+                        id="nav-logo-mobile-panel"
                       >
                         {navigation?.navigationLogo ? (
                           <>
@@ -142,7 +166,7 @@ export default function UniversalNavigation({
                         return (
                           <div key={mainNavigationItem.label}>
                             {hasItems && (
-                              <div className="space-y-6 px-4 py-3 mt-4 ml-4">
+                              <div className="space-y-6 px-4 py-3 mt-4 mx-4">
                                 <h2
                                   key={mainNavigationItem.label}
                                   className="block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold text-left border-b border-text-color opacity-70"
@@ -201,7 +225,7 @@ export default function UniversalNavigation({
                             )}
 
                             {!hasItems && (
-                              <div className="space-y-6 px-4 py-1 mt-4 ml-4">
+                              <div className="space-y-6 px-4 py-1 mt-4 mx-4">
                                 <div className="max-w-max">
                                   <LinkItem
                                     key={mainNavigationItem.label}
@@ -221,10 +245,10 @@ export default function UniversalNavigation({
                   </Fade>
 
                   <Fade triggerOnce direction="up">
-                    <div className="space-y-6 px-4 py-6 mt-4 ml-4">
+                    <div className="space-y-6 px-4 py-6 mt-4 mx-4">
                       <SocialMediaIcons
                         siteLibrary={siteLibrary}
-                        cssClass="my-2 mx-0 grid grid-cols-10 social-icons-row items-center justify-start text-text-color gap-2 overflow-hidden mr-auto py-0 max-w-max gap-x-4"
+                        cssClass="my-2 mx-0 flex flex-row flex-wrap social-icons-row items-center justify-center text-text-color gap-2 overflow-hidden mx-auto py-0 max-w-max gap-x-4"
                       />
                       <div className="text-left">
                         {!!contactName && (
@@ -254,21 +278,6 @@ export default function UniversalNavigation({
                         )}
                       </div>
                     </div>
-                    <div className="flex justify-end items-center w-full px-6">
-                      <button
-                        type="button"
-                        className="flex items-center justify-center rounded-md p-2 text-text-color group flex-col text-center ml-auto max-w-max text-xs"
-                        onClick={() => setOpen(false)}
-                      >
-                        <XMarkIcon
-                          className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
-                          aria-hidden="true"
-                        />
-                        <span className="text-text-color group-hover:text-primary transition-all uppercase text-center text-xs flex">
-                          {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
-                        </span>
-                      </button>
-                    </div>
                   </Fade>
                 </Dialog.Panel>
               </Transition.Child>
@@ -276,68 +285,64 @@ export default function UniversalNavigation({
           </Dialog>
         </Transition.Root>
 
-        <header className="relative">
-          <nav aria-label="Top">
-            <div className="mx-auto max-w-12xl px-0 mb-2">
-              <div className="mt-2">
-                <div className="flex items-center justify-between flex-row relative w-full">
-                  <Link
-                    href="/"
-                    className="justify-self-start transition-all cursor-pointer group bg-after backdrop-blur-md"
-                    id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
-                    onClick={() => {
-                      ReactGA.event({
-                        category: "Link",
-                        action: "Visit Home",
-                        label: "Visit Home",
-                      });
-                    }}
-                  >
-                    {navigation?.navigationLogo ? (
-                      <>
-                        <span className="sr-only cursor-pointer">{title}</span>
-                        <Image
-                          className="h-10 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all rotate-0 group-hover:rotate-[360deg]"
-                          src={navigation.navigationLogo?.url}
-                          alt=""
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          style={{ width: "100%" }}
-                        />
-                      </>
-                    ) : (
-                      <span className="font-bold text-2xl text-text-color">
-                        {title}
-                      </span>
-                    )}
-                  </Link>
-                  {/* Desktop menu bar */}
-                  <div className="absolute right-0 max-w-max bg-bg aspect-1 border-secondary border top-[-2px]">
-                    <button
-                      type="button"
-                      title="menu"
-                      className="p-2 text-primary group hover:text-secondary transition-all cursor-pointer relative"
-                      onClick={() => {
-                        setOpen(true);
-                        ReactGA.event({
-                          category: "Link",
-                          action: "Open Mobile Menu",
-                          label: "Open Mobile Menu",
-                        });
-                      }}
-                    >
-                      <span className="sr-only">Open menu</span>
-                      <Bars2Icon
-                        className="h-6 w-6 group-hover:text-secondary transition-all group-hover:rotate-180"
-                        aria-hidden="true"
-                      />
-                      <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
-                        Menu
-                      </span>
-                    </button>
-                  </div>
-                </div>
+        <header className="relative px-1">
+          <nav aria-label="Top" className="mx-auto px-0 my-2">
+            <div className="flex items-center justify-between flex-row relative w-full">
+              <Link
+                href="/"
+                className="justify-self-start transition-all group"
+                id="nav-logo-desktop"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Link",
+                    action: "Visit Home",
+                    label: "Visit Home",
+                  });
+                }}
+              >
+                {navigation?.navigationLogo ? (
+                  <>
+                    <span className="sr-only cursor-pointer">{title}</span>
+                    <Image
+                      className="h-10 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all rotate-0 group-hover:rotate-[360deg]"
+                      src={navigation.navigationLogo?.url}
+                      alt=""
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      style={{ width: "100%" }}
+                    />
+                  </>
+                ) : (
+                  <span className="font-bold text-2xl text-text-color">
+                    {title}
+                  </span>
+                )}
+              </Link>
+              {/* Desktop menu bar */}
+              <div className="absolute right-0 max-w-max bg-bg aspect-1 border-secondary border top-[-2px]">
+                <button
+                  type="button"
+                  title="menu"
+                  className="p-2 text-primary group hover:text-secondary transition-all cursor-pointer relative"
+                  onClick={() => {
+                    setOpen(true);
+                    ReactGA.event({
+                      category: "Link",
+                      action: "Open Mobile Menu",
+                      label: "Open Mobile Menu",
+                    });
+                  }}
+                >
+                  <span className="sr-only">Open menu</span>
+                  <Bars2Icon
+                    className="h-6 w-6 group-hover:text-secondary transition-all group-hover:rotate-180"
+                    aria-hidden="true"
+                  />
+                  <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                    Menu
+                  </span>
+                </button>
               </div>
             </div>
           </nav>

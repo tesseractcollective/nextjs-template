@@ -44,10 +44,10 @@ function UniversalFooter({
         footerWrapperCssClass ? footerWrapperCssClass : ""
       }`}
     >
-      <div className="fixed left-0 right-0 bg-after backdrop-blur-md max-w-max mx-auto px-2 bottom-[-1px] z-[500]">
+      <div className="fixed left-0 right-0 bg-after backdrop-blur-md max-w-max mx-auto bottom-[-1px] z-[500]">
         <SocialMediaIcons
           siteLibrary={siteLibrary}
-          cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap divide-x divide-secondary border-secondary border"
+          cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap divide-x divide-secondary border-secondary border overflow-hidden"
           iconClass="!px-0 !mx-0"
         />
       </div>
