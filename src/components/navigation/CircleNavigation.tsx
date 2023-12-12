@@ -237,6 +237,7 @@ export default function CircleNavigation({
                   <Fade triggerOnce direction="up">
                     <div className="space-y-6 px-4 py-6 mt-4 ml-4">
                       <SocialMediaIcons
+                        fadeDirection="up"
                         siteLibrary={siteLibrary}
                         cssClass="my-2 mx-0 grid grid-cols-10 social-icons-row items-center justify-start text-text-color gap-2 overflow-hidden mr-auto py-0 max-w-max gap-x-4"
                       />
@@ -530,6 +531,7 @@ export default function CircleNavigation({
                   />
                 ))}
                 <SocialMediaIcons
+                  fadeDirection="down"
                   siteLibrary={siteLibrary}
                   cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
                 />

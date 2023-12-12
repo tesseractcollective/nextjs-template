@@ -144,6 +144,7 @@ export default function Profiles({
 
                           <div className="flex justify-between flex-row w-full">
                             <SocialMediaIcons
+                              fadeDirection="up"
                               cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start"
                               instagramLinkProp={
                                 profile?.instagramLink || undefined
@@ -295,6 +296,7 @@ export default function Profiles({
                                     </h2>
                                   </Fade>
                                   <SocialMediaIcons
+                                    fadeDirection="up"
                                     cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center gap-x-2"
                                     instagramLinkProp={
                                       selectedProfile?.instagramLink ||
@@ -433,6 +435,7 @@ export default function Profiles({
 
                           <div className="flex justify-between flex-row w-full">
                             <SocialMediaIcons
+                              fadeDirection="up"
                               cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-center"
                               instagramLinkProp={
                                 profile?.instagramLink || undefined
@@ -528,6 +531,7 @@ export default function Profiles({
                         </Link>
                       )}
                       <SocialMediaIcons
+                        fadeDirection="up"
                         cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start text-text-color gap-x-1 rotate-icons"
                         instagramLinkProp={profile?.instagramLink || undefined}
                         spotifyLinkProp={profile?.spotifyLink || undefined}
@@ -645,6 +649,7 @@ export default function Profiles({
                       <div className="profile-overlay p-5 absolute inset-0">
                         <div className="absolute top-5 left-5 z-[2]">
                           <SocialMediaIcons
+                            fadeDirection="up"
                             cssClass="hidden sm:flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start text-primary gap-x-2 flex-wrap text-shadow rotate-icon"
                             instagramLinkProp={
                               profile?.instagramLink || undefined

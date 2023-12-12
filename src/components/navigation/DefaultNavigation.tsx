@@ -241,6 +241,7 @@ export default function DefaultNavigation({
                 <Fade triggerOnce cascade direction="up" damping={0.05}>
                   <div className="space-y-6 px-4 py-6">
                     <SocialMediaIcons
+                      fadeDirection="up"
                       siteLibrary={siteLibrary}
                       cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
                     />

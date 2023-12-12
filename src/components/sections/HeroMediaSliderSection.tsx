@@ -279,6 +279,7 @@ export default function HeroMediaSliderSection({
           )}
           {!!heroMediaSliderData[0]?.displaySocialMedia && (
             <SocialMediaIcons
+            fadeDirection="up"
               siteLibrary={siteLibrary}
               cssClass="absolute z-[80] bottom-10 left-0 right-0 mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center gap-x-2 !text-secondary"
             />

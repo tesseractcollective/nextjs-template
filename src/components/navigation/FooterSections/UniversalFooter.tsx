@@ -46,6 +46,7 @@ function UniversalFooter({
     >
       <div className="fixed left-0 right-0 bg-bg max-w-max mx-auto bottom-[-1px] z-[500] overflow-hidden max-h-max">
         <SocialMediaIcons
+          fadeDirection="up"
           siteLibrary={siteLibrary}
           cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap divide-x divide-secondary border-secondary border"
           iconClass="!px-0 !mx-0"

@@ -52,6 +52,7 @@ export default function ContactsSection({
                   </p>
                 )}
                 <SocialMediaIcons
+                  fadeDirection="up"
                   cssClass="mt-1 mb-0 w-full flex flex-row !social-icons !items-center !justify-start text-dark gap-x-2"
                   linkedinLinkProp={contact?.contactLinkedin || ""}
                   calendlyLinkProp={contact.contactCalendly || undefined}

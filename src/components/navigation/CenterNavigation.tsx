@@ -256,6 +256,7 @@ export default function CenterNavigation({
 
                   <div className="space-y-6 px-4 py-6">
                     <SocialMediaIcons
+                      fadeDirection="up"
                       siteLibrary={siteLibrary}
                       cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2"
                     />
@@ -320,6 +321,7 @@ export default function CenterNavigation({
               <div className="mt-2">
                 <div className="flex items-center justify-center flex-row relative w-full">
                   <SocialMediaIcons
+                    fadeDirection="down"
                     siteLibrary={siteLibrary}
                     cssClass="max-w-max md:flex flex-row social-icons-row items-center justify-center text-primary gap-x-2 opacity-40 hidden absolute left-0"
                   />

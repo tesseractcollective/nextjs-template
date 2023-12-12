@@ -160,7 +160,7 @@ export default function Blog({
                             )}
                             <div className="flex flex-row items-center justify-start">
                               <SocialMediaIcons
-                                fade={false}
+                                fadeDirection="up"
                                 cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2"
                                 phoneLinkProp={
                                   contact?.contactPhone || undefined
