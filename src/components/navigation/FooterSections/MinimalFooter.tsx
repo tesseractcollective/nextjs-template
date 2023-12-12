@@ -60,7 +60,7 @@ function MinimalFooter({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-20 w-full mb-4 object-contain max-w-max"
+                      className="h-20 w-full mb-4 object-contain max-w-max min-w-[120px]"
                       alt=""
                       width={0}
                       height={0}

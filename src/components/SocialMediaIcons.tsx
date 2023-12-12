@@ -48,6 +48,7 @@ export interface SocialMediaIconsProps {
   avatar?: string;
   name?: string;
   fade?: boolean;
+  fadeDirection?: string;
   displayVcf?: boolean;
 }
 
@@ -75,6 +76,7 @@ export default function SocialMediaIcons({
   avatar,
   name,
   iconClass,
+  fadeDirection,
 }: SocialMediaIconsProps) {
   return (
     <>
@@ -98,7 +100,7 @@ export default function SocialMediaIcons({
         phoneLinkProp) && (
         <nav className={`social-media-icons-element ${cssClass}`}>
           <Fade
-            direction={fade ? undefined : "right"}
+            direction={fadeDirection ? fadeDirection : "right"}
             cascade={fade ? false : true}
             damping={fade ? undefined : 0.05}
             triggerOnce

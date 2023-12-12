@@ -331,8 +331,8 @@ export default function Profile({
                   </p>
                   <ul className="flex flex-col items-center justify-start lg:flex-row gap-y-8 gap-x-24 flex-wrap">
                     {filteredContacts?.map((contact) => (
-                      <li key={contact.contactName}>
-                        <div className="flex items-center gap-x-4 lg:gap-x-6 flex-col justify-center lg:justify-start text-center lg:text-left lg:flex-row">
+                      <li key={contact.contactName} className="">
+                        <div className="flex items-center gap-x-4 lg:gap-x-6 flex-col justify-center lg:justify-start text-center lg:text-left lg:flex-row w-full">
                           {contact?.contactAvatar?.url && (
                             <Image
                               className="h-14 lg:h-16 w-14 lg:w-16 rounded-full object-cover"
@@ -356,8 +356,8 @@ export default function Profile({
                             )}
                             <div className="flex flex-row items-center justify-start">
                               <SocialMediaIcons
-                                fade={false}
-                                cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2"
+                                fadeDirection="up"
+                                cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2 px-1 lg:pl-0 lg:pr-1"
                                 phoneLinkProp={
                                   contact?.contactPhone || undefined
                                 }

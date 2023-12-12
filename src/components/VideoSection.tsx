@@ -11,6 +11,7 @@ import {
 import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
 import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
+import { Fade } from "react-awesome-reveal";
 
 interface VideoSectionProps {
   videoData: VideoBoxFieldsFragment[];
@@ -96,16 +97,18 @@ export default function VideoSection({
                   );
                   return (
                     <SwiperSlide key={video?.videoTitle}>
-                      <VideoBox
-                        videoTitle={video?.videoTitle || undefined}
-                        vimeoVideoId={video?.vimeoVideoId || undefined}
-                        youtubeVideoId={video?.youtubeVideoId || undefined}
-                        thumbnail={video?.thumbnail?.url || undefined}
-                        thumbnailType={video?.thumbnailType || undefined}
-                        videoDisplayLayout={
-                          video?.videoDisplayLayout || undefined
-                        }
-                      />
+                      <Fade direction="up">
+                        <VideoBox
+                          videoTitle={video?.videoTitle || undefined}
+                          vimeoVideoId={video?.vimeoVideoId || undefined}
+                          youtubeVideoId={video?.youtubeVideoId || undefined}
+                          thumbnail={video?.thumbnail?.url || undefined}
+                          thumbnailType={video?.thumbnailType || undefined}
+                          videoDisplayLayout={
+                            video?.videoDisplayLayout || undefined
+                          }
+                        />
+                      </Fade>
                     </SwiperSlide>
                   );
                 })}

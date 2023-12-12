@@ -44,10 +44,10 @@ function UniversalFooter({
         footerWrapperCssClass ? footerWrapperCssClass : ""
       }`}
     >
-      <div className="fixed left-0 right-0 bg-after backdrop-blur-md max-w-max mx-auto bottom-[-1px] z-[500]">
+      <div className="fixed left-0 right-0 bg-bg max-w-max mx-auto bottom-[-1px] z-[500] overflow-hidden max-h-max">
         <SocialMediaIcons
           siteLibrary={siteLibrary}
-          cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap divide-x divide-secondary border-secondary border overflow-hidden"
+          cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap divide-x divide-secondary border-secondary border"
           iconClass="!px-0 !mx-0"
         />
       </div>
@@ -69,7 +69,7 @@ function UniversalFooter({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-20 w-full mb-4 object-contain max-w-max"
+                      className="h-20 w-full mb-4 object-contain max-w-max min-w-[120px]"
                       alt=""
                       width={0}
                       height={0}
@@ -103,7 +103,7 @@ function UniversalFooter({
                             <LinkItem
                               key={`footer-link-item-${index++}`}
                               link={linkItem?.link}
-                              cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
+                              cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link relative ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
                             >
                               <>
