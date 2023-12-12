@@ -23,6 +23,7 @@ import {
   Autoplay,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import GalleryInfinite from "./elements/GalleryInfinite";
 
 interface GalleryProps {
   galleryData?: { __typename?: "Asset" | undefined; url: string }[];
@@ -57,6 +58,40 @@ export default function GallerySection({
                     src={finalImage}
                     alt={`Gallery Image: ${index}`}
                     className="object-cover block mx-auto h-full w-full aspect-1"
+                    sizes="100%"
+                    width={0}
+                    height={0}
+                  />
+                </div>
+              ))}
+            </Fade>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (galleryLayout === "infinite" && finalImages.length >= 1) {
+    return <GalleryInfinite images={finalImages} />;
+  }
+  if (galleryLayout === "mason" && finalImages.length >= 1) {
+    return (
+      <div className="my-0 magic-grid block h-full">
+        <div className="block px-4 max-w-8xl mx-auto">
+          <div className="grid grid-cols-3 gap-8">
+            <Fade triggerOnce cascade damping={0.05} direction="up">
+              {finalImages.map((finalImage, index) => (
+                <div
+                  key={finalImage}
+                  className="block mx-auto overflow-hidden"
+                  id={`gallery-${index}`}
+                >
+                  <Image
+                    src={finalImage}
+                    alt={`Gallery Image: ${index}`}
+                    className={`rounded-lg object-cover block mb-6 mx-auto h-full w-full ${
+                      index % 2 == 0 ? "aspect-square" : "aspect-video"
+                    }`}
                     sizes="100%"
                     width={0}
                     height={0}
@@ -137,7 +172,7 @@ export default function GallerySection({
                   >
                     {!!finalImage && (
                       <div className="block no-underline album-item mx-auto relative group transition-all hover:skew-x-[-2deg] hover:rotate-[-2deg]">
-                        <Fade direction="down">
+                        <Fade direction="down" triggerOnce>
                           <Image
                             src={finalImage}
                             alt=""

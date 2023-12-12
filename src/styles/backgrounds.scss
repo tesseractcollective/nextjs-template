@@ -71,6 +71,10 @@
   background: linear-gradient(180deg, #000 0%,var(--secondary) 100%);
 }
 
+.bg-fade-third-dark {
+  background: linear-gradient(180deg, var(--tertiary) 0%,var(--background) 100%);
+}
+
 .bg-paper {
 	background-color: #e5e5f7;
 	background-image:  linear-gradient(var(--background) 2px, transparent 2px), linear-gradient(90deg, var(--background) 2px, transparent 2px), linear-gradient(var(--background) 1px, transparent 1px), linear-gradient(90deg, var(--background) 1px, #e5e5f7 1px);

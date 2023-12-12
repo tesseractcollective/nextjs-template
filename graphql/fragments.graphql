@@ -57,6 +57,8 @@ fragment blogFields on Blog {
   blogCallToActionLink
   blogGallery {
     url
+    height
+    width
   }
   videoBox {
     videoTitle
@@ -265,6 +267,8 @@ fragment eventFields on Event {
   eventGallery {
     url
     id
+    height
+    width
   }
 }
 
@@ -363,6 +367,8 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     galleryLayout
     gallery(first: 500) {
       url
+      height
+      width
     }
     standOutText
     iFrameTitle
@@ -719,9 +725,13 @@ fragment profileFields on Profile {
   }
   imageGallery(first: 100) {
     url
+    height
+    width
   }
   portfolioGallery(first: 100) {
     url
+    height
+    width
   }
   profileJson
   videoBox {
@@ -770,6 +780,8 @@ fragment productFields on Product {
   vendor
   gallery {
     url
+    height
+    width
   }
   price
   sku

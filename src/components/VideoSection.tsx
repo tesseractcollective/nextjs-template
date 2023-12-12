@@ -97,7 +97,7 @@ export default function VideoSection({
                   );
                   return (
                     <SwiperSlide key={video?.videoTitle}>
-                      <Fade direction="up">
+                      <Fade direction="down">
                         <VideoBox
                           videoTitle={video?.videoTitle || undefined}
                           vimeoVideoId={video?.vimeoVideoId || undefined}
