@@ -231,7 +231,7 @@ export default function HeroMediaSliderSection({
                       {heroMediaSliderItem.mediaType === "expand" && (
                         <Image
                           src={heroMediaSliderItem.sliderMediaBackground.url}
-                          className={`transition-all hero-media-image object-cover h-full w-full object-center-top no-clip absolute inset-0 ${
+                          className={`transition-all hero-media-image object-cover h-full w-full object-center-top no-clip absolute inset-0 duration-300 ${
                             scroll ? "clip-image grayscale" : "grayscale-0"
                           }`}
                           alt=""
@@ -279,7 +279,7 @@ export default function HeroMediaSliderSection({
           )}
           {!!heroMediaSliderData[0]?.displaySocialMedia && (
             <SocialMediaIcons
-            fadeDirection="up"
+              fadeDirection="up"
               siteLibrary={siteLibrary}
               cssClass="absolute z-[80] bottom-10 left-0 right-0 mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center gap-x-2 !text-secondary"
             />

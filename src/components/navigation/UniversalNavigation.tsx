@@ -94,7 +94,7 @@ export default function UniversalNavigation({
                 leaveTo="-translate-y-full blur-xl"
               >
                 <Dialog.Panel
-                  className="relative flex w-full max-h-[100vh] flex-col overflow-y-auto pb-12 shadow-xl border-primary border-t bg-motion-dark
+                  className="relative flex w-full max-h-[100vh] flex-col overflow-y-auto pb-12 shadow-xl border-primary border-t bg-bg
                  transition-all h-100vh items-center justify-center border"
                 >
                   <div className="absolute right-2 max-w-max bg-bg aspect-1 border-secondary border top-[6px]">

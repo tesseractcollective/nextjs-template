@@ -349,9 +349,13 @@ a.hover-chevron {
 
 
 .no-clip {
-  clip-path: inset(0% 0% 0% 0%);
+  // clip-path: inset(0% 0% 0% 0%);
+  // background: var(--primary);
+  opacity: 1;
   &.clip-image {
-    clip-path: inset(150px 150px 150px 150px);
+    opacity: 0;
+    // clip-path: inset(150px 150px 150px 150px);
+    // background: var(--background);
   }
 }
 
