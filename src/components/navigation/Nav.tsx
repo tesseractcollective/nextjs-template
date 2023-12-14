@@ -42,6 +42,23 @@ export default function Nav({
         )
     ) || navigations[0];
 
+  // ** Navigation Layout Style
+  // vertical √
+  // universal √
+  // between
+  // center
+  // circle
+  // dashboard
+  // dual
+  // mega
+  // minimal
+  // progress
+  // reverse
+  // space
+  // start
+  // transparent
+  // vertical
+
   if (navigation.navigationLayoutStyle === "dual")
     return (
       <DualNavigation
