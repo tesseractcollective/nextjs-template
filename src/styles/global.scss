@@ -915,6 +915,9 @@ h4, h5, h6  {color: var(--text);}
   @media only screen and (min-width: 540px) {
     scale: 1;
   } 
+  &.height-init {
+    height: initial !important;
+  }
 }
 
 .select-none {

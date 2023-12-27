@@ -809,7 +809,7 @@ a.hover-chevron {
     font-size: 36px !important;
     transition: all 200ms ease;
     @media screen and (min-width: 990px) {
-      font-size: 60px !important;
+      font-size: 68px !important;
     }
     line-height: 1 !important;
     padding: 40px !important;
@@ -825,5 +825,15 @@ a.hover-chevron {
   .animate-word-shadow {
     position: absolute !important;
     opacity: 20% !important;
+  }
+}
+
+.animate-paragraph-center {
+  .animate-paragraph-wrapper {
+    .animate-paragraph {
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }

@@ -112,6 +112,10 @@ fragment siteLibraryFields on SiteLibrary {
   appleMusicLink
   soundcloudLink
   pinterestLink
+  smartMusicLink
+  googleMapLink
+  yelpLink
+  shopLink
   githubLink
   linkedinLink
   siteCssBodyClass

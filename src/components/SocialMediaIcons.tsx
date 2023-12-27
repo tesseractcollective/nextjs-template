@@ -6,6 +6,8 @@ import {
   faEnvelope,
   faPhone,
   faCalendar,
+  faMusic,
+  faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faSpotify,
@@ -20,6 +22,7 @@ import {
   faThreads,
   faXTwitter,
   faGoogle,
+  faYelp,
 } from "@fortawesome/free-brands-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import ReactGA from "react-ga4";
@@ -45,6 +48,10 @@ export interface SocialMediaIconsProps {
   whatsappLinkProp?: string;
   phoneLinkProp?: string;
   githubLinkProp?: string;
+  smartMusicLinkProp?: string;
+  googleMapLinkProp?: string;
+  yelpLinkProp?: string;
+  shopLinkProp?: string;
   avatar?: string;
   name?: string;
   fade?: boolean;
@@ -70,6 +77,10 @@ export default function SocialMediaIcons({
   calendlyLinkProp,
   phoneLinkProp,
   githubLinkProp,
+  smartMusicLinkProp,
+  googleMapLinkProp,
+  yelpLinkProp,
+  shopLinkProp,
   cssClass,
   fade,
   displayVcf,
@@ -99,6 +110,10 @@ export default function SocialMediaIcons({
         githubLinkProp ||
         displayVcf ||
         phoneLinkProp ||
+        smartMusicLinkProp ||
+        googleMapLinkProp ||
+        yelpLinkProp ||
+        shopLinkProp ||
         fadeDirection) && (
         <nav className={`social-media-icons-element ${cssClass}`}>
           <Fade
@@ -261,6 +276,29 @@ export default function SocialMediaIcons({
                   className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Threads</span>
+              </a>
+            )}
+            {(smartMusicLinkProp || siteLibrary?.smartMusicLink) && (
+              <a
+                href={siteLibrary?.smartMusicLink || smartMusicLinkProp}
+                target="_blank"
+                title="Music"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                rel="noreferrer"
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action:
+                      siteLibrary?.smartMusicLink || smartMusicLinkProp || "",
+                    label: siteLibrary?.smartMusicLink || smartMusicLinkProp,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={faMusic as IconProp}
+                  className="fa-fw h-5 w-5 flex aspect-1"
+                />
+                <span className="sr-only">Music</span>
               </a>
             )}
             {(siteLibrary?.appleMusicLink || appleMusicLinkProp) && (
@@ -494,9 +532,15 @@ export default function SocialMediaIcons({
                 <span className="sr-only">Calendly</span>
               </a>
             )}
-            {siteLibrary?.siteLibraryJson?.googleMapLink && (
+            {(siteLibrary?.siteLibraryJson?.googleMapLink ||
+              googleMapLinkProp ||
+              siteLibrary?.googleMapLink) && (
               <a
-                href={siteLibrary.siteLibraryJson.googleMapLink}
+                href={
+                  siteLibrary?.siteLibraryJson.googleMapLink ||
+                  googleMapLinkProp ||
+                  siteLibrary?.googleMapLink
+                }
                 target="_blank"
                 className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Google Map"
@@ -504,8 +548,14 @@ export default function SocialMediaIcons({
                 onClick={() =>
                   ReactGA.event({
                     category: "Link",
-                    action: siteLibrary.siteLibraryJson.googleMapLink,
-                    label: siteLibrary.siteLibraryJson.googleMapLink,
+                    action:
+                      siteLibrary?.siteLibraryJson.googleMapLink ||
+                      googleMapLinkProp ||
+                      siteLibrary?.googleMapLink,
+                    label:
+                      siteLibrary?.siteLibraryJson.googleMapLink ||
+                      googleMapLinkProp ||
+                      siteLibrary?.googleMapLink,
                   })
                 }
               >
@@ -514,6 +564,50 @@ export default function SocialMediaIcons({
                   className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Google Map</span>
+              </a>
+            )}
+            {(siteLibrary?.yelpLink || yelpLinkProp) && (
+              <a
+                href={siteLibrary?.yelpLink || yelpLinkProp}
+                target="_blank"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                title="Yelp"
+                rel="noreferrer"
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action: siteLibrary?.yelpLink || yelpLinkProp || "",
+                    label: siteLibrary?.yelpLink || yelpLinkProp,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={faYelp as IconProp}
+                  className="fa-fw h-5 w-5 flex aspect-1"
+                />
+                <span className="sr-only">Yelp</span>
+              </a>
+            )}
+            {shopLinkProp && (
+              <a
+                href={shopLinkProp}
+                target="_blank"
+                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                title="Shop"
+                rel="noreferrer"
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action: shopLinkProp,
+                    label: shopLinkProp,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={faShoppingBag as IconProp}
+                  className="fa-fw h-5 w-5 flex aspect-1"
+                />
+                <span className="sr-only">Yelp</span>
               </a>
             )}
             {displayVcf && (

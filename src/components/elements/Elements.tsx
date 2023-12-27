@@ -15,7 +15,7 @@ import Timeline from "@/components/elements/Timeline";
 import MapBoxMap from "@/components/elements/MapBoxMap";
 import MapBoxesMap from "@/components/elements/MapBoxesMap";
 import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
-import CardLocations from "@/components/elements/CardLocations";
+import CardLocations from "@/components/elements/CardLocations";     
 import DrumPadComponent from "./DrumPadComponent";
 import BandsInTownApi from "@/components/BandsInTownApi";
 import MaskCursor from "./MaskCursor";
