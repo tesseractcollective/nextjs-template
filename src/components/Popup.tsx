@@ -91,26 +91,29 @@ export default function Popup({ layout }: PopupProps) {
         <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
+            enter="transition-opacity ease-linear duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-200"
+            leave="transition-opacity ease-linear duration-300"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-[#00000032] transition-opacity" />
+            <div
+              className="fixed inset-0 bg-[#000000c7] opacity-80 backdrop-blur-xl"
+              aria-hidden="true"
+            />
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 overflow-y-auto w-full">
             <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enter="transition ease-in-out duration-300 transform"
+                enterFrom="translate-y-full blur-xs"
+                enterTo="-translate-y-0 blur-0"
+                leave="transition ease-in-out duration-300 transform"
+                leaveFrom="translate-y-0 blur-0"
+                leaveTo="translate-y-full blur-xs"
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex">
                   {!!header && (

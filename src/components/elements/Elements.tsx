@@ -15,7 +15,7 @@ import Timeline from "@/components/elements/Timeline";
 import MapBoxMap from "@/components/elements/MapBoxMap";
 import MapBoxesMap from "@/components/elements/MapBoxesMap";
 import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
-import CardLocations from "@/components/elements/CardLocations";     
+import CardLocations from "@/components/elements/CardLocations";
 import DrumPadComponent from "./DrumPadComponent";
 import BandsInTownApi from "@/components/BandsInTownApi";
 import MaskCursor from "./MaskCursor";
@@ -99,12 +99,19 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
         !!siteLibrary?.mapKey &&
         !!mapLatLong?.longitude &&
         !!mapLatLong?.longitude &&
-        !!siteLibrary?.metaAppleTouchIcon && (
+        !!siteLibrary?.metaAppleTouchIcon &&
+        !!siteLibrary?.title &&
+        !!siteLibrary?.address &&
+        !!siteLibrary?.googleMapLink && (
           <MapBoxMap
             lat={mapLatLong.latitude}
             long={mapLatLong.longitude}
             mapKey={siteLibrary.mapKey}
             icon={siteLibrary?.metaAppleTouchIcon.url}
+            googleMapLink={siteLibrary?.googleMapLink}
+            yelpLink={siteLibrary?.yelpLink || ""}
+            address={siteLibrary?.address}
+            siteName={siteLibrary?.title}
           />
         )}
       {!!siteLibrary?.mapKey &&

@@ -100,6 +100,7 @@ fragment siteLibraryFields on SiteLibrary {
   siteId
   title
   isSpanish
+  address
   facebookPixelId
   facebookLink
   tikTokLink

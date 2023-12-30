@@ -1,5 +1,8 @@
+import { useState } from "react";
+import Image from "next/image";
 import Map, {
   Marker,
+  Popup,
   FullscreenControl,
   GeolocateControl,
   NavigationControl,
@@ -9,34 +12,68 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
 
 interface MapBoxMapProps {
   lat: number;
   long: number;
   mapKey: string;
   icon?: string;
+  googleMapLink?: string;
+  yelpLink?: string;
+  address?: string;
+  siteName?: string;
 }
 
-function MapBoxMap({ lat, long, mapKey, icon }: MapBoxMapProps) {
-  if (!mapKey) return null;
+function MapBoxMap({
+  lat,
+  long,
+  mapKey,
+  icon,
+  googleMapLink,
+  yelpLink,
+  address,
+  siteName,
+}: MapBoxMapProps) {
+  const [popupInfo, setPopupInfo] = useState<Location | null>();
+  const [selectedMarkerIndex, setSelectedMarkerIndex] = useState<number | null>(
+    null
+  );
+
+  if (!mapKey || !lat || !long) {
+    return null;
+  }
+
   return (
     <Map
       mapboxAccessToken={mapKey}
       initialViewState={{
         longitude: long,
         latitude: lat,
-        zoom: 15,
+        zoom: 14,
       }}
       scrollZoom={false}
-      style={{ height: "400px" }}
+      style={{
+        height: "400px",
+        width: "100%",
+        display: "block",
+        borderRadius: "16px",
+      }}
       mapStyle="mapbox://styles/mapbox/streets-v12"
     >
       <GeolocateControl position="top-left" />
       <FullscreenControl position="top-left" />
       <NavigationControl position="top-left" showCompass={false} />
       <ScaleControl />
-      <Marker longitude={long} latitude={lat} anchor="bottom">
+      <Marker
+        longitude={long}
+        latitude={lat}
+        anchor="bottom"
+        onClick={(e) => {
+          e.originalEvent.stopPropagation();
+          setPopupInfo(location);
+          setSelectedMarkerIndex(0);
+        }}
+      >
         <div className="relative">
           <FontAwesomeIcon
             icon={faLocationDot as IconProp}
@@ -54,6 +91,39 @@ function MapBoxMap({ lat, long, mapKey, icon }: MapBoxMapProps) {
           )}
         </div>
       </Marker>
+      {popupInfo && (
+        <Popup
+          anchor="top"
+          longitude={Number(long)}
+          latitude={Number(lat)}
+          onClose={() => setPopupInfo(null)}
+        >
+          <div className="flex flex-col p-2">
+            {!!siteName && (
+              <span className="font-bold text-md">{siteName}</span>
+            )}
+            {!!address && <span>{address}</span>}
+            {!!googleMapLink && (
+              <a
+                target="_blank"
+                href={googleMapLink}
+                className="bg-primary p-1 mt-2 text-center rounded-md font-bold uppercase text-text-color"
+              >
+                Google Map
+              </a>
+            )}
+            {!!yelpLink && (
+              <a
+                target="_blank"
+                href={yelpLink}
+                className="bg-primary p-1 mt-2 text-center rounded-md font-bold uppercase text-text-color"
+              >
+                Yelp
+              </a>
+            )}
+          </div>
+        </Popup>
+      )}
     </Map>
   );
 }

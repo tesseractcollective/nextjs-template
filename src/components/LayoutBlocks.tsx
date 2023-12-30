@@ -8,6 +8,7 @@ import Popup from "@/components/Popup";
 import LayoutBlockSections from "@/components/LayoutBlockSections";
 import { Event } from "@/components/Calendar/calendarHelpers";
 import Link from "next/link";
+import LinkItem from "./LinkItem";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -31,9 +32,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
         <div className="h-100vh flex items-center justify-center">
           <div className="body-parsed-text text-center items-center justify-center flex-co">
             <h1 className="text-text-color">404 - Page Not Found</h1>
-            <Link href="/" className="text-link">
-              Return Home
-            </Link>
+            <LinkItem link="/" cssClass="text-link" label="Return Home" />
           </div>
         </div>
       </div>

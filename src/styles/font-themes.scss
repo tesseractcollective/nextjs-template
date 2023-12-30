@@ -111,6 +111,16 @@
   }
 }
 
+.garamond-theme {
+  h1, h2, h3, h1 *, h2 *, h3 * {
+    font-family: 'EB Garamond', serif !important;
+    font-weight: 400 !important;
+  }
+  h4, h5, h6, span, div, p,  button:not([class^="lg-"]), button, a, p strong {
+    font-family: 'EB Garamond', serif !important;
+  }
+}
+
 .railroad-theme {
   @import url("https://use.typekit.net/zkg3squ.css");
   h1, h2, h3, h1 *, h2 *, h3 * {
