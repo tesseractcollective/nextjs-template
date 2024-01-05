@@ -27,7 +27,7 @@ export default function CardLocations({
   if (!cardLocationsData) return null;
 
   return (
-    <div className={`element-card-location`}>
+    <div className={`element-card-location px-4`}>
       {cardLocationsData?.length >= 1 && (
         <div className="py-6 flex flex-col justify-center sm:py-12">
           <div className="py-4 max-w-8xl sm:mx-auto w-full px-2 sm:px-0">
@@ -36,7 +36,7 @@ export default function CardLocations({
                 <div
                   // Use a more concise key for mapping
                   key={index}
-                  className="relative flex items-center space-x-3 rounded-lg border border-bg-secondary bg-text-color px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-bg-secondary focus-within:ring-offset-2 hover:border-primary group"
+                  className="relative flex flex-col lg:flex-row items-center space-x-3 rounded-lg border border-bg-secondary bg-text-color px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-bg-secondary focus-within:ring-offset-2 hover:border-primary group"
                 >
                   <div className="flex-shrink-0">
                     <Image
@@ -52,7 +52,7 @@ export default function CardLocations({
                     {/* Replace anchor tag with a div or appropriate HTML element */}
                     <div className="">
                       {/* <span className="absolute inset-0" aria-hidden="true" /> */}
-                      <p className="text-sm text-dark font-bold group-hover:text-primary">
+                      <p className="text-xs md:text-sm text-dark font-bold group-hover:text-primary text-center lg:text-left">
                         {cardLocationsItem.label}
                       </p>
                       {!!cardLocationsItem.googleMapLink && (
@@ -60,21 +60,21 @@ export default function CardLocations({
                           href={cardLocationsItem.googleMapLink}
                           target="_blank"
                           rel="noreferrer"
-                          className="flex flex-row items-center transition-all cursor-pointer text-sm text-dark opacity-90 font-medium hover:cursor-pointer focus:outline-none group-hover:text-primary hover:text-primary"
+                          className="flex flex-row items-center justify-center lg:justify-start transition-all cursor-pointer text-sm text-dark opacity-90 font-medium hover:cursor-pointer focus:outline-none group-hover:text-primary hover:text-primary"
                         >
                           <span
                             className="absolute inset-0"
                             aria-hidden="true"
                           />
                           <MapPinIcon
-                            className="h-6 w-6 text-dark mr-1 ml-0 px-0 group-hover:text-primary"
+                            className="h-4 lg:h-6 w-4 lg:w-6 text-dark mr-1 ml-0 px-0 group-hover:text-primary"
                             aria-hidden="true"
                           />
                           <p className="flex flex-col">
-                            <span className="truncate text-sm text-dark opacity-90 font-medium uppercase group-hover:text-primary">
+                            <span className="truncate text-xs lg:text-sm text-dark opacity-90 font-medium uppercase group-hover:text-primary">
                               {cardLocationsItem.address}
                             </span>
-                            <span className="truncate text-sm text-dark opacity-90 font-medium uppercase group-hover:text-primary">
+                            <span className="truncate text-xs lg:text-sm text-dark opacity-90 font-medium uppercase group-hover:text-primary">
                               {`${cardLocationsItem.city}, ${cardLocationsItem.state}`}
                             </span>
                           </p>

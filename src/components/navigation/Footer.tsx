@@ -99,7 +99,6 @@ function Footer({
                       alt=""
                       width={0}
                       height={0}
-                      priority
                       sizes="100%"
                     />
                   )}
@@ -186,7 +185,6 @@ function Footer({
                       alt=""
                       width={0}
                       height={0}
-                      priority
                       sizes="100%"
                     />
                   )}

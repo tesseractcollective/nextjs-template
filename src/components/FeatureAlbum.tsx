@@ -351,7 +351,6 @@ export default function FeatureAlbum({
                         className="mx-auto mb-2 w-full block box-shadow border-round grayscale-0 hover:grayscale group-hover:grayscale group-focus:grayscale transition-all px-0"
                         height={400}
                         width={400}
-                        priority
                         style={{
                           maxHeight: "420px",
                           maxWidth: "420px",
@@ -423,7 +422,6 @@ export default function FeatureAlbum({
                               className="mx-auto my-8 w-full block box-shadow border-round grayscale hover:grayscale-0 group-hover:grayscale-0 group-focus:grayscale transition-all"
                               height={400}
                               width={400}
-                              priority
                               style={{
                                 maxHeight: "450px",
                                 maxWidth: "450px",
@@ -472,9 +470,6 @@ export default function FeatureAlbum({
                           className="mx-auto mb-2 w-full block box-shadow-small border-round grayscale-0 hover:grayscale group-hover:grayscale group-focus:grayscale transition-all"
                           height={400}
                           width={400}
-                          // placeholder="blur"
-                          // blurDataURL="/assets/square-placeholder.jpg"
-                          priority
                           style={{
                             maxHeight: "400px",
                             maxWidth: "400px",
@@ -482,10 +477,6 @@ export default function FeatureAlbum({
                             aspectRatio: 1,
                           }}
                         />
-
-                        {/* <p className="text-sm font-semibold mt-0 mb-4 text-center uppercase group-hover:text-primary group-focus:text-primary transition-all">
-                          {albumItem.title}
-                        </p> */}
                       </Link>
                     )}
                   </SwiperSlide>

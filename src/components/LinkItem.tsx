@@ -58,30 +58,28 @@ export default function LinkItem({
           className={cssClass || ""}
           onClick={handleEvent}
         >
-          {isLoading ? (
-            <div className="relative top-0 right-0 text-primary">
+          {isLoading && (
+            <div className="relative text-primary z-10">
               <FontAwesomeIcon
                 icon={faSpinner as IconProp}
-                className="animate-spin fa-fw h-5 w-5 flex aspect-1 absolute bottom-2 left-0 right-0"
+                className="fa-fw h-3 w-3 flex aspect-1 -top-4 -left-2 animate-spin absolute"
               />
             </div>
-          ) : (
-            children
           )}
+          {children}
           {!!label && <>{label}</>}
         </a>
       ) : (
         <Link href={link} className={cssClass || ""} onClick={handleEvent}>
-          {isLoading ? (
+          {isLoading && (
             <div className="relative text-primary z-10">
               <FontAwesomeIcon
                 icon={faSpinner as IconProp}
-                className="fa-fw h-5 w-5 flex aspect-1 top-2 left-0 animate-spin"
+                className="fa-fw h-3 w-3 flex aspect-1 -top-4 -left-2 animate-spin absolute"
               />
             </div>
-          ) : (
-            children
           )}
+          {children}
           {!!label && <>{label}</>}
         </Link>
       )}

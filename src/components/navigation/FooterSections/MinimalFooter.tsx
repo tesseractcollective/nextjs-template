@@ -64,7 +64,6 @@ function MinimalFooter({
                       alt=""
                       width={0}
                       height={0}
-                      priority
                       sizes="100%"
                     />
                   )}
@@ -105,7 +104,6 @@ function MinimalFooter({
                                     alt=""
                                     width={0}
                                     height={0}
-                                    priority
                                     sizes="100%"
                                     style={{ width: "100%" }}
                                   />
@@ -152,7 +150,7 @@ function MinimalFooter({
                       alt=""
                       width={0}
                       height={0}
-                      priority
+                      
                       sizes="100%"
                     />
                   )}
@@ -193,7 +191,6 @@ function MinimalFooter({
                                     alt=""
                                     width={0}
                                     height={0}
-                                    priority
                                     sizes="100%"
                                     style={{ width: "100%" }}
                                   />
@@ -242,7 +239,7 @@ function MinimalFooter({
                 width={0}
                 height={0}
                 sizes="100%"
-                priority
+                
               />
               <span className="sr-only">{secondaryName}</span>
             </a>

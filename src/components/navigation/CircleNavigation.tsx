@@ -130,7 +130,7 @@ export default function CircleNavigation({
                           <>
                             <span className="sr-only">{title}</span>
                             <Image
-                              className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
+                              className="w-[80px] lg:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
                               src={navigation.navigationLogo?.url}
                               alt=""
                               width={0}
@@ -294,15 +294,15 @@ export default function CircleNavigation({
         <header className="overflow-hidden relative z-2">
           <nav
             aria-label="Top"
-            className={`px-4 md:px-12 w-full grid grid-cols-2 md:grid-cols-3 transition-all mx-auto ${
+            className={`px-4 lg:px-12 w-full grid grid-cols-2 lg:grid-cols-3 transition-all mx-auto ${
               small ? "h-16 mb-0" : "h-24 mb-0"
             }`}
           >
             {/* start */}
             <Popover.Group
-              className={`inset-x-0 bottom-0 z-[0] hidden md:flex  flex-row items-center justify-between w-full max-w-max`}
+              className={`inset-x-0 bottom-0 z-[0] hidden lg:flex  flex-row items-center justify-between w-full max-w-max`}
             >
-              <div className="hidden md:flex h-full justify-start space-x-8">
+              <div className="hidden lg:flex h-full justify-start space-x-8">
                 {!!items &&
                   items.length >= 1 &&
                   items
@@ -326,8 +326,8 @@ export default function CircleNavigation({
                                           : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
                                         `relative z-10 -mb-px flex items-center pt-px transition-all duration-200 ease-out uppercase font-semibold ${
                                           small
-                                            ? "text-xs md:text-sm"
-                                            : "text-xs sm:text-sm md:text-base"
+                                            ? "text-xs lg:text-sm"
+                                            : "text-xs sm:text-sm lg:text-base"
                                         } ${mainNavigationItem?.cssClass} ${
                                           mainNavigationItem.cssClass
                                         }`
@@ -362,7 +362,7 @@ export default function CircleNavigation({
                                     leaveFrom="opacity-100"
                                     leaveTo="opacity-0"
                                   >
-                                    <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
+                                    <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm lg:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
                                       {({ close }) => (
                                         <>
                                           <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md max-w-8xl">
@@ -462,8 +462,8 @@ export default function CircleNavigation({
                               label={mainNavigationItem?.label}
                               cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold ${
                                 small
-                                  ? "text-xs md:text-sm"
-                                  : "text-xs sm:text-sm md:text-base"
+                                  ? "text-xs lg:text-sm"
+                                  : "text-xs sm:text-sm lg:text-base"
                               } ${mainNavigationItem?.cssClass}`}
                               sameTab={mainNavigationItem?.sameTab}
                             />
@@ -478,7 +478,7 @@ export default function CircleNavigation({
 
             <Link
               href="/"
-              className={`cursor-pointer transition-all flex items-center justify-center mr-auto md:mx-auto psuedo-circle max-w-[100px] ${
+              className={`cursor-pointer transition-all flex items-center justify-center mr-auto lg:mx-auto psuedo-circle max-w-[100px] ${
                 small ? "small-psuedo-circle max-w-[80px]" : ""
               }`}
               id={`nav-logo-desktop`}
@@ -514,18 +514,18 @@ export default function CircleNavigation({
 
             {/* START Desktop Flyout menus */}
             {!!primaryItems && primaryItems.length >= 1 && (
-              <div className="h-full flex flex-col-reverse sm:flex-row items-center justify-center md:justify-end gap-x-4 max-w-max ml-auto gap-y-1 md:gap-y-0">
+              <div className="h-full flex flex-col-reverse sm:flex-row items-center justify-center lg:justify-end gap-x-4 max-w-max ml-auto gap-y-1 lg:gap-y-0">
                 {primaryItems.map((mainNavigationItem) => (
                   <LinkItem
                     key={mainNavigationItem?.link}
                     link={mainNavigationItem?.link}
                     label={mainNavigationItem?.label}
-                    cssClass={`flex justify-center  items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
+                    cssClass={`flex justify-center  items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 lg:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
                       mainNavigationItem?.cssClass
                     } ${
                       small
-                        ? "text-xs md:text-sm py-[0.15rem] md:py-1 bg-bg"
-                        : "text-xs sm:text-sm md:text-base py-1 md:py-2 bg-bg-secondary"
+                        ? "text-xs lg:text-sm py-[0.15rem] lg:py-1 bg-bg"
+                        : "text-xs sm:text-sm lg:text-base py-1 lg:py-2 bg-bg-secondary"
                     }`}
                     sameTab={mainNavigationItem?.sameTab}
                   />
@@ -543,7 +543,7 @@ export default function CircleNavigation({
         </header>
       </div>
       <div className="h-24"></div>
-      <Zoom className="fixed bottom-10 right-5 md:hidden z-[999]">
+      <Zoom className="fixed bottom-10 right-5 lg:hidden z-[999]">
         <button
           type="button"
           className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-tertiary transition-all group hover:rotate-[-30deg] relative aspect-1 bg-small"

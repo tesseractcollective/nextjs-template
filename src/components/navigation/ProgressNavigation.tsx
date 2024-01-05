@@ -16,6 +16,7 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
+import { MinusIcon } from "@heroicons/react/20/solid";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -105,12 +106,9 @@ export default function ProgressNavigation({
               leaveFrom="-translate-y-0 blur-0"
               leaveTo="translate-y-full blur-xl"
             >
-              <Dialog.Panel
-                className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-4 shadow-xl border-t-primary border-t bg-bg
-                 transition-all"
-              >
+              <Dialog.Panel className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-2 shadow-xl border-t-primary border-t bg-bg transition-all rounded-t-xl">
                 <Fade direction="down" triggerOnce>
-                  <div className="flex mt-4 ml-4 px-4 pb-2 pt-5 items-center justify-start">
+                  <div className="flex mt-4 ml-4 px-4 pb-2 pt-4 items-center justify-start">
                     <Link
                       href="/"
                       onClick={() => {
@@ -121,7 +119,7 @@ export default function ProgressNavigation({
                           label: "Visit Home",
                         });
                       }}
-                      className="cursor-pointer transition-all hover:skew-x-[8deg] hover:skew-y-[8deg]"
+                      className="cursor-pointer transition-all hover:tracking-widest"
                       id={`nav-logo-mobile-panel`}
                     >
                       {navigation?.navigationLogo ? (
@@ -174,7 +172,7 @@ export default function ProgressNavigation({
                                           key={item?.link}
                                           link={item?.link}
                                           label={item?.label}
-                                          cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
+                                          cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary focus:tracking-widest text-left flex flex-row items-center ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
                                           <>
@@ -216,7 +214,7 @@ export default function ProgressNavigation({
                                   key={mainNavigationItem.label}
                                   link={mainNavigationItem.link || "/"}
                                   sameTab={mainNavigationItem?.sameTab}
-                                  cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
+                                  cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary focus:tracking-widest text-left flex flex-row items-center ${mainNavigationItem?.cssClass}`}
                                   onClick={() => setOpen(false)}
                                 >
                                   <span>{mainNavigationItem.label}</span>
@@ -260,10 +258,10 @@ export default function ProgressNavigation({
                       )}
                     </div>
                   </div>
-                  <div className="flex justify-end items-center w-full px-6">
+                  <div className="flex justify-center items-center w-full px-0">
                     <button
                       type="button"
-                      className="flex items-center justify-center rounded-md p-2 text-text-color group flex-col text-center ml-auto max-w-max text-xs"
+                      className="flex items-center justify-center rounded-md py-2 text-text-color group flex-col text-center mx-auto max-w-max text-xs"
                       onClick={() => setOpen(false)}
                     >
                       <XMarkIcon
@@ -337,7 +335,7 @@ export default function ProgressNavigation({
                 </Link>
               </div>
 
-              <div className="hidden h-full lg:flex">
+              <div className="hidden h-full lg:flex mx-auto">
                 {/* START Desktop Flyout menus */}
                 <Popover.Group className="inset-x-0 bottom-0 px-4 z-[99999]">
                   <div className="flex h-full justify-center space-x-8">
@@ -529,7 +527,7 @@ export default function ProgressNavigation({
 
               <Link
                 href="/"
-                className="lg:hidden mx-auto cursor-pointer max-w-[200px]"
+                className="lg:hidden cursor-pointer max-w-[200px]"
                 id={`nav-logo-mobile-${title}`}
                 onClick={() => {
                   ReactGA.event({
@@ -543,7 +541,7 @@ export default function ProgressNavigation({
                   <>
                     <span className="sr-only">{title}</span>
                     <Image
-                      className={`w-full max-w-xs mx-auto cursor-pointer object-contain transition-all ${
+                      className={`w-full max-w-[140px] mx-auto cursor-pointer object-contain transition-all ${
                         small ? "h-7" : "h-10"
                       }`}
                       src={navigation.navigationLogo?.url}
@@ -561,10 +559,10 @@ export default function ProgressNavigation({
                 )}
               </Link>
               {/* Mobile menu bar */}
-              <div className="flex flex-1 items-center justify-between lg:hidden max-w-max">
+              <div className="flex flex-1 items-center justify-between lg:hidden max-w-max mx-auto">
                 <button
                   type="button"
-                  className="ml-2 rounded-md px-2 py-1 text-text-color transition group"
+                  className="mx-auto text-text-color transition group relative w-8 aspect-1 flex"
                   onClick={() => {
                     setOpen(true);
                     ReactGA.event({
@@ -576,22 +574,20 @@ export default function ProgressNavigation({
                 >
                   <span className="sr-only">Open menu</span>
                   <Bars2Icon
-                    className={`group-hover:text-primary transition-all ${
-                      small ? "h-4 w-4" : "h-6 w-6"
-                    }`}
+                    className={`group-hover:text-primary transition-all w-full min-w-4  h-10`}
                     aria-hidden="true"
                   />
                 </button>
               </div>
 
               {!!primaryItems && primaryItems.length >= 1 && (
-                <div className="flex flex-1 items-center justify-end max-w-max py">
+                <div className="flex flex-1 items-center justify-end max-w-max">
                   {primaryItems.map((mainNavigationItem) => (
                     <LinkItem
                       key={mainNavigationItem?.link}
                       link={mainNavigationItem?.link}
                       label={mainNavigationItem?.label}
-                      cssClass={`flex items-center font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all capitalize font-semibold ${
+                      cssClass={`flex items-center font-bold text-primary opacity-90 hover:text-text-color hover:opacity-100 transition-all capitalize font-semibold border px-2 py-1 border-primary rounded-full ${
                         small
                           ? "text-xs md:text-sm"
                           : "text-xs sm:text-sm md:text-base"

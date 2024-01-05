@@ -28,7 +28,7 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
   if (!page?.layoutBlocks) return <></>;
   return (
     <div className="relative">
-      {page.layoutBlocks && page.layoutBlocks.length >= 1 && (
+      {page.layoutBlocks?.length >= 1 && (
         <>
           {page.layoutBlocks.map((layoutBlock, parentIndex) => {
             const totalColumns = layoutBlock.layoutBlockColumns.length;
@@ -38,10 +38,12 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
             const styleBlockBGColor = layoutBlock?.backgroundColor?.hex
               ? { background: layoutBlock.backgroundColor?.hex }
               : {};
+
+            const rowKey = `layout-block-row-${parentIndex}`;
             return (
               <div
-                key={`layout-block-row-${parentIndex++}`}
-                id={`layout-block-row-${parentIndex++ + 1}`}
+                key={rowKey}
+                id={`${rowKey}-${parentIndex + 1}`}
                 className={`w-full flex flex-wrap ${layoutBlock.cssClass} ${
                   layoutBlock?.backgroundImage?.url
                     ? "background-image-featured"
@@ -56,26 +58,23 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                           backgroundImage: `url(${layoutBlockColumn.backgroundImage.url})`,
                         }
                       : {};
+
+                    const columnKey =
+                      layoutBlockColumn?.htmlId ||
+                      `layout-block-${parentIndex}-column-${index + 1}`;
                     return (
                       <div
-                        id={
-                          layoutBlockColumn?.htmlId ||
-                          `layout-block-${parentIndex}-column-${index + 1}`
-                        }
-                        key={Math.random()}
+                        id={columnKey}
+                        key={columnKey}
                         className={`${
                           layoutBlockColumn?.hideBlockColumn ? "hidden" : ""
-                        } flex justify-center mx-0 px-0 w-full flex-auto  dynamic-feature-section flex-col xl:w-${
+                        } flex justify-center mx-0 px-0 w-full flex-auto dynamic-feature-section flex-col xl:w-${
                           12 / totalColumns
-                        }/12 ${
-                          layoutBlockColumn?.cssClass
-                            ? layoutBlockColumn?.cssClass
-                            : ""
-                        } ${
+                        }/12 ${layoutBlockColumn?.cssClass || ""} ${
                           layoutBlockColumn?.backgroundImage?.url
                             ? "background-image-featured"
                             : ""
-                        } `}
+                        }`}
                         style={styleBGImage}
                       >
                         <Sections

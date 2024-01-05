@@ -116,7 +116,6 @@ export default function Blog({
                   <Image
                     src={image.url}
                     alt=""
-                    priority
                     className="object-center mx-auto h-full w-full object-cover block rounded-t-xl"
                     width={0}
                     height={0}

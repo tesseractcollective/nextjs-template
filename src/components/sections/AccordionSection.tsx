@@ -72,7 +72,6 @@ export default function Accordion({
                             <Image
                               src={item.contentImage.url}
                               alt=""
-                              priority
                               className="mx-auto block object-contain"
                               width={0}
                               height={0}

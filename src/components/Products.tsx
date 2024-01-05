@@ -187,7 +187,7 @@ export default function Products({
                   {filteredProducts.map((product) => (
                     <SwiperSlide
                       key={product.id}
-                      className="w-full md:w-72 bg-text-color shadow-md rounded-xl duration-300 hover:md:scale-95 hover:shadow-md focus-within:scale-95 focus-within:shadow-md px-1 md:px-2 overflow-hidden max-w-sm p-1 h-full self-stretch min-h-[200px]"
+                      className="w-full md:w-72 bg-text-color hover:bg-tertiary shadow-md rounded-xl duration-300 hover:md:scale-95 hover:shadow-md focus-within:scale-95 focus-within:shadow-md px-1 md:px-2 overflow-hidden max-w-sm p-1 h-full self-stretch min-h-[200px] group"
                     >
                       <LinkItem
                         cssClass="flex flex-row md:flex-col items-center justify-start md:justify-center"
@@ -225,7 +225,7 @@ export default function Products({
                                 {product.name}
                               </p>
                               {product?.description && (
-                                <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0 max-w-[200px] lg:max-w-[90%] bg-invert line-clamp-2 min-h-[60px]">
+                                <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0 max-w-[200px] lg:max-w-[90%] bg-invert line-clamp-2 min-h-[60px] group-hover:bg-tertiary">
                                   {parse(product.description.html)}
                                 </div>
                               )}
@@ -277,10 +277,10 @@ export default function Products({
               {filteredProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="w-full md:w-72 bg-text-color shadow-md rounded-xl duration-300 hover:md:scale-105 hover:shadow-xl focus-within:scale-105 focus-within:shadow-xl px-1 md:px-2 overflow-hidden max-w-sm"
+                  className="w-full md:w-72 bg-text-color hover:bg-tertiary focus-within:bg-tertiary shadow-md rounded-xl duration-300 hover:md:scale-105 hover:shadow-xl focus-within:scale-105 focus-within:shadow-xl p-1 md:p-2 overflow-hidden max-w-sm"
                 >
                   <LinkItem
-                    cssClass="flex flex-row md:flex-col items-center justify-start md:justify-center"
+                    cssClass="flex flex-row md:flex-col items-center justify-start md:justify-center px-0 mx-0"
                     link={
                       product.purchaseLink
                         ? product.purchaseLink
@@ -298,13 +298,13 @@ export default function Products({
                             ]?.url
                           }
                           alt={product.name}
-                          className="aspect-1 w-full max-w-[90px] md:max-w-full object-cover rounded-t-xl"
+                          className="aspect-1 w-full max-w-[90px] md:max-w-full object-cover rounded-t-xl block px-0 mx-0"
                           width={0}
                           height={0}
                         />
                       )}
                       <div className="px-2 md:px-4 py-3 w-full">
-                        {product?.vendor && (
+                        {!!product?.vendor && (
                           <span className="text-dark md:mr-3 uppercase text-xs">
                             {product.vendor}
                           </span>
@@ -313,9 +313,11 @@ export default function Products({
                           {product.name}
                         </p>
                         <div className="flex items-center md:my-3">
-                          <p className="text-md md:text-lg font-semibold text-bg cursor-auto">
-                            {`$${product.price}`}
-                          </p>
+                          {!!product.price && (
+                            <p className="text-md md:text-lg font-semibold text-bg cursor-auto">
+                              {`$${product.price}`}
+                            </p>
+                          )}
                           {!!product?.purchaseLink && (
                             <ArrowTopRightOnSquareIcon
                               title={product?.purchaseLink}

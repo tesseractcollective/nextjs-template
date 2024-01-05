@@ -74,7 +74,6 @@ function UniversalFooter({
                       alt=""
                       width={0}
                       height={0}
-                      priority
                       sizes="100%"
                     />
                   )}
@@ -102,7 +101,6 @@ function UniversalFooter({
                         {!!linkItem.link && (
                           <div className="max-w-max">
                             <LinkItem
-                              key={`footer-link-item-${index++}`}
                               link={linkItem?.link}
                               cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link relative ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
@@ -115,7 +113,6 @@ function UniversalFooter({
                                     alt=""
                                     width={0}
                                     height={0}
-                                    priority
                                     sizes="100%"
                                     style={{ width: "100%" }}
                                   />
@@ -162,7 +159,6 @@ function UniversalFooter({
                       alt=""
                       width={0}
                       height={0}
-                      priority
                       sizes="100%"
                     />
                   )}
@@ -190,7 +186,6 @@ function UniversalFooter({
                         {!!linkItem.link && (
                           <div className="max-w-max">
                             <LinkItem
-                              key={`footer-link-column-item-${index++}`}
                               link={linkItem?.link}
                               cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
@@ -203,7 +198,6 @@ function UniversalFooter({
                                     alt=""
                                     width={0}
                                     height={0}
-                                    priority
                                     sizes="100%"
                                     style={{ width: "100%" }}
                                   />
@@ -247,26 +241,11 @@ function UniversalFooter({
                 width={0}
                 height={0}
                 sizes="100%"
-                priority
               />
               <span className="sr-only">{secondaryName}</span>
             </a>
           )}
-          {/* {footerItems && (
-            <div className="flex flex-row items-center justify-center">
-              {footerItems.map((footerItem, index) => (
-                <LinkItem
-                  key={`${footerItem.link}-${index++}`}
-                  label={footerItem.label}
-                  link={footerItem.link}
-                  cssClass={`max-w-max my-2 mx-4 text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
-                    footerItem.cssClass ? footerItem.cssClass : ""
-                  }`}
-                  sameTab={footerItem.sameTab}
-                ></LinkItem>
-              ))}
-            </div>
-          )} */}
+
           <div className="flex flex-col md:flex-row justify-center md:justify-between w-full items-center my-0">
             <p className="text-xs text-text-color uppercase text-center md:text-left mx-auto md:ml-0 md:mr-auto opacity-70 flex items-center h-full text-[10px]">
               {`© ${new Date().getFullYear()} ${title || ""} ${
@@ -275,10 +254,10 @@ function UniversalFooter({
             </p>
             <div className="flex flex-row items-center">
               {footerItems && (
-                <div className="flex flex-row items-center justify-center slashes">
+                <div className="flex flex-row items-center justify-center slashes gap-x-2">
                   {footerItems.map((footerItem, index) => (
                     <LinkItem
-                      key={`${footerItem.link}-${index++}`}
+                      key={`footer-items-${footerItem.link}-${index++}`}
                       label={footerItem.label}
                       link={footerItem.link}
                       cssClass={`footer-link-item max-w-max my-2 mx-0 text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${

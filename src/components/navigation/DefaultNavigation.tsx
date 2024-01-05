@@ -4,7 +4,7 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
+import { Dialog, Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
@@ -74,7 +74,6 @@ export default function DefaultNavigation({
         small ? "nav-shadow-scrolled" : ""
       } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
       id="navigation"
-      // style={{ backgroundOpacity: "50%" }}
     >
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
@@ -184,7 +183,7 @@ export default function DefaultNavigation({
                                           key={item?.link}
                                           link={item?.link}
                                           label={item?.label}
-                                          cssClass={`my-2 block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold hover:text-primary  focus:text-primary text-left flex flex-row items-center ${item?.cssClass}`}
+                                          cssClass={`my-2 block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold hover:text-primary focus:text-primary text-left flex flex-row items-center ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
                                           <>
@@ -194,7 +193,7 @@ export default function DefaultNavigation({
                                                 alt={item.label || ""}
                                                 width={50}
                                                 height={50}
-                                                className="object-cover mr-2"
+                                                className="object-cover mr-2 border border-transparent group-hover:border-l-primary transition-all"
                                                 sizes="100%"
                                                 style={{
                                                   maxHeight: "50px",
@@ -299,10 +298,11 @@ export default function DefaultNavigation({
                     small ? "h-12" : "h-16"
                   }`}
                 >
-                  <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max">
+                  <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max justify-start">
                     <Link
                       href="/"
-                      id={`nav-logo-desktop-${title}`}
+                      className="flex justify-start items-center max-w-max mr-auto"
+                      id="nav-logo-desktop"
                       onClick={() => {
                         ReactGA.event({
                           category: "Link",
@@ -315,7 +315,7 @@ export default function DefaultNavigation({
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className={`w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all h-full ${
+                            className={`max-w-[180px] ml-0 cursor-pointer object-contain transition-all h-full mr-auto flex ${
                               small ? "max-h-8" : "max-h-12"
                             }`}
                             src={navigation.navigationLogo?.url}
@@ -400,12 +400,12 @@ export default function DefaultNavigation({
 
                                           <Transition
                                             as={Fragment}
-                                            enter="transition ease-out duration-200"
-                                            enterFrom="opacity-0"
-                                            enterTo="opacity-100"
-                                            leave="transition ease-in duration-150"
-                                            leaveFrom="opacity-100"
-                                            leaveTo="opacity-0"
+                                            enter="transition ease-in-out duration-300 transform"
+                                            enterFrom="-translate-y-full opacity-0"
+                                            enterTo="-translate-y-0 opacity-100"
+                                            leave="transition ease-in-out duration-300 transform"
+                                            leaveFrom="translate-y-0 opacity-100"
+                                            leaveTo="-translate-y-full opacity-0"
                                           >
                                             <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
                                               {({ close }) => (
@@ -422,25 +422,6 @@ export default function DefaultNavigation({
                                                                 close()
                                                               }
                                                             >
-                                                              {item?.image && (
-                                                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-bg-secondary group-hover:opacity-75 transition-all">
-                                                                  <Image
-                                                                    src={
-                                                                      item.image
-                                                                        ?.url
-                                                                    }
-                                                                    alt={
-                                                                      item?.label ||
-                                                                      ""
-                                                                    }
-                                                                    className="max-w-xs object-cover"
-                                                                    width={0}
-                                                                    height={0}
-                                                                    sizes="100%"
-                                                                  />
-                                                                  <div className="absolute inset-0 z-10 ring-1 transition-all ring-primary group-hover:ring-secondary ring-inset rounded-md" />
-                                                                </div>
-                                                              )}
                                                               {!!item?.link && (
                                                                 <LinkItem
                                                                   key={
@@ -449,18 +430,46 @@ export default function DefaultNavigation({
                                                                   link={
                                                                     item?.link
                                                                   }
-                                                                  label={
-                                                                    item?.label
-                                                                  }
                                                                   cssClass={`mt-4 block font-semibold text-text-color transition-all group-hover:text-primary text-xs xl:text-sm ${item?.cssClass}`}
                                                                   sameTab={
                                                                     item?.sameTab
                                                                   }
                                                                 >
-                                                                  <span
-                                                                    className="absolute inset-0 z-10"
-                                                                    aria-hidden="true"
-                                                                  />
+                                                                  <>
+                                                                    {item?.image && (
+                                                                      <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-bg-secondary group-hover:opacity-75 transition-all">
+                                                                        <Image
+                                                                          src={
+                                                                            item
+                                                                              .image
+                                                                              ?.url
+                                                                          }
+                                                                          alt={
+                                                                            item?.label ||
+                                                                            ""
+                                                                          }
+                                                                          className="max-w-xs object-cover"
+                                                                          width={
+                                                                            0
+                                                                          }
+                                                                          height={
+                                                                            0
+                                                                          }
+                                                                          sizes="100%"
+                                                                        />
+                                                                        <div className="absolute inset-0 z-10 ring-1 transition-all ring-primary group-hover:ring-secondary ring-inset rounded-md" />
+                                                                      </div>
+                                                                    )}
+                                                                    <span>
+                                                                      {
+                                                                        item?.label
+                                                                      }
+                                                                    </span>
+                                                                    <span
+                                                                      className="absolute inset-0 z-10"
+                                                                      aria-hidden="true"
+                                                                    />
+                                                                  </>
                                                                 </LinkItem>
                                                               )}
                                                             </div>
@@ -496,7 +505,7 @@ export default function DefaultNavigation({
                                                     </button>
                                                   </div>
                                                   <div
-                                                    className="fixed inset-0 bg-[#00000070] transition-all z-0 backdrop-blur-xl top-[54px] min-h-[100vh] h-full"
+                                                    className="fixed bg-[#00000070] transition-all z-0 backdrop-blur-xl top-0 h-[100vw] w-[300vw] left-[-100%]"
                                                     onClick={() => {
                                                       close();
                                                       ReactGA.event({
@@ -562,7 +571,7 @@ export default function DefaultNavigation({
                   <Link
                     href="/"
                     className="lg:hidden mx-auto cursor-pointer max-w-[200px]"
-                    id={`nav-logo-mobile-${title}`}
+                    id="nav-logo-mobile"
                     onClick={() => {
                       ReactGA.event({
                         category: "Link",
@@ -583,7 +592,6 @@ export default function DefaultNavigation({
                           width={0}
                           height={0}
                           sizes="100%"
-                          priority
                         />
                       </>
                     ) : (

@@ -179,7 +179,6 @@ export default function GallerySection({
                             className="mx-auto my-8 w-full block box-shadow border-round"
                             height={400}
                             width={400}
-                            priority
                             style={{
                               maxHeight: "450px",
                               maxWidth: "450px",

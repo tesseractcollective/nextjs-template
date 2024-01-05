@@ -406,7 +406,6 @@ export default function DashboardNavigation({
                         width={0}
                         height={0}
                         sizes="100%"
-                        priority
                       />
                     </>
                   ) : (

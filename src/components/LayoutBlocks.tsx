@@ -31,8 +31,13 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
         )}
         <div className="h-100vh flex items-center justify-center">
           <div className="body-parsed-text text-center items-center justify-center flex-co">
-            <h1 className="text-text-color">404 - Page Not Found</h1>
-            <LinkItem link="/" cssClass="text-link" label="Return Home" />
+            <h1 className="text-text-color">404</h1>
+            <h2 className="text-text-color">Page Not Found</h2>
+            <LinkItem
+              link="/"
+              cssClass="text-link !max-w-max mx-auto my-0"
+              label="Return Home"
+            />
           </div>
         </div>
       </div>

@@ -406,7 +406,7 @@ export default function DualNavigation({
                         width={0}
                         height={0}
                         sizes="100%"
-                        priority
+                        
                       />
                     </>
                   ) : (
