@@ -187,7 +187,7 @@ export default function Products({
                   {filteredProducts.map((product) => (
                     <SwiperSlide
                       key={product.id}
-                      className="w-full md:w-72 bg-text-color hover:bg-tertiary shadow-md rounded-xl duration-300 hover:md:scale-95 hover:shadow-md focus-within:scale-95 focus-within:shadow-md px-1 md:px-2 overflow-hidden max-w-sm p-1 h-full self-stretch min-h-[200px] group"
+                      className="w-full md:w-72 bg-text-color shadow-md rounded-xl duration-300 hover:md:scale-95 hover:shadow-md focus-within:scale-95 focus-within:shadow-md px-1 md:px-2 overflow-hidden max-w-sm p-1 h-full self-stretch min-h-[200px]"
                     >
                       <LinkItem
                         cssClass="flex flex-row md:flex-col items-center justify-start md:justify-center"
@@ -197,7 +197,11 @@ export default function Products({
                             : `/product/${product.productSlug}`
                         }
                       >
-                        <Fade direction="down" className="rounded-xl">
+                        <Fade
+                          direction="down"
+                          className="rounded-xl"
+                          triggerOnce
+                        >
                           <>
                             {product.gallery[
                               hoveredProductId === product.id ? 1 : 0
