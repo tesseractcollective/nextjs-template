@@ -33,7 +33,6 @@ export default function Page({ layout }: PageProps) {
   const isDuttons = layout.siteLibrary?.siteId === "duttons";
 
   useEffect(() => {
-    console.log("useEffect fetch Start");
     if (isDuttons && typeof window !== "undefined") {
       // Only run this code on the client-side when isDuttons is true
       getDuttonEventsClient({ timeoutSeconds: 5 })

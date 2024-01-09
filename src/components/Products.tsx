@@ -35,7 +35,6 @@ export default function Products({
   const filteredProducts = products.filter(
     (product) => product?.productType?.toLowerCase() === type?.toLowerCase()
   );
-
   // Product Layout Style
   // compact √
   // slider √

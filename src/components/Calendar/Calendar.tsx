@@ -1,16 +1,8 @@
-import { Fragment, useState, useRef, useEffect, SyntheticEvent } from "react";
+import { Fragment, useState, SyntheticEvent } from "react";
 import Link from "next/link";
-import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import {
-  faArrowRight,
-  faArrowLeft,
-  faChevronDown,
-  faCalendar,
-  faCalendarDays,
   faArrowUpRightFromSquare,
   faXmark,
   faUsers,
@@ -104,31 +96,32 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
         <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter="transition ease-in-out duration-400 transform"
+            enterFrom="translate-y-full"
+            enterTo="-translate-y-0"
+            leave="transition ease-in-out duration-400 transform"
+            leaveFrom="-translate-y-0"
+            leaveTo="translate-y-full"
           >
-            <div className="fixed inset-0 bg-[#00000032] transition-opacity" />
+            <div className="fixed inset-0 bg-[#00000097] transition-all backdrop-blur-md" />
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 overflow-y-auto w-full">
-            <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div className="flex h-full items-end justify-center p-4 text-center sm:items-center px-4">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-300"
+                enter="ease-out duration-600"
                 enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
+                leave="ease-in duration-600"
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-xl sm:p-6 w-full bg-invert flex-col flex">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-xl sm:p-6 w-full bg-invert flex-col flex">
                   {!!day.date && (
-                    <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
-                      <Moment format="MMM/dddd DD/YYYY">{day.date}</Moment>
+                    <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase flex flex-col">
+                      <Moment format="MMMM YYYY">{day.date}</Moment>
+                      <Moment format="dddd / DD">{day.date}</Moment>
                     </h2>
                   )}
                   {/* Event List */}
@@ -220,7 +213,7 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
                   {/* Close Menu */}
                   <button
                     type="button"
-                    className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs group"
+                    className="mt-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-text-color  mx-auto max-w-max uppercase text-xs group pb-0 mb-0 opacity-70 gap-x-2 hover:opacity-100"
                     onClick={() => {
                       setOpen(false);
                       ReactGA.event({
@@ -230,11 +223,11 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
                       });
                     }}
                   >
-                    <span>Close menu</span>
                     <FontAwesomeIcon
                       icon={faXmark as IconProp}
-                      className="fa-fw my-0 py-0 ml-2 h-4 w-4 group-hover:rotate-90 transition-all"
+                      className="flexfa-fw my-0 py-0 h-3 w-3 group-hover:rotate-90 transition-all"
                     />
+                    <span>Close menu</span>
                   </button>
                 </Dialog.Panel>
               </Transition.Child>
@@ -247,7 +240,6 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
 }
 
 export default function Calendar(props: CalendarProps) {
-  const [monthLimit, setMonthLimit] = useState(true);
   let events = props.events ?? [];
   const months = createCalendarMonthsForEvents(
     events,
@@ -271,10 +263,6 @@ export default function Calendar(props: CalendarProps) {
     const className = legendKeyClassesOptions[index] ?? "bg-secondary";
     legendKeyClasses[key.name] = className;
   });
-
-  const currentYear = months.filter((month, index) =>
-    month.name.includes(`${new Date().getFullYear()}`)
-  );
 
   const EventHeader = events[0].name;
 
@@ -310,7 +298,7 @@ export default function Calendar(props: CalendarProps) {
       </div>
       <div className="block relative">
         <div className="relative max-w-8xl mx-auto grid grid-cols-1 gap-x-14 lg:grid-cols-2 xl:grid-cols-3 px-4 gap-y-8 transition-all">
-          {(monthLimit ? currentYear : months).map((month, monthIdx) => (
+          {months.map((month, monthIdx) => (
             <section
               key={monthIdx}
               className={classNames(
@@ -342,23 +330,6 @@ export default function Calendar(props: CalendarProps) {
             </section>
           ))}
         </div>
-      </div>
-      <div className="block mt-12 mb-4">
-        <button
-          onClick={() => setMonthLimit(!monthLimit)}
-          className="flex flex-row items-center text-text-color opacity-90 rounded cursor-pointer ring-1 ring-text-color px-2 md:px-4 transition-all text-base py-1 md:py-2 text-center hover:text-primary hover:ring-primary hover:opacity-100 focus:text-primary focus:ring-primary focus:opacity-100 mx-auto"
-          type="button"
-        >
-          <span>{monthLimit ? "See All Dates" : "See Less Dates"}</span>
-          <span>
-            <FontAwesomeIcon
-              icon={faChevronDown as IconProp}
-              className={`fa-fw h-4 w-4 transition-all my-0 py-0 ml-2 ${
-                monthLimit ? "rotate-0" : "rotate-180"
-              }`}
-            />
-          </span>
-        </button>
       </div>
     </div>
   );

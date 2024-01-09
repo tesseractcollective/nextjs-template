@@ -72,7 +72,7 @@ export default function GallerySection({
   }
 
   if (galleryLayout === "infinite" && finalImages.length >= 1) {
-    return <GalleryInfinite images={finalImages} />;
+    return <GalleryInfinite finalImages={finalImages} />;
   }
   if (galleryLayout === "mason" && finalImages.length >= 1) {
     return (

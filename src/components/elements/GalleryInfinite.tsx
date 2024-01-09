@@ -1,76 +1,98 @@
-import { useEffect, useRef, useState } from "react";
+"use client";
+
+import { useRef } from "react";
+
 import Image from "next/image";
-import Lenis from "@studio-freight/lenis";
-import { useTransform, useScroll, motion } from "framer-motion";
+
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface GalleryInfiniteProps {
-  images: string[];
+  finalImages: string[];
 }
 
-const Column: React.FC<{ images: string[]; y: any }> = ({ images, y }) => (
-  <motion.div className="gallery-infinite-column" style={{ y }}>
-    {images.map((src, i) => (
-      <div key={i} className="gallery-infinite-image-container">
-        <Image
-          src={src}
-          alt="image"
-          width={0}
-          height={0}
-          className="object-cover w-full h-full"
-          sizes="100%"
-        />
-      </div>
-    ))}
-  </motion.div>
-);
+export default function GalleryInfinite({ finalImages }: GalleryInfiniteProps) {
+  const container = useRef(null);
 
-const GalleryInfinite: React.FC<GalleryInfiniteProps> = ({ images }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [dimension, setDimension] = useState({ width: 0, height: 0 });
   const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end end"],
+    target: container,
+
+    offset: ["start end", "end start"],
   });
-  console.log(images);
-  const { height } = dimension;
-  const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
 
-  useEffect(() => {
-    const lenis = new Lenis();
+  const sm = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const md = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const lg = useTransform(scrollYProgress, [0, 1], [0, -250]);
+  const img3 = useTransform(scrollYProgress, [0, 1], [0, -350]);
+  const img4 = useTransform(scrollYProgress, [0, 1], [0, -450]);
+  const img5 = useTransform(scrollYProgress, [0, 1], [0, -550]);
+  const img6 = useTransform(scrollYProgress, [0, 1], [0, -650]);
+  const img7 = useTransform(scrollYProgress, [0, 1], [0, -750]);
+  const img8 = useTransform(scrollYProgress, [0, 1], [0, -850]);
+  const img9 = useTransform(scrollYProgress, [0, 1], [0, -950]);
+  const img10 = useTransform(scrollYProgress, [0, 1], [0, -1050]);
 
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-
-    const resize = () => {
-      setDimension({ width: window.innerWidth, height: window.innerHeight });
-    };
-
-    window.addEventListener("resize", resize);
-    requestAnimationFrame(raf);
-    resize();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
+  const images = [
+    {
+      src: finalImages[0],
+      y: 0,
+    },
+    {
+      src: finalImages[1],
+      y: lg,
+    },
+    {
+      src: finalImages[2],
+      y: md,
+    },
+    {
+      src: finalImages[3],
+      y: img3,
+    },
+    {
+      src: finalImages[4],
+      y: img4,
+    },
+    {
+      src: finalImages[5],
+      y: img5,
+    },
+    {
+      src: finalImages[6],
+      y: img6,
+    },
+    {
+      src: finalImages[7],
+      y: img7,
+    },
+    {
+      src: finalImages[8],
+      y: img8,
+    },
+    {
+      src: finalImages[9],
+      y: img9,
+    },
+    {
+      src: finalImages[10],
+      y: img10,
+    },
+  ];
 
   return (
-    <main className="gallery-infinite-wrapper relative">
-      <div className="gallery-infinite-spacer"></div>
-      <div ref={ref} className="gallery-infinite-items">
-        <Column images={images.slice(0, 3)} y={y} />
-        <Column images={images.slice(3, 6)} y={y2} />
-        <Column images={images.slice(6, 9)} y={y3} />
-        <Column images={images.slice(9, 12)} y={y4} />
+    <div ref={container} className="infinite-gallery overflow-hidden">
+      <div className="infinite-gallery-images">
+        {images.map(({ src, y }, i) => {
+          return (
+            <motion.div
+              style={{ y }}
+              key={`i_${i}`}
+              className="infinite-gallery-images-container"
+            >
+              <Image src={src} alt="image" fill />
+            </motion.div>
+          );
+        })}
       </div>
-      <div className="gallery-infinite-spacer"></div>
-    </main>
+    </div>
   );
-};
-
-export default GalleryInfinite;
+}

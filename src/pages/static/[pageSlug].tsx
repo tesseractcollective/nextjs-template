@@ -32,7 +32,6 @@
 //   };
 // };
 
-
 // export default function Page({ layout }: { layout: LayoutQuery }) {
 export default function PageStatic() {
   return (

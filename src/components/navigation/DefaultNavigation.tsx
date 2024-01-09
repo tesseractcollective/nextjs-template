@@ -314,17 +314,19 @@ export default function DefaultNavigation({
                       {navigation?.navigationLogo ? (
                         <>
                           <span className="sr-only">{title}</span>
-                          <Image
-                            className={`max-w-[180px] ml-0 cursor-pointer object-contain transition-all h-full mr-auto flex ${
-                              small ? "max-h-8" : "max-h-12"
-                            }`}
-                            src={navigation.navigationLogo?.url}
-                            alt=""
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            style={{ width: "100%" }}
-                          />
+                          <Fade direction="down" triggerOnce>
+                            <Image
+                              className={`max-w-[180px] ml-0 cursor-pointer object-contain transition-all h-full mr-auto flex ${
+                                small ? "max-h-8" : "max-h-12"
+                              }`}
+                              src={navigation.navigationLogo?.url}
+                              alt=""
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                              style={{ width: "100%" }}
+                            />
+                          </Fade>
                         </>
                       ) : (
                         <span className="font-bold text-2xl text-text-color">
@@ -583,16 +585,18 @@ export default function DefaultNavigation({
                     {navigation?.navigationLogo ? (
                       <>
                         <span className="sr-only">{title}</span>
-                        <Image
-                          className={`w-full max-w-xs mx-auto cursor-pointer object-contain transition-all ${
-                            small ? "h-7" : "h-10"
-                          }`}
-                          src={navigation.navigationLogo?.url}
-                          alt=""
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                        />
+                        <Fade direction="down" triggerOnce>
+                          <Image
+                            className={`w-full max-w-xs mx-auto cursor-pointer object-contain transition-all ${
+                              small ? "h-7" : "h-10"
+                            }`}
+                            src={navigation.navigationLogo?.url}
+                            alt=""
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                          />
+                        </Fade>
                       </>
                     ) : (
                       <span className="font-bold text-2xl text-text-color">
