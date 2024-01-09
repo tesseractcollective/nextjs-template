@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
+import parse from "html-react-parser";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -544,6 +545,9 @@ export default function DefaultNavigation({
                             })}
                       </div>
                     </Popover.Group>
+                    {!!navigation?.headerIFrame && (
+                      <div>{parse(navigation?.headerIFrame)}</div>
+                    )}
                     {/* END Desktop Flyout menus */}
                   </div>
 

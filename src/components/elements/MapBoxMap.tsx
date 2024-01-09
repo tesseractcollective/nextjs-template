@@ -18,8 +18,7 @@ interface MapBoxMapProps {
   long: number;
   mapKey: string;
   icon?: string;
-  googleMapLink?: string;
-  yelpLink?: string;
+  mapLink?: string;
   address?: string;
   siteName?: string;
 }
@@ -29,8 +28,7 @@ function MapBoxMap({
   long,
   mapKey,
   icon,
-  googleMapLink,
-  yelpLink,
+  mapLink,
   address,
   siteName,
 }: MapBoxMapProps) {
@@ -103,22 +101,13 @@ function MapBoxMap({
               <span className="font-bold text-md">{siteName}</span>
             )}
             {!!address && <span>{address}</span>}
-            {!!googleMapLink && (
+            {!!mapLink && (
               <a
                 target="_blank"
-                href={googleMapLink}
+                href={mapLink}
                 className="bg-primary p-1 mt-2 text-center rounded-md font-bold uppercase text-text-color"
               >
-                Google Map
-              </a>
-            )}
-            {!!yelpLink && (
-              <a
-                target="_blank"
-                href={yelpLink}
-                className="bg-primary p-1 mt-2 text-center rounded-md font-bold uppercase text-text-color"
-              >
-                Yelp
+                Directions
               </a>
             )}
           </div>

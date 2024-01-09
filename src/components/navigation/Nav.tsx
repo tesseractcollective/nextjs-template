@@ -58,6 +58,13 @@ export default function Nav({
   // start
   // transparent
   // vertical
+  //  horizon
+  // dimension
+  // border
+  // verticalTwo
+  // blog
+  // luxury
+  // fixedSide
 
   if (navigation.navigationLayoutStyle === "dual")
     return (

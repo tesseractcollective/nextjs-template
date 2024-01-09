@@ -393,6 +393,10 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
       latitude
     }
     bandsInTownKey
+    mapAddress
+    mapLink
+    spotifyClientId
+    spotifyArtistName
   }
   sections(first: 100) {
     __typename
@@ -611,6 +615,11 @@ fragment navigationFields on Navigation {
   pageNavigationSelection
   navigationWrapperCssClass
   footerWrapperCssClass
+  headerIFrame
+  announcementText
+  announcementLink
+  navJson
+  footerJson
   navigationLogo {
     url
   }

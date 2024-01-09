@@ -20,6 +20,7 @@ import DrumPadComponent from "./DrumPadComponent";
 import BandsInTownApi from "@/components/BandsInTownApi";
 import MaskCursor from "./MaskCursor";
 import AnimateParagraph from "./AnimateParagraph";
+import OpenTableWidget from "./OpenTableWidget";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -49,6 +50,8 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
     elementJson,
     mapLatLong,
     bandsInTownKey,
+    mapAddress,
+    mapLink,
   } = elements;
   return (
     <>
@@ -101,16 +104,15 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
         !!mapLatLong?.longitude &&
         !!siteLibrary?.metaAppleTouchIcon &&
         !!siteLibrary?.title &&
-        !!siteLibrary?.address &&
-        !!siteLibrary?.googleMapLink && (
+        !!mapAddress &&
+        !!mapLink && (
           <MapBoxMap
             lat={mapLatLong.latitude}
             long={mapLatLong.longitude}
             mapKey={siteLibrary.mapKey}
             icon={siteLibrary?.metaAppleTouchIcon.url}
-            googleMapLink={siteLibrary?.googleMapLink}
-            yelpLink={siteLibrary?.yelpLink || ""}
-            address={siteLibrary?.address}
+            mapLink={mapLink}
+            address={mapAddress}
             siteName={siteLibrary?.title}
           />
         )}
@@ -147,8 +149,18 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!elementJson?.maskCursorText && (
         <MaskCursor maskCursorText={elementJson.maskCursorText} />
       )}
+
       {!!elementJson?.animateParagraph && (
         <AnimateParagraph animateParagraph={elementJson.animateParagraph} />
+      )}
+      {!!elementJson?.opentableID && !!elementJson.opentableTheme && (
+        <div className="relative mx-auto" id="element-opentable">
+          <OpenTableWidget
+            targetID="element-opentable"
+            theme={elementJson.opentableTheme}
+            opentableID={elementJson.opentableID}
+          />
+        </div>
       )}
     </>
   );

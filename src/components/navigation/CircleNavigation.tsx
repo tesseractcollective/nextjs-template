@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Fade, Zoom } from "react-awesome-reveal";
+import OpenTableWidget from "../elements/OpenTableWidget";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -63,7 +64,7 @@ export default function CircleNavigation({
         )
     ) || navigations[0];
 
-  const { items, navigationWrapperCssClass } = navigation;
+  const { items, navigationWrapperCssClass, navJson } = navigation;
   const primaryItems = items.filter(
     (mainNavigationItem) => mainNavigationItem.primaryItem === true
   );
@@ -232,6 +233,19 @@ export default function CircleNavigation({
                           </div>
                         );
                       })}
+                    {!!navJson?.opentableMobileID &&
+                      !!navJson.opentableMobileTheme && (
+                        <div
+                          className="relative ml-8 mt-4 flex"
+                          id="element-opentable-mobile"
+                        >
+                          <OpenTableWidget
+                            targetID="element-opentable-mobile"
+                            theme={navJson.opentableMobileTheme}
+                            opentableID={navJson.opentableMobileID}
+                          />
+                        </div>
+                      )}
                   </Fade>
 
                   <Fade triggerOnce direction="up">
@@ -543,10 +557,13 @@ export default function CircleNavigation({
         </header>
       </div>
       <div className="h-24"></div>
-      <Zoom className="fixed bottom-10 right-5 lg:hidden z-[999]">
+      <Fade
+        className="fixed bottom-0 right-5 lg:hidden z-[999] bg-bg h-20 rounded-t-full"
+        direction="up"
+      >
         <button
           type="button"
-          className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-tertiary transition-all group hover:rotate-[-30deg] relative aspect-1 bg-small"
+          className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-tertiary transition-all group relative aspect-1 bg-small"
           onClick={() => {
             setOpen(true);
             ReactGA.event({
@@ -560,12 +577,12 @@ export default function CircleNavigation({
             className="h-7 w-7 group-hover:text-dark transition-all group-hover:opacity-50"
             aria-hidden="true"
           />
-          <span className="text-xs group-hover:opacity-100 absolute top-[50px] rotate-0 opacity-40 transition-all uppercase font-bold  text-center left-0 right-0 z-20 text-shadow">
+          <span className="text-xs group-hover:opacity-100 absolute top-[50px] rotate-0 opacity-40 transition-all uppercase font-bold  text-center left-0 right-0 z-20 text-shadow group-hover:tracking-widest">
             Menu
           </span>
           <span className="sr-only">Menu</span>
         </button>
-      </Zoom>
+      </Fade>
     </>
   );
 }

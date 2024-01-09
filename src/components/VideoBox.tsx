@@ -26,6 +26,10 @@ interface VideoBoxProps {
 // team
 // universal
 // vertical
+// basic
+// mason
+// blob
+// wavy
 
 export default function VideoBox({
   videoTitle,

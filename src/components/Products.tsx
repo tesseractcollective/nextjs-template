@@ -133,7 +133,7 @@ export default function Products({
                           )}
                         </div>
                         {product?.description && (
-                          <div className="text-[12px] my-0 font-light opacity-90 py-0 parsed-mb-0 uppercase opacity-80">
+                          <div className="text-[12px] my-0 font-light py-0 parsed-mb-0 uppercase opacity-80">
                             {parse(product.description.html)}
                           </div>
                         )}
