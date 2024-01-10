@@ -5,7 +5,7 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
-import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3BottomLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
@@ -72,7 +72,7 @@ export default function CircleNavigation({
   return (
     <>
       <div
-        className={`bg-bg fixed top-0 z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow  dark-shadow border ${
+        className={`bg-bg fixed bottom-0 lg:top-0 lg:bottom-[initial] z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow dark-shadow border ${
           small
             ? "nav-shadow-scrolled bg-bg-secondary border-b-bg"
             : "bg-bg border-b-secondary"
@@ -109,7 +109,7 @@ export default function CircleNavigation({
                 leaveTo="translate-y-full blur-xl"
               >
                 <Dialog.Panel
-                  className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-12 shadow-xl border-t-primary border-t bg-bg
+                  className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-2 shadow-xl border-t-primary border-t bg-bg
                  transition-all"
                 >
                   <Fade direction="down" triggerOnce>
@@ -257,14 +257,14 @@ export default function CircleNavigation({
                       />
                       <div className="text-left">
                         {!!contactName && (
-                          <p className="text-text-color text-xs font-bold">
+                          <p className="text-text-color text-md font-bold">
                             <span>{contactName}</span>
                           </p>
                         )}
                         {!!contactPhone && (
                           <a
                             href={`tel:${contactPhone.replace("-", "")}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                            className="text-md font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
                           >
                             <span className="font-semibold">
                               {contactPhone}
@@ -274,7 +274,7 @@ export default function CircleNavigation({
                         {!!contactEmail && (
                           <a
                             href={`mailto:${contactEmail}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                            className="text-md font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
                           >
                             <span className="font-semibold">
                               {contactEmail}
@@ -283,21 +283,31 @@ export default function CircleNavigation({
                         )}
                       </div>
                     </div>
-                    <div className="flex justify-end items-center w-full px-6">
-                      <button
-                        type="button"
-                        className="flex items-center justify-center rounded-md p-2 text-text-color group flex-col text-center ml-auto max-w-max text-xs"
-                        onClick={() => setOpen(false)}
-                      >
-                        <XMarkIcon
-                          className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
-                          aria-hidden="true"
-                        />
-                        <span className="text-text-color group-hover:text-primary transition-all uppercase text-center text-xs flex">
-                          {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
-                        </span>
-                      </button>
-                    </div>
+                  </Fade>
+                  <Fade
+                    className="relative bottom-0 left-6 lg:hidden z-[999] bg-bg h-20 rounded-t-full p-1 max-w-max"
+                    direction="up"
+                  >
+                    <button
+                      type="button"
+                      className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-tertiary transition-all group relative aspect-1 bg-small"
+                      onClick={() => {
+                        setOpen(false);
+                        ReactGA.event({
+                          category: "Link",
+                          action: "Open Mobile Menu",
+                          label: "Open Mobile Menu",
+                        });
+                      }}
+                    >
+                      <XMarkIcon
+                        className="h-7 w-7 group-hover:text-dark transition-all group-hover:opacity-50"
+                        aria-hidden="true"
+                      />
+                      <span className="text-xs group-hover:opacity-100 absolute top-[50px] rotate-0 opacity-40 transition-all uppercase font-bold  text-center left-0 right-0 z-20 text-shadow group-hover:tracking-widest">
+                        Close
+                      </span>
+                    </button>
                   </Fade>
                 </Dialog.Panel>
               </Transition.Child>
@@ -308,7 +318,7 @@ export default function CircleNavigation({
         <header className="overflow-hidden relative z-2">
           <nav
             aria-label="Top"
-            className={`px-4 lg:px-12 w-full grid grid-cols-2 lg:grid-cols-3 transition-all mx-auto ${
+            className={`px-4 lg:px-12 w-full grid grid-cols-3 lg:grid-cols-3 transition-all mx-auto ${
               small ? "h-16 mb-0" : "h-24 mb-0"
             }`}
           >
@@ -490,9 +500,34 @@ export default function CircleNavigation({
             </Popover.Group>
             {/* stop */}
 
+            <Fade
+              className="relative lg:hidden p-1 max-w-max flex items-center justify-center"
+              direction="up"
+            >
+              <button
+                type="button"
+                className="hover:bg-motion rounded-full px-2 py-2 text-text-color hover:border border-0 hover:border-tertiary transition-all group relative aspect-1 bg-small"
+                onClick={() => {
+                  setOpen(true);
+                  ReactGA.event({
+                    category: "Link",
+                    action: "Open Mobile Menu",
+                    label: "Open Mobile Menu",
+                  });
+                }}
+              >
+                <Bars3BottomLeftIcon
+                  className="h-7 w-7 group-hover:text-dark transition-all group-hover:opacity-50"
+                  aria-hidden="true"
+                />
+
+                <span className="sr-only">Menu</span>
+              </button>
+            </Fade>
+
             <Link
               href="/"
-              className={`cursor-pointer transition-all flex items-center justify-center mr-auto lg:mx-auto psuedo-circle max-w-[100px] ${
+              className={`cursor-pointer transition-all flex items-center justify-center mx-auto psuedo-circle max-w-[100px] ${
                 small ? "small-psuedo-circle max-w-[80px]" : ""
               }`}
               id={`nav-logo-desktop`}
@@ -547,7 +582,7 @@ export default function CircleNavigation({
                 <SocialMediaIcons
                   fadeDirection="down"
                   siteLibrary={siteLibrary}
-                  cssClass="w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
+                  cssClass="w-full hidden lg:flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
                 />
               </div>
             )}
@@ -556,33 +591,7 @@ export default function CircleNavigation({
           </nav>
         </header>
       </div>
-      <div className="h-24"></div>
-      <Fade
-        className="fixed bottom-0 right-5 lg:hidden z-[999] bg-bg h-20 rounded-t-full"
-        direction="up"
-      >
-        <button
-          type="button"
-          className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-tertiary transition-all group relative aspect-1 bg-small"
-          onClick={() => {
-            setOpen(true);
-            ReactGA.event({
-              category: "Link",
-              action: "Open Mobile Menu",
-              label: "Open Mobile Menu",
-            });
-          }}
-        >
-          <Bars3BottomRightIcon
-            className="h-7 w-7 group-hover:text-dark transition-all group-hover:opacity-50"
-            aria-hidden="true"
-          />
-          <span className="text-xs group-hover:opacity-100 absolute top-[50px] rotate-0 opacity-40 transition-all uppercase font-bold  text-center left-0 right-0 z-20 text-shadow group-hover:tracking-widest">
-            Menu
-          </span>
-          <span className="sr-only">Menu</span>
-        </button>
-      </Fade>
+      <div className="h-0 lg:h-24"></div>
     </>
   );
 }

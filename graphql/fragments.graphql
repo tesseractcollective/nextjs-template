@@ -424,6 +424,9 @@ fragment pageFields on Page {
   hideHeader
   setHomePage
   noIndex
+  pageCallToAction {
+    ...CallToActionFields
+  }
   whatsAppContactNumberFloatingButton
   heroImage {
     url

@@ -62,6 +62,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
           pageHeaderSubtitleProp={page?.subtitle || undefined}
           pageWidthStyle={page?.pageWidthStyle || undefined}
           hideHeader={page?.hideHeader || undefined}
+          pageCallToAction={page?.pageCallToAction || undefined}
         />
       )}
       <LayoutBlockSections layout={layout} eventsData={events} />
