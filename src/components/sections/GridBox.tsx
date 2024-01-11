@@ -10,6 +10,19 @@ interface GridBoxProps {
 }
 
 export default function GridBox({ gridBoxData }: GridBoxProps) {
+  // slider √
+  //  compact √
+  // inset √
+  // tall √
+  // content √
+  // mason
+  // netflix
+  // grid
+  // image
+  // parallax
+  // circle
+  // polaroid
+
   const SliderGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "slider"
   );

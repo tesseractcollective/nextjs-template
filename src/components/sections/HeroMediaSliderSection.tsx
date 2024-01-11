@@ -51,6 +51,14 @@ export default function HeroMediaSliderSection({
   const youtubeiFrameNoParams =
     "?autoplay=1&mute=1&playsinline=1&loop=1&controls=0&disablekb=1?rel=0&enablejsapi=1";
   const isOneSlider = heroMediaSliderData.length === 1;
+  //   image
+  // video
+  // youtube
+  // netflix
+  // vertical
+  // expand
+  // product
+
   return (
     <>
       {!!heroMediaSliderData && heroMediaSliderData.length >= 1 && (

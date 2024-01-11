@@ -506,7 +506,7 @@ export default function CircleNavigation({
             >
               <button
                 type="button"
-                className="hover:bg-motion rounded-full px-2 py-2 text-text-color hover:border border-0 hover:border-tertiary transition-all group relative aspect-1 bg-small"
+                className="rounded-full px-2 py-2 text-text-color hover:border border border-[transparent] hover:border-tertiary transition-all group relative aspect-1"
                 onClick={() => {
                   setOpen(true);
                   ReactGA.event({
@@ -517,7 +517,7 @@ export default function CircleNavigation({
                 }}
               >
                 <Bars3BottomLeftIcon
-                  className="h-7 w-7 group-hover:text-dark transition-all group-hover:opacity-50"
+                  className="h-7 w-7 transition-all rotate group-hover:-rotate-180"
                   aria-hidden="true"
                 />
 
@@ -569,12 +569,12 @@ export default function CircleNavigation({
                     key={mainNavigationItem?.link}
                     link={mainNavigationItem?.link}
                     label={mainNavigationItem?.label}
-                    cssClass={`flex justify-center  items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 lg:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
+                    cssClass={`flex justify-center items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 lg:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
                       mainNavigationItem?.cssClass
                     } ${
                       small
-                        ? "text-xs lg:text-sm py-[0.15rem] lg:py-1 bg-bg"
-                        : "text-xs sm:text-sm lg:text-base py-1 lg:py-2 bg-bg-secondary"
+                        ? "text-xs lg:text-sm py-[0.15rem] lg:py-1 bg-primary hover:bg-secondary"
+                        : "text-xs sm:text-sm lg:text-base py-1 lg:py-2 bg-primary hover:bg-secondary"
                     }`}
                     sameTab={mainNavigationItem?.sameTab}
                   />

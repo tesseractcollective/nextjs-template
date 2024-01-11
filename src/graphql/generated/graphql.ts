@@ -8350,9 +8350,16 @@ export type GridBoxCreateWithPositionInput = {
 };
 
 export enum GridBoxDisplay {
+  Circle = 'circle',
   Compact = 'compact',
   Content = 'content',
+  Grid = 'grid',
+  Image = 'image',
   Inset = 'inset',
+  Mason = 'mason',
+  Netflix = 'netflix',
+  Parallax = 'parallax',
+  Polaroid = 'polaroid',
   Slider = 'slider',
   Tall = 'tall'
 }
@@ -11482,6 +11489,9 @@ export type LoopTextWhereUniqueInput = {
 export enum MediaType {
   Expand = 'expand',
   Image = 'image',
+  Netflix = 'netflix',
+  Product = 'product',
+  Vertical = 'vertical',
   Video = 'video',
   Youtube = 'youtube'
 }
