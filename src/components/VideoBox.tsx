@@ -1,5 +1,14 @@
 import Vimeo from "@u-wave/react-vimeo";
-import { Fade } from "react-awesome-reveal";
+import type { LayoutQuery } from "@/graphql/generated/graphql";
+import Sections from "@/components/sections/Sections";
+import ContentComponents from "@/components/ContentComponents";
+import Elements from "@/components/elements/Elements";
+import { Fragment, useState, useEffect } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import ReactGA from "react-ga4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface VideoBoxProps {
   videoTitle?: string;
@@ -39,6 +48,16 @@ export default function VideoBox({
   thumbnailType,
   videoDisplayLayout,
 }: VideoBoxProps) {
+  const [open, setOpen] = useState<boolean>(false);
+  const handleClosePopup = () => {
+    setOpen(false);
+    ReactGA.event({
+      category: "Link",
+      action: "Close Popup",
+      label: "Close Popup",
+    });
+  };
+
   if (videoDisplayLayout === "offset")
     return (
       <section className="max-w-6xl w-full mx-auto my-8 px-4 overflow-hidden">
@@ -68,6 +87,99 @@ export default function VideoBox({
             </div>
           </>
         )}
+      </section>
+    );
+
+  if (videoDisplayLayout === "grid")
+    return (
+      <section className="max-w-6xl w-full mx-auto my-8 px-4 overflow-hidden">
+        {videoTitle && (
+          <h3 className="text-2xl uppercase font-bold leading-7 text-text-color text-center mb-4 px-4">
+            {videoTitle}
+          </h3>
+        )}
+        <Transition.Root show={open} as={Fragment}>
+          <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
+            <Transition.Child
+              as={Fragment}
+              enter="transition-opacity ease-linear duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity ease-linear duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div
+                className="fixed inset-0 bg-[#000000c7] opacity-80 backdrop-blur-xl"
+                aria-hidden="true"
+              />
+            </Transition.Child>
+
+            <div className="fixed inset-0 z-10 overflow-y-auto w-full">
+              <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <Transition.Child
+                  as={Fragment}
+                  enter="transition ease-in-out duration-300 transform"
+                  enterFrom="translate-y-full blur-xs"
+                  enterTo="-translate-y-0 blur-0"
+                  leave="transition ease-in-out duration-300 transform"
+                  leaveFrom="translate-y-0 blur-0"
+                  leaveTo="translate-y-full blur-xs"
+                >
+                  <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex">
+                    {(youtubeVideoId || vimeoVideoId) && (
+                      <>
+                        <div className="mx-auto relative pb-[56.25%] pt-[30px] mb-[20px] h-0 w-full">
+                          {youtubeVideoId && (
+                            <iframe
+                              src={`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1`}
+                              width="560"
+                              height="315"
+                              frameBorder="0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              title="video"
+                              className="absolute top-0 left-0 w-full h-full z-10"
+                            />
+                          )}
+                          {vimeoVideoId && <Vimeo video={vimeoVideoId} />}
+                          <div className="absolute border border-secondary w-full h-full -left-4 -top-4 z-0"></div>
+                          <div className="absolute border border-primary w-full h-full left-4 top-4 z-0"></div>
+                        </div>
+                      </>
+                    )}
+                    <button
+                      type="button"
+                      className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs"
+                      onClick={handleClosePopup}
+                    >
+                      <span>Close menu</span>
+                      <FontAwesomeIcon
+                        icon={faXmark as IconProp}
+                        className="fa-fw my-0 py-0 ml-2 h-4 w-4"
+                      />
+                    </button>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
+          </Dialog>
+        </Transition.Root>
+        <button
+          type="button"
+          id="popup-trigger"
+          className={`rounded-md p-2 text-md font-semibold text-text-color hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 fixed left-8 bottom-8 z-[100] bg-primary`}
+          onClick={() => {
+            setOpen(true);
+            ReactGA.event({
+              category: "Link",
+              action: "Open Popup",
+              label: "Open Popup",
+            });
+          }}
+        >
+          <span className="max-w-max text-left">Open</span>
+        </button>
       </section>
     );
 

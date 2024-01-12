@@ -588,9 +588,9 @@ export default function SocialMediaIcons({
                 <span className="sr-only">Yelp</span>
               </a>
             )}
-            {shopLinkProp && (
+            {(siteLibrary?.shopLink || shopLinkProp) && (
               <a
-                href={shopLinkProp}
+                href={siteLibrary?.shopLink || shopLinkProp}
                 target="_blank"
                 className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Shop"
@@ -598,8 +598,8 @@ export default function SocialMediaIcons({
                 onClick={() =>
                   ReactGA.event({
                     category: "Link",
-                    action: shopLinkProp,
-                    label: shopLinkProp,
+                    action: siteLibrary?.shopLink || shopLinkProp || "",
+                    label: siteLibrary?.shopLink || shopLinkProp,
                   })
                 }
               >

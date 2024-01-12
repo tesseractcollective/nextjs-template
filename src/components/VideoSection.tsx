@@ -12,6 +12,7 @@ import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
 import VideoBox from "@/components/VideoBox";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import { Fade } from "react-awesome-reveal";
+import VideoGridSection from "./VideoSections/VideoGridSection";
 
 interface VideoSectionProps {
   videoData: VideoBoxFieldsFragment[];
@@ -24,6 +25,13 @@ export default function VideoSection({
 }: VideoSectionProps) {
   const videoDataLength = videoData.length === 1;
   const swiperRef = useRef<SwiperType>();
+  const videoGridData = videoData.filter(
+    (videoDataItem) => videoDataItem.videoDisplayLayout === "grid"
+  );
+
+  if (videoGridData && videoGridData.length >= 1)
+    return <VideoGridSection videoData={videoGridData} />;
+
   return (
     <section className="max-w-8xl mx-auto z-20 w-full relative">
       {videoData?.map((video) => (

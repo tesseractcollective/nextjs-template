@@ -4,8 +4,8 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
-import { XMarkIcon, MinusIcon } from "@heroicons/react/24/outline";
+import { Dialog, Transition } from "@headlessui/react";
+import { XMarkIcon, Bars3BottomRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
@@ -27,15 +27,6 @@ export default function UniversalNavigation({
   pageNavigationSelection,
 }: NavProps) {
   const [open, setOpen] = useState(false);
-  const [small, setSmall] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", () =>
-        setSmall(window.pageYOffset > 400)
-      );
-    }
-  }, []);
 
   if (!navigations && !siteLibrary) return <></>;
   if (hideNav === true) return <></>;
@@ -336,12 +327,10 @@ export default function UniversalNavigation({
                   }}
                 >
                   <span className="sr-only">Open menu</span>
-                  <div
-                    className={`relative text-text-color h-6 w-6 transition-all`}
-                  >
-                    <MinusIcon className="absolute w-6 h-6 transition-all duration-400 rotate-0 hover:rotate-180" />
-                    <MinusIcon className="absolute w-6 h-6 transition-all duration-400 rotate-90 hover:rotate-180" />
-                  </div>
+                  <Bars3BottomRightIcon
+                    className="h-7 w-7 group-hover:text-primary transition-all group-hover:opacity-50"
+                    aria-hidden="true"
+                  />
                   <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
                     Menu
                   </span>
