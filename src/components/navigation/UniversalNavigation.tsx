@@ -51,7 +51,7 @@ export default function UniversalNavigation({
   return (
     <>
       <div
-        className={`fixed top-[2px] z-[999] left-0 right-0 transition-all ${
+        className={`fixed top-[2px] z-[999] left-0 right-0 transition-all duration-[400ms] ${
           navigationWrapperCssClass ? navigationWrapperCssClass : ""
         }`}
         id="navigation"
@@ -86,13 +86,13 @@ export default function UniversalNavigation({
               >
                 <Dialog.Panel
                   className="relative flex w-full max-h-[100vh] flex-col overflow-y-auto pb-12 shadow-xl border-primary border-t bg-bg
-                 transition-all h-100vh items-center justify-center border"
+                 transition-all duration-[400ms] h-100vh items-center justify-center border"
                 >
                   <div className="absolute right-2 max-w-max bg-bg aspect-1 border-secondary border top-[6px]">
                     <button
                       type="button"
                       title="menu"
-                      className="p-2 text-primary group hover:text-secondary transition-all cursor-pointer relative"
+                      className="p-2 text-primary group hover:text-secondary transition-all duration-[400ms] cursor-pointer relative"
                       onClick={() => {
                         setOpen(false);
                         ReactGA.event({
@@ -103,11 +103,11 @@ export default function UniversalNavigation({
                       }}
                     >
                       <XMarkIcon
-                        className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
+                        className="h-6 w-6 text-text-color group-hover:text-primary transition-all duration-[400ms] group-hover:rotate-90 text-center mx-auto"
                         aria-hidden="true"
                       />
 
-                      <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                      <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all duration-[400ms] uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
                         {siteLibrary.isSpanish ? "Cerrar" : "Close"}
                       </span>
                     </button>
@@ -124,7 +124,7 @@ export default function UniversalNavigation({
                             label: "Visit Home",
                           });
                         }}
-                        className="cursor-pointer transition-all hover:skew-x-[8deg] hover:skew-y-[8deg] relative"
+                        className="cursor-pointer transition-all duration-[400ms] hover:skew-x-[8deg] hover:skew-y-[8deg] relative"
                         id="nav-logo-mobile-panel"
                       >
                         {navigation?.navigationLogo ? (
@@ -132,7 +132,7 @@ export default function UniversalNavigation({
                             <span className="sr-only">{title}</span>
                             <Image
                               src={navigation.navigationLogo?.url}
-                              className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
+                              className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all duration-[400ms] block"
                               alt=""
                               width={0}
                               height={0}
@@ -159,7 +159,7 @@ export default function UniversalNavigation({
                               <div className="space-y-6 px-4 py-3 mt-4 mx-4">
                                 <h2
                                   key={mainNavigationItem.label}
-                                  className="block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold text-left border-b border-text-color opacity-70"
+                                  className="block text-text-color max-w-max text-xl w-full transition-all duration-[400ms] uppercase font-bold text-left border-b border-text-color opacity-70"
                                 >
                                   {mainNavigationItem.label}
                                 </h2>
@@ -179,7 +179,7 @@ export default function UniversalNavigation({
                                             key={item?.link}
                                             link={item?.link}
                                             label={item?.label}
-                                            cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
+                                            cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
                                             sameTab={item?.sameTab}
                                           >
                                             <>
@@ -221,7 +221,7 @@ export default function UniversalNavigation({
                                     key={mainNavigationItem.label}
                                     link={mainNavigationItem.link || "/"}
                                     sameTab={mainNavigationItem?.sameTab}
-                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-6xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
+                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-6xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
                                     onClick={() => setOpen(false)}
                                   >
                                     <span>{mainNavigationItem.label}</span>
@@ -281,7 +281,7 @@ export default function UniversalNavigation({
             <div className="flex items-center justify-between flex-row relative w-full">
               <Link
                 href="/"
-                className="max-w-max absolute left-0 top-[0.05rem] sm:top-0 transition-all cursor-pointer"
+                className="max-w-max absolute left-0 top-[0.05rem] sm:top-0 transition-all duration-[400ms] cursor-pointer"
                 id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
                 onClick={() => {
                   ReactGA.event({
@@ -296,7 +296,7 @@ export default function UniversalNavigation({
                     <span className="sr-only">{title}</span>
                     <Fade direction="down" triggerOnce>
                       <Image
-                        className="w-[80px] md:w-[100px] max-h-[80px] cursor-pointer object-contain transition-all mr-auto"
+                        className="w-[80px] md:w-[100px] max-h-[80px] cursor-pointer object-contain transition-all duration-[400ms] mr-auto"
                         src={navigation.navigationLogo?.url}
                         alt=""
                         width={0}
@@ -316,7 +316,7 @@ export default function UniversalNavigation({
                 <button
                   type="button"
                   title="menu"
-                  className="p-2 text-primary group hover:text-secondary transition-all cursor-pointer relative max-w-max"
+                  className="p-2 text-primary group hover:text-secondary transition-all duration-[400ms] cursor-pointer relative max-w-max"
                   onClick={() => {
                     setOpen(true);
                     ReactGA.event({
@@ -328,10 +328,10 @@ export default function UniversalNavigation({
                 >
                   <span className="sr-only">Open menu</span>
                   <Bars3BottomRightIcon
-                    className="h-7 w-7 group-hover:text-primary transition-all group-hover:opacity-50"
+                    className="h-7 w-7 group-hover:text-primary transition-all duration-[400ms] group-hover:opacity-50"
                     aria-hidden="true"
                   />
-                  <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                  <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all duration-[400ms] uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
                     Menu
                   </span>
                 </button>

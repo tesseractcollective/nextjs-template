@@ -9,7 +9,7 @@ import ReactGA from "react-ga4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
 interface VideoBoxProps {
   videoTitle?: string;
   youtubeVideoId?: string;
@@ -67,25 +67,20 @@ export default function VideoBox({
           </h3>
         )}
         {(youtubeVideoId || vimeoVideoId) && (
-          <>
-            <div className="mx-auto relative pb-[56.25%] pt-[30px] mb-[20px] h-0 w-full">
+          <div className="realative">
+            <div className="mx-auto relative pb-[56.25%] pt-[30px] mb-[20px] h-0 w-full z-50">
               {youtubeVideoId && (
-                <iframe
-                  src={`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1`}
-                  width="560"
-                  height="315"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="video"
-                  className="absolute top-0 left-0 w-full h-full z-10"
+                <LiteYouTubeEmbed
+                  id={youtubeVideoId}
+                  title={videoTitle || ""}
+                  onIframeAdded={() => console.log("video is playing")}
                 />
               )}
               {vimeoVideoId && <Vimeo video={vimeoVideoId} />}
-              <div className="absolute border border-secondary w-full h-full -left-4 -top-4 z-0"></div>
-              <div className="absolute border border-primary w-full h-full left-4 top-4 z-0"></div>
+              <div className="absolute border border-secondary w-full h-full -left-4 -top-4 -z-10"></div>
+              <div className="absolute border border-primary w-full h-full left-4 top-4 -z-10"></div>
             </div>
-          </>
+          </div>
         )}
       </section>
     );
@@ -131,15 +126,9 @@ export default function VideoBox({
                       <>
                         <div className="mx-auto relative pb-[56.25%] pt-[30px] mb-[20px] h-0 w-full">
                           {youtubeVideoId && (
-                            <iframe
-                              src={`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1`}
-                              width="560"
-                              height="315"
-                              frameBorder="0"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              title="video"
-                              className="absolute top-0 left-0 w-full h-full z-10"
+                            <LiteYouTubeEmbed
+                              id={youtubeVideoId}
+                              title={videoTitle || ""}
                             />
                           )}
                           {vimeoVideoId && <Vimeo video={vimeoVideoId} />}
@@ -191,18 +180,9 @@ export default function VideoBox({
         </h3>
       )}
       {(youtubeVideoId || vimeoVideoId) && (
-        <div className="mx-auto relative pb-[56.25%] pt-[30px] mb-[20px] h-0 w-full overflow-hidden">
+        <div className="mx-auto relative pb-[56.25%] pt-[30px] mb-[20px] h-0 w-full overflow-hidden z-50">
           {youtubeVideoId && (
-            <iframe
-              src={`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1`}
-              width="560"
-              height="315"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title="video"
-              className="absolute top-0 left-0 w-full h-full"
-            />
+            <LiteYouTubeEmbed id={youtubeVideoId} title={videoTitle || ""} />
           )}
           {vimeoVideoId && <Vimeo video={vimeoVideoId} />}
         </div>

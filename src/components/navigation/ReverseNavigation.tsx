@@ -217,6 +217,18 @@ export default function CenterNavigation({
                                             label={item?.label}
                                             cssClass={`mt-2 block text-xs md:text-sm font-medium text-text-color text-center group-hover:!text-primary !transition-all !cursor-pointer ${item?.cssClass}`}
                                             sameTab={item?.sameTab}
+                                            onClick={() => {
+                                              setOpen(false);
+                                              ReactGA.event({
+                                                category: "Link",
+                                                action:
+                                                  mainNavigationItem?.link ||
+                                                  "",
+                                                label:
+                                                  mainNavigationItem?.label ||
+                                                  "",
+                                              });
+                                            }}
                                           >
                                             <span
                                               className="absolute inset-0 z-10"

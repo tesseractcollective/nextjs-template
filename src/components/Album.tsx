@@ -168,20 +168,22 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
           </div>
         )}
         {!!albums && (
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">
-            <div className="relative">
-              <div
-                className="absolute inset-0 flex items-center"
-                aria-hidden="true"
-              >
-                <div className="w-full border-t border-white opacity-40 mb-4" />
+          <div className="bg-bg-secondary py-4">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">
+              <div className="relative">
+                <div
+                  className="absolute inset-0 flex items-center"
+                  aria-hidden="true"
+                >
+                  <div className="w-full border-t border-white opacity-40 mb-4" />
+                </div>
               </div>
+              <FeatureAlbum
+                albumDisplayType="all"
+                albums={filteredAlbums}
+                siteLibrary={siteLibrary}
+              />
             </div>
-            <FeatureAlbum
-              albumDisplayType="all"
-              albums={filteredAlbums}
-              siteLibrary={siteLibrary}
-            />
           </div>
         )}
       </div>

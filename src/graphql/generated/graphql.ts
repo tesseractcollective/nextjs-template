@@ -720,10 +720,12 @@ export enum AlbumQueryDisplay {
   Cd = 'cd',
   Compact = 'compact',
   Featured = 'featured',
+  Myspace = 'myspace',
   Record = 'record',
   Skew = 'skew',
   Slider = 'slider',
-  Stacked = 'stacked'
+  Stacked = 'stacked',
+  Vinyl = 'vinyl'
 }
 
 export type AlbumUpdateInput = {
@@ -2754,7 +2756,8 @@ export enum BlogOrderByInput {
 
 export enum BlogTags {
   Blog = 'blog',
-  Music = 'music'
+  Music = 'music',
+  News = 'news'
 }
 
 export type BlogUpdateInput = {
@@ -4642,7 +4645,10 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Bocado = 'bocado'
+  Admin = 'admin',
+  BransonBoxOffice = 'bransonBoxOffice',
+  DuttonOffice = 'duttonOffice',
+  MesaBoxOffice = 'mesaBoxOffice'
 }
 
 export type ContactUpdateInput = {
@@ -7338,7 +7344,15 @@ export enum EventOrderByInput {
 }
 
 export enum EventShowType {
-  Default = 'default'
+  DuttonsA0 = 'DuttonsA0',
+  TheDutto0 = 'TheDutto0',
+  TheDutton0 = 'TheDutton0',
+  WhereJes0 = 'WhereJes0',
+  All = 'all',
+  Arizona = 'arizona',
+  Branson = 'branson',
+  Jesus = 'jesus',
+  Mesa = 'mesa'
 }
 
 export type EventUpdateInput = {
@@ -8357,6 +8371,7 @@ export enum GridBoxDisplay {
   Image = 'image',
   Inset = 'inset',
   Mason = 'mason',
+  Myspace = 'myspace',
   Netflix = 'netflix',
   Parallax = 'parallax',
   Polaroid = 'polaroid',
@@ -10307,7 +10322,6 @@ export type LogoTableEdge = {
 };
 
 export enum LogoTableItem {
-  Pros = 'pros',
   Sponsor = 'sponsor'
 }
 
@@ -16545,12 +16559,6 @@ export enum ProductOrderByInput {
 }
 
 export enum ProductType {
-  Appetizer = 'appetizer',
-  Cold = 'cold',
-  Dessert = 'dessert',
-  Main = 'main',
-  Salad = 'salad',
-  Soup = 'soup',
   Store = 'store'
 }
 
@@ -17183,19 +17191,25 @@ export type ProfileEdge = {
 };
 
 export enum ProfileLayoutStyle {
+  Alternate = 'alternate',
   Basic = 'basic',
   Blob = 'blob',
   CardLink = 'cardLink',
   CardModal = 'cardModal',
+  Epk = 'epk',
+  FullScreen = 'fullScreen',
   Grid = 'grid',
   Mason = 'mason',
+  Myspace = 'myspace',
+  Netflix = 'netflix',
   Offset = 'offset',
   Record = 'record',
   Slider = 'slider',
   Team = 'team',
   Universal = 'universal',
   Vertical = 'vertical',
-  Wavy = 'wavy'
+  Wavy = 'wavy',
+  Youtube = 'youtube'
 }
 
 /** Identifies documents */
@@ -18699,8 +18713,7 @@ export enum ProfilesSelect {
   Artist = 'Artist',
   SecondaryArtist = 'SecondaryArtist',
   Staff = 'Staff',
-  Talent = 'Talent',
-  Team = 'team'
+  Talent = 'Talent'
 }
 
 export type PublishLocaleInput = {
@@ -23294,6 +23307,7 @@ export enum TestimonialOrderByInput {
 }
 
 export enum TestimonialType {
+  Online = 'online',
   Review = 'review',
   Sponsor = 'sponsor'
 }

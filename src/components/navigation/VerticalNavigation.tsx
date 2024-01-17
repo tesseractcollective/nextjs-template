@@ -167,6 +167,18 @@ export default function CenterNavigation({
                                             label={item?.label}
                                             cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
                                             sameTab={item?.sameTab}
+                                            onClick={() => {
+                                              setOpen(false);
+                                              ReactGA.event({
+                                                category: "Link",
+                                                action:
+                                                  mainNavigationItem?.link ||
+                                                  "",
+                                                label:
+                                                  mainNavigationItem?.label ||
+                                                  "",
+                                              });
+                                            }}
                                           >
                                             <>
                                               {item?.image?.url && (
@@ -208,7 +220,14 @@ export default function CenterNavigation({
                                     link={mainNavigationItem.link || "/"}
                                     sameTab={mainNavigationItem?.sameTab}
                                     cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl w-full transition-all uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
-                                    onClick={() => setOpen(false)}
+                                    onClick={() => {
+                                      setOpen(false);
+                                      ReactGA.event({
+                                        category: "Link",
+                                        action: mainNavigationItem?.link || "",
+                                        label: mainNavigationItem?.label || "",
+                                      });
+                                    }}
                                   >
                                     <span>{mainNavigationItem.label}</span>
                                   </LinkItem>

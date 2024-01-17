@@ -186,6 +186,14 @@ export default function DefaultNavigation({
                                           label={item?.label}
                                           cssClass={`my-2 block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold hover:text-primary focus:text-primary text-left flex flex-row items-center ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
+                                          onClick={() => {
+                                            setOpen(false);
+                                            ReactGA.event({
+                                              category: "Link",
+                                              action: item?.link || "",
+                                              label: item?.label || "",
+                                            });
+                                          }}
                                         >
                                           <>
                                             {item?.image?.url && (
@@ -227,7 +235,14 @@ export default function DefaultNavigation({
                                   link={mainNavigationItem.link || "/"}
                                   sameTab={mainNavigationItem?.sameTab}
                                   cssClass="block py-1 text-text-color max-w-max mx-auto text-2xl w-full transition-all uppercase font-bold hover:text-primary focus:text-primary text-left"
-                                  onClick={() => setOpen(false)}
+                                  onClick={() => {
+                                    setOpen(false);
+                                    ReactGA.event({
+                                      category: "Link",
+                                      action: item?.link || "",
+                                      label: item?.label || "",
+                                    });
+                                  }}
                                 >
                                   <span>{mainNavigationItem.label}</span>
                                 </LinkItem>
