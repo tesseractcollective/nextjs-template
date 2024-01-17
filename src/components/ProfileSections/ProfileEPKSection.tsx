@@ -18,8 +18,8 @@ export default function ProfileEPKSection({
   profiles,
   siteID,
 }: ProfilesProps) {
-  const profilesEPKData = profiles.filter(
-    (profile) => typeof profile.profileSlug !== "undefined"
+  const profilesEPKData = profiles.filter((profile) =>
+    profile.epkLink?.includes("https")
   );
   const [password, setPassword] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -61,7 +61,7 @@ export default function ProfileEPKSection({
 
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-secondary text-white font-medium py-3 px-4 mt-10 rounded focus:outline-none focus:shadow-outline"
+              className="w-full bg-primary hover:bg-secondary focus:bg-secondary text-white font-medium py-3 px-4 mt-10 rounded focus:outline-none focus:shadow-outline"
             >
               Enter
             </button>
@@ -87,9 +87,9 @@ export default function ProfileEPKSection({
                 className="max-w-xs w-full"
               >
                 <a
-                  href={profile.profileSlug || "#"}
+                  href={profile.epkLink || "#"}
                   target="_blank"
-                  className="w-full flex flex-row justify-center items-center border-2 border-white rounded-md p-2 my-4 relative py-3 feature-link-item group bg-white hover:bg-primary transition-all"
+                  className="w-full flex flex-row justify-center items-center border-2 border-white rounded-md p-2 my-4 relative py-3 feature-link-item group bg-white hover:bg-primary focus:bg-primary transition-all"
                   rel="noreferrer"
                 >
                   {profile.avatarImage?.url && (
