@@ -419,6 +419,7 @@ export default function Profile({
           profileLayoutStyle="grid"
           profileSectionTitle={profile.profileType}
           profileType={profile.profileType}
+          siteID={siteLibrary.siteId}
         />
       )}
     </>

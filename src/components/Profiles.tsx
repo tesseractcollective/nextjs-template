@@ -10,12 +10,14 @@ import { Fade } from "react-awesome-reveal";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
+import ProfileEPKSection from "@/components/ProfileSections/ProfileEPKSection";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
   profileType?: string;
   profileLayoutStyle?: string;
   profiles?: ProfileFieldsFragment[];
+  siteID?: string;
 }
 
 export default function Profiles({
@@ -23,6 +25,7 @@ export default function Profiles({
   profileType,
   profileLayoutStyle,
   profiles,
+  siteID,
 }: ProfilesProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedProfile, setSelctedProfile] =
@@ -385,6 +388,8 @@ export default function Profiles({
         ;
       </>
     );
+  if (profileLayoutStyle === "epk" && !!siteID)
+    return <ProfileEPKSection profiles={FilteredProfiles} siteID={siteID} />;
   if (profileLayoutStyle === "team")
     return (
       <>

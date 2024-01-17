@@ -149,6 +149,7 @@ export default function ContentComponents({
             profileLayoutStyle={profileLayoutStyle}
             profileSectionTitle={profileSectionTitle}
             profileType={profileType}
+            siteID={siteLibrary.siteId}
           />
         )}
       {!!eventShowType &&

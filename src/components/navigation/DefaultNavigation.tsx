@@ -239,8 +239,8 @@ export default function DefaultNavigation({
                                     setOpen(false);
                                     ReactGA.event({
                                       category: "Link",
-                                      action: item?.link || "",
-                                      label: item?.label || "",
+                                      action: mainNavigationItem?.link || "",
+                                      label: mainNavigationItem?.label || "",
                                     });
                                   }}
                                 >
