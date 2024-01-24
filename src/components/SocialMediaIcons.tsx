@@ -325,7 +325,7 @@ export default function SocialMediaIcons({
                   x="0px"
                   y="0px"
                   viewBox="0 0 512 512"
-                  className="svg-inline--fa fa-music fa-fw h-5 w-5 relative"
+                  className={`svg-inline--fa fa-music fa-fw h-5 w-5 relative ${iconClass}`}
                   xmlSpace="preserve"
                 >
                   <g>

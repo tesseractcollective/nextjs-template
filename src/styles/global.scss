@@ -30,7 +30,7 @@ html {
 
 * {
   font-family: 'Poppins', sans-serif !important;
-  // outline: 2px lime solid !important;
+  // outline: 2px solid pink !important;
 }
 
 .z-100 {
@@ -1045,4 +1045,36 @@ h4, h5, h6  {color: var(--text);}
 
 .mirrorH {
   transform: rotateY(180deg);
+}
+
+.section-with-both-dividers {
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100px;
+    z-index: 0;
+    background: linear-gradient(to bottom, black, transparent);
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100px;
+    z-index: 0;
+    background: linear-gradient(to top, black, transparent);
+}
+}
+
+.horizon .layout-blocks-wrapper {
+  margin: 16px;
+}
+
+body.horizon {
+  background-color: var(--text);
+  .layout-blocks-wrapper {
+    background-color: var(--background);
+  }
 }

@@ -14,8 +14,9 @@ import ReactGA from "react-ga4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Fade, Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import OpenTableWidget from "../elements/OpenTableWidget";
+import AccouncementBar from "@/components/navigation/AccouncementBar";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -71,8 +72,17 @@ export default function CircleNavigation({
 
   return (
     <>
+      {navigation?.announcementText && (
+        <AccouncementBar
+          accouncementText={navigation.announcementText}
+          accouncementLink={navigation?.announcementLink || ""}
+          cssClassWrapper="fixed inset-x-0 z-[998] text-right"
+        />
+      )}
       <div
         className={`bg-bg fixed bottom-0 lg:top-0 lg:bottom-[initial] z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow dark-shadow border ${
+          navigation?.announcementText ? "lg:top-8" : ""
+        } ${
           small
             ? "nav-shadow-scrolled bg-bg-secondary border-b-bg"
             : "bg-bg border-b-secondary"

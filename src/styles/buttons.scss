@@ -70,3 +70,16 @@
     }
   }
 }
+
+
+.rounded-button {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 20px;
+  border: var(--primary) 1px solid;
+  color: var(--text);
+  background-color: var(--primary);
+  padding: 8px 16px;
+  border-radius: 12px;
+
+}

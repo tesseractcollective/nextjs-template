@@ -9,13 +9,14 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
 import { PlayCircleIcon } from "@heroicons/react/24/outline";
-import VideoGridClipSection from "./VideoGridClipSection";
 
 interface VideoGridSectionProps {
   videoData: VideoBoxFieldsFragment[];
 }
 
-export default function VideoGridSection({ videoData }: VideoGridSectionProps) {
+export default function VideoGridClipSection({
+  videoData,
+}: VideoGridSectionProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedVideo, setSelctedVideo] = useState<VideoBoxFieldsFragment>();
   const handleClosePopup = () => {
@@ -38,54 +39,48 @@ export default function VideoGridSection({ videoData }: VideoGridSectionProps) {
       }
     });
   };
-  console.log(videoData);
-  const videoThumbnailsData = videoData.filter(
-    (videoTemp) => videoTemp.thumbnailType === "video"
-  );
-
-  if (videoThumbnailsData && videoThumbnailsData.length >= 1)
-    return <VideoGridClipSection videoData={videoThumbnailsData} />;
 
   return (
     <section className="relative w-full mx-auto my-0 overflow-hidden">
-      <div className="flex my-0 relative w-full flex-col lg:flex-row">
-        {videoData.map((video, index) => (
-          <button
-            key={index * Math.random()}
-            type="button"
-            id="popup-trigger"
-            className="relative !flex group h-[25vh] transition-all  duration-[400ms] lg:h-[400px] cursor-pointer flex-1 hover:!flex-[3_1_0%] focus:!flex-[3_1_0%] z-50"
-            onClick={() => {
-              setOpen(true);
-              setSelctedVideo(video);
-              ReactGA.event({
-                category: "Link",
-                action: "Open Video Popup",
-                label: "Open Video Popup",
-              });
-            }}
-          >
-            {!!video.thumbnail?.url && (
-              <Image
-                sizes="100%"
-                src={video.thumbnail?.url}
-                alt={video.videoTitle || ""}
-                width={0}
-                height={0}
-                className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale"
+      <div className="flex flex-row flex-wrap w-full mx-0 transition">
+        {videoData.map((videoItem, index) => {
+          return (
+            <button
+              key={index * Math.random()}
+              type="button"
+              id="popup-trigger"
+              className="block w-2/4 md:w-1/3 lg:w-2/4 transition-all relative group"
+              onClick={() => {
+                setOpen(true);
+                setSelctedVideo(videoItem);
+                ReactGA.event({
+                  category: "Link",
+                  action: "Open Video Popup",
+                  label: "Open Video Popup",
+                });
+              }}
+            >
+              {!!videoItem.thumbnail?.url && (
+                <video
+                  src={videoItem.thumbnail?.url}
+                  className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1"
+                  onMouseOver={(event) => event.currentTarget.play()}
+                  onMouseOut={(event) => event.currentTarget.pause()}
+                  muted
+                />
+              )}
+              <PlayCircleIcon
+                className="h-12 w-12 absolute bottom-5 left-5 z-40 text-text-color block opacity-100 lg:hidden group-hover:opacity-0 group-focus:opacity-0 transition-all duration-[400ms]"
+                aria-hidden="true"
               />
-            )}
-            <PlayCircleIcon
-              className="h-12 w-12 absolute bottom-5 left-5 z-40 text-text-color block opacity-100 lg:hidden group-hover:opacity-0 group-focus:opacity-0 transition-all duration-[400ms]"
-              aria-hidden="true"
-            />
-            {!!video?.videoTitle && (
-              <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-4xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms]">
-                {parse(video.videoTitle)}
-              </p>
-            )}
-          </button>
-        ))}
+              {!!videoItem?.videoTitle && (
+                <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-4xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms]">
+                  {parse(videoItem.videoTitle)}
+                </p>
+              )}
+            </button>
+          );
+        })}
 
         {selectedVideo && (
           <Transition.Root show={open} as={Fragment}>

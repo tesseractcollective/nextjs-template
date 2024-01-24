@@ -1,5 +1,4 @@
-import React, { useRef } from "react";
-import type { Swiper as SwiperType } from "swiper";
+import React from "react";
 import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import VideoGridSection from "@/components/VideoSections/VideoGridSection";

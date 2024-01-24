@@ -12,6 +12,59 @@
   }
 }
 
+.horizon-nav-desktop {
+  padding: 5px 15px;
+  transition: all 200ms ease;
+  // writing-mode: vertical-rl;
+  top: 0;
+  bottom: 0;
+  right: -8%;
+  transition: all 200ms ease;
+  &:hover, &:focus-within {
+    right: 0%;
+  }
+  z-index: 100;
+  height: calc(100vh - 80px);
+  margin: 80px 16px 0 0;
+  flex-direction: column;
+
+  a, button {
+    text-align: right;
+    span {
+      mix-blend-mode: multiply;
+      font-size: 125px;
+      display: block;
+      margin: 20px 0;
+      position: relative;
+    }
+    position: relative;
+      @keyframes strike {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+          
+      &:hover span:after, &:focus span:after {
+        content: ' ';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--primary);
+        animation-name: strike;
+        animation-duration: 300ms;
+        animation-timing-function: linear;
+        animation-iteration-count: 1;
+        animation-fill-mode: fill;
+        animation-direction: normal;
+      }
+  } 
+}
+
 .psuedo-circle {
   position: relative; 
   cursor: pointer;
@@ -59,5 +112,14 @@
   &:after {
     content: " /";
     margin: 0 4px;
+  }
+}
+
+.nav-announcement-bar {
+  span {
+    border-radius: 16px;
+    padding: 4px 8px;
+    color: var(--primary);
+    background-color: var(--background-secondary);
   }
 }

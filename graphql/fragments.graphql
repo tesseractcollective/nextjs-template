@@ -121,6 +121,8 @@ fragment siteLibraryFields on SiteLibrary {
   linkedinLink
   siteCssBodyClass
   mailchimp
+  spotifyClientId
+  spotifyClientSecret
   logo {
     id
     url
@@ -269,6 +271,10 @@ fragment eventFields on Event {
   eventTitle
   eventVenueName
   eventShowType
+  eventLocation {
+    latitude
+    longitude
+  }
   eventGallery {
     url
     id
@@ -349,6 +355,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     blogCategory
     blogSectionTitle
     contactType
+    contactLayoutStyle
     eventDisplayLayout
     eventShowType
     logoTableType
@@ -395,7 +402,6 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     bandsInTownKey
     mapAddress
     mapLink
-    spotifyClientId
     spotifyArtistName
   }
   sections(first: 100) {
@@ -771,6 +777,8 @@ fragment profileFields on Profile {
   bandsInTownKey
   profilePageLayoutStyle
   externalLink
+  blogsByTags
+  spotifyArtistName
 }
 
 fragment contactFields on Contact {
@@ -784,6 +792,9 @@ fragment contactFields on Contact {
   contactWhatsapp
   contactCalendly
   contactLinkedin
+  contactInstagram
+  contactWebsite
+  contactBio
   contactAvatar {
     id
     url

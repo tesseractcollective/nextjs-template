@@ -20,7 +20,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
   if (!siteLibrary) return <></>;
 
   return (
-    <div className="relative">
+    <div className="relative layout-blocks-wrapper">
       {navigations && siteLibrary && (
         <Nav
           siteLibrary={siteLibrary}

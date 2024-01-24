@@ -26,7 +26,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import useViewport from "@/app/hooks/useViewport";
 import { EffectCards } from "swiper/modules";
-
+import AlbumFeaturedSection from "@/components/AlbumSections/AlbumFeaturedSection";
+import AlbumStackedSection from "@/components/AlbumSections/AlbumStackedSection";
+import AlbumGridSection from "@/components/AlbumSections/AlbumGridSection";
 export interface FeatureAlbumProps {
   albums: AlbumFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
@@ -47,89 +49,10 @@ export default function FeatureAlbum({
   return (
     <>
       {albumDisplayType === "featured" && (
-        <>
-          {albums
-            .filter((album) => album.featureHomePage === true)
-            .map((albumItem) => (
-              <section className="px-2 mx-0" key={albumItem.albumSlug}>
-                <section className="container py-5 mx-auto">
-                  <div className="grid">
-                    <div className="col-12">
-                      {!!albumItem?.title && (
-                        <Slide className="w-12" direction="up" triggerOnce>
-                          <h3 className="text-3xl md:text-6xl mt-0 mb-4 text-center uppercase">
-                            {albumItem.title}
-                          </h3>
-                        </Slide>
-                      )}
-                    </div>
-                    <div className="w-12 md:w-8/12 mx-auto">
-                      {!!albumItem?.albumSlug && albumItem?.title && (
-                        <Link
-                          href={`/music/${albumItem.albumSlug}`}
-                          onClick={() =>
-                            ReactGA.event({
-                              category: "Link",
-                              action: albumItem.title || "",
-                              label: albumItem.title || "",
-                            })
-                          }
-                          className="mx-auto max-w-max block no-underline"
-                        >
-                          {!!albumItem.albumCover?.url && (
-                            <Slide
-                              className="w-full"
-                              direction="up"
-                              triggerOnce
-                            >
-                              <Image
-                                src={albumItem.albumCover.url}
-                                alt={(albumItem.title && albumItem.title) || ""}
-                                className="mx-auto mb-0 w-full block box-shadow border-round"
-                                width={0}
-                                height={0}
-                                sizes="100%"
-                                style={{
-                                  maxHeight: "400px",
-                                  maxWidth: "400px",
-                                  objectFit: "cover",
-                                  aspectRatio: 1,
-                                }}
-                              />
-                            </Slide>
-                          )}
-                        </Link>
-                      )}
-                    </div>
-                    <div className="col-12 md:col-8 mx-auto my-auto">
-                      {!!albumItem.description && (
-                        <div className="parse-block track-list text-center">
-                          {parse(albumItem.description.html)}
-                        </div>
-                      )}
-                      {!!albumItem.albumBuyLink && (
-                        <a
-                          href={albumItem.albumBuyLink}
-                          onClick={() =>
-                            ReactGA.event({
-                              category: "Link",
-                              action: `Visit ${albumItem.title}`,
-                              label: albumItem.title || "",
-                            })
-                          }
-                          target="_blank"
-                          rel="noreferrer"
-                          className="bg-white border-dark border px-8 md:px-4 theme-button mx-auto max-w-max block no-underline"
-                        >
-                          {isSpanish ? "Escucha" : "Listen"}
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </section>
-              </section>
-            ))}
-        </>
+        <AlbumFeaturedSection
+          albums={albums}
+          isSpanish={siteLibrary?.isSpanish || false}
+        />
       )}
       {albumDisplayType === "all" && (
         <section className="px-2 mx-0">
@@ -441,51 +364,9 @@ export default function FeatureAlbum({
         </section>
       )}
       {albumDisplayType === "stacked" && (
-        <section className="px-2 mx-0">
-          <section className="container py-5 feature-album-slider-wrapper mx-auto relative z-20">
-            <div className="my-16">
-              <Swiper
-                className="!pb-10 px-4 md:max-w-3xl no-shadow-swiper"
-                effect={"cards"}
-                grabCursor={true}
-                modules={[EffectCards]}
-              >
-                {albums.map((albumItem) => (
-                  <SwiperSlide key={albumItem.albumSlug} className="">
-                    {!!albumItem.albumSlug && albumItem.albumCover?.url && (
-                      <Link
-                        href={`/music/${albumItem.albumSlug}`}
-                        onClick={() =>
-                          ReactGA.event({
-                            category: "Link",
-                            action: `Visit ${albumItem.title}`,
-                            label: albumItem.title || "",
-                          })
-                        }
-                        className="max-w-max block no-underline album-item mx-auto relative p-1 group transition-all"
-                      >
-                        <Image
-                          src={albumItem.albumCover.url}
-                          alt={(albumItem.title && albumItem.title) || ""}
-                          className="mx-auto mb-2 w-full block box-shadow-small border-round grayscale-0 hover:grayscale group-hover:grayscale group-focus:grayscale transition-all"
-                          height={400}
-                          width={400}
-                          style={{
-                            maxHeight: "400px",
-                            maxWidth: "400px",
-                            objectFit: "cover",
-                            aspectRatio: 1,
-                          }}
-                        />
-                      </Link>
-                    )}
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </section>
-        </section>
+        <AlbumStackedSection albums={albums} />
       )}
+      {albumDisplayType === "grid" && <AlbumGridSection albums={albums} />}
     </>
   );
 }

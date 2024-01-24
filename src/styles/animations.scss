@@ -837,3 +837,32 @@ a.hover-chevron {
     }
   }
 }
+
+@keyframes strike {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.strike {
+  position: relative;
+}
+
+.strike:hover:after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  animation-name: strike;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: fill;
+  animation-direction: normal;
+}

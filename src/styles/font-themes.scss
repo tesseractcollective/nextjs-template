@@ -121,6 +121,25 @@
   }
 }
 
+.crisis-theme {
+  h1, h2, h3, h1 *, h2 *, h3 * {
+    font-family: "Climate Crisis", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-variation-settings:
+      "YEAR" 1979;
+  }
+  h4, h5, h6, span, div, p,  button:not([class^="lg-"]), button, a, p strong {
+    font-family: "Climate Crisis", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-variation-settings:
+      "YEAR" 1979;
+  }
+}
+
 .railroad-theme {
   @import url("https://use.typekit.net/zkg3squ.css");
   h1, h2, h3, h1 *, h2 *, h3 * {

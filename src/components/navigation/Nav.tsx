@@ -15,6 +15,7 @@ import SpaceNavigation from "@/components/navigation/SpaceNavigation";
 import CircleNavigation from "@/components/navigation/CircleNavigation";
 import UniversalNavigation from "@/components/navigation/UniversalNavigation";
 import ProgressNavigation from "@/components/navigation/ProgressNavigation";
+import HorizonNavigation from "@/components/navigation/HorizonNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -75,6 +76,7 @@ export default function Nav({
         pageNavigationSelection={pageNavigationSelection}
       />
     );
+
   if (navigation.navigationLayoutStyle === "dashboard")
     return (
       <DashboardNavigation
@@ -173,6 +175,17 @@ export default function Nav({
         pageNavigationSelection={pageNavigationSelection}
       />
     );
+
+  if (navigation.navigationLayoutStyle === "horizon")
+    return (
+      <HorizonNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
   if (navigation.navigationLayoutStyle === "reverse")
     return (
       <ReverseNavigation
