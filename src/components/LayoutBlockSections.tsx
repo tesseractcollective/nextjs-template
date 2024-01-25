@@ -4,6 +4,7 @@ import Sections from "@/components/sections/Sections";
 import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
 import { Event } from "@/components/Calendar/calendarHelpers";
+import Image from "next/image";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -32,9 +33,9 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
         <>
           {page.layoutBlocks.map((layoutBlock, parentIndex) => {
             const totalColumns = layoutBlock.layoutBlockColumns.length;
-            const styleBlockBGImage = layoutBlock?.backgroundImage?.url
-              ? { backgroundImage: `url(${layoutBlock.backgroundImage.url})` }
-              : {};
+            // const styleBlockBGImage = layoutBlock?.backgroundImage?.url
+            //   ? { backgroundImage: `url(${layoutBlock.backgroundImage.url})` }
+            //   : {};
             const styleBlockBGColor = layoutBlock?.backgroundColor?.hex
               ? { background: layoutBlock.backgroundColor?.hex }
               : {};
@@ -44,12 +45,14 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
               <div
                 key={rowKey}
                 id={`${rowKey}-${parentIndex + 1}`}
-                className={`w-full flex flex-wrap ${layoutBlock.cssClass} ${
+                className={`w-full flex flex-wrap relative ${
+                  layoutBlock.cssClass
+                } ${
                   layoutBlock?.backgroundImage?.url
                     ? "background-image-featured"
                     : ""
                 }`}
-                style={styleBlockBGColor || styleBlockBGImage}
+                style={styleBlockBGColor}
               >
                 {layoutBlock.layoutBlockColumns.map(
                   (layoutBlockColumn, index) => {
@@ -101,6 +104,17 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                       </div>
                     );
                   }
+                )}
+                {layoutBlock?.backgroundImage?.url && (
+                  <Image
+                    src={layoutBlock?.backgroundImage?.url}
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    className="next-layout-block-image object-cover absolute w-full h-full inset-0"
+                    alt=""
+                    quality={100}
+                  />
                 )}
               </div>
             );

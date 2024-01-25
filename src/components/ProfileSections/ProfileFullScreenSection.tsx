@@ -27,17 +27,19 @@ export default function ProfileFullScreenSection({
           ></div>
           <div className="max-w-8xl px-4 lg:px-8 lg:py-20 mx-auto bottom-20 lg:bottom-5 absolute w-full inset-x-0">
             <Fade direction="up" triggerOnce className="gap-y-2">
-              <Link href={`/${profile.profileSlug}`}>
-                {profile.profileLogo?.url && profile.name && (
-                  <Image
-                    src={profile.profileLogo?.url}
-                    sizes="100%"
-                    alt={profile.name}
-                    width={0}
-                    height={0}
-                    className="w-12 lg:w-16 h-12 lg:h-16 object-contain rounded mb-4"
-                  ></Image>
-                )}
+              <Link href={`/${profile.profileType}/${profile.profileSlug}`}>
+                <Fade direction="up" triggerOnce>
+                  {profile.profileLogo?.url && profile.name && (
+                    <Image
+                      src={profile.profileLogo?.url}
+                      sizes="100%"
+                      alt={profile.name}
+                      width={0}
+                      height={0}
+                      className="w-24 lg:w-44 h-24 lg:h-44 object-contain rounded mb-4"
+                    ></Image>
+                  )}
+                </Fade>
                 {!!profile.name && (
                   <h1 className="text-2xl md:text-6xl xl:text-7xl text-shadow mt-0 mb-1 py-0 text-left text-[white] font-bold uppercase text-shadow">
                     {profile.name}

@@ -16,6 +16,7 @@ import CircleNavigation from "@/components/navigation/CircleNavigation";
 import UniversalNavigation from "@/components/navigation/UniversalNavigation";
 import ProgressNavigation from "@/components/navigation/ProgressNavigation";
 import HorizonNavigation from "@/components/navigation/HorizonNavigation";
+import BlogNavigation from "@/components/navigation/BlogNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -149,6 +150,16 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "circle")
     return (
       <CircleNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "blog")
+    return (
+      <BlogNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

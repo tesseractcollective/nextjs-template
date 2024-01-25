@@ -242,7 +242,7 @@ export default function HorizonNavigation({
                     <button
                       type="button"
                       onClick={() => setOpenSocial(true)}
-                      className="block py-1 text-text-color max-w-max ml-auto text-6xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary text-right hover:scale-y-[95%] relative strike"
+                      className="block py-1 text-text-color max-w-max ml-auto text-6xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary text-right hover:scale-y-[95%] relative strike mr-5"
                     >
                       <span className="ml-auto max-w-max">
                         {isSpanish ? "SIGUE" : "FOLLOW"}

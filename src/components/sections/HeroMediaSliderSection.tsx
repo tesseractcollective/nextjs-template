@@ -232,8 +232,7 @@ export default function HeroMediaSliderSection({
                           width={0}
                           height={0}
                           sizes="100%"
-                          priority
-                          quality={90}
+                          quality={100}
                         />
                       )}
                       {heroMediaSliderItem.mediaType === "expand" && (

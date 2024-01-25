@@ -731,6 +731,8 @@ fragment profileFields on Profile {
   soundcloudLink
   spotifyLink
   profileSlug
+  twitchLink
+  youtubeChannelId
   tikTokLink
   tourWidgetiFrame
   threadsLink

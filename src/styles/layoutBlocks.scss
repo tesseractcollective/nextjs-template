@@ -175,6 +175,18 @@
   }
 }
 
+.tint-bg {
+  &::after  {
+    content: '';
+    height: 100%;
+    width: 100%;
+    inset: 0 0 0 0;
+    background: #00000095;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
 .dynamic-feature-section {
   .dynamic-featured-image-display {
    max-height: 350px;
