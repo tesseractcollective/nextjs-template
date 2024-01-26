@@ -31,7 +31,7 @@ export default function ProfileSlug({
   const { profile, siteLibrary, navigations, blogs, contacts, profiles } =
     profilePage;
   return (
-    <>
+    <div className="layout-blocks-wrapper">
       <ThemeColors siteLibrary={siteLibrary} />
       {!!siteLibrary?.analyticsId && (
         <GoogleAnalytics analyticsId={siteLibrary.analyticsId} />
@@ -57,6 +57,6 @@ export default function ProfileSlug({
           blogs={blogs}
         />
       </div>
-    </>
+    </div>
   );
 }

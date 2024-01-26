@@ -19,13 +19,8 @@ export default function ProfileFullScreenSection({
     <div>
       {profiles.map((profile) => (
         <section key={profile.profileSlug} className="h-[100vh] relative bg-bg">
-          <div
-            className={`absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[400ms] bg-fixed opacity-100`}
-            style={{
-              backgroundImage: `url(${profile.avatarImage?.url})`,
-            }}
-          ></div>
-          <div className="max-w-8xl px-4 lg:px-8 lg:py-20 mx-auto bottom-20 lg:bottom-5 absolute w-full inset-x-0">
+          <div className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat duration-[400ms] bg-fixed"></div>
+          <div className="max-w-8xl px-4 lg:px-8 lg:py-20 mx-auto bottom-20 lg:bottom-5 absolute w-full inset-x-0 z-10">
             <Fade direction="up" triggerOnce className="gap-y-2">
               <Link href={`/${profile.profileType}/${profile.profileSlug}`}>
                 <Fade direction="up" triggerOnce>
@@ -56,6 +51,16 @@ export default function ProfileFullScreenSection({
               </Link>
             </Fade>
           </div>
+          {profile.avatarImage?.url && (
+            <Image
+              src={profile.avatarImage?.url}
+              alt=""
+              width={0}
+              height={0}
+              sizes="100%"
+              className="w-full h-full object-cover absolute inset-0 z-0"
+            />
+          )}
         </section>
       ))}
     </div>
