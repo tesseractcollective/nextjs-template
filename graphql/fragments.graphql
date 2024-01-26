@@ -430,6 +430,7 @@ fragment pageFields on Page {
   hideHeader
   setHomePage
   noIndex
+  pagePassword
   pageCallToAction {
     ...CallToActionFields
   }

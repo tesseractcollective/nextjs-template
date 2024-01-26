@@ -507,6 +507,9 @@ html {
         transition-delay: 75ms;
       }
   }
+  .logo-grid-item {
+    background-color: var(--text);
+  }
 }
 
 .all-text-dark {
@@ -568,7 +571,7 @@ html {
 } 
 .content-large {
   p {
-    font-size: 28px!important;
+    font-size: 28px !important;
   }
 }
 .content-w-60_100 {
@@ -974,7 +977,7 @@ h4, h5, h6  {color: var(--text);}
   @media only screen and (min-width: 540px)  {
     font-size: 12vw;
   }
-  @media only screen and (min-width: 960px)  {
+  @media only screen and (min-width: 976px)  {
     font-size: 9vw;
   }
 }
@@ -1069,7 +1072,10 @@ h4, h5, h6  {color: var(--text);}
 }
 
 .horizon .layout-blocks-wrapper {
-  margin: 24px;
+  margin: 16px;
+  @media only screen and (min-width: 960px) {
+    margin: 24px;
+  }
 }
 
 body.horizon {

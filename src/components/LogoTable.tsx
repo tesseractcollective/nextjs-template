@@ -99,7 +99,7 @@ export default function LogoTable({
                 <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
                   {filteredTable.map((logoTableItem) => (
                     <div
-                      className="bg-bg-secondary p-8 sm:p-10"
+                      className="logo-grid-item bg-bg-secondary p-8 sm:p-10"
                       key={logoTableItem.logoName}
                     >
                       {!!logoTableItem.logoImage?.url &&
