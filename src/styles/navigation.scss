@@ -14,15 +14,19 @@
 
 .horizon-nav-desktop {
   padding: 5px 15px;
-  transition: all 200ms ease;
-  // writing-mode: vertical-rl;
   top: 0;
   bottom: 0;
-  right: -8%;
-  transition: all 200ms ease;
-  &:hover, &:focus-within {
-    right: 0%;
+  right: 0;
+  &.isScrolled {
+    right: -18%;
   }
+  &.isScrolled &:hover, &:focus-within {
+    right: -8% !important;
+  }
+  &:hover, &:focus-within {
+    right: 0% !important;
+  }
+  transition: all 350ms ease;
   z-index: 100;
   height: calc(100vh - 80px);
   margin: 80px 16px 0 0;

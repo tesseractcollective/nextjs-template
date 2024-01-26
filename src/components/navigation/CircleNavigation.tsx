@@ -572,7 +572,7 @@ export default function CircleNavigation({
             </Link>
 
             {/* START Desktop Flyout menus */}
-            {!!primaryItems && primaryItems.length >= 1 && (
+            {((!!primaryItems && primaryItems.length >= 1) || siteLibrary) && (
               <div className="h-full flex flex-col-reverse sm:flex-row items-center justify-center lg:justify-end gap-x-4 max-w-max ml-auto gap-y-1 lg:gap-y-0">
                 {primaryItems.map((mainNavigationItem) => (
                   <LinkItem

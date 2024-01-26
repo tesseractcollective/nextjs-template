@@ -39,7 +39,7 @@ function MinimalFooter({
   );
   return (
     <footer
-      aria-labelledby="footer-heading"
+      aria-labelledby="footer-heading minimal-footer !bg-bg"
       className={`my-8 ${footerWrapperCssClass ? footerWrapperCssClass : ""}`}
     >
       <h2 id="footer-heading" className="sr-only">
@@ -150,7 +150,6 @@ function MinimalFooter({
                       alt=""
                       width={0}
                       height={0}
-                      
                       sizes="100%"
                     />
                   )}
@@ -239,7 +238,6 @@ function MinimalFooter({
                 width={0}
                 height={0}
                 sizes="100%"
-                
               />
               <span className="sr-only">{secondaryName}</span>
             </a>

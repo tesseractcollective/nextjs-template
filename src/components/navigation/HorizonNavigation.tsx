@@ -11,7 +11,7 @@ import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
-import { Fade, Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -28,12 +28,12 @@ export default function HorizonNavigation({
 }: NavProps) {
   const [open, setOpen] = useState(false);
   const [openSocial, setOpenSocial] = useState<boolean>(false);
-  const [small, setSmall] = useState(false);
+  const [scrolled, setSrolled] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
-        setSmall(window.pageYOffset > 400)
+        setSrolled(window.pageYOffset > 200)
       );
     }
   }, []);
@@ -44,9 +44,6 @@ export default function HorizonNavigation({
   const { title, contactPhone, contactEmail, contactName, isSpanish } =
     siteLibrary;
 
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
   const navigation =
     navigations?.find(
       (navigationTemp) =>
@@ -95,9 +92,13 @@ export default function HorizonNavigation({
                 leaveFrom="-translate-y-0 blur-0"
                 leaveTo="translate-y-full blur-xl"
               >
-                <Dialog.Panel className="relative w-full h-full max-h-[90vh] overflow-y-auto pb-12 shadow-xl border-t-primary border-t bg-bg transition-all flex justify-between flex-1 flex-col">
-                  <Fade direction="down" triggerOnce>
-                    <div className="flex mt-4 ml-4 px-4 pb-2 pt-5 items-start justify-start mb-auto">
+                <Dialog.Panel className="relative w-full h-full max-h-[90vh] overflow-y-auto pb-12 shadow-xl border-t-primary border-t bg-bg transition-all flex flex-col justify-end">
+                  <Fade
+                    direction="down"
+                    triggerOnce
+                    className="relative h-full"
+                  >
+                    <div className="flex mt-4 ml-4 p-2 items-start justify-start mb-auto absolute top-0">
                       <Link
                         href="/"
                         onClick={() => {
@@ -108,7 +109,7 @@ export default function HorizonNavigation({
                             label: "Visit Home",
                           });
                         }}
-                        className="cursor-pointer transition-all hover:scale-y-[95%] w-full block"
+                        className="cursor-pointer transition-all w-full block"
                         id={`nav-logo-mobile-panel`}
                       >
                         {navigation?.navigationLogo ? (
@@ -215,13 +216,13 @@ export default function HorizonNavigation({
                             )}
 
                             {!hasItems && (
-                              <div className="space-y-0 px-4 py-1 mt-auto ml-auto mr-0">
+                              <div className="space-y-0 px-4 my-2 mt-auto ml-auto mr-0">
                                 <div className="max-w-max">
                                   <LinkItem
                                     key={mainNavigationItem.label}
                                     link={mainNavigationItem.link || "/"}
                                     sameTab={mainNavigationItem?.sameTab}
-                                    cssClass="block py-1 text-text-color max-w-max ml-auto text-6xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary text-right hover:scale-y-[95%] relative strike"
+                                    cssClass="block py-0 my-0 text-text-color max-w-max text-4xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary text-right hover:scale-y-[95%] relative strike"
                                     onClick={() => {
                                       setOpen(false);
                                       ReactGA.event({
@@ -242,7 +243,7 @@ export default function HorizonNavigation({
                     <button
                       type="button"
                       onClick={() => setOpenSocial(true)}
-                      className="block py-1 text-text-color max-w-max ml-auto text-6xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary text-right hover:scale-y-[95%] relative strike mr-5"
+                      className="block py-1 text-text-color max-w-max ml-auto text-4xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary text-right hover:scale-y-[95%] relative strike mr-4"
                     >
                       <span className="ml-auto max-w-max">
                         {isSpanish ? "SIGUE" : "FOLLOW"}
@@ -251,48 +252,47 @@ export default function HorizonNavigation({
                   </Fade>
 
                   <Fade triggerOnce direction="up">
-                    <div className="space-y-6 px-4 py-6 mt-4 ml-4">
-                      <div className="text-left">
-                        {!!contactName && (
-                          <p className="text-text-color text-xs font-bold">
-                            <span>{contactName}</span>
-                          </p>
-                        )}
-                        {!!contactPhone && (
-                          <a
-                            href={`tel:${contactPhone.replace("-", "")}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
-                          >
-                            <span className="font-semibold">
-                              {contactPhone}
-                            </span>
-                          </a>
-                        )}
-                        {!!contactEmail && (
-                          <a
-                            href={`mailto:${contactEmail}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
-                          >
-                            <span className="font-semibold">
-                              {contactEmail}
-                            </span>
-                          </a>
-                        )}
+                    {(contactName || contactEmail || contactPhone) && (
+                      <div className="space-y-6 px-4 py-6 mt-4 ml-4">
+                        <div className="text-left">
+                          {!!contactName && (
+                            <p className="text-text-color text-xs font-bold">
+                              <span>{contactName}</span>
+                            </p>
+                          )}
+                          {!!contactPhone && (
+                            <a
+                              href={`tel:${contactPhone.replace("-", "")}`}
+                              className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                            >
+                              <span className="font-semibold">
+                                {contactPhone}
+                              </span>
+                            </a>
+                          )}
+                          {!!contactEmail && (
+                            <a
+                              href={`mailto:${contactEmail}`}
+                              className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                            >
+                              <span className="font-semibold">
+                                {contactEmail}
+                              </span>
+                            </a>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex justify-end items-center w-full px-6">
+                    )}
+                    <div className="flex justify-end items-center w-full px-6 mt-4">
                       <button
                         type="button"
-                        className="flex items-center justify-center rounded-md p-2 text-text-color group flex-col text-center ml-auto max-w-max text-xs"
+                        className="flex items-center justify-center text-text-color group flex-col text-center ml-auto max-w-max text-xs px-0 -mr-2 opacity-70 hover:opacity-80 active:opacity-100 transition-all"
                         onClick={() => setOpen(false)}
                       >
-                        <XMarkIcon
-                          className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
-                          aria-hidden="true"
-                        />
-                        <span className="text-text-color group-hover:text-primary transition-all uppercase text-center text-xs flex">
+                        {/* <span className="text-text-color group-hover:text-primary transition-all uppercase text-center text-xs flex">
                           {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
-                        </span>
+                        </span> */}
+                        <span className="text-4xl">CLOSE</span>
                       </button>
                     </div>
                   </Fade>
@@ -341,10 +341,14 @@ export default function HorizonNavigation({
               </div>
             </div>
           </nav>
-          <Zoom className="fixed bottom-10 right-5 md:hidden">
+          <Fade
+            className="fixed bottom-10 right-5 xl:hidden"
+            direction="up"
+            triggerOnce
+          >
             <button
               type="button"
-              className="rounded-full px-2 py-2 text-text-color border border-white hover:border-primary transition-all group bg-dark hover:rotate-180 relative"
+              className="group flex-col text-center ml-auto max-w-max text-xs p-2 opacity-70 hover:opacity-80 active:opacity-100 transition-all text-text-color"
               onClick={() => {
                 setOpen(true);
                 ReactGA.event({
@@ -354,18 +358,23 @@ export default function HorizonNavigation({
                 });
               }}
             >
-              <Bars3BottomRightIcon
+              {/* <Bars3BottomRightIcon
                 className="h-7 w-7 group-hover:text-primary transition-all group-hover:opacity-50 rotate-90"
                 aria-hidden="true"
               />
-              <span className="sr-only">Menu</span>
+              <span className="sr-only">Menu</span> */}
+              <span className="text-4xl">MENU</span>
             </button>
-          </Zoom>
+          </Fade>
         </header>
         {/* DIV */}
 
         {/* DESKTOP NAV */}
-        <div className="hidden md:flex md:fixed horizon-nav-desktop">
+        <div
+          className={`hidden xl:flex xl:fixed horizon-nav-desktop ${
+            scrolled ? "horizon-nav-desktop isScrolled" : ""
+          }`}
+        >
           <Fade direction="right" triggerOnce cascade damping={0.05}>
             {!!items &&
               items.length >= 1 &&

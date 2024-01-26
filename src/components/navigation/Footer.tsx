@@ -57,7 +57,7 @@ function Footer({
         navigation={navigation}
         blogs={blogs}
         hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || undefined}
+        pageNavigationSelection={pageNavigationSelection || "primary"}
       />
     );
   if (navigation.navigationLayoutStyle !== "start")
@@ -67,12 +67,12 @@ function Footer({
         navigation={navigation}
         blogs={blogs}
         hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || undefined}
+        pageNavigationSelection={pageNavigationSelection || "primary"}
       />
     );
   return (
     <footer
-      aria-labelledby="footer-heading"
+      aria-labelledby="footer-heading standard-footer"
       className={`mt-16 mb-8 ${
         footerWrapperCssClass ? footerWrapperCssClass : ""
       }`}
