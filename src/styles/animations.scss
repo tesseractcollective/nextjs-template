@@ -866,3 +866,28 @@ a.hover-chevron {
   animation-fill-mode: fill;
   animation-direction: normal;
 }
+
+.pixel-cursor-trailing-wrapper {
+  .pixel-cursor-trailing-grid {
+    .pixel-cursor-trailing-column {
+      width: 5vw;
+      div {
+        width: 100%;
+        height: 5vw;
+      }
+    }
+    
+  }
+  .pixel-cursor-trailing-body{
+    font-size: 6vw;
+    text-align: center;
+    font-weight: 700;
+    width: 70%;
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+    // color: var(--text);
+  }
+}

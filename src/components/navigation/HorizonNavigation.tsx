@@ -348,7 +348,7 @@ export default function HorizonNavigation({
           >
             <button
               type="button"
-              className="group flex-col text-center ml-auto max-w-max text-xs p-2 opacity-70 hover:opacity-80 active:opacity-100 transition-all text-text-color"
+              className="group flex-col text-center ml-auto max-w-max text-xs p-2 opacity-70 hover:opacity-80 active:opacity-100 transition-all text-text-color text-shadow"
               onClick={() => {
                 setOpen(true);
                 ReactGA.event({
@@ -442,7 +442,7 @@ export default function HorizonNavigation({
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 overflow-y-auto w-full">
-            <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div className="flex h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-600"

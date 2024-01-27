@@ -93,7 +93,7 @@ export default function LogoTable({
     return (
       <div>
         {!!filteredTable && filteredTable?.length >= 1 && (
-          <section className="container mx-auto px-4 my-16">
+          <section className="container mx-auto px-4">
             <div className="py-12">
               <div className="mx-auto max-w-8xl px-6 lg:px-8">
                 <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
@@ -104,7 +104,7 @@ export default function LogoTable({
                     >
                       {!!logoTableItem.logoImage?.url &&
                         !!logoTableItem?.logoName && (
-                          <Fade>
+                          <Fade triggerOnce cascade direction="up">
                             {logoTableItem?.logoLink ? (
                               <a
                                 target="_blank"

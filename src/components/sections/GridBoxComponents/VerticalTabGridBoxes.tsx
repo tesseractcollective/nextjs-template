@@ -5,6 +5,7 @@ import LinkItem from "@/components/LinkItem";
 import parse from "html-react-parser";
 import { motion } from "framer-motion";
 import React from "react";
+import { Fade } from "react-awesome-reveal";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -43,7 +44,7 @@ export default function VerticalTabGridBoxes({ gridBoxData }: GridBoxProps) {
 
       {selectedItem && (
         <div className="w-full md:w-2/3 flex flex-col items-center h-full justify-center flex-1 all-text-dark">
-          <div className="p-4">
+          <Fade className="p-4" direction="up">
             {selectedItem.boxImage && (
               <Image
                 src={selectedItem.boxImage.url}
@@ -59,7 +60,7 @@ export default function VerticalTabGridBoxes({ gridBoxData }: GridBoxProps) {
                 {parse(selectedItem?.boxDescription.html)}
               </div>
             )}
-          </div>
+          </Fade>
         </div>
       )}
     </div>

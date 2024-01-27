@@ -21,6 +21,7 @@ import BandsInTownApi from "@/components/BandsInTownApi";
 import MaskCursor from "./MaskCursor";
 import AnimateParagraph from "./AnimateParagraph";
 import OpenTableWidget from "./OpenTableWidget";
+import PixelCursorTrailing from "./PixelCursorTrailing";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -162,6 +163,15 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           />
         </div>
       )}
+      {elementJson?.pixelCursorTrailing?.text &&
+        elementJson?.pixelCursorTrailing?.theme &&
+        elementJson?.pixelCursorTrailing?.background && (
+          <PixelCursorTrailing
+            text={elementJson?.pixelCursorTrailing.text}
+            theme={elementJson?.pixelCursorTrailing.theme}
+            background={elementJson?.pixelCursorTrailing.background}
+          />
+        )}
     </>
   );
 }
