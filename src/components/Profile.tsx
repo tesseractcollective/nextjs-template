@@ -42,7 +42,7 @@ export default function Profile({
     (tempProf) => profile.profileSlug !== tempProf.profileSlug
   );
   return (
-    <>
+    <div>
       <Head>
         {!!profile?.name && (
           <title>{`${profile.name} - ${siteLibrary.title}`}</title>
@@ -377,6 +377,9 @@ export default function Profile({
                                 linkedinLinkProp={
                                   contact?.contactLinkedin || undefined
                                 }
+                                instagramLinkProp={
+                                  contact?.contactInstagram || undefined
+                                }
                               />
                             </div>
                             {!!contact.contactAddress && (
@@ -422,6 +425,6 @@ export default function Profile({
           siteID={siteLibrary.siteId}
         />
       )}
-    </>
+    </div>
   );
 }

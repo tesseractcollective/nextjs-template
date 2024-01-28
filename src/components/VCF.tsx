@@ -56,27 +56,39 @@ const VCF: FC<Props> = ({
   // Wrap generateVCard in a useCallback hook
   const generateVCard = useCallback(() => {
     const vCardContent = `BEGIN:VCARD\nVERSION:3.0\nFN:${vcfData.name}${
-      vcfData?.email && `\nEMAIL:${vcfData.email}`
+      vcfData.email ? `\nEMAIL:${vcfData.email}` : ""
     }${
-      vcfData?.phone &&
-      `\nTEL;TYPE=cell:${vcfData?.phone}\nPHOTO;TYPE=JPEG;VALUE=URI:${vcfData.photo}`
+      vcfData.phone
+        ? `\nTEL;TYPE=cell:${vcfData.phone}\nPHOTO;TYPE=JPEG;VALUE=URI:${vcfData.photo}`
+        : ""
     }${
-      vcfData.calendly && `\nX-SOCIALPROFILE;type=calendly:${vcfData.calendly}`
+      vcfData.calendly
+        ? `\nX-SOCIALPROFILE;type=calendly:${vcfData.calendly}`
+        : ""
     }${
-      vcfData?.linkedin && `\nX-SOCIALPROFILE;type=linkedin:${vcfData.linkedin}`
+      vcfData.linkedin
+        ? `\nX-SOCIALPROFILE;type=linkedin:${vcfData.linkedin}`
+        : ""
     }${
-      vcfData?.facebook && `\nX-SOCIALPROFILE;type=facebook:${vcfData.facebook}`
+      vcfData.facebook
+        ? `\nX-SOCIALPROFILE;type=facebook:${vcfData.facebook}`
+        : ""
     }${
-      vcfData?.twitterX && `\nX-SOCIALPROFILE;type=twitterX:${vcfData.twitterX}`
+      vcfData.twitterX
+        ? `\nX-SOCIALPROFILE;type=twitterX:${vcfData.twitterX}`
+        : ""
     }${
-      vcfData?.threads && `\nX-SOCIALPROFILE;type=threads:${vcfData.threads}`
+      vcfData.threads ? `\nX-SOCIALPROFILE;type=threads:${vcfData.threads}` : ""
     }${
-      vcfData?.youtube && `\nX-SOCIALPROFILE;type=youtube:${vcfData.youtube}`
+      vcfData.youtube ? `\nX-SOCIALPROFILE;type=youtube:${vcfData.youtube}` : ""
     }${
-      vcfData?.instagram &&
-      `\nX-SOCIALPROFILE;type=instagram:${vcfData.instagram}`
-    }${vcfData?.tiktok && `\nX-SOCIALPROFILE;type=tiktok:${vcfData.tiktok}`}${
-      vcfData?.github && `\nX-SOCIALPROFILE;type=github:${vcfData.github}`
+      vcfData.instagram
+        ? `\nX-SOCIALPROFILE;type=instagram:${vcfData.instagram}`
+        : ""
+    }${
+      vcfData.tiktok ? `\nX-SOCIALPROFILE;type=tiktok:${vcfData.tiktok}` : ""
+    }${
+      vcfData.github ? `\nX-SOCIALPROFILE;type=github:${vcfData.github}` : ""
     }\nEND:VCARD`;
     setVCardData(vCardContent);
   }, [
@@ -117,7 +129,7 @@ const VCF: FC<Props> = ({
           link.click();
           document.body.removeChild(link);
         }}
-        className="max-w-max mx-auto text-center !text-link transition-all cursor-pointer mt-2"
+        className="max-w-max mx-auto text-center !text-link transition-all cursor-pointer p-0 m-0 flex"
         type="button"
         title="Download Contact Vcard"
       >

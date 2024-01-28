@@ -27,6 +27,9 @@ fragment albumFields on Album {
     }
     thumbnailType
     videoDisplayLayout
+    mobileThumbnail {
+      url
+    }
   }
 }
 
@@ -70,6 +73,9 @@ fragment blogFields on Blog {
     }
     thumbnailType
     videoDisplayLayout
+    mobileThumbnail {
+      url
+    }
   }
   blogHtml
   blogHeroStyle
@@ -253,6 +259,9 @@ fragment eventFields on Event {
     }
     thumbnailType
     videoDisplayLayout
+    mobileThumbnail {
+      url
+    }
   }
   eventDescription {
     html
@@ -438,6 +447,9 @@ fragment pageFields on Page {
   heroImage {
     url
   }
+  heroMobileImage {
+    url
+  }
   layoutBlocks(first: 100) {
     id
     cssClass
@@ -553,6 +565,9 @@ fragment HeroMediaSliderFields on HeroMediaSlider {
   displaySocialMedia
   youtubeVideoId
   id
+  mobileThumbnail {
+    url
+  }
 }
 
 fragment ContactFormFields on ContactForm {
@@ -598,10 +613,13 @@ fragment AccordionFields on Accordion {
     vimeoVideoId
     youtubePlaylistId
     thumbnailType
+    videoDisplayLayout
+    mobileThumbnail {
+      url
+    }
     thumbnail {
       url
     }
-    videoDisplayLayout
   }
   contentImage {
     url
@@ -618,6 +636,9 @@ fragment VideoBoxFields on VideoBox {
   }
   thumbnailType
   videoDisplayLayout
+  mobileThumbnail {
+    url
+  }
 }
 
 fragment navigationFields on Navigation {
@@ -765,11 +786,14 @@ fragment profileFields on Profile {
     youtubeVideoId
     vimeoVideoId
     youtubePlaylistId
+    thumbnailType
+    videoDisplayLayout
+    mobileThumbnail {
+      url
+    }
     thumbnail {
       url
     }
-    thumbnailType
-    videoDisplayLayout
   }
   heroImage {
     url
@@ -829,11 +853,14 @@ fragment productFields on Product {
     youtubeVideoId
     vimeoVideoId
     youtubePlaylistId
+    thumbnailType
+    videoDisplayLayout
     thumbnail {
       url
     }
-    thumbnailType
-    videoDisplayLayout
+    mobileThumbnail {
+      url
+    }
   }
   productJson
 }

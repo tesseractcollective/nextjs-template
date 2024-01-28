@@ -32,7 +32,7 @@ export default function ProfileGridSection({
             <div
               key={profile.profileSlug}
               tabIndex={0}
-              className="block w-2/4 md:w-1/3 lg:w-1/4 transition-all relative profile-hover"
+              className="block w-2/4 md:w-1/3 lg:w-1/4 transition-all relative profile-hover overflow-hidden"
             >
               {!!profile.avatarImage?.url && (
                 <div
@@ -74,7 +74,7 @@ export default function ProfileGridSection({
                           profile.profileSlug
                         }`}
                         tabIndex={0}
-                        className="absolute bottom-3 md:bottom-5 left-3 md:left-5 my-0 py-0 flex flex-row items-center justify-center text-left mx-auto text-primary hover:!text-secondary text-base sm:text-lg md:text-xl lg:text-2xl font-bold transition-all group z-[2] overflow-hidden focus:!text-secondary text-shadow"
+                        className="absolute bottom-3 md:bottom-5 left-3 md:left-5 my-0 py-0 flex flex-row items-center justify-center text-left mx-auto text-primary hover:!text-secondary text-base sm:text-lg md:text-xl lg:text-2xl font-bold transition-all group z-[2] focus:!text-secondary text-shadow"
                       >
                         <span className="max-w-[17rem]">{profile.name}</span>
                         <FontAwesomeIcon

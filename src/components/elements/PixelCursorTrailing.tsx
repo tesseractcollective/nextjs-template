@@ -72,26 +72,28 @@ export default function PixelCursorTrailing({
   }, [colorize, windowWidth]);
 
   return (
-    <div
-      className={`pixel-cursor-trailing-wrapper relative flex min-h-[60vh] md:h-100vh items-center justify-center bg-${background}`}
-    >
-      <div className="pixel-cursor-trailing-body">
-        <p className={`text-${theme}`}>{parse(text)}</p>
-      </div>
-      <div className="pixel-cursor-trailing-grid flex h-full w-full overflow-hidden inset-0 absolute">
-        {windowWidth > 0 &&
-          Array.from({ length: 20 }, (_, index) => (
-            <div key={index} className="pixel-cursor-trailing-column">
-              {getBlocks().map((blockIndex) => (
-                <div
-                  key={blockIndex}
-                  onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
-                    colorize(e.currentTarget);
-                  }}
-                ></div>
-              ))}
-            </div>
-          ))}
+    <div className="sticky top-0">
+      <div
+        className={`pixel-cursor-trailing-wrapper relative flex min-h-[60vh] md:h-100vh items-center justify-center bg-${background}`}
+      >
+        <div className="pixel-cursor-trailing-body">
+          <p className={`text-${theme}`}>{parse(text)}</p>
+        </div>
+        <div className="pixel-cursor-trailing-grid flex h-full w-full overflow-hidden inset-0 absolute">
+          {windowWidth > 0 &&
+            Array.from({ length: 20 }, (_, index) => (
+              <div key={index} className="pixel-cursor-trailing-column">
+                {getBlocks().map((blockIndex) => (
+                  <div
+                    key={blockIndex}
+                    onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
+                      colorize(e.currentTarget);
+                    }}
+                  ></div>
+                ))}
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
