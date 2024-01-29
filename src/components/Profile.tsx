@@ -130,8 +130,8 @@ export default function Profile({
           </div>
         </Zoom>
       </div>
-      <div className="py-8">
-        <div className="bg-invert px-4 overflow-x-hidden">
+      <section className="bg-invert">
+        <div className="px-4 overflow-x-hidden py-8">
           <div className="mx-auto container relative flex flex-col md:items-center md:justify-center">
             {profile.miniBio && (
               <div className="px-2 text-4xl font-bold tracking-tight text-text-color md:text-5xl max-w-4xl text-center mx-auto relative block my-10 md:mt-12 md:mb-32">
@@ -140,7 +140,7 @@ export default function Profile({
             )}
             {profile.imageGallery.length >= 1 && (
               <>
-                <div className="relative pb-0 md:pb-32 block md:mb-16">
+                <div className="relative pb-0 md:pb-32 block md:mb-16 min-h-[50vh]">
                   <div className="hidden md:flex min-w-max space-x-6 mx-auto lg:space-x-8">
                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
                       {profile?.imageGallery[0]?.url && (
@@ -268,7 +268,7 @@ export default function Profile({
             )}
           </div>
         </div>
-      </div>
+      </section>
       {profile?.name && profile?.bandsInTownKey && (
         <BandsInTownApi
           apiKey={profile.bandsInTownKey}
@@ -301,7 +301,7 @@ export default function Profile({
           )}
       </section>
       {!!filteredContacts && filteredContacts.length >= 1 && (
-        <div className="bg-invert my-16">
+        <div className="bg-invert">
           <section
             aria-labelledby="features-heading"
             className="relative h-80vh flex items-center"
@@ -420,7 +420,7 @@ export default function Profile({
         <Profiles
           profiles={filteredProfiles}
           profileLayoutStyle="grid"
-          profileSectionTitle={profile.profileType}
+          // profileSectionTitle={profile.profileType}
           profileType={profile.profileType}
           siteID={siteLibrary.siteId}
         />

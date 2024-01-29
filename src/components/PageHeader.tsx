@@ -338,17 +338,9 @@ export default function PageHeader({
         </Zoom>
       )}
       {pageWidthStyle === "netflix" && (
-        <Zoom triggerOnce>
+        <Fade triggerOnce direction="down">
           <section className="h-100vh relative bg-bg">
-            <div
-              className={`absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 ${
-                scroll ? "opacity-20" : "opacity-80"
-              } bg-fixed`}
-              style={{
-                backgroundImage: `url(${pageHeaderImageProp})`,
-              }}
-            ></div>
-            <div className="max-w-8xl px-4 py-20 mx-auto bottom-20 absolute w-full inset-x-0">
+            <div className="max-w-8xl px-4 py-20 mx-auto bottom-20 absolute z-40 w-full inset-x-0">
               <Fade direction="up" triggerOnce>
                 {!!pageHeaderTitleProp && (
                   <h1 className="text-3xl md:text-6xl xl:text-7xl text-shadow-large mt-0 mb-1 py-0 text-left text-text-overlay font-bold uppercase">
@@ -356,7 +348,7 @@ export default function PageHeader({
                   </h1>
                 )}
                 {!!pageHeaderSubtitleProp && (
-                  <h2 className="text-shadow my-0 py-0 text-left uppercase tracking-widest font-bold text-lg opacity-80 text-tertiary max-w-md">
+                  <h2 className="text-shadow my-0 py-0 text-left uppercase tracking-widest font-bold text-lg opacity-100 text-secondary max-w-md">
                     {pageHeaderSubtitleProp}
                   </h2>
                 )}
@@ -391,8 +383,20 @@ export default function PageHeader({
                 )}
               </Fade>
             </div>
+            {pageHeaderImageProp && (
+              <Image
+                src={pageHeaderImageProp}
+                alt=""
+                width={0}
+                height={0}
+                sizes="100%"
+                className={`absolute w-full h-full inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 object-cover ${
+                  scroll ? "opacity-20" : "opacity-80"
+                } bg-fixed`}
+              />
+            )}
           </section>
-        </Zoom>
+        </Fade>
       )}
       {pageWidthStyle === "power" && (
         <Zoom triggerOnce>

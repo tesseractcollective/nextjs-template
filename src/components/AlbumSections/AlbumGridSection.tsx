@@ -35,6 +35,13 @@ export default function AlbumGridSection({ albums }: FeatureAlbumProps) {
                       onMouseEnter={() => setHoveredItemIndex(index)}
                       onMouseLeave={() => setHoveredItemIndex(null)}
                       className={`relative aspect-1 group mx-auto w-full transition-all`}
+                      onClick={() =>
+                        ReactGA.event({
+                          category: "Link",
+                          action: `Visit ${album.title}`,
+                          label: album.title || "",
+                        })
+                      }
                     >
                       {album.albumCover?.url && (
                         <Image
@@ -48,7 +55,7 @@ export default function AlbumGridSection({ albums }: FeatureAlbumProps) {
                           }`}
                         />
                       )}
-                      <p className="opacity-50 group-hover:opacity-100 lg:opacity-0 absolute bottom-2 left-2 lg:bottom-[initial] z-40 lg:top-[25%] lg:group-focus:top-[50%] lg:group-hover:top-[50%] lg:left-[50%] lg:-translate-x-1/2 lg:-translate-y-1/2 p-0 m-0 font-bold uppercase text-xs lg:text-4xl text-left lg:text-center lg:group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] flex flex-row items-center justify-start group-hover:text-shadow">
+                      <p className="opacity-50 group-hover:opacity-100 lg:opacity-0 absolute bottom-2 left-2 right-0 z-40 p-0 m-0 font-bold uppercase text-xs lg:text-4xl text-left lg:group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] flex flex-row items-center justify-start group-hover:text-shadow w-full">
                         {album.title}
                       </p>
                     </Link>

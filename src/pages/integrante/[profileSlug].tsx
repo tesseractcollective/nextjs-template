@@ -36,25 +36,27 @@ export default function ProfileSlug({
       {!!siteLibrary?.analyticsId && (
         <GoogleAnalytics analyticsId={siteLibrary.analyticsId} />
       )}
-      <Nav
-        siteLibrary={siteLibrary}
-        navigations={navigations}
-        hideNav={false}
-      />
-      <Fade triggerOnce>
-        <Profile
-          profile={profile}
+      <div className="relative profile-page">
+        <Nav
           siteLibrary={siteLibrary}
-          contacts={contacts}
-          profiles={profiles}
+          navigations={navigations}
+          hideNav={false}
         />
-      </Fade>
-      <Footer
-        siteLibrary={siteLibrary}
-        navigations={navigations}
-        hideFooter={false}
-        blogs={blogs}
-      />
+        <Fade triggerOnce>
+          <Profile
+            profile={profile}
+            siteLibrary={siteLibrary}
+            contacts={contacts}
+            profiles={profiles}
+          />
+        </Fade>
+        <Footer
+          siteLibrary={siteLibrary}
+          navigations={navigations}
+          hideFooter={false}
+          blogs={blogs}
+        />
+      </div>
     </>
   );
 }

@@ -36,7 +36,7 @@ export default function ProfileSlug({
       {!!siteLibrary?.analyticsId && (
         <GoogleAnalytics analyticsId={siteLibrary.analyticsId} />
       )}
-      <div className="relative layout-blocks-wrapper">
+      <div className="relative layout-blocks-wrapper profile-page">
         <Nav
           siteLibrary={siteLibrary}
           navigations={navigations}

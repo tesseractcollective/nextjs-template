@@ -49,21 +49,16 @@ export default function VideoGridClipSection({
 
   return (
     <section className="relative w-full mx-auto my-0 overflow-hidden">
-      <div className="flex flex-row flex-wrap w-full mx-0 transition">
-        {videoData.map((videoItem, index) => {
-          const isHovered =
-            hoveredItemIndex !== null && hoveredItemIndex !== index;
-
-          return (
-            <Fade
-              key={index}
-              triggerOnce
-              direction="left"
-              className={`block w-2/4 md:w-1/3 lg:w-2/4 transition-all relative overflow-hidden`}
-            >
+      <Fade direction="up" triggerOnce>
+        <div className="flex flex-row flex-wrap w-full mx-0 transition">
+          {videoData.map((videoItem, index) => {
+            const isHovered =
+              hoveredItemIndex !== null && hoveredItemIndex !== index;
+            return (
               <button
+                key={index}
                 type="button"
-                className={`block relative group overflow-hidden transition-all ${
+                className={`w-2/4 md:w-1/3 lg:w-2/4 block relative group overflow-hidden transition-all ${
                   isHovered ? "grayscale" : ""
                 }`}
                 onMouseEnter={() => setHoveredItemIndex(index)}
@@ -81,15 +76,15 @@ export default function VideoGridClipSection({
                 {!!videoItem.thumbnail?.url && (
                   <video
                     className="object-cover h-full w-full overflow-hidden relative z-10"
-                    onMouseOver={(event) => event.currentTarget.play()}
-                    onMouseOut={(event) => event.currentTarget.pause()}
+                    // onMouseOver={(event) => event.currentTarget.play()}
+                    // onMouseOut={(event) => event.currentTarget.pause()}
                     muted
                     title={videoItem.videoTitle || ""}
-                    autoPlay
                     playsInline
                     loop
+                    autoPlay
                     preload="metadta"
-                    src={`${videoItem.thumbnail?.url}#t=0.5`}
+                    src={`${videoItem.thumbnail?.url}`}
                   ></video>
                 )}
                 {!!videoItem?.videoTitle && (
@@ -102,10 +97,10 @@ export default function VideoGridClipSection({
                   </p>
                 )}
               </button>
-            </Fade>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      </Fade>
       {selectedVideo && (
         <Transition.Root show={open} as={Fragment}>
           <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
