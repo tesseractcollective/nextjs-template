@@ -412,6 +412,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     mapAddress
     mapLink
     spotifyArtistName
+    spotifyAlbumDisplay
   }
   sections(first: 100) {
     __typename

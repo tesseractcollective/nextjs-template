@@ -108,7 +108,7 @@ export default function ProfileCardModalSection({
                         <div className="flex justify-between flex-row w-full">
                           <SocialMediaIcons
                             fadeDirection="up"
-                            cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-0 mt-1 mb-0 justify-start"
+                            cssClass="profile-card-modal my-4 w-full flex flex-row social-icons-row items-center justify-start text-text-color flex-wrap gap-x-2"
                             instagramLinkProp={
                               profile?.instagramLink || undefined
                             }
@@ -253,7 +253,7 @@ export default function ProfileCardModalSection({
                                 </Fade>
                                 <SocialMediaIcons
                                   fadeDirection="up"
-                                  cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center gap-x-2"
+                                  cssClass="profile-card-modal my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
                                   instagramLinkProp={
                                     selectedProfile?.instagramLink || undefined
                                   }

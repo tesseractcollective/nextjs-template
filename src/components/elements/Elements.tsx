@@ -22,6 +22,7 @@ import MaskCursor from "./MaskCursor";
 import AnimateParagraph from "./AnimateParagraph";
 import OpenTableWidget from "./OpenTableWidget";
 import PixelCursorTrailing from "./PixelCursorTrailing";
+import MaskCursorColored from "./MaskCursorColored";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -149,6 +150,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
         )}
       {!!elementJson?.maskCursorText && (
         <MaskCursor maskCursorText={elementJson.maskCursorText} />
+      )}
+      {!!elementJson?.maskCursorTextColored && (
+        <MaskCursorColored maskCursorText={elementJson.maskCursorTextColored} />
       )}
 
       {!!elementJson?.animateParagraph && (

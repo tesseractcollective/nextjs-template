@@ -13,7 +13,7 @@ interface GridBoxProps {
 
 export default function GridBox({ gridBoxData }: GridBoxProps) {
   // slider √
-  //  compact √
+  // compact √
   // inset √
   // tall √
   // content √

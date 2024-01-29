@@ -250,6 +250,29 @@ html {
   border-bottom: 2px solid var(--secondary);
 }
 
+.gradient-text-element {
+  position: relative;
+  display: block;
+  font-weight: 900 !important;
+  max-width: max-content;
+  text-align: center;
+  margin: 20px auto 20px;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary), var(--secondary) 50%, var(--tertiary) 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 450% 100%;
+  background-position: 100%;
+  transition: all 275ms ease;
+  text-decoration: none;
+  border-bottom: 1px solid var(--primary);
+  background-position: 0 100%;
+  border-bottom: 2px solid var(--secondary);
+}
+
 .content-max-w-8xl {
   .body-parsed-text, .call-to-action-items {
     max-width: 86rem;

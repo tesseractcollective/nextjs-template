@@ -8,7 +8,7 @@ interface MaskCursorProps {
   maskCursorText: string;
 }
 
-export default function MaskCursor({ maskCursorText }: MaskCursorProps) {
+export default function MaskCursorColored({ maskCursorText }: MaskCursorProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { x, y } = useMousePosition();
   const size = isHovered ? 400 : 40;
@@ -39,7 +39,7 @@ export default function MaskCursor({ maskCursorText }: MaskCursorProps) {
         </p>
       </motion.div>
 
-      <div className="mask-body">
+      <div className="mask-body gradient-text-element">
         <p>{parse(maskCursorText)}</p>
       </div>
     </main>

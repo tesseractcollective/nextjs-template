@@ -44,7 +44,7 @@ export default function VerticalTabGridBoxes({ gridBoxData }: GridBoxProps) {
 
       {selectedItem && (
         <div className="w-full md:w-2/3 flex flex-col items-center h-full justify-center flex-1 all-text-dark">
-          <Fade className="p-4" direction="up">
+          <Fade className="p-4" direction="up" triggerOnce>
             {selectedItem.boxImage && (
               <Image
                 src={selectedItem.boxImage.url}
