@@ -72,10 +72,10 @@ export default function LinkItem({
       ) : (
         <Link href={link} className={cssClass || ""} onClick={handleEvent}>
           {isLoading && (
-            <div className="relative text-primary z-10">
+            <div className="fixed text-primary z-[9999] top-0 right-0">
               <FontAwesomeIcon
                 icon={faSpinner as IconProp}
-                className="fa-fw h-3 w-3 flex aspect-1 -top-4 -left-2 animate-spin absolute"
+                className="fa-fw h-6 w-6 flex aspect-1 animate-spin absolute"
               />
             </div>
           )}

@@ -46,6 +46,19 @@ export default function FeatureAlbum({
   const { isSpanish } = siteLibrary;
   if (!albums) return <></>;
 
+  // all
+  // cd
+  // compact
+  // featured
+  // record
+  // skew
+  // slider
+  // stacked
+  // myspace
+  // vinyl
+  // postcard
+  // grid
+
   return (
     <>
       {albumDisplayType === "featured" && (

@@ -6,6 +6,7 @@ const nextConfig = {
       "media.graphassets.com",
       "i.ytimg.com",
       "img.youtube.com",
+      "i.scdn.co",
     ],
   },
   async rewrites() {

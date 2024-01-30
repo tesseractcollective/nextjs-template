@@ -23,6 +23,7 @@ import AnimateParagraph from "./AnimateParagraph";
 import OpenTableWidget from "./OpenTableWidget";
 import PixelCursorTrailing from "./PixelCursorTrailing";
 import MaskCursorColored from "./MaskCursorColored";
+import SpotifyArtistAlbums from "./SpotifyAPI/SpotifyArtistAlbums";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -54,6 +55,8 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
     bandsInTownKey,
     mapAddress,
     mapLink,
+    spotifyArtistName,
+    spotifyAlbumDisplay,
   } = elements;
   return (
     <>
@@ -174,6 +177,17 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             text={elementJson?.pixelCursorTrailing.text}
             theme={elementJson?.pixelCursorTrailing.theme}
             background={elementJson?.pixelCursorTrailing.background}
+          />
+        )}
+      {!!spotifyArtistName &&
+        !!spotifyAlbumDisplay &&
+        siteLibrary?.spotifyClientSecret &&
+        siteLibrary.spotifyClientId && (
+          <SpotifyArtistAlbums
+            artistName={spotifyArtistName}
+            spotifyClientId={siteLibrary.spotifyClientId}
+            spotifyClientSecret={siteLibrary.spotifyClientSecret}
+            spotifyAlbumDisplay={spotifyAlbumDisplay}
           />
         )}
     </>
