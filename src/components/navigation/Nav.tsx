@@ -47,9 +47,11 @@ export default function Nav({
   // ** Navigation Layout Style
   // vertical √
   // universal √
+  // horizon √
+  // circle √
+  // dimension √
   // between
   // center
-  // circle
   // dashboard
   // dual
   // mega
@@ -60,8 +62,6 @@ export default function Nav({
   // start
   // transparent
   // vertical
-  //  horizon
-  // dimension
   // border
   // verticalTwo
   // blog

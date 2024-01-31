@@ -116,7 +116,7 @@ export default function HorizonNavigation({
                           <>
                             <span className="sr-only">{title}</span>
                             <Image
-                              className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
+                              className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block min-h-[80px]"
                               src={navigation.navigationLogo?.url}
                               alt=""
                               width={0}
@@ -323,7 +323,7 @@ export default function HorizonNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className="w-[120px] md:w-[160px] max-h-[80px] cursor-pointer object-contain transition-all mr-auto"
+                          className="w-[120px] md:w-[160px] max-h-[80px] cursor-pointer object-contain transition-all mr-auto min-h-[80px]"
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}

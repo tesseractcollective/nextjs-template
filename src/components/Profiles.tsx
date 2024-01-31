@@ -10,6 +10,8 @@ import ProfileCardModalSection from "@/components/ProfileSections/ProfileCardMod
 import ProfileTeamSection from "@/components/ProfileSections/ProfileTeamSection";
 import ProfileDefaultSection from "@/components/ProfileSections/ProfileDefaultSection";
 import ProfileFullScreenSection from "@/components/ProfileSections/ProfileFullScreenSection";
+import ProfileMyspaceSection from "@/components/ProfileSections/ProfileMyspaceSection";
+import ProfileSportsSection from "@/components/ProfileSections/ProfileSportsSection";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -17,6 +19,7 @@ interface ProfilesProps {
   profileLayoutStyle?: string;
   profiles?: ProfileFieldsFragment[];
   siteID?: string;
+  siteLogo?: string;
 }
 
 export default function Profiles({
@@ -25,6 +28,7 @@ export default function Profiles({
   profileLayoutStyle,
   profiles,
   siteID,
+  siteLogo,
 }: ProfilesProps) {
   if (!profiles) return <></>;
   const FilteredProfiles = profiles
@@ -91,6 +95,13 @@ export default function Profiles({
         profileSectionTitle={profileSectionTitle}
       />
     );
+  if (profileLayoutStyle === "myspace")
+    return (
+      <ProfileMyspaceSection
+        profiles={FilteredProfiles}
+        profileSectionTitle={profileSectionTitle}
+      />
+    );
   if (profileLayoutStyle === "universal")
     return (
       <ProfileUniversalSection
@@ -132,6 +143,14 @@ export default function Profiles({
         profiles={FilteredProfiles}
         profileSectionTitle={profileSectionTitle}
       />
+    );
+  if (profileLayoutStyle === "sport" && !!siteLogo)
+    return (
+      <ProfileSportsSection profiles={FilteredProfiles} siteLogo={siteLogo} />
+    );
+  if (profileLayoutStyle === "sports" && !!siteLogo)
+    return (
+      <ProfileSportsSection profiles={FilteredProfiles} siteLogo={siteLogo} />
     );
   return (
     <ProfileDefaultSection

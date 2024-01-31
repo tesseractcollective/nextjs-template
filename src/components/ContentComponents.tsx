@@ -140,18 +140,16 @@ export default function ContentComponents({
           />
         </section>
       )}
-      {!!profiles &&
-        profileType &&
-        profileSectionTitle &&
-        profileLayoutStyle && (
-          <Profiles
-            profiles={profiles}
-            profileLayoutStyle={profileLayoutStyle}
-            profileSectionTitle={profileSectionTitle}
-            profileType={profileType}
-            siteID={siteLibrary.siteId}
-          />
-        )}
+      {!!profiles && profileType && profileLayoutStyle && (
+        <Profiles
+          profiles={profiles}
+          profileLayoutStyle={profileLayoutStyle}
+          profileSectionTitle={profileSectionTitle || ""}
+          profileType={profileType}
+          siteID={siteLibrary.siteId}
+          siteLogo={siteLibrary?.logo?.url}
+        />
+      )}
       {!!eventShowType &&
         !!filteredCalendarData &&
         filteredCalendarData.length >= 1 && (
