@@ -18,18 +18,7 @@ fragment albumFields on Album {
   albumJsonData
   iFramePlayer
   videoBox {
-    videoTitle
-    youtubeVideoId
-    vimeoVideoId
-    youtubePlaylistId
-    thumbnail {
-      url
-    }
-    thumbnailType
-    videoDisplayLayout
-    mobileThumbnail {
-      url
-    }
+    ...VideoBoxFields
   }
 }
 
@@ -64,18 +53,7 @@ fragment blogFields on Blog {
     width
   }
   videoBox {
-    videoTitle
-    youtubeVideoId
-    vimeoVideoId
-    youtubePlaylistId
-    thumbnail {
-      url
-    }
-    thumbnailType
-    videoDisplayLayout
-    mobileThumbnail {
-      url
-    }
+    ...VideoBoxFields
   }
   blogHtml
   blogHeroStyle
@@ -609,18 +587,7 @@ fragment AccordionFields on Accordion {
     html
   }
   videoBox {
-    videoTitle
-    youtubeVideoId
-    vimeoVideoId
-    youtubePlaylistId
-    thumbnailType
-    videoDisplayLayout
-    mobileThumbnail {
-      url
-    }
-    thumbnail {
-      url
-    }
+    ...VideoBoxFields
   }
   contentImage {
     url
@@ -783,18 +750,7 @@ fragment profileFields on Profile {
   }
   profileJson
   videoBox {
-    videoTitle
-    youtubeVideoId
-    vimeoVideoId
-    youtubePlaylistId
-    thumbnailType
-    videoDisplayLayout
-    mobileThumbnail {
-      url
-    }
-    thumbnail {
-      url
-    }
+    ...VideoBoxFields
   }
   heroImage {
     url
@@ -850,18 +806,7 @@ fragment productFields on Product {
   }
   iFrame
   videoBox {
-    videoTitle
-    youtubeVideoId
-    vimeoVideoId
-    youtubePlaylistId
-    thumbnailType
-    videoDisplayLayout
-    thumbnail {
-      url
-    }
-    mobileThumbnail {
-      url
-    }
+    ...VideoBoxFields
   }
   productJson
 }

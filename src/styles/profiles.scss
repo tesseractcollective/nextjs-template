@@ -25,84 +25,84 @@
 }
 
 
-// .sports-card {
-//   &:hover &:focus {
-//     border: 15px var(--secondary) solid;
-//   }
-//   &:before, &:after {
-//     content: '';
-//   }
+.sports-card {
+  &:hover &:focus {
+    border: 15px var(--secondary) solid;
+  }
+  &:before, &:after {
+    content: '';
+  }
   
-//   &:before {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     z-index: 50;
-//     border-top: 60px solid var(--primary);
-//     border-right: 60px solid transparent;
-//   }
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    border-top: 60px solid var(--primary);
+    border-right: 60px solid transparent;
+  }
   
-//   &:after {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     z-index: 5;
-//     border-top: 62px solid var(--background);
-//     border-right: 62px solid transparent;
-//   }
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    border-top: 62px solid var(--background);
+    border-right: 62px solid transparent;
+  }
   
-//   .team_logo {
-//     position: absolute;
-//     z-index: 50;
-//     top: 0px;
-//     left: 0px;
-//   }
+  .team_logo {
+    position: absolute;
+    z-index: 50;
+    top: 0px;
+    left: 0px;
+  }
   
-//   .player {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     z-index: 5;
-//     height: 280px;
-//     width: 196px;
-//     object-fit: cover;
-//     border: 2px var(--background) solid;
-//   }
+  .player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    height: 280px;
+    width: 196px;
+    object-fit: cover;
+    border: 2px var(--background) solid;
+  }
   
-//   p.profile-sport-name {
-//     position: absolute;
-//     bottom: -10px;
-//     right: 0;
-//     width: 66%;
-//     height: 30px;
-//     text-align: center;
-//     font-size: 100%;
-//     text-transform: uppercase;
-//     color: var(--background);
-//     background: var(--text);
-//     border: 2px var(--background) solid;
-//     z-index: 10;
+  p.profile-sport-name {
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    width: 66%;
+    height: 30px;
+    text-align: center;
+    font-size: 100%;
+    text-transform: uppercase;
+    color: var(--background);
+    background: var(--text);
+    border: 2px var(--background) solid;
+    z-index: 10;
 
-//     &:before, &:after {
-//       content: '';
-//     }
+    &:before, &:after {
+      content: '';
+    }
     
-//     &:before {
-//       position: absolute;
-//       bottom: 28px;
-//       right: -2px;
-//       z-index: 18;
-//       border-bottom: 15px solid var(--primary);
-//       border-left: 15px solid transparent;
-//     }
+    &:before {
+      position: absolute;
+      bottom: 28px;
+      right: -2px;
+      z-index: 18;
+      border-bottom: 15px solid var(--primary);
+      border-left: 15px solid transparent;
+    }
 
-//     &:after {
-//       position: absolute;
-//       bottom: 28px;
-//       right: -2px;
-//       z-index: 15;
-//       border-bottom: 17px solid var(--background);
-//       border-left: 17px solid transparent;
-//     }
-//   }
-// }
+    &:after {
+      position: absolute;
+      bottom: 28px;
+      right: -2px;
+      z-index: 15;
+      border-bottom: 17px solid var(--background);
+      border-left: 17px solid transparent;
+    }
+  }
+}
