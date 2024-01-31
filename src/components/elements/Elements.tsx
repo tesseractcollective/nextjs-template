@@ -23,7 +23,7 @@ import AnimateParagraph from "./AnimateParagraph";
 import OpenTableWidget from "./OpenTableWidget";
 import PixelCursorTrailing from "./PixelCursorTrailing";
 import MaskCursorColored from "./MaskCursorColored";
-// import SpotifyArtistAlbums from "./SpotifyAPI/SpotifyArtistAlbums";
+import SpotifyArtistAlbums from "./SpotifyAPI/SpotifyArtistAlbums";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -177,7 +177,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             background={elementJson?.pixelCursorTrailing.background}
           />
         )}
-      {/* {!!elements?.spotifyArtistName &&
+      {!!elements?.spotifyArtistName &&
         !!elements?.spotifyAlbumDisplay &&
         siteLibrary?.spotifyClientSecret &&
         siteLibrary?.spotifyClientId && (
@@ -187,7 +187,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             spotifyClientId={siteLibrary.spotifyClientId}
             spotifyClientSecret={siteLibrary.spotifyClientSecret}
           />
-        )} */}
+        )}
     </>
   );
 }
