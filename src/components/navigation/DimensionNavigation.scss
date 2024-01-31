@@ -1,0 +1,10 @@
+.layout-blocks-sections {
+  transition: all 400ms ease-in-out;
+  position: relative;
+  left: 0;
+  bottom: 0 !important;
+  &.open-dimension {
+   left: -30%;
+   bottom: -30% !important;
+  }
+}

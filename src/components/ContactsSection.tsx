@@ -56,6 +56,7 @@ export default function ContactsSection({
                   cssClass="mt-1 mb-0 w-full flex flex-row !social-icons !items-center !justify-start text-dark gap-x-2"
                   linkedinLinkProp={contact?.contactLinkedin || ""}
                   calendlyLinkProp={contact.contactCalendly || undefined}
+                  instagramLinkProp={contact.contactInstagram || undefined}
                   displayVcf={true}
                   avatar={contact.contactAvatar?.url || undefined}
                   name={contact.contactName || undefined}
