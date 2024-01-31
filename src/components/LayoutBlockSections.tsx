@@ -28,7 +28,7 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
   if (!siteLibrary) return <></>;
   if (!page?.layoutBlocks) return <></>;
   return (
-    <div className="relative">
+    <div className="relative layout-blocks-sections">
       {page.layoutBlocks?.length >= 1 && (
         <>
           {page.layoutBlocks.map((layoutBlock, parentIndex) => {

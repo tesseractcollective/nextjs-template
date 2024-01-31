@@ -61,7 +61,7 @@ export default function ProfileFullScreenSection({
               width={0}
               height={0}
               sizes="100%"
-              className="w-full h-full object-cover absolute inset-0 z-0"
+              className="w-full h-full object-cover absolute inset-0 z-0 h-100vh"
             />
           )}
         </section>

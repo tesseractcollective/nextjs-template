@@ -28,7 +28,7 @@ export default function ProfileVerticalSection({
           {profiles.map((profile) => (
             <Link
               key={profile.profileSlug}
-              className="relative group vertical-profile h-[28rem] w-full lg:w-[20vw] hover:lg:w-[60vw] focus:lg:w-[60vw] transition-all lg:h-full cursor-pointer"
+              className="relative group vertical-profile h-[28rem] w-full lg:w-[20vw] hover:lg:w-[60vw] focus:lg:w-[60vw] transition-all duration-[400ms] lg:h-full cursor-pointer"
               href={
                 profile.externalLink ||
                 `/${profile.profileType?.toLowerCase()}/${profile.profileSlug}`
@@ -41,10 +41,10 @@ export default function ProfileVerticalSection({
                   alt={profile.name || ""}
                   width={0}
                   height={0}
-                  className="grayscale group-hover:grayscale-0 group-focus:grayscale-0 transition-all object-cover h-full w-full overflow-hidden"
+                  className="grayscale group-hover:grayscale-0 group-focus:grayscale-0 transition-all duration-[400ms] object-cover h-full w-full overflow-hidden"
                 />
               )}
-              <p className="absolute z-40 bottom-0 p-0 m-0 font-bold uppercase left-0 text-4xl group-hover:text-primary transition-all">
+              <p className="absolute z-40 bottom-0 p-0 m-0 font-bold uppercase left-0 text-4xl group-hover:text-primary transition-all duration-[400ms]">
                 {profile.name}
               </p>
             </Link>

@@ -17,6 +17,7 @@ import UniversalNavigation from "@/components/navigation/UniversalNavigation";
 import ProgressNavigation from "@/components/navigation/ProgressNavigation";
 import HorizonNavigation from "@/components/navigation/HorizonNavigation";
 import BlogNavigation from "@/components/navigation/BlogNavigation";
+import DimensionNavigation from "@/components/navigation/DimensionNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -200,6 +201,16 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "reverse")
     return (
       <ReverseNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "dimension")
+    return (
+      <DimensionNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}
