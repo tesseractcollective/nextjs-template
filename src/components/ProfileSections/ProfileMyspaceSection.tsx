@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
-import OnlineNow from "../../../public/assets/online-now.gif";
+// import OnlineNow from "../../../public/assets/online-now.gif";
 import Link from "next/link";
 
 interface ProfilesProps {
@@ -60,14 +60,14 @@ export default function ProfileMyspaceSection({
                     </div>
                   )}
 
-                  <Image
+                  {/* <Image
                     src={OnlineNow}
                     alt="Online Now"
                     width={0}
                     height={0}
                     sizes="100%"
                     className="h-[50px] w-[100px] mx-auto object-contain"
-                  />
+                  /> */}
                 </div>
               </div>
             </Link>
