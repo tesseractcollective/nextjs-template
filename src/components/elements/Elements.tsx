@@ -55,8 +55,6 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
     bandsInTownKey,
     mapAddress,
     mapLink,
-    spotifyArtistName,
-    spotifyAlbumDisplay,
   } = elements;
   return (
     <>
@@ -179,15 +177,15 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             background={elementJson?.pixelCursorTrailing.background}
           />
         )}
-      {!!spotifyArtistName &&
-        !!spotifyAlbumDisplay &&
+      {!!elements?.spotifyArtistName &&
+        !!elements?.spotifyAlbumDisplay &&
         siteLibrary?.spotifyClientSecret &&
-        siteLibrary.spotifyClientId && (
+        siteLibrary?.spotifyClientId && (
           <SpotifyArtistAlbums
-            artistName={spotifyArtistName}
+            artistName={elements.spotifyArtistName}
+            spotifyAlbumDisplay={elements.spotifyAlbumDisplay}
             spotifyClientId={siteLibrary.spotifyClientId}
             spotifyClientSecret={siteLibrary.spotifyClientSecret}
-            spotifyAlbumDisplay={spotifyAlbumDisplay}
           />
         )}
     </>

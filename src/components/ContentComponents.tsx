@@ -147,7 +147,7 @@ export default function ContentComponents({
           profileSectionTitle={profileSectionTitle || ""}
           profileType={profileType}
           siteID={siteLibrary.siteId}
-          siteLogo={siteLibrary?.logo?.url}
+          siteLogo={siteLibrary?.logo?.url || ""}
         />
       )}
       {!!eventShowType &&

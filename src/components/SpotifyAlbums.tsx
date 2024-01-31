@@ -17,7 +17,7 @@ const SpotifyAlbums = ({ artistId }: { artistId: string }) => {
           `https://api.spotify.com/v1/artists/${artistId}/albums`,
           {
             headers: {
-              Authorization: `3caab6d2bc7b4d909c1c5d5635298a64`,
+              Authorization: `code`,
             },
           }
         );
