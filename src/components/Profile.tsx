@@ -416,13 +416,14 @@ export default function Profile({
           </section>
         </div>
       )}
-      {!!profiles && profile.profileType && (
+      {!!filteredProfiles && profile.profileType && siteLibrary?.logo?.url && (
         <Profiles
           profiles={filteredProfiles}
           profileLayoutStyle="grid"
-          // profileSectionTitle={profile.profileType}
+          // profileSectionTitle={profile.profileType || ""}
           profileType={profile.profileType}
           siteID={siteLibrary.siteId}
+          siteLogo={siteLibrary?.logo?.url}
         />
       )}
     </div>
