@@ -148,10 +148,6 @@ export default function Profiles({
     return (
       <ProfileSportsSection profiles={FilteredProfiles} siteLogo={siteLogo} />
     );
-  if (profileLayoutStyle === "sports" && !!siteLogo)
-    return (
-      <ProfileSportsSection profiles={FilteredProfiles} siteLogo={siteLogo} />
-    );
   return (
     <ProfileDefaultSection
       profiles={FilteredProfiles}
