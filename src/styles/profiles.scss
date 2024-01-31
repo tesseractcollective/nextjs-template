@@ -26,11 +26,6 @@
 
 
 .sports-card {
-  // position: relative !important;
-  // height: 300px !important;
-  // width: 200px !important;
-  // border: 15px var(--primary) solid !important;
-  // transition: all 300ms ease !important;
   &:hover &:focus {
     border: 15px var(--secondary) solid;
   }

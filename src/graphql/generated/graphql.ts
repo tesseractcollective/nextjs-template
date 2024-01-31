@@ -10503,8 +10503,6 @@ export type LogoTableEdge = {
 };
 
 export enum LogoTableItem {
-  Bands = 'bands',
-  Platforms = 'platforms',
   Sponsor = 'sponsor'
 }
 

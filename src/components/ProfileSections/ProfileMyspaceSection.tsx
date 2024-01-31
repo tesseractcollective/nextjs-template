@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
-import OnlineNow from "/public/assets/online-now.gif";
+import OnlineNow from "../../../public/assets/online-now.gif";
 import Link from "next/link";
 
 interface ProfilesProps {
