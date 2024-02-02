@@ -47,6 +47,7 @@ export default function SpotifyDisplayGrid({
               <div className="profile-overlay absolute inset-0 overflow-hidden">
                 <a
                   href={album.external_urls.spotify}
+                  target="_blank"
                   tabIndex={0}
                   onMouseEnter={() => setHoveredItemIndex(index)}
                   onMouseLeave={() => setHoveredItemIndex(null)}

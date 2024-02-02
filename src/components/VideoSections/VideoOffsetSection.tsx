@@ -52,7 +52,7 @@ export default function VideoOffsetSection({
 
   return (
     <section className="relative w-full mx-auto my-0 overflow-hidden">
-      <div className="relative flex flex-row items-center justify-center w-full gap-x-2 z-40 max-w-8xl mx-auto px-4">
+      <div className="relative flex flex-row items-center justify-center w-full gap-x-2 z-40 max-w-8xl mx-auto p-4">
         {!videoDataLength && (
           <button
             type="button"
@@ -67,7 +67,7 @@ export default function VideoOffsetSection({
           </button>
         )}
         <Swiper
-          className="!pb-10 max-w-5xl mx-auto w-full flex px-4"
+          className="max-w-5xl mx-auto w-full flex p-8"
           grabCursor
           loop
           modules={[Navigation, Pagination, Autoplay]}
@@ -112,7 +112,7 @@ export default function VideoOffsetSection({
                     alt={video.videoTitle || ""}
                     width={0}
                     height={0}
-                    className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1"
+                    className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1 min-h-[320px]"
                   />
                 )}
 

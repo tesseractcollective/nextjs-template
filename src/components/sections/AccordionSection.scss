@@ -1,0 +1,11 @@
+.accordion-header {
+  p {
+    color: var(--background);
+    transition: all 200ms ease;
+  }
+  &.accordion-header-active {
+    p {
+      color: var(--primary);
+    }
+  }
+}

@@ -1,4 +1,8 @@
-import Image from "next/image";
+import React from "react";
+import ReactGA from "react-ga4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 
 interface Album {
   name: string;
@@ -18,50 +22,54 @@ interface SpotifyDataProps {
   spotifyAlbumsData: Album[];
 }
 
-const SpotifyDisplayRecord: React.FC<SpotifyDataProps> = ({
+export default function SpotifyDisplayRecord({
   spotifyAlbumsData,
-}) => {
-  console.log(spotifyAlbumsData);
+}: SpotifyDataProps) {
   return (
-    <section className="">
-      <div className="flex flex-row flex-wrap w-full mx-auto items-center justify-center max-w-8xl transition gap-2">
-        {spotifyAlbumsData.map((album) => (
-          <div
-            key={album.external_urls.spotify}
-            tabIndex={0}
-            className="block w-1/4 md:w-2/12 lg:w-2/12 transition-all relative"
-          >
-            {!!album.images[0].url && (
-              <div className="profile h-0 bg-center bg-no-repeat bg-cover pb-[100%]">
-                <div className="profile-overlay absolute inset-0 overflow-hidden">
-                  {album.external_urls.spotify && (
-                    <a
-                      href={album.external_urls.spotify}
-                      tabIndex={0}
-                      className="relative aspect-1 group mx-auto w-full"
-                    >
-                      <Image
-                        sizes="100%"
-                        src={album.images[0].url}
-                        alt={album.name}
-                        width={0}
-                        height={0}
-                        className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1"
-                      />
-
-                      <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-md md:text-xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary text-shadow">
-                        {album.name}
-                      </p>
-                    </a>
-                  )}
+    <section className="px-2 mx-0">
+      <section className="container py-5 overflow-hidden mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 w-full mx-auto max-w-8xl gap-y-0 md:gap-y-8">
+          {spotifyAlbumsData.map((albumItem) => (
+            <a
+              href={albumItem.external_urls.spotify}
+              target="_blank"
+              onClick={() =>
+                ReactGA.event({
+                  category: "Link",
+                  action: `Visit ${albumItem.name}`,
+                  label: albumItem.name || "",
+                })
+              }
+              className="vinyl-wrap transition-all group"
+              key={albumItem.external_urls.spotify}
+            >
+              <FontAwesomeIcon
+                icon={faSpotify as IconProp}
+                className="fa-fw h-5 w-5 flex aspect-1 absolute z-40 text-text-color transition-all group-hover:text-[#52ce52] top-2 left-2"
+              />
+              <div className="vinyl-album">
+                <div
+                  className="vinyl-cover"
+                  style={{
+                    backgroundImage: `url(${albumItem.images[0].url})`,
+                  }}
+                >
+                  <div className="vinyl-print"></div>
+                </div>
+                <div
+                  className="vinyl-thumb group-hover:spin-infinite"
+                  style={{
+                    backgroundImage: `url(${albumItem.images[0].url})`,
+                  }}
+                ></div>
+                <div className="vinyl">
+                  <div className="print"></div>
                 </div>
               </div>
-            )}
-          </div>
-        ))}
-      </div>
+            </a>
+          ))}
+        </div>
+      </section>
     </section>
   );
-};
-
-export default SpotifyDisplayRecord;
+}

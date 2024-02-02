@@ -179,20 +179,22 @@ export default function Product({
         )}
 
         {!!filteredProducts && filteredProducts.length >= 1 && (
-          <div className="mx-auto max-w-8xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">
-            <div className="relative">
-              <div
-                className="absolute inset-0 flex items-center"
-                aria-hidden="true"
-              >
-                <div className="w-full opacity-40 mb-4" />
+          <div className="bg-secondary">
+            <div className="mx-auto max-w-8xl px-4 sm:px-6 pb-16 pt-2 lg:max-w-8xl lg:px-8">
+              <div className="relative">
+                <div
+                  className="absolute inset-0 flex items-center"
+                  aria-hidden="true"
+                >
+                  <div className="w-full opacity-40 mb-4" />
+                </div>
               </div>
+              <Products
+                products={filteredProducts}
+                type={filteredProducts[0].productType}
+                productLayoutStyle="grid"
+              />
             </div>
-            <Products
-              products={filteredProducts}
-              type={filteredProducts[0].productType}
-              productLayoutStyle="slider"
-            />
           </div>
         )}
       </div>

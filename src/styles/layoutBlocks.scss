@@ -1052,10 +1052,8 @@ body iframe {
   }
 }
 
-.accordion-header {
-  &.all-text-primary {
-    p {
-      color: var(--primary) !important;
-    }
+.all-text-primary {
+  p {
+    color: var(--primary) !important;
   }
 }
