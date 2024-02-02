@@ -25,26 +25,23 @@ export default function FeatureAlbum({
   if (!siteLibrary) return <></>;
   if (!albums) return <></>;
 
-  // all
-  // cd
+  // featured √
+  // slider √
   // compact
-  // featured
-  // record
-  // skew
-  // slider
-  // stacked
+  // record √
+  // skew √
+  // stacked √
+  // grid √
+  // all √
+  // cd √
   // myspace
   // vinyl
   // postcard
-  // grid
 
   return (
     <>
       {albumDisplayType === "featured" && (
-        <AlbumFeaturedSection
-          albums={albums}
-          isSpanish={siteLibrary?.isSpanish || false}
-        />
+        <AlbumFeaturedSection albums={albums} />
       )}
       {albumDisplayType === "slider" && (
         <AlbumSliderSection

@@ -73,7 +73,6 @@ export default function VideoBox({
                 <LiteYouTubeEmbed
                   id={youtubeVideoId}
                   title={videoTitle || ""}
-                  onIframeAdded={() => console.log("video is playing")}
                 />
               )}
               {vimeoVideoId && <Vimeo video={vimeoVideoId} />}

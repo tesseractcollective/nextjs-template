@@ -111,7 +111,7 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                     width={0}
                     height={0}
                     sizes="100%"
-                    className="next-layout-block-image object-cover absolute w-full h-full inset-0"
+                    className="next-layout-block-image object-cover absolute w-full h-full inset-0 z-[-1]"
                     alt=""
                     quality={100}
                   />

@@ -8,7 +8,6 @@ interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
 }
 export default function TallGridBoxes({ gridBoxData }: GridBoxProps) {
-  console.log(gridBoxData);
   return (
     <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8 w-full">
       <Fade triggerOnce direction="up">

@@ -22,7 +22,7 @@ export default function Accordion({
   if (!siteLibrary) return <></>;
   if (accordionData?.length === 0) return <></>;
   return (
-    <div className="w-full px-4 py-8 h-full flex items-center mx-auto max-h-max">
+    <div className="w-full px-4 py-8 flex items-center mx-auto max-h-max">
       <div className="mx-auto w-full rounded-2xl max-w-[800px] p-2">
         {accordionData.map((item) => {
           return (

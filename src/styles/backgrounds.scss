@@ -83,6 +83,10 @@
   background: linear-gradient(180deg, var(--text) 0%,var(--background) 100%);
 }
 
+.bg-fade-text-secondary {
+  background: linear-gradient(180deg, var(--text-overlay) 0%,var(--background) 100%);
+}
+
 .bg-paper {
 	background-color: #e5e5f7;
 	background-image:  linear-gradient(var(--background) 2px, transparent 2px), linear-gradient(90deg, var(--background) 2px, transparent 2px), linear-gradient(var(--background) 1px, transparent 1px), linear-gradient(90deg, var(--background) 1px, #e5e5f7 1px);
