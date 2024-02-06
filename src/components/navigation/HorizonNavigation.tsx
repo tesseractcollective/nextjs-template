@@ -4,8 +4,8 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
-import { XMarkIcon, Bars3BottomRightIcon } from "@heroicons/react/24/outline";
+import { Dialog, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
@@ -320,7 +320,7 @@ export default function HorizonNavigation({
                     }}
                   >
                     {navigation?.navigationLogo ? (
-                      <>
+                      <Fade direction="down" triggerOnce>
                         <span className="sr-only">{title}</span>
                         <Image
                           className="w-[120px] md:w-[160px] max-h-[80px] cursor-pointer object-contain transition-all mr-auto min-h-[80px]"
@@ -330,7 +330,7 @@ export default function HorizonNavigation({
                           height={0}
                           sizes="100%"
                         />
-                      </>
+                      </Fade>
                     ) : (
                       <span className="font-bold text-2xl text-text-color uppercase">
                         {title}
@@ -431,29 +431,43 @@ export default function HorizonNavigation({
         <Dialog as="div" className="relative z-[10000]" onClose={setOpenSocial}>
           <Transition.Child
             as={Fragment}
-            enter="transition ease-in-out duration-400 transform"
-            enterFrom="translate-y-full"
-            enterTo="-translate-y-0"
-            leave="transition ease-in-out duration-400 transform"
-            leaveFrom="-translate-y-0"
-            leaveTo="translate-y-full"
+            enter="transition ease-in-out duration-[400ms] transform"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition ease-in-out duration-[400ms] transform"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+            // enter="transition ease-in-out duration-[400ms] transform"
+            // enterFrom="translate-y-full"
+            // enterTo="-translate-y-0"
+            // leave="transition ease-in-out duration-[400ms] transform"
+            // leaveFrom="-translate-y-0"
+            // leaveTo="translate-y-full"
           >
-            <div className="fixed inset-0 bg-[#00000097] transition-all backdrop-blur-lg" />
+            <div className="fixed inset-0 bg-[#00000097] transition-all backdrop-blur-lg duration-[400ms]" />
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 overflow-y-auto w-full">
             <div className="flex h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-600"
+                enter="ease-out duration-[400ms]"
                 enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-600"
+                leave="ease-in duration-[400ms]"
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg px-4 pb-4 pt-5 text-left transition-all sm:mb-8 max-w-2xl sm:p-6 w-full flex-col flex">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg px-4 pb-4 pt-5 text-left transition-all duration-200 sm:mb-8 max-w-2xl sm:p-6 w-full flex-col flex">
                   <div className="flex items-center justify-center space-x-4">
+                    <input
+                      readOnly
+                      type="checkbox"
+                      id="null"
+                      name="null"
+                      checked
+                      className="sr-only"
+                    />
                     <SocialMediaIcons
                       fadeDirection="down"
                       iconClass="scale-[200%]"

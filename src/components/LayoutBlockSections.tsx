@@ -5,6 +5,7 @@ import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
 import { Event } from "@/components/Calendar/calendarHelpers";
 import Image from "next/image";
+import PageCssClass from "./PageCssClass";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -29,6 +30,9 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
   if (!page?.layoutBlocks) return <></>;
   return (
     <div className="relative layout-blocks-sections">
+      {!!page?.contentPageJson?.pageClass && (
+        <PageCssClass pageClass={page?.contentPageJson?.pageClass} />
+      )}
       {page.layoutBlocks?.length >= 1 && (
         <>
           {page.layoutBlocks.map((layoutBlock, parentIndex) => {

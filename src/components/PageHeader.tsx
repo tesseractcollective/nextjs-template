@@ -340,7 +340,7 @@ export default function PageHeader({
       {pageWidthStyle === "netflix" && (
         <Fade triggerOnce direction="down">
           <section className="h-100vh relative bg-bg">
-            <div className="max-w-8xl px-4 py-20 mx-auto bottom-20 absolute z-40 w-full inset-x-0">
+            <div className="netflix-hero max-w-8xl px-4 py-20 mx-auto bottom-20 absolute z-40 w-full inset-x-0">
               <Fade direction="up" triggerOnce>
                 {!!pageHeaderTitleProp && (
                   <h1 className="text-3xl md:text-6xl xl:text-7xl text-shadow-large mt-0 mb-1 py-0 text-left text-text-overlay font-bold uppercase">

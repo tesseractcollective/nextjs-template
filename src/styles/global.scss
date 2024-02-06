@@ -1110,3 +1110,18 @@ body.horizon {
     background-color: var(--background) !important;
   }
 }
+
+.clip-sharp-bottom {
+  clip-path: polygon(0% 0%,100% 0%,100% 85%,50% 100%,0% 85%);
+}
+
+.clip-round-bottom {
+  clip-path: circle(180vh at 50% calc(100% + -180vh));
+}
+
+
+.netflix-full {
+  .netflix-hero.max-w-8xl {
+    max-width: 105rem !important;
+  }
+}

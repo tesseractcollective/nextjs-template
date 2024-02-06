@@ -9,39 +9,25 @@ import parse from "html-react-parser";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import Blogs from "@/components/Blogs";
 import { Fade } from "react-awesome-reveal";
-import MinimalFooter from "./FooterSections/MinimalFooter";
-import UniversalFooter from "./FooterSections/UniversalFooter";
-import HorizonFooter from "./FooterSections/HorizonFooter";
 
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;
-  navigations: NavigationFieldsFragment[];
+  navigation: NavigationFieldsFragment;
   blogs: BlogFieldsFragment[];
   hideFooter?: boolean;
   pageNavigationSelection?: string;
 }
 
-function Footer({
+function HorizonFooter({
   siteLibrary,
-  navigations,
+  navigation,
   hideFooter,
   blogs,
-  pageNavigationSelection,
 }: FooterProps) {
-  if (!navigations || !siteLibrary || hideFooter) return null;
+  if (!navigation || !siteLibrary || hideFooter) return null;
 
   const { isSpanish, title, secondaryLink, secondaryLogo, secondaryName } =
     siteLibrary;
-
-  const navigation =
-    navigations.find(
-      (navigationTemp) =>
-        navigationTemp?.pageNavigationSelection &&
-        pageNavigationSelection &&
-        navigationTemp?.pageNavigationSelection.includes(
-          pageNavigationSelection
-        )
-    ) || navigations[0];
 
   const { footerColumns, footerWrapperCssClass, footerItems } = navigation;
 
@@ -51,72 +37,17 @@ function Footer({
   const regularColumns = footerColumns.filter(
     (footerColumn) => footerColumn?.wideColumn !== true
   );
-  // ** Navigation Layout Style
-  // vertical
-  // universal √
-  // horizon
-  // circle
-  // dimension
-  // between
-  // center
-  // dashboard
-  // dual
-  // mega
-  // minimal √
-  // progress
-  // reverse
-  // space
-  // start √
-  // transparent
-  // vertical
-  // border
-  // verticalTwo
-  // blog
-  // luxury
-  // fixedSide
-  if (navigation.navigationLayoutStyle === "universal")
-    return (
-      <UniversalFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || "primary"}
-      />
-    );
-  if (navigation.navigationLayoutStyle === "horizon")
-    return (
-      <HorizonFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || "primary"}
-      />
-    );
-  if (navigation.navigationLayoutStyle !== "start")
-    return (
-      <MinimalFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || "primary"}
-      />
-    );
   return (
     <footer
-      aria-labelledby="footer-heading standard-footer"
-      className={`mt-16 mb-8 ${
-        footerWrapperCssClass ? footerWrapperCssClass : ""
-      }`}
+      aria-labelledby="footer-heading horizon-footer !bg-bg"
+      className={`my-8 ${footerWrapperCssClass ? footerWrapperCssClass : ""}`}
     >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-10xl px-4 sm:px-6 lg:px-8">
         {wideColumns?.length >= 1 && (
-          <div className={`flex items-center justify-center w-full mb-16`}>
+          <div className={`flex items-center justify-center w-full`}>
             <Fade direction="up" cascade damping={0.1} triggerOnce>
               {wideColumns.map((item, index) => (
                 <div
@@ -130,19 +61,19 @@ function Footer({
                     <Image
                       src={item.footerImage?.url}
                       className="h-20 w-full mb-4 object-contain max-w-max min-w-[120px]"
-                      alt=""
+                      alt={item.footerTitle || ""}
                       width={0}
                       height={0}
                       sizes="100%"
                     />
                   )}
                   {!!item.footerTitle && (
-                    <h3 className="text-xs font-bold text-text-color uppercase tracking-widest opacity-90">
+                    <h3 className="text-xs font-bold text-text-color uppercase tracking-widest opacity-90 mb-2">
                       {item.footerTitle}
                     </h3>
                   )}
                   {!!item?.footerText?.html && (
-                    <div className="text-xs font-medium text-text-color max-w-max body-parsed-text leading-none ring-opacity-90 opacity-80">
+                    <div className="text-xs font-medium text-text-color max-w-lg body-parsed-text leading-none ring-opacity-90 opacity-90">
                       {parse(item.footerText?.html)}
                     </div>
                   )}
@@ -191,7 +122,7 @@ function Footer({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      blogLayoutStyle="compact"
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </div>
@@ -206,7 +137,7 @@ function Footer({
             {regularColumns.map((item, index) => (
               <div
                 key={`regular-column-${index++}`}
-                className={`relative my-4 lg:my-0 ${
+                className={`relative my-4 md:my-0 ${
                   item?.footerColumnCssWrapper || ""
                 }`}
                 id={`footer-col-${index++}`}
@@ -215,7 +146,7 @@ function Footer({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-20 w-full mb-4 object-contain max-w-max min-w-[120px]"
+                      className="h-16 w-full mb-4 object-contain max-w-max"
                       alt=""
                       width={0}
                       height={0}
@@ -248,10 +179,26 @@ function Footer({
                             <LinkItem
                               key={`footer-link-column-item-${index++}`}
                               link={linkItem?.link}
-                              label={linkItem?.label}
                               cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
-                            />
+                            >
+                              <>
+                                {!!linkItem.image?.url && (
+                                  <Image
+                                    src={linkItem.image?.url}
+                                    className="h-20 w-auto mb-4 object-contain max-w-max"
+                                    alt=""
+                                    width={0}
+                                    height={0}
+                                    sizes="100%"
+                                    style={{ width: "100%" }}
+                                  />
+                                )}
+                                {!!linkItem?.label && (
+                                  <>{parse(linkItem?.label)}</>
+                                )}
+                              </>
+                            </LinkItem>
                           </div>
                         )}
                       </li>
@@ -261,7 +208,7 @@ function Footer({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      blogLayoutStyle="compact"
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </Fade>
@@ -270,24 +217,19 @@ function Footer({
           </div>
         )}
         {/* Bottom Footer */}
-        <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
+        <div className="my-8 flex flex-col flex-wrap justify-start items-center w-full mx-auto">
           <SocialMediaIcons
             fadeDirection="up"
             siteLibrary={siteLibrary}
-            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
+            cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-start text-text-color flex-wrap gap-x-2"
           />
-          <p className="text-xs text-text-color uppercase text-center mb-4 opacity-70">
-            {`© ${new Date().getFullYear()} ${title || ""} ${
-              isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
-            }.`}
-          </p>
           {secondaryLogo?.url && secondaryLink && secondaryName && (
             <a
               href={secondaryLink}
               title={secondaryName}
               target="_blank"
               rel="noreferrer"
-              className="no-underline max-w-max mx-auto h-12 mb-4"
+              className="no-underline max-w-max mr-auto h-12 mb-4"
             >
               <Image
                 src={secondaryLogo.url}
@@ -301,13 +243,13 @@ function Footer({
             </a>
           )}
           {footerItems && (
-            <div className="flex flex-row items-center justify-center">
+            <div className="flex flex-row items-center justify-start w-full">
               {footerItems.map((footerItem, index) => (
                 <LinkItem
                   key={`${footerItem.link}-${index++}`}
                   label={footerItem.label}
                   link={footerItem.link}
-                  cssClass={`max-w-max mb-4 mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
+                  cssClass={`max-w-max my-2 !ml-0 !mr-auto text-[12px] text-color-secondary opacity-70 text-link uppercase text-left hover:opacity-100 ${
                     footerItem.cssClass ? footerItem.cssClass : ""
                   }`}
                   sameTab={footerItem.sameTab}
@@ -315,20 +257,29 @@ function Footer({
               ))}
             </div>
           )}
-          <a
-            href={`https://lnza.me/?${encodeURIComponent(
-              title || "" + " fan"
-            )}`}
-            target="_blank"
-            rel="noreferrer"
-            className="max-w-max mb-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
-          >
-            {isSpanish ? "Hecho a mano por Ricardo" : "Hand crafted by Ricardo"}
-          </a>
+          <div className="flex flex-col justify-center w-full items-start my-6">
+            <p className="text-xs text-text-color uppercase text-left opacity-70 flex h-full text-[10px] max-w-max mr-0">
+              {`© ${new Date().getFullYear()} ${title || ""} ${
+                isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
+              }.`}
+            </p>
+            <a
+              href={`https://lnza.me/?${encodeURIComponent(
+                title || "" + " fan"
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase text-left mr-auto ml-0 hover:opacity-100 flex"
+            >
+              {isSpanish
+                ? "Hecho a mano por Ricardo"
+                : "Hand crafted by Ricardo"}
+            </a>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
 
-export default Footer;
+export default HorizonFooter;
