@@ -12,6 +12,7 @@ import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
 import { Fade } from "react-awesome-reveal";
+import "./HorizonNavigation.scss";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;

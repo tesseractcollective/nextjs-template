@@ -1,6 +1,6 @@
 query layout(
-  $eventFirst: Int = 500
-  $blogFirst: Int = 500
+  $eventFirst: Int = 75
+  $blogFirst: Int = 75
   $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC
   $blogOrderBy: BlogOrderByInput = date_DESC
   $albumFirst: Int = 100
@@ -49,11 +49,11 @@ query layout(
   }
 }
 query pages {
-  pages(first: 500) {
+  pages(first: 150) {
     ...pageFields
   }
 }
-query pagesSlugList($pageSlugFirst: Int = 200) {
+query pagesSlugList($pageSlugFirst: Int = 150) {
   pages(first: $pageSlugFirst) {
     ...pagesSlugListFields
   }
@@ -81,12 +81,12 @@ query blog($blogSlug: String!) {
 }
 
 query blogs {
-  blogs(first: 500) {
+  blogs(first: 75) {
     ...blogFields
   }
 }
 query contacts {
-  contacts(first: 500) {
+  contacts(first: 30) {
     ...contactFields
   }
 }
@@ -116,7 +116,7 @@ query album($albumSlug: String!) {
 }
 
 query testimonials {
-  testimonials(first: 100) {
+  testimonials(first: 50) {
     ...testimonialFields
   }
 }
@@ -135,13 +135,13 @@ query profilePage($profileSlug: String!) {
   profile(where: { profileSlug: $profileSlug }) {
     ...profileFields
   }
-  blogs(first: 500) {
+  blogs(first: 75) {
     ...blogFields
   }
   siteLibrary(where: { signature: "lnzame" }) {
     ...siteLibraryFields
   }
-  contacts(first: 500) {
+  contacts(first: 30) {
     ...contactFields
   }
   profiles(first: 100) {
@@ -152,7 +152,7 @@ query profilePage($profileSlug: String!) {
   }
 }
 query products {
-  products(first: 500) {
+  products(first: 75) {
     ...productFields
   }
 }
@@ -167,33 +167,34 @@ query productPage($productSlug: String!) {
   product(where: { productSlug: $productSlug }) {
     ...productFields
   }
-  products(first: 500) {
+  products(first: 75) {
     ...productFields
   }
-  blogs(first: 500) {
+  blogs(first: 75) {
     ...blogFields
   }
   siteLibrary(where: { signature: "lnzame" }) {
     ...siteLibraryFields
   }
-  contacts(first: 500) {
+  contacts(first: 75) {
     ...contactFields
   }
-  profiles(first: 100) {
+  profiles(first: 75) {
     ...profileFields
   }
   navigations {
     ...navigationFields
   }
 }
+
 query blogPage($blogSlug: String!) {
   blog(where: { blogSlug: $blogSlug }) {
     ...blogFields
   }
-  blogs(first: 500) {
+  blogs(first: 75) {
     ...blogFields
   }
-  contacts(first: 500) {
+  contacts(first: 75) {
     ...contactFields
   }
   siteLibrary(where: { signature: "lnzame" }) {
@@ -232,7 +233,7 @@ query albumPage(
   albums(first: $albumFirst, orderBy: $albumOrderBy) {
     ...albumFields
   }
-  blogs(first: 500) {
+  blogs(first: 75) {
     ...blogFields
   }
   siteLibrary(where: { signature: "lnzame" }) {
@@ -244,7 +245,7 @@ query albumPage(
 }
 query eventPage(
   $eventSlug: String!
-  $eventFirst: Int = 100
+  $eventFirst: Int = 75
   $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC
 ) {
   event(where: { eventSlug: $eventSlug }) {
@@ -253,7 +254,7 @@ query eventPage(
   events(first: $eventFirst, orderBy: $eventOrderBy) {
     ...eventFields
   }
-  blogs(first: 500) {
+  blogs(first: 75) {
     ...blogFields
   }
   siteLibrary(where: { signature: "lnzame" }) {

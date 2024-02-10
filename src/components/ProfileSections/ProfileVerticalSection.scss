@@ -1,0 +1,10 @@
+.profile-vertical-gallery {
+  .vertical-profile {
+    max-height: 75vh;
+    p {
+      @media screen and (min-width: 976px)  {
+        writing-mode: vertical-rl;
+      }
+    }
+  }
+}

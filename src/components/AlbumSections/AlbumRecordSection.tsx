@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import ReactGA from "react-ga4";
 import type { AlbumFieldsFragment } from "@/graphql/generated/graphql";
-
+import "@/styles/albums.scss";
 export interface FeatureAlbumProps {
   albums: AlbumFieldsFragment[];
 }

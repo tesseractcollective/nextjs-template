@@ -73,19 +73,38 @@ export default function VideoGridClipSection({
                   });
                 }}
               >
-                {!!videoItem.thumbnail?.url && (
-                  <video
-                    className="object-cover h-full w-full overflow-hidden relative z-10"
-                    // onMouseOver={(event) => event.currentTarget.play()}
-                    // onMouseOut={(event) => event.currentTarget.pause()}
-                    muted
-                    title={videoItem.videoTitle || ""}
-                    playsInline
-                    loop
-                    autoPlay
-                    preload="metadta"
-                    src={`${videoItem.thumbnail?.url}`}
-                  ></video>
+                {isTablet ? (
+                  <>
+                    {!!videoItem.mobileThumbnail?.url && (
+                      <Image
+                        sizes="100%"
+                        src={videoItem.mobileThumbnail?.url}
+                        alt={videoItem.videoTitle || ""}
+                        width={0}
+                        height={0}
+                        className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale"
+                      />
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {!!videoItem.thumbnail?.url && (
+                      <video
+                        className="object-cover h-full w-full overflow-hidden relative z-10"
+                        onMouseOver={(event) => event.currentTarget.play()}
+                        onMouseOut={(event) => event.currentTarget.pause()}
+                        muted
+                        poster={videoItem?.mobileThumbnail?.url}
+                        title={videoItem.videoTitle || ""}
+                        playsInline
+                        loop
+                        autoPlay={false}
+                        preload="metadta"
+                      >
+                        <source src={`${videoItem.thumbnail?.url}`} />
+                      </video>
+                    )}
+                  </>
                 )}
                 {!!videoItem?.videoTitle && (
                   <p className="opacity-50 group-hover:opacity-100 md:opacity-0 absolute bottom-1 md:bottom-[initial] z-40 md:top-[25%] md:group-focus:top-[50%] md:group-hover:top-[50%] md:left-[50%] md:-translate-x-1/2 md:-translate-y-1/2 p-0 m-0 font-bold uppercase text-xs md:text-4xl text-left md:text-center md:group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] flex flex-row items-center justify-start group-hover:text-shadow">

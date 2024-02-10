@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
+import "./ProfileUniversalSection.scss";
 
 interface ProfilesProps {
   profileSectionTitle?: string;

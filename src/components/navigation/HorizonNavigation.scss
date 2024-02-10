@@ -1,0 +1,18 @@
+
+.horizon .layout-blocks-wrapper {
+  transition: all 200ms ease;
+  margin: 16px;
+  @media only screen and (min-width: 960px) {
+    margin: 24px;
+  }
+}
+
+body.horizon {
+  background-color: var(--text);
+  .layout-blocks-wrapper {
+    background-color: var(--background);
+  }
+  .profile-page {
+    background-color: var(--background) !important;
+  }
+}

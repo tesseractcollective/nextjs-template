@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import "@/styles/videobox.scss";
 interface VideoBoxProps {
   videoTitle?: string;
   youtubeVideoId?: string;

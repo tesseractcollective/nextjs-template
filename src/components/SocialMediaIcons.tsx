@@ -150,7 +150,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.spotifyLink || spotifyLinkProp}
                 target="_blank"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Spotify"
                 rel="noreferrer"
                 onClick={() =>
@@ -172,7 +172,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.facebookLink || facebookLinkProp}
                 target="_blank"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Facebook"
                 rel="noreferrer"
                 onClick={() =>
@@ -194,7 +194,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.twitterLink || twitterLinkProp}
                 target="_blank"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="X - Twitter"
                 rel="noreferrer"
                 onClick={() =>
@@ -216,7 +216,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.youtubeLink || youtubeLinkProp}
                 target="_blank"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Youtube"
                 rel="noreferrer"
                 onClick={() =>
@@ -239,7 +239,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.tikTokLink || tikTokLinkProp}
                 target="_blank"
                 title="TikTok"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -261,7 +261,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.threadsLink || threadsLinkProp}
                 target="_blank"
                 title="Threads"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -283,7 +283,7 @@ export default function SocialMediaIcons({
                 href={siteLibrary?.smartMusicLink || smartMusicLinkProp}
                 target="_blank"
                 title="Music"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
@@ -374,7 +374,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.soundcloudLink || soundcloudLinkProp}
                 title="Soundcloud"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -426,7 +426,7 @@ export default function SocialMediaIcons({
                         `${whatsappLinkProp}`
                       )}&text=hello`
                 }
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -448,7 +448,7 @@ export default function SocialMediaIcons({
               <a
                 title={siteLibrary?.contactEmail || emailLinkProp}
                 href={`mailto:${siteLibrary?.contactEmail || emailLinkProp}`}
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -470,7 +470,7 @@ export default function SocialMediaIcons({
               <a
                 title={linkedinLinkProp}
                 href={linkedinLinkProp}
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -492,7 +492,7 @@ export default function SocialMediaIcons({
               <a
                 title={githubLinkProp}
                 href={githubLinkProp}
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -514,7 +514,7 @@ export default function SocialMediaIcons({
               <a
                 title={calendlyLinkProp}
                 href={calendlyLinkProp}
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
@@ -542,7 +542,7 @@ export default function SocialMediaIcons({
                   siteLibrary?.googleMapLink
                 }
                 target="_blank"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Google Map"
                 rel="noreferrer"
                 onClick={() =>
@@ -570,7 +570,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.yelpLink || yelpLinkProp}
                 target="_blank"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Yelp"
                 rel="noreferrer"
                 onClick={() =>
@@ -592,7 +592,7 @@ export default function SocialMediaIcons({
               <a
                 href={siteLibrary?.shopLink || shopLinkProp}
                 target="_blank"
-                className={`max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Shop"
                 rel="noreferrer"
                 onClick={() =>

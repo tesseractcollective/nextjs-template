@@ -59,9 +59,7 @@ export function createSitemap(
   );
   sitemap.push(
     ...products.map((product) => ({
-      url: `${process.env.SITE_URL}/${product.productType.toLowerCase()}/${
-        product.productSlug
-      }`,
+      url: `${process.env.SITE_URL}/product/${product.productSlug}`,
       lastModified: formatDate(product.updatedAt),
     }))
   );

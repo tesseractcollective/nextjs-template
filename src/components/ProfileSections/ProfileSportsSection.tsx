@@ -3,6 +3,7 @@ import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
 import Link from "next/link";
 import Image from "next/image";
+import "./ProfileSportsSection.scss";
 
 interface ProfilesProps {
   siteLogo: string;

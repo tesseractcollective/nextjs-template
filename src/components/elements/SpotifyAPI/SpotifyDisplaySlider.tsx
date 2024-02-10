@@ -1,4 +1,18 @@
+import React, { useRef } from "react";
 import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
+import ReactGA from "react-ga4";
+import type { Swiper as SwiperType } from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import useViewport from "@/app/hooks/useViewport";
 
 interface Album {
   name: string;
@@ -18,50 +32,97 @@ interface SpotifyDataProps {
   spotifyAlbumsData: Album[];
 }
 
-const SpotifyDisplaySlider: React.FC<SpotifyDataProps> = ({
-  spotifyAlbumsData,
-}) => {
-  console.log(spotifyAlbumsData);
-  return (
-    <section className="">
-      <div className="flex flex-row flex-wrap w-full mx-auto items-center justify-center max-w-8xl transition gap-2">
-        {spotifyAlbumsData.map((album) => (
-          <div
-            key={album.external_urls.spotify}
-            tabIndex={0}
-            className="block w-1/4 md:w-2/12 lg:w-2/12 transition-all relative"
-          >
-            {!!album.images[0].url && (
-              <div className="profile h-0 bg-center bg-no-repeat bg-cover pb-[100%]">
-                <div className="profile-overlay absolute inset-0 overflow-hidden">
-                  {album.external_urls.spotify && (
-                    <a
-                      href={album.external_urls.spotify}
-                      tabIndex={0}
-                      className="relative aspect-1 group mx-auto w-full"
-                    >
-                      <Image
-                        sizes="100%"
-                        src={album.images[0].url}
-                        alt={album.name}
-                        width={0}
-                        height={0}
-                        className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1"
-                      />
+export default function FeatureAlbum({ spotifyAlbumsData }: SpotifyDataProps) {
+  const { isMobile } = useViewport();
+  const swiperRef = useRef<SwiperType>();
 
-                      <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-md md:text-xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary text-shadow">
-                        {album.name}
-                      </p>
-                    </a>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
+  return (
+    <section className="max-w-8xl w-full p-4 feature-album-slider-wrapper mx-auto">
+      <div className="mt-16 flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 max-w-8xl mx-auto">
+        <h2 className="text-2xl md:text-4xl mx-auto md:mx-0 opacity-90 uppercase text-center md:text-left font-bold mb-4">
+          Music
+        </h2>
+        <div className="flex flex-row">
+          <button
+            type="button"
+            className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color mr-4 hover:rotate-6"
+            onClick={() => swiperRef.current?.slidePrev()}
+          >
+            <FontAwesomeIcon
+              icon={faChevronLeft as IconProp}
+              className="fa-fw my-0 text-xl h-8 w-8"
+            />
+            <span className="sr-only">Move Blog Rotation Back</span>
+          </button>
+          <button
+            type="button"
+            className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color hover:-rotate-6"
+            onClick={() => swiperRef.current?.slideNext()}
+          >
+            <FontAwesomeIcon
+              icon={faChevronRight as IconProp}
+              className="fa-fw my-0 text-xl h-8 w-8"
+            />
+            <span className="sr-only">Move Blog Rotation Next</span>
+          </button>
+        </div>
       </div>
+      <Swiper
+        className="!pb-10"
+        grabCursor
+        loop
+        modules={[Navigation, Pagination]}
+        onBeforeInit={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        autoplay
+        slidesPerView={isMobile ? 1 : 3}
+        spaceBetween={30}
+      >
+        {spotifyAlbumsData.map((albumItem) => (
+          <SwiperSlide
+            key={albumItem.external_urls.spotify}
+            className="mx-auto !animate-col-width"
+          >
+            <a
+              href={albumItem.external_urls.spotify}
+              onClick={() =>
+                ReactGA.event({
+                  category: "Link",
+                  action: `Visit ${albumItem.name}`,
+                  label: albumItem.name || "",
+                })
+              }
+              className="max-w-max block no-underline album-item mx-auto relative py-1 px-0 group transition-all"
+            >
+              <FontAwesomeIcon
+                icon={faSpotify as IconProp}
+                className="fa-fw h-5 w-5 flex aspect-1 absolute z-40 text-text-color transition-all group-hover:text-[#52ce52] top-2 left-2"
+              />
+              <Fade direction="down" triggerOnce>
+                <Image
+                  src={albumItem.images[0].url}
+                  alt={(albumItem.name && albumItem.name) || ""}
+                  className="mx-auto mb-2 w-full block box-shadow border-round grayscale-0 hover:grayscale group-hover:grayscale group-focus:grayscale transition-all px-0"
+                  height={400}
+                  width={400}
+                  style={{
+                    maxHeight: "420px",
+                    maxWidth: "420px",
+                    objectFit: "cover",
+                    aspectRatio: 1,
+                  }}
+                />
+              </Fade>
+              <Fade direction="up" triggerOnce>
+                <p className="text-sm font-semibold mt-0 mb-4 text-center uppercase group-hover:text-primary group-focus:text-primary transition-all px-0 mx-0">
+                  {albumItem.name}
+                </p>
+              </Fade>
+            </a>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   );
-};
-
-export default SpotifyDisplaySlider;
+}

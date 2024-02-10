@@ -15,6 +15,7 @@ interface PopupProps {
 export default function Popup({ layout }: PopupProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [scrollTriggered, setScrollTriggered] = useState<boolean>(false);
   useEffect(() => {
     window.addEventListener("scroll", stickyCallBak);
 
@@ -28,8 +29,10 @@ export default function Popup({ layout }: PopupProps) {
       layout?.page.popup &&
       layout?.page?.popup.openOnScroll &&
       isScrolled &&
+      !scrollTriggered &&
       setOpen(true);
-  }, [isScrolled, layout, open]);
+    setScrollTriggered(true);
+  }, [isScrolled, layout, open, scrollTriggered]);
   const stickyCallBak = () => {
     const scrollTop = window.scrollY;
     if (scrollTop >= 400) setIsScrolled(true);
@@ -78,6 +81,7 @@ export default function Popup({ layout }: PopupProps) {
 
   const handleClosePopup = () => {
     setOpen(false);
+    setIsScrolled(false);
     ReactGA.event({
       category: "Link",
       action: "Close Popup",
