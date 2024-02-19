@@ -37,7 +37,7 @@ export default function FeatureAlbum({ spotifyAlbumsData }: SpotifyDataProps) {
   const swiperRef = useRef<SwiperType>();
 
   return (
-    <section className="max-w-8xl w-full p-4 feature-album-slider-wrapper mx-auto">
+    <section className="max-w-8xl w-full p-4 feature-album-slider-wrapper mx-auto spotify-slider-wrapper">
       <div className="mt-16 flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 max-w-8xl mx-auto">
         <h2 className="text-2xl md:text-4xl mx-auto md:mx-0 opacity-90 uppercase text-center md:text-left font-bold mb-4">
           Music
@@ -107,8 +107,8 @@ export default function FeatureAlbum({ spotifyAlbumsData }: SpotifyDataProps) {
                   height={400}
                   width={400}
                   style={{
-                    maxHeight: "420px",
-                    maxWidth: "420px",
+                    maxHeight: "600px",
+                    maxWidth: "600px",
                     objectFit: "cover",
                     aspectRatio: 1,
                   }}

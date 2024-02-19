@@ -33,7 +33,7 @@ export default function ProductShelfSection({ products }: ProductsProps) {
 
   return (
     <div className="bg-bg-primary">
-      <div className="mx-auto max-w-2xl px-4 py-8 max-w-8xl">
+      <div className="mx-auto max-w-2xl px-4 pb-8 max-w-8xl">
         <h2 className="sr-only">Products</h2>
         <Fade direction="left" triggerOnce>
           <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 bg-text-color all-text-dark rounded py-4 mx-auto">
@@ -130,7 +130,7 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                         {parse(selectedProduct.description.html)}
                       </div>
                     )}
-                    {!!selectedProduct?.purchaseLink &&
+                    {selectedProduct?.purchaseLink &&
                       selectedProduct?.purchaseLabel && (
                         <div className="my-10">
                           <a

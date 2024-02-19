@@ -68,7 +68,7 @@ export default function TextContentSection({
           {textBlocks.map((textContentItem) => (
             <div
               key={Math.random()}
-              className={`relative h-full z-20 ${
+              className={`relative z-20 ${
                 textContentItem?.cssClass
                   ? textContentItem?.cssClass
                   : `${textContentItem?.textContentWidth} ${

@@ -243,7 +243,7 @@ function MinimalFooter({
             </a>
           )}
           {footerItems && (
-            <div className="flex flex-row items-center justify-center">
+            <div className="flex flex-row items-center justify-center px-4 flex-wrap">
               {footerItems.map((footerItem, index) => (
                 <LinkItem
                   key={`${footerItem.link}-${index++}`}
