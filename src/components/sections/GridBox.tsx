@@ -6,6 +6,7 @@ import SliderGridBoxes from "./GridBoxComponents/SliderGridBoxes";
 import TallGridBoxes from "./GridBoxComponents/TallGridBoxes";
 import CircleGridBoxes from "./GridBoxComponents/CircleGridBoxes";
 import VerticalTabGridBoxes from "./GridBoxComponents/VerticalTabGridBoxes";
+import GridDisplayBoxes from "./GridBoxComponents/GridDisplayBoxes";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -46,6 +47,9 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   const verticalTabGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "verticalTabs"
   );
+  const gridDisplayGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "grid"
+  );
   if (verticalTabGridBoxData && verticalTabGridBoxData.length >= 1)
     return <VerticalTabGridBoxes gridBoxData={verticalTabGridBoxData} />;
   if (insetGridBoxData && insetGridBoxData.length >= 1)
@@ -60,5 +64,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
     return <TallGridBoxes gridBoxData={tallGridBoxData} />;
   if (contentGridBoxData && contentGridBoxData.length >= 1)
     return <ContentGridBoxes gridBoxData={contentGridBoxData} />;
+  if (gridDisplayGridBoxData && gridDisplayGridBoxData.length >= 1)
+    return <GridDisplayBoxes gridBoxData={gridDisplayGridBoxData} />;
   return <></>;
 }

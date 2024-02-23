@@ -67,7 +67,7 @@ export default function VideoOffsetSection({
           </button>
         )}
         <Swiper
-          className="!pb-10 w-full flex px-4"
+          className="w-full flex px-4"
           grabCursor
           loop
           modules={[Navigation, Pagination, Autoplay]}
