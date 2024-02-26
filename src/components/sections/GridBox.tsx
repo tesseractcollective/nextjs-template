@@ -7,6 +7,7 @@ import TallGridBoxes from "./GridBoxComponents/TallGridBoxes";
 import CircleGridBoxes from "./GridBoxComponents/CircleGridBoxes";
 import VerticalTabGridBoxes from "./GridBoxComponents/VerticalTabGridBoxes";
 import GridDisplayBoxes from "./GridBoxComponents/GridDisplayBoxes";
+import HoverRoundGridBoxes from "./GridBoxComponents/HoverRoundGridBoxes";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -35,6 +36,9 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   const insetGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "inset"
   );
+  const hoverRoundGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "hoverRound"
+  );
   const tallGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "tall"
   );
@@ -54,6 +58,8 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
     return <VerticalTabGridBoxes gridBoxData={verticalTabGridBoxData} />;
   if (insetGridBoxData && insetGridBoxData.length >= 1)
     return <InsetGridBoxes gridBoxData={insetGridBoxData} />;
+  if (hoverRoundGridBoxData && hoverRoundGridBoxData.length >= 1)
+    return <HoverRoundGridBoxes gridBoxData={hoverRoundGridBoxData} />;
   if (circleGridBoxData && circleGridBoxData.length >= 1)
     return <CircleGridBoxes gridBoxData={circleGridBoxData} />;
   if (sliderGridBoxData && sliderGridBoxData.length >= 1)

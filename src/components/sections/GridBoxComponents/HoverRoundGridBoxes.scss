@@ -1,0 +1,16 @@
+.hover-round-grid-items .record-border {
+  position: absolute;
+  inset: 0 0 0 0;
+  z-index: 10;
+  content: "";
+  box-shadow: 0 0 0 2px var(--text);
+  border-radius: 100%;
+  opacity: 0.25;
+  transform: scale(1) rotate(0deg) translateZ(0) !important;
+  transition: all 300ms ease;
+  &:hover, &:focus-within {
+    transform: scale(0.9) rotate(15deg) translateZ(0) !important;
+    box-shadow: 0 0 0 2px var(--primary);
+    opacity: 0.5;
+  }
+}
