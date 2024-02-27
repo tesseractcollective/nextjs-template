@@ -48,6 +48,7 @@ export default function SpotifyDisplayGrid({
                 <a
                   href={album.external_urls.spotify}
                   target="_blank"
+                  rel="noreferrer"
                   tabIndex={0}
                   onMouseEnter={() => setHoveredItemIndex(index)}
                   onMouseLeave={() => setHoveredItemIndex(null)}

@@ -86,6 +86,8 @@ export default function FeatureAlbum({ spotifyAlbumsData }: SpotifyDataProps) {
           >
             <a
               href={albumItem.external_urls.spotify}
+              target="_blank"
+              rel="noreferrer"
               onClick={() =>
                 ReactGA.event({
                   category: "Link",

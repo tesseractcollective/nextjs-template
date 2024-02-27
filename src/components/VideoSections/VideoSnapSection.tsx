@@ -22,7 +22,7 @@ interface VideoOffsetSectionProps {
   videoData: VideoBoxFieldsFragment[];
 }
 
-export default function VideoFullScreenSection({
+export default function VideoSnapSection({
   videoData,
 }: VideoOffsetSectionProps) {
   const [open, setOpen] = useState<boolean>(false);
@@ -52,91 +52,47 @@ export default function VideoFullScreenSection({
 
   return (
     <section className="relative w-full mx-auto my-0 overflow-hidden">
-      <div className="relative flex flex-row items-center justify-center w-full z-40 mx-auto">
-        {!videoDataLength && (
+      <div className="relative flex flex-col items-center justify-center w-full z-40 mx-auto h-full video-snap-section">
+        {videoData.map((video, index) => (
           <button
             type="button"
-            className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all duration-[400ms] opacity-80 hover:opacity-100 text-text-color absolute z-50 left-0"
-            onClick={() => swiperRef.current?.slidePrev()}
+            key={`${video?.videoTitle}-${index}`}
+            id={`popuptrigger-${index}`}
+            className="relative h-100vh group w-full video-snap-card"
+            onClick={() => {
+              setOpen(true);
+              setSelctedVideo(video);
+              ReactGA.event({
+                category: "Link",
+                action: "Open Video Popup",
+                label: "Open Video Popup",
+              });
+            }}
           >
-            <FontAwesomeIcon
-              icon={faChevronLeft as IconProp}
-              className="fa-fw my-0 text-xl h-6 md:h-12 w-6 md:w-12"
-            />
-            <span className="sr-only">Move Video Rotation Back</span>
+            {(video?.youtubeVideoId || video.thumbnail?.url) && (
+              <Image
+                sizes="100%"
+                src={
+                  video.thumbnail?.url ||
+                  `https://img.youtube.com/vi/${video.youtubeVideoId}/maxresdefault.jpg`
+                }
+                alt={video.videoTitle || ""}
+                width={0}
+                height={0}
+                className="transition-all object-cover h-full w-full overflow-hidden opacity-70 grayscale-0 group-hover:grayscale group-focus:grayscale absolute inset-0 z-10 duration-[400ms] group-hover:saturate-0 group-focus:saturate-0 saturate-1"
+              />
+            )}
+            {!!video?.videoTitle && (
+              <p className="absolute z-40 top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-4xl text-center transition-all duration-[400ms] delay-200 text-text-color group-hover:text-primary group-focus:text-primary">
+                <PlayCircleIcon
+                  className="h-12 w-12 relative z-40 p-0 m-0 font-bold uppercase text-4xl mx-auto"
+                  aria-hidden="true"
+                />
+                <span>{parse(video.videoTitle)}</span>
+              </p>
+            )}
           </button>
-        )}
-        <Swiper
-          className="w-full flex px-4"
-          grabCursor
-          loop
-          modules={[Navigation, Pagination, Autoplay]}
-          onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          autoplay={{
-            delay: 5500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          slidesPerView={1}
-          spaceBetween={30}
-        >
-          {videoData.map((video, index) => (
-            <SwiperSlide key={`${video?.videoTitle}-${index}`}>
-              <button
-                type="button"
-                id="popup-trigger"
-                className="relative h-100vh group w-full"
-                onClick={() => {
-                  setOpen(true);
-                  setSelctedVideo(video);
-                  ReactGA.event({
-                    category: "Link",
-                    action: "Open Video Popup",
-                    label: "Open Video Popup",
-                  });
-                }}
-              >
-                {(video?.youtubeVideoId || video.thumbnail?.url) && (
-                  <Image
-                    sizes="100%"
-                    src={
-                      video.thumbnail?.url ||
-                      `https://img.youtube.com/vi/${video.youtubeVideoId}/maxresdefault.jpg`
-                    }
-                    alt={video.videoTitle || ""}
-                    width={0}
-                    height={0}
-                    className="transition-all object-cover h-full w-full overflow-hidden opacity-70 grayscale-0 group-hover:grayscale group-focus:grayscale absolute inset-0 z-10 duration-[400ms] group-hover:saturate-0 group-focus:saturate-0 saturate-1"
-                  />
-                )}
-                {!!video?.videoTitle && (
-                  <p className="absolute z-40 top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-4xl text-center transition-all duration-[400ms] delay-200 text-text-color group-hover:text-primary group-focus:text-primary">
-                    <PlayCircleIcon
-                      className="h-12 w-12 relative z-40 p-0 m-0 font-bold uppercase text-4xl mx-auto"
-                      aria-hidden="true"
-                    />
-                    <span>{parse(video.videoTitle)}</span>
-                  </p>
-                )}
-              </button>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        {!videoDataLength && (
-          <button
-            type="button"
-            className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all duration-[400ms] opacity-80 hover:opacity-100 text-text-color absolute z-50 right-0"
-            onClick={() => swiperRef.current?.slideNext()}
-          >
-            <FontAwesomeIcon
-              icon={faChevronRight as IconProp}
-              className="fa-fw my-0 text-xl h-6 md:h-12 w-6 md:w-12"
-            />
-            <span className="sr-only">Move Video Rotation Next</span>
-          </button>
-        )}
+        ))}
       </div>
       {selectedVideo && (
         <Transition.Root show={open} as={Fragment}>

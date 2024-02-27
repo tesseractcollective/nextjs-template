@@ -4,6 +4,7 @@ import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import VideoGridSection from "@/components/VideoSections/VideoGridSection";
 import VideoOffsetSection from "@/components/VideoSections/VideoOffsetSection";
 import VideoFullScreenSection from "@/components/VideoSections/VideoFullScreenSection";
+import VideoSnapSection from "@/components/VideoSections/VideoSnapSection";
 import VideoNetflixSection from "@/components/VideoSections/VideoNetflixSection";
 import VideoAlternateSection from "@/components/VideoSections/VideoAlternateSection";
 import VideoStandardSection from "@/components/VideoSections/VideoStandardSection";
@@ -28,6 +29,9 @@ export default function VideoSection({
   );
   const videoFullScreenData = videoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "fullScreen"
+  );
+  const videoSnapData = videoData.filter(
+    (videoDataItem) => videoDataItem.videoDisplayLayout === "snap"
   );
   const videoNetflixData = videoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "netflix"
@@ -65,6 +69,9 @@ export default function VideoSection({
 
   if (videoFullScreenData && videoFullScreenData.length >= 1)
     return <VideoFullScreenSection videoData={videoFullScreenData} />;
+
+  if (videoSnapData && videoSnapData.length >= 1)
+    return <VideoSnapSection videoData={videoSnapData} />;
 
   if (videoNetflixData && videoNetflixData.length >= 1)
     return <VideoNetflixSection videoData={videoNetflixData} />;

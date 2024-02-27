@@ -39,6 +39,8 @@ const SpotifyDisplayCompact: React.FC<SpotifyDataProps> = ({
                       href={album.external_urls.spotify}
                       tabIndex={0}
                       className="relative aspect-1 group mx-auto w-full"
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       <Image
                         sizes="100%"

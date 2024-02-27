@@ -39,6 +39,8 @@ const SpotifyDisplayVinyl: React.FC<SpotifyDataProps> = ({
                     <a
                       href={album.external_urls.spotify}
                       tabIndex={0}
+                      target="_blank"
+                      rel="noreferrer"
                       className="relative aspect-1 group mx-auto w-full"
                     >
                       <Image

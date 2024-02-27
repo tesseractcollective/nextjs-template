@@ -10,10 +10,10 @@ interface GridBoxProps {
 
 export default function GridDisplayBoxes({ gridBoxData }: GridBoxProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-8xl my-20 px-4 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-8xl my-20 px-4 gap-8">
       {gridBoxData.map((heroMediaSliderItem) => (
         <LinkItem
-          cssClass="aspect-video min-h-[33vh] bg-[#00000050] group max-w-8xl px-4 lg:px-8 lg:pt-44 pb-8 mx-auto relative w-full overflow-hidden hover:rounded-2xl transition-all flex items-end justify-start"
+          cssClass="aspect-video min-h-[33vh] bg-[#00000050] group max-w-8xl px-4 lg:px-8 md:pt-44 lg:pt-72 pb-8 mx-auto relative w-full overflow-hidden hover:rounded-2xl focus:rounded-2xl transition-all flex items-end justify-start h-full border border-[#0000000] hover:border-primary focus:border-primary"
           link={heroMediaSliderItem.boxLink}
           key={`${heroMediaSliderItem.boxLink}`}
         >
@@ -44,7 +44,7 @@ export default function GridDisplayBoxes({ gridBoxData }: GridBoxProps) {
           >
             {heroMediaSliderItem.boxImage?.url && (
               <Image
-                className={`absolute w-full h-full inset-0 object-cover opacity-30 transition-all group-hover:opacity-100 z-0`}
+                className={`absolute w-full h-full inset-0 object-cover opacity-50 transition-all group-hover:opacity-100 group-focus:opacity-100 z-0`}
                 sizes="100%"
                 width={0}
                 height={0}

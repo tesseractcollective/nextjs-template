@@ -35,7 +35,7 @@ export default function HoverRoundGridBoxes({ gridBoxData }: GridBoxProps) {
                   <Image
                     src={gridBoxDataWOLink.boxImage?.url}
                     alt=""
-                    className="object-cover w-72 h-72 mb-2 transition-all duration-[400ms] rounded-md max-w-xs grayscale-0 group-hover:grayscale group-hover:rounded-[100%]"
+                    className="object-cover w-72 h-72 transition-all duration-[400ms] rounded-md max-w-xs grayscale-0 group-hover:grayscale group-hover:rounded-[100%]"
                     width={0}
                     height={0}
                     sizes="100%"
@@ -69,7 +69,7 @@ export default function HoverRoundGridBoxes({ gridBoxData }: GridBoxProps) {
                     <Image
                       src={gridBoxItem.boxImage?.url}
                       alt=""
-                      className="object-cover w-72 h-72 mb-2 transition-all duration-[400ms] rounded-md max-w-xs grayscale-0 group-hover:grayscale group-hover:rounded-[100%]"
+                      className="object-cover w-72 h-72 transition-all duration-[400ms] rounded-md max-w-xs grayscale-0 group-hover:grayscale group-hover:rounded-[100%]"
                       width={0}
                       height={0}
                       sizes="100%"
