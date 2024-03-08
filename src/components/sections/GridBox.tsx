@@ -8,6 +8,7 @@ import CircleGridBoxes from "./GridBoxComponents/CircleGridBoxes";
 import VerticalTabGridBoxes from "./GridBoxComponents/VerticalTabGridBoxes";
 import GridDisplayBoxes from "./GridBoxComponents/GridDisplayBoxes";
 import HoverRoundGridBoxes from "./GridBoxComponents/HoverRoundGridBoxes";
+import ParallaxGridBoxes from "./GridBoxComponents/ParallaxGridBoxes";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -23,7 +24,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   // netflix
   // grid
   // image
-  // parallax
+  // parallax √
   // circle
   // polaroid
 
@@ -51,9 +52,14 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   const verticalTabGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "verticalTabs"
   );
+  const parallaxGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "parallax"
+  );
   const gridDisplayGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "grid"
   );
+  if (parallaxGridBoxData && parallaxGridBoxData.length >= 1)
+    return <ParallaxGridBoxes gridBoxData={parallaxGridBoxData} />;
   if (verticalTabGridBoxData && verticalTabGridBoxData.length >= 1)
     return <VerticalTabGridBoxes gridBoxData={verticalTabGridBoxData} />;
   if (insetGridBoxData && insetGridBoxData.length >= 1)

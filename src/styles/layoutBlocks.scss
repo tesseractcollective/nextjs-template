@@ -824,6 +824,11 @@ body iframe {
         inset: unset !important;
       }   
   }
+  &.bw-video, &.video-bw {
+    .main video {
+      filter: saturate(0);
+    }
+  }
   &.fade-dark {
       .absolute.bg-gradient-to-t.section-fade-invert {
         --tw-gradient-from: #00000070 var(--tw-gradient-from-position);

@@ -18,6 +18,7 @@ import ProgressNavigation from "@/components/navigation/ProgressNavigation";
 import HorizonNavigation from "@/components/navigation/HorizonNavigation";
 import BlogNavigation from "@/components/navigation/BlogNavigation";
 import DimensionNavigation from "@/components/navigation/DimensionNavigation";
+import BorderNavigation from "@/components/navigation/BorderNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -68,6 +69,16 @@ export default function Nav({
   // blog
   // luxury
   // fixedSide
+
+  if (navigation.navigationLayoutStyle === "border")
+    return (
+      <BorderNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
 
   if (navigation.navigationLayoutStyle === "dual")
     return (

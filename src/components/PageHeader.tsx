@@ -41,11 +41,9 @@ export default function PageHeader({
   const cssClass = pageHeaderWrapperCssClassProp || "";
   // overlap
   // netflix
-  // power
   // gradient
   // square
   // techno
-  // moon
 
   return (
     <>
@@ -105,6 +103,91 @@ export default function PageHeader({
             </Fade>
           </section>
         </Zoom>
+      )}
+      {pageWidthStyle === "overlap" && (
+        <div className="relative overflow-hidden">
+          <div className="flex flex-col relative h-full w-full">
+            <Fade
+              direction="up"
+              triggerOnce
+              className="absolute z-30 bottom-[-5px] h-full inset-0"
+            >
+              {!!pageHeaderImageProp && (
+                <Image
+                  src={pageHeaderImageProp}
+                  alt=""
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                  className="h-full w-full object-cover md:object-contain object-center"
+                />
+              )}
+            </Fade>
+            <div className="flex flex-row">
+              <section className="relative flex z-0 bg-secondary all-text-white h-80vh w-[50vw]">
+                <div className="flex flex-col items-center md:items-start justify-start md:justify-start md:w-full px-4 absolute mb-0 z-20 mx-auto md:mr-16 xl:ml-[17rem] text-center md:text-left bottom-0">
+                  {!!pageHeaderTitleProp && (
+                    <Fade
+                      direction="left"
+                      triggerOnce
+                      className="text-center mx-auto md:text-left md:mx-0"
+                    >
+                      <h1 className="text-3xl md:text-7xl xl:text-14xl my-0 py-0 text-center sm:text-left text-white font-bold w-full mx-auto uppercase">
+                        {pageHeaderTitleProp}
+                      </h1>
+                    </Fade>
+                  )}
+                </div>
+              </section>
+              <section className="h-80vh w-[50vw] bg-text-color flex"></section>
+            </div>
+            <div className="flex flex-row">
+              <section className="h-[20vh] w-[50vw] bg-text-color flex">
+                {!!pageHeaderSubtitleProp && (
+                  <Fade
+                    direction="left"
+                    triggerOnce
+                    className="text-center mx-auto md:text-left md:mx-0"
+                  >
+                    <h2 className="my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 md:text-left mx-auto md:ml-4 md:mr-0 w-full text-text-overlay">
+                      {pageHeaderSubtitleProp}
+                    </h2>
+                  </Fade>
+                )}
+                {!!pageCallToAction && pageCallToAction?.length > 0 && (
+                  <div>
+                    <div className="text-center mx-auto md:text-left md:mx-0">
+                      {pageCallToAction.map(
+                        (callToActionItem) =>
+                          callToActionItem?.ctaLink && (
+                            <div
+                              key={callToActionItem.ctaLink}
+                              className="text-center mx-auto md:text-left md:mx-0"
+                            >
+                              <LinkItem
+                                link={callToActionItem.ctaLink}
+                                label={callToActionItem.ctaLabel}
+                                cssClass={
+                                  callToActionItem?.ctaClass
+                                    ? callToActionItem.ctaClass
+                                    : `${
+                                        callToActionItem.ctaPrimary
+                                          ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
+                                          : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
+                                      } mr-2 max-w-max`
+                                }
+                              />
+                            </div>
+                          )
+                      )}
+                    </div>
+                  </div>
+                )}
+              </section>
+              <section className="relative flex z-0 bg-secondary h-[20vh] w-[50vw]"></section>
+            </div>
+          </div>
+        </div>
       )}
       {pageWidthStyle === "split" && (
         <div className="relative overflow-hidden">
@@ -458,6 +541,79 @@ export default function PageHeader({
             </div>
           </section>
         </Zoom>
+      )}
+      {pageWidthStyle === "moon" && (
+        <Fade triggerOnce>
+          <div
+            className={`relative block transition-all duration-500 ${
+              scroll ? "" : "bg-primary"
+            }`}
+          >
+            <div className="flex flex-col items-center justify-center min-h-[65vh]">
+              <div className="py-2 mx-auto relative w-full text-color">
+                <Fade direction="up" triggerOnce>
+                  {!!pageHeaderTitleProp && (
+                    <h1 className="text-3xl md:text-6xl xl:text-7xl  mt-0 mb-1 py-0 text-center font-bold uppercase">
+                      {pageHeaderTitleProp}
+                    </h1>
+                  )}
+                  {!!pageHeaderSubtitleProp && (
+                    <h2 className="my-0 py-0 text-center uppercase tracking-widest font-bold text-xl opacity-100 text-overlay max-w-lg mx-auto">
+                      {pageHeaderSubtitleProp}
+                    </h2>
+                  )}
+                  {!!pageCallToAction && pageCallToAction?.length > 0 && (
+                    <div>
+                      <div className="text-center mx-auto">
+                        {pageCallToAction.map(
+                          (callToActionItem) =>
+                            callToActionItem?.ctaLink && (
+                              <div
+                                key={callToActionItem.ctaLink}
+                                className="text-center mx-auto"
+                              >
+                                <LinkItem
+                                  link={callToActionItem.ctaLink}
+                                  label={callToActionItem.ctaLabel}
+                                  cssClass={
+                                    callToActionItem?.ctaClass
+                                      ? callToActionItem.ctaClass
+                                      : `${
+                                          callToActionItem.ctaPrimary
+                                            ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
+                                            : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
+                                        } mr-2 max-w-max`
+                                  }
+                                />
+                              </div>
+                            )
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </Fade>
+              </div>
+            </div>
+            {pageHeaderImageProp && (
+              <div
+                className={`relative w-full mx-auto block h-full transition-all overflow-hidden rounded-full aspect-1 ${
+                  scroll
+                    ? "max-w-[1880px] max-h-[1880px] rotate-10"
+                    : "max-w-[1440px] max-h-[1440px] rotate-0"
+                }`}
+              >
+                <Image
+                  alt=""
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                  src={pageHeaderImageProp}
+                  className="object-cover w-full h-full absolute inset-0"
+                />
+              </div>
+            )}
+          </div>
+        </Fade>
       )}
       {pageWidthStyle === "angled" && (
         <div className={`bg-bg relative ${cssClass}`}>

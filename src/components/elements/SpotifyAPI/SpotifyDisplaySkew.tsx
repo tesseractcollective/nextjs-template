@@ -1,4 +1,10 @@
+import React from "react";
+import Link from "next/link";
 import Image from "next/image";
+import { Fade, Zoom } from "react-awesome-reveal";
+import ReactGA from "react-ga4";
+import { Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface Album {
   name: string;
@@ -21,47 +27,76 @@ interface SpotifyDataProps {
 const SpotifyDisplaySkew: React.FC<SpotifyDataProps> = ({
   spotifyAlbumsData,
 }) => {
-  console.log(spotifyAlbumsData);
   return (
-    <section className="">
-      <div className="flex flex-row flex-wrap w-full mx-auto items-center justify-center max-w-8xl transition gap-2">
-        {spotifyAlbumsData.map((album) => (
-          <div
-            key={album.external_urls.spotify}
-            tabIndex={0}
-            className="block w-1/4 md:w-2/12 lg:w-2/12 transition-all relative"
-          >
-            {!!album.images[0].url && (
-              <div className="profile h-0 bg-center bg-no-repeat bg-cover pb-[100%]">
-                <div className="profile-overlay absolute inset-0 overflow-hidden">
-                  {album.external_urls.spotify && (
-                    <a
-                      href={album.external_urls.spotify}
-                      tabIndex={0}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="relative aspect-1 group mx-auto w-full"
-                    >
-                      <Image
-                        sizes="100%"
-                        src={album.images[0].url}
-                        alt={album.name}
-                        width={0}
-                        height={0}
-                        className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1"
-                      />
-
-                      <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-md md:text-xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary text-shadow">
-                        {album.name}
-                      </p>
-                    </a>
-                  )}
-                </div>
-              </div>
-            )}
+    <section className="px-2 mx-0 overflow-hidden">
+      <Zoom triggerOnce>
+        <section className="py-16 md:py-36 mx-auto">
+          <div className="flex flex-row flex-wrap items-start justify-center my-4 md:my-8 rotate-[10deg] skew-x-6 w-[120%] -ml-16 feature-album-slider-wrapper">
+            <Swiper
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={3}
+              coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 200,
+                modifier: 1,
+                slideShadows: false,
+              }}
+              pagination={true}
+              modules={[EffectCoverflow, Pagination, Autoplay]}
+              className="mx-0"
+              loop={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+            >
+              {spotifyAlbumsData.map((albumItem) => (
+                <SwiperSlide
+                  key={albumItem.external_urls.spotify}
+                  className="mx-auto !animate-col-width w-28 sm:w-32 md:w-72"
+                >
+                  {!!albumItem.external_urls.spotify &&
+                    albumItem.images[0].url && (
+                      <a
+                        href={albumItem.external_urls.spotify}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() =>
+                          ReactGA.event({
+                            category: "Link",
+                            action: `Visit ${albumItem.name}`,
+                            label: albumItem.name || "",
+                          })
+                        }
+                        className="block no-underline album-item mx-auto relative group transition-all hover:skew-x-[-2deg] hover:rotate-[-2deg]"
+                      >
+                        <Fade direction="down">
+                          <Image
+                            src={albumItem.images[0].url}
+                            alt={albumItem.name || ""}
+                            className="mx-auto my-8 w-full block box-shadow border-round grayscale hover:grayscale-0 group-hover:grayscale-0 group-focus:grayscale transition-all"
+                            height={400}
+                            width={400}
+                            style={{
+                              maxHeight: "450px",
+                              maxWidth: "450px",
+                              objectFit: "cover",
+                              aspectRatio: 1,
+                            }}
+                          />
+                        </Fade>
+                      </a>
+                    )}
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-        ))}
-      </div>
+        </section>
+      </Zoom>
     </section>
   );
 };

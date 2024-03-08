@@ -25,7 +25,7 @@ const ArtistInfo: React.FC<ArtistInfoProps> = ({ clientId, artistId }) => {
         console.error("Error fetching artist information:", error);
       });
   }, [clientId, artistId]);
-  console.log(artist);
+
   return (
     <div>
       {artist && (

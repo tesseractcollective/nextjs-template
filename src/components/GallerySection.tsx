@@ -88,12 +88,13 @@ export default function GallerySection({
                 >
                   <Image
                     src={finalImage}
-                    alt={`Gallery Image: ${index}`}
+                    alt=""
                     className={`rounded-lg object-cover block mb-6 mx-auto h-full w-full ${
                       index % 2 == 0 ? "aspect-square" : "aspect-video"
                     }`}
                     sizes="100%"
                     width={0}
+                    aria-hidden
                     height={0}
                   />
                 </div>
@@ -123,7 +124,7 @@ export default function GallerySection({
               >
                 <Image
                   src={finalImage}
-                  alt={`Gallery Image: ${index + 1}`}
+                  alt=""
                   sizes="100%"
                   width={0}
                   height={0}
@@ -219,7 +220,7 @@ export default function GallerySection({
           >
             <Image
               src={image.url}
-              alt={image.url}
+              alt=""
               fill
               sizes="100vw"
               style={{

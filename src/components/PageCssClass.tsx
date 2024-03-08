@@ -5,7 +5,6 @@ export interface PageCssClassProps {
 }
 
 export default function PageCssClass({ pageClass }: PageCssClassProps) {
-  console.log(pageClass);
   useEffect(() => {
     if (pageClass) {
       const classes = pageClass.split(" ");

@@ -16,11 +16,11 @@ export default function ProfileFullScreenSection({
   if (!profiles) return <></>;
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       {profiles.map((profile) => (
         <section
           key={profile.profileSlug}
-          className="h-[100vh] bg-bg top-0 sticky"
+          className="h-[100vh] bg-bg top-0 sticky w-full"
         >
           <div className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat duration-[400ms] bg-fixed"></div>
           <div className="max-w-8xl px-4 lg:px-8 lg:py-20 mx-auto bottom-20 absolute w-full inset-x-0 z-10">

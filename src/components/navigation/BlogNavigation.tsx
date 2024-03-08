@@ -323,7 +323,7 @@ export default function BlogNavigation({
                   <SocialMediaIcons
                     fadeDirection="down"
                     siteLibrary={siteLibrary}
-                    cssClass="max-w-max md:flex flex-row social-icons-row items-center justify-center text-primary gap-x-2 opacity-40 hidden absolute left-0"
+                    cssClass="max-w-max md:flex flex-row social-icons-row items-center justify-center text-primary gap-x-2 hidden absolute left-0"
                   />
                   <Link
                     href="/"

@@ -74,7 +74,7 @@ export default function Sections({ sectionData, siteLibrary }: SectionsProps) {
         />
       )}
       {!!gridBoxData && gridBoxData?.length >= 1 && (
-        <section className="max-w-8xl mx-auto z-20 w-full relative">
+        <section>
           <GridBox gridBoxData={gridBoxData} />
         </section>
       )}

@@ -38,7 +38,7 @@ export default function VideoGridSection({ videoData }: VideoGridSectionProps) {
       }
     });
   };
-  console.log(videoData);
+
   const videoThumbnailsData = videoData.filter(
     (videoTemp) => videoTemp.thumbnailType === "video"
   );

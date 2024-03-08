@@ -1,56 +1,51 @@
+import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "@/components/LinkItem";
-import parse from "html-react-parser";
+import { Fade } from "react-awesome-reveal";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
 }
 
-export default function CompactGridBoxes({ gridBoxData }: GridBoxProps) {
+export default function ParallaxGridBoxes({ gridBoxData }: GridBoxProps) {
   return (
-    <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8">
-      <div className="flex flex-wrap justify-center items-stretch gap-4 h-full">
-        {gridBoxData.map((gridBoxItem) => (
-          <div
-            key={gridBoxItem.boxLink}
-            className="relative isolate flex flex-col overflow-hidden rounded-2xl bg-background pb-4 pt-40 sm:pt-60 group hover:cursor-pointer mx-auto h-full w-full max-w-xs self-stretch"
-          >
-            {!!gridBoxItem.boxImage?.url && (
-              <Image
-                src={gridBoxItem.boxImage.url}
-                alt={gridBoxItem.boxTitle || ""}
-                width={0}
-                height={0}
-                sizes="100%"
-                className="absolute inset-0 -z-10 h-full w-full object-cover vignette object-center"
-              />
-            )}
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background/50 via-text-color/40" />
-            <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-primary-fade ring-inset ring-dark/10 overflow-hidden transition group-hover:ring-secondary" />
-            <LinkItem
-              link={gridBoxItem?.boxLink}
-              cssClass="text-shadow mt-3 text-xl leading-6 w-full text-center text-text-overlay h-full z-40 self-stretch"
-            >
-              <div>
-                {!!gridBoxItem?.boxTitle && (
-                  <p className="line-clamp-1 text-text-overlay font-semibold">
-                    {gridBoxItem.boxTitle}
+    <section className="relative">
+      {gridBoxData.map((gridBoxItem) => (
+        <section
+          key={gridBoxItem.boxLink}
+          className="h-100vh bg-bg top-0 sticky"
+        >
+          <div className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat duration-[400ms] bg-fixed"></div>
+          <div className="max-w-8xl px-4 lg:px-8 lg:py-20 mx-auto bottom-20 absolute w-full inset-x-0 z-10">
+            <Fade direction="up" triggerOnce className="gap-y-2">
+              <LinkItem link={gridBoxItem.boxLink}>
+                <>
+                  {!!gridBoxItem.boxTitle && (
+                    <h1 className="text-2xl md:text-6xl xl:text-7xl text-shadow mt-0 mb-1 py-0 text-left text-[white] font-bold uppercase text-shadow">
+                      {gridBoxItem.boxTitle}
+                    </h1>
+                  )}
+                  <p className="bg-[white] text-[black] py-2 px-8 max-w-max uppercase font-bold rounded">
+                    Info
                   </p>
-                )}
-                {!!gridBoxItem?.boxDescription?.html && (
-                  <div className="body-parsed-text text-xs mx-auto block text-center text-text-overlay font-normal w-5/6 opacity-90 line-clamp-2 pt-2">
-                    {parse(gridBoxItem.boxDescription.html)}
-                  </div>
-                )}
-                <span className="absolute inset-0 z-50" aria-hidden="true" />
-              </div>
-            </LinkItem>
-            <div className="absolute inset-0 bg-gradient-to-b from-secondary transition opacity-0 group-hover:opacity-50 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark transition opacity-30 group-hover:opacity-50 z-10" />
+                </>
+              </LinkItem>
+            </Fade>
           </div>
-        ))}
-      </div>
+          {gridBoxItem.boxImage && (
+            <Image
+              src={gridBoxItem.boxImage.url}
+              alt=""
+              width={0}
+              height={0}
+              sizes="100%"
+              className="w-full h-full object-cover absolute inset-0 z-0 h-100vh"
+            />
+          )}
+        </section>
+      ))}
     </section>
   );
 }

@@ -36,6 +36,7 @@ export default function Products({
   const filteredProducts = products.filter(
     (product) => product?.productType?.toLowerCase() === type?.toLowerCase()
   );
+
   // Product Layout Style
   // compact √
   // slider √
@@ -118,16 +119,16 @@ export default function Products({
                   <span className="sr-only">Move Rotation Back</span>
                 </button>
                 <Swiper
-                  className="flex-wrap flex items-stretch h-full"
+                  className="flex-wrap flex items-stretch h-full max-h-max"
                   grabCursor
                   modules={[Navigation, Pagination, Autoplay]}
                   loop={true}
                   centerInsufficientSlides
-                  autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                  }}
+                  // autoplay={{
+                  //   delay: 3000,
+                  //   disableOnInteraction: false,
+                  //   pauseOnMouseEnter: true,
+                  // }}
                   onBeforeInit={(swiper) => {
                     swiperRef.current = swiper;
                   }}
@@ -164,7 +165,7 @@ export default function Products({
                                   ]?.url
                                 }
                                 alt={product.name}
-                                className="aspect-1 w-full max-w-[90px] md:max-w-full object-cover !rounded-xl p-4"
+                                className="aspect-1 w-full max-w-[90px] md:max-w-full object-cover !rounded-xl p-4 min-w-[90px] min-h-[90px]"
                                 width={0}
                                 height={0}
                               />
@@ -179,7 +180,7 @@ export default function Products({
                                 {product.name}
                               </p>
                               {product?.description && (
-                                <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0 max-w-[200px] lg:max-w-[90%] bg-invert line-clamp-2 min-h-[60px] group-hover:bg-tertiary">
+                                <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0 max-w-[200px] lg:max-w-[90%] bg-invert line-clamp-2 min-h-[60px] group-hover:bg-tertiary line-clamp-parse">
                                   {parse(product.description.html)}
                                 </div>
                               )}

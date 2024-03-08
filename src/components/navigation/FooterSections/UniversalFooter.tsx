@@ -70,7 +70,7 @@ function UniversalFooter({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-20 w-full mb-4 object-contain max-w-max min-w-[120px]"
+                      className="h-20 w-full mb-4 object-contain max-w-max min-w-[120px] py-2"
                       alt=""
                       width={0}
                       height={0}
@@ -266,18 +266,18 @@ function UniversalFooter({
                       sameTab={footerItem.sameTab}
                     ></LinkItem>
                   ))}
+                  <a
+                    href={`https://lnza.me/?${encodeURIComponent(
+                      title || "" + " fan"
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="footer-link-item max-w-max mx-0 !text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
+                  >
+                    CREDIT
+                  </a>
                 </div>
               )}
-              {/* <a
-                href={`https://lnza.me/?${encodeURIComponent(
-                  title || "" + " fan"
-                )}`}
-                target="_blank"
-                rel="noreferrer"
-                className="max-w-max text-[12px] text-color-secondary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
-              >
-                LANZA/ME
-              </a> */}
             </div>
           </div>
         </div>

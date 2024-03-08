@@ -19,7 +19,7 @@ export interface NavProps {
   pageNavigationSelection?: string;
 }
 
-export default function MegaNavigation({
+export default function BorderNavigation({
   navigations,
   siteLibrary,
   hideNav,
@@ -57,7 +57,7 @@ export default function MegaNavigation({
   const { items, navigationWrapperCssClass } = navigation;
   return (
     <div
-      className={`sticky top-0 z-[999] bg-background left-0 right-0 nav-shadow ${
+      className={`sticky top-0 z-[999] bg-background left-0 right-0 ${
         small ? "nav-shadow-scrolled" : ""
       } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
       id="navigation"
@@ -315,12 +315,13 @@ export default function MegaNavigation({
       <header className="relative">
         <nav aria-label="Top">
           <div className="">
-            <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
-              <div className="border-b border-dark">
+            <div className="mx-auto max-w-12xl border border-y border-text-color">
+              <div className="">
                 <div className="flex h-16 items-center justify-between">
-                  <div className="flex flex-1 items-center  cursor-pointer max-w-max">
+                  <div className="flex flex-1 items-center cursor-pointer max-w-max px-4 border-r border-text-color h-full">
                     <Link
                       href="/"
+                      className="flex mx-auto items-center justify-center"
                       id={`nav-logo-desktop-${title}`}
                       onClick={() => {
                         ReactGA.event({
@@ -334,7 +335,7 @@ export default function MegaNavigation({
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-16 py-2 w-auto max-w-xs mx-auto cursor-pointer object-contain"
+                            className="h-14 w-auto max-w-xs mx-auto cursor-pointer object-contain py-2"
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}
@@ -351,7 +352,32 @@ export default function MegaNavigation({
                     </Link>
                   </div>
 
-                  <div className="flex flex-1 items-center justify-end max-w-max ml-auto">
+                  {navigation.announcementText && (
+                    <p className="flex m-0 p-2 items-center justify-center text-sm font-semibold">
+                      {navigation.announcementText}
+                    </p>
+                  )}
+
+                  <div className="hidden md:flex flex-1 items-center justify-end max-w-max ml-auto gap-x-4 px-4">
+                    {!!items &&
+                      items
+                        .filter(
+                          (mainNavigationItem) =>
+                            mainNavigationItem.primaryItem !== true
+                        )
+                        .map((mainNavigationItem) => (
+                          <LinkItem
+                            key={mainNavigationItem?.link}
+                            link={mainNavigationItem?.link}
+                            label={mainNavigationItem?.label}
+                            cssClass={`flex items-center text-xs md:text-base font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-4 py-1 md:py-2 uppercase ${mainNavigationItem?.cssClass}`}
+                            sameTab={mainNavigationItem?.sameTab}
+                          />
+                        ))}
+                  </div>
+
+                  {/* mega menu bar */}
+                  <div className="hidden md:flex flex-1 items-center justify-between max-w-max border-l border-text-color h-full px-4">
                     {!!items &&
                       items
                         .filter(
@@ -363,17 +389,15 @@ export default function MegaNavigation({
                             key={mainNavigationItem?.link}
                             link={mainNavigationItem?.link}
                             label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-xs md:text-sm font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 py-1 md:py-2 rounded ${mainNavigationItem?.cssClass}`}
+                            cssClass={`flex items-center text-xs md:text-base font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 py-1 md:py-2 rounded uppercase ${mainNavigationItem?.cssClass}`}
                             sameTab={mainNavigationItem?.sameTab}
                           />
                         ))}
                   </div>
-
-                  {/* mega menu bar */}
-                  <div className="flex flex-1 items-center justify-between max-w-max">
+                  <div className="flex md:hidden border-l border-text-color">
                     <button
                       type="button"
-                      className="ml-2 rounded-md px-2 py-1 text-text-color border border-white hover:border-primary transition group"
+                      className="mx-4 p-2 text-text-color border border-white hover:border-primary transition group rounded-full max-h-max"
                       onClick={() => {
                         setOpen(true);
                         ReactGA.event({

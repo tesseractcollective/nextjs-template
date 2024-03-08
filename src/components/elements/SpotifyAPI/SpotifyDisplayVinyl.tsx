@@ -22,7 +22,6 @@ interface SpotifyDataProps {
 const SpotifyDisplayVinyl: React.FC<SpotifyDataProps> = ({
   spotifyAlbumsData,
 }) => {
-  console.log(spotifyAlbumsData);
   return (
     <section className="">
       <div className="flex flex-row flex-wrap w-full mx-auto items-center justify-center max-w-8xl transition gap-2">

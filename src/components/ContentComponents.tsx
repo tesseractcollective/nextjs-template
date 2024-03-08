@@ -84,7 +84,7 @@ export default function ContentComponents({
     <>
       {!!testimonials && testimonialType && (
         <section
-          className="max-w-8xl mx-auto z-20 w-full relative"
+          className="max-w-8xl mx-auto z-20 w-full relative testimonial-wrapper-content-components"
           id={`testimonial-${testimonialType}`}
         >
           <Testimonials testimonials={testimonials} query={testimonialType} />
@@ -92,7 +92,7 @@ export default function ContentComponents({
       )}
       {!!products && productType && productLayoutStyle && (
         <section
-          className="max-w-8xl mx-auto z-20 w-full relative"
+          className="max-w-8xl mx-auto z-20 w-full relative product-wrapper-content-components"
           id={`product-${productType}`}
         >
           <Products
