@@ -52,7 +52,19 @@
 }
 
 .bg-fade-secondary {
-  background: linear-gradient(180deg, var(--background) 0%,var(--background-secondary) 100%);
+  background: linear-gradient(180deg, var(--background) 0%, var(--background-secondary) 100%);
+}
+
+.bg-fade-1st {
+  background: linear-gradient(180deg, var(--background) 0%, var(--primary) 100%);
+}
+
+.bg-fade-1st-reverse {
+  background: linear-gradient(0deg, var(--background) 0%, var(--primary) 100%);
+}
+
+.bg-fade-2nd {
+  background: linear-gradient(180deg, var(--background) 0%, var(--secondary) 100%);
 }
 
 .bg-fade-secondary-reverse {
