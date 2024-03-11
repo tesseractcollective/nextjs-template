@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
-import Link from "next/link";
+import LinkItem from "@/components/LinkItem";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -34,10 +34,14 @@ export default function ProfileMyspaceSection({
             key={profile.profileSlug}
             className="max-w-[10rem] w-full"
           >
-            <Link
-              href={`/${profile.profileType?.toLowerCase()}/${
-                profile.profileSlug
-              }`}
+            <LinkItem
+              link={
+                profile?.externalLink
+                  ? profile.externalLink
+                  : `/${profile.profileType?.toLowerCase()}/${
+                      profile.profileSlug
+                    }`
+              }
             >
               <div className="animate-col-width mx-auto md:mx-0 w-full">
                 <div className="overflow-hidden h-full rounded myspace-card w-full relative">
@@ -59,7 +63,7 @@ export default function ProfileMyspaceSection({
                     </div>
                   )}
                   <Image
-                    src="https://media.graphassets.com/VA24wloOQOaMUMAzCD35"
+                    src="https://media.graphassets.com/MsJsSZzDQryRvRj8f9H5"
                     alt="Online Now"
                     width={0}
                     height={0}
@@ -68,7 +72,7 @@ export default function ProfileMyspaceSection({
                   />
                 </div>
               </div>
-            </Link>
+            </LinkItem>
           </Fade>
         ))}
       </div>

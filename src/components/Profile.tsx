@@ -17,7 +17,6 @@ import Profiles from "@/components/Profiles";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import VideoSection from "@/components/VideoSection";
 import BandsInTownApi from "./BandsInTownApi";
-// import SpotifyAlbums from "./SpotifyAlbums";
 // import VCF from "@/components/VCF";
 // import SpotifyQuery from "@/components/ArtistInfo";
 // import ArtistInfo from "@/components/ArtistInfo";

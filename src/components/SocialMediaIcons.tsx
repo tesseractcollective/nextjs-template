@@ -537,7 +537,7 @@ export default function SocialMediaIcons({
               siteLibrary?.googleMapLink) && (
               <a
                 href={
-                  siteLibrary?.siteLibraryJson.googleMapLink ||
+                  siteLibrary?.siteLibraryJson?.googleMapLink ||
                   googleMapLinkProp ||
                   siteLibrary?.googleMapLink
                 }

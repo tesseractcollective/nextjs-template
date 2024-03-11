@@ -47,68 +47,73 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
             const rowKey = `layout-block-row-${parentIndex}`;
             return (
               <div
+                className="relative"
                 key={rowKey}
                 id={`${rowKey}-${parentIndex + 1}`}
-                className={`w-full flex flex-wrap relative ${
-                  layoutBlock.cssClass
-                } ${
-                  layoutBlock?.backgroundImage?.url
-                    ? "background-image-featured"
-                    : ""
-                }`}
-                style={styleBlockBGColor}
               >
-                {layoutBlock.layoutBlockColumns.map(
-                  (layoutBlockColumn, index) => {
-                    const styleBGImage = layoutBlockColumn?.backgroundImage?.url
-                      ? {
-                          backgroundImage: `url(${layoutBlockColumn.backgroundImage.url})`,
-                        }
-                      : {};
+                <div
+                  className={`w-full flex flex-wrap relative ${
+                    layoutBlock.cssClass
+                  } ${
+                    layoutBlock?.backgroundImage?.url
+                      ? "background-image-featured"
+                      : ""
+                  }`}
+                  style={styleBlockBGColor}
+                >
+                  {layoutBlock.layoutBlockColumns.map(
+                    (layoutBlockColumn, index) => {
+                      const styleBGImage = layoutBlockColumn?.backgroundImage
+                        ?.url
+                        ? {
+                            backgroundImage: `url(${layoutBlockColumn.backgroundImage.url})`,
+                          }
+                        : {};
 
-                    const columnKey =
-                      layoutBlockColumn?.htmlId ||
-                      `layout-block-${parentIndex}-column-${index + 1}`;
-                    return (
-                      <div
-                        id={columnKey}
-                        key={columnKey}
-                        className={`${
-                          layoutBlockColumn?.hideBlockColumn ? "hidden" : ""
-                        } flex justify-center mx-0 px-0 w-full flex-auto dynamic-feature-section flex-col xl:w-${
-                          12 / totalColumns
-                        }/12 ${layoutBlockColumn?.cssClass || ""} ${
-                          layoutBlockColumn?.backgroundImage?.url
-                            ? "background-image-featured"
-                            : ""
-                        }`}
-                        style={styleBGImage}
-                      >
-                        <Sections
-                          sectionData={layoutBlockColumn.sections}
-                          siteLibrary={siteLibrary}
-                        />
-                        <ContentComponents
-                          contentTags={layoutBlockColumn.contentTags}
-                          events={events}
-                          contacts={contacts}
-                          testimonials={testimonials}
-                          profiles={profiles}
-                          logoTables={logoTables}
-                          products={products}
-                          blogs={blogs}
-                          albums={albums}
-                          siteLibrary={siteLibrary}
-                          eventsData={eventsData}
-                        />
-                        <Elements
-                          elements={layoutBlockColumn.elements}
-                          siteLibrary={siteLibrary}
-                        />
-                      </div>
-                    );
-                  }
-                )}
+                      const columnKey =
+                        layoutBlockColumn?.htmlId ||
+                        `layout-block-${parentIndex}-column-${index + 1}`;
+                      return (
+                        <div
+                          id={columnKey}
+                          key={columnKey}
+                          className={`${
+                            layoutBlockColumn?.hideBlockColumn ? "hidden" : ""
+                          } flex justify-center mx-0 px-0 w-full flex-auto dynamic-feature-section flex-col xl:w-${
+                            12 / totalColumns
+                          }/12 ${layoutBlockColumn?.cssClass || ""} ${
+                            layoutBlockColumn?.backgroundImage?.url
+                              ? "background-image-featured"
+                              : ""
+                          }`}
+                          style={styleBGImage}
+                        >
+                          <Sections
+                            sectionData={layoutBlockColumn.sections}
+                            siteLibrary={siteLibrary}
+                          />
+                          <ContentComponents
+                            contentTags={layoutBlockColumn.contentTags}
+                            events={events}
+                            contacts={contacts}
+                            testimonials={testimonials}
+                            profiles={profiles}
+                            logoTables={logoTables}
+                            products={products}
+                            blogs={blogs}
+                            albums={albums}
+                            siteLibrary={siteLibrary}
+                            eventsData={eventsData}
+                          />
+                          <Elements
+                            elements={layoutBlockColumn.elements}
+                            siteLibrary={siteLibrary}
+                          />
+                        </div>
+                      );
+                    }
+                  )}
+                </div>
                 {layoutBlock?.backgroundImage?.url && (
                   <Image
                     src={layoutBlock?.backgroundImage?.url}

@@ -64,10 +64,12 @@ export default function BlogNavigation({
   return (
     <>
       <div
-        className={`fixed top-0 z-[999] bg-after left-0 right-0 transition-all backdrop-blur-md ${
-          small ? "nav-shadow nav-shadow-scrolled top-0" : ""
+        className={`fixed top-0 z-[999] left-0 right-0 transition-all ${
+          small
+            ? "bg-after nav-shadow nav-shadow-scrolled top-0 backdrop-blur-md"
+            : "backdrop-blur-xs"
         } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
-        id="navigation"
+        id="blog-navigation"
       >
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
@@ -387,7 +389,7 @@ export default function BlogNavigation({
           </nav>
         </header>
       </div>
-      <div className="pb-20"></div>
+      {/* <div className="pb-20"></div> */}
     </>
   );
 }

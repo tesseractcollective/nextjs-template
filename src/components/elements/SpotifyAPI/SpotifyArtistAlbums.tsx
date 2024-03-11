@@ -127,6 +127,7 @@ const SpotifyArtistAlbums: React.FC<SpotifyArtistInfoProps> = ({
   }, [accessToken, artistName]);
 
   if (!albums) return null;
+  if (!artistInfo) return null;
   const sortedAlbums = [...albums].sort((a, b) => {
     const dateA = new Date(a.release_date);
     const dateB = new Date(b.release_date);
@@ -142,7 +143,12 @@ const SpotifyArtistAlbums: React.FC<SpotifyArtistInfoProps> = ({
   if (spotifyAlbumDisplay === "grid")
     return <SpotifyDisplayGrid spotifyAlbumsData={sortedAlbums} />;
   if (spotifyAlbumDisplay === "myspace")
-    return <SpotifyDisplayMyspace spotifyAlbumsData={sortedAlbums} />;
+    return (
+      <SpotifyDisplayMyspace
+        spotifyAlbumsData={sortedAlbums}
+        spotifyArtistInfo={artistInfo}
+      />
+    );
   if (spotifyAlbumDisplay === "postcard")
     return <SpotifyDisplayPostcard spotifyAlbumsData={sortedAlbums} />;
   if (spotifyAlbumDisplay === "record")

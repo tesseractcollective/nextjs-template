@@ -18,25 +18,34 @@ export default function VideoSection({
   videoData,
   youtubeApiKey,
 }: VideoSectionProps) {
-  const videoGridData = videoData.filter(
+  const modifiedVideoData = videoData.map(({ youtubeVideoId, ...rest }) => {
+    const videoId = youtubeVideoId?.replace(
+      "https://www.youtube.com/watch?v=",
+      ""
+    );
+    return { youtubeVideoId: videoId, ...rest };
+  });
+
+  console.log(modifiedVideoData);
+  const videoGridData = modifiedVideoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "grid"
   );
-  const videoAlternateData = videoData.filter(
+  const videoAlternateData = modifiedVideoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "alternate"
   );
-  const videoOffsetData = videoData.filter(
+  const videoOffsetData = modifiedVideoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "offset"
   );
-  const videoFullScreenData = videoData.filter(
+  const videoFullScreenData = modifiedVideoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "fullScreen"
   );
-  const videoSnapData = videoData.filter(
+  const videoSnapData = modifiedVideoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "snap"
   );
-  const videoNetflixData = videoData.filter(
+  const videoNetflixData = modifiedVideoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "netflix"
   );
-  const videoPlaylistData = videoData.filter(
+  const videoPlaylistData = modifiedVideoData.filter(
     (videoDataItem) => typeof videoDataItem.youtubePlaylistId !== "undefined"
   );
 

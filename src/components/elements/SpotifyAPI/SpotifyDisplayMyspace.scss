@@ -1,0 +1,109 @@
+.music_player_container {
+	width: 100%;
+	height: 100%;
+	background: rgb(247,249,246);
+	background: linear-gradient(180deg, rgba(247,249,246,1) 0%, rgba(216,213,214,1) 55%, rgb(158, 160, 160) 88%);
+	display:flex;
+	align-items:center;
+	border:1px solid black;
+}
+
+.music_player_play {
+	height: 100%;
+	background:transparent;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.music_player_play_button {
+	width: 40px;
+	height:40px;
+	background: rgb(247,249,246);
+	background: linear-gradient(180deg, rgba(247,249,246,1) 0%, rgba(216,213,214,1) 21%, rgb(167, 167, 167) 82%, rgba(255,255,255,1) 99%);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	font-size: 1.5rem;
+	color:#6a6a6a;
+	border-radius: 8px;
+	border: 1px solid #737373;
+}
+
+.music_player_body {
+	width: 100%;
+	height: 100%;
+	background:transparent;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.music_player_body_text {
+	width: calc(100% - 20px);
+  a {
+    background: #27201e;
+    transition: all 300ms ease-in-out;
+    &:hover, &:focus-within {
+      background: #493c38;
+    }
+  }
+	display:flex;
+	// flex-direction:row;
+	justify-content:flex-start;
+	align-items:start;
+	color:white;
+	border-radius:8px;
+	box-sizing:border-box;
+	padding: 5px;
+}
+
+.music_player_body_text_track {
+  span {
+    height: 50%;
+    color:white;
+    font-size:0.8rem;
+  }
+}
+
+.music_player_visual {
+	width:50%;
+	height:100%;
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	gap: 2px;
+}
+.music_player_visual_bar {
+	height: 100%;
+	width: 10px;
+	display:flex;
+	flex-direction: column-reverse;
+	gap:2px;
+}
+.music_player_visual_pip {
+	width:100%;
+	height: 2px;
+}
+
+.music_player_visual_pip:nth-child(1) {
+	background:#188a18;
+}
+.music_player_visual_pip:nth-child(2) {
+	background:#a8f37c;
+}
+.music_player_visual_pip:nth-child(3) {
+	background:#fbfbcc;
+}
+.music_player_visual_pip:nth-child(4) {
+	background:#e9ef81;
+}
+.music_player_visual_pip:nth-child(5) {
+	background:#dea671;
+}
+.music_player_visual_pip:nth-child(6) {
+	background:#dec671;
+}
+.music_player_visual_pip:nth-child(7) {
+	background:#de8771;
+}
