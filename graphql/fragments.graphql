@@ -124,6 +124,8 @@ fragment siteLibraryFields on SiteLibrary {
     url
   }
   paypalClientId
+  googleTagManager
+  hubSpotTrackingCode
   themeColor {
     background {
       hex
@@ -268,6 +270,9 @@ fragment eventFields on Event {
     height
     width
   }
+  eventPerformer
+  eventPerformerSpotifyAlbumDisplay
+  newTabEventDestination
 }
 
 fragment testimonialFields on Testimonial {
@@ -731,6 +736,7 @@ fragment profileFields on Profile {
   youtubeLink
   contactQuery
   displayVcf
+  whatsapp
   fullBio {
     html
     raw

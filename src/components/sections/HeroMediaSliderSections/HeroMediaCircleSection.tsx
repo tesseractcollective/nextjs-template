@@ -69,7 +69,7 @@ export default function HeroMediaCircleSection({
         }`}
       >
         <div className="flex flex-col items-center justify-center min-h-[65vh] relative z-40">
-          <div className="py-2 mx-auto relative w-full text-color items-center flex justify-center flex-col">
+          <div className="py-2 mx-auto relative w-full text-color items-center flex justify-center flex-col px-4">
             <Fade triggerOnce className="w-full">
               {textContent?.contentImage && (
                 <Image
@@ -102,6 +102,17 @@ export default function HeroMediaCircleSection({
                 <h2 className="my-0 py-0 text-center uppercase tracking-widest font-bold text-xl opacity-100 text-overlay max-w-lg mx-auto">
                   {parse(textContent?.subHeader.html)}
                 </h2>
+              )}
+              {textContent?.content && (
+                <div className="body-parsed-text">
+                  {parse(textContent.content.html)}
+                </div>
+              )}
+
+              {textContent?.htmlText && (
+                <div className="body-parsed-text">
+                  {parse(textContent.htmlText)}
+                </div>
               )}
               {!!callToAction && callToAction?.length > 0 && (
                 <div className="flex items-center flex-row justify-center gap-x-4 text-center mx-auto">

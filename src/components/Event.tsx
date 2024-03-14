@@ -220,10 +220,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
         )}
         {!!filteredEvents && (
           <section className="container my-4 mx-auto">
-            <Events
-              displayEventsStyleGridOrSlider={"grid"}
-              events={filteredEvents}
-            />
+            <Events eventDisplayLayout={"grid"} events={filteredEvents} />
           </section>
         )}
       </section>

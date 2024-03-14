@@ -135,7 +135,7 @@ export default function ContentComponents({
       {!!events && !!eventDisplayLayout && (
         <section className="max-w-8xl w-full my-4 mx-auto">
           <Events
-            displayEventsStyleGridOrSlider={eventDisplayLayout || "grid"}
+            eventDisplayLayout={eventDisplayLayout || "grid"}
             events={events}
           />
         </section>

@@ -32,7 +32,7 @@ export default function ProfileMyspaceSection({
             triggerOnce
             damping={0.015}
             key={profile.profileSlug}
-            className="max-w-[10rem] w-full"
+            className="max-w-[9rem] w-full mx-auto block"
           >
             <LinkItem
               link={

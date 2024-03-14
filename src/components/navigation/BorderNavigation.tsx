@@ -11,6 +11,7 @@ import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
+import { Fade } from "react-awesome-reveal";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -322,7 +323,7 @@ export default function BorderNavigation({
                     <Link
                       href="/"
                       className="flex mx-auto items-center justify-center"
-                      id={`nav-logo-desktop-${title}`}
+                      id={`nav-logo-desktop`}
                       onClick={() => {
                         ReactGA.event({
                           category: "Link",
@@ -332,18 +333,17 @@ export default function BorderNavigation({
                       }}
                     >
                       {navigation?.navigationLogo ? (
-                        <>
-                          <span className="sr-only">{title}</span>
+                        <Fade triggerOnce direction="left">
                           <Image
                             className="h-14 w-auto max-w-xs mx-auto cursor-pointer object-contain py-2"
                             src={navigation.navigationLogo?.url}
-                            alt=""
+                            alt={title || ""}
                             width={0}
                             height={0}
                             sizes="100%"
                             style={{ width: "100%" }}
                           />
-                        </>
+                        </Fade>
                       ) : (
                         <span className="font-bold text-2xl text-text-color">
                           {title}
@@ -353,9 +353,11 @@ export default function BorderNavigation({
                   </div>
 
                   {navigation.announcementText && (
-                    <p className="flex m-0 p-2 items-center justify-center text-sm font-semibold">
-                      {navigation.announcementText}
-                    </p>
+                    <Fade direction="down" triggerOnce>
+                      <p className="flex m-0 p-2 items-center justify-center text-sm font-semibold">
+                        {navigation.announcementText}
+                      </p>
+                    </Fade>
                   )}
 
                   <div className="hidden md:flex flex-1 items-center justify-end max-w-max ml-auto gap-x-4 px-4">
@@ -378,41 +380,45 @@ export default function BorderNavigation({
 
                   {/* mega menu bar */}
                   <div className="hidden md:flex flex-1 items-center justify-between max-w-max border-l border-text-color h-full px-4">
-                    {!!items &&
-                      items
-                        .filter(
-                          (mainNavigationItem) =>
-                            mainNavigationItem.primaryItem === true
-                        )
-                        .map((mainNavigationItem) => (
-                          <LinkItem
-                            key={mainNavigationItem?.link}
-                            link={mainNavigationItem?.link}
-                            label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-xs md:text-base font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 py-1 md:py-2 rounded uppercase ${mainNavigationItem?.cssClass}`}
-                            sameTab={mainNavigationItem?.sameTab}
-                          />
-                        ))}
+                    <Fade direction="right" triggerOnce>
+                      {!!items &&
+                        items
+                          .filter(
+                            (mainNavigationItem) =>
+                              mainNavigationItem.primaryItem === true
+                          )
+                          .map((mainNavigationItem) => (
+                            <LinkItem
+                              key={mainNavigationItem?.link}
+                              link={mainNavigationItem?.link}
+                              label={mainNavigationItem?.label}
+                              cssClass={`flex items-center text-xs md:text-base font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 py-1 md:py-2 rounded uppercase ${mainNavigationItem?.cssClass}`}
+                              sameTab={mainNavigationItem?.sameTab}
+                            />
+                          ))}
+                    </Fade>
                   </div>
-                  <div className="flex md:hidden border-l border-text-color">
-                    <button
-                      type="button"
-                      className="mx-4 p-2 text-text-color border border-white hover:border-primary transition group rounded-full max-h-max"
-                      onClick={() => {
-                        setOpen(true);
-                        ReactGA.event({
-                          category: "Link",
-                          action: "Open Mobile Menu",
-                          label: "Open Mobile Menu",
-                        });
-                      }}
-                    >
-                      <span className="sr-only">Open menu</span>
-                      <Bars3Icon
-                        className="h-6 w-6 group-hover:text-primary transition"
-                        aria-hidden="true"
-                      />
-                    </button>
+                  <div className="flex md:hidden flex-1 items-center justify-between max-w-max border-l border-text-color h-full px-4">
+                    <Fade direction="right" triggerOnce>
+                      <button
+                        type="button"
+                        className="mx-4 p-2 text-text-color border border-white hover:border-primary transition group rounded-full max-h-max"
+                        onClick={() => {
+                          setOpen(true);
+                          ReactGA.event({
+                            category: "Link",
+                            action: "Open Mobile Menu",
+                            label: "Open Mobile Menu",
+                          });
+                        }}
+                      >
+                        <span className="sr-only">Open menu</span>
+                        <Bars3Icon
+                          className="h-6 w-6 group-hover:text-primary transition"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </Fade>
                   </div>
                 </div>
               </div>

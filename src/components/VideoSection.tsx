@@ -26,7 +26,6 @@ export default function VideoSection({
     return { youtubeVideoId: videoId, ...rest };
   });
 
-  console.log(modifiedVideoData);
   const videoGridData = modifiedVideoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "grid"
   );

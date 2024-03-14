@@ -17,6 +17,7 @@ import Profiles from "@/components/Profiles";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import VideoSection from "@/components/VideoSection";
 import BandsInTownApi from "./BandsInTownApi";
+import ProfileMinimalPage from "@/components/ProfilePageLayouts/ProfileMinimalPage";
 // import VCF from "@/components/VCF";
 // import SpotifyQuery from "@/components/ArtistInfo";
 // import ArtistInfo from "@/components/ArtistInfo";
@@ -40,6 +41,39 @@ export default function Profile({
   const filteredProfiles = profiles?.filter(
     (tempProf) => profile.profileSlug !== tempProf.profileSlug
   );
+
+  // cardLink
+  // cardModal
+  // grid
+  // offset
+  // record
+  // slider
+  // team
+  // universal
+  // vertical
+  // basic
+  // mason
+  // blob
+  // wavy
+  // youtube
+  // myspace
+  // alternate
+  // epk
+  // fullScreen
+  // netflix
+  // snap
+  // sport
+  if (profile?.profilePageLayoutStyle === "minimal") {
+    return (
+      <ProfileMinimalPage
+        profile={profile}
+        siteLibrary={siteLibrary}
+        contacts={contacts}
+        profiles={profiles}
+      />
+    );
+  }
+
   return (
     <div>
       <Head>

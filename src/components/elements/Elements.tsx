@@ -89,7 +89,12 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
         />
       )}
       {!!displayInstagramSectionUsername && (
-        <InstagramSection IGUsername={displayInstagramSectionUsername} />
+        <InstagramSection
+          userToken={displayInstagramSectionUsername}
+          // userToken="IGQWRPLThGQThMTWhGTDY5em1fYkZAyZADdmZAUpOcE5QMTh0RTlnQjdYVlhVZAWh4TDYwSlpUV2V1U0pfeVQ4MFlzTkZAZAQm1wSXZAzb3hEOW5wZAlJwVzJFenNMSF9sVTA4RFBBZAlItWFdlcWNSQ2Y3WDdiZA1BOS1ZAmWTQZD"
+          // instagramUsername="rickyhaswifi"
+          instagramLink={siteLibrary?.instagramLink || ""}
+        />
       )}
       {!!elementJson?.scrollDigitsData && (
         <ScrollDigits scrollDigitData={elementJson.scrollDigitsData} />
