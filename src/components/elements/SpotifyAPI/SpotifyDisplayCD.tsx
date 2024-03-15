@@ -1,4 +1,9 @@
-import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
+import ReactGA from "react-ga4";
+import "./SpotifyDisplayCD.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 
 interface Album {
   name: string;
@@ -22,45 +27,56 @@ const SpotifyDisplayCD: React.FC<SpotifyDataProps> = ({
   spotifyAlbumsData,
 }) => {
   return (
-    <section className="">
-      <div className="flex flex-row flex-wrap w-full mx-auto items-center justify-center max-w-8xl transition gap-2">
-        {spotifyAlbumsData.map((album) => (
-          <div
-            key={album.external_urls.spotify}
-            tabIndex={0}
-            className="block w-1/4 md:w-2/12 lg:w-2/12 transition-all relative"
-          >
-            {!!album.images[0].url && (
-              <div className="profile h-0 bg-center bg-no-repeat bg-cover pb-[100%]">
-                <div className="profile-overlay absolute inset-0 overflow-hidden">
-                  {album.external_urls.spotify && (
-                    <a
-                      href={album.external_urls.spotify}
-                      tabIndex={0}
-                      className="relative aspect-1 group mx-auto w-full"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Image
-                        sizes="100%"
-                        src={album.images[0].url}
-                        alt={album.name}
-                        width={0}
-                        height={0}
-                        className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1"
-                      />
-
-                      <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-md md:text-xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary text-shadow">
-                        {album.name}
-                      </p>
-                    </a>
-                  )}
+    <section className="px-2 mx-0">
+      <section className="container py-5 feature-album-slider-wrapper mx-auto">
+        <div className="flex flex-col md:flex-row flex-wrap items-center md:items-start justify-center my-16 w-full max-w-8xl gap-8 md:mx-auto px-4">
+          {spotifyAlbumsData.map((album) => (
+            <Fade
+              key={album.external_urls.spotify}
+              direction="up"
+              triggerOnce
+              cascade
+              damping={0.1}
+              className="-ml-8 md:mx-auto !animate-col-width w-32 md:w-64 transform group"
+            >
+              <a
+                href={album.external_urls.spotify}
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action: `Visit ${album.name}`,
+                    label: album.name || "",
+                  })
+                }
+                className="cd-case relative transition-all group-hover:rotate-6"
+              >
+                <FontAwesomeIcon
+                  icon={faSpotify as IconProp}
+                  className="fa-fw h-4 w-4 flex aspect-1 absolute z-40 text-text-color transition-all group-hover:text-[#52ce52] bottom-[0.5rem] left-[0.20rem]"
+                />
+                <div
+                  className="album-art"
+                  style={{
+                    backgroundImage: `url(${album.images[0].url})`,
+                  }}
+                >
+                  <div className="sup pos-tl"></div>
+                  <div className="sup pos-tr"></div>
+                  <div className="sup pos-bl"></div>
+                  <div className="sup pos-br"></div>
                 </div>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+                <div className="spine"></div>
+                <p
+                  style={{ writingMode: "vertical-rl" }}
+                  className="text-text-color text-[8px] text-center line-clamp-1 m-0 p-0 max-w-[34ch] absolute top-0 bottom-0 block uppercase px-[5px] py-0 z-[40] opacity-100"
+                >
+                  {album.name}
+                </p>
+              </a>
+            </Fade>
+          ))}
+        </div>
+      </section>
     </section>
   );
 };

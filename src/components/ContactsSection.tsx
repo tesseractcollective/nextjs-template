@@ -57,6 +57,7 @@ export default function ContactsSection({
                   linkedinLinkProp={contact?.contactLinkedin || ""}
                   calendlyLinkProp={contact.contactCalendly || undefined}
                   instagramLinkProp={contact.contactInstagram || undefined}
+                  whatsappLinkProp={contact.contactWhatsapp || undefined}
                   displayVcf={true}
                   avatar={contact.contactAvatar?.url || undefined}
                   name={contact.contactName || undefined}
