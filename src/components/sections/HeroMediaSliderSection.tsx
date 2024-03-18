@@ -76,12 +76,12 @@ export default function HeroMediaSliderSection({
           {!isOneSlider && (
             <button
               type="button"
-              className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color absolute left-10 top-[50%] z-30"
+              className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-primary absolute left-10 top-[50%] z-30"
               onClick={() => swiperRef.current?.slideNext()}
             >
               <FontAwesomeIcon
                 icon={faChevronLeft as IconProp}
-                className="fa-fw my-0 text-xl h-6 w-6"
+                className="fa-fw my-0 text-xl h-8 w-8"
               />
               <span className="sr-only">Move Blog Rotation Next</span>
             </button>
@@ -284,14 +284,14 @@ export default function HeroMediaSliderSection({
           {!isOneSlider && (
             <button
               type="button"
-              className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-text-color absolute right-10 top-[50%] z-30"
+              className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-primary absolute right-10 top-[50%] z-30"
               onClick={() => swiperRef.current?.slideNext()}
             >
               <FontAwesomeIcon
                 icon={faChevronRight as IconProp}
-                className="fa-fw my-0 text-xl h-6 w-6"
+                className="fa-fw my-0 text-xl h-8 w-8"
               />
-              <span className="sr-only">Move Blog Rotation Next</span>
+              <span className="sr-only">Move Rotation Next</span>
             </button>
           )}
           {!!heroMediaSliderData[0]?.displaySocialMedia && (

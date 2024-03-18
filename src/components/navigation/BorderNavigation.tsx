@@ -361,21 +361,23 @@ export default function BorderNavigation({
                   )}
 
                   <div className="hidden md:flex flex-1 items-center justify-end max-w-max ml-auto gap-x-4 px-4">
-                    {!!items &&
-                      items
-                        .filter(
-                          (mainNavigationItem) =>
-                            mainNavigationItem.primaryItem !== true
-                        )
-                        .map((mainNavigationItem) => (
-                          <LinkItem
-                            key={mainNavigationItem?.link}
-                            link={mainNavigationItem?.link}
-                            label={mainNavigationItem?.label}
-                            cssClass={`flex items-center text-xs md:text-base font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-4 py-1 md:py-2 uppercase ${mainNavigationItem?.cssClass}`}
-                            sameTab={mainNavigationItem?.sameTab}
-                          />
-                        ))}
+                    <Fade direction="down" triggerOnce>
+                      {!!items &&
+                        items
+                          .filter(
+                            (mainNavigationItem) =>
+                              mainNavigationItem.primaryItem !== true
+                          )
+                          .map((mainNavigationItem) => (
+                            <LinkItem
+                              key={mainNavigationItem?.link}
+                              link={mainNavigationItem?.link}
+                              label={mainNavigationItem?.label}
+                              cssClass={`flex items-center text-xs md:text-base font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-4 py-1 md:py-2 uppercase ${mainNavigationItem?.cssClass}`}
+                              sameTab={mainNavigationItem?.sameTab}
+                            />
+                          ))}
+                    </Fade>
                   </div>
 
                   {/* mega menu bar */}
