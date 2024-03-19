@@ -16,12 +16,7 @@ import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
 import { Fade, Zoom } from "react-awesome-reveal";
 import type { Swiper as SwiperType } from "swiper";
-import {
-  Navigation,
-  Pagination,
-  EffectCoverflow,
-  Autoplay,
-} from "swiper/modules";
+import { Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import GalleryInfinite from "./elements/GalleryInfinite";
 
@@ -178,9 +173,9 @@ export default function GallerySection({
                   slideShadows: false,
                 }}
                 pagination={true}
-                modules={[EffectCoverflow, Pagination, Autoplay]}
                 className="mx-0"
                 loop={true}
+                modules={[EffectCoverflow, Pagination, Autoplay]}
                 autoplay={{
                   delay: 2500,
                   disableOnInteraction: false,

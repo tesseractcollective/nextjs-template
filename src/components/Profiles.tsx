@@ -8,6 +8,7 @@ import ProfileOffsetSection from "@/components/ProfileSections/ProfileOffsetSect
 import ProfileUniversalSection from "@/components/ProfileSections/ProfileUniversalSection";
 import ProfileCardModalSection from "@/components/ProfileSections/ProfileCardModalSection";
 import ProfileTeamSection from "@/components/ProfileSections/ProfileTeamSection";
+import ProfileSnapSection from "@/components/ProfileSections/ProfileSnapSection";
 import ProfileDefaultSection from "@/components/ProfileSections/ProfileDefaultSection";
 import ProfileFullScreenSection from "@/components/ProfileSections/ProfileFullScreenSection";
 import ProfileMyspaceSection from "@/components/ProfileSections/ProfileMyspaceSection";
@@ -91,6 +92,13 @@ export default function Profiles({
   if (profileLayoutStyle === "team")
     return (
       <ProfileTeamSection
+        profiles={FilteredProfiles}
+        profileSectionTitle={profileSectionTitle}
+      />
+    );
+  if (profileLayoutStyle === "snap")
+    return (
+      <ProfileSnapSection
         profiles={FilteredProfiles}
         profileSectionTitle={profileSectionTitle}
       />

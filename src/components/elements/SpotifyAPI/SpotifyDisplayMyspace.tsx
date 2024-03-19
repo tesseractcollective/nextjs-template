@@ -118,7 +118,7 @@ const SpotifyDisplayMyspace: React.FC<SpotifyDataProps> = ({
                       )}
                     </time>
                   </div>
-                  <div className="ml-auto group-hover:opacity-100 opacity-0 transition-opacity">
+                  <div className="ml-auto group-hover:opacity-100 opacity-0 transition-opacity flex flex-row">
                     <FontAwesomeIcon
                       icon={faSpotify as IconProp}
                       className="fa-fw my-0 py-0 h-4 w-4 text-[#52ce52]"

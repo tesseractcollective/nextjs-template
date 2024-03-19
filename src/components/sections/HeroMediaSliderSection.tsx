@@ -10,7 +10,7 @@ import SocialMediaIcons from "@/components/SocialMediaIcons";
 import { Fade } from "react-awesome-reveal";
 import LinkItem from "@/components/LinkItem";
 import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -81,7 +81,7 @@ export default function HeroMediaSliderSection({
             >
               <FontAwesomeIcon
                 icon={faChevronLeft as IconProp}
-                className="fa-fw my-0 text-xl h-8 w-8"
+                className="fa-fw my-0 text-xl h-6 md:h-8 w-6 md:w-8"
               />
               <span className="sr-only">Move Blog Rotation Next</span>
             </button>
@@ -90,13 +90,18 @@ export default function HeroMediaSliderSection({
             className="h-full"
             grabCursor
             loop
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, Pagination, Autoplay]}
+            autoplay={{
+              delay: 6000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
-            autoplay
             slidesPerView={1}
             spaceBetween={0}
+            pagination
           >
             {heroMediaSliderData.map((heroMediaSliderItem, index) => (
               <SwiperSlide
@@ -289,7 +294,7 @@ export default function HeroMediaSliderSection({
             >
               <FontAwesomeIcon
                 icon={faChevronRight as IconProp}
-                className="fa-fw my-0 text-xl h-8 w-8"
+                className="fa-fw my-0 text-xl h-6 md:h-8 w-6 md:w-8"
               />
               <span className="sr-only">Move Rotation Next</span>
             </button>

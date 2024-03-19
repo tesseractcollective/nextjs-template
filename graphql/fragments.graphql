@@ -370,7 +370,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     }
     galleryLayout
     gallery(first: 500) {
-      url
+      url(transformation: { document: { output: { format: webp } } })
       height
       width
     }
@@ -745,12 +745,12 @@ fragment profileFields on Profile {
     url
   }
   imageGallery(first: 100) {
-    url
+    url(transformation: { document: { output: { format: webp } } })
     height
     width
   }
   portfolioGallery(first: 100) {
-    url
+    url(transformation: { document: { output: { format: webp } } })
     height
     width
   }
@@ -759,10 +759,10 @@ fragment profileFields on Profile {
     ...VideoBoxFields
   }
   heroImage {
-    url
+    url(transformation: { document: { output: { format: webp } } })
   }
   profileLogo {
-    url
+    url(transformation: { document: { output: { format: webp } } })
   }
   bandsInTownKey
   profilePageLayoutStyle

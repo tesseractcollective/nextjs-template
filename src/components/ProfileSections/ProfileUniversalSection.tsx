@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import "./ProfileUniversalSection.scss";
+import LinkItem from "@/components/LinkItem";
+import Image from "next/image";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -36,26 +38,39 @@ export default function ProfileUniversalSection({
                   {!!profile.avatarImage?.url &&
                     profile.profileSlug &&
                     profile.profileType && (
-                      <Link
-                        href={`/${profile.profileType?.toLowerCase()}/${
-                          profile.profileSlug
-                        }`}
-                        className="profile-universal h-0 bg-center bg-no-repeat bg-cover pb-[100%] rounded-xl block grayscale group-hover:grayscale-0 transition-all"
-                        style={{
-                          backgroundImage: `url(${profile.avatarImage?.url})`,
-                        }}
-                      />
+                      <LinkItem
+                        link={
+                          profile?.externalLink
+                            ? profile.externalLink
+                            : `/${profile.profileType?.toLowerCase()}/${
+                                profile.profileSlug
+                              }`
+                        }
+                        cssClass="profile-universal h-0 bg-center bg-no-repeat bg-cover pb-[100%] rounded-xl block grayscale group-hover:grayscale-0 transition-all relative rounded-md"
+                      >
+                        <Image
+                          src={profile.avatarImage.url}
+                          alt={profile.name || ""}
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          className="absolute inset-0 w-full h-full object-cover rounded-xl"
+                        />
+                      </LinkItem>
                     )}
                   <div className="p-2">
                     {profile.profileSlug && profile.profileType && (
-                      <Link
-                        href={`/${profile.profileType?.toLowerCase()}/${
-                          profile.profileSlug
-                        }`}
-                        className="relative my-0 py-0 text-left mx-auto text-text-color text-lg md:text-2xl lg:!text-3xl !font-bold transition-all z-[2] group-focus:gradient-text text-zink !no-underline !border-none group-hover:text-primary uppercase profile-universal-text"
-                      >
-                        {profile.name}
-                      </Link>
+                      <LinkItem
+                        link={
+                          profile?.externalLink
+                            ? profile.externalLink
+                            : `/${profile.profileType?.toLowerCase()}/${
+                                profile.profileSlug
+                              }`
+                        }
+                        label={profile.name}
+                        cssClass="relative my-0 py-0 text-left mx-auto text-text-color text-lg md:text-2xl lg:!text-3xl !font-bold transition-all z-[2] group-focus:gradient-text text-zink !no-underline !border-none group-hover:text-primary uppercase profile-universal-text"
+                      ></LinkItem>
                     )}
                     <SocialMediaIcons
                       fadeDirection="up"

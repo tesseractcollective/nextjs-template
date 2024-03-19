@@ -19,7 +19,7 @@ import VideoSection from "@/components/VideoSection";
 import BandsInTownApi from "./BandsInTownApi";
 import ProfileMinimalPage from "@/components/ProfilePageLayouts/ProfileMinimalPage";
 // import VCF from "@/components/VCF";
-// import SpotifyQuery from "@/components/ArtistInfo";
+import SpotifyArtistAlbums from "@/components/elements/SpotifyAPI/SpotifyArtistAlbums";
 // import ArtistInfo from "@/components/ArtistInfo";
 
 export interface ProfileProps {
@@ -147,6 +147,7 @@ export default function Profile({
                 displayVcf={profile.displayVcf || undefined}
                 avatar={profile.avatarImage?.url || undefined}
                 name={profile.name || undefined}
+                websiteLinkProp={profile?.websiteLink || undefined}
               />
               {/* {!!profile.name && (
               <ArtistInfo
@@ -319,6 +320,16 @@ export default function Profile({
             {parse(profile.tourWidgetiFrame)}
           </div>
         )}
+        {!!profile?.spotifyArtistName &&
+          siteLibrary?.spotifyClientSecret &&
+          siteLibrary?.spotifyClientId && (
+            <SpotifyArtistAlbums
+              artistName={profile.spotifyArtistName}
+              spotifyAlbumDisplay="slider"
+              spotifyClientId={siteLibrary.spotifyClientId}
+              spotifyClientSecret={siteLibrary.spotifyClientSecret}
+            />
+          )}
         {!!profile?.iFrame && (
           <div className="my-16 mx-auto px-4 max-w-5xl" id="profile-iframe">
             {parse(profile.iFrame)}

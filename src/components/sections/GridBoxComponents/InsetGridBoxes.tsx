@@ -10,7 +10,7 @@ interface GridBoxProps {
 
 export default function InsetGridBoxes({ gridBoxData }: GridBoxProps) {
   return (
-    <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8 w-full">
+    <section className="mx-auto px-4 sm:px-6 max-w-8xl lg:px-8 my-8 w-full">
       <Fade triggerOnce direction="up">
         <div className="flex flex-wrap justify-center md:justify-between items-stretch gap-4 h-full w-full">
           {gridBoxData.map((gridBoxItem, index) => (

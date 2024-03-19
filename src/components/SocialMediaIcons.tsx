@@ -8,6 +8,7 @@ import {
   faCalendar,
   faMusic,
   faShoppingBag,
+  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faSpotify,
@@ -52,6 +53,7 @@ export interface SocialMediaIconsProps {
   googleMapLinkProp?: string;
   yelpLinkProp?: string;
   shopLinkProp?: string;
+  websiteLinkProp?: string;
   avatar?: string;
   name?: string;
   fade?: boolean;
@@ -79,6 +81,7 @@ export default function SocialMediaIcons({
   githubLinkProp,
   smartMusicLinkProp,
   googleMapLinkProp,
+  websiteLinkProp,
   yelpLinkProp,
   shopLinkProp,
   cssClass,
@@ -109,6 +112,7 @@ export default function SocialMediaIcons({
         calendlyLinkProp ||
         githubLinkProp ||
         displayVcf ||
+        websiteLinkProp ||
         phoneLinkProp ||
         smartMusicLinkProp ||
         googleMapLinkProp ||
@@ -392,6 +396,29 @@ export default function SocialMediaIcons({
                   aria-hidden="true"
                 />
                 <span className="sr-only">Soundcloud</span>
+              </a>
+            )}
+            {websiteLinkProp && (
+              <a
+                href={websiteLinkProp}
+                title="Website Link"
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action: websiteLinkProp || "",
+                    label: websiteLinkProp,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={faGlobe as IconProp}
+                  className="fa-fw h-5 w-5 flex aspect-1"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Website</span>
               </a>
             )}
             {(siteLibrary?.contactPhone || phoneLinkProp) && (
