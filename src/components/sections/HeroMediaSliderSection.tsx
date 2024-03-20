@@ -93,7 +93,7 @@ export default function HeroMediaSliderSection({
             modules={[Navigation, Pagination, Autoplay]}
             autoplay={{
               delay: 6000,
-              disableOnInteraction: false,
+              disableOnInteraction: true,
               pauseOnMouseEnter: true,
             }}
             onBeforeInit={(swiper) => {
@@ -119,6 +119,9 @@ export default function HeroMediaSliderSection({
                       className={`swiper-no-swiping relative p-4 text-${
                         heroMediaSliderItem?.textContent?.contentAlign &&
                         heroMediaSliderItem?.textContent?.contentAlign?.toLocaleLowerCase()
+                      } ${
+                        heroMediaSliderItem?.textContent?.cssClass &&
+                        heroMediaSliderItem?.textContent?.cssClass
                       }`}
                     >
                       <Fade triggerOnce className="w-full">
@@ -128,7 +131,7 @@ export default function HeroMediaSliderSection({
                             width={0}
                             height={0}
                             sizes="100%"
-                            className={`block mb-0 ${
+                            className={`block mb-0 pb-4 ${
                               (heroMediaSliderItem?.textContent
                                 ?.contentAlign === "center" &&
                                 "mx-auto") ||
@@ -222,7 +225,7 @@ export default function HeroMediaSliderSection({
                     </div>
                   </div>
                   <div className="absolute bg-gradient-to-b from-dark z-20 section-fade-invert h-32 opacity-70 left-0 right-0 top-0" />
-                  <div className="absolute bg-gradient-to-t from-dark z-20 section-fade-invert h-72 bottom-0 left-0 right-0 w-full" />
+                  <div className="absolute bg-gradient-to-t from-dark z-20 section-fade-invert h-[12rem] bottom-0 left-0 right-0 w-full" />
                   {!!heroMediaSliderItem?.sliderMediaBackground && (
                     <div className="main">
                       <Fade direction="up">
