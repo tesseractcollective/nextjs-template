@@ -92,7 +92,7 @@ export default function HeroMediaSliderSection({
             loop
             modules={[Navigation, Pagination, Autoplay]}
             autoplay={{
-              delay: 6000,
+              delay: 7000,
               disableOnInteraction: true,
               pauseOnMouseEnter: true,
             }}

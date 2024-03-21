@@ -37,10 +37,12 @@ const SpotifyDisplayCD: React.FC<SpotifyDataProps> = ({
               triggerOnce
               cascade
               damping={0.1}
-              className="-ml-8 md:mx-auto !animate-col-width w-32 md:w-64 transform group"
+              className="mx-auto !animate-col-width md:w-64 transform group w-full max-w-max"
             >
               <a
                 href={album.external_urls.spotify}
+                target="_blank"
+                rel="noreferrer"
                 onClick={() =>
                   ReactGA.event({
                     category: "Link",

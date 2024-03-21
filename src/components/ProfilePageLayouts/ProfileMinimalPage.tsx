@@ -88,8 +88,8 @@ export default function ProfileMinimalPage({
         {!!profile?.name && (
           <title>{`${profile.name} - ${siteLibrary.title}`}</title>
         )}
-        {!!profile.heroImage?.url && (
-          <meta property="og:image" content={profile.heroImage?.url} />
+        {!!profile.avatarImage?.url && (
+          <meta property="og:image" content={profile.avatarImage?.url} />
         )}
         {!!siteLibrary?.title && (
           <meta name="description" content={siteLibrary.title} />
