@@ -17,6 +17,7 @@ import Profiles from "@/components/Profiles";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import VideoSection from "@/components/VideoSection";
 import BandsInTownApi from "./BandsInTownApi";
+import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
 import ProfileMinimalPage from "@/components/ProfilePageLayouts/ProfileMinimalPage";
 // import VCF from "@/components/VCF";
 import SpotifyArtistAlbums from "@/components/elements/SpotifyAPI/SpotifyArtistAlbums";
@@ -27,6 +28,7 @@ export interface ProfileProps {
   profiles: ProfileFieldsFragment[];
   contacts: ContactFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
+  profilePageLayoutStyleProp?: string;
 }
 
 export default function Profile({
@@ -34,6 +36,7 @@ export default function Profile({
   siteLibrary,
   contacts,
   profiles,
+  profilePageLayoutStyleProp,
 }: ProfileProps) {
   const filteredContacts = contacts?.filter((contact) =>
     profile?.contactQuery.includes(contact.contactQuery)
@@ -63,7 +66,10 @@ export default function Profile({
   // netflix
   // snap
   // sport
-  if (profile?.profilePageLayoutStyle === "minimal") {
+  if (
+    profile?.profilePageLayoutStyle === "minimal" ||
+    profilePageLayoutStyleProp === "minimal"
+  ) {
     return (
       <ProfileMinimalPage
         profile={profile}
@@ -320,6 +326,18 @@ export default function Profile({
             {parse(profile.tourWidgetiFrame)}
           </div>
         )}
+        {!!siteLibrary?.mapKey &&
+          !!profile.name &&
+          !!profile?.bandsInTownKey &&
+          !!siteLibrary?.metaAppleTouchIcon && (
+            <BandsInTownMapBox
+              apiKey={profile.bandsInTownKey}
+              artistName={profile.name}
+              mapKey={siteLibrary.mapKey}
+              icon={siteLibrary?.metaAppleTouchIcon.url}
+              isSpanish={siteLibrary?.isSpanish || false}
+            />
+          )}
         {!!profile?.spotifyArtistName &&
           siteLibrary?.spotifyClientSecret &&
           siteLibrary?.spotifyClientId && (

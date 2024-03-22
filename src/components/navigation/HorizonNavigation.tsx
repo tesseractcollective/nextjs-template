@@ -263,7 +263,7 @@ export default function HorizonNavigation({
                           )}
                           {!!contactPhone && (
                             <a
-                              href={`tel:${contactPhone.replace("-", "")}`}
+                              href={`tel:${contactPhone.replace(/-/g, "")}`}
                               className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
                             >
                               <span className="font-semibold">

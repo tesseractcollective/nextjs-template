@@ -257,7 +257,7 @@ export default function DualNavigation({
                         )}
                         {!!contactPhone && (
                           <a
-                            href={`tel:${contactPhone.replace("-", "")}`}
+                            href={`tel:${contactPhone.replace(/-/g, "")}`}
                             className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
                           >
                             <span>{contactPhone}</span>
@@ -406,7 +406,6 @@ export default function DualNavigation({
                         width={0}
                         height={0}
                         sizes="100%"
-                        
                       />
                     </>
                   ) : (

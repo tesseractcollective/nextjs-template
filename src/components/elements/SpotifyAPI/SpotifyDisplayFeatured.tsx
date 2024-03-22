@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
+import ReactGA from "react-ga4";
 
 interface Album {
   name: string;
@@ -21,46 +23,67 @@ interface SpotifyDataProps {
 const SpotifyDisplayFeatured: React.FC<SpotifyDataProps> = ({
   spotifyAlbumsData,
 }) => {
+  const album = spotifyAlbumsData[0];
   return (
-    <section className="">
-      <div className="flex flex-row flex-wrap w-full mx-auto items-center justify-center max-w-8xl transition gap-2">
-        {spotifyAlbumsData.map((album) => (
-          <div
-            key={album.external_urls.spotify}
-            tabIndex={0}
-            className="block w-1/4 md:w-2/12 lg:w-2/12 transition-all relative"
+    <section className="py-16">
+      <section
+        className="px-4 mx-auto max-w-8xl"
+        key={album.external_urls.spotify}
+      >
+        <div className="flex items-center justify-center flex-col lg:flex-row  gap-y-4 gap-x-4 max-w-max mx-auto">
+          <Fade
+            direction="up"
+            triggerOnce
+            className="flex items-center justify-center flex-col lg:flex-row  gap-y-4 gap-x-4 max-w-max mx-auto"
           >
-            {!!album.images[0].url && (
-              <div className="profile h-0 bg-center bg-no-repeat bg-cover pb-[100%]">
-                <div className="profile-overlay absolute inset-0 overflow-hidden">
-                  {album.external_urls.spotify && (
-                    <a
-                      href={album.external_urls.spotify}
-                      tabIndex={0}
-                      className="relative aspect-1 group mx-auto w-full"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Image
-                        sizes="100%"
-                        src={album.images[0].url}
-                        alt={album.name}
-                        width={0}
-                        height={0}
-                        className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1"
-                      />
+            <a
+              href={album.external_urls.spotify}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() =>
+                ReactGA.event({
+                  category: "Link",
+                  action: album.name || "",
+                  label: album.name || "",
+                })
+              }
+              className="flex items-center justify-center relative mx-auto no-underline"
+            >
+              <Image
+                src={album.images[0].url}
+                alt={(album.name && album.name) || ""}
+                className="mx-auto mb-0 w-full block box-shadow border-round min-w-[280px] lg:min-h-[320px] aspect-1 object-cover max-w-xl"
+                width={0}
+                height={0}
+                sizes="100%"
+              />
+            </a>
+            <div className="relative flex flex-col">
+              <p className="text-center lg:text-left text-3xl lg:text-4xl xl:text-4xl font-bold mb-4 max-w-max">
+                {album.name}
+              </p>
 
-                      <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-md md:text-xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary text-shadow">
-                        {album.name}
-                      </p>
-                    </a>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+              {!!album.external_urls.spotify && (
+                <a
+                  href={album.external_urls.spotify}
+                  onClick={() =>
+                    ReactGA.event({
+                      category: "Link",
+                      action: `Visit ${album.name}`,
+                      label: album.name || "",
+                    })
+                  }
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-white border-dark border py-2 px-4 mx-auto lg:ml-0 lg:mr-auto max-w-max block no-underline text-md tracking-wide text-text-color uppercase hover:bg-primary focus:bg-primary transition-all"
+                >
+                  Stream
+                </a>
+              )}
+            </div>
+          </Fade>
+        </div>
+      </section>
     </section>
   );
 };

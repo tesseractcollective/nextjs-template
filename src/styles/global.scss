@@ -547,6 +547,12 @@ html {
   }
 }
 
+.all-text-light {
+  p, h1, h2, h3, h4, h6, a, button, blockquote {
+    color: #fff !important;
+  }
+}
+
 .header-primary {
   h1 {
     color: var(--primary);

@@ -278,7 +278,7 @@ export default function BorderNavigation({
                     )}
                     {!!contactPhone && (
                       <a
-                        href={`tel:${contactPhone.replace("-", "")}`}
+                        href={`tel:${contactPhone.replace(/-/g, "")}`}
                         className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
                       >
                         <span>{contactPhone}</span>
