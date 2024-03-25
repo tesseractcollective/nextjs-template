@@ -25,6 +25,23 @@ interface GalleryProps {
   galleryLayoutData?: string;
 }
 
+// grid √
+// infinite √
+// lightbox √
+// mason √
+// rotate √
+// fullScreen √
+// shelf √
+// card
+// chevron
+// compact
+// mix
+// polaroid
+// slider
+// stack
+// twohundredvh
+// circle
+
 export default function GallerySection({
   galleryData,
   galleryLayoutData,
@@ -58,6 +75,34 @@ export default function GallerySection({
       </div>
     );
   }
+  if (galleryLayout === "shelf" && gallery.length >= 1) {
+    return (
+      <div className="my-0 magic-grid block h-full">
+        <div className="block px-4 mx-auto">
+          <div className="grid grid-cols-4 gap-8">
+            <Fade triggerOnce cascade damping={0.25} direction="up">
+              {finalImages.map((finalImage, index) => (
+                <div
+                  key={finalImage}
+                  className=" aspect-1 block mx-auto overflow-hidden"
+                  id={`gallery-${index}`}
+                >
+                  <Image
+                    src={finalImage}
+                    alt={`Gallery Image: ${index}`}
+                    className="object-cover block mx-auto h-full w-full aspect-1"
+                    sizes="100%"
+                    width={0}
+                    height={0}
+                  />
+                </div>
+              ))}
+            </Fade>
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (galleryLayout === "grid" && gallery.length >= 1) {
     return (
       <div className="my-0 magic-grid block h-full">
@@ -86,7 +131,6 @@ export default function GallerySection({
       </div>
     );
   }
-
   if (galleryLayout === "infinite" && finalImages.length >= 1) {
     return <GalleryInfinite finalImages={finalImages} />;
   }
@@ -121,7 +165,6 @@ export default function GallerySection({
       </div>
     );
   }
-
   if (galleryLayout === "lightbox" && gallery.length >= 1) {
     return (
       <div className="my-16 magic-grid block h-full">
@@ -153,7 +196,6 @@ export default function GallerySection({
       </div>
     );
   }
-
   if (galleryLayout === "rotate" && gallery.length >= 1) {
     return (
       <section className="px-2 mx-0 overflow-hidden">
@@ -215,7 +257,6 @@ export default function GallerySection({
       </section>
     );
   }
-
   if (gallery.length >= 1) {
     const settings = {
       dots: true,

@@ -347,7 +347,7 @@ export default function CenterNavigation({
           <Zoom className="fixed bottom-10 right-5 md:hidden">
             <button
               type="button"
-              className="rounded-full px-2 py-2 text-text-color border border-white hover:border-primary transition-all group bg-dark hover:rotate-180 relative"
+              className="rounded-full px-2 py-2 text-text-color border border-white hover:border-primary transition-all group bg-dark hover:rotate-180 relative z-100"
               onClick={() => {
                 setOpen(true);
                 ReactGA.event({

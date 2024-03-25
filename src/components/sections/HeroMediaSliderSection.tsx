@@ -15,6 +15,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import HeroMediaCircleSection from "@/components/sections/HeroMediaSliderSections/HeroMediaCircleSection";
+import HeroMediaVerticalSection from "@/components/sections/HeroMediaSliderSections/HeroMediaVerticalSection";
 import {
   faChevronLeft,
   faChevronRight,
@@ -63,6 +64,14 @@ export default function HeroMediaSliderSection({
   if (heroMediaSliderData[0]?.sliderCssWrapper === "circle") {
     return (
       <HeroMediaCircleSection
+        heroMediaSliderData={heroMediaSliderData}
+        siteLibrary={siteLibrary}
+      />
+    );
+  }
+  if (heroMediaSliderData[0]?.mediaType === "vertical") {
+    return (
+      <HeroMediaVerticalSection
         heroMediaSliderData={heroMediaSliderData}
         siteLibrary={siteLibrary}
       />

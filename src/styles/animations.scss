@@ -804,10 +804,12 @@ a.hover-chevron {
 
 .animate-paragraph-wrapper {
   min-height: 100vh;
+  text-align: center;
   .animate-paragraph {
     display: flex !important;
     font-size: 36px !important;
     transition: all 200ms ease;
+    text-align: center;
     @media screen and (min-width: 990px) {
       font-size: 68px !important;
     }
@@ -821,10 +823,12 @@ a.hover-chevron {
     position: relative !important;
     margin-right: 12px !important;
     margin-top: 12px !important;
+    text-align: center;
   } 
   .animate-word-shadow {
     position: absolute !important;
     opacity: 20% !important;
+    text-align: center;
   }
 }
 
@@ -834,6 +838,7 @@ a.hover-chevron {
       margin: 0 auto;
       align-items: center;
       justify-content: center;
+      text-align: center;
     }
   }
 }
