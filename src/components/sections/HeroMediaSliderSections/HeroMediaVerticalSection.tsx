@@ -7,6 +7,7 @@ import type {
   SiteLibraryFieldsFragment,
   HeroMediaSliderFieldsFragment,
 } from "@/graphql/generated/graphql";
+import useViewport from "@/app/hooks/useViewport";
 import "./HeroMediaVerticalSection.scss";
 
 type HeroMediaSliderType = HeroMediaSliderFieldsFragment;
@@ -21,6 +22,7 @@ export default function HeroMediaVerticalSection({
   siteLibrary,
 }: HeroMediaSliderProps): ReactElement {
   const ref = useRef(null);
+  const { isMobile } = useViewport();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -43,7 +45,7 @@ export default function HeroMediaVerticalSection({
   return (
     <div
       ref={ref}
-      className="w-full h-120vh overflow-hidden relative flex items-center justify-center"
+      className="w-full h-100vh md:h-120vh overflow-hidden relative flex items-center justify-center"
     >
       <motion.h1
         style={{ y: textY }}
@@ -78,8 +80,8 @@ export default function HeroMediaVerticalSection({
         className="absolute inset-0 z-20 h-full outline outline-primary"
         style={{
           backgroundImage: `url(${heroMediaSliderItem.mobileThumbnail?.url})`,
-          backgroundPosition: "center 15%",
-          backgroundSize: "cover",
+          backgroundPosition: isMobile ? "center top" : "center 15%",
+          backgroundSize: isMobile ? "" : "cover",
         }}
       />
     </div>
