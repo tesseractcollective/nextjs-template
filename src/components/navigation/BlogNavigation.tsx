@@ -65,9 +65,7 @@ export default function BlogNavigation({
     <>
       <div
         className={`fixed top-0 z-[999] left-0 right-0 transition-all ${
-          small
-            ? "bg-after nav-shadow nav-shadow-scrolled top-0 backdrop-blur-md"
-            : "backdrop-blur-xs"
+          small ? "bg-afterz top-0" : "backdrop-blur-xs"
         } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
         id="blog-navigation"
       >
@@ -112,15 +110,13 @@ export default function BlogNavigation({
                         });
                       }}
                       className="cursor-pointer transition-all max-w-max relative left-2"
-                      id={`nav-logo-mobile-panel-${title
-                        ?.toLowerCase()
-                        .replace(" ", "-")}`}
+                      id="nav-logo-mobile-panel"
                     >
                       {navigation?.navigationLogo ? (
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-8 w-full max-w-[120px] cursor-pointer object-contain"
+                            className="h-8 w-full max-w-[140px] cursor-pointer object-contain"
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}
@@ -359,11 +355,11 @@ export default function BlogNavigation({
                     )}
                   </Link>
                   {/* Desktop menu bar */}
-                  <div className="absolute right-0 max-w-max">
+                  <div className="fixed bottom-10 md:bottom-[initial] right-5 md:absolute md:right-0 max-w-max z-100">
                     <button
                       type="button"
                       title="menu"
-                      className="rounded-md px-2 py-1 text-primary group hover:text-secondary transition-all cursor-pointer relative"
+                      className="focus:rounded-full hover:rounded-full rounded-none px-2 py-2 text-dark border border-dark transition-all group bg-primary hover:rotate-180 relative z-100 duration-300 ease-in-out"
                       onClick={() => {
                         setOpen(true);
                         ReactGA.event({
@@ -375,12 +371,9 @@ export default function BlogNavigation({
                     >
                       <span className="sr-only">Open menu</span>
                       <Bars3BottomRightIcon
-                        className="h-6 w-6 group-hover:text-secondary transition-all group-hover:rotate-180"
+                        className="h-6 w-6 transition-all group-hover:rotate-180"
                         aria-hidden="true"
                       />
-                      <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
-                        Menu
-                      </span>
                     </button>
                   </div>
                 </div>

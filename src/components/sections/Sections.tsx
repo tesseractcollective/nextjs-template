@@ -74,9 +74,7 @@ export default function Sections({ sectionData, siteLibrary }: SectionsProps) {
         />
       )}
       {!!gridBoxData && gridBoxData?.length >= 1 && (
-        <section>
-          <GridBox gridBoxData={gridBoxData} />
-        </section>
+        <GridBox gridBoxData={gridBoxData} />
       )}
       {!!siteLibrary?.youtubeApiKey && !!videoData && videoData.length >= 1 && (
         <VideoSection

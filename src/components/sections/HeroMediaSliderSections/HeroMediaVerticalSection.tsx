@@ -67,23 +67,27 @@ export default function HeroMediaVerticalSection({
         )}
       </motion.h1>
 
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroMediaSliderItem.sliderMediaBackground?.url})`,
-          backgroundPosition: "center 40%",
-          backgroundSize: "cover",
-          y: backgroundY,
-        }}
-      />
-      <div
-        className="absolute inset-0 z-20 h-full outline outline-primary"
-        style={{
-          backgroundImage: `url(${heroMediaSliderItem.mobileThumbnail?.url})`,
-          backgroundPosition: isMobile ? "center top" : "center 15%",
-          backgroundSize: isMobile ? "" : "cover",
-        }}
-      />
+      {heroMediaSliderItem.sliderMediaBackground?.url && (
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${heroMediaSliderItem.sliderMediaBackground.url})`,
+            backgroundPosition: "center 40%",
+            backgroundSize: "cover",
+            y: backgroundY,
+          }}
+        />
+      )}
+      {heroMediaSliderItem.mobileThumbnail?.url && (
+        <div
+          className="absolute inset-0 z-20 h-full outline outline-primary"
+          style={{
+            backgroundImage: `url(${heroMediaSliderItem.mobileThumbnail.url})`,
+            backgroundPosition: isMobile ? "center top" : "center 15%",
+            backgroundSize: isMobile ? "" : "cover",
+          }}
+        />
+      )}
     </div>
   );
 }

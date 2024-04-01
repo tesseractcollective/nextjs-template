@@ -51,7 +51,7 @@ export default function ProfileSnapSection({
                     {!!profile?.avatarImage?.url && (
                       <div className="p-0 m-0 w-full relative">
                         <Image
-                          src={profile?.avatarImage?.url}
+                          src={profile.avatarImage.url}
                           alt={(profile.name && profile.name) || ""}
                           width={0}
                           height={0}
@@ -63,7 +63,7 @@ export default function ProfileSnapSection({
                     <div className="flex flex-col items-center justify-center text-center py-2 px-4 relative z-10 overflow-hidden">
                       <Fade triggerOnce direction="left">
                         {!!profile.name && (
-                          <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-bg mt-0 text-center group-hover:tracking-widest group-focus:tracking-widest transition-all">
+                          <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-bg mt-0 text-center group-hover:tracking-widest group-focus:tracking-widest transition-all max-w-[200px]">
                             {profile.name}
                           </h3>
                         )}

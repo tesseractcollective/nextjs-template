@@ -53,7 +53,7 @@ export default function ProfileMyspaceSection({
                   {!!profile?.avatarImage?.url && (
                     <div className="p-0 m-0 w-full relative">
                       <Image
-                        src={profile?.avatarImage?.url}
+                        src={profile.avatarImage.url}
                         alt={(profile.name && profile.name) || ""}
                         width={0}
                         height={0}

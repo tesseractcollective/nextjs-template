@@ -59,7 +59,7 @@ const SpotifyDisplayMyspace: React.FC<SpotifyDataProps> = ({
           href={spotifyArtistInfo.external_urls.spotify}
           target="_blank"
           rel="noreferrer"
-          className="flex flex-row items-center justify-center gap-x-4"
+          className="flex flex-row items-center justify-center gap-x-4 music_player_play_button_wrapper"
         >
           <div className="music_player_play">
             <div className="music_player_play_button">
@@ -69,7 +69,7 @@ const SpotifyDisplayMyspace: React.FC<SpotifyDataProps> = ({
               />
             </div>
           </div>
-          <h2 className="font-bold text-primary uppercase">
+          <h2 className="font-bold transition-color text-primary group-hover:text-secondary uppercase">
             {spotifyArtistInfo.name}
           </h2>
         </a>
@@ -90,7 +90,7 @@ const SpotifyDisplayMyspace: React.FC<SpotifyDataProps> = ({
                   })
                 }
               >
-                <div className="music_player_body_text_track flex flex-row items-center justify-start gap-x-4 h-full">
+                <div className="music_player_body_text_track flex flex-row items-center justify-start gap-x-4 h-full relative">
                   <Image
                     sizes="100%"
                     src={album.images[0].url}
@@ -99,8 +99,8 @@ const SpotifyDisplayMyspace: React.FC<SpotifyDataProps> = ({
                     height={0}
                     className="transition-all object-cover overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1 h-32 w-32 aspect-1 block"
                   />
-                  <div>
-                    <h3 className="font-bold text-2xl uppercase">
+                  <div className="max-w-[200px]">
+                    <h3 className="font-bold text-lg md:text-2xl uppercase max-w-[200px]">
                       {album.name}
                     </h3>
                     <time
@@ -118,7 +118,7 @@ const SpotifyDisplayMyspace: React.FC<SpotifyDataProps> = ({
                       )}
                     </time>
                   </div>
-                  <div className="ml-auto group-hover:opacity-100 opacity-0 transition-opacity flex flex-row">
+                  <div className="ml-auto group-hover:opacity-100 opacity-0 transition-opacity flex flex-row absolute bottom-0 right-0">
                     <FontAwesomeIcon
                       icon={faSpotify as IconProp}
                       className="fa-fw my-0 py-0 h-4 w-4 text-[#52ce52]"

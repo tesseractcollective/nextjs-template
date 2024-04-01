@@ -110,15 +110,13 @@ export default function CenterNavigation({
                         });
                       }}
                       className="cursor-pointer transition-all max-w-max relative left-2"
-                      id={`nav-logo-mobile-panel-${title
-                        ?.toLowerCase()
-                        .replace(" ", "-")}`}
+                      id="nav-logo-mobile-panel"
                     >
                       {navigation?.navigationLogo ? (
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="h-8 w-full max-w-[120px] cursor-pointer object-contain"
+                            className="h-8 w-full max-w-[140px] cursor-pointer object-contain"
                             src={navigation.navigationLogo?.url}
                             alt=""
                             width={0}

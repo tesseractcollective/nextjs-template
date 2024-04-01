@@ -20,6 +20,7 @@
 	width: 40px;
 	height:40px;
 	background: rgb(247,249,246);
+	transition: all 200ms ease-in-out;
 	background: linear-gradient(180deg, rgba(247,249,246,1) 0%, rgba(216,213,214,1) 21%, rgb(167, 167, 167) 82%, rgba(255,255,255,1) 99%);
 	display:flex;
 	justify-content:center;
@@ -28,6 +29,12 @@
 	color:#6a6a6a;
 	border-radius: 8px;
 	border: 1px solid #737373;
+}
+
+.music_player_play_button_wrapper {
+	&:hover .music_player_play_button {
+		background: linear-gradient(180deg, #52ce52 0%, rgb(9, 171, 26) 21%, rgb(6, 157, 41) 82%, #52ce52 99%);
+	}
 }
 
 .music_player_body {
