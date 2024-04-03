@@ -77,6 +77,10 @@
   background: linear-gradient(90.35deg, var(--secondary) .31%, var(--primary) 99.24%);
 }
 
+.featured-shadow {
+  box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.58);
+}
+
 .box-shadow {
   -webkit-box-shadow: 0px 17px 17px -17px var(--background-secondary);
   -moz-box-shadow: 0px 17px 17px -17px var(--background-secondary);

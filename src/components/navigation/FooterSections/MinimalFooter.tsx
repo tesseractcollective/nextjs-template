@@ -45,7 +45,7 @@ function MinimalFooter({
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 w-full">
         {wideColumns?.length >= 1 && (
           <div className={`flex items-center justify-center w-full`}>
             <Fade direction="up" cascade damping={0.1} triggerOnce>

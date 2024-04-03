@@ -16,10 +16,7 @@ import { Fade, Zoom } from "react-awesome-reveal";
 import Profiles from "@/components/Profiles";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import VideoSection from "@/components/VideoSection";
-import BandsInTownApi from "./BandsInTownApi";
 import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
-import ProfileMinimalPage from "@/components/ProfilePageLayouts/ProfileMinimalPage";
-import ProfileMusicTwoPage from "@/components/ProfilePageLayouts/ProfileMusicTwoPage";
 // import VCF from "@/components/VCF";
 import SpotifyArtistAlbums from "@/components/elements/SpotifyAPI/SpotifyArtistAlbums";
 // import ArtistInfo from "@/components/ArtistInfo";
@@ -32,7 +29,7 @@ export interface ProfileProps {
   profilePageLayoutStyleProp?: string;
 }
 
-export default function Profile({
+export default function ProfileMusicTwoPage({
   profile,
   siteLibrary,
   contacts,
@@ -67,33 +64,6 @@ export default function Profile({
   // netflix
   // snap
   // sport
-  if (
-    profile?.profilePageLayoutStyle === "minimal" ||
-    profilePageLayoutStyleProp === "minimal"
-  ) {
-    return (
-      <ProfileMinimalPage
-        profile={profile}
-        siteLibrary={siteLibrary}
-        contacts={contacts}
-        profiles={profiles}
-      />
-    );
-  }
-
-  if (
-    profile?.profilePageLayoutStyle === "musicTwo" ||
-    profilePageLayoutStyleProp === "musicTwo"
-  ) {
-    return (
-      <ProfileMusicTwoPage
-        profile={profile}
-        siteLibrary={siteLibrary}
-        contacts={contacts}
-        profiles={profiles}
-      />
-    );
-  }
 
   return (
     <div>
@@ -111,9 +81,47 @@ export default function Profile({
           <link rel="shortcut icon" href={siteLibrary.favicon.url} />
         )}
       </Head>
-      <div className="bg-background">
-        {!!profile.heroImage?.url && (
-          <div aria-hidden="true" className="relative overflow-hidden">
+      <section className="bg-bg py-16">
+        <div className="max-w-12xl flex flex-col md:flex-row items-center justify-center md:justify-between mx-auto w-full px-4 py-8">
+          <Fade direction="up" cascade damping={0.25} triggerOnce>
+            {profile.profileLogo?.url && (
+              <Image
+                src={profile.profileLogo?.url}
+                alt={profile?.name || ""}
+                width={0}
+                height={0}
+                sizes="100%"
+                className="w-full mx-auto"
+              />
+            )}
+            <h2 className="text-3xl !font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase w-full">
+              {profile.name}
+            </h2>
+          </Fade>
+          <SocialMediaIcons
+            fadeDirection="up"
+            cssClass="w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4 text-text-color max-w-max"
+            instagramLinkProp={profile?.instagramLink || undefined}
+            spotifyLinkProp={profile?.spotifyLink || undefined}
+            facebookLinkProp={profile?.facebookLink || undefined}
+            twitterLinkProp={profile?.twitterLink || undefined}
+            youtubeLinkProp={profile?.youtubeLink || undefined}
+            tikTokLinkProp={profile?.tikTokLink || undefined}
+            appleMusicLinkProp={profile?.appleMusicLink || undefined}
+            pandoraLinkProp={profile?.pandoraLink || undefined}
+            soundcloudLinkProp={profile?.soundcloudLink || undefined}
+            linkedinLinkProp={profile?.linkedinLink || undefined}
+            emailLinkProp={profile.email || undefined}
+            phoneLinkProp={profile.phoneNumber || undefined}
+            calendlyLinkProp={profile.calendlyLink || undefined}
+            displayVcf={profile.displayVcf || undefined}
+            avatar={profile.avatarImage?.url || undefined}
+            name={profile.name || undefined}
+            websiteLinkProp={profile?.websiteLink || undefined}
+          />
+        </div>
+        <div className="max-w-12xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+          {!!profile.heroImage?.url && (
             <Fade direction="up" triggerOnce>
               <Image
                 src={profile.heroImage?.url}
@@ -121,70 +129,17 @@ export default function Profile({
                 width={0}
                 height={0}
                 sizes="100%"
-                className="h-[38rem] w-full object-cover object-center transition-all"
+                className="h-72 w-full aspect-video object-cover object-center transition-all"
               />
             </Fade>
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background h-[33%]" />
-          </div>
-        )}
-        <Zoom triggerOnce>
-          <div
-            className={`relative mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8 ${
-              !!profile.heroImage?.url ? "-mt-12" : "mt-0"
-            }`}
-          >
-            <div className="mx-auto max-w-2xl text-center lg:max-w-4xl flex flex-col">
-              <Fade direction="up" cascade damping={0.25} triggerOnce>
-                {profile.profileLogo?.url && (
-                  <Image
-                    src={profile.profileLogo?.url}
-                    alt={profile?.name || ""}
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    className="w-full max-w-xs mx-auto"
-                  />
-                )}
-                <h2 className="text-3xl !font-bold animate-[tracking_1s_ease-in] tracking-wide text-gray-900 sm:text-4xl gradient-text uppercase pt-1">
-                  {profile.name}
-                </h2>
-              </Fade>
-              <SocialMediaIcons
-                fadeDirection="up"
-                cssClass="mt-0 mb-8 w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4 text-text-color"
-                instagramLinkProp={profile?.instagramLink || undefined}
-                spotifyLinkProp={profile?.spotifyLink || undefined}
-                facebookLinkProp={profile?.facebookLink || undefined}
-                twitterLinkProp={profile?.twitterLink || undefined}
-                youtubeLinkProp={profile?.youtubeLink || undefined}
-                tikTokLinkProp={profile?.tikTokLink || undefined}
-                appleMusicLinkProp={profile?.appleMusicLink || undefined}
-                pandoraLinkProp={profile?.pandoraLink || undefined}
-                soundcloudLinkProp={profile?.soundcloudLink || undefined}
-                linkedinLinkProp={profile?.linkedinLink || undefined}
-                emailLinkProp={profile.email || undefined}
-                phoneLinkProp={profile.phoneNumber || undefined}
-                calendlyLinkProp={profile.calendlyLink || undefined}
-                displayVcf={profile.displayVcf || undefined}
-                avatar={profile.avatarImage?.url || undefined}
-                name={profile.name || undefined}
-                websiteLinkProp={profile?.websiteLink || undefined}
-              />
-              {/* {!!profile.name && (
-              <ArtistInfo
-                artistId="0TnOYISbd1XYRBk9myaseg"
-                clientId="cd926e12c97646b487d5e831548f1585"
-              />
-            )} */}
-              {profile.fullBio?.html && (
-                <div className="mt-4 text-text-color body-parsed-text text-left sm:text-center">
-                  {parse(profile.fullBio?.html)}
-                </div>
-              )}
+          )}
+          {profile.fullBio?.html && (
+            <div className="text-text-color body-parsed-text text-left max-w-4xl">
+              {parse(profile.fullBio?.html)}
             </div>
-          </div>
-        </Zoom>
-      </div>
+          )}
+        </div>
+      </section>
       <section className="bg-invert">
         <div className="px-4 overflow-x-hidden py-8">
           <div className="mx-auto container relative flex flex-col md:items-center md:justify-center">
@@ -324,13 +279,6 @@ export default function Profile({
           </div>
         </div>
       </section>
-      {profile?.name && profile?.bandsInTownKey && (
-        <BandsInTownApi
-          apiKey={profile.bandsInTownKey}
-          artistName={profile.name}
-          isSpanish={siteLibrary?.isSpanish || false}
-        />
-      )}
       {/* {!!profile.name && <SpotifyAlbums artistId="4aXXDj9aZnlshx7mzj3W1N" />} */}
       <section className="container mx-auto">
         {!!profile?.tourWidgetiFrame && (

@@ -130,7 +130,7 @@ export default function Product({
                       >
                         <Image
                           src={finalImage.url}
-                          alt={`Gallery Image: ${index + 1}`}
+                          alt={name}
                           sizes="100%"
                           width={300}
                           height={300}

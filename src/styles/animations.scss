@@ -458,23 +458,23 @@ a.hover-chevron {
   }
 }
 
-.floating {
-  animation-name: floating;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-
 @keyframes floating {
   0% {
-    transform: translate(0, 0px) !important;
+    transform: translate(0, 0px);
   }
   50% {
-    transform: translate(0, 15px) !important;
+    transform: translate(0, 10px);
   }
   100% {
-    transform: translate(0, -0px) !important;
+    transform: translate(0, -0px);
   }
+}
+
+.floating {
+  animation-name: floating !important;
+  animation-duration: 3s !important;
+  animation-iteration-count: infinite !important;
+  animation-timing-function: ease-in-out !important;
 }
 
 .infinite-spin {

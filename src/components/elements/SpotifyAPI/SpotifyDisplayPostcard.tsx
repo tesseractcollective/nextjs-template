@@ -1,4 +1,6 @@
+import AlbumCdSection from "@/components/AlbumSections/AlbumCdSection";
 import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
 
 interface Album {
   name: string;
@@ -22,43 +24,40 @@ const SpotifyDisplayPostcard: React.FC<SpotifyDataProps> = ({
   spotifyAlbumsData,
 }) => {
   return (
-    <section className="">
-      <div className="flex flex-row flex-wrap w-full mx-auto items-center justify-center max-w-8xl transition gap-2">
+    <section className="py-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mx-auto max-w-8xl">
         {spotifyAlbumsData.map((album) => (
-          <div
+          <a
             key={album.external_urls.spotify}
+            href={album.external_urls.spotify}
             tabIndex={0}
-            className="block w-1/4 md:w-2/12 lg:w-2/12 transition-all relative"
+            target="_blank"
+            rel="noreferrer"
+            className="mx-auto flex items-center justify-center flex-col w-full transition-all rotate-0 hover:rotate-6 focus-visible:rotate-6 group max-w-max hover:outline-bg-secondary outline outline-none h-full bg-text-color"
           >
-            {!!album.images[0].url && (
-              <div className="profile h-0 bg-center bg-no-repeat bg-cover pb-[100%]">
-                <div className="profile-overlay absolute inset-0 overflow-hidden">
-                  {album.external_urls.spotify && (
-                    <a
-                      href={album.external_urls.spotify}
-                      tabIndex={0}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="relative aspect-1 group mx-auto w-full"
-                    >
-                      <Image
-                        sizes="100%"
-                        src={album.images[0].url}
-                        alt={album.name}
-                        width={0}
-                        height={0}
-                        className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1"
-                      />
+            <div className="animate-col-width mx-auto md:mx-0 w-full bg-text-color">
+              {!!album.images[0].url && (
+                <Image
+                  sizes="100%"
+                  src={album.images[0].url}
+                  alt={album.name}
+                  width={0}
+                  height={0}
+                  className="w-[240px] h-[240px] object-cover mx-auto border-8 border-text-color group-hover:border-[16px] group-focus:border-[16px] transition-all"
+                />
+              )}
 
-                      <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-md md:text-xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary text-shadow">
-                        {album.name}
-                      </p>
-                    </a>
+              <div className="flex flex-col items-center justify-center text-center py-2 px-4 relative z-10 overflow-hidden">
+                <Fade triggerOnce direction="left">
+                  {!!album.name && (
+                    <h3 className="text-xl font-bold animate-[tracking_1s_ease-in] tracking-wide text-bg mt-0 text-center group-hover:tracking-widest group-focus:tracking-widest transition-all max-w-[200px]">
+                      {album.name}
+                    </h3>
                   )}
-                </div>
+                </Fade>
               </div>
-            )}
-          </div>
+            </div>
+          </a>
         ))}
       </div>
     </section>

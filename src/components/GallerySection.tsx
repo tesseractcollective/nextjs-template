@@ -89,7 +89,7 @@ export default function GallerySection({
                 >
                   <Image
                     src={finalImage}
-                    alt={`Gallery Image: ${index}`}
+                    alt=""
                     className="object-cover block mx-auto h-full w-full aspect-1"
                     sizes="100%"
                     width={0}
@@ -117,7 +117,7 @@ export default function GallerySection({
                 >
                   <Image
                     src={finalImage}
-                    alt={`Gallery Image: ${index}`}
+                    alt=""
                     className="object-cover block mx-auto h-full w-full aspect-1"
                     sizes="100%"
                     width={0}
