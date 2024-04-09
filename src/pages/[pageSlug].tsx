@@ -19,22 +19,20 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const layout: LayoutQuery = await sdkClient.layout({
     pageSlug: pageSlug.split("/").join("-"),
   });
-  const events = await getDuttonEventsServer({ timeoutSeconds: 0.5 });
+
   return {
     props: {
       layout,
-      events,
     },
   };
 };
 
 export default function Page({ layout }: PageProps) {
-  const [latestEvents, setLatestEvents] = useState<Event[]>([]); // Set default value to an empty array
+  const [latestEvents, setLatestEvents] = useState<Event[]>([]);
   const isDuttons = layout.siteLibrary?.siteId === "duttons";
 
   useEffect(() => {
     if (isDuttons && typeof window !== "undefined") {
-      // Only run this code on the client-side when isDuttons is true
       getDuttonEventsClient({ timeoutSeconds: 5 })
         .then((events) => {
           setLatestEvents(events);
@@ -43,7 +41,7 @@ export default function Page({ layout }: PageProps) {
           console.log(error);
         });
     }
-  }, [isDuttons]); // Trigger useEffect when isDuttons changes
+  }, [isDuttons]);
 
   return <PageComponent layout={layout} events={latestEvents} />;
 }
