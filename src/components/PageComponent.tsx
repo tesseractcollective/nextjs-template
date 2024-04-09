@@ -14,7 +14,7 @@ interface Props {
 }
 
 const PageComponent: FC<Props> = ({ layout, events }) => {
-  if (!layout.siteLibrary) return <div />;
+  if (!layout?.siteLibrary) return <div />;
 
   const {
     title,

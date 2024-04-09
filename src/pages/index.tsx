@@ -1,9 +1,9 @@
 "use client";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 import dynamic from "next/dynamic";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const { sdkClient } = await import("@/lib/graphql-client");
   const layout = await sdkClient.layout({ pageSlug: "home" });
   return {

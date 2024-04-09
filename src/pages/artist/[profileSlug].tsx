@@ -2,7 +2,7 @@ import { sdkClient } from "@/lib/graphql-client";
 import Footer from "@/components/navigation/Footer";
 import Nav from "@/components/navigation/Nav";
 import { ProfilePageQuery } from "@/graphql/generated/graphql";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import "@/styles/global.scss";
 import "@/styles/layoutBlocks.scss";
 import "@/app/tailwind.css";
@@ -11,7 +11,22 @@ import Profile from "@/components/Profile";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Fade } from "react-awesome-reveal";
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const result = await sdkClient.pagesSlugList();
+  const slugs = result.profiles.map(item => item.profileSlug ?? "");
+  return {
+    paths: slugs.map(slug => {
+      return {
+        params: {
+          profileSlug: slug
+        }
+      }
+    }) ?? [],
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const profilePage: ProfilePageQuery = await sdkClient.profilePage({
     profileSlug: params?.profileSlug as string,
   });

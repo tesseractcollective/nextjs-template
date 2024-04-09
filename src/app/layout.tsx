@@ -1,13 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { sdkClient } from "@/lib/graphql-client";
 import type { SiteLibraryQuery } from "@/graphql/generated/graphql";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const siteLibrary: SiteLibraryQuery = await sdkClient.siteLibrary();
   return {
     props: {
@@ -32,7 +32,7 @@ export default function RootLayout(
   return (
     <html lang="en">
       <body
-        className={`${inter.className} ${siteLibrary.siteLibrary?.siteCssBodyClass}`}
+        className={`${inter.className} ${siteLibrary?.siteLibrary?.siteCssBodyClass}`}
       >
         {children}
       </body>
