@@ -23,15 +23,14 @@ const BandsintownEventsDataSort: React.FC<EventListProps> = ({
 }) => {
   if (!profiles || !bandsintownEventsData) return <></>;
   const { bandsintownKey, profileType } = bandsintownEventsData;
-  console.log(profiles);
-  console.log("profileType", profileType);
   const artistNames = profiles
     .filter(
       (profile) =>
         profile?.profileType?.toLowerCase() === profileType?.toLowerCase()
     )
     .map((item) => item?.name)
-    .filter((name) => name !== null && name !== undefined);
+    .filter((name) => name !== null && name !== undefined)
+    .filter((name): name is string => typeof name === "string");
 
   return (
     <>
