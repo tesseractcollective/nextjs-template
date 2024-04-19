@@ -18,6 +18,9 @@ export default function OpenTableWidget({
 
     const targetElement = document.getElementById(targetID);
     if (targetElement) {
+      // Clear previous content
+      targetElement.innerHTML = "";
+      // Append the new script
       targetElement.appendChild(script);
     }
 

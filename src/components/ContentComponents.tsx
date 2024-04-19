@@ -21,14 +21,13 @@ import ContactsSection from "@/components/ContactsSection";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 import { Event } from "@/components/Calendar/calendarHelpers";
 import Calendar from "@/components/Calendar/Calendar";
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
-// import "swiper/css/thumbs";
-// import "swiper/css/effect-cards";
+import BandsintownEventsDataSort from "@/components/elements/BandsintownEventsDataSort";
 
 type ContentTagsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["contentTags"];
+
+type ElementsType =
+  PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
 
 interface ContentTagsProps {
   contentTags: ContentTagsType;
@@ -42,8 +41,8 @@ interface ContentTagsProps {
   contacts: ContactFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
   eventsData?: Event[];
+  elements: ElementsType;
 }
-
 export default function ContentComponents({
   contentTags,
   events,
@@ -56,101 +55,107 @@ export default function ContentComponents({
   albums,
   eventsData,
   contacts,
+  elements,
 }: ContentTagsProps) {
-  if (!contentTags || !siteLibrary) return <></>;
-  const {
-    albumDisplayType,
-    blogCategory,
-    blogSectionTitle,
-    blogLayoutStyle,
-    eventDisplayLayout,
-    logoTableType,
-    logoTableLayout,
-    productType,
-    productLayoutStyle,
-    profileLayoutStyle,
-    profileSectionTitle,
-    profileType,
-    testimonialType,
-    eventShowType,
-    contactType,
-  } = contentTags;
-
   const filteredCalendarData =
     eventsData &&
-    eventsData.filter((item) => item.kind.includes(eventShowType || ""));
+    eventsData.filter((item) =>
+      item.kind.includes(contentTags?.eventShowType || "")
+    );
 
   return (
     <>
-      {!!testimonials && testimonialType && (
+      {!!testimonials && contentTags?.testimonialType && (
         <section
           className="max-w-8xl mx-auto z-20 w-full relative testimonial-wrapper-content-components"
-          id={`testimonial-${testimonialType}`}
+          id={`testimonial-${contentTags.testimonialType}`}
         >
-          <Testimonials testimonials={testimonials} query={testimonialType} />
-        </section>
-      )}
-      {!!products && productType && productLayoutStyle && (
-        <section
-          className="max-w-8xl mx-auto z-20 w-full relative product-wrapper-content-components"
-          id={`product-${productType}`}
-        >
-          <Products
-            products={products}
-            type={productType}
-            productLayoutStyle={productLayoutStyle}
+          <Testimonials
+            testimonials={testimonials}
+            query={contentTags.testimonialType}
           />
         </section>
       )}
-      {!!logoTableType && logoTables.length >= 1 && (
-        <div>
-          {logoTables && logoTableType && logoTableLayout && (
-            <LogoTable
-              type={logoTableType}
-              logoTables={logoTables}
-              logoTableLayout={logoTableLayout}
+      {!!products &&
+        contentTags?.productType &&
+        contentTags?.productLayoutStyle && (
+          <section
+            className="max-w-8xl mx-auto z-20 w-full relative product-wrapper-content-components"
+            id={`product-${contentTags.productType}`}
+          >
+            <Products
+              products={products}
+              type={contentTags.productType}
+              productLayoutStyle={contentTags.productLayoutStyle}
             />
-          )}
+          </section>
+        )}
+      {!!contentTags?.logoTableType && logoTables.length >= 1 && (
+        <div>
+          {logoTables &&
+            contentTags.logoTableType &&
+            contentTags.logoTableLayout && (
+              <LogoTable
+                type={contentTags.logoTableType}
+                logoTables={logoTables}
+                logoTableLayout={contentTags.logoTableLayout}
+              />
+            )}
         </div>
       )}
-      {!!blogs && blogCategory && blogLayoutStyle && (
+      {!!blogs && contentTags?.blogCategory && contentTags?.blogLayoutStyle && (
         <div className="relative texture-background texture-right overflow-hidden">
           <section className="container my-8 px-4  mx-auto">
             <Blogs
               blogs={blogs}
-              blogCategory={blogCategory}
-              blogHeader={blogSectionTitle || "Blogs"}
-              blogLayoutStyle={blogLayoutStyle || "slider"}
+              blogCategory={contentTags.blogCategory}
+              blogHeader={contentTags.blogSectionTitle || "Blogs"}
+              blogLayoutStyle={contentTags.blogLayoutStyle || "slider"}
             />
           </section>
         </div>
       )}
-      {!!albums && albumDisplayType && (
+      {!!albums && contentTags?.albumDisplayType && (
         <FeatureAlbum
-          albumDisplayType={albumDisplayType}
+          albumDisplayType={contentTags.albumDisplayType}
           albums={albums}
           siteLibrary={siteLibrary}
         />
       )}
-      {!!events && !!eventDisplayLayout && (
+      {!!events && !!contentTags?.eventDisplayLayout && (
         <section className="content-components-events-wrapper">
           <Events
-            eventDisplayLayout={eventDisplayLayout || "grid"}
+            eventDisplayLayout={contentTags.eventDisplayLayout || "grid"}
             events={events}
           />
         </section>
       )}
-      {!!profiles && profileType && profileLayoutStyle && (
-        <Profiles
-          profiles={profiles}
-          profileLayoutStyle={profileLayoutStyle}
-          profileSectionTitle={profileSectionTitle || ""}
-          profileType={profileType}
-          siteID={siteLibrary.siteId}
-          siteLogo={siteLibrary?.logo?.url || ""}
-        />
-      )}
-      {!!eventShowType &&
+      {!!elements?.elementJson?.bandsintownEvents &&
+        !!siteLibrary?.mapKey &&
+        !!siteLibrary?.metaAppleTouchIcon?.url &&
+        !!profiles && (
+          <>
+            <BandsintownEventsDataSort
+              mapKey={siteLibrary.mapKey}
+              icon={siteLibrary.metaAppleTouchIcon.url}
+              bandsintownEventsData={elements.elementJson.bandsintownEvents}
+              profiles={profiles}
+            />
+          </>
+        )}
+      {!!profiles &&
+        contentTags?.profileType &&
+        contentTags?.profileLayoutStyle && (
+          <Profiles
+            profiles={profiles}
+            profileType={contentTags.profileType}
+            profileLayoutStyle={contentTags.profileLayoutStyle}
+            profileSectionTitle={contentTags?.profileSectionTitle || ""}
+            siteID={siteLibrary.siteId}
+            siteLogo={siteLibrary?.logo?.url || ""}
+          />
+        )}
+      {!!contentTags?.eventShowType &&
         !!filteredCalendarData &&
         filteredCalendarData.length >= 1 && (
           <Calendar
@@ -158,8 +163,11 @@ export default function ContentComponents({
             createMonthsForNoEvents={true}
           />
         )}
-      {!!contactType && contacts && contacts.length >= 1 && (
-        <ContactsSection contactTypes={contactType} contactsData={contacts} />
+      {!!contentTags?.contactType && contacts && contacts.length >= 1 && (
+        <ContactsSection
+          contactTypes={contentTags?.contactType}
+          contactsData={contacts}
+        />
       )}
     </>
   );

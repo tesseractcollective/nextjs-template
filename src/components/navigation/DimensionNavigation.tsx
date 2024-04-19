@@ -285,12 +285,12 @@ export default function DimensionNavigation({
         </Transition.Root>
 
         <header className="relative px-1">
-          <nav aria-label="Top" className="mx-auto px-0 my-2">
+          <nav aria-label="Top" className="mx-auto px-2 my-2">
             <div className="flex items-center justify-between flex-row relative w-full">
               <Link
                 href="/"
                 className="max-w-max absolute left-0 top-[0.05rem] sm:top-0 transition-all duration-[400ms] cursor-pointer"
-                id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
+                id={`nav-logo-desktop`}
                 onClick={() => {
                   ReactGA.event({
                     category: "Link",
@@ -304,7 +304,7 @@ export default function DimensionNavigation({
                     <span className="sr-only">{title}</span>
                     <Fade direction="down" triggerOnce>
                       <Image
-                        className="w-[80px] md:w-[100px] max-h-[80px] cursor-pointer object-contain transition-all duration-[400ms] mr-auto"
+                        className="w-[120px] md:w-[200px] max-h-[80px] cursor-pointer object-contain transition-all duration-[400ms] mr-auto"
                         src={navigation.navigationLogo?.url}
                         alt=""
                         width={0}

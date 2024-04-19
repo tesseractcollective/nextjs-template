@@ -41,6 +41,9 @@ function MapBoxMap({
     return null;
   }
 
+  console.log("lat", lat);
+  console.log("long", long);
+
   return (
     <Map
       mapboxAccessToken={mapKey}

@@ -104,6 +104,7 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                             albums={albums}
                             siteLibrary={siteLibrary}
                             eventsData={eventsData}
+                            elements={layoutBlockColumn.elements}
                           />
                           <Elements
                             elements={layoutBlockColumn.elements}

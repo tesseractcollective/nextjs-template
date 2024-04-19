@@ -12,6 +12,7 @@ import HTMLText from "@/components/elements/HTMLText";
 import ElementImage from "@/components/elements/ElementImage";
 import ScrollDigits from "@/components/elements/ScrollDigits";
 import Timeline from "@/components/elements/Timeline";
+import DistanceCheckMap from "@/components/elements/DistanceCheckMap";
 import MapBoxMap from "@/components/elements/MapBoxMap";
 import MapBoxesMap from "@/components/elements/MapBoxesMap";
 import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
@@ -125,6 +126,23 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           />
         )}
       {!!siteLibrary?.mapKey &&
+        !!elementJson?.distanceCheck?.lat &&
+        !!elementJson?.distanceCheck?.long &&
+        !!siteLibrary?.metaAppleTouchIcon &&
+        !!siteLibrary?.title &&
+        !!elementJson?.distanceCheck?.mapAddress &&
+        !!elementJson?.distanceCheck?.mapLink && (
+          <DistanceCheckMap
+            lat={elementJson?.distanceCheck.lat}
+            long={elementJson?.distanceCheck.long}
+            mapKey={siteLibrary.mapKey}
+            icon={siteLibrary?.metaAppleTouchIcon.url}
+            mapLink={elementJson?.distanceCheck?.mapLink}
+            address={elementJson?.distanceCheck?.mapAddress}
+            siteName={siteLibrary?.title}
+          />
+        )}
+      {!!siteLibrary?.mapKey &&
         !!elementJson?.locations &&
         !!siteLibrary?.metaAppleTouchIcon && (
           <div className="max-w-8xl mx-auto flex h-full w-full px-8 md:p-4 rounded-md">
@@ -165,7 +183,10 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
         <AnimateParagraph animateParagraph={elementJson.animateParagraph} />
       )}
       {!!elementJson?.opentableID && !!elementJson.opentableTheme && (
-        <div className="relative mx-auto" id="element-opentable">
+        <div
+          className="relative mx-auto flex items-center justify-center h-full"
+          id="element-opentable"
+        >
           <OpenTableWidget
             targetID="element-opentable"
             theme={elementJson.opentableTheme}
