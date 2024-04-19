@@ -308,6 +308,7 @@ export default function Blog({
                               products={products}
                               blogs={blogs}
                               albums={albums}
+                              elements={layoutBlockColumn.elements}
                               siteLibrary={siteLibrary}
                             />
                             <Elements

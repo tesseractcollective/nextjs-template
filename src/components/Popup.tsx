@@ -163,6 +163,7 @@ export default function Popup({ layout }: PopupProps) {
                             products={products}
                             blogs={blogs}
                             albums={albums}
+                            elements={popupBlock.elements}
                             siteLibrary={siteLibrary}
                           />
                           <Elements
