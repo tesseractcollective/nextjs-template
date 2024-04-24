@@ -769,6 +769,9 @@ fragment profileFields on Profile {
   externalLink
   blogsByTags
   spotifyArtistName
+  cards {
+    ...GridBoxFields
+  }
 }
 
 fragment contactFields on Contact {

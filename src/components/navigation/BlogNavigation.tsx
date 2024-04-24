@@ -200,6 +200,7 @@ export default function BlogNavigation({
                                         </div>
                                         {!!item?.link && (
                                           <LinkItem
+                                            onClick={() => setOpen(false)}
                                             key={item?.link}
                                             link={item?.link}
                                             label={item?.label}
@@ -235,6 +236,7 @@ export default function BlogNavigation({
                                     link={mainNavigationItem.link || "/"}
                                     cssClass="block p-2 font-bold text-text-color max-w-max mx-auto text-3xl lg:text-5xl text-center hover:text-primary transition-all hover:-skew-x-12"
                                     onClick={() => {
+                                      setOpen(false);
                                       ReactGA.event({
                                         category: "Link",
                                         action: mainNavigationItem.link || "",

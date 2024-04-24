@@ -203,6 +203,7 @@ export default function CenterNavigation({
                                             key={item?.link}
                                             link={item?.link}
                                             label={item?.label}
+                                            onClick={() => setOpen(false)}
                                             cssClass={`mt-2 text-right block text-sm sm:text-xl lg:text-4xl font-semibold text-text-color text-center group-hover:text-primary transition hover:italic ${item?.cssClass}`}
                                             sameTab={item?.sameTab}
                                           >
@@ -235,6 +236,7 @@ export default function CenterNavigation({
                                     link={mainNavigationItem.link || "/"}
                                     cssClass="block p-2 font-bold text-text-color max-w-max mx-auto text-3xl lg:text-5xl text-center hover:text-primary transition-all hover:-skew-x-12"
                                     onClick={() => {
+                                      setOpen(false);
                                       ReactGA.event({
                                         category: "Link",
                                         action: mainNavigationItem.link || "",
@@ -321,7 +323,7 @@ export default function CenterNavigation({
                   <SocialMediaIcons
                     fadeDirection="down"
                     siteLibrary={siteLibrary}
-                    cssClass="max-w-max md:flex flex-row social-icons-row items-center justify-center text-primary gap-x-2 opacity-40 hidden absolute left-0"
+                    cssClass="max-w-max md:flex flex-row social-icons-row items-center justify-center text-primary gap-x-2 hidden absolute left-0"
                   />
                   <Link
                     href="/"

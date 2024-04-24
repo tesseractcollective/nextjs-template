@@ -9,6 +9,7 @@ interface LinkItemProps {
   link?: string | null;
   label?: string | null;
   cssClass?: string | null;
+  parentCssClass?: string | null;
   sameTab?: boolean | null;
   children?: string | JSX.Element | JSX.Element[] | string[];
   onClick?: () => void;
@@ -20,6 +21,7 @@ export default function LinkItem({
   cssClass,
   sameTab,
   children,
+  parentCssClass,
   onClick,
 }: LinkItemProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +50,7 @@ export default function LinkItem({
   };
 
   return (
-    <div className="relative">
+    <div className={`relative ${parentCssClass}`}>
       {link?.includes("http") ||
       link?.includes("#") ||
       link?.includes("tel:") ? (

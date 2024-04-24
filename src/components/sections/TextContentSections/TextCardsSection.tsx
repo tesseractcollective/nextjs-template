@@ -44,6 +44,9 @@ export default function TextCardsSection({ textContentData }: TextCardsProps) {
                                   minHeight: "70px",
                                   minWidth: "70px",
                                 }}
+                                width={72}
+                                height={72}
+                                sizes="100%"
                                 src={textContentItem.contentImage.url}
                                 alt={textContentItem?.header?.html || ""}
                               />

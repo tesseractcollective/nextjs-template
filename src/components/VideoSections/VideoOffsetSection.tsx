@@ -112,18 +112,18 @@ export default function VideoOffsetSection({
                     alt={video.videoTitle || ""}
                     width={0}
                     height={0}
-                    className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1 min-h-[320px]"
+                    className="transition-all object-cover h-full w-full overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1"
                   />
                 )}
 
                 {!!video?.videoTitle && (
-                  <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-4xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary">
+                  <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-2xl md:text-4xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary">
                     {parse(video.videoTitle)}
                   </p>
                 )}
               </button>
-              <div className="absolute border border-secondary w-full h-full -left-1 -top-1 z-0"></div>
-              <div className="absolute border border-primary w-full h-full left-1 top-1 z-0"></div>
+              <div className="absolute border border-secondary w-full h-full -left-[0.10rem] -top-[0.10rem] z-0"></div>
+              <div className="absolute border border-primary w-full h-full left-[0.10rem] top-[0.10rem] z-0"></div>
             </SwiperSlide>
           ))}
           {selectedVideo && (

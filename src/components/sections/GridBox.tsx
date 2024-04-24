@@ -9,6 +9,11 @@ import VerticalTabGridBoxes from "./GridBoxComponents/VerticalTabGridBoxes";
 import GridDisplayBoxes from "./GridBoxComponents/GridDisplayBoxes";
 import HoverRoundGridBoxes from "./GridBoxComponents/HoverRoundGridBoxes";
 import ParallaxGridBoxes from "./GridBoxComponents/ParallaxGridBoxes";
+import WideCardBoxes from "./GridBoxComponents/WideCardBoxes";
+import SmallCircleBoxes from "./GridBoxComponents/SmallCircleBoxes";
+import SpaceBetweenBoxes from "./GridBoxComponents/SpaceBetweenBoxes";
+import PolaroidBoxes from "./GridBoxComponents/PolaroidBoxes";
+import DescriptionBoxes from "./GridBoxComponents/DescriptionBoxes";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -20,13 +25,19 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   // inset √
   // tall √
   // content √
+  // parallax √
+  // hoverRound
   // mason
   // netflix
   // grid
   // image
-  // parallax √
   // circle
   // polaroid
+  // smallCircle
+  // blur
+  // spaceBetween
+  // description
+  // wideCard
 
   const sliderGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "slider"
@@ -58,6 +69,21 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   const gridDisplayGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "grid"
   );
+  const wideCardGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "wideCard"
+  );
+  const smallCircleGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "smallCircle"
+  );
+  const spaceBetweenGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "spaceBetween"
+  );
+  const polaroidGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "polaroid"
+  );
+  const descriptionGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "description"
+  );
   if (parallaxGridBoxData && parallaxGridBoxData.length >= 1)
     return <ParallaxGridBoxes gridBoxData={parallaxGridBoxData} />;
   if (verticalTabGridBoxData && verticalTabGridBoxData.length >= 1)
@@ -78,5 +104,15 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
     return <ContentGridBoxes gridBoxData={contentGridBoxData} />;
   if (gridDisplayGridBoxData && gridDisplayGridBoxData.length >= 1)
     return <GridDisplayBoxes gridBoxData={gridDisplayGridBoxData} />;
+  if (wideCardGridBoxData && wideCardGridBoxData.length >= 1)
+    return <WideCardBoxes gridBoxData={wideCardGridBoxData} />;
+  if (smallCircleGridBoxData && smallCircleGridBoxData.length >= 1)
+    return <SmallCircleBoxes gridBoxData={smallCircleGridBoxData} />;
+  if (spaceBetweenGridBoxData && spaceBetweenGridBoxData.length >= 1)
+    return <SpaceBetweenBoxes gridBoxData={spaceBetweenGridBoxData} />;
+  if (polaroidGridBoxData && polaroidGridBoxData.length >= 1)
+    return <PolaroidBoxes gridBoxData={polaroidGridBoxData} />;
+  if (descriptionGridBoxData && descriptionGridBoxData.length >= 1)
+    return <DescriptionBoxes gridBoxData={descriptionGridBoxData} />;
   return <></>;
 }

@@ -8,29 +8,31 @@ interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
 }
 
-export default function CompactGridBoxes({ gridBoxData }: GridBoxProps) {
+export default function SmallCircleBoxes({ gridBoxData }: GridBoxProps) {
   return (
-    <div className="mx-auto max-w-8xl my-8 w-full">
+    <div className="mx-auto max-w-8xl my-8 w-full px-8">
       <Fade direction="left" triggerOnce>
         <div
-          className={`flex flex-wrap flex-col items-center gap-x-4 gap-y-4 mx-auto w-full justify-center`}
+          className={`flex flex-wrap flex-row items-center gap-x-4 gap-y-4 mx-auto w-full ${
+            gridBoxData.length <= 2 ? "justify-center" : "justify-center"
+          }`}
         >
           {gridBoxData.map((gridBoxItem, index) => (
             <div
               key={`${gridBoxItem.boxLink}-${index}`}
-              className="mx-auto w-full"
+              className="mx-auto max-w-sm w-full"
             >
               {gridBoxItem?.boxLink ? (
                 <LinkItem
                   link={gridBoxItem.boxLink}
-                  cssClass="flex flex-col bg-invert hover:bg-primary transition-all all-text-dark py-2 px-0 rounded items-center justify-center gap-4 mx-auto w-full border-text-color border hover:border-primary group"
+                  cssClass="flex flex-row bg-invert all-text-dark p-4 rounded items-center gap-x-4 mx-auto max-w-sm w-full"
                 >
                   <>
                     {gridBoxItem?.boxImage?.url && (
                       <Image
-                        className="h-16 w-16 rounded-full object-cover mx-auto group-hover:rotate-[360deg] transition-all"
-                        width={64}
-                        height={64}
+                        className="h-16 lg:h-20 w-16 lg:w-20 rounded-full object-cover"
+                        width={72}
+                        height={72}
                         sizes="100%"
                         src={gridBoxItem.boxImage.url}
                         alt={gridBoxItem?.boxTitle || ""}
@@ -38,13 +40,13 @@ export default function CompactGridBoxes({ gridBoxData }: GridBoxProps) {
                     )}
                     <div className="flex flex-col">
                       {gridBoxItem?.boxTitle && (
-                        <div className="text-sm uppercase font-bold my-0 py-0 parsed-mb-0 text-center">
+                        <div className="text-sm font-bold my-0 py-0 parsed-mb-0">
                           {gridBoxItem.boxTitle}
                         </div>
                       )}
 
                       {gridBoxItem?.boxDescription && (
-                        <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 max-w-[200px text-center">
+                        <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 max-w-[200px]">
                           {parse(gridBoxItem.boxDescription.html)}
                         </div>
                       )}
@@ -56,9 +58,9 @@ export default function CompactGridBoxes({ gridBoxData }: GridBoxProps) {
                   <>
                     {gridBoxItem?.boxImage?.url && (
                       <Image
-                        className="h-16 w-16 rounded-full object-cover mx-auto"
-                        width={64}
-                        height={64}
+                        className="h-16 lg:h-20 w-16 lg:w-20 rounded-full object-cover"
+                        width={72}
+                        height={72}
                         sizes="100%"
                         src={gridBoxItem.boxImage.url}
                         alt={gridBoxItem?.boxTitle || ""}
@@ -66,13 +68,13 @@ export default function CompactGridBoxes({ gridBoxData }: GridBoxProps) {
                     )}
                     <div className="flex flex-col">
                       {gridBoxItem?.boxTitle && (
-                        <div className="text-sm font-bold my-0 py-0 parsed-mb-0 text-center">
+                        <div className="text-sm font-bold my-0 py-0 parsed-mb-0">
                           {gridBoxItem.boxTitle}
                         </div>
                       )}
 
                       {gridBoxItem?.boxDescription && (
-                        <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 max-w-[200px] text-center">
+                        <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 max-w-[200px]">
                           {parse(gridBoxItem.boxDescription.html)}
                         </div>
                       )}
