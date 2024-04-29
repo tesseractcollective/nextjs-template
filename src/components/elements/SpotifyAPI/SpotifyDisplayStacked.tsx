@@ -40,6 +40,7 @@ const SpotifyDisplayStacked: React.FC<SpotifyDataProps> = ({
                   {!!albumItem.external_urls.spotify &&
                     albumItem.images[0]?.url && (
                       <a
+                        target="_blank"
                         href={albumItem.external_urls.spotify}
                         onClick={() =>
                           ReactGA.event({

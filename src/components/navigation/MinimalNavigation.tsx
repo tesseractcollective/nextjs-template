@@ -12,6 +12,7 @@ import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
 import { Fade } from "react-awesome-reveal";
+import AccouncementBar from "@/components/navigation/AccouncementBar";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -62,9 +63,11 @@ export default function MinimalNavigation({
 
   return (
     <div
-      className={`sticky top-0 z-[999] bg-background left-0 right-0 nav-shadow ${
+      className={`fixed z-[999] bg-background left-0 right-0 nav-shadow ${
         small ? "nav-shadow-scrolled" : ""
-      } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
+      } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""} ${
+        navigation?.announcementText ? "top-[35px]" : "top-0"
+      }`}
       id="navigation"
     >
       {/* Mobile menu */}
@@ -439,6 +442,13 @@ export default function MinimalNavigation({
       </Transition.Root>
 
       <header className="relative">
+        {navigation?.announcementText && (
+          <AccouncementBar
+            accouncementText={navigation.announcementText}
+            accouncementLink={navigation?.announcementLink || ""}
+            cssClassWrapper="fixed w-full top-0 text-center"
+          />
+        )}
         <nav aria-label="Top">
           <div className="">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
@@ -483,7 +493,7 @@ export default function MinimalNavigation({
                     </Link>
                   </div>
 
-                  <div className="hidden h-full lg:flex">
+                  <div className="hidden h-full lg:flex ml-auto">
                     {/* START Desktop Flyout menus */}
                     <Popover.Group className="inset-x-0 bottom-0 px-4 z-[99999]">
                       <div className="flex h-full justify-center space-x-8">

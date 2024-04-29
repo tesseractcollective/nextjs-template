@@ -341,7 +341,7 @@ export default function BlogNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className="h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
+                          className="h-24 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
                           src={navigation.navigationLogo?.url}
                           alt=""
                           width={0}

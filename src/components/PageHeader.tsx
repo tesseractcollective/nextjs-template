@@ -291,17 +291,23 @@ export default function PageHeader({
         </Zoom>
       )}
       {pageWidthStyle === "sharp" && (
-        <Zoom triggerOnce>
-          <section className="pt-44 pb-44 relative bg-[#000]">
-            <div
-              className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
-              style={{
-                backgroundImage: `url(${pageHeaderImageProp})`,
-              }}
-            ></div>
-            <Fade direction="up" triggerOnce>
+        <div className="bg-text-color">
+          <section className="pt-44 pb-44 h-full relative h-90vh flex items-center justify-center flex-col sharp-header">
+            <div className="bg-[#000] w-full h-full absolute inset-0">
+              <div
+                className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-60 bg-fixed "
+                style={{
+                  backgroundImage: `url(${pageHeaderImageProp})`,
+                }}
+              ></div>
+            </div>
+            <Fade
+              direction="up"
+              triggerOnce
+              className="mx-auto max-w-4xl w-full"
+            >
               {!!pageHeaderTitleProp && (
-                <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold uppercase">
+                <h1 className="text-2xl md:text-4xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold uppercase">
                   {pageHeaderTitleProp}
                 </h1>
               )}
@@ -310,9 +316,36 @@ export default function PageHeader({
                   {pageHeaderSubtitleProp}
                 </h2>
               )}
+              {!!pageCallToAction && pageCallToAction?.length > 0 && (
+                <div className="text-center mx-aut flex items-center justify-center">
+                  {pageCallToAction.map(
+                    (callToActionItem) =>
+                      callToActionItem?.ctaLink && (
+                        <div
+                          key={callToActionItem.ctaLink}
+                          className="text-center mx-auto"
+                        >
+                          <LinkItem
+                            link={callToActionItem.ctaLink}
+                            label={callToActionItem.ctaLabel}
+                            cssClass={
+                              callToActionItem?.ctaClass
+                                ? callToActionItem.ctaClass
+                                : `${
+                                    callToActionItem.ctaPrimary
+                                      ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full"
+                                      : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl !rounded-full"
+                                  } mr-2 max-w-max`
+                            }
+                          />
+                        </div>
+                      )
+                  )}
+                </div>
+              )}
             </Fade>
           </section>
-        </Zoom>
+        </div>
       )}
       {pageWidthStyle === "diagonal" && (
         <Zoom triggerOnce>
