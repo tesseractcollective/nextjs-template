@@ -10,7 +10,7 @@ interface GridBoxProps {
 export default function WideCardBoxes({ gridBoxData }: GridBoxProps) {
   return (
     <section className="wide-card-boxes flex flex-wrap items-center justify-center mx-auto lg:mx-0 transition">
-      <Fade direction="up" triggerOnce>
+      <Fade triggerOnce>
         {gridBoxData.map((gridBoxItem, index) => (
           <LinkItem
             link={gridBoxItem.boxLink}
@@ -18,7 +18,7 @@ export default function WideCardBoxes({ gridBoxData }: GridBoxProps) {
             cssClass="relative bg-text-color bg-invert group my-8 py-8 overflow-hidden"
           >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
-              <div className="mx-auto max-w-2xl py-24 lg:max-w-none lg:py-64">
+              <div className="mx-auto max-w-2xl py-24 lg:max-w-none">
                 <div className="lg:pr-16">
                   {gridBoxItem.boxTitle && (
                     <h1 className="text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl">

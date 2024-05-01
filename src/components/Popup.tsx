@@ -14,29 +14,31 @@ interface PopupProps {
 
 export default function Popup({ layout }: PopupProps) {
   const [open, setOpen] = useState<boolean>(false);
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const [scrollTriggered, setScrollTriggered] = useState<boolean>(false);
-  useEffect(() => {
-    window.addEventListener("scroll", stickyCallBak);
+  console.log(layout?.page?.popup?.openOnScroll);
 
-    return () => {
-      window.removeEventListener("scroll", stickyCallBak);
-    };
-  });
   useEffect(() => {
-    !!layout &&
+    if (
       layout?.page &&
       layout?.page.popup &&
       layout?.page?.popup.openOnScroll &&
-      isScrolled &&
-      !scrollTriggered &&
+      layout?.page.popup.openOnScroll
+    ) {
       setOpen(true);
-    setScrollTriggered(true);
-  }, [isScrolled, layout, open, scrollTriggered]);
-  const stickyCallBak = () => {
-    const scrollTop = window.scrollY;
-    if (scrollTop >= 400) setIsScrolled(true);
-  };
+
+      // Check if duration is defined and is a number
+      if (
+        layout?.page?.popup?.duration &&
+        typeof layout.page.popup.duration === "number"
+      ) {
+        const closeTimeout = setTimeout(() => {
+          setOpen(false);
+        }, layout.page.popup.duration * 1000);
+
+        // Clear the timeout on component unmount
+        return () => clearTimeout(closeTimeout);
+      }
+    }
+  }, [layout]);
 
   if (!layout) return <></>;
   const {
@@ -54,34 +56,11 @@ export default function Popup({ layout }: PopupProps) {
   if (!siteLibrary) return <></>;
   if (!page) return <></>;
   if (!page.popup) return <></>;
-  const { popupContent, header, buttonOpenCss, buttonOpenText } = page.popup;
-
-  // function openPopup() {
-  //   setOpen(true);
-  //   closePopup();
-  // }
-
-  // function closePopup() {
-  //   setTimeout(function () {
-  //     setOpen(false);
-  //     console.log(
-  //       "running",
-  //       !!layout &&
-  //         layout?.page &&
-  //         layout?.page.popup &&
-  //         layout?.page?.popup.duration
-  //     );
-  //   }, (!!layout &&
-  //     layout?.page &&
-  //     layout?.page.popup &&
-  //     layout?.page?.popup.duration) ||
-  //     8000);
-  // }
-  // isScrolled && setOpen(true);
+  const { popupContent, header, buttonOpenCss, buttonOpenText, duration } =
+    page.popup;
 
   const handleClosePopup = () => {
     setOpen(false);
-    setIsScrolled(false);
     ReactGA.event({
       category: "Link",
       action: "Close Popup",
@@ -95,15 +74,15 @@ export default function Popup({ layout }: PopupProps) {
         <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
-            enter="transition-opacity ease-linear duration-300"
+            enter="transition-opacity ease-linear duration-[500ms]"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="transition-opacity ease-linear duration-300"
+            leave="transition-opacity ease-linear duration-[500ms]"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
             <div
-              className="fixed inset-0 bg-[#000000c7] opacity-80 backdrop-blur-xl"
+              className="fixed inset-0 bg-[#000000e5] opacity-90 backdrop-blur-xl"
               aria-hidden="true"
             />
           </Transition.Child>
@@ -112,10 +91,10 @@ export default function Popup({ layout }: PopupProps) {
             <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
               <Transition.Child
                 as={Fragment}
-                enter="transition ease-in-out duration-300 transform"
+                enter="transition ease-in-out duration-[500ms] transform"
                 enterFrom="translate-y-full blur-xs"
                 enterTo="-translate-y-0 blur-0"
-                leave="transition ease-in-out duration-300 transform"
+                leave="transition ease-in-out duration-[500ms] transform"
                 leaveFrom="translate-y-0 blur-0"
                 leaveTo="translate-y-full blur-xs"
               >
@@ -149,6 +128,14 @@ export default function Popup({ layout }: PopupProps) {
                             popupBlock?.cssClass ? popupBlock?.cssClass : ""
                           }`}
                         >
+                          <input
+                            readOnly
+                            type="checkbox"
+                            id="null"
+                            name="null"
+                            checked
+                            className="sr-only"
+                          />
                           <Sections
                             sectionData={popupBlock.sections}
                             siteLibrary={siteLibrary}

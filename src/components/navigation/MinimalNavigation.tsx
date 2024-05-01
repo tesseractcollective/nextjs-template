@@ -451,7 +451,7 @@ export default function MinimalNavigation({
         )}
         <nav aria-label="Top">
           <div className="">
-            <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 py-1">
               <div className="border-b border-dark">
                 <div
                   className={`flex items-center justify-between transition-all ${
@@ -493,7 +493,7 @@ export default function MinimalNavigation({
                     </Link>
                   </div>
 
-                  <div className="hidden h-full lg:flex ml-auto">
+                  <div className="hidden h-full lg:flex ml-auto mr-2">
                     {/* START Desktop Flyout menus */}
                     <Popover.Group className="inset-x-0 bottom-0 px-4 z-[99999]">
                       <div className="flex h-full justify-center space-x-8">
@@ -617,7 +617,7 @@ export default function MinimalNavigation({
                                       key={mainNavigationItem?.link}
                                       link={mainNavigationItem?.link}
                                       label={mainNavigationItem?.label}
-                                      cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all ${
+                                      cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase ${
                                         small
                                           ? "text-xs md:text-sm"
                                           : "text-xs sm:text-sm md:text-base"
@@ -696,7 +696,7 @@ export default function MinimalNavigation({
                           key={mainNavigationItem?.link}
                           link={mainNavigationItem?.link}
                           label={mainNavigationItem?.label}
-                          cssClass={`flex items-center font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 rounded transition-all ${
+                          cssClass={`flex items-center font-bold text-text-overlay opacity-90  hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer bg-primary px-2 md:px-4 rounded transition-all uppercase ${
                             mainNavigationItem?.cssClass
                           } ${
                             small
