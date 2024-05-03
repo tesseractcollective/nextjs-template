@@ -12,17 +12,16 @@ export default function WideCardBoxes({ gridBoxData }: GridBoxProps) {
     <section className="wide-card-boxes flex flex-wrap items-center justify-center mx-auto lg:mx-0 transition">
       <Fade triggerOnce>
         {gridBoxData.map((gridBoxItem, index) => (
-          <LinkItem
-            link={gridBoxItem.boxLink}
+          <div
             key={`${gridBoxItem.boxLink}-${index}`}
-            cssClass="relative bg-text-color bg-invert group my-8 py-8 overflow-hidden"
+            className="relative bg-text-color bg-invert my-8 py-8 overflow-hidden"
           >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
               <div className="mx-auto max-w-2xl py-24 lg:max-w-none">
                 <div className="lg:pr-16">
                   {gridBoxItem.boxTitle && (
                     <h1 className="text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl">
-                      {gridBoxItem.boxTitle}
+                      {parse(gridBoxItem.boxTitle)}
                     </h1>
                   )}
                   {!!gridBoxItem?.boxDescription?.html && (
@@ -30,11 +29,12 @@ export default function WideCardBoxes({ gridBoxData }: GridBoxProps) {
                       {parse(gridBoxItem.boxDescription.html)}
                     </div>
                   )}
-                  <div className="mt-6">
-                    <span className="inline-block rounded-md border border-transparent bg-primary px-8 py-3 font-medium text-white group-hover:bg-secondary transition-all">
-                      Info
-                    </span>
-                  </div>
+                  <LinkItem
+                    cssClass="mt-6 inline-block rounded-md border border-transparent px-8 py-3 font-bold text-white hover:bg-primary focus-within:bg-primary transition-all uppercase"
+                    link={gridBoxItem.boxLink}
+                  >
+                    Info
+                  </LinkItem>
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function WideCardBoxes({ gridBoxData }: GridBoxProps) {
                 />
               )}
             </div>
-          </LinkItem>
+          </div>
         ))}
       </Fade>
     </section>

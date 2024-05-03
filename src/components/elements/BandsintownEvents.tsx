@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import { Listbox, Transition } from "@headlessui/react";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import Moment from "react-moment";
 import Image from "next/image";
 import BandsInTownEventsMapBox from "@/components/elements/BandsInTownEventsMapBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
+import { Fade } from "react-awesome-reveal";
 
 type Event = {
   id: string;
@@ -38,7 +45,12 @@ type EventListProps = {
   icon: string;
   bandsintownKey: string;
   artistNames: string[];
+  profiles: ProfileFieldsFragment[];
 };
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const BandsintownEvents: React.FC<EventListProps> = ({
   bandsintownKey,
@@ -46,9 +58,13 @@ const BandsintownEvents: React.FC<EventListProps> = ({
   isSpanish,
   mapKey,
   icon,
+  profiles,
 }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true); // Add loading state
+  const [selectedArtist, setSelectedArtist] = useState("");
+  console.log("artistNames", artistNames);
+  console.log("bandsintownKey", bandsintownKey);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -89,14 +105,75 @@ const BandsintownEvents: React.FC<EventListProps> = ({
   const removeAccents = (artistName: string) =>
     artistName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
+  // Filter events based on whether the selected artist's name is included in the event's lineup array
   const dateSortedEvents = events
     .filter((event) => new Date(event.datetime) >= new Date()) // Filter out past events
-    .sort(
-      (a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime()
-    );
-
+    .filter((event) => {
+      if (selectedArtist !== "") {
+        // Check if the selected artist's name is included in the event's lineup array
+        return event.lineup.includes(selectedArtist);
+      }
+      return true; // Include all events if no artist is selected
+    })
+    .sort((a, b) => {
+      if (a.artist && b.artist) {
+        // Compare artist names to sort events alphabetically by artist name
+        return a.artist.name.localeCompare(b.artist.name);
+      }
+      // If artist information is missing, maintain the existing order
+      return 0;
+    });
+  console.log("dateSortedEvents", dateSortedEvents);
+  console.log("selectedArtist", selectedArtist);
   return (
     <div className="max-w-8xl w-full mx-auto relative z-10 px-8 p-4">
+      <div className="flex flex-row gap-x-2 flex-wrap items-start justify-center mx-auto w-full max-w-8xl">
+        {!!profiles &&
+          profiles.map((profile) => (
+            <button
+              key={profile.profileSlug}
+              className="text-text-color"
+              type="button"
+              onClick={() => profile.name && setSelectedArtist(profile.name)}
+            >
+              <div className="animate-col-width mx-auto md:mx-0 w-full">
+                <div className="overflow-hidden h-full rounded profile-card w-full relative">
+                  {!!profile?.avatarImage?.url && (
+                    <div className="p-0 m-0 w-full relative">
+                      <Image
+                        src={profile?.avatarImage?.url}
+                        alt={(profile.name && profile.name) || ""}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        className={`w-[120px] h-[120px] object-cover mx-auto rounded-[100%] border-2 ${
+                          selectedArtist === profile.name
+                            ? "border-primary"
+                            : "border-secondary"
+                        }`}
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-col items-center justify-center text-center p-4 relative z-10 overflow-hidden">
+                    <Fade triggerOnce direction="left">
+                      {!!profile.name && (
+                        <h3
+                          className={`text-xs uppercase font-bold animate-[tracking_1s_ease-in] mt-0 text-center max-w-[120px] ${
+                            selectedArtist === profile.name
+                              ? "text-primary"
+                              : "text-text-color"
+                          }`}
+                        >
+                          {profile.name}
+                        </h3>
+                      )}
+                    </Fade>
+                  </div>
+                </div>
+              </div>
+            </button>
+          ))}
+      </div>
       {loading ? (
         <div className="flex items-center justify-center h-60vh bg-bg-secondary rounded-xl">
           <p className="text-center mx-auto">Loading...</p>
@@ -140,9 +217,21 @@ const BandsintownEvents: React.FC<EventListProps> = ({
           </ul>
         </>
       ) : (
-        <p className="text-center">
-          {isSpanish ? "No hay eventos próximos" : "No upcoming events"}
-        </p>
+        <div className="py-16 flex flex-col items-center justify-center gap-y-4">
+          <p className="text-center flex flex-col text-2xl">
+            {selectedArtist && (
+              <span className="font-bold">{selectedArtist}</span>
+            )}
+            {isSpanish ? "No hay eventos próximos" : "No upcoming events"}
+          </p>
+          <button
+            className="mx-auto text-center text-text-color border border-text-color max-w-max p-4 rounded"
+            type="button"
+            onClick={() => setSelectedArtist("")}
+          >
+            All Artists
+          </button>
+        </div>
       )}
     </div>
   );

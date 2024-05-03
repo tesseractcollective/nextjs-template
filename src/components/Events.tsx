@@ -30,9 +30,9 @@ export default function Events({ events, eventDisplayLayout }: EventsProps) {
     return dateA.getTime() - dateB.getTime();
   });
 
-  console.log(filteredEvents);
-  console.log("events", events.length);
-  console.log("filteredEvents", sortedEvents.length);
+  // console.log(filteredEvents);
+  // console.log("events", events.length);
+  // console.log("filteredEvents", sortedEvents.length);
 
   if (eventDisplayLayout === "fullscreen") {
     return <EventFullScreenSection events={sortedEvents} />;

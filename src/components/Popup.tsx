@@ -26,17 +26,17 @@ export default function Popup({ layout }: PopupProps) {
       setOpen(true);
 
       // Check if duration is defined and is a number
-      if (
-        layout?.page?.popup?.duration &&
-        typeof layout.page.popup.duration === "number"
-      ) {
-        const closeTimeout = setTimeout(() => {
-          setOpen(false);
-        }, layout.page.popup.duration * 1000);
+      // if (
+      //   layout?.page?.popup?.duration &&
+      //   typeof layout.page.popup.duration === "number"
+      // ) {
+      //   const closeTimeout = setTimeout(() => {
+      //     setOpen(false);
+      //   }, layout.page.popup.duration * 1000);
 
-        // Clear the timeout on component unmount
-        return () => clearTimeout(closeTimeout);
-      }
+      //   // Clear the timeout on component unmount
+      //   return () => clearTimeout(closeTimeout);
+      // }
     }
   }, [layout]);
 
@@ -87,7 +87,7 @@ export default function Popup({ layout }: PopupProps) {
             />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-10 overflow-y-auto w-full">
+          <div className="fixed inset-0 z-10 overflow-y-auto w-full max-h-[85vh] m-auto rounded max-w-[90vw]">
             <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
               <Transition.Child
                 as={Fragment}
