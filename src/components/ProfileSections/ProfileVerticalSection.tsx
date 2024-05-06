@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import "./ProfileVerticalSection.scss";
+import LinkItem from "@/components/LinkItem";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -27,28 +28,30 @@ export default function ProfileVerticalSection({
         </div>
         <div className="profile-vertical-gallery flex items-start justify-center my-0 flex-col lg:flex-row relative w-full min-h-[75vh]">
           {profiles.map((profile) => (
-            <Link
+            <LinkItem
               key={profile.profileSlug}
-              className="relative group vertical-profile h-[28rem] w-full lg:w-[20vw] hover:lg:w-[60vw] focus:lg:w-[60vw] transition-all duration-[400ms] lg:h-full cursor-pointer"
-              href={
+              parentCssClass="relative group vertical-profile h-[28rem] w-full lg:w-[20vw] hover:lg:w-[60vw] focus:lg:w-[60vw] transition-all duration-[400ms] lg:h-full cursor-pointer"
+              link={
                 profile.externalLink ||
                 `/${profile.profileType?.toLowerCase()}/${profile.profileSlug}`
               }
             >
-              {!!profile.avatarImage?.url && (
-                <Image
-                  sizes="100%"
-                  src={profile.avatarImage?.url}
-                  alt={profile.name || ""}
-                  width={0}
-                  height={0}
-                  className="grayscale group-hover:grayscale-0 group-focus:grayscale-0 transition-all duration-[400ms] object-cover h-full w-full overflow-hidden"
-                />
-              )}
-              <p className="absolute z-40 bottom-0 p-0 m-0 font-bold uppercase left-0 text-4xl group-hover:text-primary transition-all duration-[400ms]">
-                {profile.name}
-              </p>
-            </Link>
+              <>
+                {!!profile.avatarImage?.url && (
+                  <Image
+                    sizes="100%"
+                    src={profile.avatarImage?.url}
+                    alt={profile.name || ""}
+                    width={0}
+                    height={0}
+                    className="grayscale group-hover:grayscale-0 group-focus:grayscale-0 transition-all duration-[400ms] object-cover h-full w-full overflow-hidden"
+                  />
+                )}
+                <p className="absolute z-40 bottom-0 p-0 m-0 font-bold uppercase left-0 text-4xl group-hover:text-primary transition-all duration-[400ms]">
+                  {profile.name}
+                </p>
+              </>
+            </LinkItem>
           ))}
         </div>
       </section>
