@@ -180,7 +180,6 @@ export default function Popup({ layout }: PopupProps) {
       </Transition.Root>
       <button
         type="button"
-        id="popup-trigger"
         className={`rounded-md p-2 text-md font-semibold text-text-color hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 fixed left-8 bottom-8 z-[100] bg-primary ${buttonOpenCss}`}
         onClick={() => {
           setOpen(true);

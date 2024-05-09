@@ -65,7 +65,6 @@ export default function VideoAlternateSection({
             <button
               key={`${video?.videoTitle}-${index}`}
               type="button"
-              id="popup-trigger"
               className="relative group pb-[56.25%] pt-[30px] h-0 w-full max-w-[50vw] px-0 mx-0 overflow-hidden"
               onClick={() => {
                 setOpen(true);

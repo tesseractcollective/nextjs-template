@@ -14,6 +14,8 @@ import SmallCircleBoxes from "./GridBoxComponents/SmallCircleBoxes";
 import SpaceBetweenBoxes from "./GridBoxComponents/SpaceBetweenBoxes";
 import PolaroidBoxes from "./GridBoxComponents/PolaroidBoxes";
 import DescriptionBoxes from "./GridBoxComponents/DescriptionBoxes";
+import ImageCardBoxes from "./GridBoxComponents/ImageCardBoxes";
+import TwoHundredVhBoxes from "./GridBoxComponents/TwoHundredVhBoxes";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -84,6 +86,12 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   const descriptionGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "description"
   );
+  const imageGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "image"
+  );
+  const twovhGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "twohundredvh"
+  );
   if (parallaxGridBoxData && parallaxGridBoxData.length >= 1)
     return <ParallaxGridBoxes gridBoxData={parallaxGridBoxData} />;
   if (verticalTabGridBoxData && verticalTabGridBoxData.length >= 1)
@@ -114,5 +122,9 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
     return <PolaroidBoxes gridBoxData={polaroidGridBoxData} />;
   if (descriptionGridBoxData && descriptionGridBoxData.length >= 1)
     return <DescriptionBoxes gridBoxData={descriptionGridBoxData} />;
+  if (imageGridBoxData && imageGridBoxData.length >= 1)
+    return <ImageCardBoxes gridBoxData={imageGridBoxData} />;
+  if (twovhGridBoxData && twovhGridBoxData.length >= 1)
+    return <TwoHundredVhBoxes gridBoxData={twovhGridBoxData} />;
   return <></>;
 }

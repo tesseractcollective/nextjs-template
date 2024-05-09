@@ -86,7 +86,6 @@ export default function VideoFullScreenSection({
             <SwiperSlide key={`${video?.videoTitle}-${index}`}>
               <button
                 type="button"
-                id="popup-trigger"
                 className="relative h-100vh group w-full"
                 onClick={() => {
                   setOpen(true);

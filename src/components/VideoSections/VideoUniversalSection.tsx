@@ -9,8 +9,8 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
-import parse from "html-react-parser";
 import ReactGA from "react-ga4";
+import parse from "html-react-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -18,13 +18,13 @@ import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
 import { PlayCircleIcon } from "@heroicons/react/24/outline";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
-interface VideoOffsetSectionProps {
+interface VideoStandardSectionProps {
   videoData: VideoBoxFieldsFragment[];
 }
 
-export default function VideoOffsetSection({
+export default function VideoUniversalSection({
   videoData,
-}: VideoOffsetSectionProps) {
+}: VideoStandardSectionProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedVideo, setSelctedVideo] = useState<VideoBoxFieldsFragment>();
   const videoDataLength = videoData.length === 1;
@@ -51,8 +51,8 @@ export default function VideoOffsetSection({
   };
 
   return (
-    <section className="relative w-full mx-auto my-0 overflow-hidden">
-      <div className="relative flex flex-row items-center justify-center w-full gap-x-2 z-40 max-w-8xl mx-auto p-4">
+    <section className="relative w-full mx-auto my-8 overflow-hidden">
+      <div className="relative flex flex-row items-center justify-center w-full gap-x-2 z-40 max-w-8xl mx-auto px-4">
         {!videoDataLength && (
           <button
             type="button"
@@ -67,7 +67,7 @@ export default function VideoOffsetSection({
           </button>
         )}
         <Swiper
-          className="max-w-5xl mx-auto w-full flex p-8"
+          className="!pb-10 max-w-5xl mx-auto w-full flex px-4"
           grabCursor
           loop
           modules={[Navigation, Pagination, Autoplay]}
@@ -86,7 +86,7 @@ export default function VideoOffsetSection({
             <SwiperSlide key={`${video?.videoTitle}-${index}`}>
               <button
                 type="button"
-                className="relative aspect-video group p-4 mx-auto w-full"
+                className="relative aspect-video group mx-auto w-full rounded-lg border-4 border-text-color hover:border-primary focus:border-primary transition-all"
                 onClick={() => {
                   setOpen(true);
                   setSelctedVideo(video);
@@ -116,13 +116,11 @@ export default function VideoOffsetSection({
                 )}
 
                 {!!video?.videoTitle && (
-                  <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-2xl md:text-4xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary">
+                  <p className="opacity-0 absolute z-40 top-[25%] group-focus:top-[50%] group-hover:top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 p-0 m-0 font-bold uppercase text-4xl text-center group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] delay-200 text-primary">
                     {parse(video.videoTitle)}
                   </p>
                 )}
               </button>
-              <div className="absolute border border-secondary w-full h-full -left-[0.10rem] -top-[0.10rem] z-0"></div>
-              <div className="absolute border border-primary w-full h-full left-[0.10rem] top-[0.10rem] z-0"></div>
             </SwiperSlide>
           ))}
           {selectedVideo && (
@@ -144,7 +142,7 @@ export default function VideoOffsetSection({
                 </Transition.Child>
 
                 <div className="fixed inset-0 z-10 overflow-y-auto w-full">
-                  <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                  <div className="flex h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
                     <Transition.Child
                       as={Fragment}
                       enter="transition ease-in-out duration-300 transform"
