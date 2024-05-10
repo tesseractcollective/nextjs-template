@@ -421,6 +421,7 @@ export default function ProfileMinimalPage({
               <ContactsSection
                 contactTypes={profile?.contactQuery}
                 contactsData={contacts}
+                contactsLayoutStyle="default"
               />
             )}
 

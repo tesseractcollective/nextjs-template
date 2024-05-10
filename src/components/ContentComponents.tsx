@@ -167,6 +167,7 @@ export default function ContentComponents({
         <ContactsSection
           contactTypes={contentTags?.contactType}
           contactsData={contacts}
+          contactsLayoutStyle={contentTags?.contactLayoutStyle || "default"}
         />
       )}
     </>

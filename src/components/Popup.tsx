@@ -98,7 +98,7 @@ export default function Popup({ layout }: PopupProps) {
                 leaveFrom="translate-y-0 blur-0"
                 leaveTo="translate-y-full blur-xs"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex dialog-popup-page">
                   {!!header && (
                     <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
                       {header}

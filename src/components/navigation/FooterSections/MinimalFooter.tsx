@@ -9,6 +9,7 @@ import parse from "html-react-parser";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import Blogs from "@/components/Blogs";
 import { Fade } from "react-awesome-reveal";
+import Script from "next/script";
 
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -26,8 +27,14 @@ function MinimalFooter({
 }: FooterProps) {
   if (!navigation || !siteLibrary || hideFooter) return null;
 
-  const { isSpanish, title, secondaryLink, secondaryLogo, secondaryName } =
-    siteLibrary;
+  const {
+    isSpanish,
+    title,
+    secondaryLink,
+    secondaryLogo,
+    secondaryName,
+    siteId,
+  } = siteLibrary;
 
   const { footerColumns, footerWrapperCssClass, footerItems } = navigation;
 
@@ -39,8 +46,10 @@ function MinimalFooter({
   );
   return (
     <footer
-      aria-labelledby="footer-heading minimal-footer !bg-bg"
-      className={`my-8 ${footerWrapperCssClass ? footerWrapperCssClass : ""}`}
+      aria-labelledby="site-footer"
+      className={`footer-heading minimal-footer !bg-bg my-8 ${
+        footerWrapperCssClass ? footerWrapperCssClass : ""
+      }`}
     >
       <h2 id="footer-heading" className="sr-only">
         Footer
@@ -278,6 +287,14 @@ function MinimalFooter({
           </div>
         </div>
       </div>
+      {siteId === "foodieevents" && (
+        <>
+          <Script
+            type="text/javascript"
+            src="//tag.brandcdn.com/autoscript/courageousheart_vgtssk0wnuvzeku9/Courageous_Heart.js"
+          ></Script>
+        </>
+      )}
     </footer>
   );
 }
