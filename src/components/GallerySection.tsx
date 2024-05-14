@@ -179,7 +179,7 @@ export default function GallerySection({
               <a
                 href={finalImage}
                 key={finalImage}
-                className="flex flex-wrap max-w-[280px] aspect-1 transition-all hover:cursor-pointer"
+                className="relative flex flex-wrap h-32 md:h-64 w-32 md:w-64 aspect-1 transition-all hover:cursor-pointer"
               >
                 <Image
                   src={finalImage}
@@ -187,7 +187,7 @@ export default function GallerySection({
                   sizes="100%"
                   width={0}
                   height={0}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover absolute inset-0"
                 />
               </a>
             ))}

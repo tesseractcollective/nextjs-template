@@ -36,7 +36,8 @@ function MinimalFooter({
     siteId,
   } = siteLibrary;
 
-  const { footerColumns, footerWrapperCssClass, footerItems } = navigation;
+  const { footerColumns, footerWrapperCssClass, footerItems, footerJson } =
+    navigation;
 
   const wideColumns = footerColumns.filter(
     (footerColumn) => footerColumn?.wideColumn === true
@@ -227,11 +228,15 @@ function MinimalFooter({
         )}
         {/* Bottom Footer */}
         <div className="my-8 flex flex-col flex-wrap justify-center w-full mx-auto">
-          <SocialMediaIcons
-            fadeDirection="up"
-            siteLibrary={siteLibrary}
-            cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
-          />
+          {footerJson?.hideFooterSocial === true ? (
+            <></>
+          ) : (
+            <SocialMediaIcons
+              fadeDirection="up"
+              siteLibrary={siteLibrary}
+              cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
+            />
+          )}
           {secondaryLogo?.url && secondaryLink && secondaryName && (
             <a
               href={secondaryLink}

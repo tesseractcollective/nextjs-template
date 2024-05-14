@@ -590,6 +590,11 @@ body iframe {
       color: var(--secondary) !important;
     }
   }
+  &.has-border {
+    a {
+      border-bottom: initial !important;
+    }
+  }
 }
 
 

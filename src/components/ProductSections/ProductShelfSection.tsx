@@ -66,7 +66,7 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                     )}
                   </div>
                   {product?.description && (
-                    <div className="text-[12px] my-0 font-light py-0 parsed-mb-0 uppercase opacity-80 text-left">
+                    <div className="text-[12px] my-0 font-light py-0 parsed-mb-0 opacity-80 text-left lowercase">
                       {parse(product.description.html)}
                     </div>
                   )}
