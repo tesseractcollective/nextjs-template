@@ -53,7 +53,6 @@ export default function VideoGridSection({ videoData }: VideoGridSectionProps) {
           <button
             key={index * Math.random()}
             type="button"
-            id="popup-trigger"
             className="relative !flex group h-[25vh] transition-all  duration-[400ms] lg:h-[400px] cursor-pointer flex-1 hover:!flex-[3_1_0%] focus:!flex-[3_1_0%] z-50"
             onClick={() => {
               setOpen(true);

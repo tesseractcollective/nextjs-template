@@ -93,6 +93,9 @@ a.music-link {
 .music-link img {
   object-fit: contain;
   max-width: 130px;
+  width: 100%;
+  display: block;
+  height:  100%;
   margin: 0 auto;
 }
 

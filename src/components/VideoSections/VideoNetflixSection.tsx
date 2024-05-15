@@ -88,7 +88,6 @@ export default function VideoNetflixSection({
             <SwiperSlide key={`${video?.videoTitle}-${index}`}>
               <button
                 type="button"
-                id="popup-trigger"
                 className="relative pb-[56.25%] pt-[30px] h-0 w-full z-50 aspect-video group p-4 mx-auto rounded-md overflow-hidden"
                 onClick={() => {
                   setOpen(true);

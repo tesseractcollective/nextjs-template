@@ -267,15 +267,22 @@ export default function PageHeader({
         </div>
       )}
       {pageWidthStyle === "video" && (
-        <Zoom triggerOnce>
-          <section className="pt-44 pb-44 relative bg-[#000]">
-            <div
-              className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
-              style={{
-                backgroundImage: `url(${pageHeaderImageProp})`,
-              }}
-            ></div>
-            <Fade direction="up" triggerOnce>
+        <section className="hero-media-slider video-wrapper transition-all flex items-center justify-center">
+          <div className="absolute bg-gradient-to-b from-dark z-20 section-fade-invert h-32 opacity-70 left-0 right-0 top-0" />
+          <div className="absolute bg-gradient-to-t from-dark z-20 section-fade-invert h-[12rem] bottom-0 left-0 right-0 w-full" />
+          <div className="absolute w-full h-80vh top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed">
+            <video
+              src={pageHeaderImageProp}
+              autoPlay
+              loop
+              muted
+              playsInline
+              aria-hidden="true"
+              className="absolute inset-0 z-1 w-full h-full"
+            />
+          </div>
+          <Fade direction="up" triggerOnce>
+            <div className="relative z-50 px-4 max-w-4xl mx-auto w-full">
               {!!pageHeaderTitleProp && (
                 <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold uppercase">
                   {pageHeaderTitleProp}
@@ -286,9 +293,38 @@ export default function PageHeader({
                   {pageHeaderSubtitleProp}
                 </h2>
               )}
-            </Fade>
-          </section>
-        </Zoom>
+              {!!pageCallToAction && pageCallToAction?.length > 0 && (
+                <div>
+                  <div className="text-center mx-auto flex flex-row items-center justify-center flex-wrap gap-4">
+                    {pageCallToAction.map(
+                      (callToActionItem) =>
+                        callToActionItem?.ctaLink && (
+                          <div
+                            key={callToActionItem.ctaLink}
+                            className="text-center mx-auto"
+                          >
+                            <LinkItem
+                              link={callToActionItem.ctaLink}
+                              label={callToActionItem.ctaLabel}
+                              cssClass={
+                                callToActionItem?.ctaClass
+                                  ? callToActionItem.ctaClass
+                                  : `${
+                                      callToActionItem.ctaPrimary
+                                        ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full"
+                                        : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl !rounded-full"
+                                    } max-w-max`
+                              }
+                            />
+                          </div>
+                        )
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </Fade>
+        </section>
       )}
       {pageWidthStyle === "sharp" && (
         <div className="bg-text-color">
@@ -777,7 +813,7 @@ export default function PageHeader({
                 />
               </div>
             </Zoom>
-            <div className="py-24 sm:py-32 lg:pb-40">
+            <div className="py-24 sm:py-32 lg:pb-40 relative z-40">
               <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <Zoom triggerOnce>
                   <div className="mx-auto max-w-2xl text-center">
@@ -856,6 +892,58 @@ export default function PageHeader({
             </Zoom>
           </div>
         </div>
+      )}
+      {pageWidthStyle === "gradient" && (
+        <section className={`w-full ${cssClass}`}>
+          {(pageHeaderTitleProp || pageHeaderSubtitleProp) && (
+            <section className="gradient-page-header-wrapper">
+              <div className="gradient-page-header-hero"></div>
+              <div className="gradient-page-header-content">
+                {!!pageHeaderSubtitleProp && (
+                  <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-lg opacity-80">
+                    {pageHeaderSubtitleProp}
+                  </h2>
+                )}
+                <h1
+                  className="gradient-page-header-h1--scalingSize"
+                  data-text={pageHeaderTitleProp}
+                >
+                  {pageHeaderTitleProp}
+                </h1>
+
+                {!!pageCallToAction && pageCallToAction?.length > 0 && (
+                  <div>
+                    <div className="text-center mx-auto md:text-left md:mx-0">
+                      {pageCallToAction.map(
+                        (callToActionItem) =>
+                          callToActionItem?.ctaLink && (
+                            <div
+                              key={callToActionItem.ctaLink}
+                              className="text-center mx-auto md:text-left md:mx-0"
+                            >
+                              <LinkItem
+                                link={callToActionItem.ctaLink}
+                                label={callToActionItem.ctaLabel}
+                                cssClass={
+                                  callToActionItem?.ctaClass
+                                    ? callToActionItem.ctaClass
+                                    : `${
+                                        callToActionItem.ctaPrimary
+                                          ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full"
+                                          : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl !rounded-full"
+                                      } mr-2 max-w-max`
+                                }
+                              />
+                            </div>
+                          )
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+        </section>
       )}
       {pageWidthStyle === "Content" && (
         <section

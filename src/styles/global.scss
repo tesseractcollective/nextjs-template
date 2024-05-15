@@ -1130,3 +1130,11 @@ h4, h5, h6  {color: var(--text);}
 .sharp-header {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 50% 100%, 0 85%);
 }
+
+.dialog-popup-page {
+  iframe {
+    background-color: white !important;
+    border-radius: 10px;
+    padding: 4px;
+  }
+}

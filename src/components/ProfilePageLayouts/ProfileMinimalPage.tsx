@@ -79,7 +79,7 @@ export default function ProfileMinimalPage({
   // netflix
   // snap
   // sport
-
+  console.log(profile);
   return (
     <div>
       <Head>
@@ -148,7 +148,7 @@ export default function ProfileMinimalPage({
                       />
                     </a>
                   )}
-                  {!!profile?.spotifyLink && (
+                  {profile?.spotifyLink && (
                     <a
                       href={profile.spotifyLink}
                       target="_blank"
@@ -421,6 +421,7 @@ export default function ProfileMinimalPage({
               <ContactsSection
                 contactTypes={profile?.contactQuery}
                 contactsData={contacts}
+                contactsLayoutStyle="default"
               />
             )}
 

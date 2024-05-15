@@ -12,6 +12,7 @@ import type {
 } from "@/graphql/generated/graphql";
 import LogoTable from "@/components/LogoTable";
 import Blogs from "@/components/Blogs";
+import ContentSocialMediaLinks from "@/components/ContentSocialMediaLinks";
 import Events from "@/components/Events";
 import FeatureAlbum from "@/components/FeatureAlbum";
 import Testimonials from "@/components/Testimonials";
@@ -160,8 +161,15 @@ export default function ContentComponents({
         <ContactsSection
           contactTypes={contentTags?.contactType}
           contactsData={contacts}
+          contactsLayoutStyle={contentTags?.contactLayoutStyle || "default"}
         />
       )}
+      {!!contentTags?.socialMediaLinks &&
+        contentTags.socialMediaLinks.length >= 1 && (
+          <ContentSocialMediaLinks
+            socialMediaLinks={contentTags.socialMediaLinks}
+          />
+        )}
     </>
   );
 }

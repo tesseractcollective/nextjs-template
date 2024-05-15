@@ -360,6 +360,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     parentPageType
     productLayoutStyle
     blogLayoutStyle
+    socialMediaLinks
   }
   elements {
     stripePricingTableId

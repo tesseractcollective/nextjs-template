@@ -357,27 +357,29 @@ export default function BlogNavigation({
                     )}
                   </Link>
                   {/* Desktop menu bar */}
-                  <div className="fixed bottom-10 md:bottom-[initial] right-5 md:absolute md:right-0 max-w-max z-100">
-                    <button
-                      type="button"
-                      title="menu"
-                      className="focus:rounded-full hover:rounded-full rounded-none px-2 py-2 text-dark border border-dark transition-all group bg-primary hover:rotate-180 relative z-100 duration-300 ease-in-out"
-                      onClick={() => {
-                        setOpen(true);
-                        ReactGA.event({
-                          category: "Link",
-                          action: "Open Mobile Menu",
-                          label: "Open Mobile Menu",
-                        });
-                      }}
-                    >
-                      <span className="sr-only">Open menu</span>
-                      <Bars3BottomRightIcon
-                        className="h-6 w-6 transition-all group-hover:rotate-180"
-                        aria-hidden="true"
-                      />
-                    </button>
-                  </div>
+                  {items && items.length >= 1 && (
+                    <div className="fixed bottom-10 md:bottom-[initial] right-5 md:absolute md:right-0 max-w-max z-100">
+                      <button
+                        type="button"
+                        title="menu"
+                        className="focus:rounded-full hover:rounded-full rounded-none px-2 py-2 text-dark border border-dark transition-all group bg-primary hover:rotate-180 relative z-100 duration-300 ease-in-out"
+                        onClick={() => {
+                          setOpen(true);
+                          ReactGA.event({
+                            category: "Link",
+                            action: "Open Mobile Menu",
+                            label: "Open Mobile Menu",
+                          });
+                        }}
+                      >
+                        <span className="sr-only">Open menu</span>
+                        <Bars3BottomRightIcon
+                          className="h-6 w-6 transition-all group-hover:rotate-180"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

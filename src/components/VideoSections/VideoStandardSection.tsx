@@ -86,7 +86,6 @@ export default function VideoStandardSection({
             <SwiperSlide key={`${video?.videoTitle}-${index}`}>
               <button
                 type="button"
-                id="popup-trigger"
                 className="relative aspect-video group p-4 mx-auto w-full"
                 onClick={() => {
                   setOpen(true);

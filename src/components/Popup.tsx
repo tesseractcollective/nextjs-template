@@ -98,7 +98,7 @@ export default function Popup({ layout }: PopupProps) {
                 leaveFrom="translate-y-0 blur-0"
                 leaveTo="translate-y-full blur-xs"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex dialog-popup-page">
                   {!!header && (
                     <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
                       {header}
@@ -180,7 +180,6 @@ export default function Popup({ layout }: PopupProps) {
       </Transition.Root>
       <button
         type="button"
-        id="popup-trigger"
         className={`rounded-md p-2 text-md font-semibold text-text-color hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 fixed left-8 bottom-8 z-[100] bg-primary ${buttonOpenCss}`}
         onClick={() => {
           setOpen(true);
