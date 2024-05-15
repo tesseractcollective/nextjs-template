@@ -1,4 +1,4 @@
-import { Fragment, useState, SyntheticEvent } from "react";
+import { Fragment, useState, SyntheticEvent, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -6,6 +6,7 @@ import {
   faArrowUpRightFromSquare,
   faXmark,
   faUsers,
+  faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
 import ReactGA from "react-ga4";
@@ -17,16 +18,22 @@ import {
   createCalendarMonthsForEvents,
   legendKeysForMonths,
 } from "./calendarHelpers";
+import duttonEvents from "@/data/duttonEvents.json";
+import { getDuttonEvents } from "@/data/theDuttonsShowData";
 
 export interface CalendarProps {
-  events: Event[];
   createMonthsForNoEvents: boolean;
+  eventShowType: string;
+  hideKey?: boolean;
+  phoneOverride?: string;
 }
 
 interface CalendarDayComponentProps {
   day: CalendarDate;
   legendKeyClasses: { [key: string]: string };
   showDatesOutsideCurrentMonth?: boolean;
+  hideKey?: boolean;
+  phoneOverride?: string;
 }
 
 function classNames(...classes: (string | boolean | undefined)[]) {
@@ -34,7 +41,13 @@ function classNames(...classes: (string | boolean | undefined)[]) {
 }
 
 function CalendarDayComponent(props: CalendarDayComponentProps) {
-  const { day, legendKeyClasses, showDatesOutsideCurrentMonth } = props;
+  const {
+    day,
+    legendKeyClasses,
+    showDatesOutsideCurrentMonth,
+    hideKey,
+    phoneOverride,
+  } = props;
   const [open, setOpen] = useState<boolean>(false);
   let className: string;
   if (!day.isCurrentMonth) {
@@ -43,19 +56,21 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
     className =
       "bg-bg-secondary cursor-default focus:not-sr-only hover:!bg-bg-secondary focus:!bg-bg-secondary";
   } else {
-    className = legendKeyClasses[day.legendKey.name] ?? "bg-primary-fade";
+    className =
+      (hideKey ? undefined : legendKeyClasses[day.legendKey.name]) ??
+      "bg-primary";
   }
 
-  const openEventLink = (e: SyntheticEvent, event: Event) => {
-    e.preventDefault();
-    window.open(event.link, "_blank");
-  };
+  const callToAction = phoneOverride ?? "Buy Tickets";
+  const callToActionIcon = phoneOverride ? faPhone : faArrowUpRightFromSquare;
+  const linkOverride =
+    phoneOverride && `tel:${phoneOverride.replace(/[^0-9]/g, "")}`;
 
   return (
     <div
       key={day.date}
       className={classNames(
-        "relative py-1.5 focus:z-10 transition-all group text-text-color hover:bg-primary focus:bg-primary hover:rounded-md focus:rounded-md",
+        "relative py-1.5 focus:z-10 transition-all group text-text-color hover:bg-[#3d23ce] focus:bg-primary hover:rounded-md focus:rounded-md",
         className
       )}
     >
@@ -86,9 +101,11 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
           )}
         >
           {(day.isCurrentMonth || showDatesOutsideCurrentMonth) && (
-            <span className="date-digit">
-              {day.date.split("-").pop()?.replace(/^0/, "")}
-            </span>
+            <>
+              <span className="date-digit">
+                {day.date.split("-").pop()?.replace(/^0/, "")}
+              </span>
+            </>
           )}
         </time>
       </button>
@@ -129,8 +146,13 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
                     {day.events.map((event) => (
                       <li key={event.name + event.time}>
                         <a
-                          onClick={(e) => openEventLink(e, event)}
-                          href={event.link}
+                          onClick={(e) => {
+                            if (!linkOverride) {
+                              e.preventDefault();
+                              window.open(event.link, "_blank");
+                            }
+                          }}
+                          href={linkOverride ?? event.link}
                         >
                           <div className="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-primary group rounded ring-[#00000033] ring-1 hover:ring-dark my-2">
                             <div className="flex min-w-0 gap-x-4">
@@ -149,18 +171,17 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
                             <div className="flex shrink-0 items-center gap-x-4">
                               <div className="flex flex-col">
                                 <p className="flex flex-row items-center text-text-color opacity-90 rounded cursor-pointer px-2 md:px-4 transition-all text-base py-1 md:py-2 text-center mx-0 group-hover:text-primary group-hover:opacity-100 group-focus:text-primary group-focus:opacity-100">
-                                  <span>Buy Tickets</span>
+                                  <span>{callToAction}</span>
                                   <span>
                                     <FontAwesomeIcon
-                                      icon={
-                                        faArrowUpRightFromSquare as IconProp
-                                      }
+                                      icon={callToActionIcon}
                                       className="fa-fw my-0 py-0 ml-2 h-4 w-4"
                                     />
                                   </span>
                                 </p>
                                 <p className="text-[8px] text-center">
-                                  Sold by completeticketing.co
+                                  {!phoneOverride &&
+                                    "Sold by completeticketing.co"}
                                 </p>
                               </div>
                             </div>
@@ -240,11 +261,22 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
 }
 
 export default function Calendar(props: CalendarProps) {
-  let events = props.events ?? [];
-  const months = createCalendarMonthsForEvents(
-    events,
-    props.createMonthsForNoEvents
-  );
+  const { hideKey, createMonthsForNoEvents, phoneOverride, eventShowType } =
+    props;
+
+  const [events, setEvents] = useState<Event[]>([]);
+
+  const updateEvents = useCallback((events: Event[]): void => {
+    const filteredEvents = events.filter((event) => event.kind.includes(eventShowType));
+    console.log(eventShowType, filteredEvents.length);
+    if (filteredEvents.length > 0) {
+      setEvents(filteredEvents);
+    } 
+  }, [eventShowType])
+
+  
+
+  const months = createCalendarMonthsForEvents(events, createMonthsForNoEvents);
   const legendKeys = legendKeysForMonths(months).filter(
     (key) => key.name !== "No Shows"
   );
@@ -264,7 +296,15 @@ export default function Calendar(props: CalendarProps) {
     legendKeyClasses[key.name] = className;
   });
 
-  const EventHeader = events[0].name;
+  const EventHeader = events?.[0]?.name;
+
+  useEffect(() => {
+    updateEvents(duttonEvents);
+    (async () => {
+      const events = await getDuttonEvents({ timeoutSeconds: 5 });
+      updateEvents(events);
+    })();
+  }, [updateEvents]);
 
   return (
     <div className="relative max-w-8xl mx-auto w-full">
@@ -273,29 +313,31 @@ export default function Calendar(props: CalendarProps) {
           {EventHeader}
         </h2>
       )}
-      <div className="legend-wrapper flex flex-col md:flex-row items-center md:items-center justify-center max-w-8xl mx-auto w-full px-8 gap-y-6">
-        <div className="legend gap-2 grid grid-cols-2 md:grid-cols-3">
-          {legendKeys.map((key) => {
-            const className = legendKeyClasses[key.name] ?? "bg-primary-fade";
-            return (
-              <div
-                key={key.name}
-                className="legend-item flex flex-row items-center justify-start"
-              >
-                <span
-                  className={classNames(
-                    "h-4 md:h-6 w-4 md:w-6 mb-1 rounded-full flex",
-                    className
-                  )}
-                ></span>
-                <span className="text-text-color text-xs ml-2 text-left max-w-[10rem] flex">
-                  {key.name}
-                </span>
-              </div>
-            );
-          })}
+      {!hideKey && (
+        <div className="legend-wrapper flex flex-col md:flex-row items-center md:items-center justify-center max-w-8xl mx-auto w-full px-8 gap-y-6">
+          <div className="legend gap-2 grid grid-cols-2 md:grid-cols-3">
+            {legendKeys.map((key) => {
+              const className = legendKeyClasses[key.name] ?? "bg-primary-fade";
+              return (
+                <div
+                  key={key.name}
+                  className="legend-item flex flex-row items-center justify-start"
+                >
+                  <span
+                    className={classNames(
+                      "h-4 md:h-6 w-4 md:w-6 mb-1 rounded-full flex",
+                      className
+                    )}
+                  ></span>
+                  <span className="text-text-color text-xs ml-2 text-left max-w-[10rem] flex">
+                    {key.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
       <div className="block relative">
         <div className="relative max-w-8xl mx-auto grid grid-cols-1 gap-x-14 lg:grid-cols-2 xl:grid-cols-3 px-4 gap-y-8 transition-all">
           {months.map((month, monthIdx) => (
@@ -324,6 +366,8 @@ export default function Calendar(props: CalendarProps) {
                     key={day.date}
                     day={day}
                     legendKeyClasses={legendKeyClasses}
+                    hideKey={hideKey}
+                    phoneOverride={phoneOverride}
                   />
                 ))}
               </div>

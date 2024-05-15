@@ -10,10 +10,9 @@ import { Event } from "@/components/Calendar/calendarHelpers";
 
 interface Props {
   layout: LayoutQuery;
-  events?: Event[];
 }
 
-const PageComponent: FC<Props> = ({ layout, events }) => {
+const PageComponent: FC<Props> = ({ layout }) => {
   if (!layout.siteLibrary) return <div />;
 
   const {
@@ -76,7 +75,7 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
       </Head>
       {!!analyticsId && <GoogleAnalytics analyticsId={analyticsId} />}
       <ThemeColors siteLibrary={layout.siteLibrary} />
-      <LayoutBlocks layout={layout} events={events} />
+      <LayoutBlocks layout={layout} />
     </>
   );
 };

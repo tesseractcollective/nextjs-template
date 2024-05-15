@@ -9,10 +9,9 @@ import PageCssClass from "./PageCssClass";
 
 interface PageProps {
   layout: LayoutQuery;
-  eventsData?: Event[];
 }
 
-export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
+export default function LayoutBlockSections({ layout }: PageProps) {
   if (!layout) return <></>;
   const {
     siteLibrary,
@@ -114,7 +113,6 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                                 blogs={blogs}
                                 albums={albums}
                                 siteLibrary={siteLibrary}
-                                eventsData={eventsData}
                                 elements={layoutBlockColumn.elements}
                               />
                               <Elements

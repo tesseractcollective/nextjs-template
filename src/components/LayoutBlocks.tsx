@@ -12,10 +12,9 @@ import PagePassword from "./PagePassword";
 
 interface PageProps {
   layout: LayoutQuery;
-  events?: Event[];
 }
 
-export default function LayoutBlocks({ layout, events }: PageProps) {
+export default function LayoutBlocks({ layout }: PageProps) {
   if (!layout.page?.pageSlug) return <Page404 layout={layout} />;
   const { siteLibrary, page, navigations, blogs } = layout;
   if (!siteLibrary) return <></>;
@@ -47,7 +46,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
         />
       )}
       <div>
-        <LayoutBlockSections layout={layout} eventsData={events} />
+        <LayoutBlockSections layout={layout} />
         {!!page?.whatsAppContactNumberFloatingButton &&
           siteLibrary?.isSpanish && (
             <Whatsapp

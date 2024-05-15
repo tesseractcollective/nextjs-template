@@ -40,7 +40,6 @@ interface ContentTagsProps {
   albums: AlbumFieldsFragment[];
   contacts: ContactFieldsFragment[];
   siteLibrary: SiteLibraryFieldsFragment;
-  eventsData?: Event[];
   elements: ElementsType;
 }
 export default function ContentComponents({
@@ -53,15 +52,9 @@ export default function ContentComponents({
   blogs,
   siteLibrary,
   albums,
-  eventsData,
   contacts,
   elements,
 }: ContentTagsProps) {
-  const filteredCalendarData =
-    eventsData &&
-    eventsData.filter((item) =>
-      item.kind.includes(contentTags?.eventShowType || "")
-    );
 
   return (
     <>
@@ -155,12 +148,12 @@ export default function ContentComponents({
             siteLogo={siteLibrary?.logo?.url || ""}
           />
         )}
-      {!!contentTags?.eventShowType &&
-        !!filteredCalendarData &&
-        filteredCalendarData.length >= 1 && (
+      {!!contentTags?.eventShowType && (
           <Calendar
-            events={filteredCalendarData}
+            eventShowType={contentTags?.eventShowType}
             createMonthsForNoEvents={true}
+            phoneOverride="(417) 332-2772"
+            hideKey={true}
           />
         )}
       {!!contentTags?.contactType && contacts && contacts.length >= 1 && (

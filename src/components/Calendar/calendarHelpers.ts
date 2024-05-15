@@ -70,6 +70,9 @@ export function createCalendarMonthsForEvents(
   events: Event[],
   createForNoEvents = false
 ): Month[] {
+  if (events.length === 0) {
+    return [];
+  }
   const months: Month[] = [];
   let currentMonth = -1;
 
