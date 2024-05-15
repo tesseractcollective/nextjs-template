@@ -1,70 +1,140 @@
-import { Fragment, useState, useRef } from "react";
 import Image from "next/image";
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "@/components/LinkItem";
+import { Dispatch, SetStateAction, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useWindowSize } from "@/hooks/useWindowSize";
 import parse from "html-react-parser";
-import { motion } from "framer-motion";
-import React from "react";
-import { Fade } from "react-awesome-reveal";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
 }
 
-export default function VerticalTabGridBoxes({ gridBoxData }: GridBoxProps) {
-  const [selectedItem, setSelectedItem] = useState<
-    GridBoxFieldsFragment | undefined
-  >(gridBoxData.length > 0 ? gridBoxData[0] : undefined);
+const VerticalAccordion = ({ gridBoxData }: GridBoxProps) => {
+  const [open, setOpen] = useState(gridBoxData[0].id);
 
   return (
-    <section className="max-w-8xl mx-auto z-20 w-full relative">
-      <div className="flex mx-auto relative items-center justify-center max-w-6xl w-full flex-wrap px-4">
-        <div className="w-full md:w-1/3 gap-y-4 flex flex-col">
-          {gridBoxData.map((gridBoxItem) => (
-            <motion.div
-              key={gridBoxItem.boxLink}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`border-bg border rounded-md cursor-pointer flex items-center justify-center p-4 transition-all hover:bg-tertiary ${
-                selectedItem === gridBoxItem
-                  ? "border border-primary bg-primary"
-                  : ""
-              }`}
-              onClick={() => setSelectedItem(gridBoxItem)}
-            >
-              <p
-                className={`transition-all h-full p-4 uppercase font-bold text-center ${
-                  selectedItem === gridBoxItem ? "!text-primary" : "!text-bg"
-                }`}
-              >
-                {gridBoxItem.boxTitle}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        {selectedItem && (
-          <div className="w-full md:w-2/3 flex flex-col items-center h-full justify-center flex-1 all-text-dark">
-            <Fade className="p-4" direction="up" triggerOnce>
-              {selectedItem.boxImage && (
-                <Image
-                  src={selectedItem.boxImage.url}
-                  className="object-contain mx-auto h-full w-full aspect-1 max-w-72 max-h-72"
-                  alt=""
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                />
-              )}
-              {selectedItem?.boxDescription && (
-                <div className="text-text-color body-parsed-text p-4 content-large text-center mx-auto max-xl">
-                  {parse(selectedItem?.boxDescription.html)}
-                </div>
-              )}
-            </Fade>
-          </div>
-        )}
+    <section className="p-4 bg-indigo-600">
+      <div className="flex flex-col lg:flex-row h-fit lg:h-[450px] w-full max-w-6xl mx-auto shadow overflow-hidden">
+        {gridBoxData.map((item) => {
+          return (
+            <Panel
+              id={item.id}
+              key={item.boxLink}
+              open={open}
+              setOpen={setOpen}
+              title={item.boxTitle || ""}
+              imgSrc={item.boxImage?.url || ""}
+              description={item.boxDescription?.html || ""}
+            />
+          );
+        })}
       </div>
     </section>
   );
+};
+
+interface PanelProps {
+  open: string;
+  setOpen: Dispatch<SetStateAction<string>>;
+  id: string;
+  title: string;
+  imgSrc: string;
+  description: string;
 }
+
+const Panel = ({
+  open,
+  setOpen,
+  id,
+  title,
+  imgSrc,
+  description,
+}: PanelProps) => {
+  const { width } = useWindowSize();
+  const isOpen = open === id;
+
+  return (
+    <>
+      <button
+        className="bg-white hover:bg-primary transition-colors p-3 border-r-[1px] border-b-[1px] border-primary flex flex-row-reverse lg:flex-col justify-end items-center gap-4 relative group"
+        onClick={() => setOpen(id)}
+      >
+        <span
+          style={{
+            writingMode: "vertical-lr",
+          }}
+          className="hidden lg:block text-xl font-light rotate-180"
+        >
+          {title}
+        </span>
+        <span className="block lg:hidden text-xl font-light">{title}</span>
+
+        <span className="w-4 h-4 bg-text-color group-hover:bg-primary transition-colors border-r-[1px] border-b-[1px] lg:border-b-0 lg:border-t-[1px] border-primary rotate-45 absolute bottom-0 lg:bottom-[50%] right-[50%] lg:right-0 translate-y-[50%] translate-x-[50%] z-20" />
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key={`panel-${id}`}
+            variants={width && width > 1024 ? panelVariants : panelVariantsSm}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            style={{
+              backgroundImage: `url(${imgSrc})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+            className="w-full h-full overflow-hidden relative bg-black flex items-end"
+          >
+            <motion.div
+              variants={descriptionVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className="px-4 py-2 bg-[#00000097] backdrop-blur-sm text-white"
+            >
+              <div>{parse(description)}</div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+export default VerticalAccordion;
+
+const panelVariants = {
+  open: {
+    width: "100%",
+    height: "100%",
+  },
+  closed: {
+    width: "0%",
+    height: "100%",
+  },
+};
+
+const panelVariantsSm = {
+  open: {
+    width: "100%",
+    height: "200px",
+  },
+  closed: {
+    width: "100%",
+    height: "0px",
+  },
+};
+
+const descriptionVariants = {
+  open: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      delay: 0.125,
+    },
+  },
+  closed: { opacity: 0, y: "100%" },
+};

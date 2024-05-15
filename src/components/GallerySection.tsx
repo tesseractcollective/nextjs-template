@@ -19,6 +19,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import GalleryInfinite from "./elements/GalleryInfinite";
+import GalleryCarousel from "@/components/GallerySections/GalleryCarousel";
 
 interface GalleryProps {
   galleryData?: { __typename?: "Asset" | undefined; url: string }[];
@@ -74,6 +75,9 @@ export default function GallerySection({
         ))}
       </div>
     );
+  }
+  if (galleryLayout === "card" && finalImages.length >= 1) {
+    return <GalleryCarousel imgs={finalImages} />;
   }
   if (galleryLayout === "shelf" && gallery.length >= 1) {
     return (

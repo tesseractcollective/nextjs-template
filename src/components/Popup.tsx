@@ -1,21 +1,18 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 import Sections from "@/components/sections/Sections";
 import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
-import { Fragment, useState, useEffect } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import ReactGA from "react-ga4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+
 interface PopupProps {
   layout: LayoutQuery;
 }
 
-export default function Popup({ layout }: PopupProps) {
-  const [open, setOpen] = useState<boolean>(false);
-  console.log(layout?.page?.popup?.openOnScroll);
-
+const Popup = ({ layout }: PopupProps) => {
   useEffect(() => {
     if (
       layout?.page &&
@@ -23,7 +20,7 @@ export default function Popup({ layout }: PopupProps) {
       layout?.page?.popup.openOnScroll &&
       layout?.page.popup.openOnScroll
     ) {
-      setOpen(true);
+      setIsOpen(true);
 
       // Check if duration is defined and is a number
       // if (
@@ -39,7 +36,31 @@ export default function Popup({ layout }: PopupProps) {
       // }
     }
   }, [layout]);
+  const [isOpen, setIsOpen] = useState(false);
+  if (!layout) return <></>;
 
+  return (
+    <div className="bg-slate-900 fixed left-8 bottom-8 z-[1001]">
+      <button
+        onClick={() => setIsOpen(true)}
+        className={`bg-gradient-to-r from-bg to-bg-secondary text-white font-medium px-4 py-2 rounded hover:opacity-90 transition-opacity shadow-xl border border-bg-secondary ${layout?.page?.popup?.buttonOpenCss}`}
+      >
+        {layout?.page?.popup?.buttonOpenText}
+      </button>
+      <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} layout={layout} />
+    </div>
+  );
+};
+
+const SpringModal = ({
+  isOpen,
+  setIsOpen,
+  layout,
+}: {
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  layout: LayoutQuery;
+}) => {
   if (!layout) return <></>;
   const {
     siteLibrary,
@@ -58,140 +79,103 @@ export default function Popup({ layout }: PopupProps) {
   if (!page.popup) return <></>;
   const { popupContent, header, buttonOpenCss, buttonOpenText, duration } =
     page.popup;
-
-  const handleClosePopup = () => {
-    setOpen(false);
-    ReactGA.event({
-      category: "Link",
-      action: "Close Popup",
-      label: "Close Popup",
-    });
-  };
-
   return (
-    <>
-      <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
-          <Transition.Child
-            as={Fragment}
-            enter="transition-opacity ease-linear duration-[500ms]"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity ease-linear duration-[500ms]"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsOpen(false)}
+          className="bg-[#00000070] backdrop-blur p-8 fixed inset-0 z-[1000] grid place-items-center overflow-y-scroll cursor-pointer"
+        >
+          <motion.div
+            initial={{ scale: 0, rotate: "12.5deg" }}
+            animate={{ scale: 1, rotate: "0deg" }}
+            exit={{ scale: 0, rotate: "0deg" }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-gradient-to-br from-bg to-bg-secondary text-white py-6 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-hidden dialog-popup-page"
           >
-            <div
-              className="fixed inset-0 bg-[#000000e5] opacity-90 backdrop-blur-xl"
-              aria-hidden="true"
-            />
-          </Transition.Child>
-
-          <div className="fixed inset-0 z-10 overflow-y-auto w-full max-h-[85vh] m-auto rounded max-w-[90vw]">
-            <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <Transition.Child
-                as={Fragment}
-                enter="transition ease-in-out duration-[500ms] transform"
-                enterFrom="translate-y-full blur-xs"
-                enterTo="-translate-y-0 blur-0"
-                leave="transition ease-in-out duration-[500ms] transform"
-                leaveFrom="translate-y-0 blur-0"
-                leaveTo="translate-y-full blur-xs"
-              >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:mb-8 max-w-5xl sm:p-6 w-full bg-invert flex-col flex dialog-popup-page">
-                  {!!header && (
-                    <h2 className="text-center mx-auto text-2xl text-text-color font-bold uppercase">
-                      {header}
-                    </h2>
-                  )}
-                  {popupContent.map((popupBlock, parentIndex) => {
-                    return (
-                      <div
-                        key={`layout-block-row-${parentIndex++}`}
-                        id={`layout-block-row-${parentIndex++ + 1}`}
-                        className={`w-full flex flex-wrap ${
-                          popupBlock.cssClass
-                        } ${
-                          popupBlock?.backgroundImage?.url
-                            ? "background-image-featured"
-                            : ""
-                        }`}
-                      >
-                        <div
-                          id={
-                            popupBlock?.htmlId || `layout-block-${parentIndex}`
-                          }
-                          key={Math.random()}
-                          className={`${
-                            popupBlock?.hideBlockColumn ? "hidden" : ""
-                          } flex justify-center mx-0 px-0 w-full flex-auto  dynamic-feature-section flex-col ${
-                            popupBlock?.cssClass ? popupBlock?.cssClass : ""
-                          }`}
-                        >
-                          <input
-                            readOnly
-                            type="checkbox"
-                            id="null"
-                            name="null"
-                            checked
-                            className="sr-only"
-                          />
-                          <Sections
-                            sectionData={popupBlock.sections}
-                            siteLibrary={siteLibrary}
-                          />
-                          <ContentComponents
-                            contentTags={popupBlock.contentTags}
-                            events={events}
-                            contacts={contacts}
-                            testimonials={testimonials}
-                            profiles={profiles}
-                            logoTables={logoTables}
-                            products={products}
-                            blogs={blogs}
-                            albums={albums}
-                            elements={popupBlock.elements}
-                            siteLibrary={siteLibrary}
-                          />
-                          <Elements
-                            elements={popupBlock.elements}
-                            siteLibrary={siteLibrary}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-                  <button
-                    type="button"
-                    className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs"
-                    onClick={handleClosePopup}
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold text-center">{header}</h3>
+              {popupContent.map((popupBlock, parentIndex) => {
+                return (
+                  <div
+                    key={`layout-block-row-${parentIndex++}`}
+                    id={`layout-block-row-${parentIndex++ + 1}`}
+                    className={`w-full flex flex-wrap ${popupBlock.cssClass} ${
+                      popupBlock?.backgroundImage?.url
+                        ? "background-image-featured"
+                        : ""
+                    }`}
                   >
-                    <span>Close menu</span>
-                    <FontAwesomeIcon
-                      icon={faXmark as IconProp}
-                      className="fa-fw my-0 py-0 ml-2 h-4 w-4"
-                    />
-                  </button>
-                </Dialog.Panel>
-              </Transition.Child>
+                    <div
+                      id={popupBlock?.htmlId || `layout-block-${parentIndex}`}
+                      key={Math.random()}
+                      className={`${
+                        popupBlock?.hideBlockColumn ? "hidden" : ""
+                      } flex justify-center mx-0 px-0 w-full flex-auto  dynamic-feature-section flex-col ${
+                        popupBlock?.cssClass ? popupBlock?.cssClass : ""
+                      }`}
+                    >
+                      <input
+                        readOnly
+                        type="checkbox"
+                        id="null"
+                        name="null"
+                        checked
+                        className="sr-only"
+                      />
+                      <Sections
+                        sectionData={popupBlock.sections}
+                        siteLibrary={siteLibrary}
+                      />
+                      <ContentComponents
+                        contentTags={popupBlock.contentTags}
+                        events={events}
+                        contacts={contacts}
+                        testimonials={testimonials}
+                        profiles={profiles}
+                        logoTables={logoTables}
+                        products={products}
+                        blogs={blogs}
+                        albums={albums}
+                        elements={popupBlock.elements}
+                        siteLibrary={siteLibrary}
+                      />
+                      <Elements
+                        elements={popupBlock.elements}
+                        siteLibrary={siteLibrary}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="bg-white hover:opacity-90 transition-opacity text-indigo-600 font-semibold w-full py-2 rounded"
+                >
+                  Close
+                </button>
+              </div>
+              <button
+                type="button"
+                className="hidden md:inline-flex items-center justify-center p-1 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs absolute -top-5 right-0 rounded-full"
+                onClick={() => setIsOpen(false)}
+              >
+                <FontAwesomeIcon
+                  icon={faXmark as IconProp}
+                  className="fa-fw my-0 py-0 h-4 w-4"
+                />
+              </button>
             </div>
-          </div>
-        </Dialog>
-      </Transition.Root>
-      <button
-        type="button"
-        className={`rounded-md p-2 text-md font-semibold text-text-color hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 fixed left-8 bottom-8 z-[100] bg-primary ${buttonOpenCss}`}
-        onClick={() => {
-          setOpen(true);
-          ReactGA.event({
-            category: "Link",
-            action: "Open Popup",
-            label: "Open Popup",
-          });
-        }}
-      >
-        <span className="max-w-max text-left">{buttonOpenText}</span>
-      </button>
-    </>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
-}
+};
+
+export default Popup;

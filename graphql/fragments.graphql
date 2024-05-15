@@ -581,6 +581,7 @@ fragment GridBoxFields on GridBox {
     url
   }
   boxDisplay
+  id
 }
 
 fragment AccordionFields on Accordion {
