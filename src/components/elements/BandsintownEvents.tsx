@@ -9,6 +9,7 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
+import { Variants, motion } from "framer-motion";
 
 type Event = {
   id: string;
@@ -47,10 +48,6 @@ type EventListProps = {
   artistNames: string[];
   profiles: ProfileFieldsFragment[];
 };
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 const BandsintownEvents: React.FC<EventListProps> = ({
   bandsintownKey,
@@ -107,7 +104,6 @@ const BandsintownEvents: React.FC<EventListProps> = ({
 
   // Filter events based on whether the selected artist's name is included in the event's lineup array
   const dateSortedEvents = events
-    .filter((event) => new Date(event.datetime) >= new Date()) // Filter out past events
     .filter((event) => {
       if (selectedArtist !== "") {
         // Check if the selected artist's name is included in the event's lineup array
@@ -115,16 +111,31 @@ const BandsintownEvents: React.FC<EventListProps> = ({
       }
       return true; // Include all events if no artist is selected
     })
-    .sort((a, b) => {
-      if (a.artist && b.artist) {
-        // Compare artist names to sort events alphabetically by artist name
-        return a.artist.name.localeCompare(b.artist.name);
-      }
-      // If artist information is missing, maintain the existing order
-      return 0;
-    });
+    .filter((event) => new Date(event.datetime) >= new Date()) // Filter out past events
+    .sort(
+      (a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime()
+    );
+
   console.log("dateSortedEvents", dateSortedEvents);
   console.log("selectedArtist", selectedArtist);
+
+  const variants = {
+    initial: {
+      scaleY: 0.5,
+      opacity: 0,
+    },
+    animate: {
+      scaleY: 1,
+      opacity: 1,
+      transition: {
+        repeat: Infinity,
+        repeatType: "mirror",
+        duration: 1,
+        ease: "circIn",
+      },
+    },
+  } as Variants;
+
   return (
     <div className="max-w-8xl w-full mx-auto relative z-10 px-8 p-4">
       <div className="flex flex-row gap-x-2 flex-wrap items-start justify-center mx-auto w-full max-w-8xl">
@@ -176,7 +187,22 @@ const BandsintownEvents: React.FC<EventListProps> = ({
       </div>
       {loading ? (
         <div className="flex items-center justify-center h-60vh bg-bg-secondary rounded-xl">
-          <p className="text-center mx-auto">Loading...</p>
+          <p className="text-center mx-auto">
+            <motion.div
+              transition={{
+                staggerChildren: 0.25,
+              }}
+              initial="initial"
+              animate="animate"
+              className="flex gap-1"
+            >
+              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
+              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
+              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
+              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
+              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
+            </motion.div>
+          </p>
         </div>
       ) : Array.isArray(dateSortedEvents) && dateSortedEvents.length > 0 ? (
         <>

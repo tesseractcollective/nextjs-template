@@ -20,7 +20,7 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface ProductsProps {
-  products?: ProductFieldsFragment[];
+  products: ProductFieldsFragment[];
 }
 
 export default function ProductShelfSection({ products }: ProductsProps) {
@@ -29,7 +29,6 @@ export default function ProductShelfSection({ products }: ProductsProps) {
     useState<ProductFieldsFragment>();
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   useState<ProductFieldsFragment>();
-  if (!products) return <></>;
 
   return (
     <div className="bg-bg-primary">

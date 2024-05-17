@@ -13,6 +13,7 @@ import ProfileDefaultSection from "@/components/ProfileSections/ProfileDefaultSe
 import ProfileFullScreenSection from "@/components/ProfileSections/ProfileFullScreenSection";
 import ProfileMyspaceSection from "@/components/ProfileSections/ProfileMyspaceSection";
 import ProfileSportsSection from "@/components/ProfileSections/ProfileSportsSection";
+import ProfileCardLinkSection from "@/components/ProfileSections/ProfileCardLinkSection";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -83,6 +84,13 @@ export default function Profiles({
   if (profileLayoutStyle === "cardModal")
     return (
       <ProfileCardModalSection
+        profiles={FilteredProfiles}
+        profileSectionTitle={profileSectionTitle}
+      />
+    );
+  if (profileLayoutStyle === "cardLink")
+    return (
+      <ProfileCardLinkSection
         profiles={FilteredProfiles}
         profileSectionTitle={profileSectionTitle}
       />

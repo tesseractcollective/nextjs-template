@@ -80,7 +80,7 @@ export default function ContentComponents({
         contentTags?.productType &&
         contentTags?.productLayoutStyle && (
           <section
-            className="max-w-8xl mx-auto z-20 w-full relative product-wrapper-content-components"
+            className="product-wrapper-content-components w-full"
             id={`product-${contentTags.productType}`}
           >
             <Products

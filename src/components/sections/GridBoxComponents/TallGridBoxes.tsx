@@ -9,16 +9,17 @@ interface GridBoxProps {
 }
 export default function TallGridBoxes({ gridBoxData }: GridBoxProps) {
   return (
-    <section className="mx-auto px-4 sm:px-6 xl:max-w-8xl lg:px-8 my-8 w-full">
+    <section className="mx-auto px-4 max-w-9xl py-8 w-full">
       <Fade triggerOnce direction="up">
         <div className="flex flex-wrap justify-center items-stretch gap-4 h-full w-full">
           {gridBoxData.map((gridBoxItem, index) => (
             <LinkItem
+              parentCssClass="h-full w-full md:max-w-xs"
               link={gridBoxItem.boxLink}
               key={`${gridBoxItem.boxLink}-${index}`}
-              cssClass="relative isolate flex flex-col overflow-hidden rounded-2xl bg-background pb-4 pt-[36rem] px-36 group hover:cursor-pointer mx-auto w-full min-w-[280px] sm:min-w-[380px] md:w-[400px] lg:w-[520px] max-w-md self-stretch mx-auto"
+              cssClass="relative isolate flex flex-col overflow-hidden rounded-2xl bg-background group hover:cursor-pointer mx-auto w-full self-stretch mx-auto  h-full block aspect-[16/9] md:aspect-[3/4] outline-none hover:outline-primary  focus-within:outline-primary transition-all"
             >
-              <div>
+              <div className="w-full h-full">
                 {!!gridBoxItem.boxImage?.url && (
                   <Image
                     src={gridBoxItem.boxImage.url}
@@ -30,18 +31,15 @@ export default function TallGridBoxes({ gridBoxData }: GridBoxProps) {
                     className="absolute inset-0 -z-10 h-full w-full object-cover"
                   />
                 )}
-                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-tertiary group-hover:from-secondary transition-all opacity-20" />
-                <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition-all ring-primary group-hover:ring-secondary ring-inset" />
-
-                <h3 className="mt-3 text-lg font-semibold leading-6 !text-text-color absolute top-8 inset-x-0">
+                <h3 className="mt-3 text-md font-semibold leading-6 !text-text-color absolute top-8 inset-x-0">
                   <div>
                     {!!gridBoxItem?.boxTitle && (
-                      <p className="text-text-overlay font-bold uppercase text-2xl text-center mx-auto text-shadow">
+                      <p className="text-text-overlay font-bold uppercase text-2xl text-left mx-auto w-5/6">
                         {gridBoxItem.boxTitle}
                       </p>
                     )}
                     {!!gridBoxItem?.boxDescription?.html && (
-                      <div className="body-parsed-text text-xs mx-auto block text-center text-text-overlay font-normal w-5/6 opacity-90 line-clamp-2 pt-2">
+                      <div className="body-parsed-text text-xs mx-auto block text-left text-text-overlay font-normal w-5/6 line-clamp-2 pt-2">
                         {parse(gridBoxItem.boxDescription.html)}
                       </div>
                     )}
@@ -51,6 +49,7 @@ export default function TallGridBoxes({ gridBoxData }: GridBoxProps) {
                     />
                   </div>
                 </h3>
+                <div className="w-full absolute z-[-5] inset-0 bg-[#000] opacity-0 group-hover:opacity-50 group-focus-within:opacity-50 transition-all"></div>
               </div>
             </LinkItem>
           ))}

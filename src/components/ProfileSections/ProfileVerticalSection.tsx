@@ -19,13 +19,6 @@ export default function ProfileVerticalSection({
   return (
     <div className="relative">
       <section className="my-0 mx-auto w-full flex flex-wrap">
-        <div className="w-full transition">
-          {!!profileSectionTitle && (
-            <h3 className="text-2xl md:text-5xl mx-auto opacity-80 uppercase text-center font-bold mb-8">
-              {profileSectionTitle}
-            </h3>
-          )}
-        </div>
         <div className="profile-vertical-gallery flex items-start justify-center my-0 flex-col lg:flex-row relative w-full min-h-[75vh]">
           {profiles.map((profile) => (
             <LinkItem

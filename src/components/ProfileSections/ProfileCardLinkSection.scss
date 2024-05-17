@@ -1,0 +1,23 @@
+.profile-card-link {
+  h3.profile-card-link-name {
+    font-size: 6.5vw;
+    line-height: 0.8;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    border: none;
+    opacity: 0;
+    word-spacing: 50vw;
+    position: absolute;
+    z-index: 50;
+  }
+  &:hover, &:focus-within {
+    a {
+      background-color: #000;
+    }
+    .profile-card-link-name {
+      opacity: 100%;
+    }
+  }
+}
