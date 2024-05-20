@@ -5,7 +5,7 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
-import { XMarkIcon, Bars2Icon } from "@heroicons/react/24/outline";
+import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
@@ -75,14 +75,14 @@ export default function ProgressNavigation({
   return (
     <div
       className={`fixed lg:sticky bottom-0 lg:top-0 z-[999] left-0 right-0 transition-all ${
-        small ? "" : ""
-      } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
+        navigationWrapperCssClass ? navigationWrapperCssClass : ""
+      }`}
       id="navigation"
       // style={{ backgroundOpacity: "50%" }}
     >
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-[1000]" onClose={setOpen}>
+        <Dialog as="div" className="relative z-[1020]" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -285,14 +285,14 @@ export default function ProgressNavigation({
         <header className="relative z-2 mt-8">
           <nav
             aria-label="Top"
-            className={`mx-auto px-4 sm:px-6 lg:px-8 bg-text-overlay transition-all transition-delay min-w-[70%] shadow-top lg:shadow-none !min-h-[48px] ${
+            className={`mx-auto px-4 sm:px-6 lg:px-8 bg-text-overlay transition-all transition-delay min-w-[85%] shadow-top lg:shadow-none !min-h-[48px] ${
               small ? "rounded-none max-w-full" : "rounded-full max-w-8xl"
             }`}
           >
             <div className="">
               <div
                 className={`flex items-center justify-between transition-all max-w-8xl mx-auto relative overflow-hidden !min-h-[48px] ${
-                  small ? "h-12" : "h-16"
+                  small ? "h-16" : "h-20"
                 }`}
               >
                 <span
@@ -319,7 +319,7 @@ export default function ProgressNavigation({
                         <span className="sr-only">{title}</span>
                         <Image
                           className={`w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all h-full ${
-                            small ? "max-h-8" : "max-h-12"
+                            small ? "max-h-12" : "max-h-16"
                           }`}
                           src={navigation.navigationLogo?.url}
                           alt=""
@@ -578,7 +578,7 @@ export default function ProgressNavigation({
                     }}
                   >
                     <span className="sr-only">Open menu</span>
-                    <Bars2Icon
+                    <Bars3Icon
                       className={`group-hover:text-primary transition-all w-full min-w-4  h-10`}
                       aria-hidden="true"
                     />
@@ -592,7 +592,7 @@ export default function ProgressNavigation({
                         key={mainNavigationItem?.link}
                         link={mainNavigationItem?.link}
                         label={mainNavigationItem?.label}
-                        cssClass={`flex items-center font-bold text-primary opacity-90 hover:text-text-color hover:opacity-100 transition-all capitalize font-semibold border px-2 py-1 border-primary rounded-full ${
+                        cssClass={`flex items-center font-bold text-primary opacity-90 hover:text-text-color hover:opacity-100 transition-all capitalize font-semibold border px-3 py-1 border-primary rounded-full ${
                           small
                             ? "text-xs md:text-sm"
                             : "text-xs sm:text-sm md:text-base"

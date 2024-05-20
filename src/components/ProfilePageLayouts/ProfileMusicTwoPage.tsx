@@ -129,7 +129,7 @@ export default function ProfileMusicTwoPage({
                 width={0}
                 height={0}
                 sizes="100%"
-                className="h-72 w-full aspect-video object-cover object-center transition-all"
+                className="h-[25rem] w-full aspect-video object-cover object-center transition-all"
               />
             </Fade>
           )}

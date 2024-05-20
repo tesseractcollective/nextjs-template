@@ -21,6 +21,7 @@ export default function ContactsSection({
       contact?.contactQuery.includes(contactType)
     )
   );
+  if (filteredContacts.length === 0) return <></>;
   if (contactsLayoutStyle === "card") {
     return <ContactCard contactsData={filteredContacts} />;
   }

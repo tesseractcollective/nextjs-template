@@ -49,7 +49,7 @@ export default function ProductCardSection({ type, products }: ProductsProps) {
     <div className="bg-bg-primary">
       <div className="mx-auto px-4 py-16 max-w-8xl">
         <h2 className="sr-only">Products</h2>
-        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 bg-text-color all-text-dark rounded py-4 mx-auto">
+        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 lg:gap-x-8 bg-text-color all-text-dark rounded py-4 mx-auto">
           {products.map((product) => (
             <LinkItem
               key={product.id}
@@ -61,9 +61,9 @@ export default function ProductCardSection({ type, products }: ProductsProps) {
               cssClass="flex flex-col p-4 gap-x-4 w-full max-w-[260px] items-start justify-center hover:border-primary border border-text-color transition-all mx-auto relative group"
             >
               <div className="flex flex-col w-full">
-                <div className="flex flex-row items-start justify-between gap-x-6">
+                <div className="flex flex-col items-start justify-between gap-x-6">
                   {product.name && (
-                    <div className="text-sm font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left">
+                    <div className="text-xl font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left">
                       {parse(product.name)}
                     </div>
                   )}

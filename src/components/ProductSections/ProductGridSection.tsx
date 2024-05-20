@@ -14,14 +14,14 @@ export default function ProductGridSection({ type, products }: ProductsProps) {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
 
   return (
-    <div className="py-16 bg-text-color">
-      <div className="mx-auto">
+    <div className="py-16">
+      <div className="mx-auto max-w-8xl px-4">
         <div
-          className={`grid w-full gap-4 place-items-center ${
+          className={`grid w-full gap-4 place-items-center transition-all ${
             products.length === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
           } ${
             products.length >= 6
-              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
               : "grid-cols-1 md:grid-cols-2"
           }`}
         >
@@ -29,7 +29,7 @@ export default function ProductGridSection({ type, products }: ProductsProps) {
             <LinkItem
               parentCssClass="w-full px-4 md:px-0"
               key={product.id}
-              cssClass="flex flex-row md:flex-col items-center justify-start md:justify-center px-0 mx-0 group hover:rounded-xl focus-within:rounded-xl overflow-hidden rounded-none transition-all duration-300 bg-bg w-full"
+              cssClass="flex flex-row md:flex-col items-center justify-start md:justify-center px-0 mx-0 group hover:rounded-xl focus-within:rounded-xl overflow-hidden rounded-none transition-all duration-300 bg-bg w-full border border-bg hover:border-text-color focus-within:border-text-color"
               link={
                 product.purchaseLink
                   ? product.purchaseLink
@@ -57,7 +57,7 @@ export default function ProductGridSection({ type, products }: ProductsProps) {
                       {product.vendor}
                     </span>
                   )}
-                  <p className="text-sm md:text-lg font-bold text-text-color truncate block capitalize group-hover:text-primary group-focus-within:text-primary transition-all duration-300">
+                  <p className="text-lg md:text-xl font-bold text-text-color truncate block capitalize group-hover:text-primary group-focus-within:text-primary transition-all duration-300">
                     {product.name}
                   </p>
                   <div className="flex items-center md:my-3">

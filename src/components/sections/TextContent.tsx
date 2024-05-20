@@ -60,7 +60,6 @@ export default function TextContentSection({
   if (textPins && textPins.length >= 1) return <TextContentPins />;
   if (textCards && textCards.length >= 1)
     return <TextCardsSection textContentData={textCards} />;
-  console.log(callToActionData);
   return (
     <>
       {!!textContentData && textContentData.length >= 1 && (
@@ -211,42 +210,30 @@ export default function TextContentSection({
             "flex items-center justify-center mx-auto fallback-class"
           }
         >
-          {callToActionData.map(
-            (callToActionItem) =>
-              callToActionItem?.ctaLink && (
-                <div
-                  key={callToActionItem.ctaLink}
-                  className={
-                    firstBlockCSSClass
-                      ? "call-to-action-items w-full"
-                      : `call-to-action-items p-4 gap-x-4 flex flex-row ${
-                          (callToActionItem.contentAlign === "center" &&
-                            "mx-auto") ||
-                          (callToActionItem.contentAlign === "left" &&
-                            "mr-auto") ||
-                          (callToActionItem.contentAlign === "right" &&
-                            "ml-auto") ||
-                          (callToActionItem.contentAlign === "justify" &&
-                            "mx-auto")
-                        }`
-                  }
-                >
-                  <LinkItem
-                    link={callToActionItem.ctaLink}
-                    label={callToActionItem.ctaLabel}
-                    cssClass={
-                      callToActionItem?.ctaClass
-                        ? callToActionItem.ctaClass
-                        : `${
-                            callToActionItem.ctaPrimary
-                              ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max flex no-underline my-4 font-bold w-full text-2xl"
-                              : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max flex no-underline my-4 w-full text-2xl"
-                          } max-w-max`
-                    }
-                  />
-                </div>
-              )
-          )}
+          <div
+            className={
+              firstBlockCSSClass
+                ? "call-to-action-items w-full"
+                : `call-to-action-items p-4 gap-x-4 flex flex-row`
+            }
+          >
+            {callToActionData.map((callToActionItem) => (
+              <LinkItem
+                key={callToActionItem.ctaLink}
+                link={callToActionItem.ctaLink}
+                label={callToActionItem.ctaLabel}
+                cssClass={
+                  callToActionItem?.ctaClass
+                    ? callToActionItem.ctaClass
+                    : `${
+                        callToActionItem.ctaPrimary
+                          ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max flex no-underline my-4 font-bold w-full text-2xl"
+                          : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max flex no-underline my-4 w-full text-2xl"
+                      } max-w-max`
+                }
+              />
+            ))}
+          </div>
         </div>
       )}
     </>

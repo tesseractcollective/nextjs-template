@@ -438,9 +438,9 @@ export default function PageHeader({
       )}
       {pageWidthStyle === "parallax" && (
         <Zoom triggerOnce>
-          <section className="pt-44 pb-44 relative bg-[#000]">
+          <section className="pt-60 pb-60 relative bg-[#000]">
             <div
-              className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
+              className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-90 bg-fixed"
               style={{
                 backgroundImage: `url(${pageHeaderImageProp})`,
               }}

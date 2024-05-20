@@ -54,18 +54,18 @@ export default function ProfileCardLinkSection({
                     <h3 className="my-0 py-0 profile-card-link-name absolute top-[30]">
                       {profile.name}
                     </h3>
-                    <div className="opacity-0 group-hover:sm:opacity-100 group-focus:sm:opacity-100 absolute bottom-5 right-5 bg-primary text-text-color w-12 h-12 aspect-1 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:sm:opacity-100 group-focus:sm:opacity-100 absolute bottom-5 right-5 bg-primary text-text-color w-22 h-24 aspect-1 flex items-center justify-center">
                       <FontAwesomeIcon
                         icon={faArrowRight as IconProp}
-                        className="fa-fw -rotate-45 w-20 h-20"
+                        className="fa-sharp -rotate-45 w-20 h-20"
                       />
                     </div>
                   </div>
-                  {!!profile.avatarImage?.url && (
+                  {!!profile.heroImage?.url && (
                     <div
                       className="profile h-0 bg-center bg-no-repeat bg-cover pb-[56.2%] relative"
                       style={{
-                        backgroundImage: `url(${profile.avatarImage?.url})`,
+                        backgroundImage: `url(${profile.heroImage.url})`,
                       }}
                     ></div>
                   )}

@@ -24,20 +24,22 @@
   h3,
   h1 *,
   h2 *,
-  h3 * {
+  h3 *, 
+  h4,   
+  h5,
+  h6, 
+  a, 
+  p.text-header {
     font-family: 'Playfair Display', serif !important;
     font-weight: bold;
   }
-  h4,
-  h5,
-  h6,
   span,
   div,
   p,
   button:not([class^="lg-"]),
-  a,
   p strong {
-    font-family: 'Playfair Display', serif !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 400;
     font-variant-numeric: lining-nums;
   }
 }

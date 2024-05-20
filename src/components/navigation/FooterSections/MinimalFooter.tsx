@@ -48,7 +48,7 @@ function MinimalFooter({
   return (
     <footer
       aria-labelledby="site-footer"
-      className={`footer-heading minimal-footer !bg-bg my-8 ${
+      className={`footer-heading minimal-footer !bg-bg py-8 ${
         footerWrapperCssClass ? footerWrapperCssClass : ""
       }`}
     >

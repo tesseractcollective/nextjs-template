@@ -247,7 +247,7 @@
 
   // filter: blur(10px) invert(100%);
 
-  mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
+  mask-image: radial-gradient(ellipse at 100% 0%, var(--background) 40%, transparent 70%);
   &::after {
     content: "";
     position: absolute;
@@ -261,7 +261,7 @@
 }
 
 :has(:checked) {
-  --stripe-color: #000;
+  --stripe-color: var(--background);
 }
 :has(:checked) .gradient-page-header-hero,
 :has(:checked) .gradient-page-header-hero::after {

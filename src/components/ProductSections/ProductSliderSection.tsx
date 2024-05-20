@@ -3,7 +3,12 @@ import type { ProductFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
 import parse from "html-react-parser";
 import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectCoverflow,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import LinkItem from "@/components/LinkItem";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
@@ -63,23 +68,28 @@ export default function ProductSliderSection({
           </button>
         </div>
       </div>
-      <div className="relative flex flex-row items-center justify-between w-full mx-auto px-4">
+      <div className="relative flex flex-row items-center justify-between w-full mx-auto">
         <Swiper
-          className="flex-wrap flex items-stretch h-full max-h-max w-full px-8 mx-auto"
-          grabCursor
-          loop
-          modules={[Navigation, Pagination, Autoplay]}
-          centerInsufficientSlides
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          loop={true}
+          pagination={true}
+          modules={[EffectCoverflow, Pagination]}
+          className="mySwiper !py-8"
           autoplay={{
-            delay: 3000,
+            delay: 2500,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          slidesPerView={isMobile ? 1 : isDesktop ? 2 : 3}
-          spaceBetween={30}
         >
           {products.map((product) => (
             <SwiperSlide
@@ -106,7 +116,7 @@ export default function ProductSliderSection({
                           ]?.url
                         }
                         alt={product.name}
-                        className="aspect-1 w-full max-w-[90px] md:max-w-full object-cover !rounded-xl p-4 min-w-[90px] min-h-[90px]"
+                        className="aspect-1 w-full max-w-full object-cover !rounded-xl p-4"
                         width={0}
                         height={0}
                       />
@@ -117,11 +127,11 @@ export default function ProductSliderSection({
                           {product.vendor}
                         </span>
                       )}
-                      <p className="text-sm md:text-lg font-bold text-dark truncate block capitalize">
+                      <p className="text-lg md:text-xl font-bold text-dark truncate block capitalize">
                         {product.name}
                       </p>
                       {product?.description && (
-                        <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0 max-w-[200px] lg:max-w-[90%] bg-invert line-clamp-2 min-h-[60px] group-hover:bg-tertiary line-clamp-parse">
+                        <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0 max-w-[90%] bg-invert line-clamp-2 min-h-[60px] group-hover:bg-tertiary line-clamp-parse">
                           {parse(product.description.html)}
                         </div>
                       )}

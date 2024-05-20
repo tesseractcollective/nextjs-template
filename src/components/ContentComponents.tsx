@@ -163,7 +163,7 @@ export default function ContentComponents({
             createMonthsForNoEvents={true}
           />
         )}
-      {!!contentTags?.contactType && contacts && contacts.length >= 1 && (
+      {!!contentTags?.contactType && !!contacts && contacts.length >= 1 && (
         <ContactsSection
           contactTypes={contentTags?.contactType}
           contactsData={contacts}

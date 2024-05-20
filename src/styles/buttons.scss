@@ -91,3 +91,12 @@
     background-color: var(--secondary);
   }
 }
+
+.button-pill {
+  text-transform: lowercase;
+  color: var(--text);
+  border: 1px solid var(--text);
+  padding: 8px 16px;
+  border-radius: 16px;
+  background-color: var(--secondary);
+}

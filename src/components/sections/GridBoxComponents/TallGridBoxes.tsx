@@ -34,7 +34,7 @@ export default function TallGridBoxes({ gridBoxData }: GridBoxProps) {
                 <h3 className="mt-3 text-md font-semibold leading-6 !text-text-color absolute top-8 inset-x-0">
                   <div>
                     {!!gridBoxItem?.boxTitle && (
-                      <p className="text-text-overlay font-bold uppercase text-2xl text-left mx-auto w-5/6">
+                      <p className="text-text-overlay !font-bold uppercase text-2xl text-left mx-auto w-5/6 text-header">
                         {gridBoxItem.boxTitle}
                       </p>
                     )}

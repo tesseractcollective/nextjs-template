@@ -16,7 +16,7 @@ interface ContactsSectionProps {
 
 export default function ContactDefault({ contactsData }: ContactsSectionProps) {
   return (
-    <section className="mx-auto max-w-8xl my-8 w-full px-8">
+    <section className="mx-auto max-w-8xl my-8 w-full px-8 contact-layout-style-contact-default">
       <ul
         role="list"
         className={`flex flex-wrap flex-row items-center gap-x-4 gap-y-4 mx-auto w-full ${

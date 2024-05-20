@@ -1,5 +1,8 @@
 .profile-card-link {
   h3.profile-card-link-name {
+    @media only screen and (max-width: 768px) {
+      font-size: 50px;
+    }
     font-size: 6.5vw;
     line-height: 0.8;
     cursor: pointer;
