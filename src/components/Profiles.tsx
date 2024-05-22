@@ -14,6 +14,7 @@ import ProfileFullScreenSection from "@/components/ProfileSections/ProfileFullSc
 import ProfileMyspaceSection from "@/components/ProfileSections/ProfileMyspaceSection";
 import ProfileSportsSection from "@/components/ProfileSections/ProfileSportsSection";
 import ProfileCardLinkSection from "@/components/ProfileSections/ProfileCardLinkSection";
+import ProfileYoutubeSection from "@/components/ProfileSections/ProfileYoutubeSection";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -149,6 +150,13 @@ export default function Profiles({
   if (profileLayoutStyle === "record")
     return (
       <ProfileRecordSection
+        profiles={FilteredProfiles}
+        profileSectionTitle={profileSectionTitle}
+      />
+    );
+  if (profileLayoutStyle === "youtube")
+    return (
+      <ProfileYoutubeSection
         profiles={FilteredProfiles}
         profileSectionTitle={profileSectionTitle}
       />

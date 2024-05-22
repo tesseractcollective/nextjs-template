@@ -9,6 +9,7 @@ import VideoNetflixSection from "@/components/VideoSections/VideoNetflixSection"
 import VideoAlternateSection from "@/components/VideoSections/VideoAlternateSection";
 import VideoStandardSection from "@/components/VideoSections/VideoStandardSection";
 import VideoUniversalSection from "@/components/VideoSections/VideoUniversalSection";
+import VideoYoutubeSection from "@/components/VideoSections/VideoYoutubeSection";
 
 interface VideoSectionProps {
   videoData: VideoBoxFieldsFragment[];
@@ -48,6 +49,9 @@ export default function VideoSection({
   const videoUniversalData = modifiedVideoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "universal"
   );
+  const videoYoutubeData = modifiedVideoData.filter(
+    (videoDataItem) => videoDataItem.videoDisplayLayout === "youtube"
+  );
   const videoPlaylistData = modifiedVideoData.filter(
     (videoDataItem) => typeof videoDataItem.youtubePlaylistId !== "undefined"
   );
@@ -78,6 +82,9 @@ export default function VideoSection({
 
   if (videoOffsetData && videoOffsetData.length >= 1)
     return <VideoOffsetSection videoData={videoOffsetData} />;
+
+  if (videoYoutubeData && videoYoutubeData.length >= 1)
+    return <VideoYoutubeSection videoData={videoYoutubeData} />;
 
   if (videoFullScreenData && videoFullScreenData.length >= 1)
     return <VideoFullScreenSection videoData={videoFullScreenData} />;
