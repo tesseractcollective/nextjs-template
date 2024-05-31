@@ -8,6 +8,7 @@ import Popup from "@/components/Popup";
 import LayoutBlockSections from "@/components/LayoutBlockSections";
 import { Event } from "@/components/Calendar/calendarHelpers";
 import Page404 from "@/components/Page404";
+import Loader from "@/components/elements/Loader";
 import PagePassword from "./PagePassword";
 
 interface PageProps {
@@ -22,6 +23,9 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
 
   return (
     <div className="relative layout-blocks-wrapper">
+      {!!page?.contentPageJson?.loader && siteLibrary.logo?.url && (
+        <Loader icon={siteLibrary.logo.url} />
+      )}
       {page?.pagePassword && siteLibrary.logo?.url && (
         <PagePassword
           accessPassword={page.pagePassword}

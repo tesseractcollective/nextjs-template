@@ -137,13 +137,13 @@ const BandsintownEvents: React.FC<EventListProps> = ({
   } as Variants;
 
   return (
-    <div className="max-w-8xl w-full mx-auto relative z-10 px-8 p-4">
-      <div className="flex flex-row gap-x-2 flex-wrap items-start justify-center mx-auto w-full max-w-8xl">
+    <div className="max-w-8xl w-full mx-auto relative z-10 px-8 py-4">
+      <div className="flex flex-row gap-x-4 flex-wrap items-start justify-center mx-auto w-full">
         {!!profiles &&
           profiles.map((profile) => (
             <button
               key={profile.profileSlug}
-              className="text-text-color"
+              className="text-text-color md:flex-1 md:min-w-[280px]"
               type="button"
               onClick={() => profile.name && setSelectedArtist(profile.name)}
             >

@@ -28,6 +28,7 @@ const BandsintownEventsDataSort: React.FC<EventListProps> = ({
       (profile) =>
         profile?.profileType?.toLowerCase() === profileType?.toLowerCase()
     )
+    .filter((profile) => profile?.primaryProfile === true)
     .map((item) => item?.name)
     .filter((name) => name !== null && name !== undefined)
     .filter((name): name is string => typeof name === "string");
@@ -37,6 +38,7 @@ const BandsintownEventsDataSort: React.FC<EventListProps> = ({
       (profile) =>
         profile?.profileType?.toLowerCase() === profileType?.toLowerCase()
     )
+    .filter((profile) => profile.primaryProfile === true)
     .sort((profileA, profileB) => {
       const orderA = profileA.order || 99;
       const orderB = profileB.order || 99;
@@ -60,7 +62,8 @@ const BandsintownEventsDataSort: React.FC<EventListProps> = ({
       }
 
       return 0;
-    });
+    })
+    .filter((profile) => profile.primaryProfile !== false);
 
   return (
     <>

@@ -5,6 +5,7 @@ import EventArtistFilterSection from "@/components/EventSections/EventArtistFilt
 import EventSliderSection from "@/components/EventSections/EventSliderSection";
 import EventFullScreenSection from "@/components/EventSections/EventFullScreenSection";
 import EventGridSection from "@/components/EventSections/EventGridSection";
+import EventCardSection from "@/components/EventSections/EventCardSection";
 
 interface EventsProps {
   events: EventFieldsFragment[];
@@ -34,6 +35,23 @@ export default function Events({ events, eventDisplayLayout }: EventsProps) {
   // console.log("events", events.length);
   // console.log("filteredEvents", sortedEvents.length);
 
+  // EventDisplayLayout
+  // fullscreen
+  // artistFilter
+  // card
+  // compact
+  // fullscreen
+  // Grid
+  // large
+  // list
+  // None
+  // poster
+  // Slider
+  // thin
+
+  if (eventDisplayLayout === "card") {
+    return <EventCardSection events={sortedEvents} />;
+  }
   if (eventDisplayLayout === "fullscreen") {
     return <EventFullScreenSection events={sortedEvents} />;
   }
