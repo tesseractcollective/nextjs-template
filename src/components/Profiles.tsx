@@ -23,6 +23,7 @@ interface ProfilesProps {
   profiles?: ProfileFieldsFragment[];
   siteID?: string;
   siteLogo?: string;
+  siteDomain: string;
 }
 
 export default function Profiles({
@@ -32,6 +33,7 @@ export default function Profiles({
   profiles,
   siteID,
   siteLogo,
+  siteDomain,
 }: ProfilesProps) {
   if (!profiles) return <></>;
   const FilteredProfiles = profiles
@@ -159,6 +161,7 @@ export default function Profiles({
       <ProfileYoutubeSection
         profiles={FilteredProfiles}
         profileSectionTitle={profileSectionTitle}
+        siteDomain={siteDomain}
       />
     );
   if (profileLayoutStyle === "fullScreen")

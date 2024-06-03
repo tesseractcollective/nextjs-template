@@ -153,6 +153,7 @@ export default function ContentComponents({
             profileSectionTitle={contentTags?.profileSectionTitle || ""}
             siteID={siteLibrary.siteId}
             siteLogo={siteLibrary?.logo?.url || ""}
+            siteDomain={siteLibrary.metaDomain || ""}
           />
         )}
       {!!contentTags?.eventShowType &&

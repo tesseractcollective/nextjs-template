@@ -501,6 +501,7 @@ export default function Profile({
           profileType={profile.profileType}
           siteID={siteLibrary.siteId}
           siteLogo={siteLibrary?.logo?.url}
+          siteDomain={siteLibrary.metaDomain || ""}
         />
       )}
     </div>
