@@ -5,7 +5,7 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
-import { Bars3BottomLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
@@ -76,7 +76,7 @@ export default function CircleNavigation({
         <AccouncementBar
           accouncementText={navigation.announcementText}
           accouncementLink={navigation?.announcementLink || ""}
-          cssClassWrapper="fixed inset-x-0 z-[998] text-right"
+          cssClassWrapper="fixed inset-x-0 z-[998] text-center lg:text-right"
         />
       )}
       <div
@@ -84,11 +84,10 @@ export default function CircleNavigation({
           navigation?.announcementText ? "lg:top-8" : ""
         } ${
           small
-            ? "nav-shadow-scrolled bg-bg-secondary border-b-bg"
-            : "bg-bg border-b-secondary"
+            ? "nav-shadow-scrolled bg-bg-secondary border-t-bg border-b-none lg:border-b-bg"
+            : "bg-bg border-t-secondary lg:border-b-secondary"
         } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
         id="navigation"
-        // style={{ backgroundOpacity: "50%" }}
       >
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
@@ -510,70 +509,9 @@ export default function CircleNavigation({
             </Popover.Group>
             {/* stop */}
 
-            <Fade
-              className="relative lg:hidden p-1 max-w-max flex items-center justify-center"
-              direction="up"
-            >
-              <button
-                type="button"
-                className="rounded-full px-2 py-2 text-text-color hover:border border border-[transparent] hover:border-tertiary transition-all group relative aspect-1"
-                onClick={() => {
-                  setOpen(true);
-                  ReactGA.event({
-                    category: "Link",
-                    action: "Open Mobile Menu",
-                    label: "Open Mobile Menu",
-                  });
-                }}
-              >
-                <Bars3BottomLeftIcon
-                  className="h-7 w-7 transition-all rotate group-hover:-rotate-180"
-                  aria-hidden="true"
-                />
-
-                <span className="sr-only">Menu</span>
-              </button>
-            </Fade>
-
-            <Link
-              href="/"
-              className={`cursor-pointer transition-all flex items-center justify-center mx-auto psuedo-circle max-w-[100px] ${
-                small ? "small-psuedo-circle max-w-[80px]" : ""
-              }`}
-              id={`nav-logo-desktop`}
-              onClick={() => {
-                ReactGA.event({
-                  category: "Link",
-                  action: "Visit Home",
-                  label: "Visit Home",
-                });
-              }}
-            >
-              {navigation?.navigationLogo ? (
-                <>
-                  <span className="sr-only">{title}</span>
-                  <Image
-                    className={`w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all h-full ${
-                      small ? "max-h-12 rotate-[360deg]" : "max-h-20 rotate-0"
-                    }`}
-                    src={navigation.navigationLogo?.url}
-                    alt=""
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    style={{ width: "100%" }}
-                  />
-                </>
-              ) : (
-                <span className="font-bold text-2xl text-text-color">
-                  {title}
-                </span>
-              )}
-            </Link>
-
-            {/* START Desktop Flyout menus */}
+            {/* START Mobile Flyout menus */}
             {((!!primaryItems && primaryItems.length >= 1) || siteLibrary) && (
-              <div className="h-full flex flex-col-reverse sm:flex-row items-center justify-center lg:justify-end gap-x-4 max-w-max ml-auto gap-y-1 lg:gap-y-0">
+              <div className="h-full flex flex-col-reverse lg:hidden sm:flex-row items-center justify-center lg:justify-end gap-x-4 max-w-max mr-auto gap-y-1 lg:gap-y-0">
                 {primaryItems.map((mainNavigationItem) => (
                   <LinkItem
                     key={mainNavigationItem?.link}
@@ -597,11 +535,101 @@ export default function CircleNavigation({
               </div>
             )}
 
+            <Link
+              href="/"
+              className={`cursor-pointer transition-all flex items-center justify-center mx-auto psuedo-circle max-w-[80px] lg:max-w-[100px] ${
+                small ? "small-psuedo-circle max-w-[70px] lg:max-w-[80px]" : ""
+              }`}
+              id={`nav-logo-desktop`}
+              onClick={() => {
+                ReactGA.event({
+                  category: "Link",
+                  action: "Visit Home",
+                  label: "Visit Home",
+                });
+              }}
+            >
+              {navigation?.navigationLogo ? (
+                <>
+                  <span className="sr-only">{title}</span>
+                  <Image
+                    className={`w-auto mx-auto cursor-pointer object-contain transition-all h-full ${
+                      small
+                        ? "max-h-10 lg:max-h-12 rotate-[360deg]"
+                        : "max-h-16 lg:max-h-20 rotate-0"
+                    }`}
+                    src={navigation.navigationLogo?.url}
+                    alt=""
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    style={{ width: "100%" }}
+                  />
+                </>
+              ) : (
+                <span className="font-bold text-2xl text-text-color">
+                  {title}
+                </span>
+              )}
+            </Link>
+
+            {/* START Desktop Flyout menus */}
+            {((!!primaryItems && primaryItems.length >= 1) || siteLibrary) && (
+              <div className="h-full hidden lg:flex sm:flex-row items-center justify-center lg:justify-end gap-x-4 max-w-max ml-auto gap-y-1 lg:gap-y-0">
+                {primaryItems.map((mainNavigationItem) => (
+                  <LinkItem
+                    key={mainNavigationItem?.link}
+                    link={mainNavigationItem?.link}
+                    label={mainNavigationItem?.label}
+                    cssClass={`flex justify-center items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 lg:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
+                      mainNavigationItem?.cssClass
+                    } ${
+                      small
+                        ? "text-xs lg:text-sm py-[0.15rem] lg:py-1 bg-primary hover:bg-secondary"
+                        : "text-xs sm:text-sm lg:text-base py-1 lg:py-2 bg-primary hover:bg-secondary"
+                    }`}
+                    sameTab={mainNavigationItem?.sameTab}
+                  />
+                ))}
+                <SocialMediaIcons
+                  fadeDirection="down"
+                  siteLibrary={siteLibrary}
+                  cssClass="w-full hidden lg:flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
+                />
+              </div>
+            )}
+
+            {/* Mobile Menu Button */}
+            <Fade
+              className="relative lg:hidden p-1 max-w-max flex items-center justify-center ml-auto"
+              direction="up"
+            >
+              <button
+                type="button"
+                className="rounded-full px-2 py-2 text-text-color hover:border border border-[transparent] hover:border-tertiary transition-all group relative aspect-1 flex items-center justify-center flex-col"
+                onClick={() => {
+                  setOpen(true);
+                  ReactGA.event({
+                    category: "Link",
+                    action: "Open Mobile Menu",
+                    label: "Open Mobile Menu",
+                  });
+                }}
+              >
+                <Bars3Icon
+                  className="h-7 w-7 transition-all rotate group-hover:-rotate-180"
+                  aria-hidden="true"
+                />
+
+                <span className="text-center text-sm">Menu</span>
+              </button>
+            </Fade>
+
             {/* Mobile menu bar */}
           </nav>
         </header>
       </div>
-      <div className="h-0 lg:h-24"></div>
+      <div className="h-0 lg:h-24 nav-spacer"></div>
     </>
   );
 }

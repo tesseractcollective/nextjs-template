@@ -60,8 +60,12 @@
   cursor: pointer;
   &:before {
     background: var(--background);
-    height: 125px;
-    width: 125px;
+    height: 110px;
+    width: 110px;
+    @media screen and (min-width: 976px) {
+      height: 125px;
+      width: 125px;
+    }
     border-radius: 50%;
     content: '';
     z-index: -2;

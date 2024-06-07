@@ -180,6 +180,12 @@ html {
       color: var(--secondary) !important;
     }
   }
+  &.wide-button {
+    width: 100%;
+    &::before {
+      inset: 0 0px 0 0px !important;
+    }
+  }
 }
 
 .text-link {

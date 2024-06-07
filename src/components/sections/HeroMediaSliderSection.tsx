@@ -195,13 +195,13 @@ export default function HeroMediaSliderSection({
                         </div>
                       )}
 
-                      <div className="flex flex-row flex-wrap justify-center items-center mx-auto ">
+                      <div className="flex flex-row flex-wrap justify-center items-center mx-auto w-full">
                         {heroMediaSliderItem?.callToAction?.map(
                           (callToActionItem) => (
                             <div key={Math.random()}>
                               {callToActionItem?.ctaLink && (
                                 <div
-                                  className={`flex ${
+                                  className={`flex gap-x-2 ${
                                     (callToActionItem?.contentAlign ===
                                       "center" &&
                                       "mx-auto") ||
@@ -223,7 +223,7 @@ export default function HeroMediaSliderSection({
                                       callToActionItem?.ctaPrimary
                                         ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
                                         : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
-                                    } mr-2 max-w-max`}
+                                    } max-w-max`}
                                   />
                                 </div>
                               )}

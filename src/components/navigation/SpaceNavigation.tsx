@@ -71,7 +71,7 @@ export default function SpaceNavigation({
   return (
     <>
       <div
-        className={`bg-bg fixed top-0 z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow  dark-shadow ${
+        className={`bg-[#00000000] fixed top-0 z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow  dark-shadow ${
           small ? "nav-shadow-scrolled" : ""
         } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
         id="navigation"
@@ -624,7 +624,6 @@ export default function SpaceNavigation({
           </nav>
         </header>
       </div>
-      <div className="h-24"></div>
     </>
   );
 }
