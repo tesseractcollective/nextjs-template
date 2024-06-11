@@ -951,24 +951,24 @@ export default function PageHeader({
         >
           {(pageHeaderTitleProp || pageHeaderSubtitleProp) && (
             <div className="relative w-full mx-auto p-4 my-8">
-              <div className="flex flex-col md:flex-col items-center md:items-start justify-center md:justify-start w-full">
+              <div className="flex flex-col md:flex-col items-center justify-center md:justify-start w-full">
                 {!!pageHeaderTitleProp && (
                   <Fade direction="left" triggerOnce>
-                    <h1 className="text-3xl md:text-7xl xl:text-8xl text-shadow my-0 py-0 text-center md:text-left text-primary font-bold w-full mx-auto">
+                    <h1 className="text-3xl md:text-7xl xl:text-8xl text-shadow my-0 py-0 text-center text-primary font-bold w-full mx-auto">
                       {pageHeaderTitleProp}
                     </h1>
                   </Fade>
                 )}
                 {!!pageHeaderSubtitleProp && (
                   <Fade direction="right" triggerOnce>
-                    <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 md:text-left md:ml-4 w-full">
+                    <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 md:ml-4 w-full">
                       {pageHeaderSubtitleProp}
                     </h2>
                   </Fade>
                 )}
                 {!!pageCallToAction && pageCallToAction?.length > 0 && (
                   <div>
-                    <div className="text-center mx-auto md:text-left md:mx-0">
+                    <div className="text-center mx-auto md:mx-0">
                       {pageCallToAction.map(
                         (callToActionItem) =>
                           callToActionItem?.ctaLink && (

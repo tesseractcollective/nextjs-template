@@ -8,6 +8,7 @@ const nextConfig = {
       "img.youtube.com",
       "i.scdn.co",
       "photos.bandsintown.com",
+      "image-cdn-ak.spotifycdn.com",
     ],
   },
   async rewrites() {

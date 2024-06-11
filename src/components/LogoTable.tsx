@@ -8,6 +8,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import LinkItem from "./LinkItem";
 
 interface LogoTableProps {
   type: string;
@@ -106,30 +107,29 @@ export default function LogoTable({
                         !!logoTableItem?.logoName && (
                           <Fade triggerOnce cascade direction="up">
                             {logoTableItem?.logoLink ? (
-                              <a
-                                target="_blank"
-                                title={logoTableItem?.logoName || ""}
-                                href={`${logoTableItem.logoLink}`}
-                                rel="noreferrer"
-                                className="no-underline"
+                              <LinkItem
+                                link={`${logoTableItem.logoLink}`}
+                                cssClass="no-underline"
                               >
-                                <Image
-                                  className="max-h-24 w-full object-contain"
-                                  src={logoTableItem.logoImage.url}
-                                  alt={logoTableItem?.logoName}
-                                  width={0}
-                                  height={0}
-                                  sizes="100%"
-                                  style={{
-                                    width: "auto",
-                                    height: "auto",
-                                    margin: "0 auto",
-                                  }}
-                                />
-                                <span className="sr-only">
-                                  {logoTableItem?.logoName}
-                                </span>
-                              </a>
+                                <>
+                                  <Image
+                                    className="max-h-24 w-full object-contain"
+                                    src={logoTableItem.logoImage.url}
+                                    alt={logoTableItem?.logoName}
+                                    width={0}
+                                    height={0}
+                                    sizes="100%"
+                                    style={{
+                                      width: "auto",
+                                      height: "auto",
+                                      margin: "0 auto",
+                                    }}
+                                  />
+                                  <span className="sr-only">
+                                    {logoTableItem?.logoName}
+                                  </span>
+                                </>
+                              </LinkItem>
                             ) : (
                               <Image
                                 className="max-h-24 w-full object-contain"

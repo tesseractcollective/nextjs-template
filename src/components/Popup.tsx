@@ -6,7 +6,7 @@ import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface PopupProps {
   layout: LayoutQuery;
@@ -17,7 +17,7 @@ const Popup = ({ layout }: PopupProps) => {
     if (
       layout?.page &&
       layout?.page.popup &&
-      layout?.page?.popup.openOnScroll &&
+      layout?.page.popup.openOnScroll &&
       layout?.page.popup.openOnScroll
     ) {
       setIsOpen(true);
@@ -36,11 +36,12 @@ const Popup = ({ layout }: PopupProps) => {
       // }
     }
   }, [layout]);
+
   const [isOpen, setIsOpen] = useState(false);
   if (!layout) return <></>;
 
   return (
-    <div className="bg-slate-900 fixed left-8 bottom-16 z-[1001]">
+    <div className="bg-slate-900 fixed left-8 bottom-16 z-[1001] max-h-[80vh]">
       <button
         onClick={() => setIsOpen(true)}
         className={`bg-gradient-to-r from-bg to-bg-secondary text-white font-medium px-4 py-2 rounded hover:opacity-90 transition-opacity shadow-xl border border-bg-secondary ${layout?.page?.popup?.buttonOpenCss}`}
@@ -87,70 +88,68 @@ const SpringModal = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className="bg-[#00000070] backdrop-blur p-8 fixed inset-0 z-[1000] grid place-items-center overflow-y-scroll cursor-pointer"
+          className="bg-[#00000070] backdrop-blur p-4 md:p-8 fixed inset-0 z-[1000] grid place-items-center overflow-y-scroll cursor-pointer"
         >
           <motion.div
             initial={{ scale: 0, rotate: "12.5deg" }}
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-bg to-bg-secondary text-white py-6 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-hidden dialog-popup-page"
+            className="bg-gradient-to-br from-bg to-bg-secondary text-white py-6 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-hidden dialog-popup-page max-h-[90vh]"
           >
             <div className="relative z-10">
-              <h3 className="text-3xl font-bold text-center">{header}</h3>
-              {popupContent.map((popupBlock, parentIndex) => {
-                return (
+              <h3 className="text-xl font-bold text-center mb-0">{header}</h3>
+              {popupContent.map((popupBlock, parentIndex) => (
+                <div
+                  key={`layout-block-row-${parentIndex}`}
+                  id={`layout-block-row-${parentIndex + 1}`}
+                  className={`w-full flex flex-wrap ${popupBlock.cssClass} ${
+                    popupBlock?.backgroundImage?.url
+                      ? "background-image-featured"
+                      : ""
+                  }`}
+                >
                   <div
-                    key={`layout-block-row-${parentIndex++}`}
-                    id={`layout-block-row-${parentIndex++ + 1}`}
-                    className={`w-full flex flex-wrap ${popupBlock.cssClass} ${
-                      popupBlock?.backgroundImage?.url
-                        ? "background-image-featured"
-                        : ""
+                    id={popupBlock?.htmlId || `layout-block-${parentIndex}`}
+                    key={Math.random()}
+                    className={`${
+                      popupBlock?.hideBlockColumn ? "hidden" : ""
+                    } flex justify-center mx-0 px-0 w-full flex-auto  dynamic-feature-section flex-col ${
+                      popupBlock?.cssClass ? popupBlock?.cssClass : ""
                     }`}
                   >
-                    <div
-                      id={popupBlock?.htmlId || `layout-block-${parentIndex}`}
-                      key={Math.random()}
-                      className={`${
-                        popupBlock?.hideBlockColumn ? "hidden" : ""
-                      } flex justify-center mx-0 px-0 w-full flex-auto  dynamic-feature-section flex-col ${
-                        popupBlock?.cssClass ? popupBlock?.cssClass : ""
-                      }`}
-                    >
-                      <input
-                        readOnly
-                        type="checkbox"
-                        id="null"
-                        name="null"
-                        checked
-                        className="sr-only"
-                      />
-                      <Sections
-                        sectionData={popupBlock.sections}
-                        siteLibrary={siteLibrary}
-                      />
-                      <ContentComponents
-                        contentTags={popupBlock.contentTags}
-                        events={events}
-                        contacts={contacts}
-                        testimonials={testimonials}
-                        profiles={profiles}
-                        logoTables={logoTables}
-                        products={products}
-                        blogs={blogs}
-                        albums={albums}
-                        elements={popupBlock.elements}
-                        siteLibrary={siteLibrary}
-                      />
-                      <Elements
-                        elements={popupBlock.elements}
-                        siteLibrary={siteLibrary}
-                      />
-                    </div>
+                    <input
+                      readOnly
+                      type="checkbox"
+                      id="null"
+                      name="null"
+                      checked
+                      className="sr-only"
+                    />
+                    <Sections
+                      sectionData={popupBlock.sections}
+                      siteLibrary={siteLibrary}
+                    />
+                    <ContentComponents
+                      contentTags={popupBlock.contentTags}
+                      events={events}
+                      contacts={contacts}
+                      testimonials={testimonials}
+                      profiles={profiles}
+                      logoTables={logoTables}
+                      products={products}
+                      blogs={blogs}
+                      albums={albums}
+                      elements={popupBlock.elements}
+                      siteLibrary={siteLibrary}
+                    />
+                    <Elements
+                      elements={popupBlock.elements}
+                      siteLibrary={siteLibrary}
+                    />
                   </div>
-                );
-              })}
+                </div>
+              ))}
 
               <div className="flex gap-2">
                 <button
@@ -166,7 +165,7 @@ const SpringModal = ({
                 onClick={() => setIsOpen(false)}
               >
                 <FontAwesomeIcon
-                  icon={faXmark as IconProp}
+                  icon={faTimes as IconProp}
                   className="fa-fw my-0 py-0 h-4 w-4"
                 />
               </button>
