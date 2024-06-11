@@ -41,7 +41,7 @@ const Popup = ({ layout }: PopupProps) => {
   if (!layout) return <></>;
 
   return (
-    <div className="bg-slate-900 fixed left-8 bottom-16 z-[1001] max-h-[80vh]">
+    <div className="bg-slate-900 fixed left-8 bottom-16 z-[1001]">
       <button
         onClick={() => setIsOpen(true)}
         className={`bg-gradient-to-r from-bg to-bg-secondary text-white font-medium px-4 py-2 rounded hover:opacity-90 transition-opacity shadow-xl border border-bg-secondary ${layout?.page?.popup?.buttonOpenCss}`}
@@ -88,14 +88,14 @@ const SpringModal = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className="bg-[#00000070] backdrop-blur p-4 md:p-8 fixed inset-0 z-[1000] grid place-items-center overflow-y-scroll cursor-pointer"
+          className="bg-[#00000070] backdrop-blur-sm fixed inset-0 z-[1000] grid place-items-center overflow-y-scroll cursor-pointer p-6"
         >
           <motion.div
             initial={{ scale: 0, rotate: "12.5deg" }}
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-bg to-bg-secondary text-white py-6 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-hidden dialog-popup-page max-h-[90vh]"
+            className="bg-gradient-to-br from-bg to-bg-secondary text-white py-1 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-hidden dialog-popup-page max-h-[90dvh]"
           >
             <div className="relative z-10">
               <h3 className="text-xl font-bold text-center mb-0">{header}</h3>
@@ -161,7 +161,7 @@ const SpringModal = ({
               </div>
               <button
                 type="button"
-                className="hidden md:inline-flex items-center justify-center p-1 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs absolute -top-5 right-0 rounded-full"
+                className="inline-flex items-center justify-center p-1 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs absolute top-0 md:-top-5 right-0 rounded-full"
                 onClick={() => setIsOpen(false)}
               >
                 <FontAwesomeIcon
