@@ -90,87 +90,89 @@ const SpringModal = ({
           onClick={() => setIsOpen(false)}
           className="bg-[#00000070] backdrop-blur-sm fixed inset-0 z-[1000] grid place-items-center overflow-y-scroll cursor-pointer p-6"
         >
-          <motion.div
-            initial={{ scale: 0, rotate: "12.5deg" }}
-            animate={{ scale: 1, rotate: "0deg" }}
-            exit={{ scale: 0, rotate: "0deg" }}
-            onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-bg to-bg-secondary text-white py-1 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-hidden dialog-popup-page max-h-[90dvh]"
-          >
-            <div className="relative z-10">
-              <h3 className="text-xl font-bold text-center mb-0">{header}</h3>
-              {popupContent.map((popupBlock, parentIndex) => (
-                <div
-                  key={`layout-block-row-${parentIndex}`}
-                  id={`layout-block-row-${parentIndex + 1}`}
-                  className={`w-full flex flex-wrap ${popupBlock.cssClass} ${
-                    popupBlock?.backgroundImage?.url
-                      ? "background-image-featured"
-                      : ""
-                  }`}
-                >
+          <div className="relative w-full mx-auto flex max-w-xl">
+            <motion.div
+              initial={{ scale: 0, rotate: "12.5deg" }}
+              animate={{ scale: 1, rotate: "0deg" }}
+              exit={{ scale: 0, rotate: "0deg" }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-gradient-to-br from-bg to-bg-secondary text-white py-1 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-hidden dialog-popup-page max-h-[90dvh]"
+            >
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold text-center mb-0">{header}</h3>
+                {popupContent.map((popupBlock, parentIndex) => (
                   <div
-                    id={popupBlock?.htmlId || `layout-block-${parentIndex}`}
-                    key={Math.random()}
-                    className={`${
-                      popupBlock?.hideBlockColumn ? "hidden" : ""
-                    } flex justify-center mx-0 px-0 w-full flex-auto  dynamic-feature-section flex-col ${
-                      popupBlock?.cssClass ? popupBlock?.cssClass : ""
+                    key={`layout-block-row-${parentIndex}`}
+                    id={`layout-block-row-${parentIndex + 1}`}
+                    className={`w-full flex flex-wrap ${popupBlock.cssClass} ${
+                      popupBlock?.backgroundImage?.url
+                        ? "background-image-featured"
+                        : ""
                     }`}
                   >
-                    <input
-                      readOnly
-                      type="checkbox"
-                      id="null"
-                      name="null"
-                      checked
-                      className="sr-only"
-                    />
-                    <Sections
-                      sectionData={popupBlock.sections}
-                      siteLibrary={siteLibrary}
-                    />
-                    <ContentComponents
-                      contentTags={popupBlock.contentTags}
-                      events={events}
-                      contacts={contacts}
-                      testimonials={testimonials}
-                      profiles={profiles}
-                      logoTables={logoTables}
-                      products={products}
-                      blogs={blogs}
-                      albums={albums}
-                      elements={popupBlock.elements}
-                      siteLibrary={siteLibrary}
-                    />
-                    <Elements
-                      elements={popupBlock.elements}
-                      siteLibrary={siteLibrary}
-                    />
+                    <div
+                      id={popupBlock?.htmlId || `layout-block-${parentIndex}`}
+                      key={Math.random()}
+                      className={`${
+                        popupBlock?.hideBlockColumn ? "hidden" : ""
+                      } flex justify-center mx-0 px-0 w-full flex-auto  dynamic-feature-section flex-col ${
+                        popupBlock?.cssClass ? popupBlock?.cssClass : ""
+                      }`}
+                    >
+                      <input
+                        readOnly
+                        type="checkbox"
+                        id="null"
+                        name="null"
+                        checked
+                        className="sr-only"
+                      />
+                      <Sections
+                        sectionData={popupBlock.sections}
+                        siteLibrary={siteLibrary}
+                      />
+                      <ContentComponents
+                        contentTags={popupBlock.contentTags}
+                        events={events}
+                        contacts={contacts}
+                        testimonials={testimonials}
+                        profiles={profiles}
+                        logoTables={logoTables}
+                        products={products}
+                        blogs={blogs}
+                        albums={albums}
+                        elements={popupBlock.elements}
+                        siteLibrary={siteLibrary}
+                      />
+                      <Elements
+                        elements={popupBlock.elements}
+                        siteLibrary={siteLibrary}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
 
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="bg-white hover:opacity-90 transition-opacity text-indigo-600 font-semibold w-full py-2 rounded"
-                >
-                  Close
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="bg-white hover:opacity-90 transition-opacity text-indigo-600 font-semibold w-full py-2 rounded"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
-              <button
-                type="button"
-                className="inline-flex items-center justify-center p-1 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs absolute top-0 md:-top-5 right-0 rounded-full"
-                onClick={() => setIsOpen(false)}
-              >
-                <FontAwesomeIcon
-                  icon={faTimes as IconProp}
-                  className="fa-fw my-0 py-0 h-4 w-4"
-                />
-              </button>
-            </div>
-          </motion.div>
+            </motion.div>
+            <button
+              type="button"
+              className="inline-flex items-center justify-center p-1 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs absolute top-0 md:-top-[10px] right-[-10px] rounded-full bg-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              <FontAwesomeIcon
+                icon={faTimes as IconProp}
+                className="fa-fw my-0 py-0 h-4 w-4"
+              />
+            </button>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

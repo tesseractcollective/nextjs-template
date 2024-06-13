@@ -20,6 +20,7 @@ import LinkItem from "@/components/LinkItem";
 import Blogs from "@/components/Blogs";
 import ReactGA from "react-ga4";
 import SocialMediaIcons from "./SocialMediaIcons";
+import Moment from "react-moment";
 import {
   faDiamondTurnRight,
   faLocationDot,
@@ -66,6 +67,7 @@ export default function Blog({
     blogGallery,
     blogHtml,
     layoutBlocks,
+    date,
   } = blog;
   const filteredBlogs = blogs?.filter(
     (tempBlog) => blog.blogSlug !== tempBlog.blogSlug
@@ -87,7 +89,7 @@ export default function Blog({
       </Head>
       <div className="texture-background texture-faded overflow-hidden relative">
         {blog.blogCategory && (
-          <div className="mx-auto block mt-2 px-4 text-center">
+          <div className="mx-auto block mt-8 px-4 text-center">
             <Link
               href={`/${blog.blogCategory}`}
               onClick={() =>
@@ -112,11 +114,11 @@ export default function Blog({
           <div className="flex flex-col blog-meta gap-y-8 mb-12">
             <div>
               {!!image?.url && (
-                <div className="relative h-80 md:h-[500px] block px-0 md:px-4 transition-all">
+                <div className="relative h-80 aspect-video md:h-[500px] block px-0 md:px-4 transition-all">
                   <Image
                     src={image.url}
                     alt=""
-                    className="object-center mx-auto h-full w-full object-cover block rounded-t-xl"
+                    className="object-center mx-auto h-full w-full object-cover block rounded-t-xl aspect-video"
                     width={0}
                     height={0}
                     sizes="100%"
@@ -128,6 +130,13 @@ export default function Blog({
               <h1 className="uppercase !m-0 text-3xl md:!text-5xl gradient-text block !font-bold !text-left !no-underline !border-b-0 px-4">
                 {title}
               </h1>
+            )}
+            {!!date && (
+              <h3 className="text-xl opacity-70 px-4">
+                <span className="">
+                  <Moment format="MMM/DD/YYYY">{date}</Moment>
+                </span>
+              </h3>
             )}
             {!!filteredContacts && (
               <div className="mx-auto px-4 flex flex-row flex-wrap w-full">
@@ -212,7 +221,7 @@ export default function Blog({
             )}
           </div>
           {!!content?.html && (
-            <div className="body-parsed-text block px-4">
+            <div className="body-parsed-text block px-4 content-large">
               {parse(content.html)}
             </div>
           )}

@@ -36,24 +36,24 @@ export default function Whatsapp({
         <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
-            enter="transition ease-in-out duration-400 transform"
+            enter="transition ease-in-out duration-[400ms] transform"
             enterFrom="translate-y-full"
             enterTo="-translate-y-0"
-            leave="transition ease-in-out duration-400 transform"
+            leave="transition ease-in-out duration-[400ms] transform"
             leaveFrom="-translate-y-0"
             leaveTo="translate-y-full"
           >
             <div className="fixed inset-0 bg-[#00000097] transition-all backdrop-blur-lg" />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-10 overflow-y-auto w-full">
+          <div className="fixed inset-0 z-10 overflow-y-auto w-full px-4">
             <div className="flex h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-600"
                 enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-600"
+                leave="ease-in duration-[400ms]"
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
@@ -101,9 +101,13 @@ export default function Whatsapp({
                                 </div>
                                 <div className="-ml-px flex w-0 flex-1">
                                   <a
-                                    href={`https://api.whatsapp.com/send?phone=${encodeURIComponent(
-                                      `${contactNumber}`
-                                    )}&text=${whatsAppMessage}`}
+                                    href={
+                                      contactNumber.includes("http")
+                                        ? contactNumber
+                                        : `https://api.whatsapp.com/send?phone=${encodeURIComponent(
+                                            `${contactNumber}`
+                                          )}&text=${whatsAppMessage}`
+                                    }
                                     target="_blank"
                                     className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-none py-4 text-sm font-semibold text-white bg-[#65EB82]"
                                   >

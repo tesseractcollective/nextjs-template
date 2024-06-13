@@ -179,6 +179,66 @@ export default function Blogs({
       </>
     );
 
+  if (blogLayoutStyle === "card" && !!blogs)
+    return (
+      <div>
+        {!!FilteredBlogs && (
+          <div className="blog-wrapper my-16">
+            <h2 className="text-2xl md:text-4xl mx-auto opacity-90 uppercase text-center font-bold mb-4">
+              {(!!blogHeader && blogHeader) || "Blogs"}
+            </h2>
+            <div className="mx-auto flex flex-wrap flex-row gap-8 animate-col-width items-stretch w-full my-8">
+              <Fade
+                direction="up"
+                triggerOnce
+                cascade
+                damping={0.015}
+                className="w-full mx-auto max-w-xs"
+              >
+                {FilteredBlogs?.map((blogItem) => (
+                  <article
+                    key={blogItem.id}
+                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 p-4 group transition-all w-full h-full"
+                  >
+                    {!!blogItem.image?.url && (
+                      <Image
+                        src={blogItem.image.url}
+                        alt=""
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        style={{ width: "100%" }}
+                        className="relative inset-0 -z-10 h-full w-full object-cover"
+                      />
+                    )}
+
+                    <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
+                      <div className="-ml-4 flex items-center gap-x-4">
+                        <svg
+                          viewBox="0 0 2 2"
+                          className="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50"
+                        >
+                          <circle cx={1} cy={1} r={1} />
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="mt-3 text-lg font-semibold leading-6 !text-text-color">
+                      <Link
+                        href={`/${blogItem.blogCategory}/${blogItem.blogSlug}`}
+                      >
+                        <span className="absolute inset-0 z-30" />
+                        {blogItem.title}
+                      </Link>
+                    </h3>
+                  </article>
+                ))}
+              </Fade>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+
   return (
     <div>
       {!!FilteredBlogs && (
