@@ -23,10 +23,18 @@ const BandsintownEventsDataSort: React.FC<EventListProps> = ({
 }) => {
   if (!profiles || !bandsintownEventsData) return <></>;
   const { bandsintownKey, profileType } = bandsintownEventsData;
+  const normalizeString = (str: string) =>
+    str
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/ñ/g, "n"); // Specific handling for "ñ" to "n"
+
   const artistNames = profiles
     .filter(
       (profile) =>
-        profile?.profileType?.toLowerCase() === profileType?.toLowerCase()
+        normalizeString(profile?.profileType || "") ===
+        normalizeString(profileType || "")
     )
     .filter((profile) => profile?.primaryProfile === true)
     .map((item) => item?.name)
@@ -36,7 +44,8 @@ const BandsintownEventsDataSort: React.FC<EventListProps> = ({
   const FilteredProfiles = profiles
     .filter(
       (profile) =>
-        profile?.profileType?.toLowerCase() === profileType?.toLowerCase()
+        normalizeString(profile?.profileType || "") ===
+        normalizeString(profileType || "")
     )
     .filter((profile) => profile.primaryProfile === true)
     .sort((profileA, profileB) => {
@@ -51,8 +60,8 @@ const BandsintownEventsDataSort: React.FC<EventListProps> = ({
       }
 
       // If orders are equal, sort by name
-      const nameA = profileA.name?.toLowerCase() || "";
-      const nameB = profileB.name?.toLowerCase() || "";
+      const nameA = normalizeString(profileA.name || "");
+      const nameB = normalizeString(profileB.name || "");
 
       if (nameA < nameB) {
         return -1;

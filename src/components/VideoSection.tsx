@@ -118,5 +118,5 @@ export default function VideoSection({
     );
 
   if (videoData && videoData.length >= 1)
-    return <VideoStandardSection videoData={videoData} />;
+    return <VideoYoutubeSection videoData={videoData} />;
 }

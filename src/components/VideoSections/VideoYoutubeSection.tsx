@@ -73,7 +73,7 @@ export default function VideoYoutubeSection({
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="video"
-                className="absolute top-0 left-0 w-full h-full z-10  overflow-hidden rounded-xl"
+                className="absolute top-0 left-0 w-full h-full z-10  overflow-hidden rounded-2xl"
               />
             )}
             {selectedVideo?.vimeoVideoId && (

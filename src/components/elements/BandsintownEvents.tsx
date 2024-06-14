@@ -60,8 +60,8 @@ const BandsintownEvents: React.FC<EventListProps> = ({
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true); // Add loading state
   const [selectedArtist, setSelectedArtist] = useState("");
-  console.log("artistNames", artistNames);
-  console.log("bandsintownKey", bandsintownKey);
+  // console.log("artistNames", artistNames);
+  // console.log("bandsintownKey", bandsintownKey);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -116,8 +116,8 @@ const BandsintownEvents: React.FC<EventListProps> = ({
       (a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime()
     );
 
-  console.log("dateSortedEvents", dateSortedEvents);
-  console.log("selectedArtist", selectedArtist);
+  // console.log("dateSortedEvents", dateSortedEvents);
+  // console.log("selectedArtist", selectedArtist);
 
   const variants = {
     initial: {
@@ -210,6 +210,7 @@ const BandsintownEvents: React.FC<EventListProps> = ({
             eventMapData={dateSortedEvents}
             mapKey={mapKey}
             icon={icon}
+            profiles={profiles}
           />
           <ul className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full mx-auto py-8 gap-y-4">
             {dateSortedEvents.map((event) => (

@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Moment from "react-moment";
+import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 
 type Event = {
   id: string;
@@ -47,15 +48,17 @@ interface BandsInTownMapBoxProps {
   eventMapData: Event[];
   icon: string;
   mapKey: string;
+  profiles: ProfileFieldsFragment[];
 }
 
 function BandsInTownEventsMapBox({
   mapKey,
   icon,
   eventMapData,
+  profiles,
 }: BandsInTownMapBoxProps) {
   const [popupInfo, setPopupInfo] = useState<Event | null>(null);
-
+  console.log(eventMapData);
   return (
     <>
       {Array.isArray(eventMapData) && eventMapData.length > 0 ? (
@@ -82,6 +85,12 @@ function BandsInTownEventsMapBox({
             <ScaleControl />
             {eventMapData.map((event, index) => {
               const { longitude, latitude } = event.venue;
+              const profileImage = event.lineup
+                .map((lineupName) =>
+                  profiles.find((profile) => profile.name === lineupName)
+                )
+                .find((profile) => profile?.avatarImage?.url)?.avatarImage?.url;
+              console.log(profileImage);
               return (
                 <Marker
                   key={`marker-${index}`}
@@ -98,16 +107,16 @@ function BandsInTownEventsMapBox({
                       icon={faLocationDot as IconProp}
                       className="h-12 w-12 mx-auto text-primary stroke-[#000000a7] stroke-[15]"
                     />
-                    {!!icon && (
-                      <Image
-                        src={icon}
-                        height={0}
-                        width={0}
-                        alt=""
-                        sizes="100%"
-                        className="absolute z-20 w-8 h-8 left-[0.50rem] top-[0.15rem] object-contain rounded-full !p-0 !m-0"
-                      />
-                    )}
+
+                    <Image
+                      src={profileImage || icon}
+                      height={0}
+                      width={0}
+                      alt=""
+                      sizes="100%"
+                      className="absolute z-20 w-8 h-8 left-[0.50rem] top-[0.15rem] object-contain rounded-full !p-0 !m-0"
+                    />
+
                     <p className="absolute z-20 flex flex-row items-center justify-center bg-[white] text-[black] px-6 mx-auto text-center rounded w-full right-0 left-0 scale-75z font-bold outline-[black] tracking-wider upppercase text-[9px]">
                       <Moment format="MMM/DD" className="uppercase">
                         {event.datetime}

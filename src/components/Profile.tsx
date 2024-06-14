@@ -121,7 +121,7 @@ export default function Profile({
                 width={0}
                 height={0}
                 sizes="100%"
-                className="h-[38rem] w-full object-cover object-center transition-all"
+                className="h-[40rem] w-full object-cover object-center transition-all"
               />
             </Fade>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background h-[33%]" />
@@ -185,145 +185,147 @@ export default function Profile({
           </div>
         </Zoom>
       </div>
-      <section className="bg-invert">
-        <div className="px-4 overflow-x-hidden py-8">
-          <div className="mx-auto container relative flex flex-col md:items-center md:justify-center">
-            {profile.miniBio && (
-              <div className="px-2 text-4xl font-bold tracking-tight text-text-color md:text-5xl max-w-4xl text-center mx-auto relative block my-10 md:mt-12 md:mb-32">
-                {parse(profile.miniBio)}
-              </div>
-            )}
-            {profile.imageGallery.length >= 1 && (
-              <>
-                <div className="relative pb-0 md:pb-32 block md:mb-16 min-h-[50vh]">
-                  <div className="hidden md:flex min-w-max space-x-6 mx-auto lg:space-x-8">
-                    <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
-                      {profile?.imageGallery[0]?.url && (
-                        <Fade triggerOnce direction="left">
-                          <div className="flex-shrink-0 relative">
-                            <Image
-                              src={profile.imageGallery[0].url}
-                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                              alt=""
-                              width={288}
-                              height={288}
-                              sizes="100%"
-                              id="image-0"
-                            />
-                          </div>
-                        </Fade>
-                      )}
+      {profile.imageGallery.length >= 1 && (
+        <section className="bg-invert">
+          <div className="px-4 overflow-x-hidden py-8">
+            <div className="mx-auto container relative flex flex-col md:items-center md:justify-center">
+              {profile.miniBio && (
+                <div className="px-2 text-4xl font-bold tracking-tight text-text-color md:text-5xl max-w-4xl text-center mx-auto relative block my-10 md:mt-12 md:mb-32">
+                  {parse(profile.miniBio)}
+                </div>
+              )}
+              {profile.imageGallery.length >= 1 && (
+                <>
+                  <div className="relative pb-0 md:pb-32 block md:mb-16 min-h-[50vh]">
+                    <div className="hidden md:flex min-w-max space-x-6 mx-auto lg:space-x-8">
+                      <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
+                        {profile?.imageGallery[0]?.url && (
+                          <Fade triggerOnce direction="left">
+                            <div className="flex-shrink-0 relative">
+                              <Image
+                                src={profile.imageGallery[0].url}
+                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                                alt=""
+                                width={288}
+                                height={288}
+                                sizes="100%"
+                                id="image-0"
+                              />
+                            </div>
+                          </Fade>
+                        )}
 
-                      {profile?.imageGallery[1]?.url && (
-                        <Fade triggerOnce direction="left">
-                          <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
-                            <Image
-                              src={profile.imageGallery[1].url}
-                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                              alt=""
-                              width={288}
-                              height={288}
-                              sizes="100%"
-                              id="image-1"
-                            />
-                          </div>
-                        </Fade>
-                      )}
-                    </div>
-                    <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                      {profile?.imageGallery[2]?.url && (
-                        <Fade triggerOnce direction="up">
-                          <div className="flex-shrink-0 relative">
-                            <Image
-                              src={profile.imageGallery[2].url}
-                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                              alt=""
-                              width={288}
-                              height={288}
-                              sizes="100%"
-                              id="image-2"
-                            />
-                          </div>
-                        </Fade>
-                      )}
-                      {profile?.imageGallery[3]?.url && (
-                        <Fade triggerOnce direction="up">
-                          <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
-                            <Image
-                              src={profile.imageGallery[3].url}
-                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                              alt=""
-                              width={288}
-                              height={288}
-                              sizes="100%"
-                              id="image-3"
-                            />
-                          </div>
-                        </Fade>
-                      )}
-                    </div>
-                    <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
-                      {profile?.imageGallery[4]?.url && (
-                        <Fade triggerOnce direction="right">
-                          <div className="flex-shrink-0 relative">
-                            <Image
-                              src={profile.imageGallery[4].url}
-                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                              alt=""
-                              width={288}
-                              height={288}
-                              sizes="100%"
-                              id="image-4"
-                            />
-                          </div>
-                        </Fade>
-                      )}
-                      {profile?.imageGallery[5]?.url && (
-                        <Fade triggerOnce direction="right">
-                          <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
-                            <Image
-                              src={profile.imageGallery[5].url}
-                              className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                              alt=""
-                              width={288}
-                              height={288}
-                              sizes="100%"
-                              id="image-5"
-                            />
-                          </div>
-                        </Fade>
-                      )}
+                        {profile?.imageGallery[1]?.url && (
+                          <Fade triggerOnce direction="left">
+                            <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
+                              <Image
+                                src={profile.imageGallery[1].url}
+                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                                alt=""
+                                width={288}
+                                height={288}
+                                sizes="100%"
+                                id="image-1"
+                              />
+                            </div>
+                          </Fade>
+                        )}
+                      </div>
+                      <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
+                        {profile?.imageGallery[2]?.url && (
+                          <Fade triggerOnce direction="up">
+                            <div className="flex-shrink-0 relative">
+                              <Image
+                                src={profile.imageGallery[2].url}
+                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                                alt=""
+                                width={288}
+                                height={288}
+                                sizes="100%"
+                                id="image-2"
+                              />
+                            </div>
+                          </Fade>
+                        )}
+                        {profile?.imageGallery[3]?.url && (
+                          <Fade triggerOnce direction="up">
+                            <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
+                              <Image
+                                src={profile.imageGallery[3].url}
+                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                                alt=""
+                                width={288}
+                                height={288}
+                                sizes="100%"
+                                id="image-3"
+                              />
+                            </div>
+                          </Fade>
+                        )}
+                      </div>
+                      <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8 sm:-mb-20">
+                        {profile?.imageGallery[4]?.url && (
+                          <Fade triggerOnce direction="right">
+                            <div className="flex-shrink-0 relative">
+                              <Image
+                                src={profile.imageGallery[4].url}
+                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                                alt=""
+                                width={288}
+                                height={288}
+                                sizes="100%"
+                                id="image-4"
+                              />
+                            </div>
+                          </Fade>
+                        )}
+                        {profile?.imageGallery[5]?.url && (
+                          <Fade triggerOnce direction="right">
+                            <div className="mt-6 flex-shrink-0 sm:mt-0 relative">
+                              <Image
+                                src={profile.imageGallery[5].url}
+                                className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
+                                alt=""
+                                width={288}
+                                height={288}
+                                sizes="100%"
+                                id="image-5"
+                              />
+                            </div>
+                          </Fade>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <ul
-                  role="list"
-                  className="grid md:hidden grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8 mb-12"
-                >
-                  {profile.imageGallery.map((image) => (
-                    <li key={image?.url} className="relative">
-                      <Fade direction="up" triggerOnce cascade damping={0.1}>
-                        <div className="group aspect-h-10 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 relative h-24">
-                          {!!image?.url && (
-                            <Image
-                              src={image?.url}
-                              alt=""
-                              className="object-center mx-auto object-cover block"
-                              width={0}
-                              height={0}
-                              sizes="100%"
-                            />
-                          )}
-                        </div>
-                      </Fade>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
+                  <ul
+                    role="list"
+                    className="grid md:hidden grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8 mb-12"
+                  >
+                    {profile.imageGallery.map((image) => (
+                      <li key={image?.url} className="relative">
+                        <Fade direction="up" triggerOnce cascade damping={0.1}>
+                          <div className="group aspect-h-10 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 relative h-24">
+                            {!!image?.url && (
+                              <Image
+                                src={image?.url}
+                                alt=""
+                                className="object-center mx-auto object-cover block"
+                                width={0}
+                                height={0}
+                                sizes="100%"
+                              />
+                            )}
+                          </div>
+                        </Fade>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       {profile?.name && profile?.bandsInTownKey && (
         <BandsInTownApi
           apiKey={profile.bandsInTownKey}
@@ -344,12 +346,12 @@ export default function Profile({
         {!!siteLibrary?.mapKey &&
           !!profile.name &&
           !!profile?.bandsInTownKey &&
-          !!siteLibrary?.metaAppleTouchIcon && (
+          !!profile.avatarImage?.url && (
             <BandsInTownMapBox
               apiKey={profile.bandsInTownKey}
               artistName={profile.name}
               mapKey={siteLibrary.mapKey}
-              icon={siteLibrary?.metaAppleTouchIcon.url}
+              icon={profile.avatarImage.url}
               isSpanish={siteLibrary?.isSpanish || false}
             />
           )}
