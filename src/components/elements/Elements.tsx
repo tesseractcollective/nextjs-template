@@ -225,9 +225,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             spotifyClientSecret={siteLibrary.spotifyClientSecret}
           />
         )}
-      {!!elements?.elementJson.registerFormData && siteLibrary && (
+      {!!elements?.elementJson?.registerFormData && siteLibrary && (
         <RegisterForm
-          registerFormData={elements?.elementJson.registerFormData}
+          registerFormData={elements.elementJson.registerFormData}
           siteLibrary={siteLibrary}
         />
       )}
