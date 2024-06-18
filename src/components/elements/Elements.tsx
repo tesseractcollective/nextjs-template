@@ -26,6 +26,7 @@ import PixelCursorTrailing from "./PixelCursorTrailing";
 import MaskCursorColored from "./MaskCursorColored";
 import SpotifyArtistAlbums from "./SpotifyAPI/SpotifyArtistAlbums";
 import SpotifyUserPlaylists from "./SpotifyAPI/SpotifyUserPlaylists";
+import RegisterForm from "./RegisterForm";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -224,6 +225,12 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             spotifyClientSecret={siteLibrary.spotifyClientSecret}
           />
         )}
+      {!!elements?.elementJson.registerFormData && siteLibrary && (
+        <RegisterForm
+          registerFormData={elements?.elementJson.registerFormData}
+          siteLibrary={siteLibrary}
+        />
+      )}
     </>
   );
 }
