@@ -84,7 +84,7 @@ export default function RegisterForm({
 
   return (
     <section className="container grid mx-auto my-16">
-      <div className="w-full md:w-8/12 mx-auto">
+      <div className="w-full md:w-8/12 mx-auto px-4">
         <div
           className={`border-round p-2 mx-auto ${
             registerFormData?.cssClass && registerFormData.cssClass
@@ -95,20 +95,15 @@ export default function RegisterForm({
               {parse(registerFormData?.title)}
             </h3>
           )}
-          {!!registerFormData?.description && (
-            <div className="body-parsed-text text-center mx-auto max-w-3xl mb-0">
-              {parse(registerFormData.description)}
-            </div>
-          )}
 
           {isSubmitted ? (
-            <div className="flex flex-col items-center justify-center my-32">
+            <div className="flex flex-col items-center justify-center my-32 gap-y-4">
               {isExploding && <ConfettiExplosion />}
-              <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-2xl border p-4 mb-8">
+              <div className="bg-[#38fa8c] text-center border-[#229a2a] rounded-2xl border p-4 mb-8 relative">
                 <p className="text-[#229a2a]">Successfully submitted form!</p>
               </div>
               {!!registerFormData?.postDescription && (
-                <div className="body-parsed-text text-center mx-auto max-w-3xl mb-0">
+                <div className="body-parsed-text text-center mx-auto max-w-3xl mb-8 text-text-color block">
                   {parse(registerFormData.postDescription)}
                 </div>
               )}
@@ -119,243 +114,250 @@ export default function RegisterForm({
               />
             </div>
           ) : (
-            <Formik
-              initialValues={{
-                FirstName: "",
-                LastName: "",
-                Email: "",
-                Phone: "",
-                Message: "",
-                Dob: "",
-                Address: "",
-                Apt: "",
-                City: "",
-                Zip: "",
-                State: "",
-                SiteEmail: contactEmail || "",
-                Website: metaDomain || process.env.SITE_URL || "",
-              }}
-              onSubmit={handleSubmit}
-            >
-              <Form
-                className="flex flex-col px-4 w-full mx-auto gap-4"
-                id="contact"
-              >
-                <div className="mb-8 gap-4 flex flex-col">
-                  <div className="flex flex-col md:flex-row gap-4">
-                    {/* fname */}
-                    <div className="relative mb-2 w-full">
-                      <label
-                        htmlFor="FirstName"
-                        className="text-[10px] uppercase top-2 left-3 absolute"
-                      >
-                        {isSpanish ? "Nombre" : "First Name"}
-                      </label>
-                      <Field
-                        id="FirstName"
-                        name="FirstName"
-                        placeholder={isSpanish ? "Nombre" : "First Name"}
-                        className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                      />
-                    </div>
-
-                    {/* lname */}
-                    <div className="relative mb-2 w-full">
-                      <label
-                        htmlFor="LastName"
-                        className="text-[10px] uppercase top-2 left-3 absolute"
-                      >
-                        {isSpanish ? "Apellido" : "Last Name"}
-                      </label>
-                      <Field
-                        id="LastName"
-                        name="LastName"
-                        placeholder={isSpanish ? "Apellido" : "Last Name"}
-                        className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex flex-col md:flex-row gap-4">
-                    {/* Phone */}
-                    <div className="relative mb-2 w-full">
-                      <label
-                        htmlFor="Phone"
-                        className="text-[10px] uppercase top-2 left-3 absolute"
-                      >
-                        {isSpanish ? "Tel" : "Phone"}
-                      </label>
-                      <Field
-                        id="Phone"
-                        name="Phone"
-                        placeholder={isSpanish ? "Tel" : "Phone"}
-                        className="block w-full rounded-md border-0 pt-5 pr-10 text-text-color ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                      />
-                    </div>
-
-                    {/* Email */}
-                    <div className="relative mb-2 w-full">
-                      <label
-                        htmlFor="Email"
-                        className="text-[10px] uppercase top-2 left-3 absolute"
-                      >
-                        Email
-                      </label>
-                      <Field
-                        id="Email"
-                        name="Email"
-                        className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                        placeholder="Email"
-                        type="Email"
-                      />
-                    </div>
-
-                    {/* DOB */}
-                    <div className="relative mb-2 w-full">
-                      <label
-                        htmlFor="Dob"
-                        className="text-[10px] uppercase top-2 left-3 absolute"
-                      >
-                        Date of Birth
-                      </label>
-                      <Field
-                        id="Dob"
-                        name="Dob"
-                        className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                        placeholder="02/14/1990"
-                        type="date"
-                      />
-                    </div>
-                  </div>
+            <>
+              {!!registerFormData?.description && (
+                <div className="body-parsed-text text-center mx-auto text-text-color max-w-md mb-4 px-4">
+                  {parse(registerFormData.description)}
                 </div>
+              )}
+              <Formik
+                initialValues={{
+                  FirstName: "",
+                  LastName: "",
+                  Email: "",
+                  Phone: "",
+                  Message: "",
+                  Dob: "",
+                  Address: "",
+                  Apt: "",
+                  City: "",
+                  Zip: "",
+                  State: "",
+                  SiteEmail: contactEmail || "",
+                  Website: metaDomain || process.env.SITE_URL || "",
+                }}
+                onSubmit={handleSubmit}
+              >
+                <Form
+                  className="flex flex-col px-4 w-full mx-auto gap-4"
+                  id="contact"
+                >
+                  <div className="mb-8 gap-4 flex flex-col">
+                    <div className="flex flex-col md:flex-row gap-4">
+                      {/* fname */}
+                      <div className="relative mb-2 w-full">
+                        <label
+                          htmlFor="FirstName"
+                          className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                        >
+                          {isSpanish ? "Nombre" : "First Name"}
+                        </label>
+                        <Field
+                          id="FirstName"
+                          name="FirstName"
+                          placeholder={isSpanish ? "Nombre" : "First Name"}
+                          className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                        />
+                      </div>
 
-                <div className="mb-8 gap-y-1 flex flex-col">
-                  <div className="relative mb-2">
-                    <label
-                      htmlFor="Address"
-                      className="text-[10px] uppercase top-2 left-3 absolute"
+                      {/* lname */}
+                      <div className="relative mb-2 w-full">
+                        <label
+                          htmlFor="LastName"
+                          className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                        >
+                          {isSpanish ? "Apellido" : "Last Name"}
+                        </label>
+                        <Field
+                          id="LastName"
+                          name="LastName"
+                          placeholder={isSpanish ? "Apellido" : "Last Name"}
+                          className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex flex-col md:flex-row gap-4">
+                      {/* Phone */}
+                      <div className="relative mb-2 w-full">
+                        <label
+                          htmlFor="Phone"
+                          className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                        >
+                          {isSpanish ? "Tel" : "Phone"}
+                        </label>
+                        <Field
+                          id="Phone"
+                          name="Phone"
+                          placeholder={isSpanish ? "Tel" : "Phone"}
+                          className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000]  ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                        />
+                      </div>
+
+                      {/* Email */}
+                      <div className="relative mb-2 w-full">
+                        <label
+                          htmlFor="Email"
+                          className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                        >
+                          Email
+                        </label>
+                        <Field
+                          id="Email"
+                          name="Email"
+                          className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                          placeholder="Email"
+                          type="Email"
+                        />
+                      </div>
+
+                      {/* DOB */}
+                      <div className="relative mb-2 w-full">
+                        <label
+                          htmlFor="Dob"
+                          className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                        >
+                          Date of Birth
+                        </label>
+                        <Field
+                          id="Dob"
+                          name="Dob"
+                          className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                          placeholder="02/14/1990"
+                          type="date"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mb-8 gap-y-1 flex flex-col">
+                    <div className="relative mb-2">
+                      <label
+                        htmlFor="Address"
+                        className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                      >
+                        {isSpanish ? "Dirección" : "Address"}
+                      </label>
+                      <Field
+                        id="Address"
+                        name="Address"
+                        placeholder={isSpanish ? "Dirección" : "Address"}
+                        className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                      />
+                    </div>
+                    {IsAptFieldVisible && (
+                      <div className="relative mb-2 apt-wrapper">
+                        <label
+                          htmlFor="Apt"
+                          className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                        >
+                          Address 2
+                        </label>
+                        <Field
+                          id="Apt"
+                          name="Apt"
+                          placeholder={
+                            isSpanish
+                              ? "Apartamento, Suite, u Otro (Opcional)"
+                              : "Apt, Suite, or Other (Optional)"
+                          }
+                          className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                        />
+                      </div>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setIsAptFieldVisible(!IsAptFieldVisible)}
+                      className="flex flex-row items-center p-1 gap-x-2 text-secondary mb-2 uppercase text-xs max-w-max opacity-90 hover:opacity-100 focus-within:opacity-100 transition-all hover:text-primary focus-within:text-primary hover:bg-bg-secondary focus-within:bg-bg-secondary ml-auto rounded"
                     >
-                      {isSpanish ? "Dirección" : "Address"}
+                      <FontAwesomeIcon
+                        icon={faTimes as IconProp}
+                        className={`fa-fw my-0 py-0 h-4 w-4 transition-all relative ${
+                          IsAptFieldVisible ? "rotate-90" : "rotate-45"
+                        }`}
+                      />
+                      <span>
+                        {IsAptFieldVisible
+                          ? "Close Address 2 Field"
+                          : "Add apt, suite, or other (optional)"}
+                      </span>
+                    </button>
+                    <div className="flex flex-col md:flex-row gap-4">
+                      <div className="relative mb-2 w-full">
+                        <label
+                          htmlFor="City"
+                          className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                        >
+                          {isSpanish ? "Ciudad" : "City"}
+                        </label>
+                        <Field
+                          id="City"
+                          name="City"
+                          placeholder={isSpanish ? "Ciudad" : "City"}
+                          className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                        />
+                      </div>
+
+                      <div className="relative mb-2 w-full">
+                        <label
+                          htmlFor="Zip"
+                          className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                        >
+                          {isSpanish ? "Codigo Postal" : "Zip"}
+                        </label>
+                        <Field
+                          id="Zip"
+                          name="Zip"
+                          placeholder={isSpanish ? "Codigo Postal" : "Zip"}
+                          className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                        />
+                      </div>
+
+                      <div className="relative mb-2 w-full">
+                        <label
+                          htmlFor="State"
+                          className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                        >
+                          {isSpanish ? "Estado" : "State"}
+                        </label>
+                        <Field
+                          id="State"
+                          name="State"
+                          placeholder={isSpanish ? "Estado" : "State"}
+                          className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12 font-bold"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative mb-8">
+                    <label
+                      htmlFor="Message"
+                      className="text-[12px] uppercase top-2 left-3 absolute opacity-90"
+                    >
+                      {isSpanish ? "Mensaje" : "Message"}
                     </label>
                     <Field
-                      id="Address"
-                      name="Address"
-                      placeholder={isSpanish ? "Dirección" : "Address"}
-                      className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
+                      id="Message"
+                      name="Message"
+                      className="block w-full rounded-md border-0 pt-5 pr-10 text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 font-bold"
+                      placeholder={
+                        isSpanish
+                          ? "Mensaje"
+                          : "Favorite plate or drink from BOCADO"
+                      }
+                      component="textarea"
+                      rows="4"
                     />
                   </div>
-                  {IsAptFieldVisible && (
-                    <div className="relative mb-2 apt-wrapper">
-                      <label
-                        htmlFor="Apt"
-                        className="text-[10px] uppercase top-2 left-3 absolute"
-                      >
-                        Address 2
-                      </label>
-                      <Field
-                        id="Apt"
-                        name="Apt"
-                        placeholder={
-                          isSpanish
-                            ? "Apartamento, Suite, u Otro (Opcional)"
-                            : "Apt, Suite, or Other (Optional)"
-                        }
-                        className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                      />
-                    </div>
-                  )}
                   <button
-                    type="button"
-                    onClick={() => setIsAptFieldVisible(!IsAptFieldVisible)}
-                    className="flex flex-row items-center p-1 gap-x-2 text-secondary mb-2 uppercase text-xs max-w-max opacity-90 hover:opacity-100 focus-within:opacity-100 transition-all hover:text-primary focus-within:text-primary hover:bg-bg-secondary focus-within:bg-bg-secondary ml-auto rounded"
+                    type="submit"
+                    className="inline-block w-full rounded-md bg-primary px-6 py-4 text-xl font-bold leading-6 !text-text-color hover:bg-secondary transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2 relative"
                   >
-                    <FontAwesomeIcon
-                      icon={faTimes as IconProp}
-                      className={`fa-fw my-0 py-0 h-4 w-4 transition-all relative ${
-                        IsAptFieldVisible ? "rotate-90" : "rotate-45"
-                      }`}
-                    />
-                    <span>
-                      {IsAptFieldVisible
-                        ? "Close Address 2 Field"
-                        : "Add apt, suite, or other (optional)"}
-                    </span>
+                    {isSpanish ? "Enviar" : "Submit"}
                   </button>
-                  <div className="flex flex-col md:flex-row gap-4">
-                    <div className="relative mb-2 w-full">
-                      <label
-                        htmlFor="City"
-                        className="text-[10px] uppercase top-2 left-3 absolute"
-                      >
-                        {isSpanish ? "Ciudad" : "City"}
-                      </label>
-                      <Field
-                        id="City"
-                        name="City"
-                        placeholder={isSpanish ? "Ciudad" : "City"}
-                        className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                      />
-                    </div>
-
-                    <div className="relative mb-2 w-full">
-                      <label
-                        htmlFor="Zip"
-                        className="text-[10px] uppercase top-2 left-3 absolute"
-                      >
-                        {isSpanish ? "Codigo Postal" : "Zip"}
-                      </label>
-                      <Field
-                        id="Zip"
-                        name="Zip"
-                        placeholder={isSpanish ? "Codigo Postal" : "Zip"}
-                        className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                      />
-                    </div>
-
-                    <div className="relative mb-2 w-full">
-                      <label
-                        htmlFor="State"
-                        className="text-[10px] uppercase top-2 left-3 absolute"
-                      >
-                        {isSpanish ? "Estado" : "State"}
-                      </label>
-                      <Field
-                        id="State"
-                        name="State"
-                        placeholder={isSpanish ? "Estado" : "State"}
-                        className="block w-full rounded-md border-0 pt-5 pr-10 !text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6 h-12"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative mb-8">
-                  <label
-                    htmlFor="Message"
-                    className="text-[10px] uppercase top-2 left-3 absolute"
-                  >
-                    {isSpanish ? "Mensaje" : "Message"}
-                  </label>
-                  <Field
-                    id="Message"
-                    name="Message"
-                    className="block w-full rounded-md border-0 pt-5 pr-10 text-[#000] ring-1 ring-inset focus:ring-2 placeholder-[#3e3e3e5d] focus:ring-inset focus:ring-red-500 sm:leading-6"
-                    placeholder={
-                      isSpanish
-                        ? "Mensaje"
-                        : "Favorite plate or drink from BOCADO"
-                    }
-                    component="textarea"
-                    rows="4"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="flex w-full justify-center rounded-md bg-primary px-3 py-2.5 text-md font-semibold leading-6 !text-text-color shadow-sm hover:bg-secondary transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2"
-                >
-                  {isSpanish ? "Enviar" : "Submit"}
-                </button>
-              </Form>
-            </Formik>
+                </Form>
+              </Formik>
+            </>
           )}
         </div>
       </div>
