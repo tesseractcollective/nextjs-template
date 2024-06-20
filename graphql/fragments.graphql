@@ -85,6 +85,8 @@ fragment siteLibraryFields on SiteLibrary {
   title
   isSpanish
   address
+  amazonLink
+  ticketLink
   facebookPixelId
   facebookLink
   tikTokLink
@@ -374,6 +376,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
       url(transformation: { document: { output: { format: webp } } })
       height
       width
+      caption
     }
     standOutText
     iFrameTitle
@@ -423,6 +426,7 @@ fragment pageFields on Page {
   hideFooter
   hideHeader
   setHomePage
+  seoDescription
   noIndex
   pagePassword
   pageCallToAction {
@@ -710,6 +714,9 @@ fragment profileFields on Profile {
   createdAt
   updatedAt
   appleMusicLink
+  amazonLink
+  ticketLink
+  shopLink
   calendlyLink
   email
   epkLink

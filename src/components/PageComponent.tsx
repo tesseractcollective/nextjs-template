@@ -37,9 +37,12 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
         {!!metaOgImage && (
           <meta name="twitter:image" content={metaOgImage.url} />
         )}
-        {!!metaDescription && (
-          <meta name="description" content={metaDescription} />
-        )}
+
+        <meta
+          name="description"
+          content={layout.page?.seoDescription ?? metaDescription ?? ""}
+        />
+
         {!!title && <title>{title}</title>}
         {!!metaAppleTouchIcon && (
           <link rel="apple-touch-icon" href={metaAppleTouchIcon.url} />

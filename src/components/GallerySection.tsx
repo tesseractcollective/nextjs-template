@@ -22,7 +22,11 @@ import GalleryInfinite from "./elements/GalleryInfinite";
 import GalleryCarousel from "@/components/GallerySections/GalleryCarousel";
 
 interface GalleryProps {
-  galleryData?: { __typename?: "Asset" | undefined; url: string }[];
+  galleryData?: {
+    __typename?: "Asset" | undefined;
+    url: string;
+    caption?: string | null;
+  }[];
   galleryLayoutData?: string;
 }
 
@@ -179,20 +183,24 @@ export default function GallerySection({
             plugins={[lgThumbnail, lgZoom]}
             elementClassNames="flex flex-wrap flex-row w-full gap-4 mx-auto items-center justify-center"
           >
-            {finalImages.map((finalImage, index) => (
+            {gallery.map((finalImage, index) => (
               <a
-                href={finalImage}
-                key={finalImage}
+                href={finalImage.url}
+                key={finalImage.url}
                 className="relative flex flex-wrap h-32 md:h-64 w-32 md:w-64 aspect-1 transition-all hover:cursor-pointer"
+                data-sub-html={finalImage.caption}
               >
                 <Image
-                  src={finalImage}
+                  src={finalImage.url}
                   alt=""
                   sizes="100%"
                   width={0}
                   height={0}
                   className="h-full w-full object-cover absolute inset-0"
                 />
+                {/* <span className="h-full w-full object-cover absolute inset-0">
+                  {finalImage.caption}
+                </span> */}
               </a>
             ))}
           </LightGallery>
