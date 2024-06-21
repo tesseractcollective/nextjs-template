@@ -13,6 +13,8 @@ interface LinkItemProps {
   sameTab?: boolean | null;
   children?: string | JSX.Element | JSX.Element[] | string[];
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export default function LinkItem({

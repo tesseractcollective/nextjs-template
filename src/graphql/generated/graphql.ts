@@ -4788,7 +4788,9 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Bocado = 'bocado'
+  Admin = 'admin',
+  Alfredo = 'alfredo',
+  Saul = 'saul'
 }
 
 export type ContactUpdateInput = {
@@ -10686,7 +10688,6 @@ export type LogoTableEdge = {
 };
 
 export enum LogoTableItem {
-  Pros = 'pros',
   Sponsor = 'sponsor'
 }
 
@@ -15152,14 +15153,10 @@ export type NavigationWhereUniqueInput = {
 };
 
 export enum NetlifyFormFields {
-  Address = 'address',
-  City = 'city',
-  Dob = 'dob',
   Email = 'email',
   Message = 'message',
   Name = 'name',
-  Phone = 'phone',
-  Zip = 'zip'
+  Phone = 'phone'
 }
 
 /** An object with an ID */
@@ -17030,13 +17027,6 @@ export enum ProductOrderByInput {
 }
 
 export enum ProductType {
-  Appetizer = 'appetizer',
-  Brunch = 'brunch',
-  Cold = 'cold',
-  Dessert = 'dessert',
-  Main = 'main',
-  Salad = 'salad',
-  Soup = 'soup',
   Store = 'store'
 }
 
@@ -17699,8 +17689,10 @@ export type ProfileEdge = {
   node: Profile;
 };
 
+/** fullScreen */
 export enum ProfileLayoutStyle {
   Alternate = 'alternate',
+  Arch = 'arch',
   Basic = 'basic',
   Blob = 'blob',
   CardLink = 'cardLink',
@@ -17708,6 +17700,8 @@ export enum ProfileLayoutStyle {
   Epk = 'epk',
   FullScreen = 'fullScreen',
   Grid = 'grid',
+  GridSelect = 'gridSelect',
+  HalfScreen = 'halfScreen',
   Mason = 'mason',
   Myspace = 'myspace',
   Netflix = 'netflix',
@@ -17719,6 +17713,7 @@ export enum ProfileLayoutStyle {
   Team = 'team',
   Universal = 'universal',
   Vertical = 'vertical',
+  Video = 'video',
   Wavy = 'wavy',
   Youtube = 'youtube'
 }
@@ -19544,7 +19539,7 @@ export enum ProfilesSelect {
   SecondaryArtist = 'SecondaryArtist',
   Staff = 'Staff',
   Talent = 'Talent',
-  Team = 'team'
+  Integrante = 'integrante'
 }
 
 export type PublishLocaleInput = {
@@ -27325,7 +27320,7 @@ export const ProfileFieldsFragmentDoc = gql`
     ...VideoBoxFields
   }
   heroImage {
-    url(transformation: {document: {output: {format: webp}}})
+    url
   }
   profileLogo {
     url(transformation: {document: {output: {format: webp}}})

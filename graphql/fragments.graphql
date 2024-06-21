@@ -768,7 +768,7 @@ fragment profileFields on Profile {
     ...VideoBoxFields
   }
   heroImage {
-    url(transformation: { document: { output: { format: webp } } })
+    url
   }
   profileLogo {
     url(transformation: { document: { output: { format: webp } } })

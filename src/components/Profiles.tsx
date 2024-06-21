@@ -15,6 +15,7 @@ import ProfileMyspaceSection from "@/components/ProfileSections/ProfileMyspaceSe
 import ProfileSportsSection from "@/components/ProfileSections/ProfileSportsSection";
 import ProfileCardLinkSection from "@/components/ProfileSections/ProfileCardLinkSection";
 import ProfileYoutubeSection from "@/components/ProfileSections/ProfileYoutubeSection";
+import ProfileVideoSection from "@/components/ProfileSections/ProfileVideoSection";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -71,7 +72,7 @@ export default function Profiles({
   // universal √
   // vertical √
   // epk √
-  // cardLink
+  // cardLink √
   // cardModal
   // slider
   // team
@@ -80,8 +81,11 @@ export default function Profiles({
   // blob
   // wavy
   // netflix
-  // youtube
+  // youtube √
   // myspace
+  // fullScreen √
+  // video
+  // gridSelect
   // fullScreen
 
   if (profileLayoutStyle === "cardModal")
@@ -156,6 +160,8 @@ export default function Profiles({
         profileSectionTitle={profileSectionTitle}
       />
     );
+  if (profileLayoutStyle === "video")
+    return <ProfileVideoSection profiles={FilteredProfiles} />;
   if (profileLayoutStyle === "youtube")
     return (
       <ProfileYoutubeSection
