@@ -16,6 +16,8 @@ import ProfileSportsSection from "@/components/ProfileSections/ProfileSportsSect
 import ProfileCardLinkSection from "@/components/ProfileSections/ProfileCardLinkSection";
 import ProfileYoutubeSection from "@/components/ProfileSections/ProfileYoutubeSection";
 import ProfileVideoSection from "@/components/ProfileSections/ProfileVideoSection";
+import ProfileDiscographySection from "@/components/ProfileSections/ProfileDiscographySection";
+import ProfileBiographySection from "@/components/ProfileSections/ProfileBiographySection";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -25,6 +27,8 @@ interface ProfilesProps {
   siteID?: string;
   siteLogo?: string;
   siteDomain: string;
+  spotifyClientId?: string;
+  spotifyClientSecret?: string;
 }
 
 export default function Profiles({
@@ -35,6 +39,8 @@ export default function Profiles({
   siteID,
   siteLogo,
   siteDomain,
+  spotifyClientId,
+  spotifyClientSecret,
 }: ProfilesProps) {
   if (!profiles) return <></>;
   const FilteredProfiles = profiles
@@ -100,6 +106,32 @@ export default function Profiles({
       <ProfileCardLinkSection
         profiles={FilteredProfiles}
         profileSectionTitle={profileSectionTitle}
+      />
+    );
+  if (
+    profileLayoutStyle === "discography" &&
+    !!spotifyClientId &&
+    !!spotifyClientSecret
+  )
+    return (
+      <ProfileDiscographySection
+        profiles={FilteredProfiles}
+        profileSectionTitle={profileSectionTitle}
+        spotifyClientId={spotifyClientId}
+        spotifyClientSecret={spotifyClientSecret}
+      />
+    );
+  if (
+    profileLayoutStyle === "biography" &&
+    !!spotifyClientId &&
+    !!spotifyClientSecret
+  )
+    return (
+      <ProfileBiographySection
+        profiles={FilteredProfiles}
+        profileSectionTitle={profileSectionTitle}
+        spotifyClientId={spotifyClientId}
+        spotifyClientSecret={spotifyClientSecret}
       />
     );
   if (profileLayoutStyle === "epk" && !!siteID)

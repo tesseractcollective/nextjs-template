@@ -154,6 +154,8 @@ export default function ContentComponents({
             siteID={siteLibrary.siteId}
             siteLogo={siteLibrary?.logo?.url || ""}
             siteDomain={siteLibrary.metaDomain || ""}
+            spotifyClientId={siteLibrary?.spotifyClientId || ""}
+            spotifyClientSecret={siteLibrary?.spotifyClientSecret || ""}
           />
         )}
       {!!contentTags?.eventShowType &&

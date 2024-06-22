@@ -504,6 +504,8 @@ export default function Profile({
           siteID={siteLibrary.siteId}
           siteLogo={siteLibrary?.logo?.url}
           siteDomain={siteLibrary.metaDomain || ""}
+          spotifyClientId={siteLibrary?.spotifyClientId || ""}
+          spotifyClientSecret={siteLibrary?.spotifyClientSecret || ""}
         />
       )}
     </div>

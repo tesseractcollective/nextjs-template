@@ -4788,9 +4788,20 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Admin = 'admin',
-  Alfredo = 'alfredo',
-  Saul = 'saul'
+  Academia = 'academia',
+  AlfredoS = 'alfredoS',
+  Azteca = 'azteca',
+  Carlos = 'carlos',
+  Cindy = 'cindy',
+  DanielP = 'danielP',
+  Eduardo = 'eduardo',
+  FranciscoB = 'franciscoB',
+  Humberto = 'humberto',
+  NormaD = 'normaD',
+  PacoB = 'pacoB',
+  SaulR = 'saulR',
+  TonyM = 'tonyM',
+  VictorM = 'victorM'
 }
 
 export type ContactUpdateInput = {
@@ -10688,7 +10699,9 @@ export type LogoTableEdge = {
 };
 
 export enum LogoTableItem {
-  Sponsor = 'sponsor'
+  Pros = 'pros',
+  Sponsor = 'sponsor',
+  Sublabel = 'sublabel'
 }
 
 /** Identifies documents */
@@ -17689,14 +17702,15 @@ export type ProfileEdge = {
   node: Profile;
 };
 
-/** fullScreen */
 export enum ProfileLayoutStyle {
   Alternate = 'alternate',
   Arch = 'arch',
   Basic = 'basic',
+  Biography = 'biography',
   Blob = 'blob',
   CardLink = 'cardLink',
   CardModal = 'cardModal',
+  Discography = 'discography',
   Epk = 'epk',
   FullScreen = 'fullScreen',
   Grid = 'grid',
@@ -19539,7 +19553,7 @@ export enum ProfilesSelect {
   SecondaryArtist = 'SecondaryArtist',
   Staff = 'Staff',
   Talent = 'Talent',
-  Integrante = 'integrante'
+  Label = 'label'
 }
 
 export type PublishLocaleInput = {
