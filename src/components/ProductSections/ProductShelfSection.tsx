@@ -1,23 +1,18 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import type { ProductFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
-import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import {
-  faChevronRight,
-  faChevronLeft,
   faCircleInfo,
+  faLeaf,
+  faPepperHot,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import useViewport from "@/app/hooks/useViewport";
 import { Fade } from "react-awesome-reveal";
 import ReactGA from "react-ga4";
-import { Dialog, Transition } from "@headlessui/react";
 import parse from "html-react-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface ProductsProps {
   products: ProductFieldsFragment[];
@@ -65,9 +60,48 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                     )}
                   </div>
                   {product?.description && (
-                    <div className="text-[12px] my-0 font-light py-0 parsed-mb-0 opacity-80 text-left lowercase">
+                    <div className="text-[14px] my-0 font-light py-0 parsed-mb-0 opacity-80 text-left lowercase">
                       {parse(product.description.html)}
                     </div>
+                  )}
+                  {product?.productJson?.spicy && (
+                    <span className="flex flex-row items-center gap-x-2">
+                      <FontAwesomeIcon
+                        icon={faPepperHot as IconProp}
+                        className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[red]"
+                      />
+                      <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
+                        spicy
+                      </span>
+                    </span>
+                  )}
+                  {product?.productJson?.vegetarian && (
+                    <span className="flex flex-row items-center gap-x-2">
+                      <FontAwesomeIcon
+                        icon={faLeaf as IconProp}
+                        className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[green]"
+                      />
+                      <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
+                        vegetarian
+                      </span>
+                    </span>
+                  )}
+                  {product?.productJson?.vegan && (
+                    <span className="flex flex-row items-center gap-x-2">
+                      <div className="relative">
+                        <FontAwesomeIcon
+                          icon={faLeaf as IconProp}
+                          className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[green]"
+                        />
+                        <FontAwesomeIcon
+                          icon={faLeaf as IconProp}
+                          className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[green] ml-[-0.10rem]"
+                        />
+                      </div>
+                      <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
+                        vegan
+                      </span>
+                    </span>
                   )}
                 </div>
                 <FontAwesomeIcon
@@ -79,94 +113,126 @@ export default function ProductShelfSection({ products }: ProductsProps) {
           </div>
         </Fade>
       </div>
-      {selectedProduct && (
-        <Transition.Root show={open} as={Fragment}>
-          <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
-            <Transition.Child
-              as={Fragment}
-              enter="transition-opacity ease-linear duration-[400ms]"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="transition-opacity ease-linear duration-[400ms]"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <div
-                className="fixed inset-0 bg-[#000000c7] opacity-90 backdrop-blur-xl"
-                aria-hidden="true"
-              />
-            </Transition.Child>
-
-            <div className="fixed inset-0 z-10 overflow-y-auto w-full px-4">
-              <div className="flex h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
-                <Transition.Child
-                  as={Fragment}
-                  enter="transition ease-in-out duration-300 transform"
-                  enterFrom="translate-y-full blur-xs"
-                  enterTo="-translate-y-0 blur-0"
-                  leave="transition ease-in-out duration-300 transform"
-                  leaveFrom="translate-y-0 blur-0"
-                  leaveTo="translate-y-full blur-xs"
-                >
-                  <Dialog.Panel className="relative transform overflow-hidden rounded-lg px-8 pb-4 pt-5 text-left shadow-xl transition-all max-w-xl sm:p-0 w-full flex-col flex bg-text-color items-center justify-center">
-                    {selectedProduct?.name && (
-                      <h2 className="uppercase !font-bold pt-8 text-3xl mb-2 text-bg">
-                        {selectedProduct.name}
-                      </h2>
-                    )}
-                    {selectedProduct?.gallery[0] && (
-                      <Image
-                        className="object-cover block mx-auto h-full w-full aspect-1 max-w-[22rem] mb-8 rounded"
-                        sizes="100%"
-                        width={0}
-                        height={0}
-                        src={selectedProduct.gallery[0].url}
-                        alt={selectedProduct.name || ""}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
+            className="bg-[#00000070] backdrop-blur-sm fixed inset-0 z-[1000] grid place-items-center overflow-y-scroll cursor-pointer p-6"
+          >
+            <div className="relative w-full mx-auto flex max-w-xl">
+              <motion.div
+                initial={{ scale: 0, rotate: "12.5deg" }}
+                animate={{ scale: 1, rotate: "0deg" }}
+                exit={{ scale: 0, rotate: "0deg" }}
+                onClick={(e) => e.stopPropagation()}
+                className="bg-text-color text-dark py-4 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-hidden dialog-popup-page max-h-[80dvh]"
+              >
+                <div className="relative z-10 text-bg gap-y-4 flex flex-col items-center justify-center">
+                  {!!selectedProduct?.name && (
+                    <h2 className="text-xl !font-bold text-center mb-0 text-dark">
+                      {selectedProduct.name}
+                    </h2>
+                  )}
+                  {selectedProduct?.gallery[0] && (
+                    <Image
+                      className="object-cover block mx-auto h-full w-full aspect-1 max-w-[22rem] mb-4 rounded"
+                      sizes="100%"
+                      width={0}
+                      height={0}
+                      src={selectedProduct.gallery[0].url}
+                      alt={selectedProduct.name || ""}
+                    />
+                  )}
+                  {selectedProduct?.productJson?.spicy && (
+                    <span className="flex flex-row items-center gap-x-2">
+                      <FontAwesomeIcon
+                        icon={faPepperHot as IconProp}
+                        className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[red]"
                       />
-                    )}
-                    {selectedProduct?.description && (
-                      <div className="text-md my-0 font-light py-0 parsed-mb-0 uppercase opacity-90 text-center max-w-sm text-bg all-text-dark">
-                        {parse(selectedProduct.description.html)}
+                      <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
+                        spicy
+                      </span>
+                    </span>
+                  )}
+                  {selectedProduct?.productJson?.vegetarian && (
+                    <span className="flex flex-row items-center gap-x-2">
+                      <FontAwesomeIcon
+                        icon={faLeaf as IconProp}
+                        className="fa-fw my-0 py-0 h-5 w-5 transition-all rounded-full text-[green]"
+                      />
+                      <span className="text-[10px] transition-all">
+                        vegetarian
+                      </span>
+                    </span>
+                  )}
+                  {selectedProduct?.productJson?.vegan && (
+                    <span className="flex flex-row items-center gap-x-2">
+                      <div className="relative">
+                        <FontAwesomeIcon
+                          icon={faLeaf as IconProp}
+                          className="fa-fw my-0 py-0 h-5 w-5 transition-all rounded-full text-[green]"
+                        />
+                        <FontAwesomeIcon
+                          icon={faLeaf as IconProp}
+                          className="fa-fw my-0 py-0  h-5 w-5 transition-all rounded-full text-[green] ml-[-0.10rem]"
+                        />
+                      </div>
+                      <span className="text-[10px] transition-all">vegan</span>
+                    </span>
+                  )}
+                  {selectedProduct?.description && (
+                    <div className="text-md my-0 font-light py-0 parsed-mb-0 uppercase opacity-90 text-center max-w-sm text-bg all-text-dark mx-auto">
+                      {parse(selectedProduct.description.html)}
+                    </div>
+                  )}
+                  {selectedProduct?.purchaseLink &&
+                    selectedProduct?.purchaseLabel && (
+                      <div className="my-10">
+                        <a
+                          href={selectedProduct.purchaseLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex w-full items-center justify-center rounded-md border-2 border-transparent hover:border-primary bg-bg px-8 py-3 text-base !text-text-color hover:bg-bg-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-gray-50 transition-all font-bold uppercase mx-auto"
+                          onClick={() =>
+                            ReactGA.event({
+                              category: "Link",
+                              action: selectedProduct.purchaseLink || "",
+                              label: selectedProduct.purchaseLink || "",
+                            })
+                          }
+                        >
+                          {selectedProduct.purchaseLabel}
+                        </a>
                       </div>
                     )}
-                    {selectedProduct?.purchaseLink &&
-                      selectedProduct?.purchaseLabel && (
-                        <div className="my-10">
-                          <a
-                            href={selectedProduct.purchaseLink}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex w-full items-center justify-center rounded-md border-2 border-transparent hover:border-primary bg-bg px-8 py-3 text-base !text-text-color hover:bg-bg-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-gray-50 transition-all font-bold uppercase mx-auto"
-                            onClick={() =>
-                              ReactGA.event({
-                                category: "Link",
-                                action: selectedProduct.purchaseLink || "",
-                                label: selectedProduct.purchaseLink || "",
-                              })
-                            }
-                          >
-                            {selectedProduct.purchaseLabel}
-                          </a>
-                        </div>
-                      )}
+
+                  <div className="flex gap-2">
                     <button
-                      type="button"
-                      className="m-1 inline-flex items-center justify-center rounded-md p-2 outline transition-all outline-text-color hover:outline-primary ml-auto max-w-max uppercase text-xs text-bg"
                       onClick={() => setOpen(false)}
+                      className="bg-white hover:opacity-90 transition-opacity text-indigo-600 font-semibold w-full py-2 rounded"
                     >
-                      <span>Close Details</span>
-                      <FontAwesomeIcon
-                        icon={faXmark as IconProp}
-                        className="fa-fw my-0 py-0 ml-2 h-4 w-4"
-                      />
+                      Close
                     </button>
-                  </Dialog.Panel>
-                </Transition.Child>
-              </div>
+                  </div>
+                </div>
+              </motion.div>
+              <button
+                type="button"
+                className="inline-flex items-center justify-center p-1 text-text-color outline transition-all outline-text-color hover:outline-primary mx-auto max-w-max uppercase text-xs absolute top-0 md:-top-[10px] right-[-10px] rounded-full bg-primary"
+                onClick={() => setOpen(false)}
+              >
+                <FontAwesomeIcon
+                  icon={faTimes as IconProp}
+                  className="fa-fw my-0 py-0 h-4 w-4"
+                />
+              </button>
             </div>
-          </Dialog>
-        </Transition.Root>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

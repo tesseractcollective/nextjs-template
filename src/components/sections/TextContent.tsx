@@ -67,7 +67,7 @@ export default function TextContentSection({
           {textBlocks.map((textContentItem) => (
             <div
               key={Math.random()}
-              className={`relative z-20 ${
+              className={`text-content-block relative z-20 ${
                 textContentItem?.cssClass
                   ? textContentItem?.cssClass
                   : `${textContentItem?.textContentWidth} ${
@@ -198,7 +198,7 @@ export default function TextContentSection({
           className={
             firstBlockCSSClass ||
             firstBlockWidth ||
-            `relative h-full z-20 flex flex-row flex-wrap ${
+            `call-to-action-block relative h-full z-20 flex flex-row flex-wrap ${
               (firstBlockAlign === "center" && "mx-auto") ||
               (firstBlockAlign === "left" && "mr-auto ml-0 justify-start") ||
               firstBlockAlign === "right" ||
@@ -213,7 +213,7 @@ export default function TextContentSection({
           <div
             className={
               firstBlockCSSClass
-                ? "call-to-action-items w-full"
+                ? "call-to-action-items w-full flex flex-row items-center justify-center"
                 : `call-to-action-items p-4 gap-x-4 flex flex-row`
             }
           >
