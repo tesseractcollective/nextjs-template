@@ -8,6 +8,7 @@ import { Fade, Zoom } from "react-awesome-reveal";
 import LinkItem from "@/components/LinkItem";
 import TextContentPins from "./TextContentPins";
 import TextCardsSection from "./TextContentSections/TextCardsSection";
+import TextModernSection from "./TextContentSections/TextModernSection";
 
 interface TextContentProps {
   textContentData: TextContentFieldsFragment[];
@@ -47,6 +48,9 @@ export default function TextContentSection({
   const textCards = textContentData?.filter(
     (textContent) => textContent.contentAlign === "card"
   );
+  const textModern = textContentData?.filter(
+    (textContent) => textContent.textContentWidth === "modern"
+  );
   const textBlocks = textContentData?.filter(
     (textContent) => textContent.contentAlign !== "card"
   );
@@ -60,6 +64,13 @@ export default function TextContentSection({
   if (textPins && textPins.length >= 1) return <TextContentPins />;
   if (textCards && textCards.length >= 1)
     return <TextCardsSection textContentData={textCards} />;
+  if (textModern && textModern.length >= 1)
+    return (
+      <TextModernSection
+        textContentData={textModern}
+        callToActionData={callToActionData}
+      />
+    );
   return (
     <>
       {!!textContentData && textContentData.length >= 1 && (

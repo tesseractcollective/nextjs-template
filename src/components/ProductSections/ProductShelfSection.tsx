@@ -88,19 +88,17 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                   )}
                   {product?.productJson?.vegan && (
                     <span className="flex flex-row items-center gap-x-2">
-                      <div className="relative">
+                      <div className="relative flex flex-row">
                         <FontAwesomeIcon
                           icon={faLeaf as IconProp}
-                          className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[green]"
+                          className="fa-fw my-0 py-0 h-5 w-5 transition-all rounded-full text-[green] z-2 relative"
                         />
                         <FontAwesomeIcon
                           icon={faLeaf as IconProp}
-                          className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[green] ml-[-0.10rem]"
+                          className="fa-fw my-0 py-0  h-5 w-5 transition-all rounded-full text-[green] ml-[-0.10rem] z-1 relative"
                         />
                       </div>
-                      <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
-                        vegan
-                      </span>
+                      <span className="text-[10px] transition-all">vegan</span>
                     </span>
                   )}
                 </div>
@@ -170,14 +168,14 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                   )}
                   {selectedProduct?.productJson?.vegan && (
                     <span className="flex flex-row items-center gap-x-2">
-                      <div className="relative">
+                      <div className="relative flex flex-row">
                         <FontAwesomeIcon
                           icon={faLeaf as IconProp}
-                          className="fa-fw my-0 py-0 h-5 w-5 transition-all rounded-full text-[green]"
+                          className="fa-fw my-0 py-0 h-5 w-5 transition-all rounded-full text-[green] z-2 relative"
                         />
                         <FontAwesomeIcon
                           icon={faLeaf as IconProp}
-                          className="fa-fw my-0 py-0  h-5 w-5 transition-all rounded-full text-[green] ml-[-0.10rem]"
+                          className="fa-fw my-0 py-0  h-5 w-5 transition-all rounded-full text-[green] ml-[-0.10rem] z-1 relative"
                         />
                       </div>
                       <span className="text-[10px] transition-all">vegan</span>

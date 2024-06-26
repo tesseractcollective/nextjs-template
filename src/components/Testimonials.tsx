@@ -95,33 +95,34 @@ export default function Testimonials({
                         </div>
                         {testimonial.testimonialSourceLink && (
                           <div className="mt-2">
-                            {testimonial.testimonialSourceLink.includes(
+                            {(testimonial.testimonialSourceLink.includes(
                               "goo"
                             ) ||
-                              (testimonial.testimonialSourceLink.includes(
+                              testimonial.testimonialSourceLink.includes(
                                 "g.co"
-                              ) && (
-                                <a
-                                  href={testimonial.testimonialSourceLink}
-                                  target="_blank"
-                                  className="max-w-max mx-auto text-text-color text-center !text-link transition-all cursor-pointer"
-                                  title="Google"
-                                  rel="noreferrer"
-                                >
-                                  <FontAwesomeIcon
-                                    icon={faGoogle as IconProp}
-                                    className="fa-fw h-4 w-4"
-                                  />
-                                  <span className="sr-only">Google Review</span>
-                                </a>
-                              ))}
+                              )) && (
+                              <a
+                                href={testimonial.testimonialSourceLink}
+                                target="_blank"
+                                className="max-w-max mx-auto text-text-color text-center !text-link transition-all cursor-pointer hover:text-[#4285f4] focus-within:text-[#4285f4]"
+                                title="Google"
+                                rel="noreferrer"
+                              >
+                                <FontAwesomeIcon
+                                  icon={faGoogle as IconProp}
+                                  className="fa-fw h-4 w-4"
+                                />
+                                <span className="sr-only">Google Review</span>
+                              </a>
+                            )}
+                            {/* YELP */}
                             {testimonial.testimonialSourceLink.includes(
                               "yelp"
                             ) && (
                               <a
                                 href={testimonial.testimonialSourceLink}
                                 target="_blank"
-                                className="max-w-max mx-auto text-text-color text-center !text-link transition-all cursor-pointer hover:text-[#E00708]"
+                                className="max-w-max mx-auto text-text-color text-center !text-link transition-all cursor-pointer hover:text-[#E00708] focus-within:text-[#E00708]"
                                 title="Google"
                                 rel="noreferrer"
                               >
@@ -132,7 +133,7 @@ export default function Testimonials({
                                 <span className="sr-only">Yelp Review</span>
                               </a>
                             )}
-
+                            {/* TRIP ADVISOR */}
                             {testimonial.testimonialSourceLink.includes(
                               "trip"
                             ) && (
@@ -177,7 +178,9 @@ export default function Testimonials({
                                     d="M474.4 101.2l37.7-37.4h-76.4C392.9 29 321.8 0 255.9 0c-66 0-136.5 29-179.3 63.8H0l37.7 37.4C14.4 124.4 0 156.5 0 192c0 70.8 57.4 128.2 128.2 128.2 32.5 0 62.2-12.1 84.8-32.1l43.4 31.9 42.9-31.2-.5-1.2c22.7 20.2 52.5 32.5 85.3 32.5 70.8 0 128.2-57.4 128.2-128.2-.1-35.4-14.6-67.5-37.9-90.7zM368 64.8c-60.7 7.6-108.3 57.6-111.9 119.5-3.7-62-51.4-112.1-112.3-119.5 30.6-22 69.6-32.8 112.1-32.8S337.4 42.8 368 64.8zM128.2 288.2C75 288.2 32 245.1 32 192s43.1-96.2 96.2-96.2 96.2 43.1 96.2 96.2c-.1 53.1-43.1 96.2-96.2 96.2zm256 0c-53.1 0-96.2-43.1-96.2-96.2s43.1-96.2 96.2-96.2 96.2 43.1 96.2 96.2c-.1 53.1-43.1 96.2-96.2 96.2z"
                                   />
                                 </svg>
-                                <span className="sr-only">Google Review</span>
+                                <span className="sr-only">
+                                  trip advisor Review
+                                </span>
                               </a>
                             )}
                           </div>
