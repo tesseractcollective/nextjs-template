@@ -27,7 +27,7 @@ export default function TextModernSection({
                   key={textContentItem?.header?.html}
                   className="mx-auto w-full"
                 >
-                  <div className="flex flex-row p-4 rounded items-center gap-x-4">
+                  <div className="flex flex-row p-4 rounded items-center gap-x-4 justify-center text-center">
                     {textContentItem?.contentImage && (
                       <Image
                         className="h-16 lg:h-20 w-16 lg:w-20 rounded-full object-cover"
@@ -47,17 +47,17 @@ export default function TextModernSection({
                     )}
                     <div className="flex flex-col items-center justify-center relative z-2">
                       {textContentItem?.header && (
-                        <div className="text-4xl font-bold my-0 py-0 parsed-mb-0">
+                        <div className="text-4xl font-bold my-0 py-0 parsed-mb-0 mx-auto w-full">
                           {parse(textContentItem.header.html)}
                         </div>
                       )}
                       {textContentItem?.subHeader && (
-                        <div className="text-lg my-0 font-light py-0 parsed-mb-0 uppercase tracking-widest all-text-primary">
+                        <div className="text-lg my-0 font-light py-0 parsed-mb-0 uppercase tracking-widest all-text-primary mx-auto w-full">
                           {parse(textContentItem.subHeader.html)}
                         </div>
                       )}
                       {textContentItem?.content && (
-                        <div className="body-parsed-text text-lg my-0 py-2 parsed-mb-0 text-center opacity-90">
+                        <div className="body-parsed-text text-lg my-0 py-2 parsed-mb-0 text-center opacity-90 mx-auto w-full">
                           {parse(textContentItem.content.html)}
                         </div>
                       )}

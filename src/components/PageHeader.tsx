@@ -458,15 +458,16 @@ export default function PageHeader({
               )}
               {!!pageCallToAction && pageCallToAction?.length > 0 && (
                 <div>
-                  <div className="text-center mx-auto md:text-left md:mx-0">
+                  <div className="text-center mx-auto">
                     {pageCallToAction.map(
                       (callToActionItem) =>
                         callToActionItem?.ctaLink && (
                           <div
                             key={callToActionItem.ctaLink}
-                            className="text-center mx-auto md:text-left md:mx-0"
+                            className="text-center mx-auto flex flex-row flex-wrap items-center justify-center gap-4"
                           >
                             <LinkItem
+                              parentCssClass="mx-auto w-full"
                               link={callToActionItem.ctaLink}
                               label={callToActionItem.ctaLabel}
                               cssClass={
@@ -476,7 +477,7 @@ export default function PageHeader({
                                       callToActionItem.ctaPrimary
                                         ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full"
                                         : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl !rounded-full"
-                                    } mr-2 max-w-max`
+                                    } mx-auto`
                               }
                             />
                           </div>
