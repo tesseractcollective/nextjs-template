@@ -16,8 +16,11 @@ export default function AnimateParagraph({
 
   const words = animateParagraph.split(" ");
   return (
-    <div className="animate-paragraph-wrapper items-center justify-center mx-auto flex">
-      <p ref={container} className="animate-paragraph text-center">
+    <div className="animate-paragraph-wrapper items-center justify-center mx-auto flex relative z-10">
+      <p
+        ref={container}
+        className="animate-paragraph text-center bg-glass glass-dark"
+      >
         {words.map((word, i) => {
           const start = i / words.length;
           const end = start + 1 / words.length;

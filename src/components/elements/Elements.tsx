@@ -27,6 +27,7 @@ import MaskCursorColored from "./MaskCursorColored";
 import SpotifyArtistAlbums from "./SpotifyAPI/SpotifyArtistAlbums";
 import SpotifyUserPlaylists from "./SpotifyAPI/SpotifyUserPlaylists";
 import RegisterForm from "./RegisterForm";
+import DimensionText from "./DimensionText";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -127,6 +128,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             siteName={siteLibrary?.title}
           />
         )}
+      {!!elementJson?.dimensionText && (
+        <DimensionText text={elementJson.dimensionText} />
+      )}
       {!!siteLibrary?.mapKey &&
         !!elementJson?.distanceCheck?.lat &&
         !!elementJson?.distanceCheck?.long &&

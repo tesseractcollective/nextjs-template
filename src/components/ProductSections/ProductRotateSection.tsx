@@ -18,19 +18,31 @@ interface ProductsProps {
   products: ProductFieldsFragment[];
 }
 
-export default function ProductShelfSection({ products }: ProductsProps) {
+export default function ProductRotateSection({ products }: ProductsProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedProduct, setSelectedProduct] =
     useState<ProductFieldsFragment>();
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   useState<ProductFieldsFragment>();
 
+  function camelCaseToSpaceSeparated(str: string): string {
+    return str.replace(/([a-z])([A-Z])/g, "$1 $2");
+  }
+
+  // Example usage:
+  const camelCaseString: string = "brunchDrinks";
+  const spaceSeparatedString: string =
+    camelCaseToSpaceSeparated(camelCaseString);
+  console.log(spaceSeparatedString); // Output: "brunch Drinks"
+
   return (
-    <div className="bg-bg-primary">
-      <div className="mx-auto max-w-2xl px-4 pb-8 max-w-8xl">
-        <h2 className="sr-only">Products</h2>
-        <Fade direction="up" triggerOnce>
-          <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 bg-text-color all-text-dark rounded py-4 mx-auto">
+    <div className="">
+      <div className="mx-auto px-4 py-8 max-w-8xl w-full">
+        <div className="flex items-center justify-center flex-col relative">
+          <h2 className="max-h-max max-w-max m-0 p-2 mb-2 bg-bg-secondary text-primary uppercase rounded-xl">
+            {camelCaseToSpaceSeparated(products[0].productType)}
+          </h2>
+          <div className="flex flex-col items-center gap-y-2">
             {products.map((product) => (
               <button
                 onClick={() => {
@@ -38,23 +50,23 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                   setSelectedProduct(product);
                   ReactGA.event({
                     category: "Link",
-                    action: "Open Product Popup",
-                    label: "Open Product Popup",
+                    action: "Open product Popup",
+                    label: "Open product Popup",
                   });
                 }}
                 type="button"
                 key={product.id}
-                className="flex flex-col p-4 gap-x-4 w-full max-w-[260px] items-start justify-center hover:border-primary border border-text-color transition-all mx-auto relative group"
+                className="flex flex-col p-4 gap-x-4 w-full max-w-[400px] items-start justify-center hover:border-primary border border-bg transition-all mx-auto relative group bg-glass glass-dark"
               >
                 <div className="flex flex-col w-full">
                   <div className="flex flex-row items-start justify-between gap-x-6">
                     {product.name && (
-                      <div className="text-sm font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left">
+                      <div className="text-sm font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left text-text-color">
                         {parse(product.name)}
                       </div>
                     )}
                     {product.price && (
-                      <div className="text-sm font-light my-0 py-0 parsed-mb-0">
+                      <div className="text-sm font-light my-0 py-0 parsed-mb-0 text-text-color">
                         {parse(product.price)}
                       </div>
                     )}
@@ -109,7 +121,7 @@ export default function ProductShelfSection({ products }: ProductsProps) {
               </button>
             ))}
           </div>
-        </Fade>
+        </div>
       </div>
       <AnimatePresence>
         {open && (

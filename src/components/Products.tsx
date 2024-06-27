@@ -7,6 +7,7 @@ import ProductSliderSection from "@/components/ProductSections/ProductSliderSect
 import ProductCompactSection from "@/components/ProductSections/ProductCompactSection";
 import ProductDefaultSection from "@/components/ProductSections/ProductDefaultSection";
 import ProductGridSection from "@/components/ProductSections/ProductGridSection";
+import ProductRotateSection from "@/components/ProductSections/ProductRotateSection";
 
 interface ProductsProps {
   profileSectionTitle?: string;
@@ -41,6 +42,8 @@ export default function Products({
 
   if (productLayoutStyle === "compact")
     return <ProductCompactSection products={filteredProducts} />;
+  if (productLayoutStyle === "rotate")
+    return <ProductRotateSection products={filteredProducts} />;
   if (productLayoutStyle === "grid")
     return <ProductGridSection products={filteredProducts} />;
   if (productLayoutStyle === "shelf")
