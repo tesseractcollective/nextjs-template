@@ -18,6 +18,7 @@ import ProfileYoutubeSection from "@/components/ProfileSections/ProfileYoutubeSe
 import ProfileVideoSection from "@/components/ProfileSections/ProfileVideoSection";
 import ProfileDiscographySection from "@/components/ProfileSections/ProfileDiscographySection";
 import ProfileBiographySection from "@/components/ProfileSections/ProfileBiographySection";
+import ProfilesHalfScreenSection from "@/components/ProfileSections/ProfilesHalfScreenSection";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -209,6 +210,8 @@ export default function Profiles({
         profileSectionTitle={profileSectionTitle}
       />
     );
+  if (profileLayoutStyle === "halfScreen")
+    return <ProfilesHalfScreenSection profiles={FilteredProfiles} />;
   if (profileLayoutStyle === "sport" && !!siteLogo)
     return (
       <ProfileSportsSection profiles={FilteredProfiles} siteLogo={siteLogo} />

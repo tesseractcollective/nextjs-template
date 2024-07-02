@@ -19,6 +19,7 @@ import HorizonNavigation from "@/components/navigation/HorizonNavigation";
 import BlogNavigation from "@/components/navigation/BlogNavigation";
 import DimensionNavigation from "@/components/navigation/DimensionNavigation";
 import BorderNavigation from "@/components/navigation/BorderNavigation";
+import BetweenNavigation from "@/components/navigation/BetweenNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -121,7 +122,7 @@ export default function Nav({
 
   if (navigation.navigationLayoutStyle === "between")
     return (
-      <DefaultNavigation
+      <BetweenNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

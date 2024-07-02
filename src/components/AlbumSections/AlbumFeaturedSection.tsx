@@ -33,6 +33,8 @@ export default function AlbumFeaturedSection({ albums }: FeatureAlbumProps) {
                         label: albumItem.title || "",
                       })
                     }
+                    target="_blank"
+                    rel="noreferrer"
                     className="flex items-center justify-center relative mx-auto no-underline"
                   >
                     {!!albumItem.albumCover?.url && (

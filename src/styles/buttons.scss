@@ -100,3 +100,38 @@
   border-radius: 16px;
   background-color: var(--secondary);
 }
+
+
+// Header Button - Solid Drop Shadow Style - Ghost //
+
+.drop-shadow-button-primary  {
+  background: var(--primary);
+  color: var(--background);
+  box-shadow: 2px 2px var(--text);
+  border: 1px solid var(--text) !important;
+  transition: all ease-in 0.2s !important;
+  padding: 16px 12px;
+  text-transform: uppercase;
+  &:hover {
+    box-shadow: none;
+    transform: translateY(4px) !important;
+    transition: all ease-in 0.2s;
+    opacity: 1 !important;
+  }
+}
+
+.drop-shadow-button-secondary  {
+  background: var(--secondary);
+  color: var(--text);
+  box-shadow: 2px 2px var(--text);
+  border: 1px solid var(--text) !important;
+  transition: all ease-in 0.2s !important;
+  padding: 16px 12px;
+  text-transform: uppercase;
+  &:hover {
+    box-shadow: none;
+    transform: translateY(4px) !important;
+    transition: all ease-in 0.2s;
+    opacity: 1 !important;
+  }
+}

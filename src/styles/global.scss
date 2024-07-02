@@ -1163,3 +1163,43 @@ h4, h5, h6  {color: var(--text);}
     padding-bottom: 0.5rem;
   }
 }
+
+#mc_embed_signup {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  margin: 0 auto !important;
+  max-width: 600px !important;
+  width: 100% !important;
+}
+
+#mc_embed_signup {
+  label, .indicates-required, .small-meta, .datefield {
+    color: var(--text);
+  }
+  .datefield {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+  }
+  #mc-embedded-subscribe {
+    width: 100% !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: larger;
+  }
+  .datefield input {
+    width: 50px !important;
+  }
+  h2 {
+    text-align: center;
+    font-size: 36px;
+    text-transform: uppercase;
+  }
+}

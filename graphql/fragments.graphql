@@ -57,7 +57,7 @@ fragment blogFields on Blog {
   }
   blogHtml
   blogHeroStyle
-  layoutBlocks(first: 100) {
+  layoutBlocks(first: 25) {
     id
     cssClass
     backgroundColor {
@@ -73,7 +73,7 @@ fragment blogFields on Blog {
     backgroundImage {
       url
     }
-    layoutBlockColumns(first: 100) {
+    layoutBlockColumns(first: 25) {
       ...layoutBlockColumnFields
     }
   }
@@ -401,7 +401,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     spotifyArtistName
     spotifyAlbumDisplay
   }
-  sections(first: 100) {
+  sections(first: 25) {
     __typename
     ...TextContentFields
     ...CallToActionFields
@@ -439,7 +439,7 @@ fragment pageFields on Page {
   heroMobileImage {
     url
   }
-  layoutBlocks(first: 100) {
+  layoutBlocks(first: 25) {
     id
     cssClass
     backgroundColor {
@@ -455,7 +455,7 @@ fragment pageFields on Page {
     backgroundImage {
       url
     }
-    layoutBlockColumns(first: 100) {
+    layoutBlockColumns(first: 25) {
       ...layoutBlockColumnFields
     }
   }
@@ -465,7 +465,7 @@ fragment pageFields on Page {
     buttonOpenText
     buttonOpenCss
     openOnScroll
-    popupContent(first: 100) {
+    popupContent(first: 25) {
       ...layoutBlockColumnFields
     }
   }
@@ -544,7 +544,7 @@ fragment HeroMediaSliderFields on HeroMediaSlider {
     cssClass
     htmlText
   }
-  callToAction(first: 50) {
+  callToAction(first: 20) {
     ctaLabel
     ctaLink
     ctaClass
@@ -753,12 +753,12 @@ fragment profileFields on Profile {
   avatarImage {
     url
   }
-  imageGallery(first: 100) {
-    url(transformation: { document: { output: { format: webp } } })
+  imageGallery(first: 20) {
+    url
     height
     width
   }
-  portfolioGallery(first: 100) {
+  portfolioGallery(first: 20) {
     url(transformation: { document: { output: { format: webp } } })
     height
     width
@@ -771,7 +771,7 @@ fragment profileFields on Profile {
     url
   }
   profileLogo {
-    url(transformation: { document: { output: { format: webp } } })
+    url
   }
   bandsInTownKey
   profilePageLayoutStyle

@@ -108,12 +108,12 @@ export default function BorderNavigation({
                       ?.toLowerCase()
                       .replace(" ", "-")}`}
                   >
-                    {navigation?.navigationLogo ? (
+                    {navigation?.navigationLogo?.url ? (
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
                           className="h-8 w-auto max-w-xs mx-auto cursor-pointer object-contain"
-                          src={navigation.navigationLogo?.url}
+                          src={navigation.navigationLogo.url}
                           alt=""
                           width={0}
                           height={0}
@@ -332,11 +332,11 @@ export default function BorderNavigation({
                         });
                       }}
                     >
-                      {navigation?.navigationLogo ? (
+                      {navigation?.navigationLogo?.url ? (
                         <Fade triggerOnce direction="left">
                           <Image
                             className="h-14 w-auto max-w-xs mx-auto cursor-pointer object-contain py-2"
-                            src={navigation.navigationLogo?.url}
+                            src={navigation.navigationLogo.url}
                             alt={title || ""}
                             width={0}
                             height={0}
