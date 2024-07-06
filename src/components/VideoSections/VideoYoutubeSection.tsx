@@ -56,7 +56,7 @@ export default function VideoYoutubeSection({
       {videoData.map((video, index) => (
         <div
           key={`${video?.videoTitle}-${index}`}
-          className="w-full h-full gap-y-4 flex flex-col items-center justify-center"
+          className="w-full gap-y-4 flex flex-col items-center justify-center"
         >
           {!!video?.videoTitle && (
             <h3 className="text-text-color text-center font-bold text-3xl">

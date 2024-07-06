@@ -97,7 +97,7 @@ const SpotifyDisplayMyspace: React.FC<SpotifyDataProps> = ({
                     alt={album.name}
                     width={0}
                     height={0}
-                    className="transition-all object-cover overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1 h-32 w-32 aspect-1 block"
+                    className="transition-all object-cover overflow-hidden grayscale-0 group-hover:grayscale group-focus:grayscale relative z-10 duration-[400ms] group-hover:saturate-0 saturate-1 h-24 md:h-32 w-24 md:w-32 aspect-1 block"
                   />
                   <div className="max-w-[200px]">
                     <h3 className="font-bold text-lg md:text-2xl uppercase max-w-[200px]">

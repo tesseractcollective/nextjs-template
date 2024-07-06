@@ -225,7 +225,7 @@ function UniversalFooter({
           </div>
         )}
         {/* Bottom Footer */}
-        <div className="my-0 flex flex-col flex-wrap justify-center w-full mx-auto">
+        <div className="my-0 flex flex-col flex-wrap justify-center w-full mx-auto py-8">
           {secondaryLogo?.url && secondaryLink && secondaryName && (
             <a
               href={secondaryLink}

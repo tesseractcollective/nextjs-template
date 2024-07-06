@@ -344,71 +344,75 @@ export default function CenterNavigation({
               </div>
             </div>
           </nav>
-          <Zoom className="fixed bottom-10 right-5 md:hidden">
-            <button
-              type="button"
-              className="rounded-full px-2 py-2 text-text-color border border-white hover:border-primary transition-all group bg-dark hover:rotate-180 relative z-100"
-              onClick={() => {
-                setOpen(true);
-                ReactGA.event({
-                  category: "Link",
-                  action: "Open Mobile Menu",
-                  label: "Open Mobile Menu",
-                });
-              }}
-            >
-              <Bars3BottomRightIcon
-                className="h-7 w-7 group-hover:text-primary transition-all group-hover:opacity-50"
-                aria-hidden="true"
-              />
-              <span className="text-xs group-hover:opacity-100 absolute top-[-20px] rotate-180 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
-                Menu
-              </span>
-              <span className="sr-only">Menu</span>
-            </button>
-          </Zoom>
+          {items && items.length >= 1 && (
+            <Zoom className="fixed bottom-10 right-5 md:hidden">
+              <button
+                type="button"
+                className="rounded-full px-2 py-2 text-text-color border border-white hover:border-primary transition-all group bg-dark hover:rotate-180 relative z-100"
+                onClick={() => {
+                  setOpen(true);
+                  ReactGA.event({
+                    category: "Link",
+                    action: "Open Mobile Menu",
+                    label: "Open Mobile Menu",
+                  });
+                }}
+              >
+                <Bars3BottomRightIcon
+                  className="h-7 w-7 group-hover:text-primary transition-all group-hover:opacity-50"
+                  aria-hidden="true"
+                />
+                <span className="text-xs group-hover:opacity-100 absolute top-[-20px] rotate-180 opacity-0 transition-all uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                  Menu
+                </span>
+                <span className="sr-only">Menu</span>
+              </button>
+            </Zoom>
+          )}
         </header>
         {/* DIV */}
 
-        <div className="hidden md:flex md:fixed vertical-nav-desktop">
-          <Fade direction="right" triggerOnce cascade damping={0.05}>
-            {!!items &&
-              items.length >= 1 &&
-              items.map((mainNavigationItem) => {
-                const hasItems = mainNavigationItem.items.length >= 1;
-                return (
-                  <div className="" key={mainNavigationItem.label}>
-                    {hasItems && (
-                      <div className="">
-                        <LinkItem
-                          key={mainNavigationItem.label}
-                          link={mainNavigationItem.link || "/"}
-                          sameTab={mainNavigationItem?.sameTab}
-                          cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
-                          onClick={() => setOpen(false)}
-                        >
-                          <span>{mainNavigationItem.label}</span>
-                        </LinkItem>
-                      </div>
-                    )}
-                    {!hasItems && (
-                      <div className="">
-                        <LinkItem
-                          key={mainNavigationItem.label}
-                          link={mainNavigationItem.link || "/"}
-                          sameTab={mainNavigationItem?.sameTab}
-                          cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
-                          onClick={() => setOpen(false)}
-                        >
-                          <span>{mainNavigationItem.label}</span>
-                        </LinkItem>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-          </Fade>
-        </div>
+        {items && items.length >= 1 && (
+          <div className="hidden md:flex md:fixed vertical-nav-desktop">
+            <Fade direction="right" triggerOnce cascade damping={0.05}>
+              {!!items &&
+                items.length >= 1 &&
+                items.map((mainNavigationItem) => {
+                  const hasItems = mainNavigationItem.items.length >= 1;
+                  return (
+                    <div className="" key={mainNavigationItem.label}>
+                      {hasItems && (
+                        <div className="">
+                          <LinkItem
+                            key={mainNavigationItem.label}
+                            link={mainNavigationItem.link || "/"}
+                            sameTab={mainNavigationItem?.sameTab}
+                            cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
+                            onClick={() => setOpen(false)}
+                          >
+                            <span>{mainNavigationItem.label}</span>
+                          </LinkItem>
+                        </div>
+                      )}
+                      {!hasItems && (
+                        <div className="">
+                          <LinkItem
+                            key={mainNavigationItem.label}
+                            link={mainNavigationItem.link || "/"}
+                            sameTab={mainNavigationItem?.sameTab}
+                            cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
+                            onClick={() => setOpen(false)}
+                          >
+                            <span>{mainNavigationItem.label}</span>
+                          </LinkItem>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+            </Fade>
+          </div>
+        )}
         {/* DIV */}
       </div>
       {/* <div className="pb-28"></div> */}
