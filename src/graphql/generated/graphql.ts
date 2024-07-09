@@ -4788,20 +4788,10 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Academia = 'academia',
-  AlfredoS = 'alfredoS',
+  Admin = 'admin',
   Azteca = 'azteca',
-  Carlos = 'carlos',
-  Cindy = 'cindy',
-  DanielP = 'danielP',
-  Eduardo = 'eduardo',
-  FranciscoB = 'franciscoB',
-  Humberto = 'humberto',
-  NormaD = 'normaD',
-  PacoB = 'pacoB',
-  SaulR = 'saulR',
-  TonyM = 'tonyM',
-  VictorM = 'victorM'
+  Daniel = 'daniel',
+  Saul = 'saul'
 }
 
 export type ContactUpdateInput = {
@@ -10699,9 +10689,7 @@ export type LogoTableEdge = {
 };
 
 export enum LogoTableItem {
-  Pros = 'pros',
-  Sponsor = 'sponsor',
-  Sublabel = 'sublabel'
+  Sponsor = 'sponsor'
 }
 
 /** Identifies documents */
@@ -19552,8 +19540,7 @@ export enum ProfilesSelect {
   Artist = 'Artist',
   SecondaryArtist = 'SecondaryArtist',
   Staff = 'Staff',
-  Talent = 'Talent',
-  Label = 'label'
+  Talent = 'Talent'
 }
 
 export type PublishLocaleInput = {
@@ -26633,7 +26620,7 @@ export const HeroMediaSliderFieldsFragmentDoc = gql`
     cssClass
     htmlText
   }
-  callToAction(first: 50) {
+  callToAction(first: 20) {
     ctaLabel
     ctaLink
     ctaClass
@@ -26746,7 +26733,7 @@ export const LayoutBlockColumnFieldsFragmentDoc = gql`
     }
     galleryLayout
     gallery(first: 500) {
-      url(transformation: {document: {output: {format: webp}}})
+      url
       height
       width
       caption
@@ -26774,7 +26761,7 @@ export const LayoutBlockColumnFieldsFragmentDoc = gql`
     spotifyArtistName
     spotifyAlbumDisplay
   }
-  sections(first: 100) {
+  sections(first: 25) {
     __typename
     ...TextContentFields
     ...CallToActionFields
@@ -26830,7 +26817,7 @@ export const BlogFieldsFragmentDoc = gql`
   }
   blogHtml
   blogHeroStyle
-  layoutBlocks(first: 100) {
+  layoutBlocks(first: 25) {
     id
     cssClass
     backgroundColor {
@@ -26846,7 +26833,7 @@ export const BlogFieldsFragmentDoc = gql`
     backgroundImage {
       url
     }
-    layoutBlockColumns(first: 100) {
+    layoutBlockColumns(first: 25) {
       ...layoutBlockColumnFields
     }
   }
@@ -27151,7 +27138,7 @@ export const PageFieldsFragmentDoc = gql`
   heroMobileImage {
     url
   }
-  layoutBlocks(first: 100) {
+  layoutBlocks(first: 25) {
     id
     cssClass
     backgroundColor {
@@ -27167,7 +27154,7 @@ export const PageFieldsFragmentDoc = gql`
     backgroundImage {
       url
     }
-    layoutBlockColumns(first: 100) {
+    layoutBlockColumns(first: 25) {
       ...layoutBlockColumnFields
     }
   }
@@ -27177,7 +27164,7 @@ export const PageFieldsFragmentDoc = gql`
     buttonOpenText
     buttonOpenCss
     openOnScroll
-    popupContent(first: 100) {
+    popupContent(first: 25) {
       ...layoutBlockColumnFields
     }
   }
@@ -27319,13 +27306,13 @@ export const ProfileFieldsFragmentDoc = gql`
   avatarImage {
     url
   }
-  imageGallery(first: 100) {
-    url(transformation: {document: {output: {format: webp}}})
+  imageGallery(first: 20) {
+    url
     height
     width
   }
-  portfolioGallery(first: 100) {
-    url(transformation: {document: {output: {format: webp}}})
+  portfolioGallery(first: 20) {
+    url
     height
     width
   }
@@ -27337,7 +27324,7 @@ export const ProfileFieldsFragmentDoc = gql`
     url
   }
   profileLogo {
-    url(transformation: {document: {output: {format: webp}}})
+    url
   }
   bandsInTownKey
   profilePageLayoutStyle
