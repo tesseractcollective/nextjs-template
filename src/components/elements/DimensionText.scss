@@ -1,12 +1,12 @@
-/* components/SpinningText.module.css */
 .dimension-text-wrapper {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary);
+  background-color: var(--background);
   overflow: hidden;
+  touch-action: none;
 }
 
 .dimension-text-scene {

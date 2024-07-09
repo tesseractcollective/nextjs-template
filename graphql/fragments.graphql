@@ -373,7 +373,7 @@ fragment layoutBlockColumnFields on LayoutBlockColumn {
     }
     galleryLayout
     gallery(first: 500) {
-      url(transformation: { document: { output: { format: webp } } })
+      url
       height
       width
       caption
@@ -759,7 +759,7 @@ fragment profileFields on Profile {
     width
   }
   portfolioGallery(first: 20) {
-    url(transformation: { document: { output: { format: webp } } })
+    url
     height
     width
   }

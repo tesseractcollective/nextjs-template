@@ -337,7 +337,8 @@ export default function CenterNavigation({
                     <SocialMediaIcons
                       fadeDirection="down"
                       siteLibrary={siteLibrary}
-                      cssClass="my-4 w-28 sm:w-36 md:w-full social-icons-row text-text-color flex flex-row flex-wrap items-center justify-end gap-x-2"
+                      // iconClass="!contrast-50"
+                      cssClass="my-4 w-28 sm:w-36 md:w-full social-icons-row text-text-color flex flex-row flex-wrap items-center justify-end gap-x-2 contrast-50"
                     />
                   </div>
                 </div>
@@ -387,10 +388,12 @@ export default function CenterNavigation({
                             key={mainNavigationItem.label}
                             link={mainNavigationItem.link || "/"}
                             sameTab={mainNavigationItem?.sameTab}
-                            cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase"
+                            cssClass="m-2 p-2 font-medium text-text-color max-w-max mx-auto text-xl hover:text-primary transition-all uppercase !contrast-50"
                             onClick={() => setOpen(false)}
                           >
-                            <span>{mainNavigationItem.label}</span>
+                            <span className="!contrast-50">
+                              {mainNavigationItem.label}
+                            </span>
                           </LinkItem>
                         </div>
                       )}

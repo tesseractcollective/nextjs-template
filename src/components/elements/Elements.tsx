@@ -28,6 +28,7 @@ import SpotifyArtistAlbums from "./SpotifyAPI/SpotifyArtistAlbums";
 import SpotifyUserPlaylists from "./SpotifyAPI/SpotifyUserPlaylists";
 import RegisterForm from "./RegisterForm";
 import DimensionText from "./DimensionText";
+import RotateTextAnimation from "./RotateTextAnimation";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -187,6 +188,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
 
       {!!elementJson?.animateParagraph && (
         <AnimateParagraph animateParagraph={elementJson.animateParagraph} />
+      )}
+      {!!elementJson?.rotateTextAnimation && (
+        <RotateTextAnimation text={elementJson.rotateTextAnimation} />
       )}
       {!!elementJson?.opentableID && !!elementJson.opentableTheme && (
         <div
