@@ -17,6 +17,7 @@ import SpotifyDisplayDiscography from "./SpotifyDisplayDiscography";
 interface Album {
   name: string;
   id: string;
+  album_group: string;
   images: {
     height: number;
     url: string;
@@ -55,6 +56,7 @@ interface SpotifyArtistInfoProps {
   spotifyClientId: string;
   spotifyClientSecret: string;
   spotifyAlbumDisplay: string;
+  artistNames?: string[];
 }
 
 const SpotifyArtistAlbums: React.FC<SpotifyArtistInfoProps> = ({
@@ -129,11 +131,13 @@ const SpotifyArtistAlbums: React.FC<SpotifyArtistInfoProps> = ({
 
   if (!albums) return null;
   if (!artistInfo) return null;
-  const sortedAlbums = [...albums].sort((a, b) => {
-    const dateA = new Date(a.release_date);
-    const dateB = new Date(b.release_date);
-    return dateB.getTime() - dateA.getTime();
-  });
+  const sortedAlbums = [...albums]
+    .sort((a, b) => {
+      const dateA = new Date(a.release_date);
+      const dateB = new Date(b.release_date);
+      return dateB.getTime() - dateA.getTime();
+    })
+    .filter((album) => album.album_group !== "appears_on");
 
   if (spotifyAlbumDisplay === "cd")
     return <SpotifyDisplayCD spotifyAlbumsData={sortedAlbums} />;

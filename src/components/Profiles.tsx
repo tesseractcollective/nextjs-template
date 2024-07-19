@@ -95,6 +95,7 @@ export default function Profiles({
   // gridSelect
   // fullScreen
 
+  console.log(profileLayoutStyle);
   if (profileLayoutStyle === "cardModal")
     return (
       <ProfileCardModalSection
@@ -117,7 +118,6 @@ export default function Profiles({
     return (
       <ProfileDiscographySection
         profiles={FilteredProfiles}
-        profileSectionTitle={profileSectionTitle}
         spotifyClientId={spotifyClientId}
         spotifyClientSecret={spotifyClientSecret}
       />

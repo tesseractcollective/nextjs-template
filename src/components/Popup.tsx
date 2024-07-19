@@ -96,7 +96,7 @@ const SpringModal = ({
               animate={{ scale: 1, rotate: "0deg" }}
               exit={{ scale: 0, rotate: "0deg" }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-gradient-to-br from-bg to-bg-secondary text-white py-1 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-hidden dialog-popup-page max-h-[90dvh]"
+              className="bg-gradient-to-br from-bg to-bg-secondary text-white py-1 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-x-hidden dialog-popup-page max-h-[90dvh]"
             >
               <div className="relative z-10">
                 <h3 className="text-xl font-bold text-center mb-0">{header}</h3>
