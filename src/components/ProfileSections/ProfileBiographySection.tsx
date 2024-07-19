@@ -94,7 +94,7 @@ export default function ProfileBiographySection({
                 {!!profile?.name && spotifyClientSecret && spotifyClientId && (
                   <SpotifyArtistAlbums
                     artistName={profile?.name}
-                    spotifyAlbumDisplay="discography"
+                    spotifyAlbumDisplay="biography"
                     spotifyClientId={spotifyClientId}
                     spotifyClientSecret={spotifyClientSecret}
                   />

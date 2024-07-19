@@ -13,6 +13,7 @@ import SpotifyDisplaySkew from "./SpotifyDisplaySkew";
 import SpotifyDisplayStacked from "./SpotifyDisplayStacked";
 import SpotifyDisplayVinyl from "./SpotifyDisplayVinyl";
 import SpotifyDisplayDiscography from "./SpotifyDisplayDiscography";
+import SpotifyDisplayBiography from "./SpotifyDisplayBiography";
 
 interface Album {
   name: string;
@@ -143,6 +144,8 @@ const SpotifyArtistAlbums: React.FC<SpotifyArtistInfoProps> = ({
     return <SpotifyDisplayCD spotifyAlbumsData={sortedAlbums} />;
   if (spotifyAlbumDisplay === "discography")
     return <SpotifyDisplayDiscography spotifyAlbumsData={sortedAlbums} />;
+  if (spotifyAlbumDisplay === "biography")
+    return <SpotifyDisplayBiography spotifyAlbumsData={sortedAlbums} />;
   if (spotifyAlbumDisplay === "compact")
     return <SpotifyDisplayCompact spotifyAlbumsData={sortedAlbums} />;
   if (spotifyAlbumDisplay === "featured")
