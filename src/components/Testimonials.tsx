@@ -8,7 +8,12 @@ import StarCount from "./StarCount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import TripAdvisor from "../../public/svg/tripadvisor.svg";
-import { faGoogle, faYelp } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGoogle,
+  faYelp,
+  faFacebook,
+} from "@fortawesome/free-brands-svg-icons";
+import { faF } from "@fortawesome/free-solid-svg-icons";
 interface TestimonialProps {
   query: string;
   testimonials: TestimonialFieldsFragment[];
@@ -123,7 +128,7 @@ export default function Testimonials({
                                 href={testimonial.testimonialSourceLink}
                                 target="_blank"
                                 className="max-w-max mx-auto text-text-color text-center !text-link transition-all cursor-pointer hover:text-[#E00708] focus-within:text-[#E00708]"
-                                title="Google"
+                                title="Yelp"
                                 rel="noreferrer"
                               >
                                 <FontAwesomeIcon
@@ -131,6 +136,26 @@ export default function Testimonials({
                                   className="fa-fw h-4 w-4"
                                 />
                                 <span className="sr-only">Yelp Review</span>
+                              </a>
+                            )}
+                            {/* FACEBOOK */}
+                            {testimonial.testimonialSourceLink.includes(
+                              "facebook"
+                            ) && (
+                              <a
+                                href={testimonial.testimonialSourceLink}
+                                target="_blank"
+                                className="max-w-max mx-auto text-text-color text-center !text-link transition-all cursor-pointer hover:text-[#0A66FF] focus-within:text-[#0A66FF]"
+                                title="Facebook"
+                                rel="noreferrer"
+                              >
+                                <FontAwesomeIcon
+                                  icon={faFacebook as IconProp}
+                                  className="fa-fw h-4 w-4"
+                                />
+                                <span className="sr-only">
+                                  Facebook Comment
+                                </span>
                               </a>
                             )}
                             {/* TRIP ADVISOR */}

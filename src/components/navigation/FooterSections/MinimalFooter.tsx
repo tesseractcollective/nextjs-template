@@ -48,8 +48,8 @@ function MinimalFooter({
   return (
     <footer
       aria-labelledby="site-footer"
-      className={`footer-heading minimal-footer !bg-bg py-8 ${
-        footerWrapperCssClass ? footerWrapperCssClass : ""
+      className={`footer-heading minimal-footer ${
+        footerWrapperCssClass ? `${footerWrapperCssClass} py-8` : "!bg-bg py-8"
       }`}
     >
       <h2 id="footer-heading" className="sr-only">

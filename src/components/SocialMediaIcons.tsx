@@ -576,7 +576,7 @@ export default function SocialMediaIcons({
                   ReactGA.event({
                     category: "Link",
                     action:
-                      siteLibrary?.siteLibraryJson.googleMapLink ||
+                      siteLibrary?.siteLibraryJson?.googleMapLink ||
                       googleMapLinkProp ||
                       siteLibrary?.googleMapLink,
                     label:

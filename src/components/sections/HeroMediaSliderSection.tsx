@@ -123,7 +123,7 @@ export default function HeroMediaSliderSection({
                     heroMediaSliderItem.sliderCssWrapper
                   }`}
                 >
-                  <div className="heromediaslider-overlay-content headlinePrimary  text-text-color flex items-center justify-center flex-col h-full w-full m-auto text-center absolute z-30 p-4">
+                  <div className="heromediaslider-overlay-content headlinePrimary  text-text-overlay flex items-center justify-center flex-col h-full w-full m-auto text-center absolute z-30 p-4">
                     <div
                       className={`swiper-no-swiping relative p-4 text-${
                         heroMediaSliderItem?.textContent?.contentAlign &&
@@ -170,13 +170,13 @@ export default function HeroMediaSliderSection({
                       </Fade>
 
                       {heroMediaSliderItem?.textContent?.header && (
-                        <div className="text-shadow body-parsed-text">
+                        <div className="text-shadow body-parsed-text text-text-overlay">
                           {parse(heroMediaSliderItem?.textContent.header.html)}
                         </div>
                       )}
 
                       {heroMediaSliderItem?.textContent?.subHeader && (
-                        <div className="body-parsed-text">
+                        <div className="body-parsed-text text-text-overlay">
                           {parse(
                             heroMediaSliderItem?.textContent.subHeader.html
                           )}
@@ -184,7 +184,7 @@ export default function HeroMediaSliderSection({
                       )}
 
                       {heroMediaSliderItem?.textContent?.content && (
-                        <div className="body-parsed-text">
+                        <div className="body-parsed-text text-text-overlay">
                           {parse(heroMediaSliderItem?.textContent.content.html)}
                         </div>
                       )}

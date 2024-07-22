@@ -28,7 +28,7 @@ export default function Products({
   // Product Layout Style
   // compact √
   // slider √
-  // card
+  // card √
   // chevron
   // grid
   // infinite
@@ -43,6 +43,8 @@ export default function Products({
   if (productLayoutStyle === "compact")
     return <ProductCompactSection products={filteredProducts} />;
   if (productLayoutStyle === "rotate")
+    return <ProductRotateSection products={filteredProducts} />;
+  if (productLayoutStyle === "stack")
     return <ProductRotateSection products={filteredProducts} />;
   if (productLayoutStyle === "grid")
     return <ProductGridSection products={filteredProducts} />;
