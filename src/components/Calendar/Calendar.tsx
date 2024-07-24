@@ -1,4 +1,10 @@
-import { Fragment, useState, SyntheticEvent, useEffect, useCallback } from "react";
+import {
+  Fragment,
+  useState,
+  SyntheticEvent,
+  useEffect,
+  useCallback,
+} from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -20,6 +26,8 @@ import {
 } from "./calendarHelpers";
 import duttonEvents from "@/data/duttonEvents.json";
 import { getDuttonEvents } from "@/data/theDuttonsShowData";
+
+//https://duttons.completeticketing.co/foxisapi.dll/getlist.xo.xshow?xshow=Jesus
 
 export interface CalendarProps {
   createMonthsForNoEvents: boolean;
@@ -266,15 +274,18 @@ export default function Calendar(props: CalendarProps) {
 
   const [events, setEvents] = useState<Event[]>([]);
 
-  const updateEvents = useCallback((events: Event[]): void => {
-    const filteredEvents = events.filter((event) => event.kind.includes(eventShowType));
-    console.log(eventShowType, filteredEvents.length);
-    if (filteredEvents.length > 0) {
-      setEvents(filteredEvents);
-    } 
-  }, [eventShowType])
-
-  
+  const updateEvents = useCallback(
+    (events: Event[]): void => {
+      const filteredEvents = events.filter((event) =>
+        event.kind.includes(eventShowType)
+      );
+      console.log(eventShowType, filteredEvents.length);
+      if (filteredEvents.length > 0) {
+        setEvents(filteredEvents);
+      }
+    },
+    [eventShowType]
+  );
 
   const months = createCalendarMonthsForEvents(events, createMonthsForNoEvents);
   const legendKeys = legendKeysForMonths(months).filter(

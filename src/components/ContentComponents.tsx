@@ -153,8 +153,8 @@ export default function ContentComponents({
           <Calendar
             eventShowType={contentTags?.eventShowType}
             createMonthsForNoEvents={true}
-            phoneOverride="(417) 332-2772"
-            hideKey={true}
+            // phoneOverride="(417) 332-2772"
+            // hideKey={true}
           />
         )}
       {!!contentTags?.contactType && contacts && contacts.length >= 1 && (
