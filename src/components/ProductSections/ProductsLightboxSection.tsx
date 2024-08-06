@@ -64,6 +64,7 @@ export default function ProductsLightboxSection({ products }: ProductsProps) {
                         {product.productJson?.seafood && (
                           <FontAwesomeIcon
                             icon={faFish as IconProp}
+                            title="Seafood"
                             className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
                           />
                         )}
@@ -71,6 +72,7 @@ export default function ProductsLightboxSection({ products }: ProductsProps) {
                           <span className="flex items-center gap-x-2 relative">
                             <FontAwesomeIcon
                               icon={faPepperHot as IconProp}
+                              title="Spicy"
                               className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
                             />
                           </span>
@@ -79,6 +81,7 @@ export default function ProductsLightboxSection({ products }: ProductsProps) {
                           <span className="flex items-center gap-x-2 relative">
                             <FontAwesomeIcon
                               icon={faLeaf as IconProp}
+                              title="Vegetarian"
                               className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
                             />
                           </span>
@@ -95,54 +98,6 @@ export default function ProductsLightboxSection({ products }: ProductsProps) {
                     <div className="text-[14px] my-0 font-light py-0 parsed-mb-0 opacity-80 text-left lowercase italic">
                       {parse(product.description.html)}
                     </div>
-                  )}
-                  {product?.productJson?.spicy && (
-                    <span className="flex flex-row items-center gap-x-2">
-                      <FontAwesomeIcon
-                        icon={faPepperHot as IconProp}
-                        className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[red]"
-                      />
-                      <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
-                        spicy
-                      </span>
-                    </span>
-                  )}
-                  {product?.productJson?.vegetarian && (
-                    <span className="flex flex-row items-center gap-x-2">
-                      <FontAwesomeIcon
-                        icon={faLeaf as IconProp}
-                        className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[green]"
-                      />
-                      <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
-                        vegetarian
-                      </span>
-                    </span>
-                  )}
-                  {product?.productJson?.seafood && (
-                    <span className="flex flex-row items-center gap-x-2">
-                      <FontAwesomeIcon
-                        icon={faFish as IconProp}
-                        className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
-                      />
-                      <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
-                        Seafood
-                      </span>
-                    </span>
-                  )}
-                  {product?.productJson?.vegan && (
-                    <span className="flex flex-row items-center gap-x-2">
-                      <div className="relative flex flex-row">
-                        <FontAwesomeIcon
-                          icon={faLeaf as IconProp}
-                          className="fa-fw my-0 py-0 h-5 w-5 transition-all rounded-full text-[green] z-2 relative"
-                        />
-                        <FontAwesomeIcon
-                          icon={faLeaf as IconProp}
-                          className="fa-fw my-0 py-0  h-5 w-5 transition-all rounded-full text-[green] ml-[-0.10rem] z-1 relative"
-                        />
-                      </div>
-                      <span className="text-[10px] transition-all">vegan</span>
-                    </span>
                   )}
                 </div>
                 <FontAwesomeIcon
