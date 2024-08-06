@@ -406,7 +406,7 @@ export default function CenterNavigation({
                           key={mainNavigationItem.label}
                           link={mainNavigationItem.link || "/"}
                           sameTab={mainNavigationItem?.sameTab}
-                          cssClass="m-2 px-2 py-4 text-text-color max-w-max mx-auto text-xl transition-all uppercase text-shadow font-bold relative hover:text-primary hover:top-[-6px] focus:text-primary  focus:top-[-6px] top-0"
+                          cssClass="m-2 px-2 py-4 text-text-color max-w-max mx-auto text-xl transition-all uppercase text-shadow font-bold relative hover:text-primary hover:top-[-6px] focus:text-primary focus:top-[-6px] top-0 duration-[400ms]"
                           onClick={() => setOpen(false)}
                         >
                           <span>{mainNavigationItem.label}</span>

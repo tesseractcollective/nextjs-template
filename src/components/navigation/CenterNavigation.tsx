@@ -5,11 +5,7 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
-import {
-  Bars3Icon,
-  XMarkIcon,
-  Bars3BottomRightIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
@@ -372,7 +368,7 @@ export default function CenterNavigation({
                       }}
                     >
                       <span className="sr-only">Open menu</span>
-                      <Bars3BottomRightIcon
+                      <Bars3Icon
                         className="h-6 w-6 group-hover:text-secondary transition-all group-hover:rotate-180"
                         aria-hidden="true"
                       />

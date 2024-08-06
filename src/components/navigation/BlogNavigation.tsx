@@ -75,138 +75,145 @@ export default function BlogNavigation({
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
-              enterFrom="opacity-0 blur-xl"
-              enterTo="opacity-100 blur-0"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
               leave="transition-opacity ease-linear duration-300"
-              leaveFrom="opacity-100 blur-0"
-              leaveTo="opacity-0 blur-xl"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
             >
               <div
-                className="fixed inset-0 bg-[#000] opacity-80 backdrop-blur-lg"
+                className="fixed inset-0 bg-[#000000c7] opacity-60 backdrop-blur-xl"
                 aria-hidden="true"
               />
             </Transition.Child>
 
-            <div className="fixed inset-0 z-40 flex justify-end">
+            <div className="fixed inset-0 z-40 flex items-start">
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
-                enterFrom="translate-x-full blur-xl"
-                enterTo="-translate-x-0 blur-0"
+                enterFrom="-translate-y-full blur-xl"
+                enterTo="-translate-y-0 blur-0"
                 leave="transition ease-in-out duration-300 transform"
-                leaveFrom="-translate-x-0 blur-0"
-                leaveTo="translate-x-full blur-xl"
+                leaveFrom="translate-y-0 blur-0"
+                leaveTo="-translate-y-full blur-xl"
               >
-                <Dialog.Panel className="relative flex w-full max-w-6xl flex-col overflow-y-auto py-6 shadow-xl bg-after isolate overflow-hidden border-l border-text-color backdrop-blur-lg">
-                  <div className="flex px-4 py-5 z-10 items-center justify-between relative max-w-6xl">
-                    <Link
-                      href="/"
+                <Dialog.Panel
+                  className="relative flex w-full max-h-[100vh] flex-col overflow-y-auto pb-12 shadow-xl border-primary border-t bg-bg
+                 transition-all duration-[400ms] h-100vh items-center justify-center border"
+                >
+                  <div className="absolute right-2 max-w-max bg-bg aspect-1 border-secondary border top-[6px]">
+                    <button
+                      type="button"
+                      title="menu"
+                      className="p-2 text-primary group hover:text-secondary transition-all duration-[400ms] cursor-pointer relative"
                       onClick={() => {
                         setOpen(false);
                         ReactGA.event({
                           category: "Link",
-                          action: "Visit Home",
-                          label: "Visit Home",
+                          action: "Open Mobile Menu",
+                          label: "Open Mobile Menu",
                         });
                       }}
-                      className="cursor-pointer transition-all max-w-max relative left-2"
-                      id="nav-logo-mobile-panel"
                     >
-                      {navigation?.navigationLogo ? (
-                        <>
-                          <span className="sr-only">{title}</span>
-                          <Image
-                            className="h-8 w-full max-w-[140px] cursor-pointer object-contain"
-                            src={navigation.navigationLogo?.url}
-                            alt=""
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                          />
-                        </>
-                      ) : (
-                        <span className="font-bold text-2xl text-text-color">
-                          {title}
-                        </span>
-                      )}
-                    </Link>
-                    <button
-                      type="button"
-                      title="Close menu"
-                      className="inline-flex items-center justify-center rounded-md text-gray-400 group transition-all relative right-2"
-                      onClick={() => setOpen(false)}
-                    >
-                      <span className="sr-only">Close menu</span>
                       <XMarkIcon
-                        className="h-6 w-6 text-text-color group-hover:text-primary group-hover:rotate-180 transition-all"
+                        className="h-6 w-6 text-text-color group-hover:text-primary transition-all duration-[400ms] group-hover:rotate-90 text-center mx-auto"
                         aria-hidden="true"
                       />
+
+                      <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all duration-[400ms] uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                        {siteLibrary.isSpanish ? "Cerrar" : "Close"}
+                      </span>
                     </button>
                   </div>
+                  <Fade direction="down" triggerOnce>
+                    <div className="flex mt-0 mx-4 px-4 pb-2 pt-2 items-center justify-start">
+                      <Link
+                        href="/"
+                        onClick={() => {
+                          setOpen(false);
+                          ReactGA.event({
+                            category: "Link",
+                            action: "Visit Home",
+                            label: "Visit Home",
+                          });
+                        }}
+                        className="cursor-pointer transition-all duration-[400ms] hover:skew-x-[8deg] hover:skew-y-[8deg] relative"
+                        id="nav-logo-mobile-panel"
+                      >
+                        {navigation?.navigationLogo ? (
+                          <>
+                            <span className="sr-only">{title}</span>
+                            <Image
+                              src={navigation.navigationLogo?.url}
+                              className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all duration-[400ms] block"
+                              alt=""
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                            />
+                          </>
+                        ) : (
+                          <span className="font-bold text-2xl text-text-color">
+                            {title}
+                          </span>
+                        )}
+                      </Link>
+                    </div>
+                  </Fade>
 
-                  {!!items &&
-                    items.length >= 1 &&
-                    items.map((mainNavigationItem) => {
-                      const hasItems = mainNavigationItem.items.length >= 1;
-                      return (
-                        <div key={mainNavigationItem.label}>
-                          {hasItems && (
-                            <Tab.Group as="div" className="mt-2">
-                              <div className="">
-                                <Tab.List className="-mb-px flex space-x-8 px-4">
-                                  <Tab
-                                    key={mainNavigationItem.label}
-                                    className={({ selected }) =>
-                                      classNames(
-                                        selected
-                                          ? "border-primary text-tertiary"
-                                          : "border-transparent text-text-color opacity-90",
-                                        "flex-1 whitespace-nowrap px-1 py-4 text-3xl lg:text-5xl font-bold mx-auto max-w-max pointer-events-none"
-                                      )
-                                    }
-                                  >
-                                    {mainNavigationItem.label}
-                                  </Tab>
-                                </Tab.List>
-                              </div>
-                              <Tab.Panels as={Fragment}>
-                                <Tab.Panel
+                  <Fade triggerOnce cascade direction="up" damping={0.05}>
+                    {!!items &&
+                      items.length >= 1 &&
+                      items.map((mainNavigationItem) => {
+                        const hasItems = mainNavigationItem.items.length >= 1;
+                        return (
+                          <div key={mainNavigationItem.label}>
+                            {hasItems && (
+                              <div className="space-y-6 px-4 py-3 mt-4 mx-4">
+                                <h2
                                   key={mainNavigationItem.label}
-                                  className="space-y-12 px-4 py-6 ml-auto flex-wrap w-full"
+                                  className="block text-text-color max-w-max text-xl w-full transition-all duration-[400ms] uppercase font-bold text-left border-b border-text-color opacity-70"
                                 >
-                                  <div className="grid grid-cols-2 gap-x-4 gap-y-10">
+                                  {mainNavigationItem.label}
+                                </h2>
+
+                                <div
+                                  key={mainNavigationItem.label}
+                                  className=""
+                                >
+                                  <div className="">
                                     {mainNavigationItem.items.map((item) => (
                                       <div
                                         key={item.label}
-                                        className="group relative flex flex-col items-center justify-center"
+                                        className="group relative"
                                       >
-                                        <div className="overflow-hidden rounded-md bg-gray-100 group-hover:opacity-80 transition opacity-100">
-                                          {!!item?.image?.url && (
-                                            <Image
-                                              src={item.image.url}
-                                              alt={item.label || ""}
-                                              width={140}
-                                              height={140}
-                                              className="object-cover"
-                                              sizes="100%"
-                                              style={{
-                                                maxHeight: "400px",
-                                                maxWidth: "400px",
-                                                objectFit: "cover",
-                                                aspectRatio: 1,
-                                              }}
-                                            />
-                                          )}
-                                        </div>
                                         {!!item?.link && (
                                           <LinkItem
-                                            onClick={() => setOpen(false)}
                                             key={item?.link}
                                             link={item?.link}
                                             label={item?.label}
-                                            cssClass={`mt-2 text-right block text-sm sm:text-xl lg:text-4xl font-semibold text-text-color text-center group-hover:text-primary transition hover:italic ${item?.cssClass}`}
+                                            cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
                                             sameTab={item?.sameTab}
                                           >
+                                            <>
+                                              {item?.image?.url && (
+                                                <Image
+                                                  src={item.image.url}
+                                                  alt={item.label || ""}
+                                                  width={60}
+                                                  height={60}
+                                                  className="object-cover mr-4"
+                                                  sizes="100%"
+                                                  style={{
+                                                    maxHeight: "60px",
+                                                    maxWidth: "60px",
+                                                    objectFit: "cover",
+                                                    aspectRatio: 1,
+                                                  }}
+                                                />
+                                              )}
+                                            </>
+
                                             <span
                                               className="absolute inset-0 z-10"
                                               aria-hidden="true"
@@ -216,99 +223,66 @@ export default function BlogNavigation({
                                       </div>
                                     ))}
                                   </div>
-                                </Tab.Panel>
-                              </Tab.Panels>
-                            </Tab.Group>
-                          )}
+                                </div>
+                              </div>
+                            )}
 
-                          <Fade
-                            triggerOnce
-                            direction="left"
-                            cascade
-                            damping={0.15}
-                          >
                             {!hasItems && (
-                              <div className="space-y-6 px-4 py-3">
-                                <div className="flow-root">
+                              <div className="space-y-6 px-4 py-1 mt-4 mx-4">
+                                <div className="max-w-max">
                                   <LinkItem
                                     key={mainNavigationItem.label}
-                                    sameTab={mainNavigationItem?.sameTab}
                                     link={mainNavigationItem.link || "/"}
-                                    cssClass="block p-2 font-bold text-text-color max-w-max mx-auto text-3xl lg:text-5xl text-center hover:text-primary transition-all hover:-skew-x-12"
-                                    onClick={() => {
-                                      setOpen(false);
-                                      ReactGA.event({
-                                        category: "Link",
-                                        action: mainNavigationItem.link || "",
-                                        label: mainNavigationItem.link || "",
-                                      });
-                                    }}
+                                    sameTab={mainNavigationItem?.sameTab}
+                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-6xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
+                                    onClick={() => setOpen(false)}
                                   >
-                                    {mainNavigationItem?.label || ""}
+                                    <span>{mainNavigationItem.label}</span>
                                   </LinkItem>
                                 </div>
                               </div>
                             )}
-                          </Fade>
-                        </div>
-                      );
-                    })}
+                          </div>
+                        );
+                      })}
+                  </Fade>
 
-                  <div className="space-y-6 px-4 py-6">
-                    <SocialMediaIcons
-                      fadeDirection="up"
-                      siteLibrary={siteLibrary}
-                      cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color gap-x-2"
-                    />
-                    <div className="text-center">
-                      {!!contactName && (
-                        <p className="text-text-color text-xs font-bold">
-                          <span>{contactName}</span>
-                        </p>
-                      )}
-                      {!!contactPhone && (
-                        <a
-                          href={`tel:${contactPhone.replace(/-/g, "")}`}
-                          className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
-                        >
-                          <span>{contactPhone}</span>
-                        </a>
-                      )}
-                      {!!contactEmail && (
-                        <a
-                          href={`mailto:${contactEmail}`}
-                          className="text-xs block my-1 text-link !border-none hover:!border-none text-text-color"
-                        >
-                          <span>{contactEmail}</span>
-                        </a>
-                      )}
+                  <Fade triggerOnce direction="up">
+                    <div className="space-y-6 px-4 py-6 mt-4 mx-4">
+                      <SocialMediaIcons
+                        siteLibrary={siteLibrary}
+                        fadeDirection="up"
+                        cssClass="my-2 mx-0 flex flex-row flex-wrap social-icons-row items-center justify-center text-text-color gap-2 overflow-hidden mx-auto py-0 max-w-max gap-x-4"
+                      />
+                      <div className="text-left">
+                        {!!contactName && (
+                          <p className="text-text-color text-xs font-bold">
+                            <span>{contactName}</span>
+                          </p>
+                        )}
+                        {!!contactPhone && (
+                          <a
+                            href={`tel:${contactPhone.replace(/-/g, "")}`}
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                          >
+                            <span className="font-semibold">
+                              {contactPhone}
+                            </span>
+                          </a>
+                        )}
+                        {!!contactEmail && (
+                          <a
+                            href={`mailto:${contactEmail}`}
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                          >
+                            <span className="font-semibold">
+                              {contactEmail}
+                            </span>
+                          </a>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <button
-                    type="button"
-                    className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 mx-auto group transition-all"
-                    onClick={() => setOpen(false)}
-                  >
-                    <XMarkIcon
-                      className="h-6 w-6 text-text-color group-hover:text-primary group-hover:rotate-180 transition-all"
-                      aria-hidden="true"
-                    />
-                    <span className="text-text-color group-hover:text-primary pl-1 transition-all group-hover:pl-2">
-                      Close menu
-                    </span>
-                  </button>
-                  <div
-                    className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-                    aria-hidden="true"
-                  >
-                    <div
-                      className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-primary to-secondary opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-                      style={{
-                        clipPath:
-                          "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-                      }}
-                    />
-                  </div>
+                  </Fade>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -362,7 +336,7 @@ export default function BlogNavigation({
                       <button
                         type="button"
                         title="menu"
-                        className="focus:rounded-full hover:rounded-full rounded-none px-2 py-2 text-dark border border-dark transition-all group bg-primary hover:rotate-180 relative z-100 duration-300 ease-in-out"
+                        className="focus:rounded-[100%] hover:rounded-[100%] rounded-[0%] px-2 py-2 text-dark border border-dark transition-all group bg-primary hover:bg-secondary rotate-0 hover:rotate-180 relative z-100 duration-[500ms]"
                         onClick={() => {
                           setOpen(true);
                           ReactGA.event({
@@ -373,7 +347,7 @@ export default function BlogNavigation({
                         }}
                       >
                         <span className="sr-only">Open menu</span>
-                        <Bars3BottomRightIcon
+                        <Bars3Icon
                           className="h-6 w-6 transition-all group-hover:rotate-180"
                           aria-hidden="true"
                         />

@@ -6,6 +6,8 @@ import {
   faLeaf,
   faPepperHot,
   faTimes,
+  faCamera,
+  faFish,
 } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import ReactGA from "react-ga4";
@@ -18,7 +20,7 @@ interface ProductsProps {
   products: ProductFieldsFragment[];
 }
 
-export default function ProductShelfSection({ products }: ProductsProps) {
+export default function ProductsLightboxSection({ products }: ProductsProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedProduct, setSelectedProduct] =
     useState<ProductFieldsFragment>();
@@ -27,10 +29,10 @@ export default function ProductShelfSection({ products }: ProductsProps) {
 
   return (
     <div className="bg-bg-primary">
-      <div className="mx-auto max-w-2xl px-4 pb-8 max-w-8xl">
+      <div className="mx-auto px-4 pb-8 max-w-4xl">
         <h2 className="sr-only">Products</h2>
         <Fade direction="up" triggerOnce>
-          <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 bg-text-color all-text-dark rounded py-4 mx-auto">
+          <div className="grid grid-cols-1 gap-y-4 bg-text-color all-text-dark rounded py-4 mx-auto">
             {products.map((product) => (
               <button
                 onClick={() => {
@@ -44,13 +46,43 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                 }}
                 type="button"
                 key={product.id}
-                className="flex flex-col p-4 gap-x-4 w-full max-w-[260px] items-start justify-center hover:border-primary border border-text-color transition-all mx-auto relative group"
+                className="flex flex-col p-4 gap-x-4 w-full items-start justify-center hover:border-primary border border-text-color transition-all mx-auto relative group"
               >
                 <div className="flex flex-col w-full">
                   <div className="flex flex-row items-start justify-between gap-x-6">
                     {product.name && (
-                      <div className="text-sm font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left">
-                        {parse(product.name)}
+                      <div className="text-sm font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left flex flex-row items-center justify-center gap-x-2 group">
+                        <h3 className="my-0 py-0 font-bolder text-xl">
+                          {parse(product.name)}
+                        </h3>
+                        {product.gallery[0] && (
+                          <FontAwesomeIcon
+                            icon={faCamera as IconProp}
+                            className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
+                          />
+                        )}
+                        {product.productJson?.seafood && (
+                          <FontAwesomeIcon
+                            icon={faFish as IconProp}
+                            className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
+                          />
+                        )}
+                        {product?.productJson?.spicy && (
+                          <span className="flex items-center gap-x-2 relative">
+                            <FontAwesomeIcon
+                              icon={faPepperHot as IconProp}
+                              className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
+                            />
+                          </span>
+                        )}
+                        {product?.productJson?.vegetarian && (
+                          <span className="flex items-center gap-x-2 relative">
+                            <FontAwesomeIcon
+                              icon={faLeaf as IconProp}
+                              className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
+                            />
+                          </span>
+                        )}
                       </div>
                     )}
                     {product.price && (
@@ -60,7 +92,7 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                     )}
                   </div>
                   {product?.description && (
-                    <div className="text-[14px] my-0 font-light py-0 parsed-mb-0 opacity-80 text-left lowercase">
+                    <div className="text-[14px] my-0 font-light py-0 parsed-mb-0 opacity-80 text-left lowercase italic">
                       {parse(product.description.html)}
                     </div>
                   )}
@@ -83,6 +115,17 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                       />
                       <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
                         vegetarian
+                      </span>
+                    </span>
+                  )}
+                  {product?.productJson?.seafood && (
+                    <span className="flex flex-row items-center gap-x-2">
+                      <FontAwesomeIcon
+                        icon={faFish as IconProp}
+                        className="fa-fw my-0 py-0  h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
+                      />
+                      <span className="text-[10px] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all">
+                        Seafood
                       </span>
                     </span>
                   )}

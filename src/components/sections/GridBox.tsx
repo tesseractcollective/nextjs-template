@@ -16,6 +16,8 @@ import PolaroidBoxes from "./GridBoxComponents/PolaroidBoxes";
 import DescriptionBoxes from "./GridBoxComponents/DescriptionBoxes";
 import ImageCardBoxes from "./GridBoxComponents/ImageCardBoxes";
 import TwoHundredVhBoxes from "./GridBoxComponents/TwoHundredVhBoxes";
+import MasonGridBoxes from "./GridBoxComponents/MasonGridBoxes";
+import NetflixCardBoxes from "./GridBoxComponents/NetflixCardBoxes";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -28,7 +30,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   // tall √
   // content √
   // parallax √
-  // hoverRound
+  // hoverRound √
   // mason
   // netflix
   // grid
@@ -89,8 +91,14 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   const imageGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "image"
   );
+  const masonGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "mason"
+  );
   const twovhGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "twohundredvh"
+  );
+  const netflixGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "netflix"
   );
   if (parallaxGridBoxData && parallaxGridBoxData.length >= 1)
     return <ParallaxGridBoxes gridBoxData={parallaxGridBoxData} />;
@@ -114,6 +122,8 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
     return <GridDisplayBoxes gridBoxData={gridDisplayGridBoxData} />;
   if (wideCardGridBoxData && wideCardGridBoxData.length >= 1)
     return <WideCardBoxes gridBoxData={wideCardGridBoxData} />;
+  if (masonGridBoxData && masonGridBoxData.length >= 1)
+    return <MasonGridBoxes gridBoxData={masonGridBoxData} />;
   if (smallCircleGridBoxData && smallCircleGridBoxData.length >= 1)
     return <SmallCircleBoxes gridBoxData={smallCircleGridBoxData} />;
   if (spaceBetweenGridBoxData && spaceBetweenGridBoxData.length >= 1)
@@ -126,5 +136,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
     return <ImageCardBoxes gridBoxData={imageGridBoxData} />;
   if (twovhGridBoxData && twovhGridBoxData.length >= 1)
     return <TwoHundredVhBoxes gridBoxData={twovhGridBoxData} />;
+  if (netflixGridBoxData && netflixGridBoxData.length >= 1)
+    return <NetflixCardBoxes gridBoxData={netflixGridBoxData} />;
   return <></>;
 }

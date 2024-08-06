@@ -137,6 +137,18 @@ export default function ProfileBiographySection({
                       </a>
                     </li>
                   )}
+                  {profile?.youtubeLink && (
+                    <li className="flex flex-row">
+                      <span>Youtube:&nbsp;</span>
+                      <a
+                        href={profile.youtubeLink}
+                        className="text-link"
+                        target="_blank"
+                      >
+                        {profile.youtubeLink}
+                      </a>
+                    </li>
+                  )}
                   {profile?.spotifyLink && (
                     <li className="flex flex-row">
                       <span>Spotify:&nbsp;</span>

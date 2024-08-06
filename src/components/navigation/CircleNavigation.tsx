@@ -117,10 +117,7 @@ export default function CircleNavigation({
                 leaveFrom="-translate-y-0 blur-0"
                 leaveTo="translate-y-full blur-xl"
               >
-                <Dialog.Panel
-                  className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-2 shadow-xl border-t-primary border-t bg-bg
-                 transition-all"
-                >
+                <Dialog.Panel className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-2 shadow-xl border-t-primary border-t bg-bg transition-all">
                   <Fade direction="down" triggerOnce>
                     <div className="flex mt-4 ml-4 px-4 pb-2 pt-5 items-center justify-start">
                       <Link
@@ -294,12 +291,12 @@ export default function CircleNavigation({
                     </div>
                   </Fade>
                   <Fade
-                    className="relative bottom-0 left-6 lg:hidden z-[999] bg-bg h-20 rounded-t-full p-1 max-w-max"
+                    className="relative bottom-0 right-5 lg:hidden z-[999] bg-bg h-20 rounded-t-full p-1 max-w-max ml-auto"
                     direction="up"
                   >
                     <button
                       type="button"
-                      className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-tertiary transition-all group relative aspect-1 bg-small"
+                      className="bg-motion rounded-full px-2 py-2 text-text-color border border-white hover:border-tertiary transition-all group relative aspect-1 bg-small max-w-max ml-auto"
                       onClick={() => {
                         setOpen(false);
                         ReactGA.event({

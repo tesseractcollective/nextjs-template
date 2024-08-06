@@ -539,6 +539,9 @@ html {
   p, h1, h2, h3, h4, h6, a, button, blockquote {
     color: var(--dark) !important;
   }
+  .text-primary {
+    color: var(--primary) !important;
+  }
 }
 
 .all-text-primary {
@@ -1201,5 +1204,26 @@ h4, h5, h6  {color: var(--text);}
     text-align: center;
     font-size: 36px;
     text-transform: uppercase;
+  }
+}
+
+
+.menu-title {
+  max-width: 56rem;
+  text-align: center;
+  color: var(--secondary) !important;
+  border-bottom: 1px solid var(--secondary);
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-size: 24px;
+}
+
+.all-text-dark {
+  .menu-title {
+    h3 {
+      font-weight: bold !important;
+      color: var(--secondary) !important;
+    }
   }
 }
