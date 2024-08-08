@@ -301,7 +301,7 @@ function Footer({
             </a>
           )}
           {footerItems && (
-            <div className="flex flex-row items-center justify-center">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
               {footerItems.map((footerItem, index) => (
                 <LinkItem
                   key={`${footerItem.link}-${index++}`}
@@ -321,7 +321,7 @@ function Footer({
             )}`}
             target="_blank"
             rel="noreferrer"
-            className="max-w-max mb-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
+            className="max-w-max m-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
           >
             {isSpanish ? "Hecho a mano por Ricardo" : "Hand crafted by Ricardo"}
           </a>

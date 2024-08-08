@@ -4,7 +4,7 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon, Bars3BottomRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";

@@ -19,6 +19,7 @@ import VideoSection from "@/components/VideoSection";
 import BandsInTownApi from "./BandsInTownApi";
 import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
 import ProfileMinimalPage from "@/components/ProfilePageLayouts/ProfileMinimalPage";
+import ProfileSitePage from "@/components/ProfilePageLayouts/ProfileSitePage";
 import ProfileMusicTwoPage from "@/components/ProfilePageLayouts/ProfileMusicTwoPage";
 // import VCF from "@/components/VCF";
 import SpotifyArtistAlbums from "@/components/elements/SpotifyAPI/SpotifyArtistAlbums";
@@ -73,6 +74,19 @@ export default function Profile({
   ) {
     return (
       <ProfileMinimalPage
+        profile={profile}
+        siteLibrary={siteLibrary}
+        contacts={contacts}
+        profiles={profiles}
+      />
+    );
+  }
+  if (
+    profile?.profilePageLayoutStyle === "music" ||
+    profilePageLayoutStyleProp === "site"
+  ) {
+    return (
+      <ProfileSitePage
         profile={profile}
         siteLibrary={siteLibrary}
         contacts={contacts}
@@ -170,12 +184,6 @@ export default function Profile({
                 name={profile.name || undefined}
                 websiteLinkProp={profile?.websiteLink || undefined}
               />
-              {/* {!!profile.name && (
-              <ArtistInfo
-                artistId="0TnOYISbd1XYRBk9myaseg"
-                clientId="cd926e12c97646b487d5e831548f1585"
-              />
-            )} */}
               {profile.fullBio?.html && (
                 <div className="mt-4 text-text-color body-parsed-text text-left sm:text-center">
                   {parse(profile.fullBio?.html)}

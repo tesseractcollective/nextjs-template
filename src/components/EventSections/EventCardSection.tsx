@@ -9,8 +9,9 @@ interface EventsProps {
 }
 
 export default function EventCardSection({ events }: EventsProps) {
+  if (events.length === 0) return <></>;
   return (
-    <section className="mx-auto px-4 max-w-9xl py-8 w-full">
+    <section className="events-cards-section mx-auto px-4 max-w-8xl py-8 w-full h-100vh">
       <Fade triggerOnce direction="up">
         <div className="flex flex-wrap justify-center items-stretch gap-8 h-full w-full">
           {events.map((event) => (

@@ -1,22 +1,6 @@
 import Vimeo from "@u-wave/react-vimeo";
-import Image from "next/image";
-import { Fragment, useState, useRef } from "react";
-import type { Swiper as SwiperType } from "swiper";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
-import { Dialog, Transition } from "@headlessui/react";
-import ReactGA from "react-ga4";
 import parse from "html-react-parser";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
-import { PlayCircleIcon } from "@heroicons/react/24/outline";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
 interface VideoStandardSectionProps {
   videoData: VideoBoxFieldsFragment[];
@@ -25,34 +9,8 @@ interface VideoStandardSectionProps {
 export default function VideoYoutubeSection({
   videoData,
 }: VideoStandardSectionProps) {
-  console.log(videoData);
-  const [open, setOpen] = useState<boolean>(false);
-  const [selectedVideo, setSelctedVideo] = useState<VideoBoxFieldsFragment>();
-  const videoDataLength = videoData.length === 1;
-  const swiperRef = useRef<SwiperType>();
-  const handleClosePopup = () => {
-    setOpen(false);
-    ReactGA.event({
-      category: "Link",
-      action: "Close Video Popup",
-      label: "Close Video Popup",
-    });
-    stopVideos();
-  };
-  const stopVideos = () => {
-    var videos = document.querySelectorAll("iframe, video");
-    Array.prototype.forEach.call(videos, function (video) {
-      if (video.tagName.toLowerCase() === "video") {
-        video.pause();
-      } else {
-        var src = video.src;
-        video.src = src;
-      }
-    });
-  };
-
   return (
-    <section className="relative w-full mx-auto my-8 overflow-hidden max-w-8xl px-4">
+    <section className="relative w-full mx-auto py-8 overflow-hidden max-w-8xl px-4">
       {videoData.map((video, index) => (
         <div
           key={`${video?.videoTitle}-${index}`}
@@ -76,9 +34,7 @@ export default function VideoYoutubeSection({
                 className="absolute top-0 left-0 w-full h-full z-10  overflow-hidden rounded-2xl"
               />
             )}
-            {selectedVideo?.vimeoVideoId && (
-              <Vimeo video={selectedVideo?.vimeoVideoId} />
-            )}
+            {video?.vimeoVideoId && <Vimeo video={video.vimeoVideoId} />}
           </div>
         </div>
       ))}
