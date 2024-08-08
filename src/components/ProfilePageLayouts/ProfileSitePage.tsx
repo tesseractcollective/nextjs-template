@@ -67,9 +67,9 @@ export default function ProfileSitePage({
       </Head>
       {/* NAV */}
       <div className="py-2 fixed top-0 w-full z-50 bg-bg border-b border-primary">
-        <div className="grid grid-cols-1 md:grid-cols-3 w-full px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 w-full px-4">
           <Fade triggerOnce direction="left" cascade>
-            <ul className="hidden md:flex flex-row justify-center items-center  gap-x-4 ml-0 mr-auto">
+            <ul className="hidden lg:flex flex-row justify-center items-center  gap-x-4 ml-0 mr-auto">
               {hasMusic && (
                 <li>
                   <a
@@ -130,7 +130,7 @@ export default function ProfileSitePage({
               />
             ) : (
               <Fade cascade triggerOnce direction="down">
-                <h1 className="text-xl md:text-3xl !font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color uppercase pt-1 text-center mx-auto max-w-max w-full transition-all">
+                <h1 className="text-xl lg:text-3xl !font-bold animate-[tracking_1s_ease-in] tracking-wide text-text-color uppercase pt-1 text-center mx-auto max-w-max w-full transition-all">
                   {profile.name}
                 </h1>
               </Fade>
@@ -139,7 +139,7 @@ export default function ProfileSitePage({
 
           <SocialMediaIcons
             fadeDirection="right"
-            cssClass="max-w-max w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4 text-text-color mr-auto ml-auto md:mr-0"
+            cssClass="max-w-max w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4 text-text-color mr-auto ml-auto lg:mr-0"
             instagramLinkProp={profile?.instagramLink || undefined}
             spotifyLinkProp={profile?.spotifyLink || undefined}
             facebookLinkProp={profile?.facebookLink || undefined}
@@ -181,7 +181,7 @@ export default function ProfileSitePage({
       {hasTour && (
         <div
           className="relative h-100vh flex flex-col w-full items-center justify-center"
-          id="tour-section"
+          id="tour"
         >
           <h2 className="text-6xl text-center uppercase mt-16 relative z-10">
             Tour
