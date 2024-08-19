@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "@/components/LinkItem";
 import { Fade } from "react-awesome-reveal";
@@ -18,7 +17,7 @@ export default function HoverRoundGridBoxes({ gridBoxData }: GridBoxProps) {
   );
 
   return (
-    <section className="mx-auto px-4 sm:px-6 max-w-8xl lg:px-8 my-8 hover-round-grid-items">
+    <section className="mx-auto px-4 sm:px-6 max-w-8xl lg:px-8 my-8 hover-round-grid-items hover-round-boxes">
       <div className="flex flex-wrap items-center justify-center mx-auto lg:mx-0 transition">
         {gridBoxDataWOLinks.map((gridBoxDataWOLink, index) => (
           <Fade

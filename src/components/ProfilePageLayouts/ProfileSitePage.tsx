@@ -6,7 +6,7 @@ import type {
 import parse from "html-react-parser";
 import Image from "next/image";
 import Head from "next/head";
-import { Fade, Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import VideoSection from "@/components/VideoSection";
 import BandsInTownApi from "../BandsInTownApi";
@@ -14,7 +14,18 @@ import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
 import SpotifyArtistAlbums from "@/components/elements/SpotifyAPI/SpotifyArtistAlbums";
 import AnimateParagraph from "../elements/AnimateParagraph";
 import ContactCard from "../sections/ContactContentComponents/ContactCard";
+import { useEffect, useState } from "react";
 
+const isElementInViewport = (el: HTMLElement) => {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
 export interface ProfileProps {
   profile: ProfileFieldsFragment;
   profiles: ProfileFieldsFragment[];
@@ -30,6 +41,28 @@ export default function ProfileSitePage({
   profiles,
   profilePageLayoutStyleProp,
 }: ProfileProps) {
+  const [activeLink, setActiveLink] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["header", "music", "tour", "videos", "booking"];
+
+      for (const sectionId of sections) {
+        const section = document.getElementById(sectionId);
+        if (section && isElementInViewport(section)) {
+          setActiveLink(sectionId);
+        }
+      }
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const filteredContacts = contacts?.filter((contact) =>
     profile?.contactQuery.includes(contact.contactQuery)
   );
@@ -70,23 +103,31 @@ export default function ProfileSitePage({
         <div className="grid grid-cols-1 lg:grid-cols-3 w-full px-4">
           <Fade triggerOnce direction="left" cascade>
             <ul className="hidden lg:flex flex-row justify-center items-center  gap-x-4 ml-0 mr-auto">
-              {hasMusic && (
-                <li>
-                  <a
-                    href="#music"
-                    className="flex items-center text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold"
-                  >
-                    Music
-                  </a>
-                </li>
-              )}
               {hasTour && (
                 <li>
                   <a
                     href="#tour"
-                    className="flex items-center text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold"
+                    className={`flex items-center hover:text-text-color transition-all uppercase font-semibold ${
+                      activeLink === "tour"
+                        ? "active text-primary hover:opacity-100"
+                        : "opacity-90 hover:opacity-100 text-text-color"
+                    }`}
                   >
                     Tour
+                  </a>
+                </li>
+              )}
+              {hasMusic && (
+                <li>
+                  <a
+                    href="#music"
+                    className={`flex items-center hover:text-text-color transition-all uppercase font-semibold ${
+                      activeLink === "music"
+                        ? "active text-primary hover:opacity-100"
+                        : "opacity-90 hover:opacity-100 text-text-color"
+                    }`}
+                  >
+                    Music
                   </a>
                 </li>
               )}
@@ -94,7 +135,11 @@ export default function ProfileSitePage({
                 <li>
                   <a
                     href="#videos"
-                    className="flex items-center text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold"
+                    className={`flex items-center hover:text-text-color transition-all uppercase font-semibold ${
+                      activeLink === "videos"
+                        ? "active text-primary hover:opacity-100"
+                        : "opacity-90 hover:opacity-100 text-text-color"
+                    }`}
                   >
                     Videos
                   </a>
@@ -104,7 +149,11 @@ export default function ProfileSitePage({
                 <li>
                   <a
                     href="#booking"
-                    className="flex items-center text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold"
+                    className={`flex items-center hover:text-text-color transition-all uppercase font-semibold ${
+                      activeLink === "booking"
+                        ? "active text-primary hover:opacity-100"
+                        : "opacity-90 hover:opacity-100 text-text-color"
+                    }`}
                   >
                     Booking
                   </a>
@@ -161,6 +210,9 @@ export default function ProfileSitePage({
         </div>
       </div>
       <div className="bg-background">
+        <h2 id="header" className="opacity-0 h-0 w-0">
+          header
+        </h2>
         {!!profile.heroImage?.url && (
           <div aria-hidden="true" className="relative overflow-hidden">
             <Fade direction="up" triggerOnce>
@@ -179,11 +231,11 @@ export default function ProfileSitePage({
       </div>
       {/* TOUR */}
       {hasTour && (
-        <div
-          className="relative h-100vh flex flex-col w-full items-center justify-center"
-          id="tour"
-        >
-          <h2 className="text-6xl text-center uppercase mt-16 relative z-10">
+        <div className="relative h-100vh flex flex-col w-full items-center justify-center">
+          <h2
+            className="text-6xl text-center uppercase mt-16 relative z-10"
+            id="tour"
+          >
             Tour
           </h2>
           {!!profile?.tourWidgetiFrame && (
@@ -231,7 +283,10 @@ export default function ProfileSitePage({
       {!!profile?.spotifyArtistName &&
         siteLibrary?.spotifyClientSecret &&
         siteLibrary?.spotifyClientId && (
-          <div id="music">
+          <div>
+            <h2 id="music" className="opacity-0 h-0 w-0">
+              Music
+            </h2>
             <SpotifyArtistAlbums
               artistName={profile.spotifyArtistName}
               spotifyAlbumDisplay="featured"

@@ -17,8 +17,8 @@ export default function CircleGridBoxes({ gridBoxData }: GridBoxProps) {
   );
 
   return (
-    <section className="mx-auto px-4 sm:px-6 max-w-8xl lg:px-8 my-8 record">
-      <div className="flex flex-wrap items-center justify-center mx-auto lg:mx-0 transition">
+    <section className="mx-auto px-4 sm:px-6 max-w-8xl lg:px-8 my-8 record circle-grid-boxes">
+      <div className="flex flex-wrap items-center justify-center mx-auto lg:mx-0 transition gap-x-4">
         {gridBoxDataWOLinks.map((gridBoxDataWOLink, index) => (
           <Fade
             direction="up"
