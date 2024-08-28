@@ -450,53 +450,6 @@ html {
     text-transform: uppercase;
     
   }
-  // a {
-  //   position: relative;
-  //   color: var(--secondary);
-  //   overflow: hidden;
-  //   background: linear-gradient(135deg, var(--primary), var(--text) 50%, var(--text) 50%);
-  //   background-clip: text;
-  //   -webkit-background-clip: text;
-  //   -webkit-text-fill-color: transparent;
-  //   background-size: 250% 100%;
-  //   background-position: 100%;
-  //   border-bottom: 1px solid var(--secondary);
-  //   transition: all 275ms ease;
-  //   &:hover,  &:focus {
-  //     transform: skewX(-15deg);
-  //     transition:transform .3s ease-in-out;
-  //     background-position: 0 100%;
-  //     border-bottom: 1px solid var(--secondary);
-  //   }
-  // }
-  // a.text-link-secondary {
-  //   color: var(--text-overlay);
-  //   font-weight: 700;
-  //   transition: all 200ms ease;
-  //   border-radius: 0.25rem;
-  //   padding: 0.75rem 1.5rem;
-  //   background: var(--secondary);
-  //   background-clip: initial;
-  //   -webkit-background-clip: initial;
-  //   -webkit-text-fill-color: initial;
-  //   background-size: initial;
-  //   background-position: initial;
-  //   border-bottom:initial;
-  //   background-clip: initial;
-  //   -webkit-background-clip: initial;
-  //   -webkit-text-fill-color: initial;
-  //   background-size: initial;
-  //   background-position: initial;
-  //   border-bottom: initial;
-  //   &:hover, &:focus-within {
-  //     background: var(--primary);
-  //   }
-  // }
-  // &.text-text-overlay {
-  //   p, h1, h2, h3, h4, h6 {
-  //     color: var(--text-overlay) !important;
-  //   }
-  // }
 } 
 
 .bg-invert {

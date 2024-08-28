@@ -1,0 +1,5 @@
+.sepia-map {
+  .mapboxgl-canvas {
+    filter: sepia(1);
+  }
+}

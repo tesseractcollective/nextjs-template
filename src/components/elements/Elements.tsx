@@ -17,6 +17,7 @@ import MapBoxMap from "@/components/elements/MapBoxMap";
 import MapBoxesMap from "@/components/elements/MapBoxesMap";
 import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
 import CardLocations from "@/components/elements/CardLocations";
+import LocationsMedia from "@/components/elements/LocationsMedia";
 import DrumPadComponent from "./DrumPadComponent";
 import BandsInTownApi from "@/components/BandsInTownApi";
 import MaskCursor from "./MaskCursor";
@@ -155,6 +156,17 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           <div className="max-w-8xl mx-auto flex h-full w-full px-8 md:p-4 rounded-md">
             <MapBoxesMap
               locations={elementJson.locations}
+              mapKey={siteLibrary.mapKey}
+              icon={siteLibrary?.metaAppleTouchIcon.url}
+            />
+          </div>
+        )}
+      {!!siteLibrary?.mapKey &&
+        !!elementJson?.locationsMedia &&
+        !!siteLibrary?.metaAppleTouchIcon && (
+          <div className="max-w-8xl mx-auto flex h-full w-full px-8 md:p-4 rounded-md">
+            <LocationsMedia
+              locations={elementJson.locationsMedia}
               mapKey={siteLibrary.mapKey}
               icon={siteLibrary?.metaAppleTouchIcon.url}
             />
