@@ -185,7 +185,7 @@ export default function Profile({
                 websiteLinkProp={profile?.websiteLink || undefined}
               />
               {profile.fullBio?.html && (
-                <div className="mt-4 text-text-color body-parsed-text text-left sm:text-center">
+                <div className="mt-2 mx-auto text-text-color body-parsed-text text-left max-w-sm">
                   {parse(profile.fullBio?.html)}
                 </div>
               )}

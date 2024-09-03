@@ -27,10 +27,10 @@ export default function TextModernSection({
                   key={textContentItem?.header?.html}
                   className="mx-auto w-full"
                 >
-                  <div className="flex flex-row p-4 rounded items-center gap-x-4 justify-center text-center">
+                  <div className="flex flex-col p-4 rounded items-center gap-x-4 justify-center text-center">
                     {textContentItem?.contentImage && (
                       <Image
-                        className="h-16 lg:h-20 w-16 lg:w-20 rounded-full object-cover"
+                        className="w-full object-cover"
                         width={72}
                         height={72}
                         sizes="100%"
