@@ -339,7 +339,7 @@ export default function ProfileSitePage({
         <section className="bg-fade-1st">
           <Fade triggerOnce>
             <AnimateParagraph
-              animateParagraph={profile.miniBio.replace("<br/>", " ")}
+              animateParagraph={profile.miniBio.replace(/<[^>]*>/g, " ")}
             />
           </Fade>
         </section>

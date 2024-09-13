@@ -95,6 +95,7 @@ export default function ProfileMinimalPage({
             content={`${profile.name} - ${siteLibrary.title}`}
           />
         )}
+
         {!!siteLibrary?.favicon && (
           <link rel="shortcut icon" href={siteLibrary.favicon.url} />
         )}
@@ -119,6 +120,16 @@ export default function ProfileMinimalPage({
             </Fade>
 
             <div className="flex justify-center flex-col mx-auto w-full">
+              {!!profile?.profileLogo && (
+                <Image
+                  src={profile.profileLogo.url}
+                  alt=""
+                  sizes="100%"
+                  width={0}
+                  height={0}
+                  className="w-full h-16 mx-auto object-contain my-4"
+                />
+              )}
               <Fade className="all-text-light" triggerOnce>
                 <h1 className="text-2xl font-bold text-center uppercase mb-2">
                   {profile.name}
@@ -379,7 +390,7 @@ export default function ProfileMinimalPage({
                   siteLibrary?.spotifyClientId && (
                     <SpotifyArtistAlbums
                       artistName={profile.spotifyArtistName}
-                      spotifyAlbumDisplay="featured"
+                      spotifyAlbumDisplay="minimal"
                       spotifyClientId={siteLibrary.spotifyClientId}
                       spotifyClientSecret={siteLibrary.spotifyClientSecret}
                     />
@@ -421,14 +432,14 @@ export default function ProfileMinimalPage({
               <ContactsSection
                 contactTypes={profile?.contactQuery}
                 contactsData={contacts}
-                contactsLayoutStyle="default"
+                contactsLayoutStyle="card"
               />
             )}
 
-            {!!profile?.profileLogo && (
+            {!!siteLibrary?.logo && (
               <Link href="/" className="mx-auto flex">
                 <Image
-                  src={profile.profileLogo.url}
+                  src={siteLibrary.logo.url}
                   alt=""
                   sizes="100%"
                   width={0}

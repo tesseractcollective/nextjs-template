@@ -76,16 +76,16 @@ export default function CircleNavigation({
         <AccouncementBar
           accouncementText={navigation.announcementText}
           accouncementLink={navigation?.announcementLink || ""}
-          cssClassWrapper="fixed inset-x-0 z-[998] text-center lg:text-right"
+          cssClassWrapper="fixed inset-x-0 z-[998] text-center xl:text-right"
         />
       )}
       <div
-        className={`bg-bg fixed bottom-0 lg:top-0 lg:bottom-[initial] z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow dark-shadow border ${
-          navigation?.announcementText ? "lg:top-8" : ""
+        className={`bg-bg fixed bottom-0 xl:top-0 xl:bottom-[initial] z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow dark-shadow border ${
+          navigation?.announcementText ? "xl:top-8" : ""
         } ${
           small
-            ? "nav-shadow-scrolled bg-bg-secondary border-t-bg border-b-none lg:border-b-bg"
-            : "bg-bg border-t-secondary lg:border-b-secondary"
+            ? "nav-shadow-scrolled bg-bg-secondary border-t-bg border-b-none xl:border-b-bg"
+            : "bg-bg border-t-secondary xl:border-b-secondary"
         } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
         id="navigation"
       >
@@ -118,6 +118,14 @@ export default function CircleNavigation({
                 leaveTo="translate-y-full blur-xl"
               >
                 <Dialog.Panel className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-2 shadow-xl border-t-primary border-t bg-bg transition-all">
+                  <input
+                    readOnly
+                    type="checkbox"
+                    id="null"
+                    name="null"
+                    checked
+                    className="sr-only"
+                  />
                   <Fade direction="down" triggerOnce>
                     <div className="flex mt-4 ml-4 px-4 pb-2 pt-5 items-center justify-start">
                       <Link
@@ -130,15 +138,15 @@ export default function CircleNavigation({
                             label: "Visit Home",
                           });
                         }}
-                        className="cursor-pointer transition-all hover:skew-x-[8deg] hover:skew-y-[8deg]"
+                        className="cursor-pointer transition-all"
                         id={`nav-logo-mobile-panel`}
                       >
                         {navigation?.navigationLogo ? (
                           <>
                             <span className="sr-only">{title}</span>
                             <Image
-                              className="w-[80px] lg:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
-                              src={navigation.navigationLogo?.url}
+                              className="w-[80px] xl:w-[120px] max-h-[80px] cursor-pointer object-contain block"
+                              src={navigation.navigationLogo.url}
                               alt=""
                               width={0}
                               height={0}
@@ -291,7 +299,7 @@ export default function CircleNavigation({
                     </div>
                   </Fade>
                   <Fade
-                    className="relative bottom-0 right-5 lg:hidden z-[999] bg-bg h-20 rounded-t-full p-1 max-w-max ml-auto"
+                    className="relative bottom-0 right-5 xl:hidden z-[999] bg-bg h-20 rounded-t-full p-1 max-w-max ml-auto"
                     direction="up"
                   >
                     <button
@@ -324,15 +332,15 @@ export default function CircleNavigation({
         <header className="overflow-hidden relative z-2">
           <nav
             aria-label="Top"
-            className={`px-4 lg:px-12 w-full grid grid-cols-3 lg:grid-cols-3 transition-all mx-auto ${
+            className={`px-4 xl:px-12 w-full grid grid-cols-3 xl:grid-cols-3 transition-all mx-auto ${
               small ? "h-16 mb-0" : "h-24 mb-0"
             }`}
           >
             {/* start */}
             <Popover.Group
-              className={`inset-x-0 bottom-0 z-[0] hidden lg:flex  flex-row items-center justify-between w-full max-w-max`}
+              className={`inset-x-0 bottom-0 z-[0] hidden xl:flex  flex-row items-center justify-between w-full max-w-max`}
             >
-              <div className="hidden lg:flex h-full justify-start space-x-8">
+              <div className="hidden xl:flex h-full justify-start space-x-8">
                 {!!items &&
                   items.length >= 1 &&
                   items
@@ -356,8 +364,8 @@ export default function CircleNavigation({
                                           : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
                                         `relative z-10 -mb-px flex items-center pt-px transition-all duration-200 ease-out uppercase font-semibold ${
                                           small
-                                            ? "text-xs lg:text-sm"
-                                            : "text-xs sm:text-sm lg:text-base"
+                                            ? "text-xs xl:text-sm"
+                                            : "text-xs sm:text-sm xl:text-base"
                                         } ${mainNavigationItem?.cssClass} ${
                                           mainNavigationItem.cssClass
                                         }`
@@ -392,7 +400,7 @@ export default function CircleNavigation({
                                     leaveFrom="opacity-100"
                                     leaveTo="opacity-0"
                                   >
-                                    <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm lg:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
+                                    <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm xl:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
                                       {({ close }) => (
                                         <>
                                           <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md max-w-8xl">
@@ -492,8 +500,8 @@ export default function CircleNavigation({
                               label={mainNavigationItem?.label}
                               cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold ${
                                 small
-                                  ? "text-xs lg:text-sm"
-                                  : "text-xs sm:text-sm lg:text-base"
+                                  ? "text-xs xl:text-sm"
+                                  : "text-xs sm:text-sm xl:text-base"
                               } ${mainNavigationItem?.cssClass}`}
                               sameTab={mainNavigationItem?.sameTab}
                             />
@@ -508,18 +516,18 @@ export default function CircleNavigation({
 
             {/* START Mobile Flyout menus */}
             {((!!primaryItems && primaryItems.length >= 1) || siteLibrary) && (
-              <div className="h-full flex flex-col-reverse lg:hidden sm:flex-row items-center justify-center lg:justify-end gap-x-4 max-w-max mr-auto gap-y-1 lg:gap-y-0">
+              <div className="h-full flex flex-col-reverse xl:hidden sm:flex-row items-center justify-center xl:justify-end gap-x-4 max-w-max mr-auto gap-y-1 xl:gap-y-0">
                 {primaryItems.map((mainNavigationItem) => (
                   <LinkItem
                     key={mainNavigationItem?.link}
                     link={mainNavigationItem?.link}
                     label={mainNavigationItem?.label}
-                    cssClass={`flex justify-center items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 lg:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
+                    cssClass={`flex justify-center items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 xl:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
                       mainNavigationItem?.cssClass
                     } ${
                       small
-                        ? "text-xs lg:text-sm py-[0.15rem] lg:py-1 bg-primary hover:bg-secondary"
-                        : "text-xs sm:text-sm lg:text-base py-1 lg:py-2 bg-primary hover:bg-secondary"
+                        ? "text-xs xl:text-sm py-[0.15rem] xl:py-1 bg-primary hover:bg-secondary"
+                        : "text-xs sm:text-sm xl:text-base py-1 xl:py-2 bg-primary hover:bg-secondary"
                     }`}
                     sameTab={mainNavigationItem?.sameTab}
                   />
@@ -527,15 +535,15 @@ export default function CircleNavigation({
                 <SocialMediaIcons
                   fadeDirection="down"
                   siteLibrary={siteLibrary}
-                  cssClass="w-full hidden lg:flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
+                  cssClass="w-full hidden xl:flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
                 />
               </div>
             )}
 
             <Link
               href="/"
-              className={`cursor-pointer transition-all flex items-center justify-center mx-auto psuedo-circle max-w-[80px] lg:max-w-[100px] ${
-                small ? "small-psuedo-circle max-w-[70px] lg:max-w-[80px]" : ""
+              className={`cursor-pointer transition-all flex items-center justify-center mx-auto psuedo-circle max-w-[80px] xl:max-w-[100px] ${
+                small ? "small-psuedo-circle max-w-[70px] xl:max-w-[80px]" : ""
               }`}
               id={`nav-logo-desktop`}
               onClick={() => {
@@ -550,17 +558,12 @@ export default function CircleNavigation({
                 <>
                   <span className="sr-only">{title}</span>
                   <Image
-                    className={`w-auto mx-auto cursor-pointer object-contain transition-all h-full ${
-                      small
-                        ? "max-h-10 lg:max-h-12 rotate-[360deg]"
-                        : "max-h-16 lg:max-h-20 rotate-0"
-                    }`}
-                    src={navigation.navigationLogo?.url}
+                    className={`mx-auto cursor-pointer object-contain h-full w-full`}
+                    src={navigation.navigationLogo.url}
                     alt=""
                     width={0}
                     height={0}
                     sizes="100%"
-                    style={{ width: "100%" }}
                   />
                 </>
               ) : (
@@ -572,18 +575,18 @@ export default function CircleNavigation({
 
             {/* START Desktop Flyout menus */}
             {((!!primaryItems && primaryItems.length >= 1) || siteLibrary) && (
-              <div className="h-full hidden lg:flex sm:flex-row items-center justify-center lg:justify-end gap-x-4 max-w-max ml-auto gap-y-1 lg:gap-y-0">
+              <div className="h-full hidden xl:flex sm:flex-row items-center justify-center xl:justify-end gap-x-4 max-w-max ml-auto gap-y-1 xl:gap-y-0">
                 {primaryItems.map((mainNavigationItem) => (
                   <LinkItem
                     key={mainNavigationItem?.link}
                     link={mainNavigationItem?.link}
                     label={mainNavigationItem?.label}
-                    cssClass={`flex justify-center items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 lg:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
+                    cssClass={`flex justify-center items-center font-bold text-text-overlay opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 xl:px-4 rounded-[100px] hover:rounded-[25px] transition-all uppercase my-0 ${
                       mainNavigationItem?.cssClass
                     } ${
                       small
-                        ? "text-xs lg:text-sm py-[0.15rem] lg:py-1 bg-primary hover:bg-secondary"
-                        : "text-xs sm:text-sm lg:text-base py-1 lg:py-2 bg-primary hover:bg-secondary"
+                        ? "text-xs xl:text-sm py-[0.15rem] xl:py-1 bg-primary hover:bg-secondary"
+                        : "text-xs sm:text-sm xl:text-base py-1 xl:py-2 bg-primary hover:bg-secondary"
                     }`}
                     sameTab={mainNavigationItem?.sameTab}
                   />
@@ -591,14 +594,14 @@ export default function CircleNavigation({
                 <SocialMediaIcons
                   fadeDirection="down"
                   siteLibrary={siteLibrary}
-                  cssClass="w-full hidden lg:flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
+                  cssClass="w-full hidden xl:flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
                 />
               </div>
             )}
 
             {/* Mobile Menu Button */}
             <Fade
-              className="relative lg:hidden p-1 max-w-max flex items-center justify-center ml-auto"
+              className="relative xl:hidden p-1 max-w-max flex items-center justify-center ml-auto"
               direction="up"
             >
               <button
@@ -626,7 +629,7 @@ export default function CircleNavigation({
           </nav>
         </header>
       </div>
-      <div className="h-0 lg:h-24 nav-spacer"></div>
+      <div className="h-0 xl:h-24 nav-spacer"></div>
     </>
   );
 }

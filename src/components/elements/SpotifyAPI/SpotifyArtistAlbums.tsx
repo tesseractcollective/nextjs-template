@@ -14,6 +14,7 @@ import SpotifyDisplayStacked from "./SpotifyDisplayStacked";
 import SpotifyDisplayVinyl from "./SpotifyDisplayVinyl";
 import SpotifyDisplayDiscography from "./SpotifyDisplayDiscography";
 import SpotifyDisplayBiography from "./SpotifyDisplayBiography";
+import SpotifyDisplayMinimal from "./SpotifyDisplayMinimal";
 
 interface Album {
   name: string;
@@ -150,6 +151,8 @@ const SpotifyArtistAlbums: React.FC<SpotifyArtistInfoProps> = ({
     return <SpotifyDisplayCompact spotifyAlbumsData={sortedAlbums} />;
   if (spotifyAlbumDisplay === "featured")
     return <SpotifyDisplayFeatured spotifyAlbumsData={sortedAlbums} />;
+  if (spotifyAlbumDisplay === "minimal")
+    return <SpotifyDisplayMinimal spotifyAlbumsData={sortedAlbums} />;
   if (spotifyAlbumDisplay === "grid")
     return <SpotifyDisplayGrid spotifyAlbumsData={sortedAlbums} />;
   if (spotifyAlbumDisplay === "myspace")

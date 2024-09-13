@@ -195,7 +195,7 @@ export default function HeroMediaSliderSection({
                         </div>
                       )}
 
-                      <div className="flex flex-row flex-wrap justify-center items-center mx-auto w-full">
+                      <div className="flex flex-row flex-wrap justify-center items-center mx-auto w-full gap-x-4">
                         {heroMediaSliderItem?.callToAction?.map(
                           (callToActionItem) => (
                             <div key={Math.random()}>
