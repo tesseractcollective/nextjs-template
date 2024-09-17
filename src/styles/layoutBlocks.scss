@@ -1130,4 +1130,18 @@ body iframe {
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.3);
   }
+  &.glass-primary {
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--secondary);
+  filter: saturate(2);
+    * {
+      color: var(--text-overlay) !important;
+    }
+    a {
+      background: var(--text-overlay);
+      strong {
+        color: var(--secondary) !important;
+      }
+    } 
+  }
 }

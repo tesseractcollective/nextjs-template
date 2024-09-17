@@ -282,10 +282,10 @@ export default function ProgressNavigation({
         </Dialog>
       </Transition.Root>
       <Fade direction={isMobile ? "up" : "down"} triggerOnce>
-        <header className="relative z-2 mt-8">
+        <header className="relative z-2 my-8">
           <nav
             aria-label="Top"
-            className={`mx-auto px-4 sm:px-6 lg:px-8 bg-text-overlay transition-all transition-delay min-w-[85%] shadow-top lg:shadow-none !min-h-[48px] ${
+            className={`mx-auto px-4 sm:px-6 lg:px-8 bg-text-overlay transition-all transition-delay min-w-[85%] duration-[400ms] shadow-top lg:shadow-none !min-h-[48px] ${
               small ? "rounded-none max-w-full" : "rounded-full max-w-8xl"
             }`}
           >

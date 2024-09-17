@@ -9,6 +9,7 @@ import LinkItem from "@/components/LinkItem";
 import TextContentPins from "./TextContentPins";
 import TextCardsSection from "./TextContentSections/TextCardsSection";
 import TextModernSection from "./TextContentSections/TextModernSection";
+import TextGradientSection from "./TextContentSections/TextGradientSection";
 
 interface TextContentProps {
   textContentData: TextContentFieldsFragment[];
@@ -51,6 +52,9 @@ export default function TextContentSection({
   const textModern = textContentData?.filter(
     (textContent) => textContent.textContentWidth === "modern"
   );
+  const textGradient = textContentData?.filter(
+    (textContent) => textContent.textContentWidth === "gradient"
+  );
   const textBlocks = textContentData?.filter(
     (textContent) => textContent.contentAlign !== "card"
   );
@@ -68,6 +72,13 @@ export default function TextContentSection({
     return (
       <TextModernSection
         textContentData={textModern}
+        callToActionData={callToActionData}
+      />
+    );
+  if (textGradient && textGradient.length >= 1)
+    return (
+      <TextGradientSection
+        textContentData={textGradient}
         callToActionData={callToActionData}
       />
     );
