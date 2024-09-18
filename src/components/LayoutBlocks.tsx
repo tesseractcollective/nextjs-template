@@ -10,6 +10,7 @@ import { Event } from "@/components/Calendar/calendarHelpers";
 import Page404 from "@/components/Page404";
 import Loader from "@/components/elements/Loader";
 import PagePassword from "./PagePassword";
+// import AgeVerification from "./elements/AgeVerification";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -23,6 +24,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
 
   return (
     <div className="relative layout-blocks-wrapper">
+      {/* {page?.contentPageJson?.ageVerification && <AgeVerification />} */}
       {!!page?.contentPageJson?.loader && siteLibrary.logo?.url && (
         <Loader icon={siteLibrary.logo.url} />
       )}

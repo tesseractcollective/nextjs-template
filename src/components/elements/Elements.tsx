@@ -30,6 +30,7 @@ import SpotifyUserPlaylists from "./SpotifyAPI/SpotifyUserPlaylists";
 import RegisterForm from "./RegisterForm";
 import DimensionText from "./DimensionText";
 import RotateTextAnimation from "./RotateTextAnimation";
+// import AgeVerification from "./AgeVerification";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -251,6 +252,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           siteLibrary={siteLibrary}
         />
       )}
+      {/* {!!elements?.elementJson?.ageVerification && <AgeVerification />} */}
     </>
   );
 }

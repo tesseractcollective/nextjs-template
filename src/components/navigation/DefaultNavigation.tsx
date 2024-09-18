@@ -71,7 +71,7 @@ export default function DefaultNavigation({
 
   return (
     <div
-      className={`sticky top-0 z-[999] bg-after left-0 right-0 nav-shadow transition-all backdrop-blur-md ${
+      className={`sticky top-0 z-[999] bg-after left-0 right-0 nav-shadow transition-all backdrop-blur-md duration-[400ms] ${
         small ? "nav-shadow-scrolled" : ""
       } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
       id="navigation"
@@ -310,7 +310,7 @@ export default function DefaultNavigation({
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
               <div className="">
                 <div
-                  className={`flex items-center justify-between transition-all ${
+                  className={`flex items-center justify-between transition-all duration-[400ms] ${
                     small ? "h-12" : "h-16"
                   }`}
                 >
@@ -332,7 +332,7 @@ export default function DefaultNavigation({
                           <span className="sr-only">{title}</span>
                           <Fade direction="down" triggerOnce>
                             <Image
-                              className={`max-w-[180px] ml-0 cursor-pointer object-contain transition-all h-full mr-auto flex ${
+                              className={`max-w-[180px] ml-0 cursor-pointer object-contain transition-all h-full mr-auto flex duration-[400ms] ${
                                 small ? "max-h-8" : "max-h-12"
                               }`}
                               src={navigation.navigationLogo?.url}
@@ -582,7 +582,7 @@ export default function DefaultNavigation({
                     >
                       <span className="sr-only">Open menu</span>
                       <Bars3Icon
-                        className={`group-hover:text-primary transition-all ${
+                        className={`group-hover:text-primary transition-all duration-[400ms] ${
                           small ? "h-4 w-4" : "h-6 w-6"
                         }`}
                         aria-hidden="true"
@@ -606,7 +606,7 @@ export default function DefaultNavigation({
                         <span className="sr-only">{title}</span>
                         <Fade direction="down" triggerOnce>
                           <Image
-                            className={`w-full max-w-xs mx-auto cursor-pointer object-contain transition-all ${
+                            className={`w-full max-w-xs mx-auto cursor-pointer object-contain transition-all duration-[400ms] ${
                               small ? "h-7" : "h-10"
                             }`}
                             src={navigation.navigationLogo?.url}

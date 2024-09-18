@@ -66,7 +66,7 @@ export default function TextModernSection({
                 </div>
               ))}
               {!!callToActionData && callToActionData?.length > 0 && (
-                <div className="text-center mx-auto md:mx-0">
+                <div className="text-center mx-auto md:mx-0 flex flex-row">
                   {callToActionData.map(
                     (callToActionItem) =>
                       callToActionItem?.ctaLink && (
