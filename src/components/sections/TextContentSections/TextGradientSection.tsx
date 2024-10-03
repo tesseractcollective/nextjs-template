@@ -21,7 +21,7 @@ export default function TextGradientSection({
       {!!textContentData && (
         <div className="mx-auto max-w-xl my-8 w-full px-4 bg-glass glass-primary py-8">
           <Fade direction="up" triggerOnce>
-            <div className="flex flex-wrap flex-row items-center mx-auto w-full justify-center">
+            <div className="flex flex-wrap flex-row items-center mx-auto w-full justify-center px-4">
               {textContentData.map((textContentItem) => (
                 <div
                   key={textContentItem?.header?.html}

@@ -585,10 +585,10 @@ body iframe {
   &.dynamic-xxl {
     width: 100%;
     display: block;
-    @media only screen and (min-width: 540px) {
-      max-width: 90vw;
-    }
-    max-width: 1400px;
+    // @media only screen and (min-width: 540px) {
+    //   max-width: 90vw;
+    // }
+    max-width: 86rem;
   }
   &.dynamic-full {
     width: 100%;
@@ -1144,4 +1144,9 @@ body iframe {
       }
     } 
   }
+}
+
+
+.emoji-span span {
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Twemoji", "Noto Color Emoji", "Android Emoji", "EmojiSymbols";
 }

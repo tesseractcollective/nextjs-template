@@ -282,16 +282,16 @@ export default function ProgressNavigation({
         </Dialog>
       </Transition.Root>
       <Fade direction={isMobile ? "up" : "down"} triggerOnce>
-        <header className="relative z-2 my-8">
+        <header className="relative z-2 mb-0 lg:mb-8 lg:mt-8 transition-all duration-[450ms]">
           <nav
             aria-label="Top"
-            className={`mx-auto px-4 sm:px-6 lg:px-8 bg-text-overlay transition-all transition-delay min-w-[85%] duration-[400ms] shadow-top lg:shadow-none !min-h-[48px] ${
+            className={`mx-auto px-4 sm:px-6 lg:px-8 bg-text-overlay transition-all min-w-[85%] duration-[450ms] shadow-top lg:shadow-none !min-h-[48px] ${
               small ? "rounded-none max-w-full" : "rounded-full max-w-8xl"
             }`}
           >
             <div className="">
               <div
-                className={`flex items-center justify-between transition-all max-w-8xl mx-auto relative overflow-hidden !min-h-[48px] ${
+                className={`grid grid-cols-3 justify-between transition-all max-w-8xl mx-auto relative overflow-hidden !min-h-[48px] ${
                   small ? "h-16" : "h-20"
                 }`}
               >
@@ -302,7 +302,7 @@ export default function ProgressNavigation({
                   }}
                   className={`absolute bottom-0 w-full transition-transform duration-150 h-[0.15rem] bg-primary rounded-full`}
                 />
-                <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max">
+                <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max mr-auto">
                   <Link
                     href="/"
                     id={`nav-logo-desktop-${title}`}
@@ -318,7 +318,7 @@ export default function ProgressNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className={`w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all h-full ${
+                          className={`w-full ml-0 max-w-[10rem] mr-auto cursor-pointer object-contain transition-all h-full ${
                             small ? "max-h-12" : "max-h-16"
                           }`}
                           src={navigation.navigationLogo?.url}
@@ -326,7 +326,6 @@ export default function ProgressNavigation({
                           width={0}
                           height={0}
                           sizes="100%"
-                          style={{ width: "100%" }}
                         />
                       </>
                     ) : (
@@ -532,7 +531,7 @@ export default function ProgressNavigation({
 
                 <Link
                   href="/"
-                  className="lg:hidden cursor-pointer max-w-[200px]"
+                  className="flex items-center lg:hidden cursor-pointer max-w-[200px]"
                   id={`nav-logo-mobile-${title}`}
                   onClick={() => {
                     ReactGA.event({
@@ -586,7 +585,7 @@ export default function ProgressNavigation({
                 </div>
 
                 {!!primaryItems && primaryItems.length >= 1 && (
-                  <div className="flex flex-1 items-center justify-end max-w-max">
+                  <div className="flex flex-1 items-center justify-end max-w-max ml-auto">
                     {primaryItems.map((mainNavigationItem) => (
                       <LinkItem
                         key={mainNavigationItem?.link}

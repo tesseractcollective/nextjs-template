@@ -2,6 +2,7 @@ import React from "react";
 import type { ContactFieldsFragment } from "@/graphql/generated/graphql";
 import ContactDefault from "@/components/sections/ContactContentComponents/ContactDefault";
 import ContactCard from "@/components/sections/ContactContentComponents/ContactCard";
+import ContactCircle from "@/components/sections/ContactContentComponents/ContactCircle";
 
 type contactTypeTags = ContactFieldsFragment["contactQuery"];
 
@@ -24,6 +25,9 @@ export default function ContactsSection({
   if (filteredContacts.length === 0) return <></>;
   if (contactsLayoutStyle === "card") {
     return <ContactCard contactsData={filteredContacts} />;
+  }
+  if (contactsLayoutStyle === "circle") {
+    return <ContactCircle contactsData={filteredContacts} />;
   }
   return <ContactDefault contactsData={filteredContacts} />;
 }

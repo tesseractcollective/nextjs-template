@@ -16,10 +16,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import HeroMediaCircleSection from "@/components/sections/HeroMediaSliderSections/HeroMediaCircleSection";
 import HeroMediaVerticalSection from "@/components/sections/HeroMediaSliderSections/HeroMediaVerticalSection";
+import HeroMediaProductSection from "@/components/sections/HeroMediaSliderSections/HeroMediaProductSection";
 import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import useViewport from "@/hooks/useViewport";
 
 type HeroMediaSliderType = HeroMediaSliderFieldsFragment;
 
@@ -46,6 +48,7 @@ export default function HeroMediaSliderSection({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const { isMobile } = useViewport();
   if (!siteLibrary) return <></>;
   if (!heroMediaSliderData) return <></>;
   const youtubeiFrameParams =
@@ -72,6 +75,15 @@ export default function HeroMediaSliderSection({
   if (heroMediaSliderData[0]?.mediaType === "vertical") {
     return (
       <HeroMediaVerticalSection
+        heroMediaSliderData={heroMediaSliderData}
+        siteLibrary={siteLibrary}
+      />
+    );
+  }
+
+  if (heroMediaSliderData[0]?.mediaType === "product") {
+    return (
+      <HeroMediaProductSection
         heroMediaSliderData={heroMediaSliderData}
         siteLibrary={siteLibrary}
       />
@@ -251,17 +263,34 @@ export default function HeroMediaSliderSection({
                           className="absolute inset-0 z-1"
                         />
                       )}
-                      {heroMediaSliderItem.mediaType === "image" && (
-                        <Image
-                          src={heroMediaSliderItem.sliderMediaBackground.url}
-                          className="hero-media-image object-cover h-full w-full object-center-top select-none absolute inset-0 z-1"
-                          alt=""
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          quality={100}
-                        />
-                      )}
+                      {heroMediaSliderItem.mediaType === "image" &&
+                        heroMediaSliderItem?.mobileThumbnail && (
+                          <Image
+                            src={
+                              isMobile
+                                ? heroMediaSliderItem.mobileThumbnail.url
+                                : heroMediaSliderItem.sliderMediaBackground.url
+                            }
+                            className="hero-media-image object-cover h-full w-full object-center-top select-none absolute inset-0 z-1"
+                            alt=""
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            quality={100}
+                          />
+                        )}
+                      {heroMediaSliderItem.mediaType === "image" &&
+                        heroMediaSliderItem?.mobileThumbnail === null && (
+                          <Image
+                            src={heroMediaSliderItem.sliderMediaBackground.url}
+                            className="hero-media-image object-cover h-full w-full object-center-top select-none absolute inset-0 z-1"
+                            alt=""
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            quality={100}
+                          />
+                        )}
                       {heroMediaSliderItem.mediaType === "expand" && (
                         <Image
                           src={heroMediaSliderItem.sliderMediaBackground.url}
