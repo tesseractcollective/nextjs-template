@@ -6,6 +6,7 @@ import type {
 import parse from "html-react-parser";
 import { Fade } from "react-awesome-reveal";
 import LinkItem from "@/components/LinkItem";
+import React from "react";
 
 interface TextCardsProps {
   textContentData: TextContentFieldsFragment[];
@@ -82,8 +83,8 @@ export default function TextGradientSection({
                                 ? callToActionItem.ctaClass
                                 : `${
                                     callToActionItem.ctaPrimary
-                                      ? "border-secondary text-tertiary border px-4 md:px-6 py-2 max-w-max block no-underline font-bold w-full text-2xl !rounded-full"
-                                      : "text-tertiary border-0 px-4 md:px-6 py-2 max-w-max block no-underline w-full text-2xl !rounded-full"
+                                      ? "border-secondary border px-4 md:px-6 py-2 max-w-max block no-underline font-bold w-full text-2xl !rounded-full"
+                                      : "text-primary border-0 px-4 md:px-6 py-2 max-w-max block no-underline w-full text-2xl !rounded-full"
                                   } max-w-max`
                             }
                           />

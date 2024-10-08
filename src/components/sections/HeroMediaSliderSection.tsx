@@ -234,7 +234,7 @@ export default function HeroMediaSliderSection({
                                     cssClass={`${callToActionItem.ctaClass} ${
                                       callToActionItem?.ctaPrimary
                                         ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl"
-                                        : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl"
+                                        : "text-text-overlay border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl theme-overlay"
                                     } max-w-max`}
                                   />
                                 </div>

@@ -9,6 +9,7 @@ import "@/styles/global.scss";
 import "@/styles/layoutBlocks.scss";
 import ThemeColors from "@/styles/ThemeColors";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import React from "react";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const productPage: ProductPageQuery = await sdkClient.productPage({

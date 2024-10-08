@@ -153,6 +153,9 @@ html {
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
+  &.theme-overlay {
+    color: var(--text-overlay);
+  }
   &::before {
     background: var(--primary);
     content: "";

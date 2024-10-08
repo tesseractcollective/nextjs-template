@@ -63,7 +63,7 @@ export default function ProductGridSection({ type, products }: ProductsProps) {
                   <div className="flex items-center md:my-3">
                     {!!product.price && (
                       <p className="text-md md:text-lg font-semibold text-text-color cursor-auto">
-                        {`$${product.price}`}
+                        {`${product.price}`}
                       </p>
                     )}
                     {!!product?.purchaseLink && (

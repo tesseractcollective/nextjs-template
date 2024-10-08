@@ -7,6 +7,7 @@ import ThemeColors from "@/styles/ThemeColors";
 import Script from "next/script";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Event } from "@/components/Calendar/calendarHelpers";
+import React from "react";
 
 interface Props {
   layout: LayoutQuery;

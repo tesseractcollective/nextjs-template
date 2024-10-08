@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 import Sections from "@/components/sections/Sections";
 import ContentComponents from "@/components/ContentComponents";

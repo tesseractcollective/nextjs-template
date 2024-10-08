@@ -6,6 +6,7 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane, faTimes } from "@fortawesome/free-solid-svg-icons";
 import ReactGA from "react-ga4";
+import React from "react";
 
 interface WhatsappProps {
   contactNumber: string;
@@ -17,7 +18,7 @@ export default function Whatsapp({
 }: WhatsappProps): ReactElement {
   const [open, setOpen] = useState<boolean>(false);
   const [whatsAppMessage, setWhatsappMessage] = useState("");
-
+  console.log(contactNumber);
   return (
     <>
       <button
@@ -72,7 +73,6 @@ export default function Whatsapp({
                             id="whatsapp-input"
                             className="block w-full resize-none border-0 bg-transparent py-1.5 !text-[#000] placeholder:text-[#333] focus:ring-0 sm:text-sm sm:leading-6 px-2"
                             placeholder="WhatsApp Message"
-                            defaultValue={""}
                           />
                           <div className="py-0" aria-hidden="true">
                             <div className="py-px">
@@ -126,55 +126,6 @@ export default function Whatsapp({
                             </div>
                           </div>
                         </div>
-
-                        {/* <div className="absolute inset-x-0 bottom-0 flex justify-between pb-2 pl-3 pr-2 bg-white">
-                          <div className="flex-shrink-0 w-full">
-                            <button
-                              type="button"
-                              className="m-2 inline-flex items-center justify-center rounded-md p-2 !text-text-color outline outline-primary mx-auto max-w-max"
-                              onClick={() => {
-                                setOpen(false);
-                                ReactGA.event({
-                                  category: "Link",
-                                  action: "Close Popup",
-                                  label: "Close Popup",
-                                });
-                              }}
-                            >
-                              <span className="sr-only">Close menu</span>
-                              <XMarkIcon
-                                className="h-6 w-6 !text-text-color"
-                                aria-hidden="true"
-                              />
-                            </button>
-                            <a
-                              href={`https://api.whatsapp.com/send?phone=${encodeURIComponent(
-                                `${contactNumber}`
-                              )}&text=${whatsAppMessage}`}
-                              target="_blank"
-                              style={{
-                                border: "2px solid #fff",
-                                color: "#fff",
-                              }}
-                              className="bg-[#25D366] inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-text-color hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ml-auto w-full"
-                              rel="noreferrer"
-                              onClick={() => {
-                                setOpen(false);
-                                ReactGA.event({
-                                  category: "Link",
-                                  action: "Send WhatsApp Popup",
-                                  label: "Send WhatsApp Popup",
-                                });
-                              }}
-                            >
-                              <FontAwesomeIcon
-                                icon={faPaperPlane as IconProp}
-                                className="fa-fw h-5 w-5"
-                              />
-                              <span className="sr-only">Send Message</span>
-                            </a>
-                          </div>
-                        </div> */}
                       </form>
                     </div>
                   </div>

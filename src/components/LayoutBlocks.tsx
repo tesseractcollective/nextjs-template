@@ -10,6 +10,7 @@ import { Event } from "@/components/Calendar/calendarHelpers";
 import Page404 from "@/components/Page404";
 import Loader from "@/components/elements/Loader";
 import PagePassword from "./PagePassword";
+import React from "react";
 // import AgeVerification from "./elements/AgeVerification";
 
 interface PageProps {
@@ -21,7 +22,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
   if (!layout.page?.pageSlug) return <Page404 layout={layout} />;
   const { siteLibrary, page, navigations, blogs } = layout;
   if (!siteLibrary) return <></>;
-
+  console.log(page?.whatsAppContactNumberFloatingButton);
   return (
     <div className="relative layout-blocks-wrapper">
       {/* {page?.contentPageJson?.ageVerification && <AgeVerification />} */}
@@ -54,13 +55,12 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
       )}
       <div>
         <LayoutBlockSections layout={layout} eventsData={events} />
-        {!!page?.whatsAppContactNumberFloatingButton &&
-          siteLibrary?.isSpanish && (
-            <Whatsapp
-              contactNumber={page.whatsAppContactNumberFloatingButton}
-              isSpanish={siteLibrary.isSpanish}
-            />
-          )}
+        {!!page?.whatsAppContactNumberFloatingButton && (
+          <Whatsapp
+            contactNumber={page.whatsAppContactNumberFloatingButton}
+            isSpanish={siteLibrary?.isSpanish || false}
+          />
+        )}
       </div>
       {navigations && siteLibrary && (
         <Footer
