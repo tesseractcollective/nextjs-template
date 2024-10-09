@@ -18,6 +18,7 @@ import ImageCardBoxes from "./GridBoxComponents/ImageCardBoxes";
 import TwoHundredVhBoxes from "./GridBoxComponents/TwoHundredVhBoxes";
 import MasonGridBoxes from "./GridBoxComponents/MasonGridBoxes";
 import NetflixCardBoxes from "./GridBoxComponents/NetflixCardBoxes";
+import React from "react";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];

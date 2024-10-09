@@ -532,11 +532,11 @@ export default function CircleNavigation({
                     sameTab={mainNavigationItem?.sameTab}
                   />
                 ))}
-                <SocialMediaIcons
+                {/* <SocialMediaIcons
                   fadeDirection="down"
                   siteLibrary={siteLibrary}
                   cssClass="w-full hidden xl:flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
-                />
+                /> */}
               </div>
             )}
 
@@ -591,11 +591,11 @@ export default function CircleNavigation({
                     sameTab={mainNavigationItem?.sameTab}
                   />
                 ))}
-                <SocialMediaIcons
+                {/* <SocialMediaIcons
                   fadeDirection="down"
                   siteLibrary={siteLibrary}
                   cssClass="w-full hidden xl:flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2 gap-y-0"
-                />
+                /> */}
               </div>
             )}
 
