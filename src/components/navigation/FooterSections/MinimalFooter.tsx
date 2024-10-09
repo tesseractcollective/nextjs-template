@@ -10,6 +10,7 @@ import SocialMediaIcons from "@/components/SocialMediaIcons";
 import Blogs from "@/components/Blogs";
 import { Fade } from "react-awesome-reveal";
 import Script from "next/script";
+import React from "react";
 
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;

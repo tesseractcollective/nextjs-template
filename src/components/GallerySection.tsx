@@ -20,6 +20,7 @@ import { Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import GalleryInfinite from "./elements/GalleryInfinite";
 import GalleryCarousel from "@/components/GallerySections/GalleryCarousel";
+import React from "react";
 
 interface GalleryProps {
   galleryData?: {

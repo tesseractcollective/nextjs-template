@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import useViewport from "@/app/hooks/useViewport";
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "@/components/LinkItem";
+import React from "react";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
