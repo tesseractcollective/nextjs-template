@@ -4788,10 +4788,7 @@ export enum ContactOrderByInput {
 }
 
 export enum ContactQueries {
-  Admin = 'admin',
-  Azteca = 'azteca',
-  Daniel = 'daniel',
-  Saul = 'saul'
+  Bocado = 'bocado'
 }
 
 export type ContactUpdateInput = {
@@ -10689,6 +10686,8 @@ export type LogoTableEdge = {
 };
 
 export enum LogoTableItem {
+  Feature = 'feature',
+  Pros = 'pros',
   Sponsor = 'sponsor'
 }
 
@@ -15154,10 +15153,14 @@ export type NavigationWhereUniqueInput = {
 };
 
 export enum NetlifyFormFields {
+  Address = 'address',
+  City = 'city',
+  Dob = 'dob',
   Email = 'email',
   Message = 'message',
   Name = 'name',
-  Phone = 'phone'
+  Phone = 'phone',
+  Zip = 'zip'
 }
 
 /** An object with an ID */
@@ -17028,7 +17031,27 @@ export enum ProductOrderByInput {
 }
 
 export enum ProductType {
-  Store = 'store'
+  Appetizer = 'appetizer',
+  Brunch = 'brunch',
+  BrunchDrinks = 'brunchDrinks',
+  Cocktails = 'cocktails',
+  Cold = 'cold',
+  Dessert = 'dessert',
+  Drinks = 'drinks',
+  Grill = 'grill',
+  Hot = 'hot',
+  Lunch = 'lunch',
+  LunchAppetizers = 'lunchAppetizers',
+  LunchDesserts = 'lunchDesserts',
+  Lunchsweets = 'lunchsweets',
+  Main = 'main',
+  Margaritas = 'margaritas',
+  Salad = 'salad',
+  Sea = 'sea',
+  Sides = 'sides',
+  Soup = 'soup',
+  Store = 'store',
+  Tacos = 'tacos'
 }
 
 export type ProductUpdateInput = {
@@ -19540,7 +19563,8 @@ export enum ProfilesSelect {
   Artist = 'Artist',
   SecondaryArtist = 'SecondaryArtist',
   Staff = 'Staff',
-  Talent = 'Talent'
+  Talent = 'Talent',
+  Team = 'team'
 }
 
 export type PublishLocaleInput = {
@@ -27386,7 +27410,7 @@ export const ProductFieldsFragmentDoc = gql`
 }
     ${VideoBoxFieldsFragmentDoc}`;
 export const LayoutDocument = gql`
-    query layout($eventFirst: Int = 75, $blogFirst: Int = 75, $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC, $blogOrderBy: BlogOrderByInput = date_DESC, $albumFirst: Int = 100, $albumOrderBy: AlbumOrderByInput = releaseDate_DESC, $contactFirst: Int = 100, $testimonialOrderBy: TestimonialOrderByInput = updatedAt_DESC, $testimonialFirst: Int = 100, $profilesFirst: Int = 100, $pageSlug: String!, $productFirst: Int = 100, $logoTableFirst: Int = 100, $logoTableOrderBy: LogoTableOrderByInput = logoName_ASC) {
+    query layout($eventFirst: Int = 75, $blogFirst: Int = 75, $eventOrderBy: EventOrderByInput = eventStartDateTime_DESC, $blogOrderBy: BlogOrderByInput = date_DESC, $albumFirst: Int = 100, $albumOrderBy: AlbumOrderByInput = releaseDate_DESC, $contactFirst: Int = 100, $testimonialOrderBy: TestimonialOrderByInput = updatedAt_DESC, $testimonialFirst: Int = 100, $profilesFirst: Int = 100, $pageSlug: String!, $productFirst: Int = 200, $logoTableFirst: Int = 100, $logoTableOrderBy: LogoTableOrderByInput = logoName_ASC) {
   siteLibrary(where: {signature: "lnzame"}) {
     ...siteLibraryFields
   }
@@ -27564,7 +27588,7 @@ ${ContactFieldsFragmentDoc}
 ${NavigationFieldsFragmentDoc}`;
 export const ProductsDocument = gql`
     query products {
-  products(first: 75) {
+  products(first: 200) {
     ...productFields
   }
 }
@@ -27581,7 +27605,7 @@ export const ProductPageDocument = gql`
   product(where: {productSlug: $productSlug}) {
     ...productFields
   }
-  products(first: 75) {
+  products(first: 200) {
     ...productFields
   }
   blogs(first: 75) {
@@ -27632,7 +27656,7 @@ export const BlogPageDocument = gql`
   profiles(first: 50) {
     ...profileFields
   }
-  products(first: 50) {
+  products(first: 200) {
     ...productFields
   }
   testimonials(first: 50, orderBy: updatedAt_DESC) {

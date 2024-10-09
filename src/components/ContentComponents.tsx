@@ -23,6 +23,7 @@ import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 import { Event } from "@/components/Calendar/calendarHelpers";
 import Calendar from "@/components/Calendar/Calendar";
 import BandsintownEventsDataSort from "@/components/elements/BandsintownEventsDataSort";
+import React from "react";
 
 type ContentTagsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["contentTags"];

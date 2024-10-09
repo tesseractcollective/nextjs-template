@@ -30,6 +30,8 @@ import SpotifyUserPlaylists from "./SpotifyAPI/SpotifyUserPlaylists";
 import RegisterForm from "./RegisterForm";
 import DimensionText from "./DimensionText";
 import RotateTextAnimation from "./RotateTextAnimation";
+import ScrollPathText from "./ScrollPathText";
+import React from "react";
 // import AgeVerification from "./AgeVerification";
 
 type ElementsType =
@@ -252,6 +254,10 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           siteLibrary={siteLibrary}
         />
       )}
+      {!!elementJson?.scrollPathText && (
+        <ScrollPathText text={elementJson.scrollPathText} />
+      )}
+
       {/* {!!elements?.elementJson?.ageVerification && <AgeVerification />} */}
     </>
   );

@@ -25,6 +25,7 @@ import lgZoom from "lightgallery/plugins/zoom";
 import LightGallery from "lightgallery/react";
 import Head from "next/head";
 import Products from "@/components/Products";
+import React from "react";
 
 export interface ProductProps {
   product: ProductFieldsFragment;

@@ -10,7 +10,7 @@ query layout(
   $testimonialFirst: Int = 100
   $profilesFirst: Int = 100
   $pageSlug: String!
-  $productFirst: Int = 100
+  $productFirst: Int = 200
   $logoTableFirst: Int = 100
   $logoTableOrderBy: LogoTableOrderByInput = logoName_ASC
 ) {
@@ -152,7 +152,7 @@ query profilePage($profileSlug: String!) {
   }
 }
 query products {
-  products(first: 75) {
+  products(first: 200) {
     ...productFields
   }
 }
@@ -167,7 +167,7 @@ query productPage($productSlug: String!) {
   product(where: { productSlug: $productSlug }) {
     ...productFields
   }
-  products(first: 75) {
+  products(first: 200) {
     ...productFields
   }
   blogs(first: 75) {
@@ -212,7 +212,7 @@ query blogPage($blogSlug: String!) {
   profiles(first: 50) {
     ...profileFields
   }
-  products(first: 50) {
+  products(first: 200) {
     ...productFields
   }
   testimonials(first: 50, orderBy: updatedAt_DESC) {

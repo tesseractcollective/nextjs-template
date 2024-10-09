@@ -27,6 +27,8 @@ export default function ProductsLightboxSection({ products }: ProductsProps) {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   useState<ProductFieldsFragment>();
 
+  console.log(products);
+
   return (
     <div className="bg-bg-primary">
       <div className="mx-auto px-4 pb-8 max-w-4xl">
