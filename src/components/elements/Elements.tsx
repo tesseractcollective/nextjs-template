@@ -32,6 +32,7 @@ import DimensionText from "./DimensionText";
 import RotateTextAnimation from "./RotateTextAnimation";
 import ScrollPathText from "./ScrollPathText";
 import React from "react";
+import Countdown from "./Countdown";
 // import AgeVerification from "./AgeVerification";
 
 type ElementsType =
@@ -256,6 +257,16 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       )}
       {!!elementJson?.scrollPathText && (
         <ScrollPathText text={elementJson.scrollPathText} />
+      )}
+      {!!elementJson?.countdown && (
+        <Countdown
+          dateTime={elementJson.countdown.dateTime}
+          timezone={elementJson.countdown.timezone}
+          link={elementJson.countdown.link}
+          image={elementJson.countdown.image}
+          promoText={elementJson.countdown.promoText}
+          headerText={elementJson.countdown.headerText}
+        />
       )}
 
       {/* {!!elements?.elementJson?.ageVerification && <AgeVerification />} */}

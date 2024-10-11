@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect, useRef } from "react";
 import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
@@ -16,6 +16,8 @@ import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
 import { Fade } from "react-awesome-reveal";
+import StickyCursor from "../elements/StickyCursor";
+import "./BlogNavigation.scss";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -32,7 +34,7 @@ export default function BlogNavigation({
 }: NavProps) {
   const [open, setOpen] = useState(false);
   const [small, setSmall] = useState(false);
-
+  const stickyElement = useRef(null);
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
@@ -64,11 +66,12 @@ export default function BlogNavigation({
   return (
     <>
       <div
-        className={`fixed top-0 z-[999] left-0 right-0 transition-all ${
+        className={`blog-navigation fixed top-0 z-[999] left-0 right-0 transition-all ${
           small ? "bg-afterz top-0" : "backdrop-blur-xs"
         } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
         id="blog-navigation"
       >
+        <StickyCursor stickyElement={stickyElement} />
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
           <Dialog as="div" className="relative z-[1000]" onClose={setOpen}>
