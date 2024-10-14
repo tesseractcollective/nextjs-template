@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import moment from "moment-timezone";
 import Image from "next/image";
 import LinkItem from "../LinkItem";
+import { Fade } from "react-awesome-reveal";
 
 interface Props {
   dateTime: string; // Format: YYYY/MM/DD HH:mm:ss
@@ -61,7 +62,7 @@ const Countdown: React.FC<Props> = ({
       {showPromo ? (
         <div className="w-full">
           {timeRemaining && (
-            <div className="bg-glass glass-primary w-full max-w-md mx-auto flex-col items-center justify-center p-2">
+            <Fade className="bg-glass glass-primary w-full max-w-md mx-auto flex-col items-center justify-center p-2">
               <div className="bg-[#0000007b] py-4 rounded-lg border-tertiary border">
                 <h2 className="text-xl text-center font-bold uppercase text-shadow">
                   {moment(dateTime).format("MMM D, YYYY")}
@@ -101,7 +102,7 @@ const Countdown: React.FC<Props> = ({
                   cssClass="border-secondary border px-4 md:px-6 py-2 max-w-max block no-underline font-bold w-full text-xl !rounded-md max-w-max mx-auto"
                 />
               </div>
-            </div>
+            </Fade>
           )}
         </div>
       ) : (

@@ -20,7 +20,7 @@ export default function TextGradientSection({
   return (
     <>
       {!!textContentData && (
-        <div className="mx-auto max-w-xl my-8 w-full px-4 bg-glass glass-primary py-8">
+        <div className="mx-auto max-w-xl my-8 w-full px-4 bg-glass glass-primary py-8 overflow-hidden">
           <Fade direction="up" triggerOnce>
             <div className="flex flex-wrap flex-row items-center mx-auto w-full justify-center px-4">
               {textContentData.map((textContentItem) => (

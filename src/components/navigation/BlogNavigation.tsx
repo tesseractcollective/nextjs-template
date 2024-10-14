@@ -296,7 +296,7 @@ export default function BlogNavigation({
           <nav aria-label="Top">
             <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 mb-2">
               <div className="mt-2">
-                <div className="flex items-center justify-center flex-row relative w-full">
+                <div className="flex items-center justify-center flex-row relative w-full z-[10001]">
                   <SocialMediaIcons
                     fadeDirection="down"
                     siteLibrary={siteLibrary}

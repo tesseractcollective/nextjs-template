@@ -9,6 +9,7 @@ import Image from "next/image";
 import type { ContactFieldsFragment } from "@/graphql/generated/graphql";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
+import { Fade, Zoom, Slide } from "react-awesome-reveal";
 
 interface ContactsSectionProps {
   contactsData: ContactFieldsFragment[];
@@ -20,12 +21,12 @@ export default function ContactCircle({ contactsData }: ContactsSectionProps) {
       {contactsData.map((contact) => (
         <div
           key={contact.contactQuery}
-          className="rounded-lg bg-bg shadow max-w-8xl mx-auto w-full relative"
+          className="rounded-lg bg-bg shadow-xl max-w-8xl mx-auto w-full relative px-4 border border-primary"
         >
           {contact?.contactAvatar?.url && (
             <Image
               src={contact.contactAvatar.url}
-              className="h-20 lg:h-52 w-20 lg:w-52 rounded-full object-cover absolute -top-20 right-20"
+              className="h-20 lg:h-52 w-20 lg:w-52 rounded-full object-cover absolute -top-20 right-20 shadow-xl"
               alt=""
               width={120}
               height={120}
@@ -41,7 +42,11 @@ export default function ContactCircle({ contactsData }: ContactsSectionProps) {
             <h3 className="text-4xl md:text-6xl font-bold text-primary uppercase">
               {contact.contactName}
             </h3>
-            {contact?.contactBio && <p>{contact.contactBio}</p>}
+            {contact?.contactBio && (
+              <div className="body-parsed-text">
+                <p className="max-w-4xl">{contact.contactBio}</p>
+              </div>
+            )}
             <div className="flex flex-row gap-x-6">
               {!!contact?.contactEmail && (
                 <a

@@ -513,7 +513,7 @@ export default function ProgressNavigation({
                                     key={mainNavigationItem?.link}
                                     link={mainNavigationItem?.link}
                                     label={mainNavigationItem?.label}
-                                    cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all capitalize font-semibold ${
+                                    cssClass={`flex items-center font-medium text-text-color opacity-90  hover:opacity-100 transition-all capitalize font-semibold hover:text-secondary ${
                                       small
                                         ? "text-xs md:text-sm"
                                         : "text-xs sm:text-sm md:text-base"
@@ -591,7 +591,7 @@ export default function ProgressNavigation({
                         key={mainNavigationItem?.link}
                         link={mainNavigationItem?.link}
                         label={mainNavigationItem?.label}
-                        cssClass={`flex items-center font-bold text-primary opacity-90 hover:text-text-color hover:opacity-100 transition-all capitalize font-semibold border px-3 py-1 border-primary rounded-full ${
+                        cssClass={`flex items-center font-bold bg-primary text-dark opacity-90 hover:text-secondary hover:opacity-100 transition-all capitalize font-semibold border px-3 py-1 border-primary rounded-full hover:border-secondary ${
                           small
                             ? "text-xs md:text-sm"
                             : "text-xs sm:text-sm md:text-base"

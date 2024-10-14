@@ -33,6 +33,7 @@ import RotateTextAnimation from "./RotateTextAnimation";
 import ScrollPathText from "./ScrollPathText";
 import React from "react";
 import Countdown from "./Countdown";
+import CountryFlags from "./CountryFlags";
 // import AgeVerification from "./AgeVerification";
 
 type ElementsType =
@@ -268,7 +269,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           headerText={elementJson.countdown.headerText}
         />
       )}
-
+      {!!elementJson?.countryFlags && (
+        <CountryFlags flags={elementJson.countryFlags} />
+      )}
       {/* {!!elements?.elementJson?.ageVerification && <AgeVerification />} */}
     </>
   );
