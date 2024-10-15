@@ -44,7 +44,7 @@ export default function ProductCardSection({ type, products }: ProductsProps) {
   // rotate
   // shelf
   // stack
-  console.log("cards", products);
+
   return (
     <div className="bg-bg-primary">
       <div className="mx-auto px-4 py-16 max-w-8xl">

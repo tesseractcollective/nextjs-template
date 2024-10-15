@@ -7,7 +7,6 @@ import {
   faPepperHot,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import { Fade } from "react-awesome-reveal";
 import ReactGA from "react-ga4";
 import parse from "html-react-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,8 +32,7 @@ export default function ProductRotateSection({ products }: ProductsProps) {
   const camelCaseString: string = "brunchDrinks";
   const spaceSeparatedString: string =
     camelCaseToSpaceSeparated(camelCaseString);
-  console.log(spaceSeparatedString); // Output: "brunch Drinks"
-
+  // Output: "brunch Drinks"
   return (
     <div className="">
       <div className="mx-auto px-4 py-8 max-w-8xl w-full">

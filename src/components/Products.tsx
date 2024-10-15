@@ -44,7 +44,7 @@ export default function Products({
   // rotate
   // shelf
   // stack
-
+  if (filteredProducts.length === 0) return <></>;
   if (productLayoutStyle === "compact")
     return <ProductCompactSection products={filteredProducts} />;
   if (productLayoutStyle === "rotate")
