@@ -24,7 +24,7 @@ export default function Whatsapp({
       <button
         type="button"
         aria-label="Whatsapp"
-        className="fixed floating-whatsapp-button text-[#fff] bg-[#25D366] border-2 border-solid flex items-center align-middle z-[60] rounded-full border-[#fff] aspect-1 bottom-12 md:bottom-20 left-4 md:left-8 w-[40px] h-[40px] md:w-[50px] md:h-[50px] hover:rotate-[30deg] transition-all hover:scale-110 group"
+        className="fixed floating-whatsapp-button text-[#fff] bg-[#25D366] border-2 border-solid flex items-center align-middle z-[60] rounded-full border-[#fff] aspect-1 bottom-20 md:bottom-20 left-4 md:left-8 w-[40px] h-[40px] md:w-[50px] md:h-[50px] hover:rotate-[15deg] transition-all hover:scale-110 group shadow hover:shadow-xl duration-300"
         onClick={() => setOpen(true)}
       >
         <FontAwesomeIcon

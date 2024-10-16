@@ -566,7 +566,7 @@ export default function ProgressNavigation({
                 <div className="flex flex-1 items-center justify-between lg:hidden max-w-max mx-auto">
                   <button
                     type="button"
-                    className="mx-auto text-text-color transition group relative w-8 aspect-1 flex"
+                    className="mx-auto text-text-color transition group relative w-8 aspect-1 flex flex-col"
                     onClick={() => {
                       setOpen(true);
                       ReactGA.event({
@@ -578,9 +578,12 @@ export default function ProgressNavigation({
                   >
                     <span className="sr-only">Open menu</span>
                     <Bars3Icon
-                      className={`group-hover:text-primary transition-all w-full min-w-4  h-10`}
+                      className={`group-hover:text-primary transition-all w-full min-w-4 h-10`}
                       aria-hidden="true"
                     />
+                    <span className="text-xs text-center my-0 py-0 -mt-2">
+                      menu
+                    </span>
                   </button>
                 </div>
 

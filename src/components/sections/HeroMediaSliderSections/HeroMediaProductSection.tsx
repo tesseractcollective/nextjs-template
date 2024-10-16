@@ -48,7 +48,7 @@ export default function HeroMediaProductSection({
                           ? heroMediaSliderItem.mobileThumbnail.url
                           : heroMediaSliderItem.sliderMediaBackground.url
                       }
-                      className={`hero-media-image h-full w-full select-none z-1 object-contain max-w-8xl mx-auto`}
+                      className={`hero-media-image h-full w-full select-none z-1 object-contain max-w-8xl mx-auto max-h-[80vh]`}
                       alt=""
                       width={0}
                       height={0}
