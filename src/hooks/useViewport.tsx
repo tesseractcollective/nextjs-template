@@ -1,18 +1,20 @@
-import { useState } from 'react';
-import useWindowResize from 'beautiful-react-hooks/useWindowResize';
-import useThrottledCallback from 'beautiful-react-hooks/useThrottledCallback';
+import { useState, useEffect } from "react";
+import useWindowResize from "beautiful-react-hooks/useWindowResize";
+import useThrottledCallback from "beautiful-react-hooks/useThrottledCallback";
 
 const useViewport = () => {
-  const isBrowser = (typeof window !== "undefined");
-    const [width, setWidth] = useState(isBrowser ? window.innerWidth : 0);
-    const onWindowResize = useWindowResize();
-    onWindowResize(useThrottledCallback((event) => {
-      setWidth(window.innerWidth);
-    }));
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    handleResize(); // Set initial width
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const isSmallMobile = width < 576;
   const isMobile = width < 992;
-  const isDesktop = width < 1200;
+  const isDesktop = width >= 1200;
 
   return { width, isMobile, isDesktop, isSmallMobile };
 };

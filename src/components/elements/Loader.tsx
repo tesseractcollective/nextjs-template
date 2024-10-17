@@ -1,20 +1,20 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Variants, motion } from "framer-motion";
+import { Variants, motion, AnimatePresence } from "framer-motion";
 
 type LoaderProps = {
   icon: string;
 };
 
 const Loader: React.FC<LoaderProps> = ({ icon }) => {
-  const variants = {
+  const barVariants = {
     initial: {
       scaleY: 0.5,
-      opacity: 1, // Set initial opacity to 1
+      opacity: 1,
     },
     animate: {
       scaleY: 1,
-      opacity: 0, // Set opacity to 0 after 2.5s
+      opacity: 0,
       transition: {
         repeat: Infinity,
         repeatType: "mirror",
@@ -24,50 +24,61 @@ const Loader: React.FC<LoaderProps> = ({ icon }) => {
     },
   } as Variants;
 
+  const containerVariants = {
+    initial: { opacity: 1 },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  } as Variants;
+
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 3500); // Set timeout for 2.5 seconds
+    }, 3000); // Reduced to 3000ms to allow time for exit animation
 
     return () => clearTimeout(timer);
   }, []);
 
-  if (!visible) {
-    return <></>; // Return an empty fragment when not visible
-  }
-
   return (
-    <div className="flex items-center justify-center h-100vh bg-bg-secondary rounded-xl sticky z-[9999] top-0 opacity-100">
-      <p className="text-center mx-auto gap-y-4">
-        <Image
-          className="h-10 w-full cursor-pointer object-contain relative mx-auto mb-2"
-          src={icon}
-          alt=""
-          width={0}
-          height={0}
-          sizes="100%"
-        />
+    <AnimatePresence>
+      {visible && (
         <motion.div
-          transition={{
-            staggerChildren: 0.25,
-          }}
+          className="flex flex-col items-center justify-center min-h-screen bg-bg-secondary rounded-xl fixed z-[9999] top-0 left-0 right-0 bottom-0 w-full"
           initial="initial"
           animate="animate"
-          className="flex gap-1"
+          exit="exit"
+          variants={containerVariants}
         >
-          <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-          <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-          <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-          <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-          <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-          <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-          <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-          <motion.div variants={variants} className="h-12 w-2 bg-primary" />
+          <div className="text-center mx-auto flex flex-col items-center gap-y-4">
+            <Image
+              className="h-10 cursor-pointer object-contain mx-auto mb-2"
+              src={icon}
+              alt=""
+              width={40}
+              height={40}
+              sizes="100%"
+            />
+            <motion.div
+              transition={{
+                staggerChildren: 0.25,
+              }}
+              className="flex gap-1 justify-center"
+            >
+              {[...Array(8)].map((_, index) => (
+                <motion.div
+                  key={index}
+                  variants={barVariants}
+                  className="h-12 w-2 bg-primary"
+                />
+              ))}
+            </motion.div>
+          </div>
         </motion.div>
-      </p>
-    </div>
+      )}
+    </AnimatePresence>
   );
 };
 

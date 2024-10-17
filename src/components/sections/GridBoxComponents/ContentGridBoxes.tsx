@@ -23,14 +23,15 @@ export default function ContentGridBoxes({ gridBoxData }: GridBoxProps) {
                   alt={gridBoxItem.boxTitle || ""}
                   layout="fill"
                   objectFit="cover"
+                  sizes="100%"
                   className="transition-transform duration-300 ease-in-out group-hover:scale-105"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
-            <div className="p-6 bg-bg-secondary">
+            <div className="p-6 bg-bg-secondary h-full">
               {gridBoxItem?.boxTitle && (
-                <h3 className="text-xl font-semibold mb-2 truncate text-gray-800">
+                <h3 className="text-xl font-semibold mb-2 line-clamp-2 text-gray-800">
                   {gridBoxItem.boxTitle}
                 </h3>
               )}

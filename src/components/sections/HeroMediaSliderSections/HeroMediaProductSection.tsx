@@ -34,7 +34,7 @@ export default function HeroMediaProductSection({
               key={`${heroMediaSliderItem.id}-${index}`}
               className="relative z-20 h-full w-full"
             >
-              <section
+              <Fade
                 className={`hero-media-section transition-all mx-auto w-full ${
                   heroMediaSliderItem?.sliderCssWrapper &&
                   heroMediaSliderItem.sliderCssWrapper
@@ -56,7 +56,7 @@ export default function HeroMediaProductSection({
                       quality={100}
                     />
                   )}
-              </section>
+              </Fade>
             </div>
           ))}
 

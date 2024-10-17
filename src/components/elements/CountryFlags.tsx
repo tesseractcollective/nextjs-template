@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { motion } from "framer-motion";
+import { Fade } from "react-awesome-reveal";
 
 interface Props {
   flags: string[];
@@ -32,24 +33,26 @@ const CountryFlags: React.FC<Props> = ({ flags }) => {
 
   return (
     <div className="relative max-w-8xl mx-auto overflow-hidden w-full">
-      <motion.div
-        ref={containerRef}
-        className="flex py-4"
-        style={{ width: "fit-content" }}
-      >
-        {flags.concat(flags).map((flag, index) => (
-          <ReactCountryFlag
-            key={index}
-            countryCode={flag}
-            svg
-            style={{
-              fontSize: "4em",
-              lineHeight: "4em",
-              marginRight: "0.5em",
-            }}
-          />
-        ))}
-      </motion.div>
+      <Fade triggerOnce>
+        <motion.div
+          ref={containerRef}
+          className="flex py-4"
+          style={{ width: "fit-content" }}
+        >
+          {flags.concat(flags).map((flag, index) => (
+            <ReactCountryFlag
+              key={index}
+              countryCode={flag}
+              svg
+              style={{
+                fontSize: "4em",
+                lineHeight: "4em",
+                marginRight: "0.5em",
+              }}
+            />
+          ))}
+        </motion.div>
+      </Fade>
     </div>
   );
 };
