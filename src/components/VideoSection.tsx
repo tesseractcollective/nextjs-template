@@ -10,6 +10,7 @@ import VideoAlternateSection from "@/components/VideoSections/VideoAlternateSect
 import VideoRecordSection from "@/components/VideoSections/VideoRecordSection";
 import VideoUniversalSection from "@/components/VideoSections/VideoUniversalSection";
 import VideoYoutubeSection from "@/components/VideoSections/VideoYoutubeSection";
+import VideoVerticalPlayer from "@/components/VideoSections/VideoVerticalPlayer";
 
 interface VideoSectionProps {
   videoData: VideoBoxFieldsFragment[];
@@ -55,6 +56,9 @@ export default function VideoSection({
   const videoYoutubeData = modifiedVideoData.filter(
     (videoDataItem) => videoDataItem.videoDisplayLayout === "youtube"
   );
+  const videoFileVertical = modifiedVideoData.filter(
+    (videoDataItem) => videoDataItem.thumbnailType === "vertical"
+  );
   const videoPlaylistData = modifiedVideoData.filter(
     (videoDataItem) => typeof videoDataItem.youtubePlaylistId !== "undefined"
   );
@@ -82,6 +86,9 @@ export default function VideoSection({
 
   if (videoGridData && videoGridData.length >= 1)
     return <VideoGridSection videoData={videoGridData} />;
+
+  if (videoFileVertical && videoFileVertical.length >= 1)
+    return <VideoVerticalPlayer videoData={videoFileVertical} />;
 
   if (videoOffsetData && videoOffsetData.length >= 1)
     return <VideoOffsetSection videoData={videoOffsetData} />;
