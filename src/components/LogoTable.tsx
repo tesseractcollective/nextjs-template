@@ -158,6 +158,74 @@ export default function LogoTable({
       </div>
     );
 
+  if (logoTableLayout === "stack")
+    return (
+      <div>
+        {!!filteredTable && filteredTable?.length >= 1 && (
+          <section className="container mx-auto px-4">
+            <div className="py-12">
+              <div className="mx-auto max-w-8xl px-6 lg:px-8">
+                <div className="-mx-6 grid grid-cols-1 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl">
+                  {filteredTable.map((logoTableItem) => (
+                    <div
+                      className="logo-grid-item bg-bg-secondary p-8 sm:p-10"
+                      key={logoTableItem.logoName}
+                    >
+                      {!!logoTableItem.logoImage?.url &&
+                        !!logoTableItem?.logoName && (
+                          <Fade triggerOnce cascade direction="up">
+                            {logoTableItem?.logoLink ? (
+                              <LinkItem
+                                link={`${logoTableItem.logoLink}`}
+                                cssClass="no-underline"
+                              >
+                                <>
+                                  <Image
+                                    className="max-h-24 w-full object-contain"
+                                    src={logoTableItem.logoImage.url}
+                                    alt={logoTableItem?.logoName}
+                                    width={0}
+                                    height={0}
+                                    sizes="100%"
+                                    style={{
+                                      width: "auto",
+                                      height: "auto",
+                                      margin: "0 auto",
+                                    }}
+                                  />
+                                  <span className="sr-only">
+                                    {logoTableItem?.logoName}
+                                  </span>
+                                </>
+                              </LinkItem>
+                            ) : (
+                              <Image
+                                className="max-h-24 w-full object-contain"
+                                src={logoTableItem.logoImage.url}
+                                alt={logoTableItem?.logoName}
+                                title={logoTableItem?.logoName || ""}
+                                width={0}
+                                height={0}
+                                sizes="100%"
+                                style={{
+                                  width: "auto",
+                                  height: "auto",
+                                  margin: "0 auto",
+                                }}
+                              />
+                            )}
+                          </Fade>
+                        )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+      </div>
+    );
+
   return (
     <div>
       {!!filteredTable && filteredTable?.length >= 1 && (

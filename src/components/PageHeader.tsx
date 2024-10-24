@@ -579,9 +579,9 @@ export default function PageHeader({
                                   ? callToActionItem.ctaClass
                                   : `${
                                       callToActionItem.ctaPrimary
-                                        ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full"
+                                        ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full bg-primary hover:bg-secondary transition-all"
                                         : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl !rounded-full"
-                                    } mx-auto`
+                                    } mx-auto duration-[400ms]`
                               }
                             />
                           </div>

@@ -20,9 +20,9 @@ export default function TextGradientSection({
   return (
     <>
       {!!textContentData && (
-        <div className="mx-auto max-w-xl my-8 w-full px-4 bg-glass glass-primary py-8 overflow-hidden">
+        <div className="mx-auto max-w-xl w-[90%] bg-glass glass-primary overflow-hidden">
           <Fade direction="up" triggerOnce>
-            <div className="flex flex-wrap flex-row items-center mx-auto w-full justify-center px-4">
+            <div className="flex flex-wrap flex-row items-center mx-auto w-full justify-center">
               {textContentData.map((textContentItem) => (
                 <div
                   key={textContentItem?.header?.html}
@@ -31,12 +31,18 @@ export default function TextGradientSection({
                   <div className="flex flex-col p-4 rounded items-center  justify-center text-center">
                     {textContentItem?.contentImage && (
                       <Image
-                        className="w-full object-cover"
+                        className="w-full object-cover mb-4"
                         width={72}
                         height={72}
                         sizes="100%"
                         src={textContentItem.contentImage.url}
-                        alt={textContentItem?.header?.html || ""}
+                        alt={
+                          textContentItem?.header?.html
+                            .replace("<h1>", "")
+                            .replace("</h1>", "")
+                            .replace("<p>", "")
+                            .replace("</p>", "") || ""
+                        }
                       />
                     )}
                     {textContentItem?.htmlText && (
@@ -58,41 +64,41 @@ export default function TextGradientSection({
                         </div>
                       )}
                       {textContentItem?.content && (
-                        <div className="text-lg my-0 py-2 parsed-mb-0 text-center opacity-90 mx-auto w-full">
+                        <div className="text-lg my-0 py-0 parsed-mb-0 text-center opacity-90 mx-auto w-full">
                           {parse(textContentItem.content.html)}
+                        </div>
+                      )}
+                      {!!callToActionData && callToActionData?.length > 0 && (
+                        <div className="text-center mx-auto">
+                          {callToActionData.map(
+                            (callToActionItem) =>
+                              callToActionItem?.ctaLink && (
+                                <div
+                                  key={callToActionItem.ctaLink}
+                                  className="text-center mx-auto flex flex-row flex-wrap gap-4"
+                                >
+                                  <LinkItem
+                                    link={callToActionItem.ctaLink}
+                                    label={callToActionItem.ctaLabel}
+                                    cssClass={
+                                      callToActionItem?.ctaClass
+                                        ? callToActionItem.ctaClass
+                                        : `${
+                                            callToActionItem.ctaPrimary
+                                              ? "border-secondary border px-4 md:px-6 py-2 max-w-max block no-underline font-bold w-full text-2xl !rounded-full"
+                                              : "text-primary border-0 px-4 md:px-6 py-2 max-w-max block no-underline w-full text-2xl !rounded-full"
+                                          } max-w-max`
+                                    }
+                                  />
+                                </div>
+                              )
+                          )}
                         </div>
                       )}
                     </div>
                   </div>
                 </div>
               ))}
-              {!!callToActionData && callToActionData?.length > 0 && (
-                <div className="text-center mx-auto md:mx-0 my-2">
-                  {callToActionData.map(
-                    (callToActionItem) =>
-                      callToActionItem?.ctaLink && (
-                        <div
-                          key={callToActionItem.ctaLink}
-                          className="text-center mx-auto flex flex-row flex-wrap gap-4"
-                        >
-                          <LinkItem
-                            link={callToActionItem.ctaLink}
-                            label={callToActionItem.ctaLabel}
-                            cssClass={
-                              callToActionItem?.ctaClass
-                                ? callToActionItem.ctaClass
-                                : `${
-                                    callToActionItem.ctaPrimary
-                                      ? "border-secondary border px-4 md:px-6 py-2 max-w-max block no-underline font-bold w-full text-2xl !rounded-full"
-                                      : "text-primary border-0 px-4 md:px-6 py-2 max-w-max block no-underline w-full text-2xl !rounded-full"
-                                  } max-w-max`
-                            }
-                          />
-                        </div>
-                      )
-                  )}
-                </div>
-              )}
             </div>
           </Fade>
         </div>

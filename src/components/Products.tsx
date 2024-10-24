@@ -26,10 +26,6 @@ export default function Products({
     (product) => product?.productType?.toLowerCase() === type?.toLowerCase()
   );
 
-  console.log("tsx-products", products);
-  console.log("filteredtype", type);
-  console.log("filteredProducts", filteredProducts);
-
   // Product Layout Style
   // compact √
   // slider √

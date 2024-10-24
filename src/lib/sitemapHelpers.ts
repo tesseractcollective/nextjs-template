@@ -24,7 +24,18 @@ export function createSitemap(
   products: ProductsSlugListFieldsFragment[]
 ): Sitemap {
   const sitemap: Sitemap = [];
-  const indexPages = pages.filter((page) => page.noIndex !== true);
+  const indexPages = pages.filter(
+    (page) => page.noIndex !== true && page.pageSlug !== "home"
+  );
+
+  sitemap.push({
+    url: `${process.env.SITE_URL}`,
+    lastModified: formatDate(
+      pages.find((page) => page.pageSlug === "/")?.updatedAt ||
+        new Date().toISOString()
+    ),
+  });
+
   sitemap.push(
     ...indexPages.map((page) => ({
       url: `${process.env.SITE_URL}/${page.pageSlug}`,
