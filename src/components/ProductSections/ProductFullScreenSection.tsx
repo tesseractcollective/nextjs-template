@@ -50,22 +50,22 @@ export default function ProductFullScreenSection({ products }: ProductsProps) {
                 }
                 cssClass="gap-y-8 flex flex-col"
               >
-                <>
+                <div className="bg-glass glass-primary py-16">
                   {!!product.name && (
                     <h1 className="text-2xl md:text-6xl xl:text-7xl text-zhadow my-0 py-0 text-center text-[white] font-bold uppercase mx-auto">
                       {product.name}
                     </h1>
                   )}
                   {!!product.description?.html && (
-                    <div className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-md lg:text-lg opacity-80 max-w-md text-[white] text-shadow mx-auto">
+                    <div className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-md lg:text-lg max-w-md text-[white] text-shadow mx-auto">
                       {parse(product.description?.html)}
                     </div>
                   )}
 
-                  <p className="bg-[white] text-[black] py-2 px-8 max-w-max uppercase font-bold rounded-md mx-auto">
+                  <p className="bg-primary text-text-color py-2 px-8 max-w-max uppercase font-bold rounded-md mx-auto">
                     {product?.purchaseLabel ? product.purchaseLabel : "Info"}
                   </p>
-                </>
+                </div>
               </LinkItem>
             </Fade>
           </div>

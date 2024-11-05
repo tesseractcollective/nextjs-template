@@ -34,6 +34,7 @@ import ScrollPathText from "./ScrollPathText";
 import React from "react";
 import Countdown from "./Countdown";
 import CountryFlags from "./CountryFlags";
+import BulletsSection from "./BulletsSection";
 // import AgeVerification from "./AgeVerification";
 
 type ElementsType =
@@ -205,6 +206,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
 
       {!!elementJson?.animateParagraph && (
         <AnimateParagraph animateParagraph={elementJson.animateParagraph} />
+      )}
+      {!!elementJson?.bullets && (
+        <BulletsSection bullets={elementJson.bullets} />
       )}
       {!!elementJson?.rotateTextAnimation && (
         <RotateTextAnimation text={elementJson.rotateTextAnimation} />

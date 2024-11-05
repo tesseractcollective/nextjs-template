@@ -80,6 +80,16 @@
 	height: 200%;
 }
 
+.bg-fade-bg-secondary-primary {
+  background: linear-gradient(0deg, var(--background-secondary) 0%,var(--primary) 100%);
+	height: 200%;
+}
+
+.bg-fade-primary-bg-secondary {
+  background: linear-gradient(0deg, var(--primary) 0%,var(--background-secondary) 100%);
+	height: 200%;
+}
+
 .bg-fade-dark-primary {
   background: linear-gradient(180deg, #000 0%,var(--primary) 100%);
 }
