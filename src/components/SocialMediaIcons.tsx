@@ -425,7 +425,7 @@ export default function SocialMediaIcons({
               <a
                 title={siteLibrary?.contactPhone || phoneLinkProp}
                 href={`tel:${siteLibrary?.contactPhone || phoneLinkProp}`}
-                className="max-w-max mx-auto text-center !text-link"
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
