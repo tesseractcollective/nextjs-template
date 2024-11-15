@@ -267,9 +267,14 @@ function UniversalFooter({
                     ></LinkItem>
                   ))}
                   <a
-                    href={`https://lnza.me/?${encodeURIComponent(
-                      title || "" + " fan"
-                    )}`}
+                    href={
+                      siteLibrary?.siteLibraryJson?.customCredit
+                        ? `${
+                            siteLibrary.siteLibraryJson?.customCredit
+                              .customCreditLink
+                          }?source=${encodeURIComponent(title || "")}`
+                        : `https://lnza.me/?${encodeURIComponent(title || "")}`
+                    }
                     target="_blank"
                     rel="noreferrer"
                     className="footer-link-item max-w-max mx-0 !text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"

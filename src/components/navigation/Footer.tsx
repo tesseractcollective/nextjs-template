@@ -315,16 +315,29 @@ function Footer({
               ))}
             </div>
           )}
-          <a
-            href={`https://lnza.me/?${encodeURIComponent(
-              title || "" + " fan"
-            )}`}
-            target="_blank"
-            rel="noreferrer"
-            className="max-w-max m-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
-          >
-            {isSpanish ? "Hecho a mano por Ricardo" : "Hand crafted by Ricardo"}
-          </a>
+          {siteLibrary?.siteLibraryJson?.customCredit ? (
+            <a
+              href={`${
+                siteLibrary.siteLibraryJson?.customCredit.customCreditLink
+              }?source=${encodeURIComponent(title || "")}`}
+              target="_blank"
+              rel="noreferrer"
+              className="max-w-max m-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
+            >
+              {siteLibrary.siteLibraryJson?.customCredit.customCreditText}
+            </a>
+          ) : (
+            <a
+              href={`https://lnza.me/?${encodeURIComponent(title || "")}`}
+              target="_blank"
+              rel="noreferrer"
+              className="max-w-max m-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
+            >
+              {isSpanish
+                ? "Hecho a mano por Ricardo"
+                : "Hand crafted by Ricardo"}
+            </a>
+          )}
         </div>
       </div>
     </footer>

@@ -20,7 +20,7 @@ export default function TextGradientSection({
   return (
     <>
       {!!textContentData && (
-        <div className="mx-auto max-w-xl w-[90%] bg-glass glass-primary overflow-hidden">
+        <div className="mx-auto max-w-xl my-16 w-[90%] bg-glass glass-primary overflow-hidden">
           <Fade direction="up" triggerOnce>
             <div className="flex flex-wrap flex-row items-center mx-auto w-full justify-center">
               {textContentData.map((textContentItem) => (
@@ -64,12 +64,12 @@ export default function TextGradientSection({
                         </div>
                       )}
                       {textContentItem?.content && (
-                        <div className="text-lg my-0 py-0 parsed-mb-0 text-center opacity-90 mx-auto w-full">
+                        <div className="text-lg my-2 py-0 parsed-mb-0 text-center opacity-90 mx-auto w-full">
                           {parse(textContentItem.content.html)}
                         </div>
                       )}
                       {!!callToActionData && callToActionData?.length > 0 && (
-                        <div className="text-center mx-auto">
+                        <div className="text-center mx-auto my-2">
                           {callToActionData.map(
                             (callToActionItem) =>
                               callToActionItem?.ctaLink && (

@@ -263,18 +263,29 @@ function HorizonFooter({
                 isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
               }.`}
             </p>
-            <a
-              href={`https://lnza.me/?${encodeURIComponent(
-                title || "" + " fan"
-              )}`}
-              target="_blank"
-              rel="noreferrer"
-              className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase text-left mr-auto ml-0 hover:opacity-100 flex"
-            >
-              {isSpanish
-                ? "Hecho a mano por Ricardo"
-                : "Hand crafted by Ricardo"}
-            </a>
+            {siteLibrary?.siteLibraryJson?.customCredit ? (
+              <a
+                href={`${
+                  siteLibrary.siteLibraryJson?.customCredit.customCreditLink
+                }?source=${encodeURIComponent(title || "")}`}
+                target="_blank"
+                rel="noreferrer"
+                className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase text-left mr-auto ml-0 hover:opacity-100 flex"
+              >
+                {siteLibrary.siteLibraryJson?.customCredit.customCreditText}
+              </a>
+            ) : (
+              <a
+                href={`https://lnza.me/?${encodeURIComponent(title || "")}`}
+                target="_blank"
+                rel="noreferrer"
+                className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase text-left mr-auto ml-0 hover:opacity-100 flex"
+              >
+                {isSpanish
+                  ? "Hecho a mano por Ricardo"
+                  : "Hand crafted by Ricardo"}
+              </a>
+            )}
           </div>
         </div>
       </div>

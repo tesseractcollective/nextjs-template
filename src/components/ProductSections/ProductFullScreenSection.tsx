@@ -62,7 +62,7 @@ export default function ProductFullScreenSection({ products }: ProductsProps) {
                     </div>
                   )}
 
-                  <p className="bg-primary text-text-color py-2 px-8 max-w-max uppercase font-bold rounded-md mx-auto">
+                  <p className="bg-primary text-text-color py-2 my-2 px-8 max-w-max uppercase font-bold rounded-md mx-auto">
                     {product?.purchaseLabel ? product.purchaseLabel : "Info"}
                   </p>
                 </div>

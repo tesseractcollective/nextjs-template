@@ -278,18 +278,35 @@ function MinimalFooter({
                 isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
               }.`}
             </p>
-            <a
-              href={`https://lnza.me/?${encodeURIComponent(
-                title || "" + " fan"
-              )}`}
-              target="_blank"
-              rel="noreferrer"
-              className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
-            >
-              {isSpanish
-                ? "Hecho a mano por Ricardo"
-                : "Hand crafted by Ricardo"}
-            </a>
+            {siteLibrary?.siteLibraryJson?.disableCredit === true ? (
+              <></>
+            ) : (
+              <>
+                {siteLibrary?.siteLibraryJson?.customCredit ? (
+                  <a
+                    href={`${
+                      siteLibrary.siteLibraryJson?.customCredit.customCreditLink
+                    }?source=${encodeURIComponent(title || "")}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
+                  >
+                    {siteLibrary.siteLibraryJson?.customCredit.customCreditText}
+                  </a>
+                ) : (
+                  <a
+                    href={`https://lnza.me/?${encodeURIComponent(title || "")}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
+                  >
+                    {isSpanish
+                      ? "Hecho a mano por Ricardo"
+                      : "Hand crafted by Ricardo"}
+                  </a>
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>
