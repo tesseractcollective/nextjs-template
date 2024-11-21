@@ -5,7 +5,7 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon, Bars3BottomRightIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
@@ -27,6 +27,9 @@ export default function UniversalNavigation({
   pageNavigationSelection,
 }: NavProps) {
   const [open, setOpen] = useState(false);
+  const [menuImage, setMenuImage] = useState<string | null | undefined>(
+    undefined
+  );
 
   if (!navigations && !siteLibrary) return <></>;
   if (hideNav === true) return <></>;
@@ -112,7 +115,7 @@ export default function UniversalNavigation({
                       </span>
                     </button>
                   </div>
-                  <Fade direction="down" triggerOnce>
+                  <Fade direction="down" triggerOnce className="relative z-10">
                     <div className="flex mt-0 mx-4 px-4 pb-2 pt-2 items-center justify-start">
                       <Link
                         href="/"
@@ -148,7 +151,13 @@ export default function UniversalNavigation({
                     </div>
                   </Fade>
 
-                  <Fade triggerOnce cascade direction="up" damping={0.05}>
+                  <Fade
+                    triggerOnce
+                    cascade
+                    direction="up"
+                    damping={0.05}
+                    className="relative z-10"
+                  >
                     {!!items &&
                       items.length >= 1 &&
                       items.map((mainNavigationItem) => {
@@ -173,13 +182,29 @@ export default function UniversalNavigation({
                                       <div
                                         key={item.label}
                                         className="group relative"
+                                        onMouseEnter={() =>
+                                          setTimeout(
+                                            () =>
+                                              setMenuImage(
+                                                mainNavigationItem.image?.url ??
+                                                  undefined
+                                              ),
+                                            100
+                                          )
+                                        }
+                                        onMouseLeave={() =>
+                                          setTimeout(
+                                            () => setMenuImage(undefined),
+                                            100
+                                          )
+                                        }
                                       >
                                         {!!item?.link && (
                                           <LinkItem
                                             key={item?.link}
                                             link={item?.link}
                                             label={item?.label}
-                                            cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left flex flex-row items-center ${item?.cssClass}`}
+                                            cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary  focus:text-primary text-left flex flex-row items-center ${item?.cssClass}`}
                                             sameTab={item?.sameTab}
                                           >
                                             <>
@@ -215,13 +240,28 @@ export default function UniversalNavigation({
                             )}
 
                             {!hasItems && (
-                              <div className="space-y-6 px-4 py-1 mt-4 mx-4">
+                              <div
+                                className="space-y-6 px-4 py-1 mt-4 mx-4"
+                                onMouseEnter={() =>
+                                  setTimeout(
+                                    () =>
+                                      setMenuImage(
+                                        mainNavigationItem.image?.url ??
+                                          undefined
+                                      ),
+                                    100
+                                  )
+                                }
+                                onMouseLeave={() =>
+                                  setTimeout(() => setMenuImage(undefined), 100)
+                                }
+                              >
                                 <div className="max-w-max">
                                   <LinkItem
                                     key={mainNavigationItem.label}
                                     link={mainNavigationItem.link || "/"}
                                     sameTab={mainNavigationItem?.sameTab}
-                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-6xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
+                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-6xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary focus:text-primary  text-left"
                                     onClick={() => setOpen(false)}
                                   >
                                     <span>{mainNavigationItem.label}</span>
@@ -234,7 +274,7 @@ export default function UniversalNavigation({
                       })}
                   </Fade>
 
-                  <Fade triggerOnce direction="up">
+                  <Fade triggerOnce direction="up" className="relative z-10">
                     <div className="space-y-6 px-4 py-6 mt-4 mx-4">
                       <SocialMediaIcons
                         siteLibrary={siteLibrary}
@@ -270,6 +310,36 @@ export default function UniversalNavigation({
                       </div>
                     </div>
                   </Fade>
+                  {!menuImage && (
+                    <Fade
+                      triggerOnce
+                      direction="up"
+                      className="absolute block w-full h-100vh inset-0 -z-1 transition-opacity duration-100 ease-in-out"
+                    >
+                      <div className="bg-bg absolute w-full h-100vh inset-0 -z-1 opacity-50"></div>
+                    </Fade>
+                  )}
+                  {menuImage && (
+                    <Fade
+                      triggerOnce
+                      direction="up"
+                      className="object-cover absolute w-full h-100vh inset-0 -z-1 transition-opacity duration-500 ease-in-out"
+                      style={{
+                        opacity: menuImage ? 1 : 0,
+                        transition: "opacity 0.5s ease-in-out",
+                      }}
+                    >
+                      <Image
+                        src={menuImage}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        className="object-cover absolute w-full h-100vh inset-0 -z-1 opacity-50"
+                        alt=""
+                        quality={100}
+                      />
+                    </Fade>
+                  )}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -327,7 +397,7 @@ export default function UniversalNavigation({
                   }}
                 >
                   <span className="sr-only">Open menu</span>
-                  <Bars3BottomRightIcon
+                  <Bars3Icon
                     className="h-7 w-7 group-hover:text-primary transition-all duration-[400ms] group-hover:opacity-50"
                     aria-hidden="true"
                   />

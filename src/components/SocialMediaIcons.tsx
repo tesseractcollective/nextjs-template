@@ -559,15 +559,9 @@ export default function SocialMediaIcons({
                 <span className="sr-only">Calendly</span>
               </a>
             )}
-            {(siteLibrary?.siteLibraryJson?.googleMapLink ||
-              googleMapLinkProp ||
-              siteLibrary?.googleMapLink) && (
+            {(googleMapLinkProp || siteLibrary?.googleMapLink) && (
               <a
-                href={
-                  siteLibrary?.siteLibraryJson?.googleMapLink ||
-                  googleMapLinkProp ||
-                  siteLibrary?.googleMapLink
-                }
+                href={siteLibrary?.googleMapLink || googleMapLinkProp}
                 target="_blank"
                 className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
                 title="Google Map"
@@ -576,13 +570,9 @@ export default function SocialMediaIcons({
                   ReactGA.event({
                     category: "Link",
                     action:
-                      siteLibrary?.siteLibraryJson?.googleMapLink ||
-                      googleMapLinkProp ||
-                      siteLibrary?.googleMapLink,
+                      googleMapLinkProp || siteLibrary?.googleMapLink || "",
                     label:
-                      siteLibrary?.siteLibraryJson.googleMapLink ||
-                      googleMapLinkProp ||
-                      siteLibrary?.googleMapLink,
+                      googleMapLinkProp || siteLibrary?.googleMapLink || "",
                   })
                 }
               >

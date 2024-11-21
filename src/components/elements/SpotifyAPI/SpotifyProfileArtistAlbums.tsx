@@ -15,6 +15,15 @@ interface Album {
   external_urls: {
     spotify: string;
   };
+  artists: {
+    id: string;
+    name: string;
+    type: "artist";
+    uri: string;
+    external_urls: {
+      spotify: string;
+    };
+  }[];
 }
 
 interface ArtistInfo {
@@ -129,7 +138,10 @@ const SpotifyProfileArtistAlbums: React.FC<SpotifyArtistInfoProps> = ({
     }
   }, [accessToken, artistNames]);
 
-  if (!albums || albums.length === 0) return null;
+  if (!albums || albums.length === 0)
+    return (
+      <div className="h-100vh relative overflow-hidden flex items-center justify-center border-y border-primary" />
+    );
 
   return <SpotifyDisplayDiscography spotifyAlbumsData={albums} />;
 };

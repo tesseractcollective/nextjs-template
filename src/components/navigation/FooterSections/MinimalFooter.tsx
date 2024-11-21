@@ -235,7 +235,7 @@ function MinimalFooter({
             <SocialMediaIcons
               fadeDirection="up"
               siteLibrary={siteLibrary}
-              cssClass="my-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
+              cssClass="my-4 w-full flex flex-row social-icons-row primary-hover items-center justify-center text-text-color flex-wrap gap-x-2"
             />
           )}
           {secondaryLogo?.url && secondaryLink && secondaryName && (
@@ -264,7 +264,7 @@ function MinimalFooter({
                   key={`${footerItem.link}-${index++}`}
                   label={footerItem.label}
                   link={footerItem.link}
-                  cssClass={`max-w-max my-2 mx-4 text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
+                  cssClass={`max-w-max my-2 mx-4 text-[12px] text-color-primary opacity-70 text-link uppercase text-center hover:opacity-100 ${
                     footerItem.cssClass ? footerItem.cssClass : ""
                   }`}
                   sameTab={footerItem.sameTab}
@@ -289,7 +289,7 @@ function MinimalFooter({
                     }?source=${encodeURIComponent(title || "")}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
+                    className="max-w-max text-[10px] text-color-primary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
                   >
                     {siteLibrary.siteLibraryJson?.customCredit.customCreditText}
                   </a>
@@ -298,7 +298,7 @@ function MinimalFooter({
                     href={`https://lnza.me/?${encodeURIComponent(title || "")}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="max-w-max text-[10px] text-color-secondary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
+                    className="max-w-max text-[10px] text-color-primary opacity-70 text-link uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
                   >
                     {isSpanish
                       ? "Hecho a mano por Ricardo"

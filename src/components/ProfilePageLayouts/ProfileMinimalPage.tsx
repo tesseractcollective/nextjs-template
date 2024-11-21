@@ -79,7 +79,7 @@ export default function ProfileMinimalPage({
   // netflix
   // snap
   // sport
-  console.log(profile);
+
   return (
     <div>
       <Head>

@@ -16,6 +16,15 @@ interface Album {
   external_urls: {
     spotify: string;
   };
+  artists: {
+    id: string;
+    name: string;
+    type: "artist";
+    uri: string;
+    external_urls: {
+      spotify: string;
+    };
+  }[];
 }
 
 interface SpotifyDataProps {
@@ -50,6 +59,9 @@ const SpotifyDisplayDiscography: React.FC<SpotifyDataProps> = ({
                   <p className="text-center text-3xl lg:text-4xl xl:text-4xl font-bold mb-4 max-w-lg">
                     {album.name}
                   </p>
+                  <p className="text-center text-2xl mb-4 max-w-lg">
+                    {album.artists[0]?.name}
+                  </p>
 
                   {!!album.external_urls.spotify && (
                     <a
@@ -63,7 +75,7 @@ const SpotifyDisplayDiscography: React.FC<SpotifyDataProps> = ({
                       }
                       target="_blank"
                       rel="noreferrer"
-                      className="bg-white border-dark border py-2 px-4 mx-auto max-w-max block no-underline tracking-wide text-text-color uppercase hover:bg-primary focus:bg-primary transition-all font-bold text-2xl"
+                      className="bg-secondary border-dark border py-2 px-4 mx-auto max-w-max block no-underline tracking-wide text-text-color uppercase hover:bg-primary focus:bg-primary transition-all font-bold text-2xl"
                     >
                       Stream
                     </a>

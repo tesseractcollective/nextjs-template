@@ -617,6 +617,14 @@ body iframe {
       border-bottom: initial !important;
     }
   }
+  &.primary-hover {
+    a {
+      &:hover, &:focus-within {
+        border-bottom: none;
+        color: var(--primary) !important;
+      }
+    }
+  }
 }
 
 
@@ -969,6 +977,10 @@ body iframe {
 
 .h-70vh {
   min-height: 70vh;
+}
+
+.h-75vh {
+  min-height: 75vh;
 }
 
 .h-80vh {

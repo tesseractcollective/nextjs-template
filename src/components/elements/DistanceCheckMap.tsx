@@ -66,9 +66,6 @@ function DistanceCheckMap({
     return null;
   }
 
-  console.log("lat", lat);
-  console.log("long", long);
-
   return (
     <div className="py-16">
       <input

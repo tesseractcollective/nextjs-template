@@ -18,7 +18,7 @@ interface ContactsSectionProps {
 
 export default function ContactCircle({ contactsData }: ContactsSectionProps) {
   return (
-    <section className="mx-auto max-w-6xl my-8 w-full px-8 contact-layout-style-contact-circle">
+    <section className="mx-auto max-w-6xl my-8 w-full px-8 contact-layout-style-contact-circle relative z-20">
       {contactsData.map((contact) => (
         <div
           key={contact.contactQuery}

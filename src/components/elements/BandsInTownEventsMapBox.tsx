@@ -58,7 +58,7 @@ function BandsInTownEventsMapBox({
   profiles,
 }: BandsInTownMapBoxProps) {
   const [popupInfo, setPopupInfo] = useState<Event | null>(null);
-  console.log(eventMapData);
+
   return (
     <>
       {Array.isArray(eventMapData) && eventMapData.length > 0 ? (
@@ -90,7 +90,7 @@ function BandsInTownEventsMapBox({
                   profiles.find((profile) => profile.name === lineupName)
                 )
                 .find((profile) => profile?.avatarImage?.url)?.avatarImage?.url;
-              console.log(profileImage);
+
               return (
                 <Marker
                   key={`marker-${index}`}

@@ -10,6 +10,7 @@ import ProfileCardModalSection from "@/components/ProfileSections/ProfileCardMod
 import ProfileTeamSection from "@/components/ProfileSections/ProfileTeamSection";
 import ProfileSnapSection from "@/components/ProfileSections/ProfileSnapSection";
 import ProfileDefaultSection from "@/components/ProfileSections/ProfileDefaultSection";
+import ProfileAlternateSection from "@/components/ProfileSections/ProfileAlternateSection";
 import ProfileFullScreenSection from "@/components/ProfileSections/ProfileFullScreenSection";
 import ProfileMyspaceSection from "@/components/ProfileSections/ProfileMyspaceSection";
 import ProfileSportsSection from "@/components/ProfileSections/ProfileSportsSection";
@@ -94,11 +95,16 @@ export default function Profiles({
   // video
   // gridSelect
   // fullScreen
-
-  console.log(profileLayoutStyle);
   if (profileLayoutStyle === "cardModal")
     return (
       <ProfileCardModalSection
+        profiles={FilteredProfiles}
+        profileSectionTitle={profileSectionTitle}
+      />
+    );
+  if (profileLayoutStyle === "alternate")
+    return (
+      <ProfileAlternateSection
         profiles={FilteredProfiles}
         profileSectionTitle={profileSectionTitle}
       />
