@@ -29,6 +29,15 @@ interface Album {
   external_urls: {
     spotify: string;
   };
+  artists: {
+    id: string;
+    name: string;
+    type: "artist";
+    uri: string;
+    external_urls: {
+      spotify: string;
+    };
+  }[];
 }
 
 interface ArtistInfo {
