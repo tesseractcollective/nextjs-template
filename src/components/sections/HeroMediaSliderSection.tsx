@@ -146,39 +146,82 @@ export default function HeroMediaSliderSection({
                       }`}
                     >
                       <Fade triggerOnce className="w-full">
-                        {heroMediaSliderItem?.textContent?.contentImage && (
-                          <Image
-                            priority
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            className={`block mb-0 pb-4 ${
-                              (heroMediaSliderItem?.textContent
-                                ?.contentAlign === "center" &&
-                                "mx-auto") ||
-                              (heroMediaSliderItem?.textContent
-                                ?.contentAlign === "left" &&
-                                "mr-auto") ||
-                              (heroMediaSliderItem?.textContent
-                                ?.contentAlign === "right" &&
-                                "ml-auto") ||
-                              (heroMediaSliderItem?.textContent
-                                ?.contentAlign === "justify" &&
-                                "mx-auto")
-                            } ${heroMediaSliderItem?.textContent?.imageStyle?.map(
-                              (imageStyleItem) =>
-                                ` dynamic-image-class dynamic-${imageStyleItem} `
-                            )}`}
-                            style={{ objectFit: "contain" }}
-                            src={
-                              heroMediaSliderItem?.textContent?.contentImage.url
-                            }
-                            alt={
-                              heroMediaSliderItem?.textContent?.header?.html ||
-                              ""
-                            }
-                          />
-                        )}
+                        {heroMediaSliderItem?.textContent?.contentImage &&
+                          heroMediaSliderItem.textContent.linkImage !==
+                            true && (
+                            <Image
+                              priority
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                              className={`block mb-0 pb-4 ${
+                                (heroMediaSliderItem?.textContent
+                                  ?.contentAlign === "center" &&
+                                  "mx-auto") ||
+                                (heroMediaSliderItem?.textContent
+                                  ?.contentAlign === "left" &&
+                                  "mr-auto") ||
+                                (heroMediaSliderItem?.textContent
+                                  ?.contentAlign === "right" &&
+                                  "ml-auto") ||
+                                (heroMediaSliderItem?.textContent
+                                  ?.contentAlign === "justify" &&
+                                  "mx-auto")
+                              } ${heroMediaSliderItem?.textContent?.imageStyle?.map(
+                                (imageStyleItem) =>
+                                  ` dynamic-image-class dynamic-${imageStyleItem} `
+                              )}`}
+                              style={{ objectFit: "contain" }}
+                              src={
+                                heroMediaSliderItem?.textContent?.contentImage
+                                  .url
+                              }
+                              alt={
+                                heroMediaSliderItem?.textContent?.header
+                                  ?.html || ""
+                              }
+                            />
+                          )}
+                        {heroMediaSliderItem?.textContent?.contentImage &&
+                          heroMediaSliderItem.textContent.linkImage ===
+                            true && (
+                            <LinkItem
+                              link={heroMediaSliderItem.textContent.link}
+                            >
+                              <Image
+                                priority
+                                width={0}
+                                height={0}
+                                sizes="100%"
+                                className={`block mb-0 pb-4 ${
+                                  (heroMediaSliderItem?.textContent
+                                    ?.contentAlign === "center" &&
+                                    "mx-auto") ||
+                                  (heroMediaSliderItem?.textContent
+                                    ?.contentAlign === "left" &&
+                                    "mr-auto") ||
+                                  (heroMediaSliderItem?.textContent
+                                    ?.contentAlign === "right" &&
+                                    "ml-auto") ||
+                                  (heroMediaSliderItem?.textContent
+                                    ?.contentAlign === "justify" &&
+                                    "mx-auto")
+                                } ${heroMediaSliderItem?.textContent?.imageStyle?.map(
+                                  (imageStyleItem) =>
+                                    ` dynamic-image-class dynamic-${imageStyleItem} `
+                                )}`}
+                                style={{ objectFit: "contain" }}
+                                src={
+                                  heroMediaSliderItem?.textContent?.contentImage
+                                    .url
+                                }
+                                alt={
+                                  heroMediaSliderItem?.textContent?.header
+                                    ?.html || ""
+                                }
+                              />
+                            </LinkItem>
+                          )}
                       </Fade>
 
                       {heroMediaSliderItem?.textContent?.header && (
