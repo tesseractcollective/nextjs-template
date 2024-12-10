@@ -802,6 +802,40 @@ a.hover-chevron {
   }
 }
 
+.animate-gradient-paragraph-wrapper {
+  min-height: 100vh;
+  text-align: center;
+  .animate-gradient-paragraph {
+    display: flex !important;
+    font-size: 36px !important;
+    transition: all 300ms ease;
+    text-align: center;
+    @media screen and (min-width: 990px) {
+      font-size: 4em !important;
+    }
+    line-height: 1 !important;
+    padding: 40px !important;
+    max-width: 1280px !important;
+    background-image: linear-gradient(60deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    flex-wrap: wrap !important;
+  }
+  // .animate-gradient-word {
+  //   position: relative !important;
+  //   margin-right: 12px !important;
+  //   margin-top: 12px !important;
+  //   text-align: center;
+  // } 
+  // .animate-gradient-word-shadow {
+  //   position: absolute !important;
+  //   opacity: 20% !important;
+  //   text-align: center;
+  // }
+}
+
 .animate-paragraph-wrapper {
   min-height: 100vh;
   text-align: center;

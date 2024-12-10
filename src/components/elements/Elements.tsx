@@ -22,6 +22,7 @@ import DrumPadComponent from "./DrumPadComponent";
 import BandsInTownApi from "@/components/BandsInTownApi";
 import MaskCursor from "./MaskCursor";
 import AnimateParagraph from "./AnimateParagraph";
+import AnimateGradientParagraph from "./AnimateGradientParagraph";
 import OpenTableWidget from "./OpenTableWidget";
 import PixelCursorTrailing from "./PixelCursorTrailing";
 import MaskCursorColored from "./MaskCursorColored";
@@ -203,7 +204,11 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!elementJson?.maskCursorTextColored && (
         <MaskCursorColored maskCursorText={elementJson.maskCursorTextColored} />
       )}
-
+      {!!elementJson?.animateGradientParagraph && (
+        <AnimateGradientParagraph
+          animateGradientParagraph={elementJson.animateGradientParagraph}
+        />
+      )}
       {!!elementJson?.animateParagraph && (
         <AnimateParagraph animateParagraph={elementJson.animateParagraph} />
       )}
