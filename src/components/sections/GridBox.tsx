@@ -1,24 +1,26 @@
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
-import InsetGridBoxes from "./GridBoxComponents/InsetGridBoxes";
+import React from "react";
+
+import BlurGridBoxes from "./GridBoxComponents/BlurGridBoxes";
+import CircleGridBoxes from "./GridBoxComponents/CircleGridBoxes";
 import CompactGridBoxes from "./GridBoxComponents/CompactGridBoxes";
 import ContentGridBoxes from "./GridBoxComponents/ContentGridBoxes";
-import SliderGridBoxes from "./GridBoxComponents/SliderGridBoxes";
-import TallGridBoxes from "./GridBoxComponents/TallGridBoxes";
-import CircleGridBoxes from "./GridBoxComponents/CircleGridBoxes";
-import VerticalTabGridBoxes from "./GridBoxComponents/VerticalTabGridBoxes";
+import DescriptionBoxes from "./GridBoxComponents/DescriptionBoxes";
 import GridDisplayBoxes from "./GridBoxComponents/GridDisplayBoxes";
 import HoverRoundGridBoxes from "./GridBoxComponents/HoverRoundGridBoxes";
-import ParallaxGridBoxes from "./GridBoxComponents/ParallaxGridBoxes";
-import WideCardBoxes from "./GridBoxComponents/WideCardBoxes";
-import SmallCircleBoxes from "./GridBoxComponents/SmallCircleBoxes";
-import SpaceBetweenBoxes from "./GridBoxComponents/SpaceBetweenBoxes";
-import PolaroidBoxes from "./GridBoxComponents/PolaroidBoxes";
-import DescriptionBoxes from "./GridBoxComponents/DescriptionBoxes";
 import ImageCardBoxes from "./GridBoxComponents/ImageCardBoxes";
-import TwoHundredVhBoxes from "./GridBoxComponents/TwoHundredVhBoxes";
+import InsetGridBoxes from "./GridBoxComponents/InsetGridBoxes";
 import MasonGridBoxes from "./GridBoxComponents/MasonGridBoxes";
 import NetflixCardBoxes from "./GridBoxComponents/NetflixCardBoxes";
-import React from "react";
+import ParallaxGridBoxes from "./GridBoxComponents/ParallaxGridBoxes";
+import PolaroidBoxes from "./GridBoxComponents/PolaroidBoxes";
+import SliderGridBoxes from "./GridBoxComponents/SliderGridBoxes";
+import SmallCircleBoxes from "./GridBoxComponents/SmallCircleBoxes";
+import SpaceBetweenBoxes from "./GridBoxComponents/SpaceBetweenBoxes";
+import TallGridBoxes from "./GridBoxComponents/TallGridBoxes";
+import TwoHundredVhBoxes from "./GridBoxComponents/TwoHundredVhBoxes";
+import VerticalTabGridBoxes from "./GridBoxComponents/VerticalTabGridBoxes";
+import WideCardBoxes from "./GridBoxComponents/WideCardBoxes";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -101,6 +103,9 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   const netflixGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "netflix"
   );
+  const blurGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "blur"
+  );
   if (parallaxGridBoxData && parallaxGridBoxData.length >= 1)
     return <ParallaxGridBoxes gridBoxData={parallaxGridBoxData} />;
   if (verticalTabGridBoxData && verticalTabGridBoxData.length >= 1)
@@ -139,5 +144,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
     return <TwoHundredVhBoxes gridBoxData={twovhGridBoxData} />;
   if (netflixGridBoxData && netflixGridBoxData.length >= 1)
     return <NetflixCardBoxes gridBoxData={netflixGridBoxData} />;
+  if (blurGridBoxData && blurGridBoxData.length >= 1)
+    return <BlurGridBoxes gridBoxData={blurGridBoxData} />;
   return <></>;
 }

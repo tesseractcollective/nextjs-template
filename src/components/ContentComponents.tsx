@@ -18,6 +18,7 @@ import FeatureAlbum from "@/components/FeatureAlbum";
 import Testimonials from "@/components/Testimonials";
 import Profiles from "@/components/Profiles";
 import Products from "@/components/Products";
+import ProductTabsMenuSection from "@/components/ProductSections/ProductTabsMenuSection";
 import ContactsSection from "@/components/ContactsSection";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 import { Event } from "@/components/Calendar/calendarHelpers";
@@ -88,6 +89,19 @@ export default function ContentComponents({
               products={products}
               type={contentTags.productType}
               productLayoutStyle={contentTags.productLayoutStyle}
+            />
+          </section>
+        )}
+      {elements?.elementJson?.productMenu &&
+        !!products &&
+        contentTags?.productType && (
+          <section
+            className="product-menu-wrapper-content-components w-full"
+            id="product-menu"
+          >
+            <ProductTabsMenuSection
+              products={products}
+              type={contentTags.productType}
             />
           </section>
         )}
