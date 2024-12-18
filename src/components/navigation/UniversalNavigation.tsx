@@ -310,36 +310,14 @@ export default function UniversalNavigation({
                       </div>
                     </div>
                   </Fade>
-                  {!menuImage && (
-                    <Fade
-                      triggerOnce
-                      direction="up"
-                      className="absolute block w-full h-100vh inset-0 -z-1 transition-opacity duration-100 ease-in-out"
-                    >
-                      <div className="bg-bg absolute w-full h-100vh inset-0 -z-1 opacity-50"></div>
-                    </Fade>
-                  )}
-                  {menuImage && (
-                    <Fade
-                      triggerOnce
-                      direction="up"
-                      className="object-cover absolute w-full h-100vh inset-0 -z-1 transition-opacity duration-500 ease-in-out"
-                      style={{
-                        opacity: menuImage ? 1 : 0,
-                        transition: "opacity 0.5s ease-in-out",
-                      }}
-                    >
-                      <Image
-                        src={menuImage}
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        className="object-cover absolute w-full h-100vh inset-0 -z-1 opacity-50"
-                        alt=""
-                        quality={100}
-                      />
-                    </Fade>
-                  )}
+
+                  <div
+                    className="object-cover absolute w-full h-100vh inset-0 -z-1 transition-all duration-[500ms] bg-no-repeat bg-cover"
+                    style={{
+                      opacity: menuImage ? 0.5 : 0,
+                      backgroundImage: `url(${menuImage})`,
+                    }}
+                  ></div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

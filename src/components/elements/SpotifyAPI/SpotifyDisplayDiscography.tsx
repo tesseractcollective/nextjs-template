@@ -1,7 +1,6 @@
 import Moment from "react-moment";
 import { Fade } from "react-awesome-reveal";
 import ReactGA from "react-ga4";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface Album {
@@ -111,7 +110,7 @@ const SpotifyDisplayDiscography: React.FC<SpotifyDataProps> = ({
           <Image
             src={album.images[0].url}
             alt={(album.name && album.name) || ""}
-            className="mx-auto m-0 p-0 w-full aspect-1 object-cover absolute h-full inset-0 z-0 opacity-30 blur-md"
+            className="mx-auto m-0 p-0 w-full aspect-1 object-cover absolute h-full inset-0 z-0 opacity-[15%] blur-md"
             width={0}
             height={0}
             sizes="100%"

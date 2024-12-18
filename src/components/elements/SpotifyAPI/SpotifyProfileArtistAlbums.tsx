@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SpotifyDisplayDiscography from "./SpotifyDisplayDiscography";
+import Loader from "../Loader";
 
 interface Album {
   name: string;
@@ -104,7 +105,11 @@ const SpotifyProfileArtistAlbums: React.FC<SpotifyArtistInfoProps> = ({
             );
 
             const artist = artistResponse.data.artists?.items[0];
-            if (artist) {
+            if (
+              artist &&
+              artist.name.toLowerCase().trim() ===
+                artistName.toLowerCase().trim()
+            ) {
               const albumsResponse = await axios.get(
                 `https://api.spotify.com/v1/artists/${artist.id}/albums?limit=50`,
                 {
@@ -140,7 +145,9 @@ const SpotifyProfileArtistAlbums: React.FC<SpotifyArtistInfoProps> = ({
 
   if (!albums || albums.length === 0)
     return (
-      <div className="h-100vh relative overflow-hidden flex items-center justify-center border-y border-primary" />
+      <div className="h-100vh relative overflow-hidden flex items-center justify-center border-y border-primary">
+        <Loader icon="" minimal />
+      </div>
     );
 
   return <SpotifyDisplayDiscography spotifyAlbumsData={albums} />;

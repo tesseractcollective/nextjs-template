@@ -4,9 +4,10 @@ import { Variants, motion, AnimatePresence } from "framer-motion";
 
 type LoaderProps = {
   icon: string;
+  minimal?: boolean;
 };
 
-const Loader: React.FC<LoaderProps> = ({ icon }) => {
+const Loader: React.FC<LoaderProps> = ({ icon, minimal }) => {
   const barVariants = {
     initial: {
       scaleY: 0.5,
@@ -46,21 +47,25 @@ const Loader: React.FC<LoaderProps> = ({ icon }) => {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="flex flex-col items-center justify-center min-h-screen bg-bg-secondary rounded-xl fixed z-[9999] top-0 left-0 right-0 bottom-0 w-full"
+          className={`flex flex-col items-center justify-center min-h-screen rounded-xl fixed z-[9999] top-0 left-0 right-0 bottom-0 w-full ${
+            minimal ? "" : "bg-bg-secondary"
+          }`}
           initial="initial"
           animate="animate"
           exit="exit"
           variants={containerVariants}
         >
           <div className="text-center mx-auto flex flex-col items-center gap-y-4">
-            <Image
-              className="h-10 cursor-pointer object-contain mx-auto mb-2"
-              src={icon}
-              alt=""
-              width={40}
-              height={40}
-              sizes="100%"
-            />
+            {!minimal && (
+              <Image
+                className="h-10 cursor-pointer object-contain mx-auto mb-2"
+                src={icon}
+                alt=""
+                width={40}
+                height={40}
+                sizes="100%"
+              />
+            )}
             <motion.div
               transition={{
                 staggerChildren: 0.25,
