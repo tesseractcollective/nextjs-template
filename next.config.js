@@ -11,6 +11,12 @@ const nextConfig = {
       "image-cdn-ak.spotifycdn.com",
       "**.graphassets.com",
     ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.graphassets.com",
+      },
+    ],
   },
   async rewrites() {
     return [
