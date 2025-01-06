@@ -135,7 +135,7 @@ export default function MinimalNavigation({
                             <span className="sr-only">{title}</span>
                             <Image
                               src={navigation.navigationLogo?.url}
-                              className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all duration-[400ms] block"
+                              className="w-[80px] md:w-[160px] max-h-[120px] cursor-pointer object-contain transition-all duration-[400ms] block"
                               alt=""
                               width={0}
                               height={0}
@@ -261,7 +261,7 @@ export default function MinimalNavigation({
                                     key={mainNavigationItem.label}
                                     link={mainNavigationItem.link || "/"}
                                     sameTab={mainNavigationItem?.sameTab}
-                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-6xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary focus:text-primary  text-left"
+                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-4xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary focus:text-primary  text-center"
                                     onClick={() => setOpen(false)}
                                   >
                                     <span>{mainNavigationItem.label}</span>
@@ -275,13 +275,13 @@ export default function MinimalNavigation({
                   </Fade>
 
                   <Fade triggerOnce direction="up" className="relative z-10">
-                    <div className="space-y-6 px-4 py-6 mt-4 mx-4">
+                    <div className="space-y-6 px-4 py-6 mt-4 w-full text-center">
                       <SocialMediaIcons
                         siteLibrary={siteLibrary}
                         fadeDirection="up"
                         cssClass="my-2 mx-0 flex flex-row flex-wrap social-icons-row items-center justify-center text-text-color gap-2 overflow-hidden mx-auto py-0 max-w-max gap-x-4"
                       />
-                      <div className="text-left">
+                      <div className="text-center">
                         {!!contactName && (
                           <p className="text-text-color text-xs font-bold">
                             <span>{contactName}</span>
@@ -290,7 +290,7 @@ export default function MinimalNavigation({
                         {!!contactPhone && (
                           <a
                             href={`tel:${contactPhone.replace(/-/g, "")}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max mx-auto"
                           >
                             <span className="font-semibold">
                               {contactPhone}
@@ -300,7 +300,7 @@ export default function MinimalNavigation({
                         {!!contactEmail && (
                           <a
                             href={`mailto:${contactEmail}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max mx-auto"
                           >
                             <span className="font-semibold">
                               {contactEmail}

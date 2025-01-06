@@ -1196,3 +1196,17 @@ h4, h5, h6  {color: var(--text);}
 .fill-primary {
   fill: var(--primary)
 }
+
+
+.text-content-block {
+  &.accent-header {
+    h1, h2 {
+      color: var(--primary) !important;
+      margin-bottom: 16px !important;
+    }
+    p {
+      color: var(--text) !important;
+      font-size: 25px;
+    }
+  }
+}

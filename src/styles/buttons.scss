@@ -135,3 +135,17 @@
     opacity: 1 !important;
   }
 }
+
+.primary-fill-hover {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 16px 12px;
+  font-size: 20px;
+  transition: all 300ms ease;
+  text-transform: capitalize;
+  background-color: var(--bg);
+  &:hover, &:focus {
+    color: var(--bg);
+    background-color: var(--primary);
+  }
+}
