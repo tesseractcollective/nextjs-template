@@ -172,7 +172,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
               )}
             </div>
             <div className="artist-filter-flyer-wrapper min-h-[10vh] z-0">
-              <div className="absolute bg-gradient-to-t from-text-color group-hover:from-primary z-20 h-24 bottom-0 left-0 right-0 w-full" />
+              {/* <div className="absolute bg-gradient-to-t from-text-color group-hover:from-primary z-20 h-24 bottom-0 left-0 right-0 w-full" /> */}
               {!!event?.eventFlyer?.url && (
                 <Image
                   src={event?.eventFlyer?.url}
@@ -355,9 +355,9 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
           )}
         </div>
       </section>
-      <section className="bg-bg-secondary py-16">
-        {/* Event Content */}
-        {(eventIFrame || videoBox) && (
+      {/* Event Content */}
+      {(eventIFrame || videoBox) && (
+        <section className="bg-bg-secondary py-16">
           <div className="mx-auto px-4 py-16 max-w-8xl lg:px-4">
             {!!eventIFrame && <div className="py-8">{parse(eventIFrame)}</div>}
             {!!siteLibrary?.youtubeApiKey &&
@@ -375,8 +375,8 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
               />
             )}
           </div>
-        )}
-      </section>
+        </section>
+      )}
       {!!eventLocation &&
         !!siteLibrary?.mapKey &&
         !!eventLocation?.longitude &&
@@ -410,7 +410,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
           />
         )}
       {/* Other Events */}
-      {!!filteredEvents && (
+      {!!filteredEvents && filteredEvents.length >= 1 && (
         <section className="bg-bg-secondary py-16">
           <div className="max-w-8xl mx-auto w-full">
             <h3 className="mx-auto uppercase font-bold mb-8 text-4xl text-center">

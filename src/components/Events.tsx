@@ -6,6 +6,7 @@ import EventSliderSection from "@/components/EventSections/EventSliderSection";
 import EventFullScreenSection from "@/components/EventSections/EventFullScreenSection";
 import EventGridSection from "@/components/EventSections/EventGridSection";
 import EventCardSection from "@/components/EventSections/EventCardSection";
+import EventListSection from "@/components/EventSections/EventListSection";
 
 interface EventsProps {
   events: EventFieldsFragment[];
@@ -60,6 +61,9 @@ export default function Events({ events, eventDisplayLayout }: EventsProps) {
   }
   if (eventDisplayLayout === "artistFilter") {
     return <EventArtistFilterSection events={sortedEvents} />;
+  }
+  if (eventDisplayLayout === "list") {
+    return <EventListSection events={sortedEvents} />;
   }
   return <EventGridSection events={sortedEvents} />;
 }

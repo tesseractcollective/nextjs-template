@@ -41,7 +41,7 @@ const Popup = ({ layout }: PopupProps) => {
   if (!layout) return <></>;
 
   return (
-    <div className="bg-slate-900 fixed left-8 bottom-16 z-[1001]">
+    <div className="bg-slate-900 fixed right-8 bottom-16 z-[1001]">
       <button
         onClick={() => setIsOpen(true)}
         className={`bg-gradient-to-r from-secondary to-secondary text-text-color font-medium px-4 py-2 rounded hover:opacity-90 transition-opacity shadow-xl border border-bg-secondary ${layout?.page?.popup?.buttonOpenCss}`}

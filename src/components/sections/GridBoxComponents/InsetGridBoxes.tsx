@@ -10,7 +10,7 @@ interface GridBoxProps {
 
 export default function InsetGridBoxes({ gridBoxData }: GridBoxProps) {
   return (
-    <section className="mx-auto px-4 sm:px-6 max-w-8xl lg:px-8 my-8 w-full">
+    <section className="mx-auto px-4 sm:px-6 max-w-8xl lg:px-8 my-8 w-full inset-grid-boxes">
       <Fade triggerOnce direction="up">
         <div className="flex flex-wrap justify-center md:justify-between items-stretch gap-4 h-full w-full">
           {gridBoxData.map((gridBoxItem, index) => (
@@ -34,7 +34,7 @@ export default function InsetGridBoxes({ gridBoxData }: GridBoxProps) {
                 <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-gray-900/40 group-hover:from-secondary transition-all" />
                 <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition-all ring-primary group-hover:ring-secondary ring-inset" />
 
-                <h3 className="mt-3 text-lg font-semibold leading-6 !text-text-color absolute bottom-8 inset-x-0">
+                <div className="mt-3 text-lg font-semibold leading-6 !text-text-color absolute bottom-8 inset-x-0">
                   <div>
                     {!!gridBoxItem?.boxTitle && (
                       <p className="text-text-overlay font-bold uppercase text-2xl text-center mx-auto text-shadow">
@@ -51,7 +51,7 @@ export default function InsetGridBoxes({ gridBoxData }: GridBoxProps) {
                       aria-hidden="true"
                     />
                   </div>
-                </h3>
+                </div>
               </div>
             </LinkItem>
           ))}
