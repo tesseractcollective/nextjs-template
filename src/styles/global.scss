@@ -189,6 +189,29 @@ html {
       inset: 0 0px 0 0px !important;
     }
   }
+  &.fill-primary-theme {
+    &::before {
+      background: var(--primary);
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      inset: 0 0px 0 0px;
+      transition: all 200ms ease-in-out;
+    }
+    &:hover, &:focus {
+      &::before {
+        background: var(--secondary);
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        inset: 0 0px 0 0px;
+      }
+    }
+  }
 }
 
 .text-link {
@@ -1144,7 +1167,7 @@ h4, h5, h6  {color: var(--text);}
   .datefield {
     display: flex;
     flex-direction: row !important;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     gap: 8px;
   }
