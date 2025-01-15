@@ -27,7 +27,7 @@ export default function ContactCircle({ contactsData }: ContactsSectionProps) {
           {contact?.contactAvatar?.url && (
             <Image
               src={contact.contactAvatar.url}
-              className="h-44 lg:h-52 w-44 lg:w-52 rounded-full object-cover absolute -top-10 -right-5 lg:-top-20 lg:-right-10 shadow-xl"
+              className="h-44 lg:h-52 w-44 lg:w-52 rounded-full object-cover absolute -top-20 -right-5 lg:-top-20 lg:-right-10 shadow-xl"
               alt=""
               width={120}
               height={120}

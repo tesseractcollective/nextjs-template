@@ -2,6 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import ReactGA from "react-ga4";
 
@@ -15,6 +16,7 @@ interface LinkItemProps {
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  activeClassName?: string;
 }
 
 export default function LinkItem({
@@ -25,9 +27,19 @@ export default function LinkItem({
   children,
   parentCssClass,
   onClick,
+  activeClassName,
 }: LinkItemProps) {
   const [isLoading, setIsLoading] = useState(false);
-  if (!link) return <></>;
+  const pathname = usePathname();
+
+  if (!link) return null;
+
+  const isActive = (path: string) => {
+    if (path === "/") {
+      return pathname === "/";
+    }
+    return pathname?.startsWith(path) ?? false;
+  };
 
   const target =
     sameTab || link?.includes("#") || link?.includes("tel:")
@@ -37,7 +49,6 @@ export default function LinkItem({
   const handleEvent = async () => {
     setIsLoading(true);
 
-    // Simulate asynchronous action, replace this with your actual data fetching logic
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     ReactGA.event({
@@ -51,30 +62,35 @@ export default function LinkItem({
     setIsLoading(false);
   };
 
+  const finalClassName = `${cssClass || ""} ${
+    isActive(link) ? activeClassName : ""
+  }`.trim();
+
   return (
     <div className={`relative ${parentCssClass}`}>
       {link?.includes("http") ||
       link?.includes("#") ||
+      link?.includes("mailto:") ||
       link?.includes("tel:") ? (
         <a
           target={target}
           href={link}
-          className={cssClass || ""}
+          className={finalClassName}
           onClick={handleEvent}
         >
-          {/* {isLoading && (
-            <div className="relative text-primary z-10">
+          {isLoading && (
+            <div className="fixed text-primary z-[9999] top-0 right-0">
               <FontAwesomeIcon
                 icon={faSpinner as IconProp}
-                className="fa-fw h-3 w-3 flex aspect-1 -top-4 -left-2 animate-spin absolute"
+                className="fa-fw h-6 w-6 flex aspect-1 animate-spin absolute"
               />
             </div>
-          )} */}
+          )}
           {children}
           {!!label && <>{label}</>}
         </a>
       ) : (
-        <Link href={link} className={cssClass || ""} onClick={handleEvent}>
+        <Link href={link} className={finalClassName} onClick={handleEvent}>
           {isLoading && (
             <div className="fixed text-primary z-[9999] top-0 right-0">
               <FontAwesomeIcon

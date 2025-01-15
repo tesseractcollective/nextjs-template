@@ -125,12 +125,12 @@ export default function ProfileYoutubeSection({
                   {profile?.websiteLink && (
                     <li>{`Web: ${profile.websiteLink}`}</li>
                   )}
-                  {!epkVisbile && profile?.epkLink && (
+                  {epkVisbile && profile?.epkLink && (
                     <li>{`Press: ${profile.epkLink}`}</li>
                   )}
                   {siteDomain && (
                     <li>
-                      {`Info: ${siteDomain}${profile.profileType.toLocaleLowerCase()}/${
+                      {`Info: ${siteDomain}/${profile.profileType.toLocaleLowerCase()}/${
                         profile.profileSlug
                       }`}
                     </li>

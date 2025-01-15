@@ -21,6 +21,7 @@ import TallGridBoxes from "./GridBoxComponents/TallGridBoxes";
 import TwoHundredVhBoxes from "./GridBoxComponents/TwoHundredVhBoxes";
 import VerticalTabGridBoxes from "./GridBoxComponents/VerticalTabGridBoxes";
 import WideCardBoxes from "./GridBoxComponents/WideCardBoxes";
+import SnapGridBoxes from "./GridBoxComponents/SnapGridBoxes";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -34,17 +35,19 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   // content √
   // parallax √
   // hoverRound √
-  // mason
-  // netflix
-  // grid
-  // image
-  // circle
-  // polaroid
-  // smallCircle
-  // blur
-  // spaceBetween
-  // description
-  // wideCard
+  // mason √
+  // netflix √
+  // grid √
+  // image √
+  // circle √
+  // polaroid √
+  // smallCircle √
+  // blur √
+  // spaceBetween √
+  // description √
+  // wideCard √
+  // snap √
+  // verticalTabs √
 
   const sliderGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "slider"
@@ -75,6 +78,9 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   );
   const gridDisplayGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "grid"
+  );
+  const snapCardGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "snap"
   );
   const wideCardGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "wideCard"
@@ -118,6 +124,8 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
     return <CircleGridBoxes gridBoxData={circleGridBoxData} />;
   if (sliderGridBoxData && sliderGridBoxData.length >= 1)
     return <SliderGridBoxes gridBoxData={sliderGridBoxData} />;
+  if (snapCardGridBoxData && snapCardGridBoxData.length >= 1)
+    return <SnapGridBoxes gridBoxData={snapCardGridBoxData} />;
   if (compactGridBoxData && compactGridBoxData.length >= 1)
     return <CompactGridBoxes gridBoxData={compactGridBoxData} />;
   if (tallGridBoxData && tallGridBoxData.length >= 1)

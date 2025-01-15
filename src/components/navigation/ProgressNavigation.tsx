@@ -18,6 +18,7 @@ import { Fade } from "react-awesome-reveal";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
 import useViewport from "@/app/hooks/useViewport";
 import { MinusIcon } from "@heroicons/react/20/solid";
+import "./ProgressNavigation.scss";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -302,7 +303,7 @@ export default function ProgressNavigation({
                   }}
                   className={`absolute bottom-0 w-full transition-transform duration-150 h-[0.15rem] bg-primary rounded-full`}
                 />
-                <div className="hidden lg:flex lg:flex-1 lg:items-center  cursor-pointer max-w-max mr-auto">
+                <div className="hidden lg:flex lg:flex-1 lg:items-center cursor-pointer max-w-max mr-auto">
                   <Link
                     href="/"
                     id={`nav-logo-desktop-${title}`}
@@ -512,14 +513,20 @@ export default function ProgressNavigation({
                                   <LinkItem
                                     key={mainNavigationItem?.link}
                                     link={mainNavigationItem?.link}
-                                    label={mainNavigationItem?.label}
-                                    cssClass={`flex items-center font-medium text-text-color opacity-90  hover:opacity-100 transition-all capitalize font-semibold hover:text-secondary ${
+                                    // label={mainNavigationItem?.label}
+                                    cssClass={`flex items-center font-medium text-text-color opacity-80  hover:opacity-100 transition-all capitalize font-semibold relative group ${
                                       small
                                         ? "text-xs md:text-sm"
                                         : "text-xs sm:text-sm md:text-base"
                                     } ${mainNavigationItem?.cssClass}`}
                                     sameTab={mainNavigationItem?.sameTab}
-                                  />
+                                    activeClassName="!font-bold !text-primary opacity-100"
+                                  >
+                                    <>
+                                      {mainNavigationItem?.label}
+                                      <span className="absolute left-0 right-0 bottom-0 h-0 border-b-2 border-text-secondary transition-all duration-300 hover:h-1 hover:border-text-secondary opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"></span>
+                                    </>
+                                  </LinkItem>
                                 )}
                               </div>
                             );
@@ -594,7 +601,7 @@ export default function ProgressNavigation({
                         key={mainNavigationItem?.link}
                         link={mainNavigationItem?.link}
                         label={mainNavigationItem?.label}
-                        cssClass={`flex items-center font-bold bg-primary text-dark opacity-90 hover:text-secondary hover:opacity-100 transition-all capitalize font-semibold border px-3 py-1 border-primary rounded-full hover:border-secondary ${
+                        cssClass={`progress-primary-button flex items-center font-bold bg-primary text-dark opacity-90 hover:text-secondary hover:opacity-100 transition-all capitalize font-semibold border px-3 py-1 border-primary rounded-full hover:border-secondary ${
                           small
                             ? "text-xs md:text-sm"
                             : "text-xs sm:text-sm md:text-base"

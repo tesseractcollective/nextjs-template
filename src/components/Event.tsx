@@ -54,6 +54,28 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
   const filteredEvents = events?.filter(
     (tempEvent) => eventSlug !== tempEvent.eventSlug
   );
+  const getMapLink = () => {
+    // First try to use the direct Google Maps link if provided
+    if (eventAddressGoogleMapLink) {
+      return eventAddressGoogleMapLink;
+    }
+
+    // Fall back to site library's Google Maps link if available
+    if (siteLibrary?.googleMapLink) {
+      return siteLibrary.googleMapLink;
+    }
+
+    // Finally, construct a search URL if we only have the address
+    if (eventAddress) {
+      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        eventAddress
+      )}`;
+    }
+
+    // Return null if no valid address data
+    return null;
+  };
+  const mapLink = getMapLink();
   return (
     <>
       <Head>
@@ -78,6 +100,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
               "@type": "Event",
               name: eventTitle,
               startDate: eventStartDateTime,
+              endDate: eventEndDateTime || eventStartDateTime,
               eventAttendanceMode:
                 "https://schema.org/OfflineEventAttendanceMode",
               eventStatus: "https://schema.org/EventScheduled",
@@ -86,7 +109,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                 name: eventVenueName,
                 address: {
                   "@type": "PostalAddress",
-                  streetAddress: eventAddress,
+                  streetAddress: eventAddress || siteLibrary?.address,
                   addressLocality: eventCityState,
                 },
               },
@@ -94,15 +117,21 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
               description: eventShortDescription,
               offers: {
                 "@type": "Offer",
-                url: event.eventTicketLinkDestination,
+                url:
+                  event.newTabEventDestination ||
+                  event.eventTicketLinkDestination,
                 priceCurrency: "USD",
                 availability: "https://schema.org/InStock",
                 validFrom: new Date(),
               },
-              performer: {
-                "@type": "PerformingGroup",
-                name: eventPerformer,
-              },
+              ...(eventPerformer
+                ? {
+                    performer: {
+                      "@type": "PerformingGroup",
+                      name: eventPerformer,
+                    },
+                  }
+                : {}),
               organizer: {
                 "@type": "Organization",
                 name: siteLibrary.title,
@@ -115,7 +144,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
       <section className="event-page-content">
         {/* HEADER */}
         <div className="relative mx-auto">
-          <div className="gradient-bkg py-16 md:py-40 relative overflow-hidden">
+          <div className="gradient-bkg py-16 md:py-40 relative overflow-hidden z-10">
             <div className="mx-auto block my-2 p-2 text-center absolute top-0 z-10 inset-x-0">
               <Link
                 href="/events"
@@ -173,6 +202,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
             </div>
             <div className="artist-filter-flyer-wrapper min-h-[10vh] z-0">
               {/* <div className="absolute bg-gradient-to-t from-text-color group-hover:from-primary z-20 h-24 bottom-0 left-0 right-0 w-full" /> */}
+              <div className="h-full w-full inset-0 absolute z-0 bg-[#000000] opacity-50"></div>
               {!!event?.eventFlyer?.url && (
                 <Image
                   src={event?.eventFlyer?.url}
@@ -221,7 +251,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                           </Moment>
                         </span>
                       </div>
-                      {!!eventAddress && (
+                      {(eventAddress || siteLibrary?.address) && (
                         <div className="flex items-start flex-col justify-center w-full max-w-max">
                           {!!eventVenueName && (
                             <p className="text-2xl font-extrabold">
@@ -230,14 +260,12 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                           )}
                           <p className="flex flex-row items-center w-full max-w-max">
                             <span className="max-w-[240px] text-xl opacity-80">
-                              {eventAddress}
+                              {eventAddress || siteLibrary?.address}
                             </span>
 
-                            {!!eventAddress && (
+                            {mapLink && (
                               <a
-                                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                                  eventAddress
-                                )}`}
+                                href={mapLink}
                                 target="_blank"
                                 rel="noreferrer"
                               >
@@ -356,19 +384,21 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
         </div>
       </section>
       {/* Event Content */}
-      {(eventIFrame || videoBox) && (
+      {((eventIFrame && eventIFrame.length > 0) ||
+        (videoBox && videoBox.length > 0) ||
+        (eventGallery && eventGallery.length > 0)) && (
         <section className="bg-bg-secondary py-16">
           <div className="mx-auto px-4 py-16 max-w-8xl lg:px-4">
-            {!!eventIFrame && <div className="py-8">{parse(eventIFrame)}</div>}
-            {!!siteLibrary?.youtubeApiKey &&
-              !!videoBox &&
-              videoBox.length >= 1 && (
-                <VideoSection
-                  videoData={videoBox}
-                  youtubeApiKey={siteLibrary.youtubeApiKey}
-                />
-              )}
-            {!!eventGallery && (
+            {eventIFrame && eventIFrame.length > 0 && (
+              <div className="py-8">{parse(eventIFrame)}</div>
+            )}
+            {siteLibrary?.youtubeApiKey && videoBox && videoBox.length > 0 && (
+              <VideoSection
+                videoData={videoBox}
+                youtubeApiKey={siteLibrary.youtubeApiKey}
+              />
+            )}
+            {eventGallery && eventGallery.length > 0 && (
               <GallerySection
                 galleryData={eventGallery}
                 galleryLayoutData="lightbox"
@@ -404,7 +434,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
         siteLibrary?.spotifyClientId && (
           <SpotifyArtistAlbums
             artistName={eventPerformer}
-            spotifyAlbumDisplay="slider"
+            spotifyAlbumDisplay="featured"
             spotifyClientId={siteLibrary.spotifyClientId}
             spotifyClientSecret={siteLibrary.spotifyClientSecret}
           />

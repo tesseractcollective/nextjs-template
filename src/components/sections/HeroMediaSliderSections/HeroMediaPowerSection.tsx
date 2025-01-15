@@ -14,10 +14,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import HeroMediaCircleSection from "@/components/sections/HeroMediaSliderSections/HeroMediaCircleSection";
-import HeroMediaVerticalSection from "@/components/sections/HeroMediaSliderSections/HeroMediaVerticalSection";
-import HeroMediaProductSection from "@/components/sections/HeroMediaSliderSections/HeroMediaProductSection";
-import HeroMediaPowerSection from "@/components/sections/HeroMediaSliderSections/HeroMediaPowerSection";
+
 import {
   faChevronLeft,
   faChevronRight,
@@ -31,7 +28,7 @@ interface HeroMediaSliderProps {
   siteLibrary: SiteLibraryFieldsFragment;
 }
 
-export default function HeroMediaSliderSection({
+export default function HeroMediaPowerSection({
   heroMediaSliderData,
   siteLibrary,
 }: HeroMediaSliderProps): ReactElement {
@@ -64,41 +61,6 @@ export default function HeroMediaSliderSection({
   // vertical
   // expand
   // product
-
-  if (heroMediaSliderData[0]?.sliderCssWrapper === "circle") {
-    return (
-      <HeroMediaCircleSection
-        heroMediaSliderData={heroMediaSliderData}
-        siteLibrary={siteLibrary}
-      />
-    );
-  }
-  if (heroMediaSliderData[0]?.mediaType === "vertical") {
-    return (
-      <HeroMediaVerticalSection
-        heroMediaSliderData={heroMediaSliderData}
-        siteLibrary={siteLibrary}
-      />
-    );
-  }
-
-  if (heroMediaSliderData[0]?.mediaType === "product") {
-    return (
-      <HeroMediaProductSection
-        heroMediaSliderData={heroMediaSliderData}
-        siteLibrary={siteLibrary}
-      />
-    );
-  }
-
-  if (heroMediaSliderData[0]?.textContent?.textContentWidth === "power") {
-    return (
-      <HeroMediaPowerSection
-        heroMediaSliderData={heroMediaSliderData}
-        siteLibrary={siteLibrary}
-      />
-    );
-  }
 
   return (
     <>
@@ -140,12 +102,12 @@ export default function HeroMediaSliderSection({
                 className="relative z-20 h-full w-full"
               >
                 <section
-                  className={`hero-media-slider video-wrapper transition-all ${
+                  className={`hero-media-slider video-wrapper transition-all flex items-center justify-center ${
                     heroMediaSliderItem?.sliderCssWrapper &&
                     heroMediaSliderItem.sliderCssWrapper
                   }`}
                 >
-                  <div className="heromediaslider-overlay-content headlinePrimary  text-text-overlay flex items-center justify-center flex-col h-full w-full m-auto text-center absolute z-30 p-4">
+                  <div className="heromediaslider-overlay-content headlinePrimary  text-text-overlay flex items-center justify-center flex-col h-full w-full my-auto text-left absolute z-30 p-4 max-w-8xl mx-auto">
                     <div
                       className={`swiper-no-swiping relative p-4 text-${
                         heroMediaSliderItem?.textContent?.contentAlign &&
@@ -235,13 +197,13 @@ export default function HeroMediaSliderSection({
                       </Fade>
 
                       {heroMediaSliderItem?.textContent?.header && (
-                        <div className="text-shadow body-parsed-text text-text-overlay">
+                        <div className="text-lg my-0 font-light py-0 parsed-mb-0 uppercase tracking-widest all-text-primary mx-auto w-full transition-all">
                           {parse(heroMediaSliderItem?.textContent.header.html)}
                         </div>
                       )}
 
                       {heroMediaSliderItem?.textContent?.subHeader && (
-                        <div className="body-parsed-text text-text-overlay">
+                        <div className="text-[36px] md:text-[54px] lg:text-[64px] my-0 font-bold py-0 parsed-mb-0 uppercase all-text-text-ovleray mx-auto w-full">
                           {parse(
                             heroMediaSliderItem?.textContent.subHeader.html
                           )}
@@ -298,8 +260,7 @@ export default function HeroMediaSliderSection({
                       </div>
                     </div>
                   </div>
-                  <div className="absolute bg-gradient-to-b from-dark z-20 section-fade-invert h-32 opacity-70 left-0 right-0 top-0" />
-                  <div className="absolute bg-gradient-to-t from-dark z-20 section-fade-invert h-[12rem] bottom-0 left-0 right-0 w-full" />
+
                   {!!heroMediaSliderItem?.sliderMediaBackground && (
                     <div className="main">
                       <Fade direction="up">

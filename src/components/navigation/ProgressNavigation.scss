@@ -1,0 +1,11 @@
+.progress-tertiary {
+  .progress-primary-button.bg-primary {
+    background: var(--tertiary) !important;
+    border-color: var(--tertiary) !important;
+    filter: saturate(100%);
+    &:hover, &:focus-within {
+      color: var(--text-overlay) !important;
+      filter: saturate(125%);
+    }
+  }
+}

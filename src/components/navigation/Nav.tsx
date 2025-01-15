@@ -20,6 +20,7 @@ import BlogNavigation from "@/components/navigation/BlogNavigation";
 import DimensionNavigation from "@/components/navigation/DimensionNavigation";
 import BorderNavigation from "@/components/navigation/BorderNavigation";
 import BetweenNavigation from "@/components/navigation/BetweenNavigation";
+import FixedSideNavigation from "@/components/navigation/FixedSideNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -94,6 +95,15 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "dashboard")
     return (
       <DashboardNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+  if (navigation.navigationLayoutStyle === "fixedSide")
+    return (
+      <FixedSideNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

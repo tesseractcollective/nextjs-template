@@ -1,8 +1,11 @@
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
+import SocialMediaIcons from "@/components/SocialMediaIcons";
+import "./ProfileUniversalSection.scss";
+import LinkItem from "@/components/LinkItem";
+import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
+import parse from "html-react-parser";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -16,63 +19,94 @@ export default function ProfileMasonSection({
   if (!profiles) return <></>;
 
   return (
-    <div className="relative texture-background overflow-hidden">
-      <section className="container my-16 mx-auto w-full px-4 md:11/12 xl:w-10/12  flex flex-wrap">
-        <div className="w-full lg:5/12 xl:w-4/12 transition">
-          {!!profileSectionTitle && (
-            <h3 className="text-2xl md:text-4xl mx-auto opacity-80 uppercase text-center xl:text-left transition-all">
-              {profileSectionTitle}
-            </h3>
-          )}
-        </div>
-        <div className="flex flex-row flex-wrap w-full transition-all max-w-8xl px-6 md:px-6 gap-x-8 gap-y-8 lg:7/12 xl:w-8/12 mx-auto lg:mx-0">
-          {profiles.map((profile) => (
-            <Fade
-              direction="up"
-              cascade
-              triggerOnce
-              damping={0.1}
-              key={profile.profileSlug}
-              className="block w-full md:w-2/4 lg:w-3/4 xl:w-1/4 transition-all relative mx-auto"
-            >
-              {!!profile.avatarImage?.url &&
-                profile.profileSlug &&
-                profile.profileType && (
-                  <Link
-                    href={`/${profile.profileType?.toLowerCase()}/${
-                      profile.profileSlug
-                    }`}
-                    className="h-full no-underline mx-auto relative block group w-full"
-                    key={profile.profileSlug}
-                  >
+    <>
+      <>
+        <div className="relative">
+          <section className="my-16 mx-auto w-full flex flex-wrap">
+            {/* <div className="w-full transition">
+              {!!profileSectionTitle && (
+                <h3 className="text-2xl lg:text-5xl mx-auto opacity-80 uppercase text-center font-bold mb-8">
+                  {profileSectionTitle}
+                </h3>
+              )}
+            </div> */}
+            <Fade triggerOnce className="w-full max-w-8xl gap-8  mx-auto">
+              {profiles.map((profile, index) => (
+                <div
+                  key={profile.profileSlug}
+                  className={`flex flex-col w-full mx-auto my-8 max-w-8xl px-4 justify-between items-start ${
+                    index % 2 == 0 ? "lg:flex-row-reverse" : "lg:flex-row"
+                  }`}
+                >
+                  {!!profile.avatarImage?.url && (
                     <Image
-                      src={profile.avatarImage?.url}
+                      src={profile.avatarImage.url}
                       alt={profile.name || ""}
-                      className="mx-auto mb-2 w-full block box-shadow border-round grayscale-0 hover:grayscale group-hover:grayscale group-focus:grayscale transition-all"
-                      height={0}
                       width={0}
+                      height={0}
                       sizes="100%"
-                      style={{
-                        maxHeight: "400px",
-                        maxWidth: "400px",
-                        objectFit: "cover",
-                        aspectRatio: 1,
-                      }}
+                      className="block w-full h-full object-cover px-2 max-w-2xl"
                     />
+                  )}
 
-                    <p className="my-0 py-0 text-center text-text-color group-hover:text-secondary group-focus:text-secondary max-w-max overflow-hidde relative mx-auto">
-                      <span>{profile.name}</span>
-                      {/* <FontAwesomeIcon
-                    icon={faArrowRight as IconProp}
-                    className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:w-4 group-hover:opacity-100 transition-all absolute right-0 group-hover:-right- top-1"
-                  /> */}
-                    </p>
-                  </Link>
-                )}
+                  <div className="py-0 lg:py-2 px-2 w-full max-w-2xl">
+                    <h2 className="px-4 py-0 my-0 opacity-60 uppercase tracking-widest text-[10px]">
+                      {profile.miniBio}
+                    </h2>
+                    <h3 className="border-primary border-b w-full p-2 text-4xl uppercase border-r lg:border-t-0 border-t">
+                      {profile.name}
+                    </h3>
+                    <div className="border-primary py-4 px-2 border-l">
+                      {profile.fullBio?.html && (
+                        <div className="mt-2 mx-auto text-text-color body-parsed-text text-left px-4">
+                          {parse(profile.fullBio?.html)}
+                        </div>
+                      )}
+                      <SocialMediaIcons
+                        fadeDirection="up"
+                        cssClass="flex flex-row profile-card-social-icons items-center mx-0 px-4 mt-1 mb-4 justify-start text-text-color gap-x-4 rotate-icons my-2"
+                        instagramLinkProp={profile?.instagramLink || undefined}
+                        spotifyLinkProp={profile?.spotifyLink || undefined}
+                        facebookLinkProp={profile?.facebookLink || undefined}
+                        twitterLinkProp={profile?.twitterLink || undefined}
+                        youtubeLinkProp={profile?.youtubeLink || undefined}
+                        tikTokLinkProp={profile?.tikTokLink || undefined}
+                        appleMusicLinkProp={
+                          profile?.appleMusicLink || undefined
+                        }
+                        pandoraLinkProp={profile?.pandoraLink || undefined}
+                        soundcloudLinkProp={
+                          profile?.soundcloudLink || undefined
+                        }
+                        linkedinLinkProp={profile?.linkedinLink || undefined}
+                        emailLinkProp={profile.email || undefined}
+                        phoneLinkProp={profile.phoneNumber || undefined}
+                        displayVcf={profile.displayVcf || undefined}
+                        name={profile.name || undefined}
+                        avatar={profile.avatarImage?.url || undefined}
+                        calendlyLinkProp={profile.calendlyLink || undefined}
+                      />
+                    </div>
+                    {profile.profileSlug && profile.profileType && (
+                      <LinkItem
+                        link={
+                          profile?.externalLink
+                            ? profile.externalLink
+                            : `/${profile.profileType?.toLowerCase()}/${
+                                profile.profileSlug
+                              }`
+                        }
+                        label="info"
+                        cssClass="bg-primary max-w-max text-text-color flex px-8 py-2 text-2xl uppercase tracking-wide mr-auto ml-0"
+                      ></LinkItem>
+                    )}
+                  </div>
+                </div>
+              ))}
             </Fade>
-          ))}
+          </section>
         </div>
-      </section>
-    </div>
+      </>
+    </>
   );
 }

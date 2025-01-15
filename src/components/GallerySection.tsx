@@ -20,6 +20,7 @@ import { Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import GalleryInfinite from "./elements/GalleryInfinite";
 import GalleryCarousel from "@/components/GallerySections/GalleryCarousel";
+import GalleryMixSection from "@/components/GallerySections/GalleryMixSection";
 import React from "react";
 
 interface GalleryProps {
@@ -317,6 +318,9 @@ export default function GallerySection({
         ))}
       </Slider>
     );
+  }
+  if (galleryLayout === "mix" && gallery.length >= 1) {
+    return <GalleryMixSection galleryData={gallery} />;
   }
   if (gallery.length >= 1) {
     const settings = {

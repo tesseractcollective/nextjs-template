@@ -8,21 +8,17 @@ interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
 }
 
-export default function BlurGridBoxes({ gridBoxData }: GridBoxProps) {
+export default function SnapGridBoxes({ gridBoxData }: GridBoxProps) {
   return (
-    <Fade triggerOnce className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+    <Fade triggerOnce className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 gap-8">
         {gridBoxData.map((gridBoxItem, index) => (
           <div
             key={`${index}-${gridBoxItem.boxTitle || "item"}`}
-            className={`
-              group relative overflow-hidden rounded-2xl bg-white 
-              transition-all duration-300 ease-in-out
-              ${index % 3 === 1 ? "lg:translate-y-8 xl:translate-y-8" : ""}
-              ${index % 3 === 2 ? "lg:translate-y-16 xl:translate-y-16" : ""}
-            `}
+            className="group relative overflow-hidden bg-white 
+              transition-all duration-300 ease-in-out gap-y-4 flex flex-col"
           >
-            <div className="relative w-full pb-[120%] rounded-2xl">
+            <div className="relative w-full pb-[62.25%]">
               {gridBoxItem.boxImage?.url && (
                 <Image
                   src={gridBoxItem.boxImage.url}
@@ -30,18 +26,19 @@ export default function BlurGridBoxes({ gridBoxData }: GridBoxProps) {
                   layout="fill"
                   objectFit="cover"
                   sizes="100%"
-                  className="transition-transform duration-300 ease-in-out rounded-2xl"
+                  className="transition-transform duration-300 ease-in-out"
                 />
               )}
             </div>
-            <div className="p-4  h-full">
+            <div className="h-full">
               {gridBoxItem?.boxTitle && (
-                <h3 className="text-xl font-semibold mb-2 line-clamp-2 text-gray-800">
-                  {gridBoxItem.boxTitle}
+                <h3 className="text-xl font-semibold mb-2 text-text-color flex items-center gap-x-2">
+                  <span className="block w-8 h-0.5 bg-text-color"></span>
+                  <span>{gridBoxItem.boxTitle}</span>
                 </h3>
               )}
               {gridBoxItem?.boxDescription?.html && (
-                <div className="text-sm opacity-80 line-clamp-2">
+                <div className="text-sm opacity-80">
                   {parse(gridBoxItem.boxDescription.html)}
                 </div>
               )}

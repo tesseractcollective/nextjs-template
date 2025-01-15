@@ -13,6 +13,7 @@ import ProfileDefaultSection from "@/components/ProfileSections/ProfileDefaultSe
 import ProfileAlternateSection from "@/components/ProfileSections/ProfileAlternateSection";
 import ProfileFullScreenSection from "@/components/ProfileSections/ProfileFullScreenSection";
 import ProfileMyspaceSection from "@/components/ProfileSections/ProfileMyspaceSection";
+import ProfileMasonSection from "@/components/ProfileSections/ProfileMasonSection";
 import ProfileSportsSection from "@/components/ProfileSections/ProfileSportsSection";
 import ProfileCardLinkSection from "@/components/ProfileSections/ProfileCardLinkSection";
 import ProfileYoutubeSection from "@/components/ProfileSections/ProfileYoutubeSection";
@@ -105,6 +106,13 @@ export default function Profiles({
   if (profileLayoutStyle === "alternate")
     return (
       <ProfileAlternateSection
+        profiles={FilteredProfiles}
+        profileSectionTitle={profileSectionTitle}
+      />
+    );
+  if (profileLayoutStyle === "mason")
+    return (
+      <ProfileMasonSection
         profiles={FilteredProfiles}
         profileSectionTitle={profileSectionTitle}
       />

@@ -31,9 +31,13 @@ const SpotifyDisplayFeatured: React.FC<SpotifyDataProps> = ({
         key={album.external_urls.spotify}
       >
         <div className="flex items-center justify-center flex-col lg:flex-row  gap-y-4 gap-x-10 max-w-max mx-auto">
-          <div className="relative flex flex-col">
-            <Fade direction="left" triggerOnce>
-              <p className="text-center text-3xl lg:text-4xl xl:text-4xl font-bold mb-4 max-w-max">
+          <div className="relative flex flex-col mx-auto items-center">
+            <Fade
+              direction="left"
+              triggerOnce
+              className="w-full mx-auto text-center flex items-center justify-center"
+            >
+              <p className="text-center text-3xl lg:text-4xl xl:text-4xl font-bold mb-4 max-w-max mx-0">
                 {album.name}
               </p>
 
@@ -49,14 +53,18 @@ const SpotifyDisplayFeatured: React.FC<SpotifyDataProps> = ({
                   }
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-white border-dark border py-2 px-4 mx-auto max-w-max block no-underline tracking-wide text-text-color uppercase hover:bg-primary focus:bg-primary transition-all font-bold text-2xl"
+                  className="bg-white border-dark border py-2 px-4 mx-auto max-w-max block no-underline tracking-wide text-text-color uppercase hover:bg-primary focus:bg-primary transition-all font-bold text-2xl w-full"
                 >
                   Stream
                 </a>
               )}
             </Fade>
           </div>
-          <Fade direction="right" triggerOnce>
+          <Fade
+            direction="right"
+            triggerOnce
+            className="mx-auto w-full text-center"
+          >
             <a
               href={album.external_urls.spotify}
               target="_blank"
@@ -68,7 +76,7 @@ const SpotifyDisplayFeatured: React.FC<SpotifyDataProps> = ({
                   label: album.name || "",
                 })
               }
-              className="flex items-center justify-center relative mx-auto no-underline floating max-w-max cursor-pointer"
+              className="flex items-center justify-center relative mx-auto no-underline floating max-w-max cursor-pointer w-full"
             >
               <Image
                 src={album.images[0].url}

@@ -337,7 +337,7 @@ html {
     margin-bottom: 0.8em;
   }
   p, li, li div {
-    opacity: 95%;
+    // opacity: 95%;
     margin-top: -0.46em;
     margin-bottom: 2em;
     word-wrap: break-word;
@@ -515,7 +515,7 @@ html {
 }
 
 .all-text-dark {
-  p, h1, h2, h3, h4, h6, a, button, blockquote {
+  p, h1, h2, h3, h4, h6, a, button, blockquote, li, li div {
     color: var(--dark) !important;
   }
   .text-primary {
@@ -526,6 +526,12 @@ html {
 .all-text-primary {
   p, h1, h2, h3, h4, h6, a, button, blockquote {
     color: var(--primary) !important;
+  }
+}
+
+.all-text-text-ovleray {
+  p, h1, h2, h3, h4, h6, a, button, blockquote {
+    color: var(--text-overlay) !important;
   }
 }
 
@@ -1231,5 +1237,12 @@ h4, h5, h6  {color: var(--text);}
       color: var(--text) !important;
       font-size: 25px;
     }
+  }
+}
+
+
+.shadow-map {
+  .mapboxgl-map {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   }
 }
