@@ -18,11 +18,11 @@ export default function SpaceBetweenBoxes({ gridBoxData }: GridBoxProps) {
           {gridBoxData.map((gridBoxItem, index) => (
             <div
               key={`${gridBoxItem.boxLink}-${index}`}
-              className="mx-auto w-full bg-motion bg-small"
+              className="mx-auto w-full"
             >
-              <div className="max-w-8xl flex flex-col md:flex-row px-4 py-32 justify-between items-center  w-full mx-auto gap-4">
+              <div className="max-w-12xl flex flex-col md:flex-row px-4 py-32 justify-between items-center  w-full mx-auto gap-4">
                 {gridBoxItem?.boxImage?.url && (
-                  <>
+                  <div className="bg-motion bg-small p-2 max-w-7xl w-full rounded-md">
                     {gridBoxItem.boxLink ? (
                       <LinkItem
                         parentCssClass="mx-auto"
@@ -30,7 +30,7 @@ export default function SpaceBetweenBoxes({ gridBoxData }: GridBoxProps) {
                         cssClass="mx-auto w-full !max-w-max !flex items-center justify-center"
                       >
                         <Image
-                          className="rounded object-cover max-w-sm mx-auto w-full aspect-1"
+                          className="rounded object-cover  mx-auto w-full aspect-1"
                           width={0}
                           height={0}
                           sizes="100%"
@@ -40,17 +40,18 @@ export default function SpaceBetweenBoxes({ gridBoxData }: GridBoxProps) {
                       </LinkItem>
                     ) : (
                       <Image
-                        className="rounded object-cover max-w-sm mx-auto w-full aspect-1"
+                        className="rounded object-cover mx-auto w-full aspect-video"
                         width={0}
                         height={0}
                         sizes="100%"
+                        quality={100}
                         src={gridBoxItem.boxImage.url}
                         alt={gridBoxItem?.boxTitle || ""}
                       />
                     )}
-                  </>
+                  </div>
                 )}
-                <div className="flex flex-col max-w-sm w-full mx-auto body-parsed-text">
+                <div className="flex flex-col max-w-6xl w-full mx-auto body-parsed-text bg-glass glass-dark md:-ml-24 py-20 px-10 ml-0 -mt-20 md:mt-0">
                   {gridBoxItem?.boxTitle && (
                     <div className="text-4xl uppercase mb-2 font-bold my-0 py-0 parsed-mb-0 text-text-color">
                       {gridBoxItem.boxTitle}

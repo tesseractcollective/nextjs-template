@@ -12,6 +12,7 @@ import Loader from "@/components/elements/Loader";
 import PagePassword from "./PagePassword";
 import React from "react";
 import FixedSideLink from "./elements/FixedSideLink";
+import MouseFollower from "./elements/MouseFollower";
 // import AgeVerification from "./elements/AgeVerification";
 
 interface PageProps {
@@ -27,6 +28,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
   return (
     <div className="relative layout-blocks-wrapper">
       {/* {page?.contentPageJson?.ageVerification && <AgeVerification />} */}
+      {siteLibrary.siteLibraryJson?.mouseFollower && <MouseFollower />}
       {!!page?.contentPageJson?.loader && siteLibrary.logo?.url && (
         <Loader icon={siteLibrary.logo.url} />
       )}

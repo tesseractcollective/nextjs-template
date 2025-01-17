@@ -1,89 +1,92 @@
-import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
-import LinkItem from "@/components/LinkItem";
-import { Fade } from "react-awesome-reveal";
-import "./HoverRoundGridBoxes.scss";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
 }
 
-export default function HoverRoundGridBoxes({ gridBoxData }: GridBoxProps) {
-  const gridBoxDataWLinks = gridBoxData.filter(
-    (gridBoxLinkTemp) => gridBoxLinkTemp.boxLink !== null
+const ExpandingCircleLinks = ({ gridBoxData }: GridBoxProps) => {
+  return (
+    <div className="w-full">
+      {gridBoxData.map((item) => (
+        <ExpandingCircleLink key={item.id} gridBox={item} />
+      ))}
+    </div>
   );
-  const gridBoxDataWOLinks = gridBoxData.filter(
-    (gridBoxTemp) => gridBoxTemp.boxLink === null
-  );
+};
+
+interface SingleGridBoxProps {
+  gridBox: GridBoxFieldsFragment;
+}
+
+const ExpandingCircleLink = ({ gridBox }: SingleGridBoxProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Transform values for different properties
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.5, 1]);
+  const borderRadius = useTransform(scrollYProgress, [0, 0.5], ["50%", "0%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
+  // Safely handle nullable fields
+  const imageUrl = gridBox.boxImage?.url ?? "";
+  const title = gridBox.boxTitle ?? "";
+  const link = gridBox.boxLink ?? "#";
 
   return (
-    <section className="mx-auto px-4 sm:px-6 max-w-8xl lg:px-8 my-8 hover-round-grid-items hover-round-boxes">
-      <div className="flex flex-wrap items-center justify-center mx-auto lg:mx-0 transition">
-        {gridBoxDataWOLinks.map((gridBoxDataWOLink, index) => (
-          <Fade
-            direction="up"
-            cascade
-            triggerOnce
-            damping={0.1}
-            key={`gridBoxDataWLink-${index}`}
-            className="mx-auto"
-          >
-            <div className="h-full no-underline mx-auto relative mb-4 inline-block max-w-max group">
-              {!!gridBoxDataWOLink.boxImage?.url && (
-                <div className="relative">
-                  <Image
-                    src={gridBoxDataWOLink.boxImage?.url}
-                    alt=""
-                    className="object-cover w-72 h-72 transition-all duration-[400ms] rounded-md max-w-xs grayscale-0 group-hover:grayscale group-hover:rounded-[100%]"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                  />
-                  <div className="record-border"></div>
-                </div>
-              )}
-              <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-primary uppercase font-bold opacity-100 group-hover:opacity-100 absolute inset-0 z-[2] text-base md:text-lg lg:text-xl">
-                <span>{gridBoxDataWOLink.boxTitle}</span>
-              </p>
-            </div>
-          </Fade>
-        ))}
+    <div
+      ref={containerRef}
+      className="h-screen w-full relative overflow-hidden"
+    >
+      <motion.a
+        href={link}
+        className="absolute inset-0 flex items-center justify-center"
+        style={{
+          scale,
+          borderRadius,
+        }}
+      >
+        {/* Background Image Container */}
+        <motion.div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            scale,
+            borderRadius,
+          }}
+          initial={{ scale: 0.5 }}
+          aria-label={title}
+        />
 
-        {gridBoxDataWLinks.map((gridBoxItem, index) => (
-          <Fade
-            direction="up"
-            cascade
-            triggerOnce
-            damping={0.1}
-            key={`gridBoxDataWLink-${index}`}
-            className="mx-auto"
+        {/* Text Overlay */}
+        <motion.div className="relative z-10 text-center px-4">
+          <motion.h2
+            className="text-6xl font-bold text-white mb-4"
+            style={{ opacity }}
+            initial={{ opacity: 0 }}
           >
-            <LinkItem
-              link={gridBoxItem.boxLink || ""}
-              cssClass="h-full no-underline mx-auto relative mb-4 inline-block max-w-max group"
-            >
-              <>
-                {!!gridBoxItem.boxImage?.url && (
-                  <div className="relative">
-                    <Image
-                      src={gridBoxItem.boxImage?.url}
-                      alt=""
-                      className="object-cover w-72 h-72 transition-all duration-[400ms] rounded-md max-w-xs grayscale-0 group-hover:grayscale group-hover:rounded-[100%]"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                    />
-                    <div className="record-border"></div>
-                  </div>
-                )}
-                <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-primary uppercase font-bold opacity-100 group-hover:opacity-100 absolute inset-0 z-[2] text-base md:text-lg lg:text-xl">
-                  <span>{gridBoxItem.boxTitle}</span>
-                </p>
-              </>
-            </LinkItem>
-          </Fade>
-        ))}
-      </div>
-    </section>
+            {title}
+          </motion.h2>
+
+          {gridBox.boxDescription && (
+            <motion.div
+              className="text-white text-xl"
+              style={{ opacity }}
+              initial={{ opacity: 0 }}
+              dangerouslySetInnerHTML={{ __html: gridBox.boxDescription.html }}
+            />
+          )}
+        </motion.div>
+      </motion.a>
+    </div>
   );
-}
+};
+
+export default ExpandingCircleLinks;

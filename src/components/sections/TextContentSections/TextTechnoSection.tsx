@@ -17,6 +17,13 @@ export default function TextTechnoSection({
   textContentData,
   callToActionData,
 }: TextCardsProps) {
+  if (!textContentData) return null;
+  const getPrimaryImage = (textContentData: TextContentFieldsFragment[]) => {
+    if (textContentData[0]) {
+      return textContentData[0];
+    }
+  };
+  const primaryImage = getPrimaryImage(textContentData);
   return (
     <>
       {!!textContentData && (
@@ -82,6 +89,17 @@ export default function TextTechnoSection({
                       )
                   )}
                 </div>
+              )}
+              {primaryImage?.contentImage && (
+                <Image
+                  className="w-full object-cover max-w-6xl mx-auto"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                  quality={100}
+                  src={primaryImage.contentImage.url}
+                  alt={primaryImage?.header?.html || ""}
+                />
               )}
             </div>
           </Fade>

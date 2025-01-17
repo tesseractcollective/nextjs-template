@@ -1029,6 +1029,7 @@ export default function PageHeader({
                   width={0}
                   height={0}
                   sizes="100%"
+                  quality={100}
                   className="w-full h-full object-cover rounded-4xl"
                 />
               )}
