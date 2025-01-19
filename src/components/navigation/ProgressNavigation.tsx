@@ -78,12 +78,11 @@ export default function ProgressNavigation({
       className={`fixed lg:sticky bottom-0 lg:top-0 z-[999] left-0 right-0 transition-all ${
         navigationWrapperCssClass ? navigationWrapperCssClass : ""
       }`}
-      id="navigation"
-      // style={{ backgroundOpacity: "50%" }}
+      id="progress-navigation-header"
     >
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-[1020]" onClose={setOpen}>
+        <Dialog as="div" className="relative z-[1000]" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -99,19 +98,43 @@ export default function ProgressNavigation({
             />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-40 flex items-end">
+          <div className="fixed inset-0 z-40 flex items-start">
             <Transition.Child
               as={Fragment}
-              enter="transition ease-in-out duration-300 transform"
+              enter="transition ease-in-out duration-[400ms] transform"
               enterFrom="translate-y-full blur-xl"
               enterTo="-translate-y-0 blur-0"
-              leave="transition ease-in-out duration-300 transform"
-              leaveFrom="-translate-y-0 blur-0"
+              leave="transition ease-in-out duration-[400ms] transform"
+              leaveFrom="translate-y-0 blur-0"
               leaveTo="translate-y-full blur-xl"
             >
-              <Dialog.Panel className="relative flex w-full max-h-[90vh] flex-col overflow-y-auto pb-2 shadow-xl border-t-primary border-t bg-bg transition-all rounded-t-xl">
-                <Fade direction="down" triggerOnce>
-                  <div className="flex mt-4 ml-4 px-4 pb-2 pt-4 items-center justify-start">
+              <Dialog.Panel className="relative flex w-full max-h-[100dvh] flex-col overflow-y-auto pb-12 shadow-xl border-primary border-t bg-bg transition-all duration-[400ms] h-[100dvh] items-center justify-center border">
+                <div className="fixed max-w-max bg-bg aspect-1 border-secondary border bottom-[16px] top-[unset]">
+                  <button
+                    type="button"
+                    title="menu"
+                    className="p-2 text-primary group hover:text-secondary transition-all duration-[400ms] cursor-pointer relative"
+                    onClick={() => {
+                      setOpen(false);
+                      ReactGA.event({
+                        category: "Link",
+                        action: "Open Mobile Menu",
+                        label: "Open Mobile Menu",
+                      });
+                    }}
+                  >
+                    <XMarkIcon
+                      className="h-6 w-6 text-text-color group-hover:text-primary transition-all duration-[400ms] group-hover:rotate-90 text-center mx-auto"
+                      aria-hidden="true"
+                    />
+
+                    <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all duration-[400ms] uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                      {siteLibrary.isSpanish ? "Cerrar" : "Close"}
+                    </span>
+                  </button>
+                </div>
+                <Fade direction="down" triggerOnce className="relative z-10">
+                  <div className="flex mt-0 mx-4 px-4 pb-2 pt-2 items-center justify-start">
                     <Link
                       href="/"
                       onClick={() => {
@@ -122,20 +145,19 @@ export default function ProgressNavigation({
                           label: "Visit Home",
                         });
                       }}
-                      className="cursor-pointer transition-all hover:tracking-widest"
-                      id={`nav-logo-mobile-panel`}
+                      className="cursor-pointer transition-all duration-[400ms] relative"
+                      id="nav-logo-mobile-panel"
                     >
                       {navigation?.navigationLogo ? (
                         <>
                           <span className="sr-only">{title}</span>
                           <Image
-                            className="w-[80px] md:w-[120px] max-h-[80px] cursor-pointer object-contain transition-all block"
                             src={navigation.navigationLogo?.url}
+                            className="w-[80px] md:w-[160px] max-h-[120px] cursor-pointer object-contain transition-all duration-[400ms] block"
                             alt=""
                             width={0}
                             height={0}
                             sizes="100%"
-                            // style={{ width: "100%" }}
                           />
                         </>
                       ) : (
@@ -147,7 +169,13 @@ export default function ProgressNavigation({
                   </div>
                 </Fade>
 
-                <Fade triggerOnce cascade direction="left" damping={0.05}>
+                <Fade
+                  triggerOnce
+                  cascade
+                  direction="up"
+                  damping={0.05}
+                  className="relative z-10"
+                >
                   {!!items &&
                     items.length >= 1 &&
                     items.map((mainNavigationItem) => {
@@ -155,10 +183,10 @@ export default function ProgressNavigation({
                       return (
                         <div key={mainNavigationItem.label}>
                           {hasItems && (
-                            <div className="space-y-6 px-4 py-3 mt-4 ml-4">
+                            <div className="space-y-6 px-4 py-3 mt-4 mx-4">
                               <h2
                                 key={mainNavigationItem.label}
-                                className="block text-text-color max-w-max text-xl w-full transition-all uppercase font-bold text-left border-b border-text-color opacity-70"
+                                className="block text-text-color max-w-max text-xl w-full transition-all duration-[400ms] uppercase font-bold text-left border-b border-text-color opacity-70"
                               >
                                 {mainNavigationItem.label}
                               </h2>
@@ -175,7 +203,7 @@ export default function ProgressNavigation({
                                           key={item?.link}
                                           link={item?.link}
                                           label={item?.label}
-                                          cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary focus:tracking-widest text-left flex flex-row items-center ${item?.cssClass}`}
+                                          cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary  focus:text-primary text-left flex flex-row items-center ${item?.cssClass}`}
                                           sameTab={item?.sameTab}
                                         >
                                           <>
@@ -211,13 +239,13 @@ export default function ProgressNavigation({
                           )}
 
                           {!hasItems && (
-                            <div className="space-y-6 px-4 py-1 mt-4 ml-4">
+                            <div className="space-y-6 px-4 py-1 mt-4 mx-4">
                               <div className="max-w-max">
                                 <LinkItem
                                   key={mainNavigationItem.label}
                                   link={mainNavigationItem.link || "/"}
                                   sameTab={mainNavigationItem?.sameTab}
-                                  cssClass={`my-2 block text-text-color max-w-max  text-2xl w-full transition-all uppercase font-bold hover:text-primary hover:tracking-widest focus:text-primary focus:tracking-widest text-left flex flex-row items-center ${mainNavigationItem?.cssClass}`}
+                                  cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-4xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary focus:text-primary  text-center"
                                   onClick={() => setOpen(false)}
                                 >
                                   <span>{mainNavigationItem.label}</span>
@@ -230,14 +258,14 @@ export default function ProgressNavigation({
                     })}
                 </Fade>
 
-                <Fade triggerOnce direction="up">
-                  <div className="space-y-6 px-4 py-6 mt-4 ml-4">
+                <Fade triggerOnce direction="up" className="relative z-10">
+                  <div className="space-y-6 px-4 py-6 mt-4 w-full text-center">
                     <SocialMediaIcons
-                      fadeDirection="up"
                       siteLibrary={siteLibrary}
-                      cssClass="my-2 mx-0 grid grid-cols-10 social-icons-row items-center justify-start text-text-color gap-2 overflow-hidden mr-auto py-0 max-w-max gap-x-4"
+                      fadeDirection="up"
+                      cssClass="my-2 mx-0 flex flex-row flex-wrap social-icons-row items-center justify-center text-text-color gap-2 overflow-hidden mx-auto py-0 max-w-max gap-x-4"
                     />
-                    <div className="text-left">
+                    <div className="text-center">
                       {!!contactName && (
                         <p className="text-text-color text-xs font-bold">
                           <span>{contactName}</span>
@@ -246,7 +274,7 @@ export default function ProgressNavigation({
                       {!!contactPhone && (
                         <a
                           href={`tel:${contactPhone.replace(/-/g, "")}`}
-                          className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                          className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max mx-auto"
                         >
                           <span className="font-semibold">{contactPhone}</span>
                         </a>
@@ -254,27 +282,12 @@ export default function ProgressNavigation({
                       {!!contactEmail && (
                         <a
                           href={`mailto:${contactEmail}`}
-                          className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                          className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max mx-auto"
                         >
                           <span className="font-semibold">{contactEmail}</span>
                         </a>
                       )}
                     </div>
-                  </div>
-                  <div className="flex justify-center items-center w-full px-0">
-                    <button
-                      type="button"
-                      className="flex items-center justify-center rounded-md py-2 text-text-color group flex-col text-center mx-auto max-w-max text-xs"
-                      onClick={() => setOpen(false)}
-                    >
-                      <XMarkIcon
-                        className="h-6 w-6 text-text-color group-hover:text-primary transition-all group-hover:rotate-90 text-center mx-auto"
-                        aria-hidden="true"
-                      />
-                      <span className="text-text-color group-hover:text-primary transition-all uppercase text-center text-xs flex">
-                        {siteLibrary.isSpanish ? "Cerrar menú" : "Close menu"}
-                      </span>
-                    </button>
                   </div>
                 </Fade>
               </Dialog.Panel>
@@ -319,7 +332,7 @@ export default function ProgressNavigation({
                       <>
                         <span className="sr-only">{title}</span>
                         <Image
-                          className={`w-full ml-0 max-w-[10rem] mr-auto cursor-pointer object-contain transition-all h-full ${
+                          className={`w-full ml-0 max-w-[10rem] mr-auto cursor-pointer object-contain transition-all h-full p-1 ${
                             small ? "max-h-12" : "max-h-16"
                           }`}
                           src={navigation.navigationLogo?.url}
@@ -555,7 +568,11 @@ export default function ProgressNavigation({
                         className={`w-full max-w-[140px] mx-auto cursor-pointer object-contain transition-all ${
                           small ? "h-7" : "h-10"
                         }`}
-                        src={navigation.navigationLogo?.url}
+                        src={
+                          navigation?.navJson?.mobileLogo
+                            ? navigation.navJson.mobileLogo
+                            : navigation.navigationLogo?.url
+                        }
                         alt=""
                         width={0}
                         height={0}

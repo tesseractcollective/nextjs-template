@@ -9,3 +9,9 @@
     }
   }
 }
+
+.progress-dark-invert {
+  .bg-text-overlay {
+    background-color: var(--background-secondary) !important;
+  }
+}

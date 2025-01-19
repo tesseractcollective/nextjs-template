@@ -48,7 +48,7 @@ export default function WideCardBoxes({ gridBoxData }: GridBoxProps) {
                   width={0}
                   height={0}
                   sizes="100%"
-                  className="h-full w-full object-cover object-center rounded-4xl p-4"
+                  className="h-full w-full object-contain object-center rounded-4xl p-4"
                 />
               )}
             </div>

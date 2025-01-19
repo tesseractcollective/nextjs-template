@@ -3,6 +3,7 @@ import type { ContactFieldsFragment } from "@/graphql/generated/graphql";
 import ContactDefault from "@/components/sections/ContactContentComponents/ContactDefault";
 import ContactCard from "@/components/sections/ContactContentComponents/ContactCard";
 import ContactCircle from "@/components/sections/ContactContentComponents/ContactCircle";
+import ContactMason from "@/components/sections/ContactContentComponents/ContactMason";
 
 type contactTypeTags = ContactFieldsFragment["contactQuery"];
 
@@ -28,6 +29,9 @@ export default function ContactsSection({
   }
   if (contactsLayoutStyle === "circle") {
     return <ContactCircle contactsData={filteredContacts} />;
+  }
+  if (contactsLayoutStyle === "mason") {
+    return <ContactMason contactsData={filteredContacts} />;
   }
   return <ContactDefault contactsData={filteredContacts} />;
 }

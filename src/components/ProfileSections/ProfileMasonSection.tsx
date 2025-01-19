@@ -30,7 +30,10 @@ export default function ProfileMasonSection({
                 </h3>
               )}
             </div> */}
-            <Fade triggerOnce className="w-full max-w-8xl gap-8  mx-auto">
+            <Fade
+              triggerOnce
+              className="w-full max-w-8xl gap-y-8 gap-x-16  mx-auto"
+            >
               {profiles.map((profile, index) => (
                 <div
                   key={profile.profileSlug}

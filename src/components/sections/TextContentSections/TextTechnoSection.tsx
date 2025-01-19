@@ -92,7 +92,7 @@ export default function TextTechnoSection({
               )}
               {primaryImage?.contentImage && (
                 <Image
-                  className="w-full object-cover max-w-6xl mx-auto"
+                  className="w-full object-cover max-w-2xl mx-auto py-16"
                   width={0}
                   height={0}
                   sizes="100%"

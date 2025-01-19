@@ -67,8 +67,8 @@ export default function ContactFormSection({
   return (
     <>
       {contactFormData.map((contactFormItem, index) => (
-        <section className="container grid mx-auto my-8 " key={index}>
-          <div className="w-full md:w-8/12 mx-auto">
+        <section className="container grid mx-auto my-8" key={index}>
+          <div className="w-full md:w-8/12 mx-auto px-4">
             <div
               className={`border-round p-2 mx-auto ${
                 contactFormItem?.cssClass && contactFormItem.cssClass
@@ -108,7 +108,7 @@ export default function ContactFormSection({
                       onSubmit={handleSubmit}
                     >
                       <Form
-                        className="flex flex-col px-4 w-full mx-auto gap-y-1"
+                        className="flex flex-col px-2 lg:px-4 w-full mx-auto gap-y-1"
                         id="contact"
                       >
                         <div className="relative mb-2">
