@@ -542,8 +542,8 @@ export default function CircleNavigation({
 
             <Link
               href="/"
-              className={`cursor-pointer transition-all flex items-center justify-center mx-auto psuedo-circle max-w-[80px] xl:max-w-[100px] ${
-                small ? "small-psuedo-circle max-w-[70px] xl:max-w-[80px]" : ""
+              className={`cursor-pointer transition-all flex items-center justify-center mx-auto psuedo-circle max-w-[70px] xl:max-w-[100px] ${
+                small ? "small-psuedo-circle max-w-[70px] xl:max-w-[75px]" : ""
               }`}
               id={`nav-logo-desktop`}
               onClick={() => {

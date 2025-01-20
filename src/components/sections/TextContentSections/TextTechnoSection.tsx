@@ -64,7 +64,7 @@ export default function TextTechnoSection({
                 </div>
               ))}
               {!!callToActionData && callToActionData?.length > 0 && (
-                <div className="text-center mx-auto md:mx-0 flex flex-row">
+                <div className="text-center mx-auto md:mx-0 flex flex-col lg:flex-row gap-4">
                   {callToActionData.map(
                     (callToActionItem) =>
                       callToActionItem?.ctaLink && (

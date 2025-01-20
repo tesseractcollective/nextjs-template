@@ -4,6 +4,7 @@ import ContactDefault from "@/components/sections/ContactContentComponents/Conta
 import ContactCard from "@/components/sections/ContactContentComponents/ContactCard";
 import ContactCircle from "@/components/sections/ContactContentComponents/ContactCircle";
 import ContactMason from "@/components/sections/ContactContentComponents/ContactMason";
+import ContactCompact from "@/components/sections/ContactContentComponents/ContactCompact";
 
 type contactTypeTags = ContactFieldsFragment["contactQuery"];
 
@@ -32,6 +33,9 @@ export default function ContactsSection({
   }
   if (contactsLayoutStyle === "mason") {
     return <ContactMason contactsData={filteredContacts} />;
+  }
+  if (contactsLayoutStyle === "compact") {
+    return <ContactCompact contactsData={filteredContacts} />;
   }
   return <ContactDefault contactsData={filteredContacts} />;
 }

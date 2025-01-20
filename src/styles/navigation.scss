@@ -93,6 +93,14 @@
   }
 }
 
+.circle-nav-light-circle {
+  .psuedo-circle {
+    &:before {
+      background: var(--text) !important;
+    }
+  }
+}
+
 .shadow-top {
   -webkit-box-shadow: 0 -5px 15px #0808086b;
   box-shadow: 0 -5px 15px #0808086b;

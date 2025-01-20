@@ -562,6 +562,7 @@ export default function DefaultNavigation({
                                         key={mainNavigationItem?.link}
                                         link={mainNavigationItem?.link}
                                         label={mainNavigationItem?.label}
+                                        activeClassName="!text-primary"
                                         cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold ${
                                           small
                                             ? "text-xs md:text-sm"

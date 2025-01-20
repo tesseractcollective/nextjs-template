@@ -21,6 +21,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import GalleryInfinite from "./elements/GalleryInfinite";
 import GalleryCarousel from "@/components/GallerySections/GalleryCarousel";
 import GalleryMixSection from "@/components/GallerySections/GalleryMixSection";
+import GallerySliderSection from "@/components/GallerySections/GallerySliderSection";
 import React from "react";
 
 interface GalleryProps {
@@ -321,6 +322,16 @@ export default function GallerySection({
   }
   if (galleryLayout === "mix" && gallery.length >= 1) {
     return <GalleryMixSection galleryData={gallery} />;
+  }
+  if (galleryLayout === "slider" && gallery.length >= 2) {
+    return (
+      <div className="my-8 px-4 max-w-6xl mx-auto">
+        <GallerySliderSection
+          beforeImage={gallery[0].url}
+          afterImage={gallery[1].url}
+        />
+      </div>
+    );
   }
   if (gallery.length >= 1) {
     const settings = {
