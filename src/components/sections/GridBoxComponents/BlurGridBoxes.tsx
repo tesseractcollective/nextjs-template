@@ -27,10 +27,11 @@ export default function BlurGridBoxes({ gridBoxData }: GridBoxProps) {
                 <Image
                   src={gridBoxItem.boxImage.url}
                   alt={gridBoxItem.boxTitle || ""}
-                  layout="fill"
-                  objectFit="cover"
+                  quality={100}
+                  width={0}
+                  height={0}
                   sizes="100%"
-                  className="transition-transform duration-300 ease-in-out rounded-2xl"
+                  className="transition-transform duration-300 ease-in-out rounded-2xl object-cover"
                 />
               )}
             </div>

@@ -18,7 +18,6 @@ export default function Whatsapp({
 }: WhatsappProps): ReactElement {
   const [open, setOpen] = useState<boolean>(false);
   const [whatsAppMessage, setWhatsappMessage] = useState("");
-  console.log(contactNumber);
   return (
     <>
       <button

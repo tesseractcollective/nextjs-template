@@ -48,7 +48,7 @@ export default function ContactMason({ contactsData }: ContactsSectionProps) {
                 <p className="max-w-4xl">{contact.contactBio}</p>
               </div>
             )}
-            <div className="flex flex-row gap-x-6">
+            <div className="flex flex-col lg:flex-row gap-x-6 items-start">
               {!!contact?.contactEmail && (
                 <a
                   href={`mailto:${contact.contactEmail}`}

@@ -54,7 +54,7 @@ export default function MinimalNavigation({
   return (
     <>
       <div
-        className={`fixed top-[2px] z-[999] left-0 right-0 transition-all duration-[400ms] ${
+        className={`minimal-navigation fixed top-[2px] z-[999] left-0 right-0 transition-all duration-[400ms] ${
           navigationWrapperCssClass ? navigationWrapperCssClass : ""
         }`}
         id="navigation"

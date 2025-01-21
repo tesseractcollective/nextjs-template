@@ -54,7 +54,7 @@ export default function UniversalNavigation({
   return (
     <>
       <div
-        className={`fixed top-[2px] z-[999] left-0 right-0 transition-all duration-[400ms] ${
+        className={`universal-navigation fixed top-[2px] z-[999] left-0 right-0 transition-all duration-[400ms] ${
           navigationWrapperCssClass ? navigationWrapperCssClass : ""
         }`}
         id="navigation"
@@ -346,7 +346,8 @@ export default function UniversalNavigation({
                       <Image
                         className="w-[80px] md:w-[100px] max-h-[80px] cursor-pointer object-contain transition-all duration-[400ms] mr-auto"
                         src={navigation.navigationLogo?.url}
-                        alt=""
+                        priority
+                        alt={title || ""}
                         width={0}
                         height={0}
                         sizes="100%"

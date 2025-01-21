@@ -18,6 +18,7 @@ import HeroMediaCircleSection from "@/components/sections/HeroMediaSliderSection
 import HeroMediaVerticalSection from "@/components/sections/HeroMediaSliderSections/HeroMediaVerticalSection";
 import HeroMediaProductSection from "@/components/sections/HeroMediaSliderSections/HeroMediaProductSection";
 import HeroMediaPowerSection from "@/components/sections/HeroMediaSliderSections/HeroMediaPowerSection";
+import HeroMediaCircleVideoSection from "@/components/sections/HeroMediaSliderSections/HeroMediaCircleVideoSection";
 import {
   faChevronLeft,
   faChevronRight,
@@ -68,6 +69,14 @@ export default function HeroMediaSliderSection({
   if (heroMediaSliderData[0]?.sliderCssWrapper === "circle") {
     return (
       <HeroMediaCircleSection
+        heroMediaSliderData={heroMediaSliderData}
+        siteLibrary={siteLibrary}
+      />
+    );
+  }
+  if (heroMediaSliderData[0]?.sliderCssWrapper === "hero-circle-video") {
+    return (
+      <HeroMediaCircleVideoSection
         heroMediaSliderData={heroMediaSliderData}
         siteLibrary={siteLibrary}
       />

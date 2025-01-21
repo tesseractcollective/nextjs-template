@@ -23,10 +23,11 @@ export default function SnapGridBoxes({ gridBoxData }: GridBoxProps) {
                 <Image
                   src={gridBoxItem.boxImage.url}
                   alt={gridBoxItem.boxTitle || ""}
-                  layout="fill"
-                  objectFit="cover"
+                  width={0}
+                  height={0}
+                  quality={100}
                   sizes="100%"
-                  className="transition-transform duration-300 ease-in-out"
+                  className="transition-transform duration-300 ease-in-out object-cover"
                 />
               )}
             </div>

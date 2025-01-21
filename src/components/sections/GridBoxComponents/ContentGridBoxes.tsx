@@ -21,10 +21,11 @@ export default function ContentGridBoxes({ gridBoxData }: GridBoxProps) {
                 <Image
                   src={gridBoxItem.boxImage.url}
                   alt={gridBoxItem.boxTitle || ""}
-                  layout="fill"
-                  objectFit="cover"
+                  quality={100}
+                  width={0}
+                  height={0}
                   sizes="100%"
-                  className="transition-transform duration-300 ease-in-out group-hover:scale-105"
+                  className="transition-transform duration-300 ease-in-out group-hover:scale-105 object-cover"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

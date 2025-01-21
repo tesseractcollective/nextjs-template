@@ -9,7 +9,6 @@ const nextConfig = {
       "i.scdn.co",
       "photos.bandsintown.com",
       "image-cdn-ak.spotifycdn.com",
-      "**.graphassets.com",
     ],
     remotePatterns: [
       {

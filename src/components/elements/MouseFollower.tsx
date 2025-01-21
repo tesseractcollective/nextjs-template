@@ -35,7 +35,7 @@ const MouseFollower = () => {
     <motion.div
       className={`
         fixed pointer-events-none z-[1001] rounded-full
-        transition-colors duration-150 border-primary border w-6 h-6 mix-blend-difference
+        transition-colors duration-150 border-primary border w-6 h-6 mix-blend-difference opacity-0 md:opacity-100
         ${isHoveringLink ? "bg-tertiary scale-150" : "bg-bg scale-100"}
       `}
       style={{

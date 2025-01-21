@@ -1,0 +1,52 @@
+.hero-circle-video-text-box {
+  h1 {
+    font-weight: 900 !important;
+    letter-spacing: -.04em !important;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 800;
+    @media(min-width: 768px) {
+      font-size:48px
+    }
+
+    @media(min-width: 992px) {
+      font-size: 78px !important;
+      line-height: 101px !important;
+    }
+}
+h2 {
+    font-weight: 900 !important;
+    letter-spacing: -.04em !important;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 800;
+    @media(min-width: 768px) {
+      font-size:36px
+    }
+
+    @media(min-width: 992px) {
+      font-size: 64px !important;
+      line-height: 80px !important;
+    }
+}
+strong {
+  position: relative;
+  max-width: max-content;
+  text-align: center;
+  color: var(--text);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary), var(--secondary) 50%, var(--text) 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 250% 100%;
+  background-position: 100%;
+  transition: all 275ms ease;
+  text-decoration: none;
+  background-position: 0 100%;
+}
+i {
+  border-bottom: 1px solid var(--primary);
+  border-bottom: 2px solid var(--secondary);
+}
+}

@@ -96,7 +96,7 @@ export default function TextTechnoSection({
                   width={0}
                   height={0}
                   sizes="100%"
-                  quality={100}
+                  quality={80}
                   src={primaryImage.contentImage.url}
                   alt={primaryImage?.header?.html || ""}
                 />

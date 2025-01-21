@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
 
@@ -9,8 +9,12 @@ interface GridBoxProps {
 const ExpandingCircleLinks = ({ gridBoxData }: GridBoxProps) => {
   return (
     <div className="w-full">
-      {gridBoxData.map((item) => (
-        <ExpandingCircleLink key={item.id} gridBox={item} />
+      {gridBoxData.map((item, index) => (
+        <ExpandingCircleLink
+          key={item.id}
+          gridBox={item}
+          isEven={index % 2 === 0}
+        />
       ))}
     </div>
   );
@@ -18,20 +22,62 @@ const ExpandingCircleLinks = ({ gridBoxData }: GridBoxProps) => {
 
 interface SingleGridBoxProps {
   gridBox: GridBoxFieldsFragment;
+  isEven: boolean;
 }
 
-const ExpandingCircleLink = ({ gridBox }: SingleGridBoxProps) => {
+const ExpandingCircleLink = ({ gridBox, isEven }: SingleGridBoxProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { amount: 0.2, once: true }); // Add once: true to maintain state
 
+  // Track scroll progress only after element is in view
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
+  // Calculate animation progress based on inView state
+  const animationProgress = useTransform(
+    scrollYProgress,
+    (value) => (isInView ? Math.min(1, value * 3) : 0) // Compress animation to 3 seconds
+  );
+
   // Transform values for different properties
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.5, 1]);
-  const borderRadius = useTransform(scrollYProgress, [0, 0.5], ["50%", "0%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const scale = useTransform(
+    animationProgress,
+    [0, 0.7, 1], // Adjust timing for circle-to-fullscreen
+    [0.3, 0.7, 1]
+  );
+
+  // Start with perfect circle (equal border radius) then animate to full screen
+  const borderRadius = useTransform(
+    animationProgress,
+    [0, 0.7, 1],
+    ["50% 50%", "50% 50%", "0% 0%"]
+  );
+
+  // Simplified opacity transform - just fade in and stay visible
+  const opacity = useTransform(animationProgress, [0, 0.2], [0, 1]);
+
+  // Transform x position from offset to center during expansion
+  const xOffset = isEven ? -200 : 200;
+  const translateX = useTransform(
+    animationProgress,
+    [0, 0.5, 1],
+    [xOffset, xOffset / 2, 0]
+  );
+
+  // Transform dimensions for the circle-to-fullscreen animation
+  const width = useTransform(
+    animationProgress,
+    [0, 0.7, 1],
+    ["min(100vh, 100vw)", "min(100vh, 100vw)", "100vw"]
+  );
+
+  const height = useTransform(
+    animationProgress,
+    [0, 0.7, 1],
+    ["min(100vh, 100vw)", "min(100vh, 100vw)", "100vh"]
+  );
 
   // Safely handle nullable fields
   const imageUrl = gridBox.boxImage?.url ?? "";
@@ -41,19 +87,41 @@ const ExpandingCircleLink = ({ gridBox }: SingleGridBoxProps) => {
   return (
     <div
       ref={containerRef}
-      className="h-screen w-full relative overflow-hidden"
+      className="h-screen w-full relative overflow-hidden flex items-center justify-center"
     >
+      {/* Centered Text Container */}
+      <div className="absolute z-20 text-center">
+        <h2
+          className="text-6xl px-4 lg:text-8xl font-bold text-[white] mix-blend-difference
+                 [text-shadow:-1px_-1px_0_#000,1px_-1px_0_#000,-1px_1px_0_#000,1px_1px_0_#000]"
+        >
+          {title}
+        </h2>
+      </div>
+      {gridBox.boxDescription && (
+        <div
+          className="text-white text-xl"
+          dangerouslySetInnerHTML={{ __html: gridBox.boxDescription.html }}
+        />
+      )}
+
+      {/* Animated Circle/Image Container */}
       <motion.a
         href={link}
         className="absolute inset-0 flex items-center justify-center"
         style={{
           scale,
           borderRadius,
+          x: translateX,
+          opacity,
+          width,
+          height,
+          margin: "auto",
+          aspectRatio: animationProgress.get() >= 0.7 ? "auto" : "1", // Remove aspect ratio constraint during final expansion
         }}
       >
-        {/* Background Image Container */}
         <motion.div
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full bg-black/50"
           style={{
             backgroundImage: `url(${imageUrl})`,
             backgroundSize: "cover",
@@ -61,29 +129,9 @@ const ExpandingCircleLink = ({ gridBox }: SingleGridBoxProps) => {
             scale,
             borderRadius,
           }}
-          initial={{ scale: 0.5 }}
+          initial={{ scale: 0.3 }}
           aria-label={title}
         />
-
-        {/* Text Overlay */}
-        <motion.div className="relative z-10 text-center px-4">
-          <motion.h2
-            className="text-6xl font-bold text-white mb-4"
-            style={{ opacity }}
-            initial={{ opacity: 0 }}
-          >
-            {title}
-          </motion.h2>
-
-          {gridBox.boxDescription && (
-            <motion.div
-              className="text-white text-xl"
-              style={{ opacity }}
-              initial={{ opacity: 0 }}
-              dangerouslySetInnerHTML={{ __html: gridBox.boxDescription.html }}
-            />
-          )}
-        </motion.div>
       </motion.a>
     </div>
   );

@@ -62,7 +62,7 @@ export default function DimensionNavigation({
   return (
     <>
       <div
-        className={`fixed top-[2px] z-[999] left-0 right-0 transition-all duration-[400ms] ${
+        className={`dimension-navigation fixed top-[2px] z-[999] left-0 right-0 transition-all duration-[400ms] ${
           navigationWrapperCssClass ? navigationWrapperCssClass : ""
         }`}
         id="navigation"
@@ -306,7 +306,8 @@ export default function DimensionNavigation({
                       <Image
                         className="w-[120px] md:w-[200px] max-h-[80px] cursor-pointer object-contain transition-all duration-[400ms] mr-auto"
                         src={navigation.navigationLogo?.url}
-                        alt=""
+                        priority
+                        alt={title || ""}
                         width={0}
                         height={0}
                         sizes="100%"

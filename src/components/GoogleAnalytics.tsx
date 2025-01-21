@@ -4,8 +4,8 @@ interface GoogleAnalyticsProps {
   analyticsId: string;
 }
 
-function GoogleAnalytics({ analyticsId }: GoogleAnalyticsProps) {
-  if (!analyticsId) return null; // Return null instead of an empty fragment
+const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ analyticsId }) => {
+  if (!analyticsId) return null;
 
   return (
     <>
@@ -22,12 +22,14 @@ function GoogleAnalytics({ analyticsId }: GoogleAnalyticsProps) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${analyticsId}');
+            gtag('config', '${analyticsId}', {
+              'anonymize_ip': true, // Optional: Anonymize user IPs
+            });
           `,
         }}
       />
     </>
   );
-}
+};
 
 export default GoogleAnalytics;

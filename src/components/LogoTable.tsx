@@ -4,6 +4,7 @@ import LogoTableGrid from "./LogoTableSections/LogoTableGrid";
 import LogoTableStack from "./LogoTableSections/LogoTableStack";
 import LogoTableCompact from "./LogoTableSections/LogoTableCompact";
 import LogoTableDefault from "./LogoTableSections/LogoTableDefault";
+import LogoTableShelf from "./LogoTableSections/LogoTableShelf";
 
 // card
 // chevron
@@ -45,6 +46,9 @@ export default function LogoTable({
 
   if (logoTableLayout === "compact" && logoTableItems.length >= 1)
     return <LogoTableCompact logoTableItems={logoTableItems} />;
+
+  if (logoTableLayout === "shelf" && logoTableItems.length >= 1)
+    return <LogoTableShelf logoTableItems={logoTableItems} />;
 
   return <LogoTableDefault logoTableItems={logoTableItems} />;
 }
