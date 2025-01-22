@@ -1,13 +1,6 @@
-import Vimeo from "@u-wave/react-vimeo";
 import Image from "next/image";
 import { Fragment, useState, useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
 import { Dialog, Transition } from "@headlessui/react";
 import ReactGA from "react-ga4";
 import parse from "html-react-parser";
@@ -17,6 +10,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
 import { PlayCircleIcon } from "@heroicons/react/24/outline";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import VimeoPlayer from "./VimeoPlayer";
 
 interface VideoOffsetSectionProps {
   videoData: VideoBoxFieldsFragment[];
@@ -136,7 +130,7 @@ export default function VideoSnapSection({
                             />
                           )}
                           {selectedVideo?.vimeoVideoId && (
-                            <Vimeo video={selectedVideo?.vimeoVideoId} />
+                            <VimeoPlayer videoId={selectedVideo.vimeoVideoId} />
                           )}
                         </div>
                         <button

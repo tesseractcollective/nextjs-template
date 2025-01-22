@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     domains: [
@@ -16,6 +15,8 @@ const nextConfig = {
         hostname: "**.graphassets.com",
       },
     ],
+    // Disable image optimization
+    unoptimized: true,
   },
   async rewrites() {
     return [

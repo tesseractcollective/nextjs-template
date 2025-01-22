@@ -1,6 +1,6 @@
-import Vimeo from "@u-wave/react-vimeo";
 import parse from "html-react-parser";
 import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
+import VimeoPlayer from "./VimeoPlayer";
 
 interface VideoStandardSectionProps {
   videoData: VideoBoxFieldsFragment[];
@@ -34,7 +34,10 @@ export default function VideoYoutubeSection({
                 className="absolute top-0 left-0 w-full h-full z-10  overflow-hidden rounded-2xl"
               />
             )}
-            {video?.vimeoVideoId && <Vimeo video={video.vimeoVideoId} />}
+
+            {video?.vimeoVideoId && (
+              <VimeoPlayer videoId={video.vimeoVideoId} />
+            )}
           </div>
         </div>
       ))}

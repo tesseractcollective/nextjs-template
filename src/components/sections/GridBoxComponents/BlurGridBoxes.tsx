@@ -31,7 +31,8 @@ export default function BlurGridBoxes({ gridBoxData }: GridBoxProps) {
                   width={0}
                   height={0}
                   sizes="100%"
-                  className="transition-transform duration-300 ease-in-out rounded-2xl object-cover"
+                  layout="fill"
+                  className="transition-transform duration-300 ease-in-out rounded-2xl object-cover w-full h-auto"
                 />
               )}
             </div>

@@ -1,4 +1,3 @@
-import Vimeo from "@u-wave/react-vimeo";
 import type { LayoutQuery } from "@/graphql/generated/graphql";
 import Sections from "@/components/sections/Sections";
 import ContentComponents from "@/components/ContentComponents";
@@ -10,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import VimeoPlayer from "@/components/VideoSections/VimeoPlayer";
 import "@/styles/videobox.scss";
 interface VideoBoxProps {
   videoTitle?: string;
@@ -76,7 +76,7 @@ export default function VideoBox({
                   title={videoTitle || ""}
                 />
               )}
-              {vimeoVideoId && <Vimeo video={vimeoVideoId} />}
+              {vimeoVideoId && <VimeoPlayer videoId={vimeoVideoId} />}
               <div className="absolute border border-secondary w-full h-full -left-4 -top-4 -z-10"></div>
               <div className="absolute border border-primary w-full h-full left-4 top-4 -z-10"></div>
             </div>
@@ -131,7 +131,9 @@ export default function VideoBox({
                               title={videoTitle || ""}
                             />
                           )}
-                          {vimeoVideoId && <Vimeo video={vimeoVideoId} />}
+                          {vimeoVideoId && (
+                            <VimeoPlayer videoId={vimeoVideoId} />
+                          )}
                           <div className="absolute border border-secondary w-full h-full -left-4 -top-4 z-0"></div>
                           <div className="absolute border border-primary w-full h-full left-4 top-4 z-0"></div>
                         </div>
@@ -183,7 +185,7 @@ export default function VideoBox({
           {youtubeVideoId && (
             <LiteYouTubeEmbed id={youtubeVideoId} title={videoTitle || ""} />
           )}
-          {vimeoVideoId && <Vimeo video={vimeoVideoId} />}
+          {vimeoVideoId && <VimeoPlayer videoId={vimeoVideoId} />}
         </div>
       )}
     </section>

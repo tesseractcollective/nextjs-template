@@ -1,4 +1,3 @@
-import Vimeo from "@u-wave/react-vimeo";
 import Image from "next/image";
 import { Fragment, useState, useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
@@ -17,6 +16,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
 import { PlayCircleIcon } from "@heroicons/react/24/outline";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import VimeoPlayer from "./VimeoPlayer";
 
 interface VideoStandardSectionProps {
   videoData: VideoBoxFieldsFragment[];
@@ -165,7 +165,9 @@ export default function VideoStandardSection({
                                 />
                               )}
                               {selectedVideo?.vimeoVideoId && (
-                                <Vimeo video={selectedVideo?.vimeoVideoId} />
+                                <VimeoPlayer
+                                  videoId={selectedVideo.vimeoVideoId}
+                                />
                               )}
                             </div>
                             <button

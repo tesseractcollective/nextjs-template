@@ -1,4 +1,3 @@
-import Vimeo from "@u-wave/react-vimeo";
 import Image from "next/image";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
@@ -10,6 +9,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import type { VideoBoxFieldsFragment } from "@/graphql/generated/graphql";
 import { PlayCircleIcon } from "@heroicons/react/24/outline";
 import VideoGridClipSection from "./VideoGridClipSection";
+import VimeoPlayer from "./VimeoPlayer";
 
 interface VideoGridSectionProps {
   videoData: VideoBoxFieldsFragment[];
@@ -133,7 +133,9 @@ export default function VideoGridSection({ videoData }: VideoGridSectionProps) {
                               />
                             )}
                             {selectedVideo?.vimeoVideoId && (
-                              <Vimeo video={selectedVideo?.vimeoVideoId} />
+                              <VimeoPlayer
+                                videoId={selectedVideo.vimeoVideoId}
+                              />
                             )}
                           </div>
                           <button

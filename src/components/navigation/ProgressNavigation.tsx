@@ -336,7 +336,8 @@ export default function ProgressNavigation({
                             small ? "max-h-12" : "max-h-16"
                           }`}
                           src={navigation.navigationLogo?.url}
-                          alt=""
+                          alt={title || ""}
+                          priority
                           width={0}
                           height={0}
                           sizes="100%"
