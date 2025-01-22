@@ -1,0 +1,32 @@
+.text-power-section {
+  h1 {
+      font-weight: 900 !important;
+      letter-spacing: -.04em !important;
+      margin: 0;
+      font-size: 36px;
+      font-weight: 800;
+      @media(min-width: 768px) {
+        font-size:48px
+      }
+  
+      @media(min-width: 992px) {
+        font-size: 78px !important;
+        line-height: 101px !important;
+      }
+  }
+  h2 {
+      font-weight: 900 !important;
+      letter-spacing: -.04em !important;
+      margin: 0;
+      font-size: 24px;
+      font-weight: 800;
+      @media(min-width: 768px) {
+        font-size:36px
+      }
+  
+      @media(min-width: 992px) {
+        font-size: 64px !important;
+        line-height: 80px !important;
+      }
+  }
+}

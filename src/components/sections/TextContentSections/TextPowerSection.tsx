@@ -6,14 +6,14 @@ import type {
 import parse from "html-react-parser";
 import { Fade } from "react-awesome-reveal";
 import LinkItem from "@/components/LinkItem";
-import "./TextTechnoSection.scss";
+import "./TextPowerSection.scss";
 
 interface TextCardsProps {
   textContentData: TextContentFieldsFragment[];
   callToActionData: CallToActionFieldsFragment[];
 }
 
-export default function TextTechnoSection({
+export default function TextPowerSection({
   textContentData,
   callToActionData,
 }: TextCardsProps) {
@@ -27,7 +27,7 @@ export default function TextTechnoSection({
   return (
     <>
       {!!textContentData && (
-        <div className="mx-auto max-w-6xl my-8 w-full px-4 text-techno-section py-8">
+        <div className="mx-auto max-w-6xl my-8 w-full px-4 text-power-section py-8">
           <Fade direction="up" triggerOnce>
             <div className="flex flex-wrap flex-row lg:flex-col items-center mx-auto w-full justify-center">
               {textContentData.map((textContentItem) => (
@@ -50,7 +50,7 @@ export default function TextTechnoSection({
                         </div>
                       )}
                       {textContentItem?.subHeader && (
-                        <div className="text-lg my-0 font-light py-0 parsed-mb-0 uppercase tracking-widest all-text-primary mx-auto w-full">
+                        <div className="text-lg my-0 font-light py-0 parsed-mb-0 uppercase tracking-widest mx-auto w-full">
                           {parse(textContentItem.subHeader.html)}
                         </div>
                       )}
