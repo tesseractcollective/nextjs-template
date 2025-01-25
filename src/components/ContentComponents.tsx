@@ -19,6 +19,7 @@ import Testimonials from "@/components/Testimonials";
 import Profiles from "@/components/Profiles";
 import Products from "@/components/Products";
 import ProductTabsMenuSection from "@/components/ProductSections/ProductTabsMenuSection";
+import ProductAllSection from "@/components/ProductSections/ProductAllSection";
 import ContactsSection from "@/components/ContactsSection";
 import type { PageFieldsFragment } from "@/graphql/generated/graphql";
 import { Event } from "@/components/Calendar/calendarHelpers";
@@ -105,6 +106,14 @@ export default function ContentComponents({
             />
           </section>
         )}
+      {elements?.elementJson?.ProductsAll && !!products && (
+        <section
+          className="product-menu-wrapper-content-components w-full"
+          id="product-menu"
+        >
+          <ProductAllSection products={products} />
+        </section>
+      )}
       {!!contentTags?.logoTableType && logoTables.length >= 1 && (
         <div>
           {logoTables &&

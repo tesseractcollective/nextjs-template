@@ -148,3 +148,31 @@
     background-color: var(--primary);
   }
 }
+
+.primary-outline-hover {
+  border: 1px solid var(--bg);
+  color: var(--secondary);
+  padding: 16px 12px;
+  font-size: 20px;
+  transition: all 300ms ease;
+  text-transform: capitalize;
+  background-color: var(--bg) !important;
+  &:hover, &:focus {
+    color: var(--text);
+    background-color: var(--primary);
+  }
+}
+
+.primary-filled-hover {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 16px 12px;
+  font-size: 20px;
+  transition: all 300ms ease;
+  text-transform: capitalize;
+  background-color: var(--primary);
+  &:hover, &:focus {
+    color: var(--bg);
+    background-color: var(--primary);
+  }
+}

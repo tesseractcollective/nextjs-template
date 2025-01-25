@@ -63,6 +63,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
           <Whatsapp
             contactNumber={page.whatsAppContactNumberFloatingButton}
             isSpanish={siteLibrary?.isSpanish || false}
+            metaDomain={siteLibrary?.metaDomain || ""}
           />
         )}
       </div>

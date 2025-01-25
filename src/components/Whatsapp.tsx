@@ -11,10 +11,12 @@ import React from "react";
 interface WhatsappProps {
   contactNumber: string;
   isSpanish?: boolean;
+  metaDomain?: string;
 }
 export default function Whatsapp({
   contactNumber,
   isSpanish,
+  metaDomain,
 }: WhatsappProps): ReactElement {
   const [open, setOpen] = useState<boolean>(false);
   const [whatsAppMessage, setWhatsappMessage] = useState("");
@@ -105,7 +107,7 @@ export default function Whatsapp({
                                         ? contactNumber
                                         : `https://api.whatsapp.com/send?phone=${encodeURIComponent(
                                             `${contactNumber}`
-                                          )}&text=${whatsAppMessage}`
+                                          )}&text=${whatsAppMessage} - ${metaDomain}`
                                     }
                                     target="_blank"
                                     className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-none py-4 text-sm font-semibold text-white bg-[#65EB82]"

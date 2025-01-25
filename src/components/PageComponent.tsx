@@ -1,13 +1,12 @@
 /* eslint-disable @next/next/no-script-component-in-head */
-import { FC } from "react";
+import React, { FC } from "react";
 import Head from "next/head";
 import { LayoutQuery } from "@/graphql/generated/graphql";
 import LayoutBlocks from "@/components/LayoutBlocks";
 import ThemeColors from "@/styles/ThemeColors";
-import Script from "next/script";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Event } from "@/components/Calendar/calendarHelpers";
-import React from "react";
+import FacebookPixel from "@/components/FacebookPixel";
 
 interface Props {
   layout: LayoutQuery;
@@ -26,8 +25,21 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
     metaGoogleConsoleVerification,
     analyticsId,
     facebookPixelId,
+    metaDomain,
+    twitterLink,
   } = layout.siteLibrary;
 
+  // Scrub metaDomain to avoid duplicating "https://" or "http://"
+  const scrubbedDomain =
+    metaDomain?.startsWith("http://") || metaDomain?.startsWith("https://")
+      ? metaDomain
+      : `https://${metaDomain}`;
+
+  // Construct the page URL dynamically using the scrubbed domain
+  const pageUrl = scrubbedDomain; // Add the current path if needed
+  const twitterHandle = twitterLink
+    ?.replace("https://twitter.com/", "")
+    ?.replace("https://x.com/", "");
   return (
     <>
       <Head>
@@ -57,26 +69,50 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
         {layout.page?.noIndex && (
           <meta name="robots" content="noindex,nofollow" />
         )}
-        {facebookPixelId && (
-          <Script
-            id="fb-pixel"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-              !function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-              n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];
-              s.parentNode.insertBefore(t,s)}(window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '${facebookPixelId}');
-              fbq('track', 'PageView');
-            `,
-            }}
-          />
+
+        {/* Open Graph Tags */}
+        {!!title && <meta property="og:title" content={title} />}
+        <meta
+          property="og:description"
+          content={layout.page?.seoDescription ?? metaDescription ?? ""}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        {!!title && <meta name="twitter:title" content={title} />}
+        <meta
+          name="twitter:description"
+          content={layout.page?.seoDescription ?? metaDescription ?? ""}
+        />
+        {!!twitterLink && <meta name="twitter:site" content={twitterLink} />}
+        {!!twitterHandle && (
+          <meta name="twitter:creator" content={`@${twitterHandle}`} />
         )}
+
+        {/* Canonical URL */}
+        <link rel="canonical" href={pageUrl} />
+
+        {/* Language and Locale */}
+        <meta http-equiv="content-language" content="en" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Viewport */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: title,
+            description: layout.page?.seoDescription ?? metaDescription ?? "",
+            url: pageUrl,
+            image: metaOgImage?.url,
+          })}
+        </script>
+        {facebookPixelId && <FacebookPixel facebookPixelId={facebookPixelId} />}
       </Head>
       {!!analyticsId && <GoogleAnalytics analyticsId={analyticsId} />}
       <ThemeColors siteLibrary={layout.siteLibrary} />
