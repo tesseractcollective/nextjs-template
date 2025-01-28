@@ -42,7 +42,7 @@ export default function PageHeaderSquare({
   const cssClass = pageHeaderWrapperCssClassProp || "";
 
   return (
-    <div className="w-full p-2">
+    <div className={`w-full p-2 ${cssClass}`}>
       {/* 16:9 aspect ratio container */}
       <div className="relative w-full h-0 pb-[56.25%]">
         {/* Content container */}

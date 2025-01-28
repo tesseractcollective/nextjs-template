@@ -50,14 +50,14 @@ export default function PageHeaderContent({
           <div className="flex flex-col md:flex-col items-center justify-center md:justify-start w-full">
             {!!pageHeaderTitleProp && (
               <Fade direction="left" triggerOnce>
-                <h1 className="text-3xl md:text-7xl xl:text-8xl text-shadow my-0 py-0 text-center text-primary font-bold w-full mx-auto">
+                <h1 className="text-3xl md:text-7xl xl:text-8xl my-0 py-0 text-center text-primary font-bold w-full mx-auto">
                   {pageHeaderTitleProp}
                 </h1>
               </Fade>
             )}
             {!!pageHeaderSubtitleProp && (
               <Fade direction="right" triggerOnce>
-                <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 md:ml-4 w-full">
+                <h2 className="my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 md:ml-4 w-full">
                   {pageHeaderSubtitleProp}
                 </h2>
               </Fade>

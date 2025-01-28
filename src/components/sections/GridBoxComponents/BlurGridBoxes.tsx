@@ -27,7 +27,7 @@ export default function BlurGridBoxes({ gridBoxData }: GridBoxProps) {
               <LinkItem
                 cssClass="w-full h-auto"
                 link={gridBoxItem.boxLink}
-                parentCssClass="relative w-full pb-[120%] rounded-2xl"
+                parentCssClass="relative w-full pb-[120%] rounded-2xl overflow-hidden"
               >
                 {gridBoxItem.boxImage?.url && (
                   <Image
@@ -38,7 +38,7 @@ export default function BlurGridBoxes({ gridBoxData }: GridBoxProps) {
                     height={0}
                     sizes="100%"
                     layout="fill"
-                    className="transition-transform duration-300 ease-in-out rounded-2xl object-cover w-full h-auto"
+                    className="transition-all duration-300 ease-in-out rounded-2xl object-cover w-full h-auto hover:shadow-xl shadow-none group-hover:scale-105 group-hover:rotate-3"
                   />
                 )}
               </LinkItem>
@@ -68,10 +68,10 @@ export default function BlurGridBoxes({ gridBoxData }: GridBoxProps) {
                 {gridBoxItem?.boxLink && (
                   <LinkItem
                     link={gridBoxItem.boxLink}
-                    cssClass="inline-block text-white font-semibold transition-all duration-300 ease-in-out hover:bg-black"
+                    cssClass="inline-block text-white font-semibold transition-all duration-300 ease-in-out group-hover:text-primary px-2 group-hover:pl-4 group-hover:pr-0 group-hover:scale-x-110"
                   >
                     <ArrowLongRightIcon
-                      className="h-6 w-6 flex"
+                      className="h-8 w-8 flex"
                       aria-hidden="true"
                     />
                   </LinkItem>

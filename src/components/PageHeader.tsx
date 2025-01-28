@@ -7,7 +7,7 @@ import LinkItem from "./LinkItem";
 import PageHeaderAngled from "./PageHeaders/PageHeaderAngled";
 import PageHeaderFull from "./PageHeaders/PageHeaderFull";
 import PageHeaderWavy from "./PageHeaders/PageHeaderWavy";
-import PageHeaderOverlay from "./PageHeaders/PageHeaderOverlay";
+import PageHeaderOverlap from "./PageHeaders/PageHeaderOverlap";
 import PageHeaderSplit from "./PageHeaders/PageHeaderSplit";
 import PageHeaderVideo from "./PageHeaders/PageHeaderVideo";
 import PageHeaderSharp from "./PageHeaders/PageHeaderSharp";
@@ -115,7 +115,7 @@ export default function PageHeader({
         />
       )}
       {pageWidthStyle === "overlap" && (
-        <PageHeaderOverlay
+        <PageHeaderOverlap
           pageHeaderTitleProp={pageHeaderTitleProp}
           pageHeaderSubtitleProp={pageHeaderSubtitleProp}
           pageHeaderWrapperCssClassProp={pageHeaderWrapperCssClassProp}

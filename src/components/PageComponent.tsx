@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-script-component-in-head */
 import React, { FC } from "react";
 import Head from "next/head";
 import { LayoutQuery } from "@/graphql/generated/graphql";
@@ -35,86 +34,85 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
       ? metaDomain
       : `https://${metaDomain}`;
 
-  // Construct the page URL dynamically using the scrubbed domain
-  const pageUrl = scrubbedDomain; // Add the current path if needed
+  const pageUrl = scrubbedDomain;
   const twitterHandle = twitterLink
     ?.replace("https://twitter.com/", "")
     ?.replace("https://x.com/", "");
+
+  const safeTitle = title || ""; // Ensure title is never undefined
+  const safeDescription = layout.page?.seoDescription || metaDescription || "";
+
   return (
     <>
       <Head>
-        {!!favicon && <link rel="shortcut icon" href={favicon.url} />}
-        {!!metaOgImage && (
-          <meta property="og:image" content={metaOgImage.url} />
-        )}
-        {!!metaOgImage && (
-          <meta name="twitter:image" content={metaOgImage.url} />
-        )}
+        {/* Basic Meta Tags */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta httpEquiv="Content-Language" content="en" />
+        <meta name="description" content={safeDescription} />
+        {safeTitle && <title>{safeTitle}</title>}
 
-        <meta
-          name="description"
-          content={layout.page?.seoDescription ?? metaDescription ?? ""}
-        />
-
-        {!!title && <title>{title}</title>}
-        {!!metaAppleTouchIcon && (
+        {/* Favicon and Apple Touch Icon */}
+        {favicon?.url && <link rel="shortcut icon" href={favicon.url} />}
+        {metaAppleTouchIcon?.url && (
           <link rel="apple-touch-icon" href={metaAppleTouchIcon.url} />
         )}
-        {!!metaGoogleConsoleVerification && (
+
+        {/* Open Graph Tags */}
+        <meta property="og:type" content="website" />
+        {safeTitle && <meta property="og:title" content={safeTitle} />}
+        <meta property="og:description" content={safeDescription} />
+        <meta property="og:url" content={pageUrl} />
+        {metaOgImage?.url && (
+          <meta property="og:image" content={metaOgImage.url} />
+        )}
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        {safeTitle && <meta name="twitter:title" content={safeTitle} />}
+        <meta name="twitter:description" content={safeDescription} />
+        {metaOgImage?.url && (
+          <meta name="twitter:image" content={metaOgImage.url} />
+        )}
+        {twitterLink && <meta name="twitter:site" content={twitterLink} />}
+        {twitterHandle && (
+          <meta name="twitter:creator" content={`@${twitterHandle}`} />
+        )}
+
+        {/* Google Verification */}
+        {metaGoogleConsoleVerification && (
           <meta
             name="google-site-verification"
             content={metaGoogleConsoleVerification}
           />
         )}
+
+        {/* Robots Meta Tag */}
         {layout.page?.noIndex && (
           <meta name="robots" content="noindex,nofollow" />
         )}
 
-        {/* Open Graph Tags */}
-        {!!title && <meta property="og:title" content={title} />}
-        <meta
-          property="og:description"
-          content={layout.page?.seoDescription ?? metaDescription ?? ""}
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={pageUrl} />
-
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        {!!title && <meta name="twitter:title" content={title} />}
-        <meta
-          name="twitter:description"
-          content={layout.page?.seoDescription ?? metaDescription ?? ""}
-        />
-        {!!twitterLink && <meta name="twitter:site" content={twitterLink} />}
-        {!!twitterHandle && (
-          <meta name="twitter:creator" content={`@${twitterHandle}`} />
-        )}
-
         {/* Canonical URL */}
         <link rel="canonical" href={pageUrl} />
-
-        {/* Language and Locale */}
-        <meta http-equiv="content-language" content="en" />
-        <meta property="og:locale" content="en_US" />
-
-        {/* Viewport */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: title,
-            description: layout.page?.seoDescription ?? metaDescription ?? "",
+            name: safeTitle,
+            description: safeDescription,
             url: pageUrl,
             image: metaOgImage?.url,
           })}
         </script>
+
+        {/* Facebook Pixel */}
         {facebookPixelId && <FacebookPixel facebookPixelId={facebookPixelId} />}
       </Head>
-      {!!analyticsId && <GoogleAnalytics analyticsId={analyticsId} />}
+
+      {analyticsId && <GoogleAnalytics analyticsId={analyticsId} />}
       <ThemeColors siteLibrary={layout.siteLibrary} />
       <LayoutBlocks layout={layout} events={events} />
     </>

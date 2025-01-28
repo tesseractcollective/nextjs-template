@@ -10,6 +10,7 @@ import ProductGridSection from "@/components/ProductSections/ProductGridSection"
 import ProductRotateSection from "@/components/ProductSections/ProductRotateSection";
 import ProductStackSection from "@/components/ProductSections/ProductsStackSection";
 import ProductsLightboxSection from "@/components/ProductSections/ProductsLightboxSection";
+import ProductMasonSection from "@/components/ProductSections/ProductMasonSection";
 
 interface ProductsProps {
   profileSectionTitle?: string;
@@ -60,5 +61,7 @@ export default function Products({
     return <ProductCardSection products={filteredProducts} />;
   if (productLayoutStyle === "slider")
     return <ProductSliderSection products={filteredProducts} type={type} />;
+  if (productLayoutStyle === "mason")
+    return <ProductMasonSection products={filteredProducts} type={type} />;
   return <ProductDefaultSection products={filteredProducts} />;
 }

@@ -1,21 +1,6 @@
 import Image from "next/image";
 import Slider from "react-slick";
-import LightGallery from "lightgallery/react";
-
-// import styles
-import "lightgallery/css/lightgallery.css";
-import "lightgallery/css/lg-zoom.css";
-import "lightgallery/css/lg-thumbnail.css";
-
-// If you want you can use SCSS instead of css
-import "lightgallery/scss/lightgallery.scss";
-import "lightgallery/scss/lg-zoom.scss";
-
-// import plugins if you need
-import lgThumbnail from "lightgallery/plugins/thumbnail";
-import lgZoom from "lightgallery/plugins/zoom";
-import { Fade, Zoom } from "react-awesome-reveal";
-import type { Swiper as SwiperType } from "swiper";
+import { Fade } from "react-awesome-reveal";
 import { Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import GalleryInfinite from "./elements/GalleryInfinite";
@@ -23,6 +8,7 @@ import GalleryCarousel from "@/components/GallerySections/GalleryCarousel";
 import GalleryMixSection from "@/components/GallerySections/GalleryMixSection";
 import GallerySliderSection from "@/components/GallerySections/GallerySliderSection";
 import React from "react";
+import GalleryLightbox from "./GallerySections/GalleryLightbox";
 
 interface GalleryProps {
   galleryData?: {
@@ -177,39 +163,7 @@ export default function GallerySection({
     );
   }
   if (galleryLayout === "lightbox" && gallery.length >= 1) {
-    return (
-      <div className="my-16 magic-grid block h-full">
-        <div className="flex px-4 max-w-8xl mx-auto">
-          <LightGallery
-            speed={500}
-            download={false}
-            plugins={[lgThumbnail, lgZoom]}
-            elementClassNames="flex flex-wrap flex-row w-full gap-4 mx-auto items-center justify-center"
-          >
-            {gallery.map((finalImage, index) => (
-              <a
-                href={finalImage.url}
-                key={finalImage.url}
-                className="relative flex flex-wrap h-32 md:h-64 w-32 md:w-64 aspect-1 transition-all hover:cursor-pointer"
-                data-sub-html={finalImage.caption}
-              >
-                <Image
-                  src={finalImage.url}
-                  alt=""
-                  sizes="100%"
-                  width={0}
-                  height={0}
-                  className="h-full w-full object-cover absolute inset-0"
-                />
-                {/* <span className="h-full w-full object-cover absolute inset-0">
-                  {finalImage.caption}
-                </span> */}
-              </a>
-            ))}
-          </LightGallery>
-        </div>
-      </div>
-    );
+    return <GalleryLightbox galleryData={gallery} />;
   }
   if (galleryLayout === "rotate" && gallery.length >= 1) {
     return (
@@ -325,12 +279,10 @@ export default function GallerySection({
   }
   if (galleryLayout === "slider" && gallery.length >= 2) {
     return (
-      <div className="my-8 px-4 max-w-6xl mx-auto">
-        <GallerySliderSection
-          beforeImage={gallery[0].url}
-          afterImage={gallery[1].url}
-        />
-      </div>
+      <GallerySliderSection
+        beforeImage={gallery[0].url}
+        afterImage={gallery[1].url}
+      />
     );
   }
   if (gallery.length >= 1) {

@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 
 interface BeforeAfterProps {
   beforeImage: string;
@@ -13,119 +14,164 @@ const GallerySliderSection: React.FC<BeforeAfterProps> = ({
 }) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
 
-  const handleMove = useCallback(
-    (
-      event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
-    ) => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      const rect = container.getBoundingClientRect();
-      const x =
-        "touches" in event
-          ? event.touches[0].clientX - rect.left
-          : event.clientX - rect.left;
-
-      const percentage = Math.min(Math.max((x / rect.width) * 100, 0), 100);
-      setSliderPosition(percentage);
-    },
-    []
-  );
-
-  const handleTouchMove = useCallback((event: TouchEvent) => {
+  const handleMove = useCallback((clientX: number) => {
     const container = containerRef.current;
     if (!container) return;
 
     const rect = container.getBoundingClientRect();
-    const x = event.touches[0].clientX - rect.left;
+    const x = clientX - rect.left;
     const percentage = Math.min(Math.max((x / rect.width) * 100, 0), 100);
     setSliderPosition(percentage);
   }, []);
+
+  const handleMouseMove = useCallback(
+    (event: MouseEvent) => {
+      if (isDragging.current) {
+        handleMove(event.clientX);
+      }
+    },
+    [handleMove]
+  );
+
+  const handleTouchMove = useCallback(
+    (event: TouchEvent) => {
+      if (isDragging.current) {
+        handleMove(event.touches[0].clientX);
+      }
+    },
+    [handleMove]
+  );
+
+  const handleMouseUp = useCallback(() => {
+    isDragging.current = false;
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseUp);
+  }, [handleMouseMove]);
+
+  const handleTouchEnd = useCallback(() => {
+    isDragging.current = false;
+    document.removeEventListener("touchmove", handleTouchMove);
+    document.removeEventListener("touchend", handleTouchEnd);
+  }, [handleTouchMove]);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const handleMouseUp = () => {
-      document.removeEventListener("mousemove", handleMove as any);
-      document.removeEventListener("touchmove", handleTouchMove);
+    const handleContainerMouseMove = (event: MouseEvent) => {
+      if (!isDragging.current) {
+        handleMove(event.clientX);
+      }
     };
 
-    container.addEventListener("touchmove", handleTouchMove);
+    container.addEventListener("mousemove", handleContainerMouseMove);
+
+    document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("touchend", handleMouseUp);
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleTouchEnd);
 
     return () => {
+      container.removeEventListener("mousemove", handleContainerMouseMove);
+      document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("touchend", handleMouseUp);
-      container.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [handleMove, handleTouchMove]);
+  }, [
+    handleMouseMove,
+    handleMouseUp,
+    handleTouchMove,
+    handleTouchEnd,
+    handleMove,
+  ]);
 
   return (
-    <div
-      className="relative w-full aspect-[16/9] overflow-hidden select-none"
-      ref={containerRef}
-      onMouseDown={() => {
-        document.addEventListener("mousemove", handleMove as any);
-      }}
-      onMouseMove={handleMove}
-      onTouchStart={() => {
-        containerRef.current?.addEventListener("touchmove", handleTouchMove);
-      }}
-    >
-      {/* After Image (Background) */}
-      <div className="absolute inset-0">
-        <Image
-          src={afterImage}
-          alt="After"
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
-          priority
-        />
-      </div>
-
-      {/* Before Image (Clipped) */}
+    <div className="relative my-16 px-2">
       <div
-        className="absolute inset-0"
+        className="gallery-slider-section relative w-full overflow-hidden select-none max-w-8xl px-4 mx-auto"
+        ref={containerRef}
         style={{
-          clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
+          minHeight: "28vh", // Primary height control
+          height: "100%", // Ensures visibility on small screens
+          maxHeight: "70vh", // Ensures visibility on small screens
+          aspectRatio: "16/9", // Fallback aspect ratio
+        }}
+        onMouseDown={() => {
+          isDragging.current = true;
+        }}
+        onTouchStart={() => {
+          isDragging.current = true;
         }}
       >
-        <Image
-          src={beforeImage}
-          alt="Before"
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
-          priority
-        />
-      </div>
-
-      {/* Slider Handle */}
-      <div
-        className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
-        style={{
-          left: `${sliderPosition}%`,
-          transform: "translateX(-50%)",
-        }}
-      >
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-          <div className="flex gap-0.5">
-            <div className="w-0.5 h-4 bg-gray-400" />
-            <div className="w-0.5 h-4 bg-gray-400" />
-          </div>
+        {/* After Image (Background) */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src={afterImage}
+            alt="After"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </div>
-      </div>
 
-      {/* Labels */}
-      <div className="absolute bottom-4 left-4 bg-black/50 text-white px-2 py-1 rounded text-sm">
-        Before
-      </div>
-      <div className="absolute bottom-4 right-4 bg-black/50 text-white px-2 py-1 rounded text-sm">
-        After
+        {/* Before Image (Clipped) */}
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
+          }}
+        >
+          <Image
+            src={beforeImage}
+            alt="Before"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+
+        {/* Slider Handle */}
+        <motion.div
+          className="absolute top-0 bottom-0 w-4 bg-transparent cursor-ew-resize touch-pan-x"
+          style={{
+            left: `${sliderPosition}%`,
+            transform: "translateX(-50%)",
+          }}
+          drag="x"
+          dragConstraints={containerRef}
+          dragElastic={0}
+          dragMomentum={false}
+          onDrag={(_, info) => {
+            const container = containerRef.current;
+            if (!container) return;
+
+            const rect = container.getBoundingClientRect();
+            const percentage = Math.min(
+              Math.max(((info.point.x - rect.left) / rect.width) * 100, 0),
+              100
+            );
+            setSliderPosition(percentage);
+          }}
+        >
+          <div className="w-1 h-full bg-white mx-auto" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 md:w-8 md:h-8 bg-primary rounded-full shadow-lg flex items-center justify-center">
+            <div className="flex gap-0.5">
+              <ArrowLeftIcon className="w-5 h-5 md:w-4 md:h-4 text-gray-400" />
+              <ArrowRightIcon className="w-5 h-5 md:w-4 md:h-4 text-gray-400" />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Labels */}
+        <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4 bg-black/50 text-white px-2 py-1 rounded text-xs md:text-sm">
+          Before
+        </div>
+        <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 bg-black/50 text-white px-2 py-1 rounded text-xs md:text-sm">
+          After
+        </div>
       </div>
     </div>
   );
