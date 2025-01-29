@@ -3,12 +3,13 @@ import Slider from "react-slick";
 import { Fade } from "react-awesome-reveal";
 import { Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import GalleryInfinite from "./elements/GalleryInfinite";
+import GalleryInfinite from "./GallerySections/GalleryInfinite";
 import GalleryCarousel from "@/components/GallerySections/GalleryCarousel";
 import GalleryMixSection from "@/components/GallerySections/GalleryMixSection";
 import GallerySliderSection from "@/components/GallerySections/GallerySliderSection";
 import React from "react";
 import GalleryLightbox from "./GallerySections/GalleryLightbox";
+import GalleryGrid from "./GallerySections/GalleryGrid";
 
 interface GalleryProps {
   galleryData?: {
@@ -101,35 +102,10 @@ export default function GallerySection({
     );
   }
   if (galleryLayout === "grid" && gallery.length >= 1) {
-    return (
-      <div className="my-0 magic-grid block h-full">
-        <div className="block px-4 max-w-8xl mx-auto">
-          <div className="grid grid-cols-3 gap-8">
-            <Fade triggerOnce cascade damping={0.05} direction="up">
-              {finalImages.map((finalImage, index) => (
-                <div
-                  key={finalImage}
-                  className=" aspect-1 block mx-auto overflow-hidden"
-                  id={`gallery-${index}`}
-                >
-                  <Image
-                    src={finalImage}
-                    alt=""
-                    className="object-cover block mx-auto h-full w-full aspect-1"
-                    sizes="100%"
-                    width={0}
-                    height={0}
-                  />
-                </div>
-              ))}
-            </Fade>
-          </div>
-        </div>
-      </div>
-    );
+    return <GalleryGrid galleryData={gallery} />;
   }
   if (galleryLayout === "infinite" && finalImages.length >= 1) {
-    return <GalleryInfinite finalImages={finalImages} />;
+    return <GalleryInfinite galleryData={gallery} />;
   }
   if (galleryLayout === "mason" && finalImages.length >= 1) {
     return (

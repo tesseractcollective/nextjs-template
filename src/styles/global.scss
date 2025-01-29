@@ -1254,3 +1254,7 @@ h4, h5, h6  {color: var(--text);}
 .shadow-soft {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.015) 0px 30px 60px -30px;
 }
+
+.shadow-softer {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 25px 50px -10px;
+}

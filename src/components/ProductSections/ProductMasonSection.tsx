@@ -43,13 +43,13 @@ export default function ProductCompactSection({
             {products.map((product) => (
               <div
                 key={product.id}
-                className={`flex flex-col bg-bg-secondary p-4 rounded items-center gap-x-4 w-full border-bg border max-w-2xl mt-16 shadow-soft ${
-                  product?.enableProduct ? "border border-primary" : ""
+                className={`flex flex-col bg-bg-secondary p-4 rounded items-center gap-x-4 w-full border-bg border max-w-2xl mt-16 shadow-softer ${
+                  product?.enableProduct ? "border-primary" : ""
                 }`}
               >
                 {product?.gallery[0] && (
                   <Image
-                    className="h-48 w-48 rounded-full object-cover -mt-28 mb-4"
+                    className="h-48 w-48 rounded-full object-cover -mt-28 mb-8"
                     width={72}
                     height={72}
                     sizes="100%"
@@ -59,9 +59,9 @@ export default function ProductCompactSection({
                 )}
                 <div className="flex flex-col">
                   {product.name && (
-                    <div className="text-4xl uppercase font-bold my-0 py-0 parsed-mb-0 mb-2">
+                    <h2 className="text-4xl uppercase font-bold my-0 py-0 parsed-mb-0 mb-2">
                       {parse(product.name)}
-                    </div>
+                    </h2>
                   )}
                   {product?.description && (
                     <div className="text-md my-0 text-text-color opacity-80 py-0 parsed-mb-0 lowercase body-parsed-text">
