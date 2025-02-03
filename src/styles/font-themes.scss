@@ -242,9 +242,6 @@
 }
 
 .dmserif-theme {
-  // @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
-  
-  // Mixin for DM Serif Text font styles
   @mixin serif-font-styles {
     font-family: "DM Serif Text", serif !important;
     font-optical-sizing: auto;
@@ -260,6 +257,24 @@
     font-family: "Wix Madefor Display", sans-serif !important;
   }
 }
+
+.copperplate-theme{
+  @mixin serif-font-styles {
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy !important;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  
+  // Apply mixin to desired elements
+  h1, h2, h3, h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong, h4, h5, h6, span, div, em {
+    @include serif-font-styles;
+    font-weight: bold;
+  }
+  p, button:not([class^="lg-"]), button, a, p strong {
+    font-family: "Wix Madefor Display", sans-serif !important;
+  }
+}
+
 .railroad-theme {
   @import url("https://use.typekit.net/zkg3squ.css");
   h1, h2, h3, h1 *, h2 *, h3 * {

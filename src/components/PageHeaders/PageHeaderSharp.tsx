@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { Fade, Zoom, Slide } from "react-awesome-reveal";
 import parse from "html-react-parser";
+import { Fade } from "react-awesome-reveal";
 import type { CallToActionFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "../LinkItem";
+import "./PageHeaderSharp.scss";
 
 interface PageHeaderProps {
   pageHeaderTitleProp?: string;
@@ -20,50 +21,15 @@ export default function PageHeaderSharp({
   pageHeaderSubtitleProp,
   pageHeaderWrapperCssClassProp,
   pageHeaderImageProp,
-  pageWidthStyle,
   hideHeader,
   pageCallToAction,
 }: PageHeaderProps) {
-  const [scroll, setScroll] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScroll(window.pageYOffset > 200);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      // Clean up the event listener when the component unmounts
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   if (hideHeader === true) return null;
 
   const cssClass = pageHeaderWrapperCssClassProp || "";
 
-  // - angled √
-  // - Content √
-  // - diagonal √
-  // - fixed
-  // - Full
-  // - gradient √
-  // - modern √
-  // - moon √
-  // - motion
-  // - netflix √
-  // - overlap √
-  // - page
-  // - parallax √
-  // - power √
-  // - sharp √
-  // - split √
-  // - square
-  // - techno
-  // - video √
-  // - wavy
-
   return (
-    <div className="bg-text-color">
+    <div className={`${cssClass}`}>
       <section className="pt-44 pb-44 h-full relative h-90vh flex items-center justify-center flex-col sharp-header">
         <div className="bg-[#000] w-full h-full absolute inset-0">
           <div
@@ -91,7 +57,7 @@ export default function PageHeaderSharp({
                   callToActionItem?.ctaLink && (
                     <div
                       key={callToActionItem.ctaLink}
-                      className="text-center mx-auto"
+                      className="text-center mx-auto gap-2"
                     >
                       <LinkItem
                         link={callToActionItem.ctaLink}
@@ -103,7 +69,7 @@ export default function PageHeaderSharp({
                                 callToActionItem.ctaPrimary
                                   ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full"
                                   : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl !rounded-full"
-                              } mr-2 max-w-max`
+                              } max-w-max`
                         }
                       />
                     </div>

@@ -17,7 +17,6 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
 import useViewport from "@/app/hooks/useViewport";
-import { MinusIcon } from "@heroicons/react/20/solid";
 import "./ProgressNavigation.scss";
 
 export interface NavProps {

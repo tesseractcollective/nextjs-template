@@ -55,6 +55,9 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
           pageWidthStyle={page?.pageWidthStyle || undefined}
           hideHeader={page?.hideHeader || undefined}
           pageCallToAction={page?.pageCallToAction || undefined}
+          pageHeaderWrapperCssClassProp={
+            page?.contentPageJson?.headerClass || undefined
+          }
         />
       )}
       <div>

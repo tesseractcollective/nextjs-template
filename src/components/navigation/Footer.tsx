@@ -121,7 +121,7 @@ function Footer({
               {wideColumns.map((item, index) => (
                 <div
                   key={`footer-col-${index++}`}
-                  className={`flex items-center mx-auto justify-center text-center relative my-4 md:my-0 flex-col ${
+                  className={`flex items-center mx-auto justify-center text-center relative my-4 md:my-0 flex-col gap-y-2 ${
                     item?.footerColumnCssWrapper || ""
                   }`}
                   id={`footer-col-${index + 1}`}
@@ -137,12 +137,12 @@ function Footer({
                     />
                   )}
                   {!!item.footerTitle && (
-                    <h3 className="text-xs font-bold text-text-color uppercase tracking-widest opacity-90">
+                    <h3 className="text-md font-bold text-text-color uppercase tracking-widest opacity-90">
                       {item.footerTitle}
                     </h3>
                   )}
                   {!!item?.footerText?.html && (
-                    <div className="text-xs font-medium text-text-color max-w-max body-parsed-text leading-none ring-opacity-90 opacity-80">
+                    <div className="text-xs font-medium text-text-color max-w-4xl body-parsed-text leading-none ring-opacity-90 opacity-80">
                       {parse(item.footerText?.html)}
                     </div>
                   )}

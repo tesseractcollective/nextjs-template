@@ -43,8 +43,10 @@ export default function ProductCompactSection({
             {products.map((product) => (
               <div
                 key={product.id}
-                className={`flex flex-col bg-bg-secondary p-4 rounded items-center gap-x-4 w-full border-bg border max-w-2xl mt-16 shadow-softer ${
-                  product?.enableProduct ? "border-primary" : ""
+                className={`flex flex-col p-4 rounded items-center gap-x-4 w-full max-w-2xl mt-16 shadow-softer border-2 ${
+                  product?.enableProduct
+                    ? "bg-text-color all-text-dark border-primary"
+                    : "bg-bg-secondary border-bg"
                 }`}
               >
                 {product?.gallery[0] && (
