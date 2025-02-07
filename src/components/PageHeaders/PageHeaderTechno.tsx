@@ -36,7 +36,7 @@ const MobileHeader: React.FC<PageHeaderProps> = ({
   pageHeaderSubtitleProp,
   pageHeaderImageProp,
 }) => (
-  <div className="relative w-full min-h-screen bg-black">
+  <div className="relative w-full bg-black">
     <div className="relative w-full h-64">
       {pageHeaderImageProp && (
         <Image
@@ -50,7 +50,7 @@ const MobileHeader: React.FC<PageHeaderProps> = ({
     </div>
     <div className="relative px-4 py-8">
       {pageHeaderTitleProp && (
-        <h1 className="text-3xl font-bold text-white mb-4">
+        <h1 className="text-3xl font-bold text-white mb-4 text-center">
           {pageHeaderTitleProp}
         </h1>
       )}

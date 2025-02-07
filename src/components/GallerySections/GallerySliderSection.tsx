@@ -166,10 +166,10 @@ const GallerySliderSection: React.FC<BeforeAfterProps> = ({
         </motion.div>
 
         {/* Labels */}
-        <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4 bg-black/50 text-white px-2 py-1 rounded text-xs md:text-sm">
+        <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4 bg-primary text-text-color px-2 py-1 rounded text-xs md:text-sm">
           Before
         </div>
-        <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 bg-black/50 text-white px-2 py-1 rounded text-xs md:text-sm">
+        <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 bg-primary text-text-color px-2 py-1 rounded text-xs md:text-sm">
           After
         </div>
       </div>

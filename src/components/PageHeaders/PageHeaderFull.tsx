@@ -4,6 +4,7 @@ import { Fade, Zoom, Slide } from "react-awesome-reveal";
 import parse from "html-react-parser";
 import type { CallToActionFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "../LinkItem";
+
 interface PageHeaderProps {
   pageHeaderTitleProp?: string;
   pageHeaderSubtitleProp?: string;
@@ -23,39 +24,55 @@ export default function PageHeaderFull({
   hideHeader,
   pageCallToAction,
 }: PageHeaderProps) {
+  const [scroll, setScroll] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScroll(window.pageYOffset > 200);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      // Clean up the event listener when the component unmounts
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  if (hideHeader === true) return null;
+
   const cssClass = pageHeaderWrapperCssClassProp || "";
 
   return (
-    <section className={`relative "w-full pb-4 h-[30rem] ${cssClass}`}>
-      <div aria-hidden="true" className="relative overflow-hidden">
-        {!!pageHeaderImageProp && (
-          <Fade direction="up" triggerOnce>
+    <div className={`w-full ${cssClass}`}>
+      {/* 16:9 aspect ratio container */}
+      <div className="relative w-full h-0 pb-[56.25%]">
+        {/* Content container */}
+        <div className="absolute inset-0 header-overlay topper">
+          {!!pageHeaderImageProp && (
             <Image
               src={pageHeaderImageProp}
               alt=""
               width={0}
               height={0}
               sizes="100%"
-              className="h-[30rem] w-full object-cover object-center"
+              quality={100}
+              className="w-full h-full object-cover"
             />
-          </Fade>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark section-fade-invert" />
-      </div>
-      <div className="absolute bottom-1/3 left-0 right-0 w-full mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
-        <Fade direction="up" triggerOnce>
-          {!!pageHeaderTitleProp && (
-            <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold uppercase">
+          )}
+
+          {/* Dark overlay */}
+          <div className="absolute bg-gradient-to-t from-[#000] z-20 h-32 opacity-70 left-0 right-0 bottom-0" />
+
+          {/* Content */}
+          <div className="absolute z-30 inset-0 p-4 md:p-8 lg:p-12 flex flex-col justify-end items-center">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-overlay mb-2 md:mb-4 text-shadow text-center">
               {pageHeaderTitleProp}
-            </h1>
-          )}
-          {!!pageHeaderSubtitleProp && (
-            <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-lg opacity-80 text-tertiary">
+            </h3>
+            <p className="text-lg text-text-overlay max-w-prose text-shadow text-center">
               {pageHeaderSubtitleProp}
-            </h2>
-          )}
-        </Fade>
+            </p>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

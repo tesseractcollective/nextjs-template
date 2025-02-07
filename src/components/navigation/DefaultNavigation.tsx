@@ -76,7 +76,7 @@ export default function DefaultNavigation({
         <AccouncementBar
           accouncementText={navigation.announcementText}
           accouncementLink={navigation?.announcementLink || ""}
-          cssClassWrapper="fixed w-full z-[998] text-center !bg-bg-secondary text-bg"
+          cssClassWrapper="fixed w-full z-[998] text-center !bg-bg-secondary text-text-color"
         />
       )}
       <div
@@ -334,8 +334,10 @@ export default function DefaultNavigation({
                   <span className="sr-only">{title}</span>
                   <Fade direction="down" triggerOnce>
                     <Image
-                      className={`max-w-[240px] ml-0 cursor-pointer object-contain transition-all h-full mr-auto flex duration-[400ms] ${
-                        small ? "max-h-10" : "max-h-20"
+                      className={`max-w-[12rem] lg:max-w-[15rem] ml-0 cursor-pointer object-contain transition-all h-full mr-auto flex duration-400 ${
+                        small
+                          ? "max-h-[2rem] lg:max-h-[2.5rem]"
+                          : "max-h-[4rem] lg:max-h-[5rem]"
                       }`}
                       src={navigation.navigationLogo?.url}
                       alt=""
@@ -525,7 +527,7 @@ export default function DefaultNavigation({
                                 link={mainNavigationItem?.link}
                                 label={mainNavigationItem?.label}
                                 activeClassName="!text-primary"
-                                cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold ${
+                                cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold p-1 ${
                                   small
                                     ? "text-xs md:text-sm"
                                     : "text-xs sm:text-sm md:text-base"
