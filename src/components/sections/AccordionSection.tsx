@@ -1,6 +1,7 @@
+import React from "react";
 import { Disclosure, Transition } from "@headlessui/react";
 import parse from "html-react-parser";
-import { MinusIcon } from "@heroicons/react/20/solid";
+import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import type {
   AccordionFieldsFragment,
@@ -8,7 +9,6 @@ import type {
 } from "@/graphql/generated/graphql";
 import VideoPlaylistBox from "@/components/VideoPlaylistBox";
 import VideoBox from "@/components/VideoBox";
-import "./AccordionSection.scss";
 
 interface AccordionProps {
   accordionData: AccordionFieldsFragment[];
@@ -19,118 +19,101 @@ export default function Accordion({
   accordionData,
   siteLibrary,
 }: AccordionProps) {
-  if (!siteLibrary) return <></>;
-  if (accordionData?.length === 0) return <></>;
+  if (!siteLibrary || accordionData?.length === 0) return null;
+
   return (
-    <div className="w-full px-4 py-8 flex items-center mx-auto max-h-max">
-      <div className="mx-auto w-full rounded-2xl max-w-[800px] p-2">
-        {accordionData.map((item) => {
-          return (
-            <Disclosure key={item.contentHeader?.html}>
-              {({ open }) => (
-                <div className="border-b border-primary block rounded-md bg-bg">
-                  {!!item.contentHeader?.html && (
-                    <Disclosure.Button className="flex w-full justify-between items-center rounded-md text-left text-xs md:text-sm font-medium text-indigo-500 hover:text-text-color focus-visible:text-text-color hover:bg-indigo-800 focus:outline-none focus-visible:ring focus-visible:ring-indigo-900 focus-visible:ring-opacity-75 transition-all duration-300 bg-bg-secondary overflow-hidden relative px-4 cursor-pointer">
-                      <div
-                        className={`ml-3 font-bold text-base md:text-xl py-4 w-[90%] accordion-header ${
-                          open ? "accordion-header-active" : ""
-                        }`}
-                      >
-                        {parse(item.contentHeader?.html)}
-                      </div>
-                      <div
-                        className={`relative text-text-color h-6 w-6 rounded-full transition-all ${
-                          open
-                            ? "bg-gradient-to-tr from-primary to-secondary bg-opacity-100"
-                            : "bg-gradient-to-tr from-transparent to-transparent bg-opacity-0"
-                        }`}
-                      >
-                        <MinusIcon
-                          className={`absolute w-6 h-6 transition-all duration-300 ${
-                            open ? "" : "rotate-180 transform"
-                          }`}
+    <div className="w-full max-w-3xl mx-auto px-4 py-8">
+      <div className="space-y-2">
+        {accordionData.map((item) => (
+          <Disclosure key={item.contentHeader?.html}>
+            {({ open }) => (
+              <div
+                className={`overflow-hidden rounded-lg bg-bg backdrop-blur-lg outline transition-all ${
+                  open ? "outline-primary" : "outline-none"
+                }`}
+              >
+                {!!item.contentHeader?.html && (
+                  <Disclosure.Button className="flex w-full items-center justify-between px-6 py-4 text-left transition-all duration-200 hover:bg-white/10">
+                    <span className={`text-lg font-bold text-text-color`}>
+                      {parse(item.contentHeader?.html)}
+                    </span>
+                    <ChevronUpIcon
+                      className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${
+                        open ? "rotate-180 transform" : ""
+                      }`}
+                    />
+                  </Disclosure.Button>
+                )}
+
+                <Transition
+                  show={open}
+                  enter="transition-all duration-300 ease-out"
+                  enterFrom="transform -translate-y-2 opacity-0"
+                  enterTo="transform translate-y-0 opacity-100"
+                  leave="transition-all duration-200 ease-in"
+                  leaveFrom="transform translate-y-0 opacity-100"
+                  leaveTo="transform -translate-y-2 opacity-0"
+                >
+                  <Disclosure.Panel static className="px-6 pb-6">
+                    {!!item.contentImage?.url && (
+                      <div className="relative my-4 overflow-hidden rounded-lg">
+                        <Image
+                          src={item.contentImage.url}
+                          alt=""
+                          className="w-full object-cover"
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                          }}
                         />
                       </div>
-                    </Disclosure.Button>
-                  )}
-                  <Transition
-                    show={open}
-                    enter="transition-all duration-300 ease-in-out"
-                    enterFrom="transform scale-95 opacity-0"
-                    enterTo="transform scale-100 opacity-100"
-                    leave="transition-all duration-300 ease-in-out"
-                    leaveFrom="transform scale-100 opacity-100"
-                    leaveTo="transform scale-95 opacity-0"
-                  >
-                    <Disclosure.Panel
-                      static
-                      className="px-6 py-2 text-sm text-text-color opacity-90 block body-parsed-text content-large content-no-mb my-4"
-                    >
-                      {!!item.contentImage?.url && (
-                        <div className="relative">
-                          <Image
-                            src={item.contentImage.url}
-                            alt=""
-                            className="mx-auto block object-contain"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            style={{
-                              width: "auto",
-                              height: "auto",
-                              margin: "0 auto",
-                            }}
+                    )}
+
+                    {item.contentDescription?.html && (
+                      <div className="prose prose-invert max-w-none">
+                        {parse(item.contentDescription?.html)}
+                      </div>
+                    )}
+
+                    {!!item.videoBox && (
+                      <div key={Math.random()}>
+                        {item.videoBox?.youtubePlaylistId ? (
+                          <VideoPlaylistBox
+                            videoTitle={item.videoBox?.videoTitle || undefined}
+                            youtubePlaylistId={item.videoBox.youtubePlaylistId}
+                            youtubeApiKey={siteLibrary.youtubeApiKey}
                           />
-                        </div>
-                      )}
-                      {item.contentDescription?.html && (
-                        <div className="py-4">
-                          {parse(item.contentDescription?.html)}
-                        </div>
-                      )}
-                      {!!item.videoBox && (
-                        <div key={Math.random()}>
-                          {item.videoBox?.youtubePlaylistId ? (
-                            <VideoPlaylistBox
-                              videoTitle={
-                                item.videoBox?.videoTitle || undefined
-                              }
-                              youtubePlaylistId={
-                                item.videoBox.youtubePlaylistId
-                              }
-                              youtubeApiKey={siteLibrary.youtubeApiKey}
-                            />
-                          ) : (
-                            <VideoBox
-                              videoTitle={
-                                item.videoBox?.videoTitle || undefined
-                              }
-                              vimeoVideoId={
-                                item.videoBox?.vimeoVideoId || undefined
-                              }
-                              youtubeVideoId={
-                                item.videoBox?.youtubeVideoId || undefined
-                              }
-                              thumbnail={
-                                item.videoBox?.thumbnail?.url || undefined
-                              }
-                              thumbnailType={
-                                item.videoBox?.thumbnailType || undefined
-                              }
-                              videoDisplayLayout={
-                                item.videoBox?.videoDisplayLayout || undefined
-                              }
-                            />
-                          )}
-                        </div>
-                      )}
-                    </Disclosure.Panel>
-                  </Transition>
-                </div>
-              )}
-            </Disclosure>
-          );
-        })}
+                        ) : (
+                          <VideoBox
+                            videoTitle={item.videoBox?.videoTitle || undefined}
+                            vimeoVideoId={
+                              item.videoBox?.vimeoVideoId || undefined
+                            }
+                            youtubeVideoId={
+                              item.videoBox?.youtubeVideoId || undefined
+                            }
+                            thumbnail={
+                              item.videoBox?.thumbnail?.url || undefined
+                            }
+                            thumbnailType={
+                              item.videoBox?.thumbnailType || undefined
+                            }
+                            videoDisplayLayout={
+                              item.videoBox?.videoDisplayLayout || undefined
+                            }
+                          />
+                        )}
+                      </div>
+                    )}
+                  </Disclosure.Panel>
+                </Transition>
+              </div>
+            )}
+          </Disclosure>
+        ))}
       </div>
     </div>
   );

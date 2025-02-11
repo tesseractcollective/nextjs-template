@@ -58,11 +58,11 @@ const Loader: React.FC<LoaderProps> = ({ icon, minimal }) => {
           <div className="text-center mx-auto flex flex-col items-center gap-y-4">
             {!minimal && (
               <Image
-                className="h-10 cursor-pointer object-contain mx-auto mb-2"
+                className="h-24 w-24 cursor-pointer object-contain mx-auto"
                 src={icon}
                 alt=""
-                width={40}
-                height={40}
+                width={0}
+                height={0}
                 sizes="100%"
               />
             )}
