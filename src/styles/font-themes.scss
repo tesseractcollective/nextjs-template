@@ -258,7 +258,7 @@
   }
 }
 
-.copperplate-theme{
+.copperplate-theme {
   @mixin serif-font-styles {
     font-family: Copperplate, "Copperplate Gothic Light", fantasy !important;
     font-optical-sizing: auto;
@@ -272,6 +272,23 @@
   }
   p, button:not([class^="lg-"]), button, a, p strong {
     font-family: "Wix Madefor Display", sans-serif !important;
+  }
+}
+
+.teko-theme {
+  @mixin serif-font-styles {
+    font-family: "Teko", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  
+  // Apply mixin to desired elements
+  h1, h2, h3, h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong, h4, h5, h6, span, div, em {
+    @include serif-font-styles;
+    font-weight: bold;
+  }
+  p, button:not([class^="lg-"]), button, a, p strong {
+    font-family: 'Poppins', sans-serif !important;
   }
 }
 

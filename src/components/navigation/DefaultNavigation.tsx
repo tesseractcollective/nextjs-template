@@ -4,11 +4,10 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Popover, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Transition, Popover } from "@headlessui/react";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,27 +31,40 @@ export default function DefaultNavigation({
   hideNav,
   pageNavigationSelection,
 }: NavProps) {
-  const [activePanel, setActivePanel] = useState("main");
   const [open, setOpen] = useState(false);
   const [small, setSmall] = useState(false);
 
   useEffect(() => {
+    let lastScrollY = window.pageYOffset;
+    let ticking = false;
+
+    const updateSmall = () => {
+      const currentScrollY = window.pageYOffset;
+      // Set buffer zones: 400px to activate, 300px to deactivate
+      if (currentScrollY > 400) {
+        setSmall(true);
+      } else if (currentScrollY < 300) {
+        setSmall(false);
+      }
+      ticking = false;
+    };
+
     const handleScroll = () => {
-      setSmall(window.pageYOffset > 400);
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(updateSmall);
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      // Clean up the event listener when the component unmounts
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   if (!navigations && !siteLibrary) return <></>;
   if (hideNav === true) return <></>;
 
-  const { title, contactPhone, contactEmail, contactName } = siteLibrary;
+  const { title } = siteLibrary;
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");

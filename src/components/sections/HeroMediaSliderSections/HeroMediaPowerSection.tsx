@@ -263,9 +263,7 @@ export default function HeroMediaPowerSection({
 
                   {!!heroMediaSliderItem?.sliderMediaBackground && (
                     <div className="main">
-                      <Fade direction="up">
-                        <div className="overlay absolute top-0 left-0 w-full h-full transition-all z-0" />
-                      </Fade>
+                      <div className="overlay absolute top-0 left-0 w-full h-full transition-all z-2 video-power-overlay" />
                       {heroMediaSliderItem.mediaType === "video" && (
                         <video
                           src={heroMediaSliderItem.sliderMediaBackground.url}

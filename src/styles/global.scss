@@ -1272,3 +1272,11 @@ h4, h5, h6  {color: var(--text);}
 .shadow-softer {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 25px 50px -10px;
 }
+
+.video-darken {
+  .video-power-overlay {
+    opacity: 0.6 !important;
+    background-color: #000 !important;
+    z-index: 2  !important;
+  }
+}

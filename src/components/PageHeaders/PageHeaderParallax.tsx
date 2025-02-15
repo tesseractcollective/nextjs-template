@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Fade, Zoom, Slide } from "react-awesome-reveal";
-import parse from "html-react-parser";
+import { Fade } from "react-awesome-reveal";
 import type { CallToActionFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "../LinkItem";
 
@@ -20,79 +19,87 @@ export default function PageHeaderParallax({
   pageHeaderSubtitleProp,
   pageHeaderWrapperCssClassProp,
   pageHeaderImageProp,
-  pageWidthStyle,
   hideHeader,
   pageCallToAction,
 }: PageHeaderProps) {
   const [scroll, setScroll] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setScroll(window.pageYOffset > 200);
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      // Clean up the event listener when the component unmounts
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   if (hideHeader === true) return null;
 
-  const cssClass = pageHeaderWrapperCssClassProp || "";
-
   return (
-    <Zoom triggerOnce>
-      <section className="pt-60 pb-60 relative bg-[#000]">
-        <div
-          className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-90 bg-fixed"
-          style={{
-            backgroundImage: `url(${pageHeaderImageProp})`,
-          }}
-        ></div>
-        <Fade direction="up" triggerOnce>
-          {!!pageHeaderTitleProp && (
-            <h1 className="text-3xl md:text-5xl xl:text-6xl text-shadow-large mt-0 mb-1 py-0 text-center text-text-overlay font-bold uppercase">
-              {pageHeaderTitleProp}
-            </h1>
-          )}
-          {!!pageHeaderSubtitleProp && (
-            <h2 className="text-shadow my-0 py-0 text-center uppercase tracking-widest font-bold text-lg opacity-80 text-tertiary">
-              {pageHeaderSubtitleProp}
-            </h2>
-          )}
-          {!!pageCallToAction && pageCallToAction?.length > 0 && (
-            <div>
-              <div className="text-center mx-auto">
-                {pageCallToAction.map(
-                  (callToActionItem) =>
-                    callToActionItem?.ctaLink && (
-                      <div
-                        key={callToActionItem.ctaLink}
-                        className="text-center mx-auto flex flex-row flex-wrap items-center justify-center gap-4"
-                      >
-                        <LinkItem
-                          parentCssClass="mx-auto w-full"
-                          link={callToActionItem.ctaLink}
-                          label={callToActionItem.ctaLabel}
-                          cssClass={
-                            callToActionItem?.ctaClass
-                              ? callToActionItem.ctaClass
-                              : `${
-                                  callToActionItem.ctaPrimary
-                                    ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full bg-primary hover:bg-secondary transition-all"
-                                    : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl !rounded-full"
-                                } mx-auto duration-[400ms]`
-                          }
-                        />
-                      </div>
-                    )
-                )}
-              </div>
-            </div>
-          )}
-        </Fade>
-      </section>
-    </Zoom>
+    <section
+      className={`relative bg-black w-full ${pageHeaderWrapperCssClassProp}`}
+    >
+      {/* Aspect ratio container */}
+      <div className="relative w-full">
+        {/* This div maintains 16:9 aspect ratio */}
+        <div className="pb-[56.25%] relative w-full">
+          {/* Background image container */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed opacity-60"
+            style={{
+              backgroundImage: `url(${pageHeaderImageProp})`,
+              backgroundSize: "cover",
+              backgroundPosition: "50% 50%",
+            }}
+          />
+          {/* Content container with proper centering */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+            <Fade direction="up" triggerOnce>
+              {!!pageHeaderTitleProp && (
+                <h1 className="text-2xl sm:text-3xl md:text-5xl xl:text-6xl text-shadow-large py-0 text-center text-text-overlay font-bold uppercase">
+                  {pageHeaderTitleProp}
+                </h1>
+              )}
+
+              {!!pageHeaderSubtitleProp && (
+                <h2 className="text-shadow py-0 text-center uppercase tracking-widest font-bold text-base sm:text-lg text-text-overlay">
+                  {pageHeaderSubtitleProp}
+                </h2>
+              )}
+
+              {!!pageCallToAction && pageCallToAction?.length > 0 && (
+                <div className="w-full max-w-xl mx-auto mt-4">
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    {pageCallToAction.map(
+                      (callToActionItem) =>
+                        callToActionItem?.ctaLink && (
+                          <div
+                            key={callToActionItem.ctaLink}
+                            className="w-full sm:w-auto"
+                          >
+                            <LinkItem
+                              link={callToActionItem.ctaLink}
+                              label={callToActionItem.ctaLabel}
+                              cssClass={
+                                callToActionItem?.ctaClass
+                                  ? callToActionItem.ctaClass
+                                  : `${
+                                      callToActionItem.ctaPrimary
+                                        ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button block no-underline my-2 font-bold text-xl sm:text-2xl !rounded-full bg-primary hover:bg-secondary transition-all w-full sm:w-auto"
+                                        : "text-text-color border-0 px-4 md:px-6 py-2 theme-button block no-underline my-2 text-xl sm:text-2xl !rounded-full w-full sm:w-auto"
+                                    } mx-auto duration-[400ms]`
+                              }
+                            />
+                          </div>
+                        )
+                    )}
+                  </div>
+                </div>
+              )}
+            </Fade>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -51,7 +51,7 @@ export default function PageHeaderOverlap({
           <div className="absolute bg-gradient-to-t from-[#000] z-20 h-32 opacity-70 left-0 right-0 bottom-0" />
         </div>
         {/* Content */}
-        <div className="absolute -bottom-16 right-12 bg-bg p-8 max-w-max w-full mx-auto z-30">
+        <div className="absolute -bottom-16 right-12 bg-bg p-8 max-w-max w-full mx-auto z-30 border border-secondary">
           <div className="z-30 flex flex-col justify-center items-start">
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-color mb-2 md:mb-4 ">
               {pageHeaderTitleProp}

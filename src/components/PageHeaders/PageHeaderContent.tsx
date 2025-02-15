@@ -57,7 +57,7 @@ export default function PageHeaderContent({
             )}
             {!!pageHeaderSubtitleProp && (
               <Fade direction="right" triggerOnce>
-                <h2 className="my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 md:ml-4 w-full">
+                <h2 className="my-0 py-0 text-center uppercase tracking-widest font-bold text-sm opacity-80 w-full">
                   {pageHeaderSubtitleProp}
                 </h2>
               </Fade>
@@ -70,7 +70,7 @@ export default function PageHeaderContent({
                       callToActionItem?.ctaLink && (
                         <div
                           key={callToActionItem.ctaLink}
-                          className="text-center mx-auto md:text-left md:mx-0"
+                          className="text-center mx-auto"
                         >
                           <LinkItem
                             link={callToActionItem.ctaLink}
@@ -80,9 +80,9 @@ export default function PageHeaderContent({
                                 ? callToActionItem.ctaClass
                                 : `${
                                     callToActionItem.ctaPrimary
-                                      ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full"
-                                      : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl !rounded-full"
-                                  } mr-2 max-w-max`
+                                      ? "border-primary text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 font-bold w-full text-2xl !rounded-full border"
+                                      : "text-text-color px-4 md:px-6 py-2 theme-button max-w-max block no-underline my-4 w-full text-2xl !rounded-full border-primary border"
+                                  }`
                             }
                           />
                         </div>
@@ -103,7 +103,7 @@ export default function PageHeaderContent({
               width={0}
               height={0}
               sizes="100%"
-              className="h-[26rem] w-full object-cover object-center mb-8"
+              className="h-auto pb-[56.25] w-full object-cover object-center mb-8"
             />
           )}
         </div>
