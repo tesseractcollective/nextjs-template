@@ -14,7 +14,7 @@ interface PageHeaderProps {
   pageCallToAction?: CallToActionFieldsFragment[];
 }
 
-export default function PageHeaderParallax({
+export default function PageHeaderFixed({
   pageHeaderTitleProp,
   pageHeaderSubtitleProp,
   pageHeaderWrapperCssClassProp,
@@ -26,12 +26,12 @@ export default function PageHeaderParallax({
 
   return (
     <section
-      className={`relative bg-black w-full parallax-header-wrapper ${pageHeaderWrapperCssClassProp}`}
+      className={`relative bg-black w-full fixed-header-wrapper ${pageHeaderWrapperCssClassProp}`}
     >
       {/* Aspect ratio container */}
       <div className="relative w-full">
         {/* This div maintains 16:9 aspect ratio */}
-        <div className="pb-[56.25%] relative w-full">
+        <div className="pb-[25%] relative w-full">
           {/* Background image container */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed opacity-60"

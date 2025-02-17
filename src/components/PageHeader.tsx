@@ -22,6 +22,7 @@ import PageHeaderMoon from "./PageHeaders/PageHeaderMoon";
 import PageHeaderPower from "./PageHeaders/PageHeaderPower";
 import PageHeaderSquare from "./PageHeaders/PageHeaderSquare";
 import PageHeaderTechno from "./PageHeaders/PageHeaderTechno";
+import PageHeaderFixed from "./PageHeaders/PageHeaderFixed";
 interface PageHeaderProps {
   pageHeaderTitleProp?: string;
   pageHeaderSubtitleProp?: string;
@@ -94,6 +95,17 @@ export default function PageHeader({
       )}
       {pageWidthStyle === "Full" && (
         <PageHeaderFull
+          pageHeaderTitleProp={pageHeaderTitleProp}
+          pageHeaderSubtitleProp={pageHeaderSubtitleProp}
+          pageHeaderWrapperCssClassProp={pageHeaderWrapperCssClassProp}
+          pageHeaderImageProp={pageHeaderImageProp}
+          pageWidthStyle={pageWidthStyle}
+          hideHeader={hideHeader}
+          pageCallToAction={pageCallToAction}
+        />
+      )}
+      {pageWidthStyle === "fixed" && (
+        <PageHeaderFixed
           pageHeaderTitleProp={pageHeaderTitleProp}
           pageHeaderSubtitleProp={pageHeaderSubtitleProp}
           pageHeaderWrapperCssClassProp={pageHeaderWrapperCssClassProp}
