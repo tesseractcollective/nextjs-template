@@ -118,7 +118,7 @@ export default function DefaultNavigation({
             {/* LOGO */}
             <Link
               href="/"
-              className="flex justify-start items-center max-w-max mr-auto"
+              className="inline-flex items-center max-w-max"
               id="nav-logo-desktop"
               onClick={() => {
                 ReactGA.event({
@@ -133,17 +133,16 @@ export default function DefaultNavigation({
                   <span className="sr-only">{title}</span>
                   <Fade direction="down" triggerOnce>
                     <Image
-                      className={`max-w-[12rem] lg:max-w-[15rem] ml-0 cursor-pointer object-contain transition-all h-full mr-auto flex duration-400 ${
+                      className={`w-auto object-contain max-w-[240px] lg:max-w-[288px] transition-all ${
                         small
-                          ? "max-h-[2rem] lg:max-h-[2.5rem]"
-                          : "max-h-[4rem] lg:max-h-[5rem]"
+                          ? "h-8 lg:h-10" // 2rem = h-8, 2.5rem = h-10
+                          : "h-16 lg:h-20" // 4rem = h-16, 5rem = h-20
                       }`}
                       src={navigation.navigationLogo?.url}
                       alt=""
                       width={0}
                       height={0}
                       sizes="100%"
-                      style={{ width: "100%" }}
                     />
                   </Fade>
                 </>
@@ -221,10 +220,10 @@ export default function DefaultNavigation({
                                       leaveFrom="translate-y-0 opacity-100"
                                       leaveTo="-translate-y-full opacity-0"
                                     >
-                                      <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
+                                      <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl z-30">
                                         {({ close }) => (
                                           <>
-                                            <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md max-w-8xl">
+                                            <div className="relative bg-bg-secondary border-2 border-primary z-20 rounded-md max-w-8xl">
                                               <div className="mx-auto py-8 px-4 xl:px-8 w-full h-full max-h-[85vh] overflow-scroll">
                                                 <div className="flex flex-row items-center justify-start flex-wrap gap-4">
                                                   {mainNavigationItem.items.map(
@@ -302,7 +301,7 @@ export default function DefaultNavigation({
                                               </button>
                                             </div>
                                             <div
-                                              className="fixed bg-[#00000070] transition-all z-0 backdrop-blur-xl top-0 h-[100vw] w-[300vw] left-[-100%]"
+                                              className="absolute bg-[#00000070] transition-all z-0 top-0 h-[100vw] w-[300vw] left-[-100%]"
                                               onClick={() => {
                                                 close();
                                                 ReactGA.event({

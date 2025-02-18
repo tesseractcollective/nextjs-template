@@ -15,7 +15,7 @@ export default function WideCardBoxes({ gridBoxData }: GridBoxProps) {
           key={`${gridBoxItem.boxLink}-${index}`}
           className="relative bg-text-color bg-invert my-8 py-4 md:py-8 overflow-hidden rounded flex flex-col-reverse lg:flex-col w-full"
         >
-          <div className="mr-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
+          <div className="mr-auto max-w-7xl px-4 sm:px-6 lg:grid xl:grid-cols-2 lg:px-8">
             <div className="mx-auto max-w-2xl py-2 md:py-24 lg:max-w-none">
               <div className="pr-0 lg:pr-16">
                 {gridBoxItem.boxTitle && (

@@ -270,7 +270,10 @@
     @include serif-font-styles;
     font-weight: bold;
   }
-  p, button:not([class^="lg-"]), button, a, p strong {
+  button, a {
+    @include serif-font-styles;
+  }
+  p, button:not([class^="lg-"]), p strong {
     font-family: "Wix Madefor Display", sans-serif !important;
   }
 }
