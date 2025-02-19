@@ -8,15 +8,22 @@ interface GridBoxProps {
 }
 
 export default function ContentGridBoxes({ gridBoxData }: GridBoxProps) {
+  const arrayQuantityIsOne = gridBoxData.length >= 1;
   return (
     <section className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+      <div
+        className={`grid grid-cols-1 gap-8 ${
+          arrayQuantityIsOne
+            ? "lg:grid-cols-1"
+            : "lg:grid-cols-2 xl:grid-cols-3"
+        }`}
+      >
         {gridBoxData.map((gridBoxItem, index) => (
           <div
             key={`${index}-${gridBoxItem.boxTitle || "item"}`}
-            className="group relative overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 ease-in-out hover:shadow-xl"
+            className="group relative overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 ease-in-out hover:shadow-xl max-w-lg mx-auto"
           >
-            <div className="relative w-full pb-[56.25%]">
+            <div className="relative w-full pb-[56.25%] overflow-hidden">
               {gridBoxItem.boxImage?.url && (
                 <Image
                   src={gridBoxItem.boxImage.url}
@@ -25,10 +32,9 @@ export default function ContentGridBoxes({ gridBoxData }: GridBoxProps) {
                   width={0}
                   height={0}
                   sizes="100%"
-                  className="transition-transform duration-300 ease-in-out group-hover:scale-105 object-cover"
+                  className="transition-transform duration-300 ease-in-out group-hover:scale-105 object-cover w-full h-auto absolute inset-0"
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <div className="p-6 bg-bg-secondary h-full">
               {gridBoxItem?.boxTitle && (
@@ -44,9 +50,9 @@ export default function ContentGridBoxes({ gridBoxData }: GridBoxProps) {
               {gridBoxItem?.boxLink && (
                 <LinkItem
                   link={gridBoxItem.boxLink}
-                  cssClass="inline-block bg-bg-secondary text-white font-semibold py-2 px-4 rounded-full transition-all duration-300 ease-in-out hover:bg-black"
+                  cssClass="inline-block bg-bg-secondary text-white font-semibold py-4 rounded-full transition-all duration-300 ease-in-out hover:bg-black"
                 >
-                  Learn More
+                  Info
                 </LinkItem>
               )}
             </div>

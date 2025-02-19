@@ -36,6 +36,7 @@ import React from "react";
 import Countdown from "./Countdown";
 import CountryFlags from "./CountryFlags";
 import BulletsSection from "./BulletsSection";
+import MapBoxRadius from "./MapElements/MapBoxRadius";
 // import AgeVerification from "./AgeVerification";
 
 type ElementsType =
@@ -155,6 +156,17 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             mapLink={elementJson?.distanceCheck?.mapLink}
             address={elementJson?.distanceCheck?.mapAddress}
             siteName={siteLibrary?.title}
+          />
+        )}
+      {!!siteLibrary?.mapKey &&
+        !!elementJson?.mapBoxRadiusData &&
+        !!siteLibrary?.metaAppleTouchIcon &&
+        !!siteLibrary?.title && (
+          <MapBoxRadius
+            mapBoxRadiusData={elementJson.mapBoxRadiusData}
+            mapKey={siteLibrary.mapKey}
+            icon={siteLibrary.metaAppleTouchIcon.url}
+            siteName={siteLibrary.title}
           />
         )}
       {!!siteLibrary?.mapKey &&

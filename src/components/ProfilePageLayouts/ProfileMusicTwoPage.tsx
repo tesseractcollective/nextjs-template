@@ -384,27 +384,23 @@ export default function ProfileMusicTwoPage({
                               <SocialMediaIcons
                                 fadeDirection="up"
                                 cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2 px-1 lg:pl-0 lg:pr-1"
-                                phoneLinkProp={
-                                  contact?.contactPhone || undefined
-                                }
-                                whatsappLinkProp={
-                                  contact?.contactWhatsapp || undefined
-                                }
-                                emailLinkProp={
-                                  contact?.contactEmail || undefined
-                                }
-                                displayVcf={true}
-                                name={contact.contactName || undefined}
-                                avatar={contact.contactAvatar?.url || undefined}
-                                calendlyLinkProp={
-                                  contact?.contactCalendly || undefined
-                                }
                                 linkedinLinkProp={
-                                  contact?.contactLinkedin || undefined
+                                  contact?.contactLinkedin || ""
+                                }
+                                calendlyLinkProp={
+                                  contact.contactCalendly || undefined
                                 }
                                 instagramLinkProp={
-                                  contact?.contactInstagram || undefined
+                                  contact.contactInstagram || undefined
                                 }
+                                whatsappLinkProp={
+                                  contact.contactWhatsapp || undefined
+                                }
+                                displayVcf={true}
+                                avatar={contact.contactAvatar?.url || undefined}
+                                name={contact.contactName || undefined}
+                                emailLinkProp={contact?.contactEmail || ""}
+                                phoneLinkProp={contact?.contactPhone || ""}
                               />
                             </div>
                             {!!contact.contactAddress && (

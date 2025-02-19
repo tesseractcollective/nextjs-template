@@ -27,6 +27,7 @@
     "@netlify/plugin-nextjs": "^4.41.3",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.4",
+    "@turf/turf": "^7.2.0",
     "@types/graphql": "^14.5.0",
     "@types/mapbox-gl": "^2.7.14",
     "@types/node": "20.4.2",

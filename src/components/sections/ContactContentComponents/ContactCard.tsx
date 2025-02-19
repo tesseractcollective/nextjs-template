@@ -60,6 +60,8 @@ export default function ContactCard({ contactsData }: ContactsSectionProps) {
                   displayVcf={true}
                   avatar={contact.contactAvatar?.url || undefined}
                   name={contact.contactName || undefined}
+                  emailLinkProp={contact?.contactEmail || ""}
+                  phoneLinkProp={contact?.contactPhone || ""}
                 />
               </div>
             </div>

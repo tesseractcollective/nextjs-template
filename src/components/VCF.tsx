@@ -1,8 +1,8 @@
-import { ContactFieldsFragment } from "@/graphql/generated/graphql";
-import React, { FC, useState, useEffect, useCallback } from "react";
+import React, { FC, useState, useEffect, useCallback, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import type { ContactFieldsFragment } from "@/graphql/generated/graphql";
 
 interface Props {
   contact?: ContactFieldsFragment;
@@ -36,108 +36,133 @@ const VCF: FC<Props> = ({
   instagram,
   tiktok,
   github,
-}: Props) => {
+}) => {
   const [vCardData, setVCardData] = useState("");
-  const vcfData = {
-    name: contact?.contactName || name,
-    email: contact?.contactEmail || email || "",
-    phone: contact?.contactPhone || phone || "",
-    photo: avatar || contact?.contactAvatar?.url || "",
-    calendly: calendly || contact?.contactCalendly || "",
-    linkedin: linkedin || contact?.contactLinkedin || "",
-    facebook: facebook || "",
-    twitterX: twitterX || "",
-    threads: threads || "",
-    youtube: youtube || "",
-    instagram: instagram || "",
-    tiktok: tiktok || "",
-    github: github || "",
-  };
-  // Wrap generateVCard in a useCallback hook
-  const generateVCard = useCallback(() => {
-    const vCardContent = `BEGIN:VCARD\nVERSION:3.0\nFN:${vcfData.name}${
-      vcfData.email ? `\nEMAIL:${vcfData.email}` : ""
-    }${
-      vcfData.phone
-        ? `\nTEL;TYPE=cell:${vcfData.phone}\nPHOTO;TYPE=JPEG;VALUE=URI:${vcfData.photo}`
-        : ""
-    }${
-      vcfData.calendly
-        ? `\nX-SOCIALPROFILE;type=calendly:${vcfData.calendly}`
-        : ""
-    }${
-      vcfData.linkedin
-        ? `\nX-SOCIALPROFILE;type=linkedin:${vcfData.linkedin}`
-        : ""
-    }${
-      vcfData.facebook
-        ? `\nX-SOCIALPROFILE;type=facebook:${vcfData.facebook}`
-        : ""
-    }${
-      vcfData.twitterX
-        ? `\nX-SOCIALPROFILE;type=twitterX:${vcfData.twitterX}`
-        : ""
-    }${
-      vcfData.threads ? `\nX-SOCIALPROFILE;type=threads:${vcfData.threads}` : ""
-    }${
-      vcfData.youtube ? `\nX-SOCIALPROFILE;type=youtube:${vcfData.youtube}` : ""
-    }${
-      vcfData.instagram
-        ? `\nX-SOCIALPROFILE;type=instagram:${vcfData.instagram}`
-        : ""
-    }${
-      vcfData.tiktok ? `\nX-SOCIALPROFILE;type=tiktok:${vcfData.tiktok}` : ""
-    }${
-      vcfData.github ? `\nX-SOCIALPROFILE;type=github:${vcfData.github}` : ""
-    }\nEND:VCARD`;
-    setVCardData(vCardContent);
-  }, [
-    vcfData.calendly,
-    vcfData.email,
-    vcfData.linkedin,
-    vcfData.name,
-    vcfData.phone,
-    vcfData.photo,
-    vcfData.facebook,
-    vcfData.github,
-    vcfData.instagram,
-    vcfData.threads,
-    vcfData.tiktok,
-    vcfData.twitterX,
-    vcfData.youtube,
-  ]);
 
+  // Aggregate all contact data into a single object
+  const vcfData = useMemo(
+    () => ({
+      name: contact?.contactName || name || "",
+      email: contact?.contactEmail || email || "",
+      phone: contact?.contactPhone || phone || "",
+      photo: avatar || contact?.contactAvatar?.url || "",
+      calendly: calendly || contact?.contactCalendly || "",
+      linkedin: linkedin || contact?.contactLinkedin || "",
+      facebook: facebook || "",
+      twitterX: twitterX || "",
+      threads: threads || "",
+      youtube: youtube || "",
+      instagram: instagram || "",
+      tiktok: tiktok || "",
+      github: github || "",
+    }),
+    [
+      contact?.contactName,
+      contact?.contactEmail,
+      contact?.contactPhone,
+      contact?.contactAvatar?.url,
+      contact?.contactCalendly,
+      contact?.contactLinkedin,
+      name,
+      email,
+      phone,
+      avatar,
+      calendly,
+      linkedin,
+      facebook,
+      twitterX,
+      threads,
+      youtube,
+      instagram,
+      tiktok,
+      github,
+    ]
+  );
+
+  // Generate the vCard data
+  const generateVCard = useCallback(() => {
+    const formatField = (value: string) => value.replace(/[:\n]/g, "");
+
+    let vCard = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      `FN:${formatField(vcfData.name)}`, // Full name
+    ];
+
+    // Add email if available
+    if (vcfData.email) {
+      vCard.push(`EMAIL;TYPE=INTERNET:${formatField(vcfData.email)}`);
+    }
+
+    // Add phone if available
+    if (vcfData.phone) {
+      vCard.push(`TEL;TYPE=CELL:${formatField(vcfData.phone)}`);
+    }
+
+    // Add photo if available
+    if (vcfData.photo) {
+      vCard.push(`PHOTO;VALUE=URI:${formatField(vcfData.photo)}`);
+    }
+
+    // Add social profiles as URLs
+    const socialProfiles = {
+      CALENDLY: vcfData.calendly,
+      LINKEDIN: vcfData.linkedin,
+      FACEBOOK: vcfData.facebook,
+      TWITTER: vcfData.twitterX,
+      THREADS: vcfData.threads,
+      YOUTUBE: vcfData.youtube,
+      INSTAGRAM: vcfData.instagram,
+      TIKTOK: vcfData.tiktok,
+      GITHUB: vcfData.github,
+    };
+
+    Object.entries(socialProfiles).forEach(([platform, url]) => {
+      if (url) {
+        vCard.push(`URL;TYPE=${platform}:${formatField(url)}`);
+      }
+    });
+
+    vCard.push("END:VCARD");
+    setVCardData(vCard.join("\n"));
+  }, [vcfData]);
+
+  // Generate vCard on component mount or when data changes
   useEffect(() => {
     generateVCard();
   }, [generateVCard]);
 
+  // Handle download of the vCard
+  const handleDownload = useCallback(() => {
+    if (!vcfData.name) return;
+
+    const blob = new Blob([vCardData], { type: "text/vcard;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute(
+      "download",
+      `${vcfData.name.toLowerCase().replace(/\s+/g, "-")}-contact.vcf`
+    );
+    document.body.appendChild(link);
+    link.click();
+    URL.revokeObjectURL(url);
+    document.body.removeChild(link);
+  }, [vCardData, vcfData.name]);
+
   return (
     vCardData && (
       <button
-        onClick={() => {
-          const blob = new Blob([vCardData], { type: "text/vcard" });
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute(
-            "download",
-            `contact-card-${(vcfData.name || "download")
-              .toLocaleLowerCase()
-              .replace(" ", "-")}.vcf`
-          );
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }}
+        onClick={handleDownload}
         className="max-w-max mx-auto text-center !text-link transition-all cursor-pointer p-0 m-0 flex"
         type="button"
-        title="Download Contact Vcard"
+        title="Download Contact Card"
       >
         <FontAwesomeIcon
           icon={faAddressCard as IconProp}
           className="fa-fw h-5 w-5 flex aspect-1"
         />
-        <span className="sr-only">Download Contact Vcard</span>
+        <span className="sr-only">Download Contact Card</span>
       </button>
     )
   );

@@ -170,24 +170,23 @@ export default function Blog({
                               <SocialMediaIcons
                                 fadeDirection="up"
                                 cssClass="text-sm my-0 text-text-color opacity-80 flex flex-row items-center justify-center lg:justify-start gap-x-2"
-                                phoneLinkProp={
-                                  contact?.contactPhone || undefined
+                                linkedinLinkProp={
+                                  contact?.contactLinkedin || ""
+                                }
+                                calendlyLinkProp={
+                                  contact.contactCalendly || undefined
+                                }
+                                instagramLinkProp={
+                                  contact.contactInstagram || undefined
                                 }
                                 whatsappLinkProp={
-                                  contact?.contactWhatsapp || undefined
-                                }
-                                emailLinkProp={
-                                  contact?.contactEmail || undefined
+                                  contact.contactWhatsapp || undefined
                                 }
                                 displayVcf={true}
-                                name={contact.contactName || undefined}
                                 avatar={contact.contactAvatar?.url || undefined}
-                                calendlyLinkProp={
-                                  contact?.contactCalendly || undefined
-                                }
-                                linkedinLinkProp={
-                                  contact?.contactLinkedin || undefined
-                                }
+                                name={contact.contactName || undefined}
+                                emailLinkProp={contact?.contactEmail || ""}
+                                phoneLinkProp={contact?.contactPhone || ""}
                               />
                             </div>
                             {!!contact.contactAddress && (

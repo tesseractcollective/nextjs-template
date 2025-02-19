@@ -50,6 +50,8 @@ export default function ContactDefault({ contactsData }: ContactsSectionProps) {
                   displayVcf={true}
                   avatar={contact.contactAvatar?.url || undefined}
                   name={contact.contactName || undefined}
+                  emailLinkProp={contact?.contactEmail || ""}
+                  phoneLinkProp={contact?.contactPhone || ""}
                 />
               </div>
               {contact?.contactAvatar?.url && (
