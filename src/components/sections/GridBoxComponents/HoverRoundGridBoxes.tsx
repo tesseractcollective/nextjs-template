@@ -93,7 +93,7 @@ const ExpandingCircleLink = ({ gridBox, isEven }: SingleGridBoxProps) => {
       <div className="absolute z-20 text-center">
         <h2
           className="text-6xl px-4 lg:text-8xl font-bold text-[white] mix-blend-difference
-                 [text-shadow:-1px_-1px_0_#000,1px_-1px_0_#000,-1px_1px_0_#000,1px_1px_0_#000]"
+                 [text-shadow:1px_1px_0_#000,2px_2px_0_#000,3px_3px_0_#000,4px_4px_0_#000,5px_5px_0_#000,6px_6px_0_#000]"
         >
           {title}
         </h2>

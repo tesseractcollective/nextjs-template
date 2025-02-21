@@ -41,16 +41,20 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   // image √
   // circle √
   // polaroid √
+  // colorBorder
   // smallCircle √
   // blur √
   // spaceBetween √
   // description √
   // wideCard √
   // snap √
-  // verticalTabs √
+  // verticalTabs √ - needs work
 
   const sliderGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "slider"
+  );
+  const colorBorderGridBoxData = gridBoxData.filter(
+    (gridBoxItem) => gridBoxItem.boxDisplay === "colorBorder"
   );
   const compactGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "compact"
@@ -114,6 +118,8 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   );
   if (parallaxGridBoxData && parallaxGridBoxData.length >= 1)
     return <ParallaxGridBoxes gridBoxData={parallaxGridBoxData} />;
+  if (colorBorderGridBoxData && colorBorderGridBoxData.length >= 1)
+    return <CircleGridBoxes gridBoxData={colorBorderGridBoxData} />;
   if (verticalTabGridBoxData && verticalTabGridBoxData.length >= 1)
     return <VerticalTabGridBoxes gridBoxData={verticalTabGridBoxData} />;
   if (insetGridBoxData && insetGridBoxData.length >= 1)

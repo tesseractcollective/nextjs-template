@@ -37,6 +37,7 @@ import Countdown from "./Countdown";
 import CountryFlags from "./CountryFlags";
 import BulletsSection from "./BulletsSection";
 import MapBoxRadius from "./MapElements/MapBoxRadius";
+import BulkProductsList from "./BulkProductList";
 // import AgeVerification from "./AgeVerification";
 
 type ElementsType =
@@ -229,6 +230,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       )}
       {!!elementJson?.rotateTextAnimation && (
         <RotateTextAnimation text={elementJson.rotateTextAnimation} />
+      )}
+      {!!elementJson?.bulkProductData && (
+        <BulkProductsList bulkProductData={elementJson?.bulkProductData} />
       )}
       {!!elementJson?.opentableID && !!elementJson.opentableTheme && (
         <div

@@ -42,7 +42,7 @@ export default function CircleGridBoxes({ gridBoxData }: GridBoxProps) {
                   <div className="record-border"></div>
                 </div>
               )}
-              <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-primary uppercase font-bold opacity-100 group-hover:opacity-100 absolute inset-0 z-[2] text-base md:text-lg lg:text-xl">
+              <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-primary uppercase font-bold opacity-100 group-hover:opacity-100 absolute inset-0 z-[2] text-base md:text-lg lg:text-xl  [text-shadow:1px_1px_0_#000,2px_2px_0_#000,3px_3px_0_#000,4px_4px_0_#000,5px_5px_0_#000,6px_6px_0_#000]">
                 <span>{gridBoxDataWOLink.boxTitle}</span>
               </p>
             </div>
@@ -63,6 +63,9 @@ export default function CircleGridBoxes({ gridBoxData }: GridBoxProps) {
               cssClass="profile-card h-full no-underline mx-auto relative mb-4 inline-block max-w-max group"
             >
               <>
+                <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-primary group-hover:text-primary uppercase font-bold absolute inset-0 z-[10] text-base md:text-lg lg:text-xl  [text-shadow:1px_1px_0_#000,2px_2px_0_#000,3px_3px_0_#000,4px_4px_0_#000,5px_5px_0_#000,6px_6px_0_#000] group-hover:[text-shadow:1px_1px_0_var(--primary),2px_2px_0_#000,3px_3px_0_#000,4px_4px_0_#000,5px_5px_0_#000,6px_6px_0_#000]">
+                  <span>{gridBoxItem.boxTitle}</span>
+                </p>
                 {!!gridBoxItem.boxImage?.url && (
                   <div className="relative">
                     <Image
@@ -76,9 +79,6 @@ export default function CircleGridBoxes({ gridBoxData }: GridBoxProps) {
                     <div className="record-border"></div>
                   </div>
                 )}
-                <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-primary uppercase font-bold opacity-100 group-hover:opacity-100 absolute inset-0 z-[2] text-base md:text-lg lg:text-xl">
-                  <span>{gridBoxItem.boxTitle}</span>
-                </p>
               </>
             </LinkItem>
           </Fade>
