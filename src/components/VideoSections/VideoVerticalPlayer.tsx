@@ -41,11 +41,11 @@ export default function VideoVerticalPlayer({
           key={`${video?.videoTitle}-${index}`}
           className="w-full gap-y-4 flex flex-col items-center justify-center mb-12"
         >
-          <div className="relative w-[320px] h-[650px] bg-black rounded-[60px] shadow-xl overflow-hidden border-[14px] border-black">
+          <div className="relative w-[320px] h-[650px] bg-[#000] rounded-[60px] overflow-hidden border-[14px] border-black shadow-[0_16px_16px_#000000b0]">
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-[30px] bg-black rounded-b-3xl"></div>
             <div className="relative w-full h-full">
               {!!video?.videoTitle && (
-                <p className="text-[white] text-shadow shadow text-center font-bold text-lg absolute left-10 bottom-4 my-0">
+                <p className="text-[white] text-shadow shadow text-center font-bold text-lg absolute left-6 bottom-4 my-0 p-2">
                   {parse(video.videoTitle)}
                 </p>
               )}

@@ -28,27 +28,30 @@ interface GridBoxProps {
 }
 
 export default function GridBox({ gridBoxData }: GridBoxProps) {
-  // slider √
   // compact √
-  // inset √
-  // tall √
   // content √
-  // parallax √
-  // hoverRound √
+  // inset √
+  // slider √
+  // tall √
   // mason √
   // netflix √
   // grid √
   // image √
+  // parallax √
   // circle √
   // polaroid √
+  // myspace √
+  // twohundredvh √
+  // hoverRound √
   // colorBorder
-  // smallCircle √
-  // blur √
+  // horizontalTabs √ - needs work
+  // verticalTabs √ - needs work
+  // snap √
   // spaceBetween √
+  // blur √
+  // smallCircle √
   // description √
   // wideCard √
-  // snap √
-  // verticalTabs √ - needs work
 
   const sliderGridBoxData = gridBoxData.filter(
     (gridBoxItem) => gridBoxItem.boxDisplay === "slider"
