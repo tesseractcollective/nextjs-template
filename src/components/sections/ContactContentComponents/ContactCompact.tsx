@@ -36,7 +36,7 @@ export default function ContactCompact({ contactsData }: ContactsSectionProps) {
         {contactsData.map((contact) => (
           <div
             key={contact.contactQuery}
-            className="rounded-lg bg-text-color shadow max-w-md w-full border border-primary"
+            className="rounded-lg bg-text-color shadow max-w-md w-full border border-primary contact-compact-card"
           >
             <section className="page-content py-0 mx-auto flex justify-center flex-col max-w-4xl relative z-20">
               {!!contact?.contactAvatar && (

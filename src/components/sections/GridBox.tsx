@@ -3,6 +3,7 @@ import React from "react";
 
 import BlurGridBoxes from "./GridBoxComponents/BlurGridBoxes";
 import CircleGridBoxes from "./GridBoxComponents/CircleGridBoxes";
+import ColorBorderBoxes from "./GridBoxComponents/ColorBorderBoxes";
 import CompactGridBoxes from "./GridBoxComponents/CompactGridBoxes";
 import ContentGridBoxes from "./GridBoxComponents/ContentGridBoxes";
 import DescriptionBoxes from "./GridBoxComponents/DescriptionBoxes";
@@ -122,7 +123,7 @@ export default function GridBox({ gridBoxData }: GridBoxProps) {
   if (parallaxGridBoxData && parallaxGridBoxData.length >= 1)
     return <ParallaxGridBoxes gridBoxData={parallaxGridBoxData} />;
   if (colorBorderGridBoxData && colorBorderGridBoxData.length >= 1)
-    return <CircleGridBoxes gridBoxData={colorBorderGridBoxData} />;
+    return <ColorBorderBoxes gridBoxData={colorBorderGridBoxData} />;
   if (verticalTabGridBoxData && verticalTabGridBoxData.length >= 1)
     return <VerticalTabGridBoxes gridBoxData={verticalTabGridBoxData} />;
   if (insetGridBoxData && insetGridBoxData.length >= 1)

@@ -18,7 +18,7 @@ interface ContactsSectionProps {
 
 export default function ContactMason({ contactsData }: ContactsSectionProps) {
   return (
-    <section className="mx-auto max-w-4xl my-8 w-full px-4 lg:px-8 contact-layout-style-contact-circle relative z-20">
+    <section className="mx-auto max-w-4xl my-8 w-full px-4 lg:px-8 contact-layout-style-contact-circle relative z-20 gap-y-32 flex flex-col">
       {contactsData.map((contact) => (
         <div
           key={contact.contactQuery}
