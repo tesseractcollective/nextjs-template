@@ -4,3 +4,21 @@ package = "@netlify/plugin-nextjs"
 [build]
 command = "yarn build"
 publish = ".next"
+
+[[redirects]]
+  from = "https://facebook.bocadodallas.com/*"
+  to = "https://facebook.com/bocadodallas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://shop.aztecamusicgroup.com/*"
+  to = "https://azteca-music-group.myshopify.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://merch.bxsoficial.com/*"
+  to = "https://bryndisxsiempre-online-shop.creator-spring.com/"
+  status = 301
+  force = true
