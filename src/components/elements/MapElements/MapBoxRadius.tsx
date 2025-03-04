@@ -38,8 +38,21 @@ function MapBoxRadius({
   const [popupInfo, setPopupInfo] = useState<boolean>(false);
   const [mapInstance, setMapInstance] = useState<mapboxgl.Map | null>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
+  const [viewState, setViewState] = useState({
+    longitude: mapBoxRadiusData.longitude,
+    latitude: mapBoxRadiusData.latitude,
+    zoom: Math.max(9, 12 - Math.log2(mapBoxRadiusData.distance)),
+  });
 
   const { latitude, longitude, mapLink, address, distance } = mapBoxRadiusData;
+
+  useEffect(() => {
+    setViewState({
+      longitude: longitude,
+      latitude: latitude,
+      zoom: Math.max(9, 12 - Math.log2(distance)),
+    });
+  }, [longitude, latitude, distance]);
 
   useEffect(() => {
     if (!mapInstance || !isMapLoaded || !distance || distance <= 0) return;
@@ -47,25 +60,20 @@ function MapBoxRadius({
     const sourceId = "radius-source";
     const layerId = "radius-layer";
 
-    // Clean up existing layers and sources
-    if (mapInstance.getLayer(layerId)) {
-      mapInstance.removeLayer(layerId);
-    }
-    if (mapInstance.getSource(sourceId)) {
-      mapInstance.removeSource(sourceId);
-    }
+    // Clean up previous layers and sources
+    if (mapInstance.getLayer(layerId)) mapInstance.removeLayer(layerId);
+    if (mapInstance.getSource(sourceId)) mapInstance.removeSource(sourceId);
 
-    // Create circle using Turf
+    // Create new GeoJSON circle
     const center = [longitude, latitude];
     const circle = turf.circle(center, distance, { steps: 64, units: "miles" });
 
-    // Add GeoJSON source
+    // Add new source and layer
     mapInstance.addSource(sourceId, {
       type: "geojson",
       data: circle,
     });
 
-    // Add fill layer
     mapInstance.addLayer({
       id: layerId,
       type: "fill",
@@ -78,28 +86,18 @@ function MapBoxRadius({
     });
 
     return () => {
-      if (mapInstance && !isMapLoaded) return;
-      if (mapInstance?.getLayer(layerId)) {
-        mapInstance.removeLayer(layerId);
-      }
-      if (mapInstance?.getSource(sourceId)) {
-        mapInstance.removeSource(sourceId);
-      }
+      if (mapInstance?.getLayer(layerId)) mapInstance.removeLayer(layerId);
+      if (mapInstance?.getSource(sourceId)) mapInstance.removeSource(sourceId);
     };
   }, [mapInstance, isMapLoaded, latitude, longitude, distance]);
 
-  if (!mapKey || !latitude || !longitude || !distance) {
-    return null;
-  }
+  if (!mapKey || !latitude || !longitude || !distance) return null;
 
   return (
     <Map
       mapboxAccessToken={mapKey}
-      initialViewState={{
-        longitude: longitude,
-        latitude: latitude,
-        zoom: Math.max(9, 12 - Math.log2(distance)),
-      }}
+      {...viewState}
+      onMove={(evt) => setViewState(evt.viewState)}
       scrollZoom={false}
       style={{
         height: "400px",
@@ -117,6 +115,7 @@ function MapBoxRadius({
       <FullscreenControl position="top-left" />
       <NavigationControl position="top-left" showCompass={false} />
       <ScaleControl />
+
       <Marker
         longitude={longitude}
         latitude={latitude}
@@ -144,6 +143,7 @@ function MapBoxRadius({
           )}
         </div>
       </Marker>
+
       {popupInfo && (
         <Popup
           anchor="top"

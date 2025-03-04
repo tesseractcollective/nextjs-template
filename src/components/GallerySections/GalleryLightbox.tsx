@@ -14,6 +14,7 @@ import "lightgallery/scss/lg-zoom.scss";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
 import React from "react";
+import { MagnifyingGlassCircleIcon } from "@heroicons/react/20/solid";
 
 interface GalleryProps {
   galleryData?: {
@@ -49,19 +50,19 @@ export default function GallerySection({ galleryData }: GalleryProps) {
   if (!finalImages) return <></>;
 
   return (
-    <div className="my-16 magic-grid block h-full">
-      <div className="flex px-4 max-w-8xl mx-auto">
+    <div className="my-8 magic-grid block h-full">
+      <div className="flex max-w-8xl mx-auto px-2 w-full">
         <LightGallery
           speed={500}
           download={false}
           plugins={[lgThumbnail, lgZoom]}
-          elementClassNames="flex flex-wrap flex-row w-full gap-4 mx-auto items-center justify-center"
+          elementClassNames="flex flex-wrap flex-row w-full gap-0 lg:gap-2 mx-auto items-center justify-center"
         >
           {gallery.map((finalImage, index) => (
             <a
               href={finalImage.url}
               key={finalImage.url}
-              className="relative flex flex-wrap h-32 md:h-64 w-32 md:w-64 aspect-1 transition-all hover:cursor-pointer"
+              className="relative flex flex-wrap h-36 lg:h-64 w-36 lg:w-64 aspect-1 transition-all hover:cursor-pointer group"
               data-sub-html={finalImage.caption}
             >
               <Image
@@ -72,9 +73,7 @@ export default function GallerySection({ galleryData }: GalleryProps) {
                 height={0}
                 className="h-full w-full object-cover absolute inset-0"
               />
-              {/* <span className="h-full w-full object-cover absolute inset-0">
-            {finalImage.caption}
-          </span> */}
+              <MagnifyingGlassCircleIcon className="h-6 md:h-8 w-6 md:w-8 text-gray-400 transition-all duration-300 group-hover:opacity-100 opacity-80 lg:opacity-50 absolute bottom-2 lg:bottom-4 right-2 lg:right-4 z-1 text-[white]" />
             </a>
           ))}
         </LightGallery>

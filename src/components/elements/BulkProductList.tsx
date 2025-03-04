@@ -99,7 +99,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
             <select
               value={sortOrder}
               onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
-              className="px-3 py-2 border border-[#CCCCCC] rounded-lg bg-[#FFFFFF] text-[#333333]"
+              className="px-6 py-2 border border-[#CCCCCC] rounded-lg bg-[#FFFFFF] text-[#333333]"
             >
               <option value="asc">Sort A-Z</option>
               <option value="desc">Sort Z-A</option>
