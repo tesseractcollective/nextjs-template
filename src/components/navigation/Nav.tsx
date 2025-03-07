@@ -4,6 +4,7 @@ import type {
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
 import CenterNavigation from "@/components/navigation/CenterNavigation";
+import CenterDarkNavigation from "@/components/navigation/CenterDarkNavigation";
 import DefaultNavigation from "@/components/navigation/DefaultNavigation";
 import MegaNavigation from "@/components/navigation/MegaNavigation";
 import MinimalNavigation from "@/components/navigation/MinimalNavigation";
@@ -204,6 +205,16 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "center")
     return (
       <CenterNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationWrapperCssClass === "centerDark")
+    return (
+      <CenterDarkNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

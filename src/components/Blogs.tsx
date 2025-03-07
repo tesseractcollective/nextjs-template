@@ -198,7 +198,7 @@ export default function Blogs({
                 {FilteredBlogs?.map((blogItem) => (
                   <article
                     key={blogItem.id}
-                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 p-4 group transition-all w-full h-full"
+                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-bg-secondary p-4 group transition-all w-full h-full"
                   >
                     {!!blogItem.image?.url && (
                       <Image

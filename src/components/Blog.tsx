@@ -31,6 +31,8 @@ import VideoSection from "./VideoSection";
 import Sections from "@/components/sections/Sections";
 import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;
@@ -68,6 +70,7 @@ export default function Blog({
     blogHtml,
     layoutBlocks,
     date,
+    audioBlog,
   } = blog;
   const filteredBlogs = blogs?.filter(
     (tempBlog) => blog.blogSlug !== tempBlog.blogSlug
@@ -219,6 +222,19 @@ export default function Blog({
               </div>
             )}
           </div>
+          {!!audioBlog?.url && (
+            <div className="audio-player block px-4 my-8">
+              <AudioPlayer
+                autoPlay
+                src={audioBlog.url}
+                header={
+                  <h3 className="text-center mx-auto py-2">
+                    Listen to this page
+                  </h3>
+                }
+              />
+            </div>
+          )}
           {!!content?.html && (
             <div className="body-parsed-text block px-4 content-large">
               {parse(content.html)}

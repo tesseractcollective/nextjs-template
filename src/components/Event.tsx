@@ -55,24 +55,17 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
     (tempEvent) => eventSlug !== tempEvent.eventSlug
   );
   const getMapLink = () => {
-    // First try to use the direct Google Maps link if provided
     if (eventAddressGoogleMapLink) {
       return eventAddressGoogleMapLink;
     }
-
-    // Fall back to site library's Google Maps link if available
     if (siteLibrary?.googleMapLink) {
       return siteLibrary.googleMapLink;
     }
-
-    // Finally, construct a search URL if we only have the address
     if (eventAddress) {
       return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
         eventAddress
       )}`;
     }
-
-    // Return null if no valid address data
     return null;
   };
   const mapLink = getMapLink();
@@ -110,19 +103,30 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
                 address: {
                   "@type": "PostalAddress",
                   streetAddress: eventAddress || siteLibrary?.address,
-                  addressLocality: eventCityState,
+                  addressLocality: eventCityState?.split(",")[0]?.trim(),
+                  addressRegion: eventCityState?.split(",")[1]?.trim(),
+                  ...(siteLibrary?.address?.match(/\d{5}/)?.[0] && {
+                    postalCode: siteLibrary.address.match(/\d{5}/)?.[0],
+                  }),
                 },
+                ...(event?.eventLocation && {
+                  geo: {
+                    "@type": "GeoCoordinates",
+                    latitude: event.eventLocation.latitude,
+                    longitude: event.eventLocation.longitude,
+                  },
+                }),
               },
               image: [event.eventFlyer?.url],
               description: eventShortDescription,
               offers: {
                 "@type": "Offer",
-                url:
-                  event.newTabEventDestination ||
-                  event.eventTicketLinkDestination,
+                url: eventTicketLinkDestination?.startsWith("http")
+                  ? eventTicketLinkDestination
+                  : `https://${eventTicketLinkDestination}`,
                 priceCurrency: "USD",
                 availability: "https://schema.org/InStock",
-                validFrom: new Date(),
+                validFrom: new Date().toISOString(),
               },
               ...(eventPerformer
                 ? {

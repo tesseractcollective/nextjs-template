@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { Fade, Zoom, Slide } from "react-awesome-reveal";
 import parse from "html-react-parser";
 import type { CallToActionFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "../LinkItem";
@@ -51,12 +50,12 @@ export default function PageHeaderOverlap({
           <div className="absolute bg-gradient-to-t from-[#000] z-20 h-32 opacity-70 left-0 right-0 bottom-0" />
         </div>
         {/* Content */}
-        <div className="absolute -bottom-16 right-12 bg-bg p-8 max-w-max w-full mx-auto z-30 border border-secondary">
+        <div className="absolute -bottom-[4.5rem] lg:-bottom-16 right-0 lg:right-12 bg-bg p-4 lg:p-8 max-w-max w-full mx-auto z-30 border border-secondary">
           <div className="z-30 flex flex-col justify-center items-start">
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-color mb-2 md:mb-4 ">
               {pageHeaderTitleProp}
             </h3>
-            <p className="text-lg text-text-color max-w-prose">
+            <p className="text-base lg:text-lg text-text-color max-w-prose">
               {pageHeaderSubtitleProp}
             </p>
             {!!pageCallToAction && pageCallToAction?.length > 0 && (
@@ -67,7 +66,7 @@ export default function PageHeaderOverlap({
                       callToActionItem?.ctaLink && (
                         <div
                           key={callToActionItem.ctaLink}
-                          className="my-6 gap-4"
+                          className="my-3 lg:my-6 gap-4"
                         >
                           <LinkItem
                             link={callToActionItem.ctaLink}
@@ -77,7 +76,7 @@ export default function PageHeaderOverlap({
                                 ? callToActionItem.ctaClass
                                 : `${
                                     callToActionItem.ctaPrimary
-                                      ? "border-white text-text-color border px-4 md:px-6 py-2 theme-button max-w-max block no-underline font-bold w-full"
+                                      ? "border-primary btn-primary-text border px-4 md:px-6 py-2 theme-button max-w-max block no-underline font-bold w-full"
                                       : "text-text-color border-0 px-4 md:px-6 py-2 theme-button max-w-max block no-underline w-full"
                                   } mr-2 max-w-max`
                             }
