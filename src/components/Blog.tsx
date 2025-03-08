@@ -1,3 +1,4 @@
+"use client";
 import type {
   BlogFieldsFragment,
   SiteLibraryFieldsFragment,
@@ -31,8 +32,7 @@ import VideoSection from "./VideoSection";
 import Sections from "@/components/sections/Sections";
 import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
+import AudioPlayer from "./AudioPlayer";
 
 export interface BlogProps {
   blog: BlogFieldsFragment;
@@ -225,13 +225,8 @@ export default function Blog({
           {!!audioBlog?.url && (
             <div className="audio-player block px-4 my-8">
               <AudioPlayer
-                autoPlay
-                src={audioBlog.url}
-                header={
-                  <h3 className="text-center mx-auto py-2">
-                    Listen to this page
-                  </h3>
-                }
+                audioURL={audioBlog.url}
+                title="Listen to this page"
               />
             </div>
           )}
