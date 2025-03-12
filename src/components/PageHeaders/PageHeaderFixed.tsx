@@ -26,7 +26,9 @@ export default function PageHeaderFixed({
 
   return (
     <section
-      className={`relative bg-black w-full fixed-header-wrapper ${pageHeaderWrapperCssClassProp}`}
+      className={`relative bg-black w-full fixed-header-wrapper ${
+        pageHeaderWrapperCssClassProp ? pageHeaderWrapperCssClassProp : ""
+      }`}
     >
       {/* Aspect ratio container */}
       <div className="relative w-full">
@@ -42,7 +44,7 @@ export default function PageHeaderFixed({
             }}
           />
           {/* Content container with proper centering */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 max-w-6xl w-full mx-auto">
             <Fade direction="up" triggerOnce>
               {!!pageHeaderTitleProp && (
                 <h1 className="text-2xl sm:text-3xl md:text-5xl xl:text-6xl text-shadow-large py-0 text-center text-text-overlay font-bold uppercase">

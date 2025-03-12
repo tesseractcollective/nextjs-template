@@ -104,7 +104,7 @@ export default function EventArtistFilterSection({ events }: EventsProps) {
                 <Transition
                   show={open}
                   as={Fragment}
-                  leave="transition ease-in duration-100"
+                  leave="transition ease-in duration-300"
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
@@ -219,7 +219,7 @@ export default function EventArtistFilterSection({ events }: EventsProps) {
                 <Transition
                   show={open}
                   as={Fragment}
-                  leave="transition ease-in duration-100"
+                  leave="transition ease-in duration-300"
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
@@ -324,38 +324,36 @@ export default function EventArtistFilterSection({ events }: EventsProps) {
                     ? event.newTabEventDestination
                     : `/event/${event.eventSlug}`
                 }
-                cssClass="relative aspect-video group mx-auto w-full group h-full"
+                cssClass="relative aspect-video group mx-auto w-full h-full transition-all duration-300"
               >
-                <div className="artist-filter-item">
-                  <div className="artist-filter-flyer-wrapper relative w-full h-0 pb-[56.25%] overflow-hidden">
-                    <div className="absolute bg-gradient-to-t from-bg group-hover:from-primary z-20 h-24 bottom-0 left-0 right-0 w-full transition-all" />
-                    {!!event?.eventFlyer?.url && (
-                      <Image
-                        src={event?.eventFlyer?.url}
-                        alt={event?.eventTitle || "Event"}
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        className="block w-full border-t-round opacity-50 group-hover:opacity-100 transition-all absolute inset-0"
-                      />
-                    )}
-                  </div>
-                  <div className="artist-filter-text-wrapper text-text-color flex flex-row items-center justify-start py-2 px-4 gap-x-4 border-b border-primary group-hover:bg-primary transition-all">
-                    <div className="flex flex-col border-r border-text-color pr-4">
-                      <span className="date-format-month text-center uppercase my-0 py-0 font-semibold opacity-90 text-xs">
-                        <Moment format="ddd">{event.eventStartDateTime}</Moment>
-                      </span>
-                      <span className="date-format-month text-center uppercase my-0 py-0 font-semibold opacity-90 text-xs">
-                        <Moment format="MMM">{event.eventStartDateTime}</Moment>
-                      </span>
-                      <span className="date-format-date text-center text-2xl my-0 py-0 font-bold">
-                        <Moment format="DD">{event.eventStartDateTime}</Moment>
-                      </span>
-                    </div>
-                    <span className="text-center text-xl font-bold uppercase block">
-                      {event.eventTitle}
+                <div className="artist-filter-flyer-wrapper relative w-full h-0 pb-[56.25%] overflow-hidden group">
+                  <div className="absolute bg-gradient-to-t from-bg group-hover:from-primary z-20 h-24 bottom-0 left-0 right-0 w-full transition-all duration-300" />
+                  {!!event?.eventFlyer?.url && (
+                    <Image
+                      src={event?.eventFlyer?.url}
+                      alt={event?.eventTitle || "Event"}
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      className="block w-full border-t-round opacity-50 group-hover:opacity-100 transition-all duration-300 absolute inset-0"
+                    />
+                  )}
+                </div>
+                <div className="artist-filter-text-wrapper text-text-color flex flex-row items-center justify-start py-2 px-4 gap-x-4 border-b border-primary group-hover:bg-primary transition-all duration-300">
+                  <div className="flex flex-col border-r border-text-color pr-4">
+                    <span className="date-format-month text-center uppercase my-0 py-0 font-semibold opacity-90 text-xs">
+                      <Moment format="ddd">{event.eventStartDateTime}</Moment>
+                    </span>
+                    <span className="date-format-month text-center uppercase my-0 py-0 font-semibold opacity-90 text-xs">
+                      <Moment format="MMM">{event.eventStartDateTime}</Moment>
+                    </span>
+                    <span className="date-format-date text-center text-2xl my-0 py-0 font-bold">
+                      <Moment format="DD">{event.eventStartDateTime}</Moment>
                     </span>
                   </div>
+                  <span className="text-center text-xl font-bold uppercase block">
+                    {event.eventTitle}
+                  </span>
                 </div>
               </LinkItem>
               {event?.eventTicketLinkDestination && (
@@ -364,7 +362,7 @@ export default function EventArtistFilterSection({ events }: EventsProps) {
                   rel="noreferrer"
                   target="_blank"
                   title={event.eventTitle || "Event Ticket Link"}
-                  className="block w-full bg-primary text-center text-bg py-2 hover:bg-bg-secondary focus-within:bg-bg-secondary transition-all"
+                  className="block w-full bg-primary text-center text-bg py-2 hover:bg-bg-secondary focus-within:bg-bg-secondary transition-all duration-300 uppercase"
                 >
                   {event.eventLinkButtonText}
                 </a>

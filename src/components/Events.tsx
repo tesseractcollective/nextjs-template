@@ -14,41 +14,27 @@ interface EventsProps {
 }
 
 export default function Events({ events, eventDisplayLayout }: EventsProps) {
-  // Get today's date in PST
-  const today = new Date().toLocaleString("en-US", {
-    timeZone: "America/Los_Angeles",
-  });
-  const pstDate = new Date(today);
+  // Get today's date in PST, set to the start of the day (00:00:00)
+  const getTodayPST = () => {
+    const today = new Date();
+    const pstOffset = -8 * 60; // PST is UTC-8
+    const pstTime =
+      today.getTime() + (today.getTimezoneOffset() + pstOffset) * 60 * 1000;
+    return new Date(pstTime).setHours(0, 0, 0, 0); // Set to start of the day in PST
+  };
 
-  // Filter out events that occur on or before today in PST
+  const todayPST = getTodayPST();
+
   const filteredEvents = events.filter((event) => {
-    const eventDateTime = new Date(event.eventStartDateTime);
-    return eventDateTime >= pstDate;
+    const eventDateTime = new Date(event.eventStartDateTime).getTime(); // Convert event time to milliseconds
+    return eventDateTime >= todayPST; // Compare event time with today's start of day in PST
   });
 
   const sortedEvents = [...filteredEvents].sort((a, b) => {
-    const dateA = new Date(a.eventStartDateTime);
-    const dateB = new Date(b.eventStartDateTime);
-    return dateA.getTime() - dateB.getTime();
+    const dateA = new Date(a.eventStartDateTime).getTime();
+    const dateB = new Date(b.eventStartDateTime).getTime();
+    return dateA - dateB;
   });
-
-  // console.log(filteredEvents);
-  // console.log("events", events.length);
-  // console.log("filteredEvents", sortedEvents.length);
-
-  // EventDisplayLayout
-  // fullscreen
-  // artistFilter
-  // card
-  // compact
-  // fullscreen
-  // Grid
-  // large
-  // list
-  // None
-  // poster
-  // Slider
-  // thin
 
   if (eventDisplayLayout === "card") {
     return <EventCardSection events={sortedEvents} />;
