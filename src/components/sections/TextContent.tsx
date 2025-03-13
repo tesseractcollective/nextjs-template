@@ -12,6 +12,7 @@ import TextModernSection from "./TextContentSections/TextModernSection";
 import TextGradientSection from "./TextContentSections/TextGradientSection";
 import TextTechnoSection from "./TextContentSections/TextTechnoSection";
 import TextPowerSection from "./TextContentSections/TextPowerSection";
+import TextFullSection from "./TextContentSections/TextFullSection";
 
 interface TextContentProps {
   textContentData: TextContentFieldsFragment[];
@@ -63,6 +64,9 @@ export default function TextContentSection({
   const textGradient = textContentData?.filter(
     (textContent) => textContent.textContentWidth === "gradient"
   );
+  const textFull = textContentData?.filter(
+    (textContent) => textContent.textContentWidth === "Full"
+  );
   const textBlocks = textContentData?.filter(
     (textContent) => textContent.contentAlign !== "card"
   );
@@ -80,6 +84,13 @@ export default function TextContentSection({
     return (
       <TextModernSection
         textContentData={textModern}
+        callToActionData={callToActionData}
+      />
+    );
+  if (textFull && textFull.length >= 1)
+    return (
+      <TextFullSection
+        textContentData={textFull}
         callToActionData={callToActionData}
       />
     );
