@@ -127,7 +127,10 @@ export default function Profile({
       </Head>
       <div className="bg-background">
         {!!profile.heroImage?.url && (
-          <div aria-hidden="true" className="relative overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="relative overflow-hidden max-w-12xl pb-[56.25%] h-0 w-full"
+          >
             <Fade direction="up" triggerOnce>
               <Image
                 src={profile.heroImage?.url}
@@ -135,7 +138,7 @@ export default function Profile({
                 width={0}
                 height={0}
                 sizes="100%"
-                className="h-[40rem] w-full object-cover object-center transition-all"
+                className="h-full w-full object-cover object-center transition-all"
               />
             </Fade>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background h-[33%]" />

@@ -634,6 +634,11 @@
   resolved "https://registry.yarnpkg.com/@fastify/accept-negotiator/-/accept-negotiator-1.1.0.tgz#c1c66b3b771c09742a54dd5bc87c582f6b0630ff"
   integrity sha512-OIHZrb2ImZ7XG85HXOONLcJWGosv7sIvM2ifAPQVhg9Lv7qdmMBNVaai4QTdyuaqbKM5eO6sLSQOYI7wEQeCJQ==
 
+"@fillout/react@^1.2.10":
+  version "1.2.10"
+  resolved "https://registry.yarnpkg.com/@fillout/react/-/react-1.2.10.tgz#d41ff0f5f1e3b526d5378c836ad228caa314c172"
+  integrity sha512-Mmy5tZ8HbKzpQWiSwUnn4vTJviOfFiHRQ1O4+oJFOs7Fhe8y1jtFjI83I23kNF1dKbWxkrl1cs7vai/+tjq3pA==
+
 "@fortawesome/fontawesome-common-types@6.7.2":
   version "6.7.2"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.7.2.tgz#7123d74b0c1e726794aed1184795dbce12186470"

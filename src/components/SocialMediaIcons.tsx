@@ -9,6 +9,7 @@ import {
   faMusic,
   faShoppingBag,
   faGlobe,
+  faHomeUser,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faSpotify,
@@ -557,6 +558,47 @@ export default function SocialMediaIcons({
                   className="fa-fw h-5 w-5 flex aspect-1"
                 />
                 <span className="sr-only">Calendly</span>
+              </a>
+            )}
+            {siteLibrary?.siteLibraryJson?.nextdoor && (
+              <a
+                title="Nextdoor App"
+                href={siteLibrary.siteLibraryJson.nextdoor}
+                className={`relative max-w-max mx-auto  text-center !text-link transition-all cursor-pointer ${iconClass}`}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() =>
+                  ReactGA.event({
+                    category: "Link",
+                    action: siteLibrary.siteLibraryJson.nextdoor || "",
+                    label: siteLibrary.siteLibraryJson.nextdoor,
+                  })
+                }
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 25 25"
+                  className={`svg-inline--fa aspect-1 fa-fw h-5 w-5 relative  ${iconClass}`}
+                >
+                  <rect
+                    id="Rectangle_1"
+                    data-name="Rectangle 1"
+                    width="30"
+                    height="30"
+                    fill="none"
+                  />
+                  <path
+                    id="Nextdoor_id0TCw6kJI_0"
+                    d="M9.14,32.56a10.521,10.521,0,0,1,8.843-4.444c5.869,0,10.4,4.2,10.4,9.546v11.2a.513.513,0,0,1-.507.512H23.206a.507.507,0,0,1-.507-.512V38.442A4.865,4.865,0,0,0,17.983,33.5a4.771,4.771,0,0,0-4.716,4.944V48.862a.516.516,0,0,1-.511.512H8.09a.5.5,0,0,1-.469-.313.513.513,0,0,1-.039-.2V38.778a.674.674,0,0,0-.5-.643c-4.1-1.124-5.615-4.264-5.72-8.759a.516.516,0,0,1,.313-.481.5.5,0,0,1,.2-.04H5.552v.027H6.666a.512.512,0,0,1,.508.493c.053,1.838.419,2.825,1.286,3.35a.5.5,0,0,0,.68-.167Z"
+                    transform="translate(-1, -25.746)"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+
+                <span className="sr-only">Nextdoor</span>
               </a>
             )}
             {(googleMapLinkProp || siteLibrary?.googleMapLink) && (

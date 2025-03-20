@@ -22,7 +22,10 @@ const MouseBlob = () => {
 
       // Check if mouse is over an anchor tag
       const element = document.elementFromPoint(e.clientX, e.clientY);
-      setIsHoveringLink(element?.tagName.toLowerCase() === "a");
+      setIsHoveringLink(
+        element?.tagName.toLowerCase() === "a" ||
+          element?.tagName.toLowerCase() === "button"
+      );
     };
 
     window.addEventListener("mousemove", handleMouseMove);

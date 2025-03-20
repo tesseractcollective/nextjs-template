@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
+import LinkItem from "../LinkItem";
 
 interface ProfilesProps {
   profileSectionTitle?: string;
@@ -29,45 +30,42 @@ export default function ProfileOffsetSection({
               </h3>
             )}
           </div>
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full  lg:7/12 xl:w-8/12 mx-auto lg:mx-0 transition">
-            {profiles.map((profile) => (
-              <Fade
-                direction="up"
-                cascade
-                triggerOnce
-                damping={0.1}
+          <div className="grid gap-4 grid-cols-1 w-full mx-auto lg:mx-0 transition">
+            {profiles.map((profile, index) => (
+              <div
                 key={profile.profileSlug}
-                className="mx-auto"
+                className={`
+                group relative overflow-hidden rounded-2xl bg-white 
+                transition-all duration-300 ease-in-out
+                ${index % 3 === 1 ? "lg:translate-y-8 xl:translate-y-8" : ""}
+                ${index % 3 === 2 ? "lg:translate-y-16 xl:translate-y-16" : ""}
+              `}
               >
-                <Link
-                  href={`/${profile.profileType?.toLowerCase()}/${
-                    profile.profileSlug
-                  }`}
-                  className="profile-card h-full no-underline mx-auto relative mb-4 inline-block max-w-max group"
-                  key={profile.profileSlug}
+                <LinkItem
+                  cssClass="w-full h-auto"
+                  link={
+                    profile?.externalLink
+                      ? profile.externalLink
+                      : `/${profile.profileType?.toLowerCase()}/${
+                          profile.profileSlug
+                        }`
+                  }
+                  parentCssClass="relative w-full pb-[56.25%] rounded-2xl overflow-hidden"
                 >
-                  {!!profile.avatarImage?.url && (
-                    <div className="relative">
-                      <Image
-                        src={profile.avatarImage?.url}
-                        alt=""
-                        className="profile-card-image object-center mb-2 transition max-w-xs w-full transition-rounded"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                      />
-                      <div className="record-border"></div>
-                    </div>
-                  )}
-                  <p className="my-0 py-0 flex flex-row items-center justify-center text-center mx-auto text-text-color group-hover:text-secondary">
-                    <span>{profile.name}</span>
-                    <FontAwesomeIcon
-                      icon={faArrowRight as IconProp}
-                      className="fa-fw h-0 w-0 opacity-0 group-hover:h-4 group-hover:w-4 group-hover:opacity-100"
+                  {profile.avatarImage?.url && (
+                    <Image
+                      src={profile.avatarImage.url}
+                      alt={profile.name || ""}
+                      quality={100}
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      layout="fill"
+                      className="transition-all duration-300 ease-in-out rounded-2xl object-cover w-full h-auto hover:shadow-xl shadow-none group-hover:scale-105"
                     />
-                  </p>
-                </Link>
-              </Fade>
+                  )}
+                </LinkItem>
+              </div>
             ))}
           </div>
         </section>

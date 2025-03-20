@@ -38,6 +38,7 @@ import CountryFlags from "./CountryFlags";
 import BulletsSection from "./BulletsSection";
 import MapBoxRadius from "./MapElements/MapBoxRadius";
 import BulkProductsList from "./BulkProductList";
+import FilloutForm from "./FilloutForm";
 // import AgeVerification from "./AgeVerification";
 
 type ElementsType =
@@ -141,6 +142,9 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
         )}
       {!!elementJson?.dimensionText && (
         <DimensionText text={elementJson.dimensionText} />
+      )}
+      {!!elementJson?.filloutData && (
+        <FilloutForm filloutData={elementJson.filloutData} />
       )}
       {!!siteLibrary?.mapKey &&
         !!elementJson?.distanceCheck?.lat &&

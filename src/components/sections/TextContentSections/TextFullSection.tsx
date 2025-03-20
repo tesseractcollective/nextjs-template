@@ -70,7 +70,7 @@ export default function TextFullSection({
             <LinkItem
               key={textContentItem?.header?.html}
               link={textContentItem.link}
-              cssClass="mx-auto w-full"
+              cssClass="mx-auto w-full block"
             >
               <div className="border-t border-text-color p-4">
                 {textContentItem?.contentImage && (
