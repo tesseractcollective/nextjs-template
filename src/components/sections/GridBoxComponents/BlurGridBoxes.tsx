@@ -37,8 +37,7 @@ export default function BlurGridBoxes({ gridBoxData }: GridBoxProps) {
                     width={0}
                     height={0}
                     sizes="100%"
-                    layout="fill"
-                    className="transition-all duration-300 ease-in-out rounded-2xl object-cover w-full h-auto hover:shadow-xl shadow-none group-hover:scale-105 group-hover:rotate-3"
+                    className="transition-all duration-300 ease-in-out rounded-2xl object-cover w-full h-auto hover:shadow-xl shadow-none group-hover:scale-105 group-hover:rotate-3 absolute inset-0 object-center"
                   />
                 )}
               </LinkItem>
@@ -52,8 +51,7 @@ export default function BlurGridBoxes({ gridBoxData }: GridBoxProps) {
                     width={0}
                     height={0}
                     sizes="100%"
-                    layout="fill"
-                    className="transition-transform duration-300 ease-in-out rounded-2xl object-cover w-full h-auto"
+                    className="transition-transform duration-300 ease-in-out rounded-2xl object-cover w-full h-auto absolute inset-0 object-center"
                   />
                 )}
               </div>

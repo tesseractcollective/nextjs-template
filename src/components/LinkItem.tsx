@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import ReactGA from "react-ga4";
+import LinkItemFillout from "./LinkItemFillout";
 
 interface LinkItemProps {
   link?: string | null;
@@ -65,6 +66,9 @@ export default function LinkItem({
   const finalClassName = `${cssClass || ""} ${
     isActive(link) ? activeClassName : ""
   }`.trim();
+
+  if (link.includes("fillout:") && label)
+    return <LinkItemFillout link={link} label={label} cssClass={cssClass} />;
 
   return (
     <div className={`relative ${parentCssClass}`}>
