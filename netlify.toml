@@ -4,8 +4,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    enableStaticFileOptimization = true # Optional but recommended
 
 [[redirects]]
   from = "https://facebook.bocadodallas.com/*"
