@@ -46,7 +46,7 @@ export default function ProfileCardModalSection({
                   <div className="animate-col-width mx-auto md:mx-0 w-full">
                     <div className="overflow-hidden border border-primary-fade h-full rounded profile-card w-full relative group hover:border-primary transition-all">
                       {!!profile?.avatarImage?.url && (
-                        <div className="h-72 max-w-72 p-0 m-0 w-full relative">
+                        <div className="h-72 p-0 m-0 w-full relative">
                           {!!profile?.profileLogo?.url && (
                             <div>
                               <Fade
@@ -68,7 +68,7 @@ export default function ProfileCardModalSection({
                           <Image
                             src={profile?.avatarImage?.url}
                             alt={(profile.name && profile.name) || ""}
-                            className="object-cover block w-full h-full border-primary-fade border-b cursor-pointer"
+                            className="object-cover absolute inset-0 w-full h-auto border-primary-fade border-b cursor-pointer"
                             sizes="100%"
                             width={0}
                             height={0}
