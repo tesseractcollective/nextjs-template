@@ -36,7 +36,7 @@ function DistanceCheckMap({
   const [selectedMarkerIndex, setSelectedMarkerIndex] = useState<number | null>(
     null
   );
-  const geoControlRef = useRef<mapboxgl.GeolocateControl>();
+  const geoControlRef = useRef<mapboxgl.GeolocateControl | null>(null);
 
   useEffect(() => {
     // Activate as soon as the control is loaded

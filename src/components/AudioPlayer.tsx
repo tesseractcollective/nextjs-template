@@ -18,7 +18,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ title, audioURL }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const timeUpdateInterval = useRef<NodeJS.Timeout>();
+  const timeUpdateInterval = useRef<NodeJS.Timeout | null>(null);
 
   const handlePlayPause = useCallback(() => {
     const audio = audioRef.current;
