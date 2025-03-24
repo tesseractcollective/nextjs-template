@@ -4,7 +4,7 @@ import { FC } from "react";
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'stripe-pricing-table': React.DetailedHTMLProps<
+      "stripe-pricing-table": React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement>,
         HTMLElement
       >;
@@ -12,15 +12,15 @@ declare global {
   }
 }
 
-export const StripePricingTable:FC<{
-    pricingTableId?: string;
-    publishableKey?: string;
-    clientReferenceId?: string;
-}> = ({pricingTableId,publishableKey,clientReferenceId}) => {
-    if (!pricingTableId || !publishableKey) return <></>;
-    return (
-        <>
-            <Script
+export const StripePricingTable: FC<{
+  pricingTableId?: string;
+  publishableKey?: string;
+  clientReferenceId?: string;
+}> = ({ pricingTableId, publishableKey, clientReferenceId }) => {
+  if (!pricingTableId || !publishableKey) return <></>;
+  return (
+    <>
+      {/* <Script
                 async
                 strategy='lazyOnload'
                 src='https://js.stripe.com/v3/pricing-table.js'
@@ -30,7 +30,7 @@ export const StripePricingTable:FC<{
                 pricing-table-id={pricingTableId}
                 publishable-key={publishableKey}
                 client-reference-id={clientReferenceId}
-            />
-        </>
-    )
-}
+            /> */}
+    </>
+  );
+};

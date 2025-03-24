@@ -5,7 +5,7 @@ import type {
 import Parallax from "@/components/Parallax";
 import StandOutText from "@/components/StandOutText";
 import IframeBox from "@/components/IframeBox";
-import { StripePricingTable } from "@/components/StripePricingTable";
+// import { StripePricingTable } from "@/components/StripePricingTable";
 import InstagramSection from "@/components/InstagramSection";
 import GallerySection from "@/components/GallerySection";
 import HTMLText from "@/components/elements/HTMLText";
@@ -98,12 +98,12 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           galleryLayoutData={galleryLayout || undefined}
         />
       )}
-      {!!stripePricingTableId && stripePublishableKey && (
+      {/* {!!stripePricingTableId && stripePublishableKey && (
         <StripePricingTable
           pricingTableId={stripePricingTableId}
           publishableKey={stripePublishableKey}
         />
-      )}
+      )} */}
       {!!displayInstagramSectionUsername && (
         <InstagramSection
           userToken={displayInstagramSectionUsername}
