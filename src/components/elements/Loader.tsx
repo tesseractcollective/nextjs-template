@@ -47,9 +47,11 @@ const Loader: React.FC<LoaderProps> = ({ icon, minimal }) => {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className={`flex flex-col items-center justify-center min-h-screen rounded-xl fixed z-[9999] top-0 left-0 right-0 bottom-0 w-full ${
-            minimal ? "" : "bg-bg-secondary"
-          }`}
+          {...{
+            className: `flex flex-col items-center justify-center min-h-screen rounded-xl fixed z-[9999] top-0 left-0 right-0 bottom-0 w-full ${
+              minimal ? "" : "bg-bg-secondary"
+            }`,
+          }}
           initial="initial"
           animate="animate"
           exit="exit"
@@ -70,13 +72,13 @@ const Loader: React.FC<LoaderProps> = ({ icon, minimal }) => {
               transition={{
                 staggerChildren: 0.25,
               }}
-              className="flex gap-1 justify-center"
+              {...{ className: "flex gap-1 justify-center" }}
             >
               {[...Array(8)].map((_, index) => (
                 <motion.div
                   key={index}
                   variants={barVariants}
-                  className="h-12 w-2 bg-primary"
+                  {...{ className: "h-12 w-2 bg-primary" }}
                 />
               ))}
             </motion.div>

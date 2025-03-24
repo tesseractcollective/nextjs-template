@@ -12,7 +12,7 @@ export default function VideoRecordSection({
 }: VideoStandardSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: containerRef as React.RefObject<HTMLElement>,
     offset: ["start start", "end start"],
   });
 
@@ -28,7 +28,10 @@ export default function VideoRecordSection({
       <div className="sticky top-0 h-screen w-full bg-bg-secondary overflow-hidden">
         <VideoYoutubeSection videoData={videoData} />
         <motion.div
-          className="absolute -bottom-40 left-1/2 transform -translate-x-1/2 bg-primary rounded-[100%]"
+          {...{
+            className:
+              "absolute -bottom-40 left-1/2 transform -translate-x-1/2 bg-primary rounded-[100%]",
+          }}
           style={{
             width: ovalWidth,
             height: ovalHeight,

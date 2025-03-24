@@ -63,7 +63,9 @@ export const GalleryCarousel = ({ imgs }: GalleryProps) => {
         }}
         transition={SPRING_OPTIONS}
         onDragEnd={onDragEnd}
-        className="flex cursor-grab items-center active:cursor-grabbing"
+        {...{
+          className: "flex cursor-grab items-center active:cursor-grabbing",
+        }}
       >
         <Images imgIndex={imgIndex} imgs={imgs} />
       </motion.div>
@@ -90,7 +92,10 @@ const Images = ({ imgIndex, imgs }: { imgIndex: number; imgs: string[] }) => {
               scale: imgIndex === idx ? 0.95 : 0.85,
             }}
             transition={SPRING_OPTIONS}
-            className="aspect-video w-screen shrink-0 rounded-xl bg-neutral-800 object-cover h-full min-h-[75vh]"
+            {...{
+              className:
+                "aspect-video w-screen shrink-0 rounded-xl bg-neutral-800 object-cover h-full min-h-[75vh]",
+            }}
           />
         );
       })}

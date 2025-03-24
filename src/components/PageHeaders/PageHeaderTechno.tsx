@@ -110,7 +110,10 @@ const DesktopHeader: React.FC<PageHeaderProps> = ({
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
       <motion.div
-        className="absolute inset-0 flex flex-col justify-center px-8 lg:w-1/2 z-10"
+        {...{
+          className:
+            "absolute inset-0 flex flex-col justify-center px-8 lg:w-1/2 z-10",
+        }}
         initial="initial"
         animate={shouldAnimate ? "animate" : "initial"}
         variants={textVariants}
@@ -131,7 +134,7 @@ const DesktopHeader: React.FC<PageHeaderProps> = ({
       <AnimatePresence>
         {pageHeaderImageProp && (
           <motion.div
-            className="absolute"
+            {...{ className: "absolute" }}
             initial="initial"
             animate={shouldAnimate ? "animate" : "initial"}
             variants={variants}

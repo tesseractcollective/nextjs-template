@@ -37,7 +37,9 @@ const MouseBlob = () => {
 
   return (
     <motion.div
-      className={`mouse-blob ${isHoveringLink ? "is-blob-hovering" : ""}`}
+      {...{
+        className: `mouse-blob ${isHoveringLink ? "is-blob-hovering" : ""}`,
+      }}
       style={{
         x: followX,
         y: followY,

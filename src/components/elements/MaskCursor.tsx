@@ -20,7 +20,7 @@ export default function MaskCursor({ maskCursorText }: MaskCursorProps) {
   return (
     <main className="mask-cursor-wrapper relative">
       <motion.div
-        className="mask"
+        {...{ className: "mask" }}
         animate={{
           WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
           WebkitMaskSize: `${size}px`,

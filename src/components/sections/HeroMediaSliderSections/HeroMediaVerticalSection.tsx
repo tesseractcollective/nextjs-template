@@ -21,10 +21,10 @@ export default function HeroMediaVerticalSection({
   heroMediaSliderData,
   siteLibrary,
 }: HeroMediaSliderProps): ReactElement {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null); // Specify the correct type here
   const { isMobile } = useViewport();
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: ref as React.RefObject<HTMLElement>,
     offset: ["start start", "end start"],
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
@@ -34,59 +34,26 @@ export default function HeroMediaVerticalSection({
   if (!heroMediaSliderData) return <></>;
   const isOneSlider = heroMediaSliderData.length === 1;
   const heroMediaSliderItem = heroMediaSliderData[0];
-  //   image
-  // video
-  // youtube
-  // netflix
-  // vertical
-  // expand
-  // product
 
   return (
-    <div
-      ref={ref}
-      className="w-full h-100vh md:h-120vh overflow-hidden relative flex items-center justify-center"
-    >
-      <motion.h1
-        style={{ y: textY }}
-        className="font-bold text-white text-7xl md:text-9xl relative z-10 -mt-72"
-      >
-        {heroMediaSliderItem?.textContent?.contentImage && (
+    <div ref={ref}>
+      {heroMediaSliderItem?.textContent?.contentImage && (
+        <div className={`dynamic-image-class dynamic-medium`}>
           <Image
-            priority
-            width={0}
-            height={0}
-            sizes="100%"
-            className={`block mb-0 pb-4  ${heroMediaSliderItem?.textContent?.imageStyle?.map(
-              (imageStyleItem) => ` dynamic-image-class dynamic-medium `
-            )}`}
+            fill
             style={{ objectFit: "contain" }}
-            src={heroMediaSliderItem?.textContent?.contentImage.url}
+            src={heroMediaSliderItem.textContent.contentImage.url}
             alt={heroMediaSliderItem?.textContent?.header?.html || ""}
           />
-        )}
-      </motion.h1>
+        </div>
+      )}
 
       {heroMediaSliderItem.sliderMediaBackground?.url && (
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${heroMediaSliderItem.sliderMediaBackground.url})`,
-            backgroundPosition: "center 40%",
-            backgroundSize: "cover",
-            y: backgroundY,
-          }}
-        />
+        <div>Slider background content here</div>
       )}
+
       {heroMediaSliderItem.mobileThumbnail?.url && (
-        <div
-          className="absolute inset-0 z-20 h-full outline outline-primary"
-          style={{
-            backgroundImage: `url(${heroMediaSliderItem.mobileThumbnail.url})`,
-            backgroundPosition: isMobile ? "center top" : "center 15%",
-            backgroundSize: isMobile ? "" : "cover",
-          }}
-        />
+        <div>Mobile thumbnail content here</div>
       )}
     </div>
   );

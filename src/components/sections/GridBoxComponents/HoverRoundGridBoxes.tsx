@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
+import LinkItem from "@/components/LinkItem";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -27,11 +28,13 @@ interface SingleGridBoxProps {
 
 const ExpandingCircleLink = ({ gridBox, isEven }: SingleGridBoxProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { amount: 0.2, once: true }); // Add once: true to maintain state
+  const isInView = useInView(containerRef as React.RefObject<Element>, {
+    amount: 0.2,
+    once: true,
+  });
 
-  // Track scroll progress only after element is in view
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: containerRef as React.RefObject<HTMLElement>,
     offset: ["start end", "end start"],
   });
 
@@ -106,33 +109,36 @@ const ExpandingCircleLink = ({ gridBox, isEven }: SingleGridBoxProps) => {
       )}
 
       {/* Animated Circle/Image Container */}
-      <motion.a
-        href={link}
-        className="absolute inset-0 flex items-center justify-center"
-        style={{
-          scale,
-          borderRadius,
-          x: translateX,
-          opacity,
-          width,
-          height,
-          margin: "auto",
-          aspectRatio: animationProgress.get() >= 0.7 ? "auto" : "1", // Remove aspect ratio constraint during final expansion
-        }}
-      >
+      <LinkItem link={link} parentCssClass="w-full">
         <motion.div
-          className="absolute inset-0 w-full h-full bg-black/50"
+          {...{
+            className: "absolute inset-0 flex items-center justify-center",
+          }}
           style={{
-            backgroundImage: `url(${imageUrl})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
             scale,
             borderRadius,
+            x: translateX,
+            opacity,
+            width,
+            height,
+            margin: "auto",
+            aspectRatio: animationProgress.get() >= 0.7 ? "auto" : "1", // Remove aspect ratio constraint during final expansion
           }}
-          initial={{ scale: 0.3 }}
-          aria-label={title}
-        />
-      </motion.a>
+        >
+          <motion.div
+            {...{ className: "absolute inset-0 w-full h-full bg-black/50" }}
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              scale,
+              borderRadius,
+            }}
+            initial={{ scale: 0.3 }}
+            aria-label={title}
+          />
+        </motion.div>
+      </LinkItem>
     </div>
   );
 };

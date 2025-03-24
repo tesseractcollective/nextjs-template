@@ -9,7 +9,7 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
-import { Variants, motion } from "framer-motion";
+import { Variants, motion, HTMLMotionProps } from "framer-motion";
 
 type Event = {
   id: string;
@@ -36,7 +36,7 @@ type Event = {
       type: string;
       url: string;
       status: string;
-    }
+    },
   ];
 };
 
@@ -194,13 +194,28 @@ const BandsintownEvents: React.FC<EventListProps> = ({
               }}
               initial="initial"
               animate="animate"
-              className="flex gap-1"
+              {...{ className: "flex gap-1" }}
             >
-              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
-              <motion.div variants={variants} className="h-12 w-2 bg-primary" />
+              <motion.div
+                variants={variants}
+                {...{ className: "h-12 w-2 bg-primary" }}
+              />
+              <motion.div
+                variants={variants}
+                {...{ className: "h-12 w-2 bg-primary" }}
+              />
+              <motion.div
+                variants={variants}
+                {...{ className: "h-12 w-2 bg-primary" }}
+              />
+              <motion.div
+                variants={variants}
+                {...{ className: "h-12 w-2 bg-primary" }}
+              />
+              <motion.div
+                variants={variants}
+                {...{ className: "h-12 w-2 bg-primary" }}
+              />
             </motion.div>
           </p>
         </div>

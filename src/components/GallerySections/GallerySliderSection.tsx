@@ -135,7 +135,10 @@ const GallerySliderSection: React.FC<BeforeAfterProps> = ({
 
         {/* Slider Handle */}
         <motion.div
-          className="absolute top-0 bottom-0 w-4 bg-transparent cursor-ew-resize touch-pan-x"
+          {...{
+            className:
+              "absolute top-0 bottom-0 w-4 bg-transparent cursor-ew-resize touch-pan-x",
+          }}
           style={{
             left: `${sliderPosition}%`,
             transform: "translateX(-50%)",

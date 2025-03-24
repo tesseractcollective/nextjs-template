@@ -36,7 +36,7 @@ const CountryFlags: React.FC<Props> = ({ flags }) => {
       <Fade triggerOnce>
         <motion.div
           ref={containerRef}
-          className="flex py-4"
+          {...{ className: "flex py-4" }}
           style={{ width: "fit-content" }}
         >
           {flags.concat(flags).map((flag, index) => (

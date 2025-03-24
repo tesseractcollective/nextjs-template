@@ -86,14 +86,20 @@ const Panel = ({
               backgroundPosition: "center",
               backgroundSize: "cover",
             }}
-            className="overflow-hidden relative bg-black flex items-end aspect-1 h-auto"
+            {...{
+              className:
+                "overflow-hidden relative bg-black flex items-end aspect-1 h-auto",
+            }}
           >
             <motion.div
               variants={descriptionVariants}
               initial="closed"
               animate="open"
               exit="closed"
-              className="px-4 py-2 bg-[#00000097] backdrop-blur-sm text-white"
+              {...{
+                className:
+                  "px-4 py-2 bg-[#00000097] backdrop-blur-sm text-white",
+              }}
             >
               <div>{parse(description)}</div>
             </motion.div>

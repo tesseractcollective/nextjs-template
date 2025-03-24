@@ -68,7 +68,10 @@ export const NetflixCardBoxes = ({ gridBoxData }: GridBoxProps) => {
         }}
         transition={SPRING_OPTIONS}
         onDragEnd={onDragEnd}
-        className="flex cursor-grab items-center active:cursor-grabbing w-full"
+        {...{
+          className:
+            "flex cursor-grab items-center active:cursor-grabbing w-full",
+        }}
       >
         <Slides imgIndex={imgIndex} gridBoxData={gridBoxData} />
       </motion.div>

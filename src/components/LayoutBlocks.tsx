@@ -62,7 +62,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
           }
         />
       )}
-      <div>
+      <main>
         <LayoutBlockSections layout={layout} eventsData={events} />
         {!!page?.whatsAppContactNumberFloatingButton && (
           <Whatsapp
@@ -71,7 +71,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
             metaDomain={siteLibrary?.metaDomain || ""}
           />
         )}
-      </div>
+      </main>
       {navigations && siteLibrary && (
         <Footer
           siteLibrary={siteLibrary}

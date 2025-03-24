@@ -61,7 +61,7 @@ export default function StickyCursor({ stickyElement }: IndexProps) {
           left: smoothMouse.x,
           top: smoothMouse.y,
         }}
-        className="cursor"
+        {...{ className: "cursor" }}
       ></motion.div>
     </div>
   );

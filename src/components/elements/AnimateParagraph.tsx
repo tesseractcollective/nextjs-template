@@ -8,9 +8,9 @@ interface AnimateParagraphProps {
 export default function AnimateParagraph({
   animateParagraph,
 }: AnimateParagraphProps) {
-  const container = useRef(null);
+  const container = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({
-    target: container,
+    target: container as React.RefObject<HTMLElement>,
     offset: ["start 0.9", "start 0.25"],
   });
 
