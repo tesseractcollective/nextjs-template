@@ -12,7 +12,7 @@ interface EventsProps {
 }
 
 export default function EventFullScreenSection({ events }: EventsProps) {
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
 
   return (
     <div className="relative w-full mx-0 px-0">

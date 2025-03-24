@@ -28,7 +28,7 @@ export default function ProductCompactSection({
 }: ProductsProps) {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   const { isMobile, isDesktop } = useViewport();
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
 
   return (
     <div className="">

@@ -31,7 +31,7 @@ export default function HeroMediaCircleSection({
   siteLibrary,
 }: HeroMediaSliderProps): ReactElement {
   const [scroll, setScroll] = useState(false);
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
   useEffect(() => {
     const handleScroll = () => {
       setScroll(window.pageYOffset > 150);

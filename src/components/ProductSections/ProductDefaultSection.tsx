@@ -33,7 +33,7 @@ export default function ProductDefaultSection({
 }: ProductsProps) {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   const { isMobile, isDesktop } = useViewport();
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
   if (!products) return <></>;
   const filteredProducts = products.filter(
     (product) => product?.productType?.toLowerCase() === type?.toLowerCase()

@@ -22,7 +22,7 @@ export default function VideoSnapSection({
   const [open, setOpen] = useState<boolean>(false);
   const [selectedVideo, setSelctedVideo] = useState<VideoBoxFieldsFragment>();
   const videoDataLength = videoData.length === 1;
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
   const handleClosePopup = () => {
     setOpen(false);
     ReactGA.event({

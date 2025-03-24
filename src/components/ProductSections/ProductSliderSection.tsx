@@ -33,7 +33,7 @@ export default function ProductSliderSection({
 }: ProductsProps) {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   const { isMobile, isDesktop } = useViewport();
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
 
   return (
     <div className="bg-bg-primary overflow-hidden mx-auto z-20 w-full relative">

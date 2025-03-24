@@ -27,7 +27,7 @@ interface ProductsProps {
 export default function ProductCardSection({ type, products }: ProductsProps) {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   const { isMobile, isDesktop } = useViewport();
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
   if (!products) return <></>;
 
   // Product Layout Style

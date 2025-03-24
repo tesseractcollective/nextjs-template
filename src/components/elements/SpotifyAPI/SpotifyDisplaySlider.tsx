@@ -34,7 +34,7 @@ interface SpotifyDataProps {
 
 export default function FeatureAlbum({ spotifyAlbumsData }: SpotifyDataProps) {
   const { isMobile } = useViewport();
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
 
   return (
     <section className="max-w-8xl w-full p-4 feature-album-slider-wrapper mx-auto spotify-slider-wrapper">

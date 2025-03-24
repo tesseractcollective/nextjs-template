@@ -16,7 +16,7 @@ interface GridBoxProps {
 }
 
 export default function TwoHundredVhBoxes({ gridBoxData }: GridBoxProps) {
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
   return (
     <section className="mx-auto w-full relative z-50 bg-primary">
       <Swiper

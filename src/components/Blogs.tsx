@@ -29,7 +29,7 @@ export default function Blogs({
   blogLayoutStyle,
 }: BlogsProps) {
   const { isMobile } = useViewport();
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
   const FilteredBlogs = blogs.filter(
     (blog) => blog?.blogCategory === blogCategory
   );

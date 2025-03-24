@@ -22,7 +22,7 @@ export interface FeatureAlbumProps {
 
 export default function FeatureAlbum({ albums, isSpanish }: FeatureAlbumProps) {
   const { isMobile } = useViewport();
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
 
   return (
     <section className="max-w-8xl w-full p-4 feature-album-slider-wrapper mx-auto">

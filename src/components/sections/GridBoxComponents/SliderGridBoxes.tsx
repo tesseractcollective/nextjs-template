@@ -19,7 +19,7 @@ interface GridBoxProps {
 
 export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
   const { isMobile, isDesktop } = useViewport();
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | null>(null);
   return (
     <section className="mx-auto max-w-8xl w-full px-4 my-8 relative z-50">
       <div className="flex flex-row items-center justify-between w-full px-14">
