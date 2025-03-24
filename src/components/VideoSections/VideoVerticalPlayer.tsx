@@ -51,7 +51,9 @@ export default function VideoVerticalPlayer({
               )}
               {video?.thumbnail?.url && (
                 <video
-                  ref={(el) => (videoRefs.current[index] = el)}
+                  ref={(el) => {
+                    videoRefs.current[index] = el;
+                  }}
                   src={video.thumbnail.url}
                   className="w-full h-full object-cover"
                   loop
