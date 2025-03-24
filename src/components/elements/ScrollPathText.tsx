@@ -9,7 +9,7 @@ const ScrollPathText: React.FC<ScrollPathTextProps> = ({ text }) => {
   const container = useRef<HTMLDivElement>(null);
   const paths = useRef<SVGTextPathElement[]>([]);
   const { scrollYProgress } = useScroll({
-    target: container,
+    target: container as React.RefObject<HTMLElement>,
     offset: ["start end", "end end"],
   });
 
