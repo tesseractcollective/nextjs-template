@@ -23,7 +23,6 @@ export default function VideoPlaylistBox({
         <YouTubePlaylist
           apiKey={youtubeApiKey}
           playlistId={youtubePlaylistId}
-          uniqueName={youtubePlaylistId}
         />
       </div>
     </section>

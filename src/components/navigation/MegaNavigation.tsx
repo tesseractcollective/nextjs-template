@@ -311,7 +311,6 @@ export default function MegaNavigation({
           </div>
         </Dialog>
       </Transition.Root>
-
       <header className="relative">
         <nav aria-label="Top">
           <div className="">

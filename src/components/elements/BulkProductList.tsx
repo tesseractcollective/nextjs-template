@@ -121,7 +121,6 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
           </div>
         </div>
       </div>
-
       {/* Product Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredProducts.map((product, index) => (
@@ -142,7 +141,6 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
           </div>
         ))}
       </div>
-
       {/* No Results */}
       {filteredProducts.length === 0 && (
         <div className="text-center py-12">

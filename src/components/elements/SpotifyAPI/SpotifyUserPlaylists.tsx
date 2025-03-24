@@ -125,13 +125,13 @@ const SpotifyUserPlaylists: React.FC<SpotifyUserPlaylistsProps> = ({
                   />
                   {playlist.images[0].url && (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    (<img
                       src={playlist.images[0].url}
                       alt={playlist.name || ""}
                       className={`transition-all object-cover h-full w-full overflow-hidden relative z-10 duration-[400ms] ${
                         isHovered ? "grayscale" : ""
                       }`}
-                    />
+                    />)
                   )}
                   <p className="opacity-50 group-hover:opacity-100 lg:opacity-0 absolute bottom-2 left-2 right-0 z-40 p-0 m-0 font-bold uppercase text-xs lg:text-4xl text-left lg:group-hover:opacity-100 group-focus:opacity-100 transition-all duration-[400ms] flex flex-row items-center justify-start group-hover:text-shadow w-full">
                     {playlist.name}
