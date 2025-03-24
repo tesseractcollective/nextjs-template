@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, MotionValue } from "framer-motion";
 import "./StickyCursor.scss";
 
 interface IndexProps {
-  stickyElement?: RefObject<HTMLElement>;
+  stickyElement?: RefObject<HTMLElement | null>;
 }
 
 export default function StickyCursor({ stickyElement }: IndexProps) {

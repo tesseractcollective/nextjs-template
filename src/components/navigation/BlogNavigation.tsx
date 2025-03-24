@@ -34,7 +34,7 @@ export default function BlogNavigation({
 }: NavProps) {
   const [open, setOpen] = useState(false);
   const [small, setSmall] = useState(false);
-  const stickyElement = useRef(null);
+  const stickyElement = useRef<HTMLElement | null>(null);
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
@@ -71,7 +71,9 @@ export default function BlogNavigation({
         } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
         id="blog-navigation"
       >
-        <StickyCursor stickyElement={stickyElement} />
+        {stickyElement.current && (
+          <StickyCursor stickyElement={stickyElement} />
+        )}
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
           <Dialog as="div" className="relative z-[1000]" onClose={setOpen}>

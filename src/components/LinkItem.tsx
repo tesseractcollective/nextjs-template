@@ -3,7 +3,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import ReactGA from "react-ga4";
 import LinkItemFillout from "./LinkItemFillout";
 
@@ -13,7 +13,7 @@ interface LinkItemProps {
   cssClass?: string | null;
   parentCssClass?: string | null;
   sameTab?: boolean | null;
-  children?: string | JSX.Element | JSX.Element[] | string[];
+  children?: ReactNode;
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;

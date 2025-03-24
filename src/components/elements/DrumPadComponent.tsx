@@ -5,7 +5,7 @@ const soundBank = [
   {
     id: "Sample",
     letter: "Q",
-    src: "https://samples-react.netlify.app/Sample.mp3",
+    src: "https://us-west-2.graphassets.com/AdC4vz3eOQdiwwS2U6PLiz/cm8nexcr0a6sh07n4weptxaa9",
   },
   {
     id: "Kick",
@@ -87,7 +87,9 @@ class DrumPad extends Component<DrumPadProps> {
           <audio
             id={this.props.letter}
             src={this.props.src}
-            ref={(ref) => (this.audio = ref)}
+            ref={(ref) => {
+              this.audio = ref;
+            }}
           ></audio>
         </div>
       </div>
