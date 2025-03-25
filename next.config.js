@@ -17,7 +17,7 @@ const nextConfig = {
       },
     ],
     // Disable image optimization
-    unoptimized: true,
+    // unoptimized: true,
   },
   async rewrites() {
     return [
