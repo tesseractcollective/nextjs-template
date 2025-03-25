@@ -1,4 +1,5 @@
 const nextConfig = {
+  output: "standalone",
   images: {
     domains: [
       "media.graphcms.com",
@@ -16,7 +17,7 @@ const nextConfig = {
       },
     ],
     // Disable image optimization
-    unoptimized: true,
+    // unoptimized: true,
   },
   async rewrites() {
     return [

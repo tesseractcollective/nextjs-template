@@ -32,7 +32,7 @@ export default function LogoTableShelf({ logoTableItems }: LogoTableProps) {
                               <Image
                                 className="max-h-24 w-full object-contain"
                                 src={logoTableItem.logoImage.url}
-                                alt={logoTableItem?.logoName}
+                                alt=""
                                 width={0}
                                 height={0}
                                 sizes="100%"
