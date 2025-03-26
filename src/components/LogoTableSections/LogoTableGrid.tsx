@@ -42,9 +42,6 @@ export default function LogoTableGrid({ logoTableItems }: LogoTableProps) {
                                   margin: "0 auto",
                                 }}
                               />
-                              <span className="sr-only">
-                                {logoTableItem?.logoName}
-                              </span>
                             </>
                           </LinkItem>
                         ) : (

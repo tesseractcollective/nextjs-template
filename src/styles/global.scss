@@ -279,6 +279,19 @@ html {
       color: var(--text);
       transition-delay: 75ms;
     }
+    &.text-link-button {
+      background-clip: initial;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      font-weight: bold;
+      color: var(--text-overlay) !important;
+      border-radius: 0.25rem;
+      text-transform: uppercase;
+      background: var(--primary);
+      &:hover {
+        background: var(--secondary);
+      }
+    }
 }
 
 .gradient-text {

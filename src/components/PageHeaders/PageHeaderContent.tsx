@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Fade, Zoom, Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import parse from "html-react-parser";
 import type { CallToActionFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "../LinkItem";
@@ -47,7 +47,7 @@ export default function PageHeaderContent({
     >
       {(pageHeaderTitleProp || pageHeaderSubtitleProp) && (
         <div className="relative w-full mx-auto p-4 my-8">
-          <div className="flex flex-col md:flex-col items-center justify-center md:justify-start w-full">
+          <div className="flex flex-col md:flex-col items-center justify-center md:justify-start w-full gap-y-2">
             {!!pageHeaderTitleProp && (
               <Fade direction="left" triggerOnce>
                 <h1 className="text-3xl md:text-7xl xl:text-8xl my-0 py-0 text-center text-primary font-bold w-full mx-auto">

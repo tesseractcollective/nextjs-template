@@ -31,83 +31,81 @@ export default function ProductsLightboxSection({ products }: ProductsProps) {
     <div className="bg-bg-primary">
       <div className="mx-auto px-4 pb-8 max-w-4xl">
         <h2 className="sr-only">Products</h2>
-        <Fade direction="up" triggerOnce>
-          <div className="grid grid-cols-1 gap-y-4 bg-text-color all-text-dark rounded py-4 mx-auto">
-            {products.map((product) => (
-              <button
-                onClick={() => {
-                  setOpen(true);
-                  setSelectedProduct(product);
-                  ReactGA.event({
-                    category: "Link",
-                    action: "Open Product Popup",
-                    label: "Open Product Popup",
-                  });
-                }}
-                type="button"
-                key={product.id}
-                className="flex flex-col p-4 gap-x-4 w-full items-start justify-center hover:border-primary border border-text-color transition-all mx-auto relative group"
-              >
-                <div className="flex flex-col w-full">
-                  <div className="flex flex-row items-start justify-between gap-x-6">
-                    {product.name && (
-                      <div className="text-sm font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left flex flex-row items-center justify-center gap-x-2 group">
-                        <h3 className="my-0 py-0 font-bolder text-xl">
-                          {parse(product.name)}
-                        </h3>
-                        {product.gallery[0] && (
+        <div className="grid grid-cols-1 gap-y-4 bg-text-color all-text-dark rounded py-4 mx-auto">
+          {products.map((product) => (
+            <button
+              onClick={() => {
+                setOpen(true);
+                setSelectedProduct(product);
+                ReactGA.event({
+                  category: "Link",
+                  action: "Open Product Popup",
+                  label: "Open Product Popup",
+                });
+              }}
+              type="button"
+              key={product.id}
+              className="flex flex-col p-4 gap-x-4 w-full items-start justify-center hover:border-primary border border-text-color transition-all mx-auto relative group"
+            >
+              <div className="flex flex-col w-full">
+                <div className="flex flex-row items-start justify-between gap-x-6">
+                  {product.name && (
+                    <div className="text-sm font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left flex flex-row items-center justify-center gap-x-2 group">
+                      <h3 className="my-0 py-0 font-bolder text-xl">
+                        {parse(product.name)}
+                      </h3>
+                      {product.gallery[0] && (
+                        <FontAwesomeIcon
+                          icon={faCamera as IconProp}
+                          className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
+                        />
+                      )}
+                      {product.productJson?.seafood && (
+                        <FontAwesomeIcon
+                          icon={faFish as IconProp}
+                          title="Seafood"
+                          className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
+                        />
+                      )}
+                      {product?.productJson?.spicy && (
+                        <span className="flex items-center gap-x-2 relative">
                           <FontAwesomeIcon
-                            icon={faCamera as IconProp}
+                            icon={faPepperHot as IconProp}
+                            title="Spicy"
                             className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
                           />
-                        )}
-                        {product.productJson?.seafood && (
+                        </span>
+                      )}
+                      {product?.productJson?.vegetarian && (
+                        <span className="flex items-center gap-x-2 relative">
                           <FontAwesomeIcon
-                            icon={faFish as IconProp}
-                            title="Seafood"
+                            icon={faLeaf as IconProp}
+                            title="Vegetarian"
                             className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
                           />
-                        )}
-                        {product?.productJson?.spicy && (
-                          <span className="flex items-center gap-x-2 relative">
-                            <FontAwesomeIcon
-                              icon={faPepperHot as IconProp}
-                              title="Spicy"
-                              className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
-                            />
-                          </span>
-                        )}
-                        {product?.productJson?.vegetarian && (
-                          <span className="flex items-center gap-x-2 relative">
-                            <FontAwesomeIcon
-                              icon={faLeaf as IconProp}
-                              title="Vegetarian"
-                              className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-primary"
-                            />
-                          </span>
-                        )}
-                      </div>
-                    )}
-                    {product.price && (
-                      <div className="text-sm font-light my-0 py-0 parsed-mb-0">
-                        {parse(product.price)}
-                      </div>
-                    )}
-                  </div>
-                  {product?.description && (
-                    <div className="text-[14px] my-0 font-light py-0 parsed-mb-0 opacity-80 text-left lowercase italic">
-                      {parse(product.description.html)}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  {product.price && (
+                    <div className="text-sm font-light my-0 py-0 parsed-mb-0">
+                      {parse(product.price)}
                     </div>
                   )}
                 </div>
-                <FontAwesomeIcon
-                  icon={faCircleInfo as IconProp}
-                  className="fa-fw my-0 py-0  h-5 w-5 absolute right-[-10px] bottom-[-10px] opacity-0 group-hover:opacity-100 transition-all bg-text-color rounded-full"
-                />
-              </button>
-            ))}
-          </div>
-        </Fade>
+                {product?.description && (
+                  <div className="text-[14px] my-0 font-light py-0 parsed-mb-0 opacity-80 text-left lowercase italic">
+                    {parse(product.description.html)}
+                  </div>
+                )}
+              </div>
+              <FontAwesomeIcon
+                icon={faCircleInfo as IconProp}
+                className="fa-fw my-0 py-0  h-5 w-5 absolute right-[-10px] bottom-[-10px] opacity-0 group-hover:opacity-100 transition-all bg-text-color rounded-full"
+              />
+            </button>
+          ))}
+        </div>
       </div>
       <AnimatePresence>
         {open && (

@@ -73,12 +73,15 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                     >
                       {layoutBlock.layoutBlockColumns.map(
                         (layoutBlockColumn, index) => {
-                          const styleBGImage = layoutBlockColumn
-                            ?.backgroundImage?.url
-                            ? {
-                                backgroundImage: `url(${layoutBlockColumn.backgroundImage.url})`,
-                              }
-                            : {};
+                          const styleBGImage =
+                            layoutBlockColumn?.backgroundImage?.url &&
+                            !layoutBlockColumn?.cssClass?.includes?.(
+                              "column-video-bg"
+                            )
+                              ? {
+                                  backgroundImage: `url(${layoutBlockColumn.backgroundImage.url})`,
+                                }
+                              : {};
 
                           const columnKey =
                             layoutBlockColumn?.htmlId ||
@@ -91,7 +94,7 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                                 layoutBlockColumn?.hideBlockColumn
                                   ? "hidden"
                                   : ""
-                              } flex justify-center mx-0 px-0 w-full flex-auto dynamic-feature-section flex-col xl:w-${
+                              } relative flex justify-center mx-0 px-0 w-full flex-auto dynamic-feature-section flex-col xl:w-${
                                 12 / totalColumns
                               }/12 ${layoutBlockColumn?.cssClass || ""} ${
                                 layoutBlockColumn?.backgroundImage?.url
@@ -122,22 +125,36 @@ export default function LayoutBlockSections({ layout, eventsData }: PageProps) {
                                 elements={layoutBlockColumn.elements}
                                 siteLibrary={siteLibrary}
                               />
+                              {layoutBlockColumn?.cssClass?.includes?.(
+                                "column-video-bg"
+                              ) && (
+                                <video
+                                  src={layoutBlockColumn?.backgroundImage?.url}
+                                  autoPlay
+                                  loop
+                                  muted
+                                  playsInline
+                                  aria-hidden="true"
+                                  className="absolute inset-0 -z-1 video-column h-full w-full object-cover"
+                                />
+                              )}
                             </div>
                           );
                         }
                       )}
                     </div>
-                    {layoutBlock?.backgroundImage?.url && (
-                      <Image
-                        src={layoutBlock?.backgroundImage?.url}
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        className="next-layout-block-image object-cover absolute w-full h-full inset-0 z-[-1]"
-                        alt=""
-                        quality={100}
-                      />
-                    )}
+                    {layoutBlock?.backgroundImage?.url &&
+                      !layoutBlock?.cssClass?.includes?.("column-video-bg") && (
+                        <Image
+                          src={layoutBlock?.backgroundImage?.url}
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          className="next-layout-block-image object-cover absolute w-full h-full inset-0 z-[-1]"
+                          alt=""
+                          quality={100}
+                        />
+                      )}
                   </div>
                 );
               })}
