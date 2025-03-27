@@ -4,6 +4,7 @@ import ProfileEPKSection from "@/components/ProfileSections/ProfileEPKSection";
 import ProfileRecordSection from "@/components/ProfileSections/ProfileRecordSection";
 import ProfileVerticalSection from "@/components/ProfileSections/ProfileVerticalSection";
 import ProfileGridSection from "@/components/ProfileSections/ProfileGridSection";
+import ProfileGridSelectSection from "@/components/ProfileSections/ProfileGridSelectSection";
 import ProfileOffsetSection from "@/components/ProfileSections/ProfileOffsetSection";
 import ProfileUniversalSection from "@/components/ProfileSections/ProfileUniversalSection";
 import ProfileCardModalSection from "@/components/ProfileSections/ProfileCardModalSection";
@@ -189,6 +190,13 @@ export default function Profiles({
   if (profileLayoutStyle === "grid")
     return (
       <ProfileGridSection
+        profiles={FilteredProfiles}
+        profileSectionTitle={profileSectionTitle}
+      />
+    );
+  if (profileLayoutStyle === "gridSelect")
+    return (
+      <ProfileGridSelectSection
         profiles={FilteredProfiles}
         profileSectionTitle={profileSectionTitle}
       />

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 import "./MouseBlob.scss";
 
-const MouseBlob = () => {
+const MouseBlob = memo(() => {
   const [isHoveringLink, setIsHoveringLink] = useState(false);
 
   // Use motion values for smooth animation
@@ -16,19 +16,20 @@ const MouseBlob = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      // Update motion values with current mouse position
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      // Use requestAnimationFrame for better performance
+      requestAnimationFrame(() => {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
 
-      // Check if mouse is over an anchor tag
-      const element = document.elementFromPoint(e.clientX, e.clientY);
-      setIsHoveringLink(
-        element?.tagName.toLowerCase() === "a" ||
-          element?.tagName.toLowerCase() === "button"
-      );
+        // More efficient link detection
+        const isLink =
+          e.target instanceof HTMLAnchorElement ||
+          e.target instanceof HTMLButtonElement;
+        setIsHoveringLink(isLink);
+      });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
@@ -37,9 +38,7 @@ const MouseBlob = () => {
 
   return (
     <motion.div
-      {...{
-        className: `mouse-blob ${isHoveringLink ? "is-blob-hovering" : ""}`,
-      }}
+      className={`mouse-blob ${isHoveringLink ? "is-blob-hovering" : ""}`}
       style={{
         x: followX,
         y: followY,
@@ -58,6 +57,8 @@ const MouseBlob = () => {
       }}
     />
   );
-};
+});
+
+MouseBlob.displayName = "MouseBlob";
 
 export default MouseBlob;

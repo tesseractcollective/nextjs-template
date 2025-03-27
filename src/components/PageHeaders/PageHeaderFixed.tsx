@@ -33,7 +33,7 @@ export default function PageHeaderFixed({
       {/* Aspect ratio container */}
       <div className="relative w-full">
         {/* This div maintains 16:9 aspect ratio */}
-        <div className="pb-[35%] lg:pb-[25%] relative w-full">
+        <div className="pb-[35%] lg:pb-[27%] relative w-full">
           {/* Background image container */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed opacity-60"

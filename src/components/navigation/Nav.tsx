@@ -23,6 +23,7 @@ import BorderNavigation from "@/components/navigation/BorderNavigation";
 import BetweenNavigation from "@/components/navigation/BetweenNavigation";
 import FixedSideNavigation from "@/components/navigation/FixedSideNavigation";
 import LuxuryNavigation from "@/components/navigation/LuxuryNavigation";
+import TransparentNavigation from "@/components/navigation/TransparentNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -255,6 +256,16 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "dimension")
     return (
       <DimensionNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationLayoutStyle === "transparent")
+    return (
+      <TransparentNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

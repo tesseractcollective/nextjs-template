@@ -6,6 +6,8 @@
   transform: scale(0.30);
   min-height: 240px;
   margin-left: -20px;
+  width: 100%;
+  position: relative;
   @media (min-width: 976px) {
     margin-left: 0px;
     min-height: 310px;
@@ -15,8 +17,6 @@
     min-height: 410px;
     transform: scale(1);
   }
-  width: 100%;
-  position: relative;
 
   .vinyl-album {
     position: relative;
