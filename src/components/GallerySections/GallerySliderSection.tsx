@@ -91,7 +91,7 @@ const GallerySliderSection: React.FC<BeforeAfterProps> = ({
   return (
     <div className="relative my-16 px-2">
       <div
-        className="gallery-slider-section relative w-full overflow-hidden select-none max-w-8xl px-4 mx-auto"
+        className="gallery-slider-section relative w-full overflow-hidden select-none max-w-8xl px-4 mx-auto rounded-md"
         ref={containerRef}
         style={{
           minHeight: "28vh", // Primary height control
@@ -159,7 +159,7 @@ const GallerySliderSection: React.FC<BeforeAfterProps> = ({
             setSliderPosition(percentage);
           }}
         >
-          <div className="w-1 h-full bg-white mx-auto" />
+          <div className="w-1 h-full bg-primary mx-auto" />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 md:w-8 md:h-8 bg-primary rounded-full shadow-lg flex items-center justify-center">
             <div className="flex gap-0.5">
               <ArrowLeftIcon className="w-5 h-5 md:w-4 md:h-4 text-gray-400" />

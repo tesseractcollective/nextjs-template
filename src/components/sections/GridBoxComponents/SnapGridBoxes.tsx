@@ -1,8 +1,14 @@
 import Image from "next/image";
 import type { GridBoxFieldsFragment } from "@/graphql/generated/graphql";
 import LinkItem from "@/components/LinkItem";
-import parse from "html-react-parser";
 import { Fade } from "react-awesome-reveal";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./SnapGridBoxes.scss";
+import { Pagination, Navigation } from "swiper/modules";
 
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
@@ -10,15 +16,40 @@ interface GridBoxProps {
 
 export default function SnapGridBoxes({ gridBoxData }: GridBoxProps) {
   return (
-    <Fade triggerOnce className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 gap-8">
+    <Fade triggerOnce className="w-full mx-auto py-16">
+      <Swiper
+        slidesPerView={1.2}
+        centeredSlides={true}
+        spaceBetween={10}
+        loop={true}
+        navigation={true}
+        pagination={{
+          clickable: true,
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 1.3,
+          },
+          768: {
+            slidesPerView: 1.4,
+          },
+          1024: {
+            slidesPerView: 1.5,
+          },
+        }}
+        modules={[Pagination, Navigation]}
+        className="snap-grid-boxes"
+      >
         {gridBoxData.map((gridBoxItem, index) => (
-          <div
-            key={`${index}-${gridBoxItem.boxTitle || "item"}`}
-            className="group relative overflow-hidden bg-white 
-              transition-all duration-300 ease-in-out gap-y-4 flex flex-col"
+          <SwiperSlide
+            key={`${index}-${gridBoxItem.boxLink || "item"}`}
+            className="group rounded-md"
           >
-            <div className="relative w-full pb-[62.25%]">
+            <LinkItem
+              parentCssClass="relative w-full pb-[56.25%]"
+              cssClass="p-1"
+              link={gridBoxItem.boxLink}
+            >
               {gridBoxItem.boxImage?.url && (
                 <Image
                   src={gridBoxItem.boxImage.url}
@@ -27,34 +58,13 @@ export default function SnapGridBoxes({ gridBoxData }: GridBoxProps) {
                   height={0}
                   quality={100}
                   sizes="100%"
-                  className="transition-transform duration-300 ease-in-out object-cover"
+                  className="transition-transform duration-300 ease-in-out object-cover w-full h-full absolute inset-0"
                 />
               )}
-            </div>
-            <div className="h-full">
-              {gridBoxItem?.boxTitle && (
-                <h3 className="text-xl font-semibold mb-2 text-text-color flex items-center gap-x-2">
-                  <span className="block w-8 h-0.5 bg-text-color"></span>
-                  <span>{gridBoxItem.boxTitle}</span>
-                </h3>
-              )}
-              {gridBoxItem?.boxDescription?.html && (
-                <div className="text-sm opacity-80">
-                  {parse(gridBoxItem.boxDescription.html)}
-                </div>
-              )}
-              {gridBoxItem?.boxLink && (
-                <LinkItem
-                  link={gridBoxItem.boxLink}
-                  cssClass="inline-block bg-bg-secondary text-white font-semibold py-2 px-4 rounded-full transition-all duration-300 ease-in-out hover:bg-black"
-                >
-                  Learn More
-                </LinkItem>
-              )}
-            </div>
-          </div>
+            </LinkItem>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </Fade>
   );
 }
