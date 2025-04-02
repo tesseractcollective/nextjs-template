@@ -50,10 +50,9 @@ export default function ContentGridBoxes({ gridBoxData }: GridBoxProps) {
               {gridBoxItem?.boxLink && (
                 <LinkItem
                   link={gridBoxItem.boxLink}
-                  cssClass="inline-block bg-bg-secondary text-white font-semibold py-4 rounded-full transition-all duration-300 ease-in-out hover:bg-black"
-                >
-                  Info
-                </LinkItem>
+                  label="Info"
+                  cssClass="inline-block bg-bg-secondary text-white font-semibold py-2 px-4 rounded-md transition-all duration-300 ease-in-out hover:bg-black w-full max-w-max"
+                ></LinkItem>
               )}
             </div>
           </div>

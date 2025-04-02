@@ -119,6 +119,9 @@ export default function ProfileYoutubeSection({
                   {profile?.appleMusicLink && (
                     <li>{`Apple Music: ${profile.appleMusicLink}`}</li>
                   )}
+                  {profile?.amazonLink && (
+                    <li>{`Amazon Music: ${profile.amazonLink}`}</li>
+                  )}
                   {profile?.pandoraLink && (
                     <li>{`Pandora: ${profile.pandoraLink}`}</li>
                   )}
