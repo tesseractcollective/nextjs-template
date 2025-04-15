@@ -17,6 +17,7 @@ import MapBoxMap from "@/components/elements/MapBoxMap";
 import MapBoxesMap from "@/components/elements/MapBoxesMap";
 import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
 import CardLocations from "@/components/elements/CardLocations";
+import CardTallLocations from "@/components/elements/CardTallLocations";
 import LocationsMedia from "@/components/elements/LocationsMedia";
 import DrumPadComponent from "./DrumPadComponent";
 import BandsInTownApi from "@/components/BandsInTownApi";
@@ -120,6 +121,11 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       )}
       {!!elementJson?.cardLocationsData && (
         <CardLocations cardLocationsData={elementJson.cardLocationsData} />
+      )}
+      {!!elementJson?.cardTallLocationsData && (
+        <CardTallLocations
+          cardLocationsData={elementJson.cardTallLocationsData}
+        />
       )}
       {!!elementJson?.displayDrumPad && <DrumPadComponent />}
       {!!mapLatLong &&

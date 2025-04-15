@@ -22,6 +22,7 @@ interface Location {
   city?: string;
   image: string;
   googleMapLink: string;
+  zoomLocation?: number;
 }
 
 interface MapBoxesMapProps {
@@ -46,7 +47,7 @@ function MapBoxesMap({ mapKey, locations, icon }: MapBoxesMapProps) {
       initialViewState={{
         longitude: locations[0].longitude,
         latitude: locations[0].latitude,
-        zoom: 6,
+        zoom: locations[0]?.zoomLocation || 6,
       }}
       scrollZoom={false}
       style={{

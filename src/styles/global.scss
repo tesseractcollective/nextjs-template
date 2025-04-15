@@ -1308,3 +1308,9 @@ h4, h5, h6  {color: var(--text);}
     z-index: 2  !important;
   }
 }
+
+.fixed-opacity-full {
+  .opacity-60 {
+    opacity: 1 !important;
+  }
+}
