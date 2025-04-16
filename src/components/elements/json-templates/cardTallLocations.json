@@ -1,0 +1,33 @@
+{
+  "cardTallLocationsData": [
+    {
+      "city": "Dallas",
+      "image": "https://us-west-2.graphassets.com/AWX7VZfEQzqTlgLsBnDqSz/output=format:jpg/cm9hfu5f8lv9q07n81nqvxa6e",
+      "label": "La Torteria Mesquite",
+      "state": "TX",
+      "address": "1012 Ridgeview St",
+      "latitude": 32.7804006,
+      "yelpLink": "https://www.yelp.com/biz/la-torteria-mesquite?utm_campaign=www_business_share_popup&utm_medium=copy_link&utm_source=(direct)",
+      "longitude": -96.623189,
+      "orderLink": "https://www.ubereats.com/store/la-torteria-mesquite/lJ2Fk1kfQYORLRZTY81KOg",
+      "googleMapLink": "https://maps.app.goo.gl/g75stBupjm9ZkVQM9",
+      "tel": "tel:19722897086",
+      "detailsText": "Location Details",
+      "detailsLink": "/mesquite",
+      "footerText": "MONDAY - SUNDAY<br/>9:00am - 10:00pm"
+    },
+    {
+      "city": "Fort Worth",
+      "image": "https://us-west-2.graphassets.com/AWX7VZfEQzqTlgLsBnDqSz/cm9hfu5eulr7908lfxmbrcngy",
+      "label": "La Torteria Fort Worth",
+      "state": "TX",
+      "address": "570 Throckmorton St",
+      "latitude": 32.7533271,
+      "longitude": -97.3325404,
+      "googleMapLink": "https://maps.app.goo.gl/YEBV3rnz3beyynyH7?g_st=com.google.maps.preview.copy6",
+      "detailsText": "Location Details",
+      "detailsLink": "/fort-worth",
+      "footerText": "Coming soon"
+    }
+  ]
+}
