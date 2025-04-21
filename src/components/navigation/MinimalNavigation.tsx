@@ -406,6 +406,39 @@ export default function MinimalNavigation({
                   </span>
                 </button>
               </div>
+              <div className="absolute right-2 max-w-max aspect-1 top-2 transition-all duration-[400ms]">
+                <Link
+                  href="/"
+                  className="justify-self-center transition-all cursor-pointer"
+                  id="center-nav-logo-desktop"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Link",
+                      action: "Visit Home",
+                      label: "Visit Home",
+                    });
+                  }}
+                >
+                  {navigation?.navigationLogo ? (
+                    <>
+                      <span className="sr-only">{title}</span>
+                      <Image
+                        className="h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
+                        src={navigation.navigationLogo?.url}
+                        alt=""
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        style={{ width: "100%" }}
+                      />
+                    </>
+                  ) : (
+                    <span className="font-bold text-2xl text-text-color">
+                      {title}
+                    </span>
+                  )}
+                </Link>
+              </div>
             </div>
           </nav>
         </header>

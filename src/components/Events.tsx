@@ -7,6 +7,7 @@ import EventFullScreenSection from "@/components/EventSections/EventFullScreenSe
 import EventGridSection from "@/components/EventSections/EventGridSection";
 import EventCardSection from "@/components/EventSections/EventCardSection";
 import EventListSection from "@/components/EventSections/EventListSection";
+import EventPosterSection from "@/components/EventSections/EventPosterSection";
 
 interface EventsProps {
   events: EventFieldsFragment[];
@@ -36,6 +37,18 @@ export default function Events({ events, eventDisplayLayout }: EventsProps) {
     return dateA - dateB;
   });
 
+  // Grid √
+  // None √
+  // Slider √
+  // compact
+  // thin
+  // poster
+  // card √
+  // list
+  // fullscreen √
+  // large
+  // artistFilter √
+
   if (eventDisplayLayout === "card") {
     return <EventCardSection events={sortedEvents} />;
   }
@@ -50,6 +63,12 @@ export default function Events({ events, eventDisplayLayout }: EventsProps) {
   }
   if (eventDisplayLayout === "list") {
     return <EventListSection events={sortedEvents} />;
+  }
+  if (eventDisplayLayout === "poster") {
+    return <EventPosterSection events={sortedEvents} />;
+  }
+  if (eventDisplayLayout === "Grid") {
+    return <EventGridSection events={sortedEvents} />;
   }
   return <EventGridSection events={sortedEvents} />;
 }
