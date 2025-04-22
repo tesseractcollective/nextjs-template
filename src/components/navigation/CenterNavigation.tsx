@@ -87,7 +87,7 @@ export default function CenterNavigation({
                   <Link
                     href="/"
                     className="justify-self-center transition-all cursor-pointer"
-                    id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
+                    id="center-nav-logo-desktop"
                     onClick={() => {
                       ReactGA.event({
                         category: "Link",

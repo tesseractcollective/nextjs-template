@@ -24,7 +24,7 @@ const LinkItemFillout: React.FC<LinkItemFilloutProps> = ({
       <button
         onClick={() => setIsOpen(true)}
         type="button"
-        className={`text-link ${cssClass || ""}`}
+        className={`${cssClass || ""}`}
       >
         {label}
       </button>

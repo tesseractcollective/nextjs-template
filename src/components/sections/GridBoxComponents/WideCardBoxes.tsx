@@ -32,9 +32,8 @@ export default function WideCardBoxes({ gridBoxData }: GridBoxProps) {
                   <LinkItem
                     cssClass="mt-6 inline-block rounded-md border border-transparent px-8 py-3 font-bold text-white hover:bg-primary focus-within:bg-primary transition-all uppercase"
                     link={gridBoxItem.boxLink}
-                  >
-                    Info
-                  </LinkItem>
+                    label="Info"
+                  ></LinkItem>
                 )}
               </div>
             </div>
