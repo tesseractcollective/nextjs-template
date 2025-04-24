@@ -76,8 +76,8 @@ export default function GallerySection({
   if (galleryLayout === "shelf" && gallery.length >= 1) {
     return (
       <div className="my-0 magic-grid block h-full">
-        <div className="block px-4 mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="block mx-auto">
+          <div className="grid grid-cols-3 gap-1">
             <Fade triggerOnce cascade damping={0.25} direction="up">
               {finalImages.map((finalImage, index) => (
                 <div

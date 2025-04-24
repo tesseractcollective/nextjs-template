@@ -26,9 +26,9 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
     facebookPixelId,
     metaDomain,
     twitterLink,
+    siteLibraryJson,
   } = layout.siteLibrary;
 
-  // Scrub metaDomain to avoid duplicating "https://" or "http://"
   const scrubbedDomain =
     metaDomain?.startsWith("http://") || metaDomain?.startsWith("https://")
       ? metaDomain
@@ -45,20 +45,16 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
   return (
     <>
       <Head>
-        {/* Basic Meta Tags */}
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="Content-Language" content="en" />
         <meta name="description" content={safeDescription} />
         {safeTitle && <title>{safeTitle}</title>}
-
-        {/* Favicon and Apple Touch Icon */}
         {favicon?.url && <link rel="shortcut icon" href={favicon.url} />}
         {metaAppleTouchIcon?.url && (
           <link rel="apple-touch-icon" href={metaAppleTouchIcon.url} />
         )}
 
-        {/* Open Graph Tags */}
         <meta property="og:type" content="website" />
         {safeTitle && <meta property="og:title" content={safeTitle} />}
         <meta property="og:description" content={safeDescription} />
@@ -68,7 +64,6 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
         )}
         <meta property="og:locale" content="en_US" />
 
-        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         {safeTitle && <meta name="twitter:title" content={safeTitle} />}
         <meta name="twitter:description" content={safeDescription} />
@@ -95,7 +90,12 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
 
         {/* Canonical URL */}
         <link rel="canonical" href={pageUrl} />
-
+        {siteLibraryJson?.userWayId && (
+          <script
+            src="https://cdn.userway.org/widget.js"
+            data-account={siteLibraryJson.userWayId}
+          ></script>
+        )}
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({

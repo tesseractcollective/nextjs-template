@@ -73,7 +73,7 @@ export default function GallerySection({ galleryData }: GalleryProps) {
                 height={0}
                 className="h-full w-full object-cover absolute inset-0"
               />
-              <MagnifyingGlassCircleIcon className="h-6 md:h-8 w-6 md:w-8 text-gray-400 transition-all duration-300 group-hover:opacity-100 opacity-80 lg:opacity-50 absolute bottom-2 lg:bottom-4 right-2 lg:right-4 z-1 text-[white]" />
+              <MagnifyingGlassCircleIcon className="h-6 md:h-8 w-6 md:w-8 text-gray-400 transition-all duration-300 group-hover:opacity-100 opacity-80 lg:opacity-30 absolute bottom-2 lg:bottom-4 right-2 lg:right-4 z-1 text-[white]" />
             </a>
           ))}
         </LightGallery>
