@@ -382,7 +382,7 @@ export default function MinimalNavigation({
                 )}
               </Link> */}
               {/* Desktop menu bar */}
-              <div className="absolute left-2 max-w-max bg-bg aspect-1 border-text-color hover:border-primary border top-2 transition-all duration-[400ms]">
+              <div className="absolute right-2 lg:right-initial left-[initial] lg:left-2 max-w-max aspect-1 border-[#00000000] hover:border-primary border top-2 transition-all duration-[400ms]">
                 <button
                   type="button"
                   title="menu"
@@ -398,15 +398,16 @@ export default function MinimalNavigation({
                 >
                   <span className="sr-only">Open menu</span>
                   <Bars3Icon
-                    className="h-12 w-12 group-hover:text-primary transition-all duration-[400ms]"
+                    className="h-10 lg:h-12 w-10 lg:w-12 group-hover:text-primary transition-all duration-[400ms] shadow-2xl"
                     aria-hidden="true"
                   />
-                  <span className="text-xs group-hover:opacity-100 absolute bottom-0 group-hover:bottom-[-20px] rotate-0 opacity-0 transition-all duration-[400ms] uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                  {/* <span className="text-xs group-hover:opacity-100 absolute bottom-[-10px] transition-all duration-[400ms] uppercase font-bold  group-hover:blur-0 text-center left-0 right-0 z-2">
                     Menu
-                  </span>
+                  </span> */}
+                  <div className="bg-bg backdrop-blur-xl inset-0 h-full w-full -z-1 absolute opacity-50"></div>
                 </button>
               </div>
-              <div className="absolute right-2 max-w-max aspect-1 top-2 transition-all duration-[400ms]">
+              <div className="absolute left-2 lg:left-[initial] right-[initial] lg:right-2 max-w-max aspect-1 top-2 transition-all duration-[400ms]">
                 <Link
                   href="/"
                   className="justify-self-center transition-all cursor-pointer"
@@ -423,7 +424,7 @@ export default function MinimalNavigation({
                     <>
                       <span className="sr-only">{title}</span>
                       <Image
-                        className="h-16 w-auto max-w-xs mx-auto cursor-pointer object-contain transition-all"
+                        className="h-16 w-auto max-w-[10rem] lg:max-w-[14rem] mx-auto cursor-pointer object-contain transition-all"
                         src={navigation.navigationLogo?.url}
                         alt=""
                         width={0}
