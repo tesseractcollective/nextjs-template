@@ -2,114 +2,134 @@ import React, { useState, useRef } from "react";
 import type { ProductFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
 import parse from "html-react-parser";
-import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import LinkItem from "@/components/LinkItem";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {
-  faChevronRight,
-  faChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
-import useViewport from "@/app/hooks/useViewport";
-import { Fade } from "react-awesome-reveal";
 
+type ProductTabCategory = {
+  title: string;
+  query: string;
+  description: string;
+  image: string;
+  footer: string;
+  ctaLink: string;
+  ctaText: string;
+};
+
+type ProductTabMenu = {
+  title: string;
+  backgroundImage: string;
+  categories: ProductTabCategory[];
+};
 interface ProductsProps {
-  profileSectionTitle?: string;
-  type?: string;
+  productTabMenuData: ProductTabMenu;
   products: ProductFieldsFragment[];
 }
 
 export default function ProductTabsMenuSection({
-  type,
+  productTabMenuData,
   products,
 }: ProductsProps) {
-  const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
-  const { isMobile, isDesktop } = useViewport();
-  const swiperRef = useRef<SwiperType | null>(null);
   if (!products) return <></>;
-  const filteredProducts = products.filter(
-    (product) => product?.productType?.toLowerCase() === type?.toLowerCase()
-  );
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // Product Layout Style
-  // compact √
-  // slider √
-  // card
-  // chevron
-  // grid
-  // infinite
-  // lightbox
-  // mason
-  // mix
-  // polaroid
-  // rotate
-  // shelf
-  // stack
+  const { title, categories } = productTabMenuData;
+  if (!categories) return <></>;
 
   return (
-    <div className="bg-bg-primary">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h2 className="sr-only">Products</h2>
-        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 place-items-center">
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              className="w-full md:w-72 bg-text-color hover:bg-tertiary focus-within:bg-tertiary shadow-md rounded-xl duration-300 hover:md:scale-105 hover:shadow-xl focus-within:scale-105 focus-within:shadow-xl p-1 md:p-2 overflow-hidden max-w-sm"
-            >
-              <LinkItem
-                cssClass="flex flex-row md:flex-col items-center justify-start md:justify-center px-0 mx-0"
-                link={
-                  product.purchaseLink
-                    ? product.purchaseLink
-                    : `/product/${product.productSlug}`
-                }
+    <div className="bg-bg-primary px-4 py-16">
+      <h2 className="text-center mx-auto mb-8 text-2xl">{title}</h2>
+      <div className="mx-auto max-w-6xl w-full flex flex-row items-start justify-center">
+        <div className="toggle-wrapper border-r border-primary w-full max-w-xs bg-[#ffffff23] hidden lg:flex flex-col">
+          {categories.map((category, index) => {
+            return (
+              <button
+                key={category.query}
+                onClick={() => setActiveIndex(index)}
+                className={`flex gap-2 text-primary hover:text-secondary w-full justify-end gap-y-4 text-right p-2 text-xl uppercase border-b ${activeIndex === index ? "border-b-secondary text-secondary" : "border-b-[#00000000] "}`}
               >
-                <>
-                  {product.gallery[hoveredProductId === product.id ? 1 : 0]
-                    ?.url && (
-                    <Image
-                      sizes="100%"
-                      src={
-                        product.gallery[hoveredProductId === product.id ? 1 : 0]
-                          ?.url
-                      }
-                      alt={product.name}
-                      className="aspect-1 w-full max-w-[90px] md:max-w-full object-cover rounded-t-xl block px-0 mx-0"
-                      width={0}
-                      height={0}
+                {category.title}
+              </button>
+            );
+          })}
+        </div>
+        <div className="tab-menu max-w-2xl w-full mx-auto">
+          {categories.map((category, index) => {
+            const currentProducts = products.filter(
+              (product) =>
+                product?.productType?.toLowerCase() ===
+                  category.query?.toLowerCase() || ""
+            );
+            const { ctaLink, ctaText, footer, title, image } = category;
+
+            return (
+              <div
+                key={title}
+                className={`flex flex-col px-4 gap-4 mb-8 w-full ${activeIndex !== index ? "lg:hidden" : ""}`}
+              >
+                <div className="w-full text-center flex flex-col">
+                  <h3 className="!text-4xl font-bold text-primary text-center !mb-2 uppercase">
+                    {category.title}
+                  </h3>
+                  <p className="!text-md max-w-lg text-center mx-auto pb-0 !mb-2">
+                    {parse(category.description)}
+                  </p>
+                  {category?.image && (
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      className="w-full h-auto rounded-lg block"
                     />
                   )}
-                  <div className="px-2 md:px-4 py-3 w-full">
-                    {!!product?.vendor && (
-                      <span className="text-dark md:mr-3 uppercase text-xs">
-                        {product.vendor}
-                      </span>
-                    )}
-                    <p className="text-sm md:text-lg font-bold text-dark truncate block capitalize">
-                      {product.name}
-                    </p>
-                    <div className="flex items-center md:my-3">
-                      {!!product.price && (
-                        <p className="text-md md:text-lg font-semibold text-bg cursor-auto">
-                          {`$${product.price}`}
-                        </p>
-                      )}
-                      {!!product?.purchaseLink && (
-                        <ArrowTopRightOnSquareIcon
-                          title={product?.purchaseLink}
-                          className="h-6 w-6 text-dark ml-auto max-w-max"
-                          aria-hidden="true"
-                        />
-                      )}
-                    </div>
+                  <div className="mt-2 mb-4">
+                    {currentProducts.map((product) => {
+                      return (
+                        <div
+                          key={product.productSlug}
+                          className={`flex flex-col items-center gap-4 px-4 py-6 text-center justify-center max-w-md mx-auto`}
+                        >
+                          {product.gallery[0]?.url && (
+                            <Image
+                              src={product.gallery[0]?.url}
+                              alt={product.name}
+                              width={100}
+                              height={100}
+                              className="w-16 h-16 rounded-lg"
+                            />
+                          )}
+                          <div className="body-parsed-tex">
+                            <h4 className="text-xl font-semibold text-primary !mb-2">
+                              {product.name}
+                            </h4>
+                            {product.description?.html && (
+                              <p className="lowercase !text-[16px] mb-1">
+                                {parse(product.description?.html)}
+                              </p>
+                            )}
+                            {product?.price && (
+                              <p className="!mb-0 !pb-0 text-[14px]">
+                                {`$${product.price}`}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                </>
-              </LinkItem>
-            </div>
-          ))}
+                  {ctaLink && ctaText && (
+                    <LinkItem
+                      label={ctaText}
+                      link={ctaLink}
+                      cssClass="text-xl lg:text-2xl font-semibold my-8 block mx-auto w-full max-w-xs my-2 px-4 py-2 rounded  border bg-bg border-primary hover:bg-secondary transition-all focus:bg-secondary text-text-color uppercase"
+                    ></LinkItem>
+                  )}
+                  {footer && (
+                    <p className="!text-md max-w-lg text-center mx-auto tab-menu-footer">
+                      {parse(footer)}
+                    </p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

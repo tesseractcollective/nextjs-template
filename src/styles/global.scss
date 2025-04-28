@@ -1314,3 +1314,13 @@ h4, h5, h6  {color: var(--text);}
     opacity: 1 !important;
   }
 }
+
+.map-bw {
+  canvas.mapboxgl-canvas {
+    filter: grayscale(100%) !important;
+    transition: all 200ms ease;
+    &:hover {
+      filter: grayscale(0%) !important;
+    }
+  }
+}
