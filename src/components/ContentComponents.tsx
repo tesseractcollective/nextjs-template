@@ -93,19 +93,17 @@ export default function ContentComponents({
             />
           </section>
         )}
-      {elements?.elementJson?.productMenu &&
-        !!products &&
-        contentTags?.productType && (
-          <section
-            className="product-menu-wrapper-content-components w-full"
-            id="product-menu"
-          >
-            <ProductTabsMenuSection
-              products={products}
-              type={contentTags.productType}
-            />
-          </section>
-        )}
+      {elements?.elementJson?.productTabMenu && !!products && (
+        <section
+          className="product-menu-wrapper-content-components w-full"
+          id="product-menu"
+        >
+          <ProductTabsMenuSection
+            products={products}
+            productTabMenuData={elements.elementJson.productTabMenu}
+          />
+        </section>
+      )}
       {elements?.elementJson?.ProductsAll && !!products && (
         <section
           className="product-menu-wrapper-content-components w-full"

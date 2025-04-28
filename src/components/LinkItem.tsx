@@ -70,9 +70,6 @@ export default function LinkItem({
   if (link.includes("fillout:") && label)
     return <LinkItemFillout link={link} label={label} cssClass={cssClass} />;
 
-  if (link.includes("opentable:") && label)
-    return <LinkItemFillout link={link} label={label} cssClass={cssClass} />;
-
   return (
     <div className={`relative ${parentCssClass}`}>
       {link?.includes("http") ||
