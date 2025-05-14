@@ -1,9 +1,9 @@
 import React from "react";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
-import Link from "next/link";
 import Image from "next/image";
 import "./ProfileSportsSection.scss";
+import LinkItem from "../LinkItem";
 
 interface ProfilesProps {
   siteLogo: string;
@@ -28,12 +28,16 @@ export default function ProfileSportsSection({
             key={profile.profileSlug}
             className="max-w-[15rem] mx-auto"
           >
-            <Link
-              href={`/${profile.profileType?.toLowerCase()}/${
-                profile.profileSlug
-              }`}
-              title={(profile.name && profile.name) || ""}
-              className="sports-card block relative h-[310px] w-[200px] border-[15px] border-primary transition-all group"
+            <LinkItem
+              link={
+                profile?.externalLink
+                  ? profile.externalLink
+                  : `/${profile.profileType?.toLowerCase()}/${
+                      profile.profileSlug
+                    }`
+              }
+              label={(profile.name && profile.name) || ""}
+              cssClass="sports-card block relative h-[310px] w-[200px] border-[15px] border-primary transition-all group"
             >
               <Image
                 src={siteLogo}
@@ -56,7 +60,7 @@ export default function ProfileSportsSection({
               {profile.name && (
                 <p className="profile-sport-name block">{profile.name}</p>
               )}
-            </Link>
+            </LinkItem>
           </Fade>
         ))}
       </div>

@@ -127,7 +127,7 @@ export default function MinimalNavigation({
                             label: "Visit Home",
                           });
                         }}
-                        className="cursor-pointer transition-all duration-[400ms] hover:skew-x-[8deg] hover:skew-y-[8deg] relative"
+                        className="cursor-pointer transition-all duration-[400ms] relative"
                         id="nav-logo-mobile-panel"
                       >
                         {navigation?.navigationLogo ? (
