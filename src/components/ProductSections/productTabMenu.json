@@ -3,76 +3,85 @@
     "title": "MENU",
     "categories": [
       {
-        "image": "https://bocadodallas.com/_next/image?url=https%3A%2F%2Fus-west-2.graphassets.com%2FAY0yLMLNSJOmfSDxAhYuwz%2Fcm9k90j3n8lqd08lfld7w55ct&w=3840&q=75",
-        "query": "seasonal",
-        "title": "Seasonal",
+        "image": "",
+        "query": "coldShareables",
+        "title": "Cold Shareables",
+        "footer": "",
         "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
         "ctaText": "Book a table",
-        "footer": "",
-        "description": "Shareable plates that are hot and ready, perfect for sharing with friends and family."
+        "description": "Shareable plates that are cold and refreshing, perfect for sharing with friends and family."
       },
       {
         "image": "",
         "query": "hotShareables",
         "title": "Hot Shareables",
+        "footer": "",
         "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
         "ctaText": "Book a table",
-        "footer": "",
         "description": "Shareable plates that are hot and ready, perfect for sharing with friends and family."
-      },
-      {
-        "image": "",
-        "query": "coldShareables",
-        "title": "Cold Shareables",
-        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
-        "ctaText": "Book a table",
-        "footer": "",
-        "description": "Shareable plates that are cold and refreshing, perfect for sharing with friends and family."
       },
       {
         "image": "",
         "query": "sopaEnsalada",
         "title": "Soups + Salads",
+        "footer": "+ Beef (11), Chicken (9), Shrimp (13), Salmon (13)",
         "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
         "ctaText": "Book a table",
-        "footer": "+ Beef (10.50), Chicken (8.40), Shirmp (12.60) Salmon (12.60)",
         "description": "Our dressings are crafted in-house daily, featuring exclusive recipes perfected by our executive chef."
       },
       {
         "image": "",
         "query": "sides",
         "title": "Sides",
+        "footer": "",
         "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
         "ctaText": "Book a table",
-        "footer": "",
         "description": "Delicious sides to complement your meal, perfect for sharing or enjoying on your own."
-      },
-      {
-        "image": "",
-        "query": "losCortes",
-        "title": "Los Cortes",
-        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
-        "ctaText": "Book a table",
-        "footer": "",
-        "description": "A selection of our finest cuts, perfect for meat lovers."
       },
       {
         "image": "",
         "query": "tacos",
         "title": "Tacos",
+        "footer": "",
         "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
         "ctaText": "Book a table",
-        "footer": "",
         "description": "Delicious tacos with a variety of fillings, perfect for a quick and tasty meal."
+      },
+      {
+        "image": "",
+        "query": "fromTheSea",
+        "title": "From The Sea",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Exquisite seafood selection."
+      },
+      {
+        "image": "",
+        "query": "losCortes",
+        "title": "Los Cortes",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "A selection of our finest cuts, perfect for meat lovers."
       },
       {
         "image": "",
         "query": "desserts",
         "title": "Desserts",
+        "footer": "",
         "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
         "ctaText": "Book a table",
+        "description": "Perfectly balanced desserts to satisfy your sweet tooth."
+      },
+      {
+        "image": "",
+        "query": "digestif",
+        "title": "Digestif",
         "footer": "",
-        "description": "Sweet treats to satisfy your cravings, perfect for sharing or enjoying on your own."
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "The best way to end your meal"
       }
     ],
     "backgroundImage": "https://us-west-2.graphassets.com/ALeJ6VCrR0atyPjIJxTvxz/output=format:jpg/cm5ljemy1hdmo07lmvnc9hv5k"

@@ -20,10 +20,20 @@ export default function VideoPlaylistBox({
             {videoTitle}
           </h3>
         )}
-        <YouTubePlaylist
+        {/* <YouTubePlaylist
           apiKey={youtubeApiKey}
           playlistId={youtubePlaylistId}
-        />
+        /> */}
+        <div className="aspect-video w-full">
+          <iframe
+            src={`https://www.youtube.com/embed/videoseries?list=${youtubePlaylistId}`}
+            title={videoTitle || "YouTube Playlist"}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full"
+          ></iframe>
+        </div>
       </div>
     </section>
   );

@@ -103,10 +103,10 @@ const SpringModal = ({
                 exit={{ scale: 0, rotate: "0deg" }}
                 {...{
                   className:
-                    "bg-gradient-to-br from-bg to-bg-secondary text-white py-1 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-x-hidden dialog-popup-page max-h-[90dvh]",
+                    "bg-bg text-white py-1 px-2 rounded-lg w-full max-w-xl shadow-xl cursor-default relative overflow-x-hidden dialog-popup-page max-h-[90dvh]",
                 }}
               >
-                <div className="relative z-10">
+                <div className="relative z-10 p-4">
                   <h3 className="text-xl font-bold text-center mb-0">
                     {header}
                   </h3>

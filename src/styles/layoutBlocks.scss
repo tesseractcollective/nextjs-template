@@ -1167,3 +1167,12 @@ body iframe {
 .emoji-span span {
   font-family: "Segoe UI Emoji", "Apple Color Emoji", "Twemoji", "Noto Color Emoji", "Android Emoji", "EmojiSymbols";
 }
+
+.absolute-important {
+  position: absolute !important;
+}
+
+.mix-invert {
+  mix-blend-mode: difference;
+  filter: invert(1);
+}
