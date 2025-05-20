@@ -40,7 +40,7 @@ import BulletsSection from "./BulletsSection";
 import MapBoxRadius from "./MapElements/MapBoxRadius";
 import BulkProductsList from "./BulkProductList";
 import FilloutForm from "./FilloutForm";
-// import AgeVerification from "./AgeVerification";
+import AgeVerification from "./AgeVerification";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -307,7 +307,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!elementJson?.countryFlags && (
         <CountryFlags flags={elementJson.countryFlags} />
       )}
-      {/* {!!elements?.elementJson?.ageVerification && <AgeVerification />} */}
+      {!!elements?.elementJson?.ageVerification && <AgeVerification />}
     </>
   );
 }

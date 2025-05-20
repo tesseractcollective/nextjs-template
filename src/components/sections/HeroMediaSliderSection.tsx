@@ -18,6 +18,7 @@ import HeroMediaCircleSection from "@/components/sections/HeroMediaSliderSection
 import HeroMediaVerticalSection from "@/components/sections/HeroMediaSliderSections/HeroMediaVerticalSection";
 import HeroMediaProductSection from "@/components/sections/HeroMediaSliderSections/HeroMediaProductSection";
 import HeroMediaPowerSection from "@/components/sections/HeroMediaSliderSections/HeroMediaPowerSection";
+import HeroMediaNetflixSection from "@/components/sections/HeroMediaSliderSections/HeroMediaNetflixSection";
 import HeroMediaCircleVideoSection from "@/components/sections/HeroMediaSliderSections/HeroMediaCircleVideoSection";
 import {
   faChevronLeft,
@@ -58,7 +59,7 @@ export default function HeroMediaSliderSection({
   const youtubeiFrameNoParams =
     "?autoplay=1&mute=1&playsinline=1&loop=1&controls=0&disablekb=1?rel=0&enablejsapi=1";
   const isOneSlider = heroMediaSliderData.length === 1;
-  //   image
+  // image
   // video
   // youtube
   // netflix
@@ -94,6 +95,15 @@ export default function HeroMediaSliderSection({
   if (heroMediaSliderData[0]?.mediaType === "product") {
     return (
       <HeroMediaProductSection
+        heroMediaSliderData={heroMediaSliderData}
+        siteLibrary={siteLibrary}
+      />
+    );
+  }
+
+  if (heroMediaSliderData[0]?.mediaType === "netflix") {
+    return (
+      <HeroMediaNetflixSection
         heroMediaSliderData={heroMediaSliderData}
         siteLibrary={siteLibrary}
       />

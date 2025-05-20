@@ -18,6 +18,7 @@ interface LinkItemProps {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   activeClassName?: string;
+  style?: React.CSSProperties;
 }
 
 export default function LinkItem({
@@ -29,6 +30,7 @@ export default function LinkItem({
   parentCssClass,
   onClick,
   activeClassName,
+  style,
 }: LinkItemProps) {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
@@ -71,7 +73,7 @@ export default function LinkItem({
     return <LinkItemFillout link={link} label={label} cssClass={cssClass} />;
 
   return (
-    <div className={`relative ${parentCssClass}`}>
+    <div className={`relative ${parentCssClass}`} style={style}>
       {link?.includes("http") ||
       link?.includes("#") ||
       link?.includes("mailto:") ||
