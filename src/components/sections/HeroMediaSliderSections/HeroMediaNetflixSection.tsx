@@ -14,16 +14,12 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import HeroMediaCircleSection from "@/components/sections/HeroMediaSliderSections/HeroMediaCircleSection";
-import HeroMediaVerticalSection from "@/components/sections/HeroMediaSliderSections/HeroMediaVerticalSection";
-import HeroMediaProductSection from "@/components/sections/HeroMediaSliderSections/HeroMediaProductSection";
-import HeroMediaPowerSection from "@/components/sections/HeroMediaSliderSections/HeroMediaPowerSection";
-import HeroMediaCircleVideoSection from "@/components/sections/HeroMediaSliderSections/HeroMediaCircleVideoSection";
 import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import useViewport from "@/hooks/useViewport";
+import "./HeroMediaNetflixSection.scss";
 
 type HeroMediaSliderType = HeroMediaSliderFieldsFragment;
 
@@ -70,14 +66,14 @@ export default function HeroMediaNetflixSection({
           {!isOneSlider && (
             <button
               type="button"
-              className="flex border-none outline-none font-bold cursor-pointer transition-all rotate-0 hover:-rotate-5 text-primary absolute left-10 bottom-10 bg-secondary rounded-[999px] z-30 !p-4 aspect-1"
+              className="flex outline-none font-bold cursor-pointer transition-all duration-300 rotate-0 hover:rotate-[370deg] text-primary absolute left-10 bottom-10 bg-secondary rounded-[999px] z-30 !p-4 aspect-1 hover-circle-shadow"
               onClick={() => swiperRef.current?.slideNext()}
             >
               <FontAwesomeIcon
                 icon={faChevronLeft as IconProp}
-                className="fa-fw p-0 aspect-1 m-0 text-xl h-6 md:h-8 w-6 md:w-8"
+                className="p-0 aspect-1 m-0 text-xl h-6 md:h-8 w-6 md:w-8"
               />
-              <span className="sr-only">Move Blog Rotation Next</span>
+              <span className="sr-only">Move Rotation Back</span>
             </button>
           )}
           <Swiper
@@ -108,7 +104,7 @@ export default function HeroMediaNetflixSection({
                     heroMediaSliderItem.sliderCssWrapper
                   }`}
                 >
-                  <div className="heromediaslider-overlay-content headlinePrimary  text-text-overlay flex items-start justify-center flex-col h-full w-full mx-auto absolute z-30 p-4">
+                  <div className="heromediaslider-overlay-content headlinePrimary text-text-overlay flex items-start justify-center flex-col h-full w-full mx-auto absolute z-30 p-4">
                     <div
                       className={`swiper-no-swiping relative p-4 text-left ${
                         heroMediaSliderItem?.textContent?.cssClass &&
@@ -228,12 +224,12 @@ export default function HeroMediaNetflixSection({
           {!isOneSlider && (
             <button
               type="button"
-              className="flex bg-none border-none outline-none font-bold cursor-pointer transition-all opacity-70 hover:opacity-100 text-primary absolute right-10 top-[50%] z-30"
+              className="flex outline-none font-bold cursor-pointer transition-all duration-300 rotate-0 hover:rotate-[-370deg] text-primary absolute right-10 bottom-10 bg-secondary rounded-[999px] z-30 !p-4 aspect-1 hover-circle-shadow"
               onClick={() => swiperRef.current?.slideNext()}
             >
               <FontAwesomeIcon
                 icon={faChevronRight as IconProp}
-                className="fa-fw my-0 text-xl h-6 md:h-8 w-6 md:w-8"
+                className="p-0 aspect-1 m-0 text-xl h-6 md:h-8 w-6 md:w-8"
               />
               <span className="sr-only">Move Rotation Next</span>
             </button>

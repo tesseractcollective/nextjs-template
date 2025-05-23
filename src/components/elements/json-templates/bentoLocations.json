@@ -1,0 +1,94 @@
+{
+  "bentoLocations": [
+    {
+      "city": "Bolingbrook",
+      "image": "https://media.graphassets.com/n6iy70DWSwi6rWoZyhMj",
+      "label": "Taquería El Valle",
+      "state": "IL",
+      "address": "595 N Pinecrest Rd",
+      "latitude": 41.7176277,
+      "longitude": -88.0505734,
+      "googleMapLink": "https://maps.app.goo.gl/D7cV6ehDMGSqdTcBA"
+    },
+    {
+      "city": "Minooka",
+      "image": "https://media.graphassets.com/QPDBPAZ8SJi58hhEnAJh",
+      "label": "Iron&Glass",
+      "state": "IL",
+      "address": "104 Ridge Rd #102",
+      "latitude": 41.4548368,
+      "longitude": -88.2713244,
+      "googleMapLink": "https://maps.app.goo.gl/W3yhG8HwFsEcSebq6"
+    },
+    {
+      "city": "Romeoville",
+      "image": "https://media.graphassets.com/QPDBPAZ8SJi58hhEnAJh",
+      "label": "Iron&Glass",
+      "state": "IL",
+      "address": "632 S Weber Rd",
+      "latitude": 41.674679,
+      "longitude": -88.125517,
+      "googleMapLink": "https://maps.app.goo.gl/4qbvcBsyMKQhN7PE6"
+    },
+    {
+      "city": "Joliet",
+      "image": "https://media.graphassets.com/0CyVu9XURcKmDPrcitnO",
+      "label": "Chicago Street Pub",
+      "state": "IL",
+      "address": "75 N Chicago St",
+      "latitude": 41.5256326,
+      "longitude": -88.0816893,
+      "googleMapLink": "https://maps.app.goo.gl/mriWyFYrLmdiPhry7"
+    },
+    {
+      "city": "Chicago",
+      "image": "https://media.graphassets.com/m6YgdmFMRdqNyd4eUx2c",
+      "label": "A&S Beverages",
+      "state": "IL",
+      "address": "1214 E 53rd St",
+      "latitude": 41.799998,
+      "longitude": -87.5957839,
+      "googleMapLink": "https://maps.app.goo.gl/6E86Cdsko5jzAndy7"
+    },
+    {
+      "city": "Chicago",
+      "image": "https://media.graphassets.com/m6YgdmFMRdqNyd4eUx2c",
+      "label": "A&S Beverages",
+      "state": "IL",
+      "address": "5058 S Halsted St Suite D-H",
+      "latitude": 41.802151,
+      "longitude": -87.645284,
+      "googleMapLink": "https://maps.app.goo.gl/cMMtvBhYpYhxbf9X8"
+    },
+    {
+      "city": "Romeoville",
+      "image": "https://media.graphassets.com/QitYy8nKT5upFIVASNiw",
+      "label": "Joe's Beverage Warehouse",
+      "state": "IL",
+      "address": "460 N Independence Blvd",
+      "latitude": 41.647493,
+      "longitude": -88.080486,
+      "googleMapLink": "https://maps.app.goo.gl/QdWxFV8qCp6HVGFw6"
+    },
+    {
+      "city": "Frankfort",
+      "image": "https://media.graphassets.com/jqTLJWPKSbCzJqbCBlUn",
+      "label": "El Mezcal Restaurant",
+      "state": "IL",
+      "address": "9645 Lincolnway Ln Suite 106",
+      "latitude": 41.508676,
+      "longitude": -87.871178,
+      "googleMapLink": "https://maps.app.goo.gl/iBKYYgJcefGFN3ue9"
+    },
+    {
+      "city": "Joliet",
+      "image": "https://us-west-2.graphassets.com/ATS2bPwaQO2637PgqGligz/cmamle9bi27cx07lr0r0ryzye",
+      "label": "John's Beverage",
+      "state": "IL",
+      "address": "3001 W Jefferson St",
+      "latitude": 41.5220884,
+      "longitude": -88.1558962,
+      "googleMapLink": "https://maps.app.goo.gl/KHKBFWBWwP7ZWmYT7"
+    }
+  ]
+}

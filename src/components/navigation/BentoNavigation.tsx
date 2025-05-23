@@ -17,8 +17,8 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
 import useViewport from "@/app/hooks/useViewport";
-import "./ProgressNavigation.scss";
 import MobileMenuPanel from "./NavigationSections/MobileMenuPanel";
+import MarqueeTextElement from "../elements/MarqueeText";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -74,24 +74,25 @@ export default function BentoNavigation({
   );
 
   return (
-    <div
-      className={`fixed lg:sticky bottom-0 lg:top-0 z-[999] left-0 right-0 transition-all ${
-        navigationWrapperCssClass ? navigationWrapperCssClass : ""
-      }`}
-      id="progress-navigation-header"
-    >
-      {/* Mobile menu */}
-      <MobileMenuPanel
-        open={open}
-        setOpen={setOpen}
-        navigation={navigation}
-        siteLibrary={siteLibrary}
-      />
-      <Fade direction={isMobile ? "up" : "down"} triggerOnce>
-        <header className="relative z-2 mb-0 pt-2 px-2 pb-0 transition-all duration-[450ms]">
+    <>
+      <div
+        className={`sticky z-[999] left-0 right-0 transition-all ${
+          navigationWrapperCssClass ? navigationWrapperCssClass : ""
+        } ${small ? "-top-20" : "top-0"}`}
+        id="progress-navigation-header"
+      >
+        {/* Mobile menu */}
+        <MobileMenuPanel
+          open={open}
+          setOpen={setOpen}
+          navigation={navigation}
+          siteLibrary={siteLibrary}
+        />
+
+        <header className="relative z-2 mb-0 pb-0 transition-all duration-[450ms]">
           <nav
             aria-label="Top"
-            className={`mx-auto bg-primary transition-all min-w-[85%] duration-[450ms] shadow-top lg:shadow-none !min-h-[48px] rounded-lg ${
+            className={`mx-auto bg-secondary transition-all min-w-[85%] duration-[450ms] shadow-top lg:shadow-none !min-h-[48px] rounded-b-lg ${
               small ? "" : ""
             }`}
           >
@@ -101,13 +102,6 @@ export default function BentoNavigation({
                   small ? "h-16" : "h-20"
                 }`}
               >
-                <span
-                  id="progress-bar"
-                  style={{
-                    transform: `translateX(${completion - 100}%)`,
-                  }}
-                  className={`absolute bottom-0 w-full transition-transform duration-150 h-[0.15rem] bg-primary rounded-full`}
-                />
                 <div className="hidden h-full lg:flex mr-auto">
                   {/* START Desktop Flyout menus */}
                   <Popover.Group className="inset-x-0 bottom-0 px-4 z-[99999]">
@@ -285,7 +279,7 @@ export default function BentoNavigation({
                                     key={mainNavigationItem?.link}
                                     link={mainNavigationItem?.link}
                                     // label={mainNavigationItem?.label}
-                                    cssClass={`flex items-center font-medium text-secondary transition-all capitalize font-semibold relative group ${
+                                    cssClass={`flex items-center font-medium text-tertiary transition-all capitalize font-semibold relative group ${
                                       small
                                         ? "text-xs md:text-sm"
                                         : "text-xs sm:text-sm md:text-lg"
@@ -295,7 +289,7 @@ export default function BentoNavigation({
                                   >
                                     <>
                                       {mainNavigationItem?.label}
-                                      <span className="absolute left-0 right-0 bottom-0 h-0 border-b-2 border-text-secondary transition-all duration-300 hover:h-1 hover:border-text-secondary opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"></span>
+                                      <span className="absolute left-0 right-0 bottom-0 h-0 border-b-2 border-secondary transition-all duration-300 hover:h-1 hover:border-secondary opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"></span>
                                     </>
                                   </LinkItem>
                                 )}
@@ -411,7 +405,7 @@ export default function BentoNavigation({
                         key={mainNavigationItem?.link}
                         link={mainNavigationItem?.link}
                         label={mainNavigationItem?.label}
-                        cssClass={`flex items-center font-bold text-secondary hover:text-tertiart transition-all capitalize font-semibold px-3 py-1 ${
+                        cssClass={`flex items-center font-bold text-primary hover:text-tertiart transition-all capitalize font-semibold px-3 py-1 ${
                           small
                             ? "text-xs md:text-sm"
                             : "text-xs sm:text-sm md:text-lg"
@@ -425,12 +419,14 @@ export default function BentoNavigation({
             </div>
           </nav>
         </header>
-      </Fade>
+      </div>
       {announcementText && (
-        <div className="loop-text bg-secondary mt-[0.5rem] mx-2 mb-0 rounded-md">
-          <p className="text-primary">{announcementText}</p>
-        </div>
+        <MarqueeTextElement
+          text={announcementText}
+          wrapperClassName="bg-primary mt-2 mx-2 mb-0 rounded-md max-w-max"
+          innerClassName="text-text-overlay font-bold inline-flex tracking-wide uppercase opacity-90"
+        />
       )}
-    </div>
+    </>
   );
 }

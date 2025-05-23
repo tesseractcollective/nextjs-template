@@ -41,6 +41,7 @@ import MapBoxRadius from "./MapElements/MapBoxRadius";
 import BulkProductsList from "./BulkProductList";
 import FilloutForm from "./FilloutForm";
 import AgeVerification from "./AgeVerification";
+import BentoMap from "./BentoMap";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -190,6 +191,15 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
               icon={siteLibrary?.metaAppleTouchIcon.url}
             />
           </div>
+        )}
+      {!!siteLibrary?.mapKey &&
+        !!elementJson?.bentoLocations &&
+        !!siteLibrary?.metaAppleTouchIcon && (
+          <BentoMap
+            locations={elementJson.bentoLocations}
+            mapKey={siteLibrary.mapKey}
+            icon={siteLibrary?.metaAppleTouchIcon.url}
+          />
         )}
       {!!siteLibrary?.mapKey &&
         !!elementJson?.locationsMedia &&
