@@ -69,9 +69,9 @@ export default function ProductTabsMenuSection({
                   <h3 className="!text-4xl font-bold text-primary text-center !mb-2 uppercase">
                     {category.title}
                   </h3>
-                  <p className="!text-md max-w-lg text-center mx-auto pb-0 !mb-2">
+                  <div className="!text-md max-w-lg text-center mx-auto pb-0 !mb-2">
                     {parse(category.description)}
-                  </p>
+                  </div>
                   {category?.image && (
                     <img
                       src={category.image}
@@ -100,9 +100,9 @@ export default function ProductTabsMenuSection({
                               {product.name}
                             </h4>
                             {product.description?.html && (
-                              <p className="lowercase !text-[16px] mb-1">
+                              <div className="lowercase !text-[16px] mb-1">
                                 {parse(product.description?.html)}
-                              </p>
+                              </div>
                             )}
                             {product?.price && (
                               <p className="!mb-0 !pb-0 text-[14px]">
@@ -122,9 +122,9 @@ export default function ProductTabsMenuSection({
                     ></LinkItem>
                   )}
                   {footer && (
-                    <p className="!text-md max-w-lg text-center mx-auto tab-menu-footer">
+                    <div className="!text-md max-w-lg text-center mx-auto tab-menu-footer">
                       {parse(footer)}
-                    </p>
+                    </div>
                   )}
                 </div>
               </div>

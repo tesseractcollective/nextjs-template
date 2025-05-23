@@ -1,8 +1,6 @@
 import React from "react";
-import { FilloutSliderEmbed, FilloutSliderEmbedButton } from "@fillout/react";
+import { FilloutSliderEmbed } from "@fillout/react";
 import { useState } from "react";
-import Image from "next/image";
-import parse from "html-react-parser";
 
 interface LinkItemFilloutProps {
   link: string;
