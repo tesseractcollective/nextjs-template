@@ -40,7 +40,8 @@ import BulletsSection from "./BulletsSection";
 import MapBoxRadius from "./MapElements/MapBoxRadius";
 import BulkProductsList from "./BulkProductList";
 import FilloutForm from "./FilloutForm";
-// import AgeVerification from "./AgeVerification";
+import AgeVerification from "./AgeVerification";
+import BentoMap from "./BentoMap";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -192,6 +193,15 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           </div>
         )}
       {!!siteLibrary?.mapKey &&
+        !!elementJson?.bentoLocations &&
+        !!siteLibrary?.metaAppleTouchIcon && (
+          <BentoMap
+            locations={elementJson.bentoLocations}
+            mapKey={siteLibrary.mapKey}
+            icon={siteLibrary?.metaAppleTouchIcon.url}
+          />
+        )}
+      {!!siteLibrary?.mapKey &&
         !!elementJson?.locationsMedia &&
         !!siteLibrary?.metaAppleTouchIcon && (
           <div className="max-w-8xl mx-auto flex h-full w-full px-8 md:p-4 rounded-md">
@@ -307,7 +317,7 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!elementJson?.countryFlags && (
         <CountryFlags flags={elementJson.countryFlags} />
       )}
-      {/* {!!elements?.elementJson?.ageVerification && <AgeVerification />} */}
+      {!!elements?.elementJson?.ageVerification && <AgeVerification />}
     </>
   );
 }

@@ -11,6 +11,7 @@ import ProductRotateSection from "@/components/ProductSections/ProductRotateSect
 import ProductStackSection from "@/components/ProductSections/ProductsStackSection";
 import ProductsLightboxSection from "@/components/ProductSections/ProductsLightboxSection";
 import ProductMasonSection from "@/components/ProductSections/ProductMasonSection";
+import ProductMixSection from "@/components/ProductSections/ProductMixSection";
 import ProductChevronSection from "@/components/ProductSections/ProductChevronSection";
 
 interface ProductsProps {
@@ -46,6 +47,8 @@ export default function Products({
   if (filteredProducts.length === 0) return <></>;
   if (productLayoutStyle === "compact")
     return <ProductCompactSection products={filteredProducts} />;
+  if (productLayoutStyle === "mix")
+    return <ProductMixSection products={filteredProducts} />;
   if (productLayoutStyle === "rotate")
     return <ProductRotateSection products={filteredProducts} />;
   if (productLayoutStyle === "stack")

@@ -518,6 +518,31 @@ html {
     text-transform: uppercase;
     
   }
+  &.parse-h1 {
+    p {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-bottom: 2.4rem;
+      margin-left: 0;
+      line-height: 110%;
+    }
+  }
+  &.parse-h2 {
+    p {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      margin-left: 0;
+    }
+  }
+  &.parse-p {
+    p {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      margin-left: 0;
+    }
+  }
 } 
 
 .bg-invert {
