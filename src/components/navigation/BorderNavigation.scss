@@ -1,0 +1,18 @@
+.border-navigation {
+    &.nav-border-primary {
+        .nav-border.border-text-color {
+            border-color: var(--primary) !important;
+            * {      
+                border-color: var(--primary) !important;
+            }
+        }
+    }
+    &.nav-border-secondary {
+        .nav-border.border-text-color {
+            border-color: var(--secondary) !important;
+            * {      
+                border-color: var(--secondary) !important;
+            }
+        }
+    }
+}

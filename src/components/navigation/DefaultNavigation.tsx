@@ -135,8 +135,8 @@ export default function DefaultNavigation({
                     <Image
                       className={`w-auto object-contain max-w-[240px] lg:max-w-[288px] transition-all ${
                         small
-                          ? "h-8 lg:h-10" // 2rem = h-8, 2.5rem = h-10
-                          : "h-16 lg:h-20" // 4rem = h-16, 5rem = h-20
+                          ? "h-7 lg:h-8" // 2rem = h-8, 2.5rem = h-10
+                          : "h-10 lg:h-12" // 4rem = h-16, 5rem = h-20
                       }`}
                       src={navigation.navigationLogo?.url}
                       alt=""
