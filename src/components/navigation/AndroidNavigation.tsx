@@ -349,7 +349,7 @@ export default function AndroidNavigation({
 
       {/* CIRCLE BUTTON & PANEL */}
       <button
-        className={`group fixed right-4 rounded-full bg-primary z-[200] transition-all drop-shadow-md hover:drop-shadow-lg ${
+        className={`group fixed right-4 rounded-full bg-primary z-[200] transition-all shadow-tertiary shadow-[0px_0px_0_4px]  ${
           isScrolled ? "bottom-8" : "-bottom-40"
         } ${open ? "bottom-8" : ""}`}
         onClick={() => {
@@ -371,7 +371,7 @@ export default function AndroidNavigation({
       </button>
       <div className="h-0 xl:h-24 nav-spacer"></div>
       <div
-        className={`android-panel fixed z-100 transition-all duration-500 ease-in-out will-change-transform origin-bottom-right ${
+        className={`android-panel overflow-hidden fixed z-100 transition-all duration-500 ease-in-out will-change-transform origin-bottom-right ${
           open
             ? "h-[100vh] w-[100vw] right-4 bottom-8 rounded-0 translate-x-4  translate-y-8 bg-tertiary"
             : "h-20 w-20 rounded-[999px] right-4 bottom-8 translate-x-0  translate-y-0 bg-primary"

@@ -170,7 +170,15 @@ function BentoMap({ mapKey, locations, icon }: MapBoxesMapProps) {
           )}
         </Map>
       </div>
-      <div className="grid-area-location-list col-span-1 border-text-color border rounded-lg overflow-hidden lg:max-h-[800px] p-4">
+      <div className="grid-area-location-list col-span-1 border-text-color border rounded-lg overflow-hidden lg:max-h-[800px] p-4 relative">
+        {/* Desktop fade shadows (top/bottom) */}
+        <div className="hidden lg:block absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-[#00000076] via-[#0000003e] to-transparent pointer-events-none z-10 rounded-t-lg"></div>
+        <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#00000076] via-[#0000003e] to-transparent pointer-events-none z-10 rounded-b-lg"></div>
+
+        {/* Mobile fade shadows (left/right) */}
+        <div className="block lg:hidden absolute top-0 bottom-0 left-0 w-8 bg-gradient-to-r from-[#00000076] via-[#0000003e] to-transparent pointer-events-none z-10 rounded-l-lg"></div>
+        <div className="block lg:hidden absolute top-0 bottom-0 right-0 w-8 bg-gradient-to-l from-[#00000076] via-[#0000003e] to-transparent pointer-events-none z-10 rounded-r-lg"></div>
+
         <div className="flex lg:flex-col gap-y-4 overflow-x-scroll lg:overflow-y-scroll w-full h-full">
           {locations.map((location, index) => {
             return (
