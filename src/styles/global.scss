@@ -614,6 +614,12 @@ html {
   }
 }
 
+.all-text-blanco {
+  p, h1, h2, h3, h4, h6, a, button, blockquote {
+    color: #fff !important;
+  }
+}
+
 .all-text-light {
   p, h1, h2, h3, h4, h6, a, button, blockquote {
     color: #fff !important;
@@ -1348,4 +1354,8 @@ h4, h5, h6  {color: var(--text);}
       filter: grayscale(0%) !important;
     }
   }
+}
+
+.-mt-100 {
+  margin-top: -100px;
 }

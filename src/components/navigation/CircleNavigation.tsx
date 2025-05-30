@@ -72,25 +72,28 @@ export default function CircleNavigation({
     (mainNavigationItem) => mainNavigationItem.primaryItem === true
   );
   const { announcementLink, announcementText } = navigation;
-const isMarquee = announcementLink?.includes("marquee");
-const showAnnouncement = !!announcementText;
+  const isMarquee = announcementLink?.includes("marquee");
+  const showAnnouncement = !!announcementText;
   return (
     <>
-    {showAnnouncement && (isMarquee ?
-      <MarqueeTextElement
-                text={announcementText}
-                wrapperClassName="bg-primary mb-0 max-w-max"
-                innerClassName="text-text-overlay font-bold inline-flex tracking-wide uppercase opacity-90"
-              />:
-            <AccouncementBar
+      {showAnnouncement &&
+        (isMarquee ? (
+          <MarqueeTextElement
+            text={announcementText}
+            wrapperClassName="bg-primary mb-0 max-w-max"
+            innerClassName="text-text-overlay font-bold inline-flex tracking-wide uppercase opacity-90"
+          />
+        ) : (
+          <AccouncementBar
             accouncementText={announcementText}
             accouncementLink={announcementLink || ""}
             cssClassWrapper="fixed inset-x-0 z-[998] text-center xl:text-right"
           />
-        )
-      }
+        ))}
       <div
-        className={`bg-bg ${isMarquee? 'absolute' : 'fixed'} bottom-0 xl:top-0 xl:bottom-[initial] z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow dark-shadow border ${
+        className={`bg-bg ${
+          isMarquee ? "absolute" : "fixed"
+        } bottom-0 xl:top-0 xl:bottom-[initial] z-[999] left-0 right-0 nav-shadow transition-all backdrop-blur-md nav-shadow dark-shadow border ${
           navigation?.announcementText ? "xl:top-8" : ""
         } ${
           small

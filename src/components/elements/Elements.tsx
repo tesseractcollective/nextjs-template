@@ -315,7 +315,12 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!elementJson?.countryFlags && (
         <CountryFlags flags={elementJson.countryFlags} />
       )}
-      {!!elements?.elementJson?.ageVerification && <AgeVerification />}
+      {!!elements?.elementJson?.ageVerification && (
+        <AgeVerification
+          ageVerification={elements?.elementJson?.ageVerification}
+          logo={siteLibrary?.logo?.url || ""} // Ensure logo is always defined
+        />
+      )}
     </>
   );
 }

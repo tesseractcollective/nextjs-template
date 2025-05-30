@@ -6,6 +6,7 @@ import type {
 import CenterNavigation from "@/components/navigation/CenterNavigation";
 import CenterDarkNavigation from "@/components/navigation/CenterDarkNavigation";
 import BentoNavigation from "@/components/navigation/BentoNavigation";
+import AndroidNavigation from "@/components/navigation/AndroidNavigation";
 import DefaultNavigation from "@/components/navigation/DefaultNavigation";
 import MegaNavigation from "@/components/navigation/MegaNavigation";
 import MinimalNavigation from "@/components/navigation/MinimalNavigation";
@@ -277,6 +278,16 @@ export default function Nav({
   if (navigation.navigationWrapperCssClass === "bento")
     return (
       <BentoNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationWrapperCssClass === "android")
+    return (
+      <AndroidNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}

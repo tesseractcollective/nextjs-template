@@ -14,7 +14,7 @@ import React from "react";
 import FixedSideLink from "./elements/FixedSideLink";
 import MouseFollower from "./elements/MouseFollower";
 import MouseBlob from "./elements/MouseBlob";
-// import AgeVerification from "./elements/AgeVerification";
+import AgeVerification from "./elements/AgeVerification";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -27,8 +27,13 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
   if (!siteLibrary) return <></>;
 
   return (
-    <div className="relative layout-blocks-wrapper">
-      {/* {page?.contentPageJson?.ageVerification && <AgeVerification />} */}
+    <main className="relative layout-blocks-wrapper">
+      {siteLibrary?.siteLibraryJson?.ageVerification && siteLibrary?.logo && (
+        <AgeVerification
+          logo={siteLibrary.logo.url} // Ensure logo is always defined
+          ageVerification={siteLibrary?.siteLibraryJson.ageVerification}
+        />
+      )}
       {siteLibrary.siteLibraryJson?.mouseFollower && <MouseFollower />}
       {siteLibrary.siteLibraryJson?.mouseBlob && <MouseBlob />}
       {!!page?.contentPageJson?.loader && siteLibrary.logo?.url && (
@@ -62,7 +67,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
           }
         />
       )}
-      <main>
+      <div>
         <LayoutBlockSections layout={layout} eventsData={events} />
         {!!page?.whatsAppContactNumberFloatingButton && (
           <Whatsapp
@@ -71,7 +76,7 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
             metaDomain={siteLibrary?.metaDomain || ""}
           />
         )}
-      </main>
+      </div>
       {navigations && siteLibrary && (
         <Footer
           siteLibrary={siteLibrary}
@@ -85,6 +90,6 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
       {page?.contentPageJson?.fixedSideLink && (
         <FixedSideLink fixedSideLink={page.contentPageJson.fixedSideLink} />
       )}
-    </div>
+    </main>
   );
 }
