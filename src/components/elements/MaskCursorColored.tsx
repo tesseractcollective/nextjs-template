@@ -18,7 +18,7 @@ export default function MaskCursorColored({ maskCursorText }: MaskCursorProps) {
   }
 
   return (
-    <main className="mask-cursor-wrapper relative">
+    <div className="mask-cursor-wrapper relative">
       <motion.div
         {...{ className: "mask" }}
         animate={{
@@ -42,6 +42,6 @@ export default function MaskCursorColored({ maskCursorText }: MaskCursorProps) {
       <div className="mask-body gradient-text-element">
         <p>{parse(maskCursorText)}</p>
       </div>
-    </main>
+    </div>
   );
 }

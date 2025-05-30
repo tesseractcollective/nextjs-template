@@ -29,9 +29,16 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
   const { title, contactPhone, contactEmail, contactName } = siteLibrary;
   const { items, navigationLogo } = navigation;
 
+  const secondaryItems = items.filter((item) => item.primaryItem !== true);
+  const primaryItems = items.filter((item) => item.primaryItem === true);
+
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-[1000]" onClose={setOpen}>
+      <Dialog
+        as="div"
+        className="mobile-menu-panel relative z-[1000]"
+        onClose={setOpen}
+      >
         <Transition.Child
           as={Fragment}
           enter="transition-opacity ease-linear duration-300"
@@ -59,15 +66,15 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
           >
             <Dialog.Panel className="relative flex w-full max-h-[100dvh] flex-col overflow-y-auto pb-12 shadow-xl border-primary border-t bg-bg transition-all duration-[400ms] h-[100dvh] items-center justify-center border">
               {/* Close button */}
-              <div className="fixed bottom-2 right-2 p-4 z-[1001]">
+              {/* <div className="fixed top-0 right-2 w-full max-w-max p-4 z-[1001]">
                 <button
                   onClick={() => setOpen(false)}
-                  className="text-text-color hover:text-primary transition-all border-text-color border rounded-full p-1 hover:border-primary"
+                  className="text-primary hover:text-secondary transition-all border-text-color"
                   aria-label="Close menu"
                 >
                   <XMarkIcon className="w-8 h-8" />
                 </button>
-              </div>
+              </div> */}
 
               {/* Main Panel */}
               <Transition
@@ -80,10 +87,10 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                 leaveTo="transform translate-x-full"
                 className="absolute inset-0 w-full"
               >
-                <div className="h-full w-full flex flex-col p-2">
+                <div className="h-full w-full flex flex-col p-2 relative">
                   {/* Logo Section */}
                   <Fade direction="down" triggerOnce className="relative z-10">
-                    <div className="flex mt-0 mx-4 px-0 pb-2 pt-2 items-center justify-start">
+                    <div className="flex mt-0 mx-4 px-0 pb-2 pt-2 items-center justify-between">
                       <Link
                         href="/"
                         onClick={() => {
@@ -102,7 +109,7 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                             <span className="sr-only">{title}</span>
                             <Image
                               src={navigationLogo.url}
-                              className="w-[80px] md:w-[160px] max-h-[120px] cursor-pointer object-contain transition-all duration-[400ms] block"
+                              className="w-[100px] md:w-[160px] max-h-[120px] cursor-pointer object-contain transition-all duration-[400ms] block"
                               alt=""
                               width={0}
                               height={0}
@@ -115,12 +122,58 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                           </span>
                         )}
                       </Link>
+                      <div className="relative w-full max-w-max p-0 z-[1001]">
+                        <button
+                          onClick={() => setOpen(false)}
+                          className="text-primary hover:text-secondary transition-all border-text-color p-2"
+                          aria-label="Close menu"
+                        >
+                          <XMarkIcon className="w-8 h-8" />
+                        </button>
+                      </div>
                     </div>
                   </Fade>
 
-                  {/* NAV PANEL MAIN ITEMS */}
-                  <nav className="px-4 py-1">
-                    {items.map((item) => (
+                  {/* NAV PANEL SECONDARY ITEMS */}
+                  <nav className="px-4 py-2 flex flex-col gap-y-4">
+                    {secondaryItems.map((item) => (
+                      <div key={item.label} className="">
+                        {item.items?.length > 0 ? (
+                          <button
+                            onClick={() => setActivePanel(item.label || "")}
+                            className="group flex w-full items-center justify-between py-2 text-3xl font-bold uppercase text-text-color hover:text-primary focus-within:text-primary"
+                            aria-label={`Open submenu for ${item.label}`}
+                          >
+                            <span>{item.label}</span>
+                            <svg
+                              className="h-5 w-5 text-text-color group-hover:text-primary"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </button>
+                        ) : (
+                          <LinkItem
+                            link={item.link || "/"}
+                            cssClass="block py-2 text-3xl font-bold uppercase text-text-color hover:text-primary  focus-within:text-primary relative before:content-[''] before:absolute before:left-0 before:right-0 before:h-[1px] before:bg-primary before:top-0 before:opacity-0 before:transition-opacity before:duration-300 after:content-[''] after:absolute after:left-0 after:right-0 after:h-[1px] after:bg-primary after:bottom-0 after:opacity-0 after:transition-opacity after:duration-300 hover:before:opacity-100 hover:after:opacity-100 focus-within:before:opacity-100 focus-within:after:opacity-100"
+                            onClick={() => setOpen(false)}
+                          >
+                            {item.label || ""}
+                          </LinkItem>
+                        )}
+                      </div>
+                    ))}
+                  </nav>
+                  {/* NAV PANEL PRIMARY ITEMS */}
+                  <nav className="px-4 py-1 mt-auto w-full max-h-max relative">
+                    {primaryItems.map((item) => (
                       <div key={item.label} className="py-2">
                         {item.items?.length > 0 ? (
                           <button
@@ -145,10 +198,10 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                         ) : (
                           <LinkItem
                             link={item.link || "/"}
-                            cssClass="block py-2 text-3xl font-bold uppercase text-text-color hover:text-primary relative before:content-[''] before:absolute before:left-0 before:right-0 before:h-[1px] before:bg-primary before:top-0 before:opacity-0 before:transition-opacity before:duration-300 after:content-[''] after:absolute after:left-0 after:right-0 after:h-[1px] after:bg-primary after:bottom-0 after:opacity-0 after:transition-opacity after:duration-300 hover:before:opacity-100 hover:after:opacity-100"
+                            cssClass="block py-2 text-3xl font-bold bg-primary hover:bg-text-color text-center uppercase text-text-color hover:text-primary relative duration-300 hover:before:opacity-100 hover:after:opacity-100 overflow-hidden"
                             onClick={() => setOpen(false)}
                           >
-                            {item.label || ""}
+                            <Fade direction="up">{item.label || ""}</Fade>
                           </LinkItem>
                         )}
                       </div>
@@ -159,13 +212,13 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                   <Fade
                     triggerOnce
                     direction="up"
-                    className="relative z-10 mt-auto max-h-max flex"
+                    className="relative z-10 max-h-max flex"
                   >
-                    <div className="space-y-6 px-4 py-6 mt-4 w-full text-center">
+                    <div className="space-y-6 px-4 py-6 my-4 w-full text-center">
                       <SocialMediaIcons
                         siteLibrary={siteLibrary}
                         fadeDirection="up"
-                        cssClass="my-2 mx-0 flex flex-row flex-wrap social-icons-row items-center justify-center text-text-color gap-2 overflow-hidden mx-auto py-0 max-w-max gap-x-4"
+                        cssClass="my-2 mx-0 flex flex-row flex-wrap social-icons-row items-center justify-center text-primary gap-2 overflow-hidden mx-auto py-0 max-w-max gap-x-4"
                       />
                       <div className="text-center">
                         {contactName && (
@@ -196,6 +249,15 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                       </div>
                     </div>
                   </Fade>
+                  <div className="fixed bottom-1 inset-x-0 w-full max-w-max p-4 z-[1001] mx-auto">
+                    <button
+                      onClick={() => setOpen(false)}
+                      className="text-primary hover:text-secondary transition-all border-text-color flex flex-row items-center justify-center text-xs"
+                      aria-label="Close menu"
+                    >
+                      <XMarkIcon className="w-4 h-4" /> <span>Close Menu</span>
+                    </button>
+                  </div>
                 </div>
               </Transition>
 
@@ -212,12 +274,21 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                   leaveTo="transform translate-x-full"
                   className="absolute inset-0 w-full bg-bg"
                 >
-                  <div className="h-full w-full pt-16">
+                  <div className="h-full w-full pt-16 relative">
+                    <div className="fixed top-0 right-2 w-full max-w-max p-4 z-[1001]">
+                      <button
+                        onClick={() => setOpen(false)}
+                        className="text-primary hover:text-secondary transition-all border-text-color"
+                        aria-label="Close menu"
+                      >
+                        <XMarkIcon className="w-8 h-8" />
+                      </button>
+                    </div>
                     <div className="px-4 py-1">
                       <div className="flex items-center mb-4 border-b border-text-color pb-2">
                         <button
                           onClick={() => setActivePanel("main")}
-                          className="text-text-color hover:text-primary transition-all mr-3"
+                          className="text-primary hover:text-secondary transition-all mr-3"
                           aria-label="Back to main menu"
                         >
                           <svg
@@ -234,7 +305,7 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                             />
                           </svg>
                         </button>
-                        <h2 className="text-2xl font-bold text-text-color py-1">
+                        <h2 className="text-2xl font-bold text-text-color uppercase py-1">
                           {mainItem.label}
                         </h2>
                       </div>

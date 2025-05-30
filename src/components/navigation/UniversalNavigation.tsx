@@ -281,35 +281,31 @@ export default function UniversalNavigation({
                         fadeDirection="up"
                         cssClass="my-2 mx-0 flex flex-row flex-wrap social-icons-row items-center justify-center text-text-color gap-2 overflow-hidden mx-auto py-0 max-w-max gap-x-4"
                       />
-                      <div className="text-left">
-                        {!!contactName && (
-                          <p className="text-text-color text-xs font-bold">
-                            <span>{contactName}</span>
-                          </p>
-                        )}
-                        {!!contactPhone && (
-                          <a
-                            href={`tel:${contactPhone.replace(/-/g, "")}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
-                          >
-                            <span className="font-semibold">
-                              {contactPhone}
-                            </span>
-                          </a>
-                        )}
-                        {!!contactEmail && (
-                          <a
-                            href={`mailto:${contactEmail}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
-                          >
-                            <span className="font-semibold">
-                              {contactEmail}
-                            </span>
-                          </a>
-                        )}
-                      </div>
                     </div>
                   </Fade>
+                  <div className="text-left absolute bottom-12 left-12 z-40 flex flex-col gap-x-2">
+                    {!!contactName && (
+                      <p className="text-text-color text-xl font-bold uppercase tracking-wide">
+                        <span>{contactName}</span>
+                      </p>
+                    )}
+                    {!!contactPhone && (
+                      <a
+                        href={`tel:${contactPhone.replace(/-/g, "")}`}
+                        className="text-lg font-semibold block my-0 text-link !border-none hover:!border-none text-text-color max-w-max"
+                      >
+                        <span className="font-semibold">{contactPhone}</span>
+                      </a>
+                    )}
+                    {!!contactEmail && (
+                      <a
+                        href={`mailto:${contactEmail}`}
+                        className="text-lg font-semibold block my-0 text-link !border-none hover:!border-none text-text-color max-w-max"
+                      >
+                        <span className="font-semibold">{contactEmail}</span>
+                      </a>
+                    )}
+                  </div>
 
                   <div
                     className="object-cover absolute w-full h-100vh inset-0 -z-1 transition-all duration-[500ms] bg-no-repeat bg-cover"

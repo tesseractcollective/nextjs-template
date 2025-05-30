@@ -24,7 +24,7 @@ html {
 
 * {
   font-family: 'Poppins', sans-serif !important;
-  // outline: 2px solid pink !important;
+  // outline: 1px solid lime !important;
 }
 
 .z-100 {
@@ -611,6 +611,12 @@ html {
 .all-text-white {
   p, h1, h2, h3, h4, h6, a, button, blockquote {
     color: var(--text) !important;
+  }
+}
+
+.all-text-blanco {
+  p, h1, h2, h3, h4, h6, a, button, blockquote {
+    color: #fff !important;
   }
 }
 
@@ -1348,4 +1354,8 @@ h4, h5, h6  {color: var(--text);}
       filter: grayscale(0%) !important;
     }
   }
+}
+
+.-mt-100 {
+  margin-top: -100px;
 }

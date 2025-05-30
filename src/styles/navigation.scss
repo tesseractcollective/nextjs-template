@@ -58,6 +58,7 @@
 .psuedo-circle {
   position: relative; 
   cursor: pointer;
+  width: 100%;
   &:before {
     background: var(--background);
     height: 110px;

@@ -6,7 +6,7 @@ import Parallax from "@/components/Parallax";
 import StandOutText from "@/components/StandOutText";
 import IframeBox from "@/components/IframeBox";
 // import { StripePricingTable } from "@/components/StripePricingTable";
-import InstagramSection from "@/components/InstagramSection";
+import LightWidgetInstagram from "@/components/elements/LightWidgetInstagram";
 import GallerySection from "@/components/GallerySection";
 import HTMLText from "@/components/elements/HTMLText";
 import ElementImage from "@/components/elements/ElementImage";
@@ -106,12 +106,10 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
           publishableKey={stripePublishableKey}
         />
       )} */}
-      {!!displayInstagramSectionUsername && (
-        <InstagramSection
-          userToken={displayInstagramSectionUsername}
-          // userToken="IGQWRPLThGQThMTWhGTDY5em1fYkZAyZADdmZAUpOcE5QMTh0RTlnQjdYVlhVZAWh4TDYwSlpUV2V1U0pfeVQ4MFlzTkZAZAQm1wSXZAzb3hEOW5wZAlJwVzJFenNMSF9sVTA4RFBBZAlItWFdlcWNSQ2Y3WDdiZA1BOS1ZAmWTQZD"
-          // instagramUsername="rickyhaswifi"
-          instagramLink={siteLibrary?.instagramLink || ""}
+      {!!elementJson?.lightWidget && (
+        <LightWidgetInstagram
+          lightWidgetId={elementJson.lightWidget.id}
+          instagramUser={elementJson.lightWidget.user}
         />
       )}
       {!!elementJson?.scrollDigitsData && (
@@ -317,7 +315,12 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!elementJson?.countryFlags && (
         <CountryFlags flags={elementJson.countryFlags} />
       )}
-      {!!elements?.elementJson?.ageVerification && <AgeVerification />}
+      {!!elements?.elementJson?.ageVerification && (
+        <AgeVerification
+          ageVerification={elements?.elementJson?.ageVerification}
+          logo={siteLibrary?.logo?.url || ""} // Ensure logo is always defined
+        />
+      )}
     </>
   );
 }
