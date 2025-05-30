@@ -17,7 +17,9 @@ export default function ProductMixSection({ products }: ProductsProps) {
           return (
             <article key={product.id} className="relative mx-auto w-full">
               <div
-                className={`product-mix-wrapper ${isOdd ? "mix-odd" : "mix-even"}`}
+                className={`product-mix-wrapper ${
+                  isOdd ? "mix-odd" : "mix-even"
+                }`}
               >
                 {product.gallery[0]?.url && (
                   <div className="box-1">
@@ -44,7 +46,7 @@ export default function ProductMixSection({ products }: ProductsProps) {
                       className="object-cover rounded-lg h-full w-full"
                       sizes="(max-width: 976px) 100vw, 50vw"
                     />
-                    <p className="absolute bottom-8 inset-x-0 mx-auto text-2xl lowercase w-full max-w-max text-center z-1 rounded-xl bg-primary px-4 py-2">
+                    <p className="absolute bottom-8 inset-x-0 mx-auto text-2xl lowercase w-full max-w-max text-center z-1 rounded-4xl bg-primary px-4 py-2">
                       {product.purchaseLabel}
                     </p>
                   </LinkItem>
