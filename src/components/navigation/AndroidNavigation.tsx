@@ -18,7 +18,6 @@ import { Fade } from "react-awesome-reveal";
 import AccouncementBar from "@/components/navigation/AccouncementBar";
 import MobileMenuPanel from "./NavigationSections/MobileMenuPanel";
 import MarqueeTextElement from "../elements/MarqueeText";
-import { is } from "date-fns/locale";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;

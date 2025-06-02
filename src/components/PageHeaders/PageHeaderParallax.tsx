@@ -31,7 +31,7 @@ export default function PageHeaderParallax({
       {/* Aspect ratio container */}
       <div className="relative w-full">
         {/* This div maintains 16:9 aspect ratio */}
-        <div className="pb-[56.25%] relative w-full">
+        <div className="pb-[70%] md:pb-[56.25%] relative w-full">
           {/* Background image container */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed opacity-60"
@@ -42,7 +42,7 @@ export default function PageHeaderParallax({
             }}
           />
           {/* Content container with proper centering */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-4 py-12 md:px-4">
             <Fade direction="up" triggerOnce>
               {!!pageHeaderTitleProp && (
                 <h1 className="text-2xl sm:text-3xl md:text-5xl xl:text-6xl text-shadow-large py-0 text-center text-text-overlay font-bold uppercase">
@@ -51,7 +51,7 @@ export default function PageHeaderParallax({
               )}
 
               {!!pageHeaderSubtitleProp && (
-                <h2 className="text-shadow py-0 text-center uppercase tracking-widest font-bold text-base sm:text-lg text-text-overlay">
+                <h2 className="text-shadow py-0 text-center uppercase tracking-widest font-bold text-base sm:text-lg text-text-overlay max-w-2xl mx-auto w-full">
                   {pageHeaderSubtitleProp}
                 </h2>
               )}

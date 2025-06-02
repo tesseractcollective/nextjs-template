@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import * as Slider from "@radix-ui/react-slider";
-import { Play, Pause } from "lucide-react";
+import { PlayIcon, PauseIcon } from "@heroicons/react/24/solid";
 
 interface AudioPlayerProps {
   title: string;
@@ -108,9 +108,9 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ title, audioURL }) => {
           className="p-3 rounded-full bg-[#ffffff]/10 hover:bg-[#ffffff]/20 transition-colors"
         >
           {isPlaying ? (
-            <Pause className="h-5 w-5 text-[#ffffff]" />
+            <PauseIcon className="h-5 w-5 text-[#ffffff]" />
           ) : (
-            <Play className="h-5 w-5 text-[#ffffff]" />
+            <PlayIcon className="h-5 w-5 text-[#ffffff]" />
           )}
         </button>
       </div>

@@ -37,5 +37,3 @@ next-env.d.ts
 notes.txt
 
 .env
-
-*storybook.log

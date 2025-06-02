@@ -1,19 +1,34 @@
 const nextConfig = {
   output: "standalone",
   images: {
-    domains: [
-      "media.graphcms.com",
-      "media.graphassets.com",
-      "i.ytimg.com",
-      "img.youtube.com",
-      "i.scdn.co",
-      "photos.bandsintown.com",
-      "image-cdn-ak.spotifycdn.com",
-    ],
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "media.graphcms.com",
+      },
+      {
+        protocol: "https",
         hostname: "**.graphassets.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
+      },
+      {
+        protocol: "https",
+        hostname: "photos.bandsintown.com",
+      },
+      {
+        protocol: "https",
+        hostname: "image-cdn-ak.spotifycdn.com",
       },
     ],
     // Disable image optimization
