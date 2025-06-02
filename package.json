@@ -7,13 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-code-generator --config ./graphql.config.js",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "codegen": "graphql-code-generator --config ./graphql.config.js"
   },
   "dependencies": {
     "@codesweetly/react-youtube-playlist": "^3.1.0",
-    "@emotion/react": "11.11.1",
+    "@emotion/react": "^11.14.0",
     "@fillout/react": "^1.2.10",
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -27,7 +25,7 @@
     "@graphql-codegen/typescript-operations": "^3.0.4",
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
-    "@netlify/plugin-nextjs": "^5.10.1",
+    "@netlify/plugin-nextjs": "^5.11.2",
     "@radix-ui/react-slider": "^1.2.3",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.4",
@@ -54,7 +52,6 @@
     "graphql-request": "5.1",
     "html-react-parser": "^4.0.0",
     "lightgallery": "^2.7.1",
-    "lucide-react": "^0.479.0",
     "mapbox-gl": "^2.15.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.46",

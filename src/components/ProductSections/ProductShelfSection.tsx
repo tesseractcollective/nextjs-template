@@ -26,11 +26,11 @@ export default function ProductShelfSection({ products }: ProductsProps) {
   useState<ProductFieldsFragment>();
 
   return (
-    <div className="bg-bg-primary">
+    <div className="bg-bg">
       <div className="mx-auto max-w-2xl px-4 pb-8 max-w-8xl">
         <h2 className="sr-only">Products</h2>
         <Fade direction="up" triggerOnce>
-          <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-8 bg-text-color all-text-dark rounded py-4 mx-auto">
+          <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:gap-x-8 rounded py-4 mx-auto">
             {products.map((product) => (
               <button
                 onClick={() => {
@@ -44,23 +44,23 @@ export default function ProductShelfSection({ products }: ProductsProps) {
                 }}
                 type="button"
                 key={product.id}
-                className="flex flex-col p-4 gap-x-4 w-full max-w-[260px] items-start justify-center hover:border-primary border border-text-color transition-all mx-auto relative group"
+                className="flex flex-col p-4 gap-x-4 w-full max-w-xl items-start justify-start border border-bg hover:border-primary focus-visible:border-primary transition-all mx-auto relative group"
               >
                 <div className="flex flex-col w-full">
-                  <div className="flex flex-row items-start justify-between gap-x-6">
+                  <div className="flex flex-row items-start justify-between gap-x-6 border-b border-primary">
                     {product.name && (
-                      <div className="text-sm font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left">
+                      <h3 className="text-lg font-bold my-0 py-0 parsed-mb-0 uppercase tracking-widest text-left">
                         {parse(product.name)}
-                      </div>
+                      </h3>
                     )}
                     {product.price && (
-                      <div className="text-sm font-light my-0 py-0 parsed-mb-0">
+                      <h3 className="text-lg font-light my-0 py-0 parsed-mb-0">
                         {parse(product.price)}
-                      </div>
+                      </h3>
                     )}
                   </div>
                   {product?.description && (
-                    <div className="text-[14px] my-0 font-light py-0 parsed-mb-0 opacity-80 text-left lowercase">
+                    <div className="text-[14px] my-0 font-light py-1 parsed-mb-0 opacity-90 text-left lowercase">
                       {parse(product.description.html)}
                     </div>
                   )}

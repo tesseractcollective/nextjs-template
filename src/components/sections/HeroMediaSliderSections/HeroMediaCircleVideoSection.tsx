@@ -10,6 +10,7 @@ import SocialMediaIcons from "@/components/SocialMediaIcons";
 import { Fade } from "react-awesome-reveal";
 import LinkItem from "@/components/LinkItem";
 import "./HeroMediaCircleVideo.scss";
+import { motion } from "framer-motion";
 
 type HeroMediaSliderType = HeroMediaSliderFieldsFragment;
 
@@ -138,8 +139,26 @@ export default function HeroMediaCircleVideoSection({
                     </Fade>
 
                     {heroMediaSliderItem?.textContent?.header && (
-                      <div className="hero-circle-video-text-box max-6-xl mx-auto w-full">
-                        {parse(heroMediaSliderItem?.textContent.header.html)}
+                      <div className="hero-circle-video-text-box here max-6-xl mx-auto w-full">
+                        <motion.div
+                          className="overflow-hidden max-h-max"
+                          initial="hidden"
+                          animate="visible"
+                          variants={{
+                            hidden: { y: -200, opacity: 0, scale: 0 },
+                            visible: {
+                              scale: 1,
+                              y: 0,
+                              opacity: 1,
+                              transition: {
+                                delay: 0.5,
+                                duration: 1,
+                              },
+                            },
+                          }}
+                        >
+                          {parse(heroMediaSliderItem?.textContent.header.html)}
+                        </motion.div>
                       </div>
                     )}
 
