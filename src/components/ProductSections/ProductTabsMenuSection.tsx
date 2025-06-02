@@ -28,8 +28,8 @@ export default function ProductTabsMenuSection({
   productTabMenuData,
   products,
 }: ProductsProps) {
-  if (!products) return <></>;
   const [activeIndex, setActiveIndex] = useState(0);
+  if (!products) return <></>;
 
   const { title, categories } = productTabMenuData;
   if (!categories) return <></>;
@@ -44,7 +44,11 @@ export default function ProductTabsMenuSection({
               <button
                 key={category.query}
                 onClick={() => setActiveIndex(index)}
-                className={`flex gap-2 text-primary hover:text-secondary w-full justify-end gap-y-4 text-right p-2 text-xl uppercase border-b ${activeIndex === index ? "border-b-secondary text-secondary" : "border-b-[#00000000] "}`}
+                className={`flex gap-2 text-primary hover:text-secondary w-full justify-end gap-y-4 text-right p-2 text-xl uppercase border-b ${
+                  activeIndex === index
+                    ? "border-b-secondary text-secondary"
+                    : "border-b-[#00000000] "
+                }`}
               >
                 {category.title}
               </button>
@@ -63,7 +67,9 @@ export default function ProductTabsMenuSection({
             return (
               <div
                 key={title}
-                className={`flex flex-col px-4 gap-4 mb-8 w-full ${activeIndex !== index ? "lg:hidden" : ""}`}
+                className={`flex flex-col px-4 gap-4 mb-8 w-full ${
+                  activeIndex !== index ? "lg:hidden" : ""
+                }`}
               >
                 <div className="w-full text-center flex flex-col">
                   <h3 className="!text-4xl font-bold text-primary text-center !mb-2 uppercase">
@@ -73,10 +79,13 @@ export default function ProductTabsMenuSection({
                     {parse(category.description)}
                   </div>
                   {category?.image && (
-                    <img
+                    <Image
                       src={category.image}
                       alt={category.title}
                       className="w-full h-auto rounded-lg block"
+                      sizes="100%"
+                      width={0}
+                      height={0}
                     />
                   )}
                   <div className="mt-2 mb-4">

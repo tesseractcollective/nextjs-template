@@ -6,6 +6,7 @@ import ThemeColors from "@/styles/ThemeColors";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Event } from "@/components/Calendar/calendarHelpers";
 import FacebookPixel from "@/components/FacebookPixel";
+import Script from "next/script";
 
 interface Props {
   layout: LayoutQuery;
@@ -91,10 +92,11 @@ const PageComponent: FC<Props> = ({ layout, events }) => {
         {/* Canonical URL */}
         <link rel="canonical" href={pageUrl} />
         {siteLibraryJson?.userWayId && (
-          <script
+          <Script
             src="https://cdn.userway.org/widget.js"
+            strategy="afterInteractive"
             data-account={siteLibraryJson.userWayId}
-          ></script>
+          />
         )}
         {/* Structured Data */}
         <script type="application/ld+json">
