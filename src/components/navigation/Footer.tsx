@@ -301,13 +301,13 @@ function Footer({
             </a>
           )}
           {footerItems && (
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-2">
               {footerItems.map((footerItem, index) => (
                 <LinkItem
                   key={`${footerItem.link}-${index++}`}
                   label={footerItem.label}
                   link={footerItem.link}
-                  cssClass={`max-w-max mb-4 mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
+                  cssClass={`max-w-max mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
                     footerItem.cssClass ? footerItem.cssClass : ""
                   }`}
                   sameTab={footerItem.sameTab}

@@ -7,7 +7,7 @@ const LightWidgetInstagram: React.FC<LightWidgetInstagramProps> = ({
   lightWidgetId,
   instagramUser,
 }) => {
-  return null;
+  return null; // Temporarily returning null to avoid rendering issues
   // return (
   //   <div className="my-0 block h-full bg-primary">
   //     <h3 className="text-center text-4xl py-8">{`@${instagramUser}`}</h3>

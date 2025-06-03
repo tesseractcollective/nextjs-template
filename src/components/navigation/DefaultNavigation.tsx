@@ -96,7 +96,7 @@ export default function DefaultNavigation({
       <div
         className={`default-navigation sticky ${
           navigation?.announcementText ? "top-8" : "top-0"
-        } z-[999] bg-after-nav left-0 right-0 nav-shadow black-shadow transition-all backdrop-blur-md duration-[400ms] border-b border-primary ${
+        } z-[999] bg-after-nav left-0 right-0 nav-shadow dark-shadow transition-all backdrop-blur-md duration-[400ms] border-b border-primary ${
           small ? "nav-shadow-scrolled" : ""
         } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
         id="default-navigation"

@@ -51,7 +51,7 @@ export default function GallerySection({ galleryData }: GalleryProps) {
 
   return (
     <div className="my-8 magic-grid block h-full">
-      <div className="flex max-w-8xl mx-auto px-2 w-full">
+      <div className="flex max-w-6xl mx-auto px-2 w-full">
         <LightGallery
           speed={500}
           download={false}
