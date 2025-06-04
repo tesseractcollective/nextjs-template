@@ -121,11 +121,44 @@
 }
 
 .drop-shadow-button-secondary  {
-  background: var(--secondary);
+  background: var(--secondary) !important;
   color: var(--text);
   box-shadow: 2px 2px var(--text);
   border: 1px solid var(--text) !important;
   transition: all ease-in 0.2s !important;
+  padding: 16px 12px;
+  text-transform: uppercase;
+  &:hover {
+    box-shadow: none;
+    transform: translateY(4px) !important;
+    transition: all ease-in 0.2s;
+    opacity: 1 !important;
+  }
+}
+
+.drop-shadow-button-tertiary  {
+  background: var(--tertiary) !important;
+  color: var(--text);
+  box-shadow: 2px 2px var(--text);
+  border: 1px solid var(--text) !important;
+  transition: all ease-in 0.2s !important;
+  padding: 16px 12px;
+  text-transform: uppercase;
+  &:hover {
+    box-shadow: none;
+    transform: translateY(4px) !important;
+    transition: all ease-in 0.2s;
+    opacity: 1 !important;
+  }
+}
+
+.drop-shadow-button-bg  {
+  background: var(--bg) !important;
+  color: var(--text);
+  box-shadow: 2px 2px var(--text);
+  border: 1px solid var(--text) !important;
+  transition: all ease-in 0.2s !important;
+  padding: 16px 12px;
   text-transform: uppercase;
   &:hover {
     box-shadow: none;

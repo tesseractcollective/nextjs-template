@@ -26,7 +26,7 @@ export default function ProductShelfSection({ products }: ProductsProps) {
   useState<ProductFieldsFragment>();
 
   return (
-    <div className="bg-bg">
+    <div className="bg-bg product-shelf-section">
       <div className="mx-auto max-w-2xl px-4 pb-8 max-w-8xl">
         <h2 className="sr-only">Products</h2>
         <Fade direction="up" triggerOnce>

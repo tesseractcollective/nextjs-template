@@ -42,6 +42,7 @@ import BulkProductsList from "./BulkProductList";
 import FilloutForm from "./FilloutForm";
 import AgeVerification from "./AgeVerification";
 import BentoMap from "./BentoMap";
+import FramerHeroListItems from "./FramerHeroListItems";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -318,7 +319,12 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
       {!!elements?.elementJson?.ageVerification && (
         <AgeVerification
           ageVerification={elements?.elementJson?.ageVerification}
-          logo={siteLibrary?.logo?.url || ""} // Ensure logo is always defined
+          logo={siteLibrary?.logo?.url || ""}
+        />
+      )}
+      {!!elementJson?.framerHeroListItems && (
+        <FramerHeroListItems
+          framerHeroListItems={elementJson.framerHeroListItems}
         />
       )}
     </>

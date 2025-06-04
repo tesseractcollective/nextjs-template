@@ -72,12 +72,6 @@ export default function ProductTabsMenuSection({
                 }`}
               >
                 <div className="w-full text-center flex flex-col">
-                  <h3 className="!text-4xl font-bold text-primary text-center !mb-2 uppercase">
-                    {category.title}
-                  </h3>
-                  <div className="!text-md max-w-lg text-center mx-auto pb-0 !mb-2">
-                    {parse(category.description)}
-                  </div>
                   {category?.image && (
                     <Image
                       src={category.image}
@@ -88,6 +82,13 @@ export default function ProductTabsMenuSection({
                       height={0}
                     />
                   )}
+                  <h3 className="!text-4xl font-bold text-primary text-center !mb-2 uppercase">
+                    {category.title}
+                  </h3>
+                  <p className="!text-md max-w-lg text-center mx-auto pb-0 !mb-2">
+                    {parse(category.description)}
+                  </p>
+
                   <div className="mt-2 mb-4">
                     {currentProducts.map((product) => {
                       return (
@@ -104,7 +105,7 @@ export default function ProductTabsMenuSection({
                               className="w-16 h-16 rounded-lg"
                             />
                           )}
-                          <div className="body-parsed-tex">
+                          <div className="body-parsed-text">
                             <h4 className="text-xl font-semibold text-primary !mb-2">
                               {product.name}
                             </h4>
@@ -127,7 +128,7 @@ export default function ProductTabsMenuSection({
                     <LinkItem
                       label={ctaText}
                       link={ctaLink}
-                      cssClass="text-xl lg:text-2xl font-semibold my-8 block mx-auto w-full max-w-xs my-2 px-4 py-2 rounded  border bg-bg border-primary hover:bg-secondary transition-all focus:bg-secondary text-text-color uppercase"
+                      cssClass="text-xl lg:text-2xl font-semibold my-8 block mx-auto w-full max-w-xs my-2 px-4 py-2 rounded  border bg-bg border-primary hover:bg-secondary transition-all focus:bg-secondary text-text-color uppercase hidden lg:block"
                     ></LinkItem>
                   )}
                   {footer && (
