@@ -15,6 +15,7 @@ import FixedSideLink from "./elements/FixedSideLink";
 import MouseFollower from "./elements/MouseFollower";
 import MouseBlob from "./elements/MouseBlob";
 import AgeVerification from "./elements/AgeVerification";
+import FixedFilloutSideButton from "./elements/FixedFilloutSideButton";
 
 interface PageProps {
   layout: LayoutQuery;
@@ -89,6 +90,11 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
       {page?.popup && <Popup layout={layout} />}
       {page?.contentPageJson?.fixedSideLink && (
         <FixedSideLink fixedSideLink={page.contentPageJson.fixedSideLink} />
+      )}
+      {page?.contentPageJson?.fixedFilloutSideButton && (
+        <FixedFilloutSideButton
+          fixedFilloutSideButton={page.contentPageJson.fixedFilloutSideButton}
+        />
       )}
     </main>
   );

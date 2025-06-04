@@ -1,11 +1,11 @@
 import React from "react";
 import type { ContactFieldsFragment } from "@/graphql/generated/graphql";
-import ContactDefault from "@/components/sections/ContactContentComponents/ContactDefault";
 import ContactCard from "@/components/sections/ContactContentComponents/ContactCard";
-import ContactCircle from "@/components/sections/ContactContentComponents/ContactCircle";
-import ContactMason from "@/components/sections/ContactContentComponents/ContactMason";
-import ContactCompact from "@/components/sections/ContactContentComponents/ContactCompact";
 import ContactChevron from "@/components/sections/ContactContentComponents/ContactChevron";
+import ContactCircle from "@/components/sections/ContactContentComponents/ContactCircle";
+import ContactCompact from "@/components/sections/ContactContentComponents/ContactCompact";
+import ContactDefault from "@/components/sections/ContactContentComponents/ContactDefault";
+import ContactMason from "@/components/sections/ContactContentComponents/ContactMason";
 
 type contactTypeTags = ContactFieldsFragment["contactQuery"];
 
@@ -14,6 +14,23 @@ interface ContactsSectionProps {
   contactTypes: contactTypeTags[];
   contactsLayoutStyle: string;
 }
+
+// card √
+// chevron √
+// circle √
+// compact √
+// fullScreen
+// grid
+// infinite
+// lightbox
+// mason √
+// mix
+// polaroid
+// rotate
+// shelf
+// slider
+// stack
+// twohundredvh
 
 export default function ContactsSection({
   contactTypes,
@@ -29,17 +46,17 @@ export default function ContactsSection({
   if (contactsLayoutStyle === "card") {
     return <ContactCard contactsData={filteredContacts} />;
   }
-  if (contactsLayoutStyle === "circle") {
-    return <ContactCircle contactsData={filteredContacts} />;
-  }
-  if (contactsLayoutStyle === "mason") {
-    return <ContactMason contactsData={filteredContacts} />;
-  }
   if (contactsLayoutStyle === "chevron") {
     return <ContactChevron contactsData={filteredContacts} />;
   }
+  if (contactsLayoutStyle === "circle") {
+    return <ContactCircle contactsData={filteredContacts} />;
+  }
   if (contactsLayoutStyle === "compact") {
     return <ContactCompact contactsData={filteredContacts} />;
+  }
+  if (contactsLayoutStyle === "mason") {
+    return <ContactMason contactsData={filteredContacts} />;
   }
   return <ContactDefault contactsData={filteredContacts} />;
 }

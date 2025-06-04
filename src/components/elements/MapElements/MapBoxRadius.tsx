@@ -20,6 +20,7 @@ type MapBoxMapRadiusType = {
   mapLink: string;
   address: string;
   distance: number;
+  zoomLocation?: number;
 };
 
 interface MapBoxMapProps {
@@ -38,10 +39,16 @@ function MapBoxRadius({
   const [popupInfo, setPopupInfo] = useState<boolean>(false);
   const [mapInstance, setMapInstance] = useState<mapboxgl.Map | null>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  // Calculate zoom level - keep this separate from radius distance
+  const zoomLevel = mapBoxRadiusData?.zoomLocation
+    ? mapBoxRadiusData.zoomLocation
+    : Math.max(3, 12 - Math.log2(mapBoxRadiusData.distance));
+
   const [viewState, setViewState] = useState({
     longitude: mapBoxRadiusData.longitude,
     latitude: mapBoxRadiusData.latitude,
-    zoom: Math.max(9, 12 - Math.log2(mapBoxRadiusData.distance)),
+    zoom: zoomLevel,
   });
 
   const { latitude, longitude, mapLink, address, distance } = mapBoxRadiusData;
@@ -50,9 +57,9 @@ function MapBoxRadius({
     setViewState({
       longitude: longitude,
       latitude: latitude,
-      zoom: Math.max(9, 12 - Math.log2(distance)),
+      zoom: zoomLevel,
     });
-  }, [longitude, latitude, distance]);
+  }, [longitude, latitude, zoomLevel]);
 
   useEffect(() => {
     if (!mapInstance || !isMapLoaded || !distance || distance <= 0) return;
@@ -64,9 +71,12 @@ function MapBoxRadius({
     if (mapInstance.getLayer(layerId)) mapInstance.removeLayer(layerId);
     if (mapInstance.getSource(sourceId)) mapInstance.removeSource(sourceId);
 
-    // Create new GeoJSON circle
+    // Create new GeoJSON circle - use actual distance, not zoom level!
     const center = [longitude, latitude];
-    const circle = turf.circle(center, distance, { steps: 64, units: "miles" });
+    const circle = turf.circle(center, distance, {
+      steps: 64,
+      units: "miles",
+    });
 
     // Add new source and layer
     mapInstance.addSource(sourceId, {
@@ -100,7 +110,7 @@ function MapBoxRadius({
       onMove={(evt) => setViewState(evt.viewState)}
       scrollZoom={false}
       style={{
-        height: "400px",
+        height: "60vh",
         width: "100%",
         display: "block",
         borderRadius: "16px",
