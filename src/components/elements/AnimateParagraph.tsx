@@ -16,7 +16,11 @@ export default function AnimateParagraph({
 
   const words = animateParagraph.split(" ");
   return (
-    <div className="animate-paragraph-wrapper items-center justify-center mx-auto flex relative z-10">
+    <div
+      className="animate-paragraph-wrapper items-center justify-center mx-auto flex relative z-10"
+      data-nosnippet
+      aria-hidden
+    >
       <p
         ref={container}
         className="animate-paragraph text-center bg-glass glass-dark"

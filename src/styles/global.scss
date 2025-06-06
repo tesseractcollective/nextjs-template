@@ -1368,3 +1368,20 @@ h4, h5, h6  {color: var(--text);}
 .-top-40px {
   top: -40px;
 }
+
+.text-gradient {
+  position: relative;
+  max-width: max-content;
+  text-align: center;
+  color: var(--text);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary), var(--secondary) 50%, var(--text) 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 250% 100%;
+  background-position: 100%;
+  transition: all 275ms ease;
+  text-decoration: none;
+  background-position: 0 100%;
+}

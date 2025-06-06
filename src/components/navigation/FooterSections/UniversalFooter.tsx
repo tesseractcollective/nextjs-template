@@ -258,29 +258,36 @@ function UniversalFooter({
                   {footerItems.map((footerItem, index) => (
                     <LinkItem
                       key={`footer-items-${footerItem.link}-${index++}`}
-                      label={footerItem.label}
                       link={footerItem.link}
                       cssClass={`footer-link-item max-w-max my-2 mx-0 text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
                         footerItem.cssClass ? footerItem.cssClass : ""
                       }`}
                       sameTab={footerItem.sameTab}
-                    ></LinkItem>
+                    >
+                      <span className="leading-2 inline-block">
+                        {footerItem.label}
+                      </span>
+                    </LinkItem>
                   ))}
-                  <a
-                    href={
-                      siteLibrary?.siteLibraryJson?.customCredit
-                        ? `${
-                            siteLibrary.siteLibraryJson?.customCredit
-                              .customCreditLink
-                          }?source=${encodeURIComponent(title || "")}`
-                        : `https://lnza.me/?${encodeURIComponent(title || "")}`
-                    }
-                    target="_blank"
-                    rel="noreferrer"
-                    className="footer-link-item max-w-max mx-0 !text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
-                  >
-                    CREDIT
-                  </a>
+                  <div className="relative">
+                    <a
+                      href={
+                        siteLibrary?.siteLibraryJson?.customCredit
+                          ? `${
+                              siteLibrary.siteLibraryJson?.customCredit
+                                .customCreditLink
+                            }?source=${encodeURIComponent(title || "")}`
+                          : `https://lnza.me/?${encodeURIComponent(
+                              title || ""
+                            )}`
+                      }
+                      target="_blank"
+                      rel="noreferrer"
+                      className="footer-link-item max-w-max mx-0 !text-[12px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
+                    >
+                      CREDIT
+                    </a>
+                  </div>
                 </div>
               )}
             </div>

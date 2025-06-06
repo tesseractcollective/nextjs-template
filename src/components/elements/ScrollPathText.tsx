@@ -24,7 +24,7 @@ const ScrollPathText: React.FC<ScrollPathTextProps> = ({ text }) => {
   }, [scrollYProgress]);
 
   return (
-    <div ref={container}>
+    <div ref={container} data-nosnippet aria-hidden>
       <svg className="w-full mb-40" viewBox="0 0 250 90">
         <path
           fill="none"
