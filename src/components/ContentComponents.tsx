@@ -105,12 +105,7 @@ export default function ContentComponents({
         </section>
       )}
       {elements?.elementJson?.ProductsAll && !!products && (
-        <section
-          className="product-menu-wrapper-content-components w-full"
-          id="product-menu"
-        >
-          <ProductAllSection products={products} />
-        </section>
+        <ProductAllSection products={products} />
       )}
       {!!contentTags?.logoTableType && logoTables.length >= 1 && (
         <div>

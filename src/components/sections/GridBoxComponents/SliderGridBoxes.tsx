@@ -12,7 +12,7 @@ import {
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import useViewport from "@/app/hooks/useViewport";
-import { Fade } from "react-awesome-reveal";
+
 interface GridBoxProps {
   gridBoxData: GridBoxFieldsFragment[];
 }
@@ -20,12 +20,11 @@ interface GridBoxProps {
 export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
   const { isMobile, isDesktop } = useViewport();
   const swiperRef = useRef<SwiperType | null>(null);
+
   return (
-    <section className="mx-auto max-w-8xl w-full px-4 my-8 relative z-50">
-      <div className="flex flex-row items-center justify-between w-full px-14">
-        <div>
-          <h3>SHOP</h3>
-        </div>
+    <section className="mx-auto w-full my-8 relative z-50">
+      <div className="flex flex-row items-center justify-between w-full px-4 md:px-14">
+        <div>{/* <h3>SHOP</h3> */}</div>
         <div className="flex flex-row gap-x-4 py-4">
           <button
             type="button"
@@ -47,37 +46,40 @@ export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
               icon={faChevronRight as IconProp}
               className="fa-fw my-0 text-xl h-4 w-4"
             />
-            <span className="sr-only">Move Rotation Back</span>
+            <span className="sr-only">Move Rotation Forward</span>
           </button>
         </div>
       </div>
-      <Swiper
-        className="!pb-20 w-full max-w-8xl mx-auto"
-        grabCursor
-        modules={[Navigation, Pagination, Autoplay]}
-        loop
-        pagination
-        centerInsufficientSlides
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: true,
-          pauseOnMouseEnter: true,
-          stopOnLastSlide: false,
-        }}
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        slidesPerView={isMobile ? 1 : 3}
-        spaceBetween={30}
-      >
-        {gridBoxData.map((gridBoxItem) => (
-          <SwiperSlide key={gridBoxItem.boxLink}>
-            <LinkItem
-              link={gridBoxItem?.boxLink}
-              cssClass="relative isolate flex flex-col rounded-2xl bg-background pb-4 pt-40 sm:pt-60 group hover:cursor-pointer mx-auto h-full w-full max-w-xs self-stretch max-w-max"
-            >
-              <div>
-                <Fade triggerOnce>
+
+      <div className="overflow-hidden">
+        <Swiper
+          className="!pb-20"
+          grabCursor
+          modules={[Navigation, Pagination, Autoplay]}
+          loop={false}
+          pagination
+          // autoplay={{
+          //   delay: 2500,
+          //   disableOnInteraction: true,
+          //   pauseOnMouseEnter: true,
+          //   stopOnLastSlide: true,
+          // }}
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          slidesPerView={isMobile ? 1.2 : 3.5}
+          spaceBetween={20}
+          slidesOffsetBefore={isMobile ? 16 : 56}
+          slidesOffsetAfter={isMobile ? 16 : 56}
+          centeredSlides={false}
+        >
+          {gridBoxData.map((gridBoxItem, index) => (
+            <SwiperSlide key={`${gridBoxItem.boxLink}-${index}`}>
+              <a
+                // link={gridBoxItem?.boxLink}
+                className="relative group hover:cursor-pointer h-full w-full"
+              >
+                <div className="relative w-full pb-[133.33%] overflow-hidden rounded-2xl bg-background">
                   {!!gridBoxItem.boxImage?.url && (
                     <Image
                       src={gridBoxItem.boxImage.url}
@@ -85,21 +87,20 @@ export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
                       width={0}
                       height={0}
                       sizes="100%"
-                      className="absolute inset-0 -z-10 h-full w-full object-cover object-center rounded-md"
+                      className="absolute inset-0 h-full w-full object-cover object-center"
                     />
                   )}
-                </Fade>
-                <span className="absolute inset-0 z-50" aria-hidden="true" />
+                </div>
                 {!!gridBoxItem?.boxTitle && (
-                  <p className="line-clamp-1 text-primary font-semibold relative z-100 py-4 -bottom-16 text-center mx-auto">
+                  <p className="text-text-overlay font-bold py-4 text-left absolute top-1 left-4 z-10 text-4xl w-10/12  text-shadow">
                     {gridBoxItem.boxTitle}
                   </p>
                 )}
-              </div>
-            </LinkItem>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+              </a>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </section>
   );
 }

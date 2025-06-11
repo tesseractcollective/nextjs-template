@@ -5,6 +5,7 @@
 @use "./text-effects.scss";
 @use "./navigation.scss";
 @use "./backgrounds.scss";
+@use "./seated.scss";
 
 body {
   background: var(--dark);
@@ -622,7 +623,7 @@ html {
 }
 
 .all-text-light {
-  p, h1, h2, h3, h4, h6, a, button, blockquote {
+  p, h1, h2, h3, h4, h6, a, button, blockquote, div.text-text-color {
     color: #fff !important;
   }
 }

@@ -29,12 +29,12 @@ export default function BorderNavigation({
   pageNavigationSelection,
 }: NavProps) {
   const [open, setOpen] = useState(false);
-  const [small, setSmall] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
-        setSmall(window.pageYOffset > 400)
+        setIsScrolled(window.pageYOffset > 400)
       );
     }
   }, []);
@@ -61,7 +61,7 @@ export default function BorderNavigation({
   return (
     <div
       className={`border-navigation sticky top-0 z-[999] bg-background left-0 right-0 ${
-        small ? "nav-shadow-scrolled" : ""
+        isScrolled ? "nav-shadow-scrolled" : ""
       } ${navigationWrapperCssClass ? navigationWrapperCssClass : ""}`}
       id="navigation"
     >
@@ -75,10 +75,14 @@ export default function BorderNavigation({
       <header className="relative">
         <nav aria-label="Top">
           <div className="">
-            <div className="nav-border mx-auto max-w-12xl border border-y border-text-color">
+            <div
+              className={`nav-border mx-auto max-w-12xl transition-all border-b ${
+                isScrolled ? "border-primary" : "border-text-color"
+              }`}
+            >
               <div className="">
                 <div className="flex h-16 items-center justify-between">
-                  <div className="flex flex-1 items-center cursor-pointer max-w-max px-4 border-r border-text-color h-full">
+                  <div className="flex flex-1 items-center cursor-pointer max-w-max px-4 h-full">
                     <Link
                       href="/"
                       className="flex mx-auto items-center justify-center"
@@ -140,7 +144,7 @@ export default function BorderNavigation({
                   </div>
 
                   {/* mega menu bar */}
-                  <div className="hidden md:flex flex-1 items-center justify-between max-w-max border-l border-text-color h-full bg-primary">
+                  <div className="hidden md:flex flex-1 items-center justify-between max-w-max h-full bg-primary">
                     <Fade direction="right" triggerOnce>
                       {!!items &&
                         items
@@ -154,13 +158,17 @@ export default function BorderNavigation({
                               link={mainNavigationItem?.link}
                               label={mainNavigationItem?.label}
                               cssClass={`flex items-center text-xs md:text-base font-bold text-text-color opacity-100 hover:text-text-color 
-                              hover:opacity-100 border-1 border-primary cursor-pointer bg-primary hover:bg-secondary px-2 md:px-8 md:py-5 uppercase transition-all ${mainNavigationItem?.cssClass}`}
+                              hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-8 md:py-5 uppercase transition-all ${
+                                isScrolled
+                                  ? "bg-primary hover:bg-secondary"
+                                  : "bg-secondary hover:bg-primary"
+                              } ${mainNavigationItem?.cssClass}`}
                               sameTab={mainNavigationItem?.sameTab}
                             />
                           ))}
                     </Fade>
                   </div>
-                  <div className="flex md:hidden flex-1 items-center justify-between max-w-max border-l border-text-color h-full px-4">
+                  <div className="flex md:hidden flex-1 items-center justify-between max-w-max h-full px-4">
                     <Fade direction="right" triggerOnce>
                       <button
                         type="button"

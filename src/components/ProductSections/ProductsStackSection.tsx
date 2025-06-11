@@ -54,7 +54,7 @@ export default function ProductsStackSection({ products }: ProductsProps) {
                 }}
                 type="button"
                 key={product.id}
-                className="flex flex-col p-4 gap-x-4 w-full max-w-xl items-start justify-center hover:border-primary border border-bg transition-all mx-auto relative group bg-glass"
+                className="flex flex-col p-4 gap-x-4 w-full max-w-xl items-start justify-center hover:border-primary border border-bg transition-all mx-auto relative group bg-glass glass-white"
               >
                 <div className="flex flex-col w-full">
                   <div className="flex flex-row items-start justify-between gap-x-6">
