@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.js", "src/pages/form/google-sheet.tsx.bk"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.js", "src/pages/form/google-sheet.tsx.bk", "src/components/elements/BandsInTownLayoutsSections"],
   "exclude": ["node_modules"]
 }

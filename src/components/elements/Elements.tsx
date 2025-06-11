@@ -43,6 +43,7 @@ import FilloutForm from "./FilloutForm";
 import AgeVerification from "./AgeVerification";
 import BentoMap from "./BentoMap";
 import FramerHeroListItems from "./FramerHeroListItems";
+import BandsInTownLayouts from "./BandsInTownLayouts";
 
 type ElementsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["elements"];
@@ -211,6 +212,16 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             />
           </div>
         )}
+      {!!siteLibrary.title && !!bandsInTownKey && (
+        <BandsInTownApi
+          apiKey={bandsInTownKey}
+          artistName={siteLibrary.title}
+          isSpanish={siteLibrary?.isSpanish || false}
+        />
+      )}
+      {!!elementJson?.bandsInTownData && (
+        <BandsInTownLayouts bandsInTownData={elementJson.bandsInTownData} />
+      )}
       {!!siteLibrary.title && !!bandsInTownKey && (
         <BandsInTownApi
           apiKey={bandsInTownKey}

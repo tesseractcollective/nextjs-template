@@ -1,7 +1,16 @@
-import React, { useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { faSearch, faFont, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState, useEffect } from "react";
+import {
+  MagnifyingGlassIcon,
+  FunnelIcon,
+  XMarkIcon,
+  Squares2X2Icon,
+  ListBulletIcon,
+  AdjustmentsHorizontalIcon,
+  PlusIcon,
+  MinusIcon,
+  ShoppingCartIcon,
+} from "@heroicons/react/24/outline";
+import { FilloutSliderEmbedButton } from "@fillout/react";
 
 interface BulkProductSectionProps {
   bulkProductData: {
@@ -9,6 +18,8 @@ interface BulkProductSectionProps {
     title?: string;
     urlParam?: string;
     categories: Record<string, string[]>;
+    filloutId?: string;
+    requestButtonText?: string;
   };
 }
 
@@ -16,13 +27,29 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const searchParams = useSearchParams();
-
-  // Get initial category from URL params
-  const initialCategory = searchParams?.get("category") || null;
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [itemsPerPage, setItemsPerPage] = useState(12);
+  const [currentPage, setCurrentPage] = useState(1);
+  // Changed to store objects with product and category info
+  const [selectedProducts, setSelectedProducts] = useState<
+    { product: string; category: string }[]
+  >([]);
 
   // Get all category names
   const categories = Object.keys(bulkProductData.categories);
+
+  // Helper function to find which category a product belongs to
+  const findProductCategory = (productName: string): string => {
+    for (const [category, products] of Object.entries(
+      bulkProductData.categories
+    )) {
+      if (products.includes(productName)) {
+        return category;
+      }
+    }
+    return "Unknown";
+  };
 
   // Filter and sort logic
   const getFilteredProducts = () => {
@@ -42,119 +69,499 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
   };
 
   const filteredProducts = getFilteredProducts();
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   const handleReset = () => {
     setSearchQuery("");
     setSelectedCategory(null);
     setSortOrder("asc");
+    setCurrentPage(1);
+  };
+
+  const toggleProductSelection = (product: string) => {
+    const category = selectedCategory || findProductCategory(product);
+    const productWithCategory = { product, category };
+
+    setSelectedProducts((prev) => {
+      const existingIndex = prev.findIndex((p) => p.product === product);
+      if (existingIndex !== -1) {
+        // Remove if already selected
+        return prev.filter((p) => p.product !== product);
+      } else {
+        // Add with category info
+        return [...prev, productWithCategory];
+      }
+    });
+  };
+
+  const clearSelectedProducts = () => {
+    setSelectedProducts([]);
+  };
+
+  const isProductSelected = (product: string): boolean => {
+    return selectedProducts.some((p) => p.product === product);
+  };
+
+  // Format selected products for the form parameter
+  const formatSelectedProductsForForm = (): string => {
+    return selectedProducts
+      .map(
+        ({ product, category }) =>
+          `Category: ${category.replace(/_/g, " ")}: ${product}`
+      )
+      .join(", ");
+  };
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedCategory, sortOrder]);
+
+  const FilterSidebar = () => (
+    <div className="bg-bg border border-bg-secondary rounded-lg p-4 h-fit sticky top-4">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold text-text-color flex items-center gap-2">
+          <FunnelIcon className="w-5 h-5" />
+          Filters
+        </h3>
+        {(searchQuery || selectedCategory) && (
+          <button
+            onClick={handleReset}
+            className="text-sm text-primary hover:text-secondary flex items-center gap-1"
+          >
+            <XMarkIcon className="w-4 h-4" />
+            Clear
+          </button>
+        )}
+      </div>
+
+      {/* Search */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-text-color mb-2">
+          Search Products
+        </label>
+        <div className="relative">
+          <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-color opacity-50 w-4 h-4" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full pl-10 pr-4 py-2 border border-bg-secondary rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-bg text-text-color"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Categories */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-text-color mb-3">
+          Categories ({categories.length})
+        </label>
+        <div className="space-y-2 max-h-64 overflow-y-auto">
+          <button
+            onClick={() => setSelectedCategory(null)}
+            className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+              !selectedCategory
+                ? "bg-primary text-white"
+                : "text-text-color hover:bg-bg-secondary"
+            }`}
+          >
+            All Categories ({filteredProducts.length})
+          </button>
+          {categories.map((category) => {
+            const count = bulkProductData.categories[category]?.length || 0;
+            return (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors flex justify-between ${
+                  selectedCategory === category
+                    ? "bg-primary text-white"
+                    : "text-text-color hover:bg-bg-secondary"
+                }`}
+              >
+                <span>{category.replace(/_/g, " ")}</span>
+                <span className="text-xs opacity-75">({count})</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+
+  const ProductCard = ({
+    product,
+    index,
+  }: {
+    product: string;
+    index: number;
+  }) => {
+    const isSelected = isProductSelected(product);
+
+    return (
+      <div className="bg-bg border border-bg-secondary rounded-lg overflow-hidden hover:shadow-md hover:border-primary transition-all duration-200 group flex flex-col h-full">
+        <div className="p-4 flex flex-col flex-1">
+          <h3 className="font-medium text-text-color text-sm leading-snug mb-2 line-clamp-2 flex-1">
+            {product}
+          </h3>
+          <div className="flex items-center justify-between mt-auto">
+            {selectedCategory && (
+              <span className="text-xs text-text-color opacity-75 bg-bg-secondary px-2 py-1 rounded-full">
+                {selectedCategory.replace(/_/g, " ")}
+              </span>
+            )}
+            <button
+              onClick={() => toggleProductSelection(product)}
+              className={`ml-auto flex items-center gap-1 px-3 py-1 text-xs rounded-md transition-colors ${
+                isSelected
+                  ? "bg-primary text-white hover:bg-secondary"
+                  : "bg-bg-secondary text-text-color hover:bg-primary hover:text-white"
+              }`}
+            >
+              {isSelected ? (
+                <>
+                  <MinusIcon className="w-3 h-3" />
+                  Remove
+                </>
+              ) : (
+                <>
+                  <PlusIcon className="w-3 h-3" />
+                  Select
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const ListView = ({ product, index }: { product: string; index: number }) => {
+    const isSelected = isProductSelected(product);
+
+    return (
+      <div className="bg-bg border border-bg-secondary rounded-lg p-4 hover:shadow-sm hover:border-primary transition-all duration-200 flex items-center gap-4">
+        <div className="flex-1 min-w-0">
+          <h3 className="font-medium text-text-color text-sm mb-1 truncate">
+            {product}
+          </h3>
+          {selectedCategory && (
+            <span className="text-xs text-text-color opacity-75">
+              Category: {selectedCategory.replace(/_/g, " ")}
+            </span>
+          )}
+        </div>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <button
+            onClick={() => toggleProductSelection(product)}
+            className={`flex items-center gap-1 px-3 py-1 text-xs rounded-md transition-colors ${
+              isSelected
+                ? "bg-primary text-white hover:bg-secondary"
+                : "bg-bg-secondary text-text-color hover:bg-primary hover:text-white"
+            }`}
+          >
+            {isSelected ? (
+              <>
+                <MinusIcon className="w-3 h-3" />
+                Remove
+              </>
+            ) : (
+              <>
+                <PlusIcon className="w-3 h-3" />
+                Select
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const Pagination = () => {
+    if (totalPages <= 1) return null;
+
+    const getPageNumbers = () => {
+      const pages = [];
+      const maxVisible = 5;
+      let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+      let end = Math.min(totalPages, start + maxVisible - 1);
+
+      if (end - start + 1 < maxVisible) {
+        start = Math.max(1, end - maxVisible + 1);
+      }
+
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+      return pages;
+    };
+
+    return (
+      <div className="flex justify-center items-center gap-2 py-6">
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+          disabled={currentPage === 1}
+          className="px-3 py-2 text-sm border border-bg-secondary rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-bg-secondary text-text-color"
+        >
+          Previous
+        </button>
+
+        {getPageNumbers().map((page) => (
+          <button
+            key={page}
+            onClick={() => setCurrentPage(page)}
+            className={`px-3 py-2 text-sm rounded-md ${
+              currentPage === page
+                ? "bg-primary text-white"
+                : "border border-bg-secondary text-text-color hover:bg-bg-secondary"
+            }`}
+          >
+            {page}
+          </button>
+        ))}
+
+        <button
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+          }
+          disabled={currentPage === totalPages}
+          className="px-3 py-2 text-sm border border-bg-secondary rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-bg-secondary text-text-color"
+        >
+          Next
+        </button>
+      </div>
+    );
   };
 
   return (
-    <div className={`max-w-6xl mx-auto p-6 ${bulkProductData.cssClass || ""}`}>
-      {/* Search and Controls */}
-      <div className="flex flex-col gap-4 mb-8">
-        <div className="flex items-center gap-4">
-          {/* <FontAwesomeIcon icon={faFont} className="w-8 h-8 text-[#000000]" /> */}
-          <div className="relative flex-1">
-            <FontAwesomeIcon
-              icon={faSearch}
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#666666] w-5 h-5"
-            />
-            <input
-              type="text"
-              placeholder="Search products..."
-              className="w-full pl-10 pr-4 py-3 text-lg border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-[#000000]"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-        </div>
-
-        {/* Category Filters */}
-        <div className="flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() =>
-                setSelectedCategory(
-                  selectedCategory === category ? null : category
-                )
-              }
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
-                border border-[#CCCCCC] 
-                ${
-                  selectedCategory === category
-                    ? "bg-primary text-[#FFFFFF] border-primary"
-                    : "bg-[#FFFFFF] text-[#333333] hover:bg-[#F5F5F5]"
-                }`}
-            >
-              {category.replace(/_/g, " ")}
-            </button>
-          ))}
-        </div>
-
-        {/* Controls Row */}
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <select
-              value={sortOrder}
-              onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
-              className="px-6 py-2 border border-[#CCCCCC] rounded-lg bg-[#FFFFFF] text-[#333333]"
-            >
-              <option value="asc">Sort A-Z</option>
-              <option value="desc">Sort Z-A</option>
-            </select>
-
-            {(searchQuery || selectedCategory) && (
-              <button
-                onClick={handleReset}
-                className="flex items-center gap-2 text-[#FF0000] hover:text-[#CC0000]"
-              >
-                <FontAwesomeIcon icon={faTimes} />
-                Reset Filters
-              </button>
-            )}
-          </div>
-
-          <div className="text-[#666666] text-sm">
-            Showing {filteredProducts.length} results
-          </div>
-        </div>
+    <div className={`max-w-7xl mx-auto p-4 ${bulkProductData.cssClass || ""}`}>
+      {/* Mobile Filter Toggle */}
+      <div className="lg:hidden mb-4">
+        <button
+          onClick={() => setShowMobileFilters(true)}
+          className="flex items-center gap-2 px-4 py-2 bg-bg border border-bg-secondary rounded-lg text-text-color"
+        >
+          <AdjustmentsHorizontalIcon className="w-4 h-4" />
+          Filters & Sort
+          {(searchQuery || selectedCategory) && (
+            <span className="bg-primary text-white text-xs px-2 py-1 rounded-full">
+              {(searchQuery ? 1 : 0) + (selectedCategory ? 1 : 0)}
+            </span>
+          )}
+        </button>
       </div>
-      {/* Product Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredProducts.map((product, index) => (
+
+      {/* Mobile Filter Overlay */}
+      {showMobileFilters && (
+        <div className="lg:hidden fixed inset-0 z-50">
+          {/* Backdrop with faint background */}
           <div
-            key={index}
-            className="bg-[#FFFFFF] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-[#EEEEEE]"
-          >
-            <div className="p-4">
-              <h3 className="text-lg font-semibold text-[#000000]">
-                {product}
-              </h3>
-              {selectedCategory && (
-                <span className="text-sm text-[#666666] mt-1 block">
-                  Category: {selectedCategory.replace(/_/g, " ")}
-                </span>
-              )}
+            className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm"
+            onClick={() => setShowMobileFilters(false)}
+          />
+          {/* Modal Content */}
+          <div className="absolute right-0 top-0 h-full w-80 max-w-full bg-bg shadow-2xl border-l border-bg-secondary">
+            <div className="p-4 overflow-y-auto h-full">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold text-text-color">
+                  Filters
+                </h3>
+                <button
+                  onClick={() => setShowMobileFilters(false)}
+                  className="p-2 hover:bg-bg-secondary rounded-lg"
+                >
+                  <XMarkIcon className="w-5 h-5" />
+                </button>
+              </div>
+              <FilterSidebar />
+              <div className="mt-4 pt-4 border-t border-bg-secondary">
+                <button
+                  onClick={() => setShowMobileFilters(false)}
+                  className="w-full bg-primary text-white py-2 rounded-lg hover:bg-secondary transition-colors"
+                >
+                  Apply Filters
+                </button>
+              </div>
             </div>
           </div>
-        ))}
-      </div>
-      {/* No Results */}
-      {filteredProducts.length === 0 && (
-        <div className="text-center py-12">
-          <div className="text-[#666666] text-xl mb-4">
-            No products found matching your criteria
-          </div>
-          <button
-            onClick={handleReset}
-            className="px-4 py-2 bg-primary text-[#FFFFFF] rounded-lg hover:bg-secondary border border-primary"
-          >
-            Clear All Filters
-          </button>
         </div>
       )}
+
+      <div className="flex gap-6">
+        {/* Desktop Sidebar */}
+        <div className="hidden lg:block w-1/4 flex-shrink-0">
+          <FilterSidebar />
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 lg:w-3/4">
+          {/* Selected Products Bar */}
+          {selectedProducts.length > 0 && (
+            <div className="bg-primary bg-opacity-10 border border-primary rounded-lg p-4 mb-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <ShoppingCartIcon className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-medium text-text-color">
+                    {selectedProducts.length} product
+                    {selectedProducts.length !== 1 ? "s" : ""} selected
+                  </span>
+                  <button
+                    onClick={clearSelectedProducts}
+                    className="text-xs text-primary hover:text-secondary underline"
+                  >
+                    Clear all
+                  </button>
+                </div>
+
+                {bulkProductData.filloutId && (
+                  <div className="flex items-center gap-2">
+                    <FilloutSliderEmbedButton
+                      filloutId={bulkProductData.filloutId}
+                      sliderDirection="right"
+                      text={
+                        bulkProductData.requestButtonText ||
+                        "Request Selected Products"
+                      }
+                      color="var(--primary)"
+                      size="small"
+                      parameters={{
+                        message: formatSelectedProductsForForm(),
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Selected products preview */}
+              <div className="mt-3 flex flex-wrap gap-2">
+                {selectedProducts.slice(0, 3).map((item, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center gap-1 px-2 py-1 bg-bg border border-bg-secondary rounded text-xs text-text-color"
+                  >
+                    {item.product.length > 30
+                      ? `${item.product.substring(0, 30)}...`
+                      : item.product}
+                    <button
+                      onClick={() => toggleProductSelection(item.product)}
+                      className="hover:text-primary"
+                    >
+                      <XMarkIcon className="w-3 h-3" />
+                    </button>
+                  </span>
+                ))}
+                {selectedProducts.length > 3 && (
+                  <span className="text-xs text-text-color opacity-75 px-2 py-1">
+                    +{selectedProducts.length - 3} more
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+          {/* Header Controls */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+            <div className="flex items-center gap-4">
+              <h2 className="text-xl font-semibold text-text-color">
+                {bulkProductData.title || "Products"}
+              </h2>
+              <span className="text-sm text-text-color opacity-75">
+                {filteredProducts.length} results
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              {/* Items per page */}
+              <select
+                value={itemsPerPage}
+                onChange={(e) => setItemsPerPage(Number(e.target.value))}
+                className="px-3 py-2 border border-bg-secondary rounded-md bg-bg text-text-color text-sm"
+              >
+                <option value={12}>12 per page</option>
+                <option value={24}>24 per page</option>
+                <option value={48}>48 per page</option>
+              </select>
+
+              {/* Sort */}
+              <select
+                value={sortOrder}
+                onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
+                className="px-3 py-2 border border-bg-secondary rounded-md bg-bg text-text-color text-sm"
+              >
+                <option value="asc">Sort A-Z</option>
+                <option value="desc">Sort Z-A</option>
+              </select>
+
+              {/* View Mode */}
+              <div className="flex border border-bg-secondary rounded-md overflow-hidden">
+                <button
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2 ${
+                    viewMode === "grid"
+                      ? "bg-primary text-white"
+                      : "bg-bg text-text-color hover:bg-bg-secondary"
+                  }`}
+                >
+                  <Squares2X2Icon className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`p-2 ${
+                    viewMode === "list"
+                      ? "bg-primary text-white"
+                      : "bg-bg text-text-color hover:bg-bg-secondary"
+                  }`}
+                >
+                  <ListBulletIcon className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Products */}
+          {paginatedProducts.length > 0 ? (
+            <>
+              {viewMode === "grid" ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-fr">
+                  {paginatedProducts.map((product, index) => (
+                    <ProductCard key={index} product={product} index={index} />
+                  ))}
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {paginatedProducts.map((product, index) => (
+                    <ListView key={index} product={product} index={index} />
+                  ))}
+                </div>
+              )}
+
+              <Pagination />
+            </>
+          ) : (
+            <div className="text-center py-16">
+              <div className="text-text-color opacity-50 mb-4">
+                <MagnifyingGlassIcon className="w-16 h-16 mx-auto mb-4" />
+              </div>
+              <h3 className="text-lg font-medium text-text-color mb-2">
+                No products found
+              </h3>
+              <p className="text-text-color opacity-75 mb-4">
+                Try adjusting your search or filter criteria
+              </p>
+              <button
+                onClick={handleReset}
+                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary"
+              >
+                Clear All Filters
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

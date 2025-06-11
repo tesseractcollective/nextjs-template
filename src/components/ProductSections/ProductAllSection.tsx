@@ -24,39 +24,44 @@ export default function ProductAllSection({ type, products }: ProductsProps) {
   );
 
   return (
-    <div className="bg-bg-primary">
-      <div className="mx-auto px-4 py-8 max-w-8xl bg-[#fff] rounded">
-        <h2 className="sr-only">Products</h2>
-        <div className="flex flex-col gap-y-6">
-          {sortedProductTypes.map((productType) => (
-            <div
-              key={productType}
-              className="bg-white p-6 rounded-lg shadow-sm"
-            >
-              <h3 className="text-xl font-bold mb-4 uppercase">
-                {productType}
-              </h3>
-              <div className="flex flex-col gap-y-4">
-                {groupedProducts[productType].map((product) => (
-                  <div key={product.id} className="flex flex-col">
-                    {product.name && (
-                      <div className="text-sm font-bold my-0 py-0 parsed-mb-0 flex flex-row gap-x-2">
-                        <p>{parse(product.name)}</p>
-                        <p>{`$${product?.price}`}</p>
-                      </div>
-                    )}
-                    {product?.description && (
-                      <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0">
-                        {parse(product.description.html)}
-                      </div>
-                    )}
-                  </div>
-                ))}
+    <section
+      className="product-menu-wrapper-content-components w-full"
+      id="product-menu"
+    >
+      <div className="bg-bg-primary">
+        <div className="mx-auto px-4 py-8 max-w-8xl bg-[#fff] rounded">
+          <h2 className="sr-only">Products</h2>
+          <div className="flex flex-col gap-y-6">
+            {sortedProductTypes.map((productType) => (
+              <div
+                key={productType}
+                className="bg-white p-6 rounded-lg shadow-sm"
+              >
+                <h3 className="text-xl font-bold mb-4 uppercase">
+                  {productType}
+                </h3>
+                <div className="flex flex-col gap-y-4">
+                  {groupedProducts[productType].map((product) => (
+                    <div key={product.id} className="flex flex-col">
+                      {product.name && (
+                        <div className="text-sm font-bold my-0 py-0 parsed-mb-0 flex flex-row gap-x-2">
+                          <p>{parse(product.name)}</p>
+                          <p>{`$${product?.price}`}</p>
+                        </div>
+                      )}
+                      {product?.description && (
+                        <div className="text-sm my-0 font-light opacity-90 py-0 parsed-mb-0">
+                          {parse(product.description.html)}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

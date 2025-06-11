@@ -13,7 +13,11 @@ export default function MarqueeTextElement({
   innerClassName,
 }: MarqueeTextProps) {
   return (
-    <div className={`marquee-text ${wrapperClassName}`} aria-hidden>
+    <div
+      className={`marquee-text ${wrapperClassName}`}
+      aria-hidden
+      data-nosnippet
+    >
       <div className={`marquee-text-inner flex flex-row w-full py-1 gap-x-4`}>
         <p className={innerClassName}>{text}</p>
         <p className={innerClassName}>{text}</p>

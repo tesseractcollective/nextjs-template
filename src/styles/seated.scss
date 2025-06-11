@@ -1,0 +1,86 @@
+[id^="seated-"] {
+    background: transparent !important;
+    border: none !important;
+}
+
+.seated-events-table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.seated-event-row {
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+        border-color: var(--primary);
+    }
+}
+
+.seated-event-description-cells {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    color: var(--text);
+}
+
+.seated-event-date-cell {
+    color: var(--text);
+    font-weight: normal;
+    min-width: 100px;
+}
+
+.seated-event-venue-cell {
+    flex: 1;
+
+    .seated-event-venue-name {
+        color: var(--text);
+        font-weight: normal;
+        margin-bottom: 0;
+    }
+
+    .seated-event-venue-location {
+        color: var(--text);
+    }
+}
+
+.seated-event-link-cells {
+    display: flex;
+    gap: 10px;
+}
+
+.seated-event-link {
+    background: transparent;
+    color: var(--background) !important;
+    border: 1px solid transparent;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: var(--primary);
+        color: var(--primary) !important;
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .seated-event-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .seated-event-description-cells {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+}

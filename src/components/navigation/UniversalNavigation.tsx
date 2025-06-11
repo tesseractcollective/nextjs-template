@@ -357,11 +357,11 @@ export default function UniversalNavigation({
                 )}
               </Link>
               {/* Desktop menu bar */}
-              <div className="absolute right-0 max-w-max bg-bg aspect-1 border-secondary border top-[-2px]">
+              <div className="absolute right-2 max-w-max top-2">
                 <button
                   type="button"
                   title="menu"
-                  className="p-2 text-primary group hover:text-secondary transition-all duration-[400ms] cursor-pointer relative max-w-max"
+                  className="p-2 text-primary group hover:text-secondary cursor-pointer relative bg-bg  border-secondary border rounded-[0_0_0_0] hover:rounded-[32px_32px_0_0] transition-all duration-300"
                   onClick={() => {
                     setOpen(true);
                     ReactGA.event({
@@ -373,10 +373,10 @@ export default function UniversalNavigation({
                 >
                   <span className="sr-only">Open menu</span>
                   <Bars3Icon
-                    className="h-7 w-7 group-hover:text-primary transition-all duration-[400ms] group-hover:opacity-50"
+                    className="h-7 w-7 group-hover:text-primary transition-all duration-[400ms] group-hover:saturate-150"
                     aria-hidden="true"
                   />
-                  <span className="text-xs group-hover:opacity-100 absolute bottom-[-20px] rotate-0 opacity-0 transition-all duration-[400ms] uppercase font-bold blur-xl group-hover:blur-0 text-center left-0 right-0 z-2">
+                  <span className="text-xs group-hover:opacity-100 absolute px-1 bottom-[16px] group-hover:bottom-[-16px] rotate-0 opacity-0 transition-all duration-[400ms] uppercase font-bold text-center left-0 right-0 z-2 bg-bg border-b border-x border-secondary border-t-0">
                     Menu
                   </span>
                 </button>

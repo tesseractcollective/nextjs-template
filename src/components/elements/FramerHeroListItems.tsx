@@ -45,13 +45,6 @@ export default function FramerHeroListItems({
                   [10, 0, 0, 10]
                 );
 
-                // Background glow
-                const glowOpacity = useTransform(
-                  scrollYProgress,
-                  [0, 0.5, 1],
-                  [0, 0.8, 0]
-                );
-
                 return (
                   <motion.li
                     ref={targetRef}
@@ -59,23 +52,12 @@ export default function FramerHeroListItems({
                     style={{ scale, opacity }}
                   >
                     <motion.span
-                      className="font-bold transition-all ease-in-out inline-block text-shadow-[tertiary]"
+                      className="font-bold transition-all ease-in-out inline-block text-gradient"
                       style={{
                         filter: useTransform(
                           blur,
                           (value) => `blur(${value}px)`
                         ),
-                        color: useTransform(
-                          scrollYProgress,
-                          [0, 0.8, 1, 0.3],
-                          [
-                            "var(--secondary)",
-                            "var(--primary)",
-                            "var(--primary)",
-                            "var(--secondary)",
-                          ]
-                        ),
-                        textShadow: glowOpacity,
                       }}
                     >
                       {listItem}
