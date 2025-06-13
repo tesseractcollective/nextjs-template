@@ -10,6 +10,7 @@ import GalleryShelf from "./GallerySections/GalleryShelf";
 import GalleryMason from "./GallerySections/GalleryMason";
 import GalleryRotate from "./GallerySections/GalleryRotate";
 import GalleryComptact from "./GallerySections/GalleryComptact";
+import GalleryChevron from "./GallerySections/GalleryChevron";
 import GalleryDefault from "./GallerySections/GalleryDefault";
 
 interface GalleryProps {
@@ -58,6 +59,9 @@ export default function GallerySection({
   }
   if (galleryLayout === "shelf") {
     return <GalleryShelf imgs={finalImages} />;
+  }
+  if (galleryLayout === "chevron") {
+    return <GalleryChevron imgs={finalImages} />;
   }
   if (galleryLayout === "grid") {
     return <GalleryGrid galleryData={gallery} />;

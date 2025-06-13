@@ -37,9 +37,9 @@ export default function LayoutBlocks({ layout, events }: PageProps) {
       )}
       {siteLibrary.siteLibraryJson?.mouseFollower && <MouseFollower />}
       {siteLibrary.siteLibraryJson?.mouseBlob && <MouseBlob />}
-      {/* {!!page?.contentPageJson?.loader && siteLibrary.logo?.url && (
+      {!!page?.contentPageJson?.loader && siteLibrary.logo?.url && (
         <Loader icon={siteLibrary.logo.url} />
-      )} */}
+      )}
       {page?.pagePassword && siteLibrary.logo?.url && (
         <PagePassword
           accessPassword={page.pagePassword}

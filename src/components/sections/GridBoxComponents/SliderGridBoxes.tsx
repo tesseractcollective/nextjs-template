@@ -69,8 +69,8 @@ export default function SliderGridBoxes({ gridBoxData }: GridBoxProps) {
           }}
           slidesPerView={isMobile ? 1.2 : 3.5}
           spaceBetween={20}
-          slidesOffsetBefore={isMobile ? 16 : 56}
-          slidesOffsetAfter={isMobile ? 16 : 56}
+          slidesOffsetBefore={isMobile ? 16 : 160}
+          slidesOffsetAfter={isMobile ? 16 : 160}
           centeredSlides={false}
         >
           {gridBoxData.map((gridBoxItem, index) => (
