@@ -122,17 +122,15 @@ export default function LuxuryNavigation({
                 {navigation?.navigationLogo ? (
                   <>
                     <span className="sr-only">{title}</span>
-                    <Fade direction="down" triggerOnce>
-                      <Image
-                        className="w-[175px] cursor-pointer object-contain h-auto my-4"
-                        src={navigation.navigationLogo?.url}
-                        alt=""
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        style={{ width: "175px" }}
-                      />
-                    </Fade>
+                    <Image
+                      className="w-[175px] cursor-pointer object-contain h-auto my-4"
+                      src={navigation.navigationLogo?.url}
+                      alt=""
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      style={{ width: "175px" }}
+                    />
                   </>
                 ) : (
                   <span className="font-bold text-2xl text-text-color">
@@ -160,8 +158,8 @@ export default function LuxuryNavigation({
             <div className="flex flex-1 items-center justify-center w-full gap-x-2 bg-bg-secondary">
               <div className="hidden h-full lg:flex max-w-12xl mx-auto w-full py-2 items-center justify-center">
                 {/* START Desktop Flyout menus */}
-                <Popover.Group className="inset-x-0 bottom-0 px-4 z-[100]">
-                  <div className="flex h-full justify-center space-x-8">
+                <Popover.Group className="relative inset-x-0 bottom-0 px-4 z-[100]">
+                  <div className="relative flex h-full justify-center space-x-8">
                     {!!tertiaryItems &&
                       tertiaryItems.length >= 1 &&
                       tertiaryItems.map((mainNavigationItem) => {
@@ -207,18 +205,18 @@ export default function LuxuryNavigation({
                                     <Transition
                                       as={Fragment}
                                       enter="transition ease-in-out duration-300 transform"
-                                      enterFrom="translate-x-full opacity-0"
-                                      enterTo="translate-x-0 opacity-100"
-                                      leave="-transition ease-in-out duration-300 transform"
-                                      leaveFrom="-translate-x-0 opacity-100"
-                                      leaveTo="translate-x-full opacity-0"
+                                      enterFrom=" opacity-0"
+                                      enterTo="opacity-100"
+                                      leave="-ease-in-out duration-300"
+                                      leaveFrom="opacity-100"
+                                      leaveTo="opacity-0"
                                     >
-                                      <Popover.Panel className="absolute inset-x-0 top-[100%] text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-4xl mx-auto rounded-xl">
+                                      <Popover.Panel className="absolute top-[100%] left-0 text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-max rounded-xl">
                                         {({ close }) => (
                                           <>
-                                            <div className="relative bg-bg-secondary border-2 border-primary z-10 rounded-md max-w-8xl">
-                                              <div className="mx-auto py-8 px-4 xl:px-8 w-full h-full max-h-[85vh] overflow-scroll">
-                                                <div className="flex flex-row items-center justify-start flex-wrap gap-4">
+                                            <div className="relative bg-bg-secondary z-10 rounded-md max-w-max">
+                                              <div className="mx-auto max-w-max p-4 w-full h-full max-h-[85vh] overflow-scroll">
+                                                <div className="flex flex-col items-center justify-start flex-wrap gap-4">
                                                   {mainNavigationItem.items.map(
                                                     (item) => (
                                                       <div
@@ -271,7 +269,7 @@ export default function LuxuryNavigation({
                                                 </div>
                                               </div>
                                             </div>
-                                            <div className="absolute bottom-0 right-2 ml-auto z-10">
+                                            {/* <div className="absolute bottom-0 right-2 ml-auto z-10">
                                               <button
                                                 type="button"
                                                 className="m-2 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-xs hover:bg-dark group focus-within:bg-dark focus-within:ring-1 ring-primary"
@@ -292,8 +290,8 @@ export default function LuxuryNavigation({
                                                   Close menu
                                                 </span>
                                               </button>
-                                            </div>
-                                            <div
+                                            </div> */}
+                                            {/* <div
                                               className="absolute bg-[#00000070] transition-all -z-1 backdrop-blur-xl top-0 h-[100vw] w-[300vw] left-[-100%]"
                                               onClick={() => {
                                                 close();
@@ -303,7 +301,7 @@ export default function LuxuryNavigation({
                                                   label: "Close Nav Menu",
                                                 });
                                               }}
-                                            />
+                                            /> */}
                                           </>
                                         )}
                                       </Popover.Panel>

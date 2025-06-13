@@ -23,7 +23,7 @@ export default function ProfileFullScreenSection({
           className="h-[100vh] bg-bg top-0 sticky w-full"
         >
           <div className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat duration-[400ms] bg-fixed"></div>
-          <div className="max-w-8xl px-4 lg:px-8 lg:py-20 mx-auto bottom-20 absolute w-full inset-x-0 z-10">
+          <div className="max-w-8xl px-4 lg:px-8 lg:py-20 mx-auto bottom-1/2 absolute w-full inset-x-0 z-10">
             <Fade direction="up" triggerOnce className="gap-y-2">
               <Link href={`/${profile.profileType}/${profile.profileSlug}`}>
                 <Fade direction="up" triggerOnce>

@@ -22,6 +22,8 @@ export default function TextFullSection({
   const textContentItemWLink = textContentData.filter(
     (textContentItem) => textContentItem?.link !== ""
   );
+  const altertnateFullText =
+    textContentData[0].cssClass?.includes("altertnateFullText");
   return (
     <>
       {!!textContentData && (
@@ -46,7 +48,9 @@ export default function TextFullSection({
                     </div>
                   </Fade>
                 )}
-                <div className="flex flex-col items-center justify-center relative z-2">
+                <div
+                  className={`flex flex-col items-center justify-center relative z-2`}
+                >
                   {textContentItem?.header && (
                     <div className="text-[12px] my-0 font-light py-0 parsed-mb-0 uppercase tracking-widest all-text-primary mx-auto w-full">
                       {parse(textContentItem.header.html)}
