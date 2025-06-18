@@ -14,6 +14,7 @@ import ReactGA from "react-ga4";
 import { Fade } from "react-awesome-reveal";
 import MobileMenuPanel from "./NavigationSections/MobileMenuPanel";
 import "./BorderNavigation.scss";
+import parse from "html-react-parser";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -96,17 +97,14 @@ export default function BorderNavigation({
                       }}
                     >
                       {navigation?.navigationLogo?.url ? (
-                        <Fade triggerOnce direction="left">
-                          <Image
-                            className="h-14 w-auto max-w-xs mx-auto cursor-pointer object-contain py-2"
-                            src={navigation.navigationLogo.url}
-                            alt={title || ""}
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            style={{ width: "100%" }}
-                          />
-                        </Fade>
+                        <Image
+                          className="h-14 w-auto max-w-xs ml-0 mr-auto cursor-pointer object-contain py-2"
+                          src={navigation.navigationLogo.url}
+                          alt={title || ""}
+                          width={0}
+                          height={0}
+                          sizes="200px"
+                        />
                       ) : (
                         <span className="font-bold text-2xl text-text-color">
                           {title}
@@ -117,9 +115,17 @@ export default function BorderNavigation({
 
                   {navigation.announcementText && (
                     <Fade direction="down" triggerOnce>
-                      <p className="flex m-0 p-2 items-center justify-center text-xs md:text-sm font-semibold">
-                        {navigation.announcementText}
-                      </p>
+                      {navigation.announcementLink ? (
+                        <LinkItem
+                          label={navigation.announcementText}
+                          cssClass="flex m-0 p-2 items-center justify-center text-xs md:text-sm font-semibold text-text-color hover:text-primary"
+                          link={navigation.announcementLink}
+                        ></LinkItem>
+                      ) : (
+                        <p className="flex m-0 p-2 items-center justify-center text-xs md:text-sm font-semibold">
+                          {parse(navigation.announcementText)}
+                        </p>
+                      )}
                     </Fade>
                   )}
 

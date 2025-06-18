@@ -348,7 +348,7 @@ export default function AndroidNavigation({
 
       {/* CIRCLE BUTTON & PANEL */}
       <button
-        className={`group fixed right-4 rounded-full bg-primary z-[200] transition-all shadow-tertiary shadow-[0px_0px_0_4px]  ${
+        className={`group fixed right-4 rounded-full bg-primary z-[400] transition-all shadow-tertiary shadow-[0px_0px_0_4px]  ${
           isScrolled ? "bottom-8" : "-bottom-40"
         } ${open ? "bottom-8" : ""}`}
         onClick={() => {
