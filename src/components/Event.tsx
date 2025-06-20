@@ -50,7 +50,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
     eventPerformerSpotifyAlbumDisplay,
   } = event;
   if (!siteLibrary) return <></>;
-  const { isSpanish, youtubeApiKey } = siteLibrary;
+  const { isSpanish, favicon, metaAppleTouchIcon } = siteLibrary;
   const filteredEvents = events?.filter(
     (tempEvent) => eventSlug !== tempEvent.eventSlug
   );
@@ -69,6 +69,10 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
     return null;
   };
   const mapLink = getMapLink();
+  const eventBreadcrumbRoute = siteLibrary?.siteLibraryJson
+    ?.eventBreadcrumbRoute
+    ? siteLibrary?.siteLibraryJson?.eventBreadcrumbRoute
+    : "/events";
   return (
     <>
       <Head>
@@ -81,8 +85,9 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
         {!!eventShortDescription && (
           <meta name="description" content={eventShortDescription} />
         )}
-        {!!siteLibrary?.favicon && (
-          <link rel="shortcut icon" href={siteLibrary.favicon.url} />
+        {!!favicon && <link rel="shortcut icon" href={favicon.url} />}
+        {metaAppleTouchIcon?.url && (
+          <link rel="apple-touch-icon" href={metaAppleTouchIcon.url} />
         )}
 
         <script
@@ -151,7 +156,7 @@ export default function Event({ event, siteLibrary, events }: EventProps) {
           <div className="gradient-bkg py-16 md:py-40 relative overflow-hidden z-10">
             <div className="mx-auto block my-2 p-2 text-center absolute top-0 z-10 inset-x-0">
               <Link
-                href="/events"
+                href={eventBreadcrumbRoute}
                 className="text-link uppercase no-underline max-w-max my-0 py-0 flex flex-row items-center mx-auto"
               >
                 <ArrowLeftIcon
