@@ -4,7 +4,12 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
+import {
+  Dialog,
+  Popover,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
@@ -67,9 +72,9 @@ export default function FixedSideNavigation({
         id="navigation"
       >
         {/* Mobile menu */}
-        <Transition.Root show={open} as={Fragment}>
+        <Transition show={open} as={Fragment}>
           <Dialog as="div" className="relative z-[1000]" onClose={setOpen}>
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
               enterFrom="opacity-0"
@@ -82,10 +87,10 @@ export default function FixedSideNavigation({
                 className="fixed inset-0 bg-[#000000c7] opacity-60 backdrop-blur-xl"
                 aria-hidden="true"
               />
-            </Transition.Child>
+            </TransitionChild>
 
             <div className="fixed inset-0 z-40 flex items-start">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
                 enterFrom="-translate-y-full blur-xl"
@@ -281,10 +286,10 @@ export default function FixedSideNavigation({
                     </div>
                   </Fade>
                 </Dialog.Panel>
-              </Transition.Child>
+              </TransitionChild>
             </div>
           </Dialog>
-        </Transition.Root>
+        </Transition>
 
         <header className="w-full lg:max-w-max left-0 fixed bottom-0 top-[unset] lg:top-0 bg-bg-secondary lg:bg-bg max-h-max lg:max-h-full lg:h-full flex flex-row items-center lg:flex-col gap-y-4 border-t lg:border-r border-secondary transition-all">
           <Link

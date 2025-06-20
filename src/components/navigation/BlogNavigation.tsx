@@ -4,7 +4,12 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Popover, Transition, Tab } from "@headlessui/react";
+import {
+  Dialog,
+  Popover,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -75,9 +80,9 @@ export default function BlogNavigation({
           <StickyCursor stickyElement={stickyElement} />
         )}
         {/* Mobile menu */}
-        <Transition.Root show={open} as={Fragment}>
+        <Transition show={open} as={Fragment}>
           <Dialog as="div" className="relative z-[1000]" onClose={setOpen}>
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
               enterFrom="opacity-0"
@@ -90,10 +95,10 @@ export default function BlogNavigation({
                 className="fixed inset-0 bg-[#000000c7] opacity-60 backdrop-blur-xl"
                 aria-hidden="true"
               />
-            </Transition.Child>
+            </TransitionChild>
 
             <div className="fixed inset-0 z-40 flex items-start">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
                 enterFrom="-translate-y-full blur-xl"
@@ -289,10 +294,10 @@ export default function BlogNavigation({
                     </div>
                   </Fade>
                 </Dialog.Panel>
-              </Transition.Child>
+              </TransitionChild>
             </div>
           </Dialog>
-        </Transition.Root>
+        </Transition>
 
         <header className="relative">
           <nav aria-label="Top">

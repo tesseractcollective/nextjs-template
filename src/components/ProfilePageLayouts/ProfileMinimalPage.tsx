@@ -9,7 +9,6 @@ import Head from "next/head";
 import { faMobileRetro } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
 import VideoSection from "@/components/VideoSection";
-import BandsInTownApi from "@/components/elements/BandsInTownMapBox";
 import parse from "html-react-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -34,6 +33,7 @@ import BandsInTownMapBox from "@/components/elements/BandsInTownMapBox";
 import ContactsSection from "../ContactsSection";
 import SpotifyArtistAlbums from "@/components/elements/SpotifyAPI/SpotifyArtistAlbums";
 import GridBox from "@/components/sections/GridBox";
+import CompactGridBoxes from "../sections/GridBoxComponents/CompactGridBoxes";
 // import VCF from "@/components/VCF";
 // import SpotifyQuery from "@/components/ArtistInfo";
 // import ArtistInfo from "@/components/ArtistInfo";
@@ -383,7 +383,9 @@ export default function ProfileMinimalPage({
                 </Fade>
               </div>
 
-              {!!profile?.cards && <GridBox gridBoxData={profile.cards} />}
+              {!!profile?.cards && (
+                <CompactGridBoxes gridBoxData={profile.cards} />
+              )}
               <div className="all-text-light">
                 {!!profile?.spotifyArtistName &&
                   siteLibrary?.spotifyClientSecret &&

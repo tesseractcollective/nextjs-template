@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import ReactGA from "react-ga4";
 import parse from "html-react-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -87,9 +87,9 @@ export default function VideoGridSection({ videoData }: VideoGridSectionProps) {
         ))}
 
         {selectedVideo && (
-          <Transition.Root show={open} as={Fragment}>
+          <Transition show={open} as={Fragment}>
             <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="transition-opacity ease-linear duration-300"
                 enterFrom="opacity-0"
@@ -102,11 +102,11 @@ export default function VideoGridSection({ videoData }: VideoGridSectionProps) {
                   className="fixed inset-0 bg-[#000000c7] opacity-90 backdrop-blur-xl"
                   aria-hidden="true"
                 />
-              </Transition.Child>
+              </TransitionChild>
 
               <div className="fixed inset-0 z-10 overflow-y-auto w-full">
                 <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                  <Transition.Child
+                  <TransitionChild
                     as={Fragment}
                     enter="transition ease-in-out duration-300 transform"
                     enterFrom="translate-y-full blur-xs"
@@ -152,11 +152,11 @@ export default function VideoGridSection({ videoData }: VideoGridSectionProps) {
                         </>
                       )}
                     </Dialog.Panel>
-                  </Transition.Child>
+                  </TransitionChild>
                 </div>
               </div>
             </Dialog>
-          </Transition.Root>
+          </Transition>
         )}
       </div>
     </section>

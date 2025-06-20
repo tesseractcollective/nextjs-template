@@ -37,6 +37,10 @@ export default function LinkItem({
 
   if (!link) return null;
 
+  if (link.includes("fillout:") && label) {
+    return <LinkItemFillout link={link} label={label} cssClass={cssClass} />;
+  }
+
   const isActive = (path: string) => {
     if (path === "/") {
       return pathname === "/";
@@ -68,9 +72,6 @@ export default function LinkItem({
   const finalClassName = `${cssClass || ""} ${
     isActive(link) ? activeClassName : ""
   }`.trim();
-
-  if (link.includes("fillout:") && label)
-    return <LinkItemFillout link={link} label={label} cssClass={cssClass} />;
 
   return (
     <div className={`relative ${parentCssClass}`} style={style}>

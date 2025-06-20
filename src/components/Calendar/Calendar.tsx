@@ -7,7 +7,7 @@ import {
   faXmark,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import ReactGA from "react-ga4";
 import Moment from "react-moment";
 
@@ -92,9 +92,9 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
           )}
         </time>
       </button>
-      <Transition.Root show={open} as={Fragment}>
+      <Transition show={open} as={Fragment}>
         <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="transition ease-in-out duration-400 transform"
             enterFrom="translate-y-full"
@@ -104,11 +104,11 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
             leaveTo="translate-y-full"
           >
             <div className="fixed inset-0 bg-[#00000097] transition-all backdrop-blur-md" />
-          </Transition.Child>
+          </TransitionChild>
 
           <div className="fixed inset-0 z-10 overflow-y-auto w-full">
             <div className="flex h-full items-end justify-center p-4 text-center sm:items-center px-4">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="ease-out duration-600"
                 enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -230,11 +230,11 @@ function CalendarDayComponent(props: CalendarDayComponentProps) {
                     <span>Close menu</span>
                   </button>
                 </Dialog.Panel>
-              </Transition.Child>
+              </TransitionChild>
             </div>
           </div>
         </Dialog>
-      </Transition.Root>
+      </Transition>
     </div>
   );
 }

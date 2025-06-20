@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 
@@ -165,13 +165,13 @@ export default function ProfileCardModalSection({
               </Fade>
             ))}
             {selectedProfile && (
-              <Transition.Root show={open} as={Fragment}>
+              <Transition show={open} as={Fragment}>
                 <Dialog
                   as="div"
                   className="relative z-[10000]"
                   onClose={setOpen}
                 >
-                  <Transition.Child
+                  <TransitionChild
                     as={Fragment}
                     enter="transition-opacity ease-linear duration-300"
                     enterFrom="opacity-0"
@@ -184,11 +184,11 @@ export default function ProfileCardModalSection({
                       className="fixed inset-0 bg-[#000000c7] opacity-60 backdrop-blur-xl"
                       aria-hidden="true"
                     />
-                  </Transition.Child>
+                  </TransitionChild>
 
                   <div className="fixed inset-0 z-10 overflow-y-auto w-full">
                     <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                      <Transition.Child
+                      <TransitionChild
                         as={Fragment}
                         enter="transition ease-in-out duration-300 transform"
                         enterFrom="translate-y-full blur-md"
@@ -323,11 +323,11 @@ export default function ProfileCardModalSection({
                             />
                           </button>
                         </Dialog.Panel>
-                      </Transition.Child>
+                      </TransitionChild>
                     </div>
                   </div>
                 </Dialog>
-              </Transition.Root>
+              </Transition>
             )}
           </div>
         </section>

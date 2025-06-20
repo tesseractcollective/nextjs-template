@@ -4,7 +4,7 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import { XMarkIcon, Bars3BottomRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
@@ -68,9 +68,9 @@ export default function DimensionNavigation({
         id="navigation"
       >
         {/* Mobile menu */}
-        <Transition.Root show={open} as={Fragment}>
+        <Transition show={open} as={Fragment}>
           <Dialog as="div" className="relative z-[1000]" onClose={setOpen}>
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
               enterFrom="opacity-0"
@@ -83,10 +83,10 @@ export default function DimensionNavigation({
                 className="fixed inset-0 bg-[#000000c7] opacity-60 backdrop-blur-xl"
                 aria-hidden="true"
               />
-            </Transition.Child>
+            </TransitionChild>
 
             <div className="fixed inset-0 z-40 flex items-end">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
                 enterFrom="translate-x-full blur-xl"
@@ -279,10 +279,10 @@ export default function DimensionNavigation({
                     </div>
                   </Fade>
                 </Dialog.Panel>
-              </Transition.Child>
+              </TransitionChild>
             </div>
           </Dialog>
-        </Transition.Root>
+        </Transition>
 
         <header className="relative px-1">
           <nav aria-label="Top" className="mx-auto px-2 my-2">

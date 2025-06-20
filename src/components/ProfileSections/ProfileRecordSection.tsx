@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
 import { Fade } from "react-awesome-reveal";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import ProfileEPKSection from "@/components/ProfileSections/ProfileEPKSection";
