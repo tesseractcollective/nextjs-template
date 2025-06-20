@@ -4,16 +4,16 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Transition, Tab } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
 import { Fade } from "react-awesome-reveal";
 import MobileMenuPanel from "./NavigationSections/MobileMenuPanel";
 import "./BorderNavigation.scss";
+import parse from "html-react-parser";
+import DesktopNavSecondaryLinkItems from "./NavigationSections/DesktopNavSecondaryLinkItems";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -96,17 +96,14 @@ export default function BorderNavigation({
                       }}
                     >
                       {navigation?.navigationLogo?.url ? (
-                        <Fade triggerOnce direction="left">
-                          <Image
-                            className="h-14 w-auto max-w-xs mx-auto cursor-pointer object-contain py-2"
-                            src={navigation.navigationLogo.url}
-                            alt={title || ""}
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            style={{ width: "100%" }}
-                          />
-                        </Fade>
+                        <Image
+                          className="h-14 w-auto max-w-xs ml-0 mr-auto cursor-pointer object-contain py-2"
+                          src={navigation.navigationLogo.url}
+                          alt={title || ""}
+                          width={0}
+                          height={0}
+                          sizes="200px"
+                        />
                       ) : (
                         <span className="font-bold text-2xl text-text-color">
                           {title}
@@ -117,31 +114,24 @@ export default function BorderNavigation({
 
                   {navigation.announcementText && (
                     <Fade direction="down" triggerOnce>
-                      <p className="flex m-0 p-2 items-center justify-center text-xs md:text-sm font-semibold">
-                        {navigation.announcementText}
-                      </p>
+                      {navigation.announcementLink ? (
+                        <LinkItem
+                          label={navigation.announcementText}
+                          cssClass="flex m-0 p-2 items-center justify-center text-xs md:text-sm font-semibold text-text-color hover:text-primary"
+                          link={navigation.announcementLink}
+                        ></LinkItem>
+                      ) : (
+                        <p className="flex m-0 p-2 items-center justify-center text-xs md:text-sm font-semibold">
+                          {parse(navigation.announcementText)}
+                        </p>
+                      )}
                     </Fade>
                   )}
 
-                  <div className="hidden md:flex flex-1 items-center justify-end max-w-max ml-auto gap-x-4 px-4">
-                    <Fade direction="down" triggerOnce>
-                      {!!items &&
-                        items
-                          .filter(
-                            (mainNavigationItem) =>
-                              mainNavigationItem.primaryItem !== true
-                          )
-                          .map((mainNavigationItem) => (
-                            <LinkItem
-                              key={mainNavigationItem?.link}
-                              link={mainNavigationItem?.link}
-                              label={mainNavigationItem?.label}
-                              cssClass={`flex items-center text-xs md:text-base font-bold text-text-color opacity-90 hover:text-text-color hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-4 py-1 md:py-2 uppercase ${mainNavigationItem?.cssClass}`}
-                              sameTab={mainNavigationItem?.sameTab}
-                            />
-                          ))}
-                    </Fade>
-                  </div>
+                  <DesktopNavSecondaryLinkItems
+                    navigation={navigation}
+                    wrapperClassName="hidden md:flex flex-1 items-center justify-end max-w-max ml-auto gap-x-4 px-4"
+                  />
 
                   {/* mega menu bar */}
                   <div className="hidden md:flex flex-1 items-center justify-between max-w-max h-full bg-primary">
@@ -168,6 +158,8 @@ export default function BorderNavigation({
                           ))}
                     </Fade>
                   </div>
+
+                  {/* PRIMARY ITEM */}
                   <div className="flex md:hidden flex-1 items-center justify-between max-w-max h-full px-4">
                     <Fade direction="right" triggerOnce>
                       <button

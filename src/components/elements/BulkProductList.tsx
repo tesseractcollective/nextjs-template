@@ -122,9 +122,9 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
   }, [searchQuery, selectedCategory, sortOrder]);
 
   const FilterSidebar = () => (
-    <div className="bg-bg border border-bg-secondary rounded-lg p-4 h-fit sticky top-4">
+    <div className="bg-text-color border border-bg-secondary rounded-lg p-4 h-fit sticky top-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-text-color flex items-center gap-2">
+        <h3 className="text-lg font-semibold text-bg flex items-center gap-2">
           <FunnelIcon className="w-5 h-5" />
           Filters
         </h3>
@@ -141,15 +141,15 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
 
       {/* Search */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-text-color mb-2">
+        <label className="block text-sm font-medium text-bg mb-2">
           Search Products
         </label>
         <div className="relative">
-          <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-color opacity-50 w-4 h-4" />
+          <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-bg opacity-50 w-4 h-4" />
           <input
             type="text"
             placeholder="Search..."
-            className="w-full pl-10 pr-4 py-2 border border-bg-secondary rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-bg text-text-color"
+            className="w-full pl-10 pr-4 py-2 border border-bg-secondary rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-text-color text-bg"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -158,7 +158,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
 
       {/* Categories */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-text-color mb-3">
+        <label className="block text-sm font-medium text-bg mb-3">
           Categories ({categories.length})
         </label>
         <div className="space-y-2 max-h-64 overflow-y-auto">
@@ -167,7 +167,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
             className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
               !selectedCategory
                 ? "bg-primary text-white"
-                : "text-text-color hover:bg-bg-secondary"
+                : "text-bg hover:bg-text-color-secondary"
             }`}
           >
             All Categories ({filteredProducts.length})
@@ -181,7 +181,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
                 className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors flex justify-between ${
                   selectedCategory === category
                     ? "bg-primary text-white"
-                    : "text-text-color hover:bg-bg-secondary"
+                    : "text-bg hover:bg-text-color-secondary"
                 }`}
               >
                 <span>{category.replace(/_/g, " ")}</span>
@@ -204,14 +204,14 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
     const isSelected = isProductSelected(product);
 
     return (
-      <div className="bg-bg border border-bg-secondary rounded-lg overflow-hidden hover:shadow-md hover:border-primary transition-all duration-200 group flex flex-col h-full">
+      <div className="bg-text-color border border-bg-secondary rounded-lg overflow-hidden hover:shadow-md hover:border-primary transition-all duration-200 group flex flex-col h-full">
         <div className="p-4 flex flex-col flex-1">
-          <h3 className="font-medium text-text-color text-sm leading-snug mb-2 line-clamp-2 flex-1">
+          <h3 className="font-medium text-bg text-sm leading-snug mb-2 line-clamp-2 flex-1">
             {product}
           </h3>
           <div className="flex items-center justify-between mt-auto">
             {selectedCategory && (
-              <span className="text-xs text-text-color opacity-75 bg-bg-secondary px-2 py-1 rounded-full">
+              <span className="text-xs text-bg opacity-75 bg-text-color-secondary px-2 py-1 rounded-full">
                 {selectedCategory.replace(/_/g, " ")}
               </span>
             )}
@@ -220,7 +220,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
               className={`ml-auto flex items-center gap-1 px-3 py-1 text-xs rounded-md transition-colors ${
                 isSelected
                   ? "bg-primary text-white hover:bg-secondary"
-                  : "bg-bg-secondary text-text-color hover:bg-primary hover:text-white"
+                  : "bg-text-color-secondary text-bg hover:bg-primary hover:text-white"
               }`}
             >
               {isSelected ? (
@@ -245,13 +245,13 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
     const isSelected = isProductSelected(product);
 
     return (
-      <div className="bg-bg border border-bg-secondary rounded-lg p-4 hover:shadow-sm hover:border-primary transition-all duration-200 flex items-center gap-4">
+      <div className="bg-text-color border border-bg-secondary rounded-lg p-4 hover:shadow-sm hover:border-primary transition-all duration-200 flex items-center gap-4">
         <div className="flex-1 min-w-0">
-          <h3 className="font-medium text-text-color text-sm mb-1 truncate">
+          <h3 className="font-medium text-bg text-sm mb-1 truncate">
             {product}
           </h3>
           {selectedCategory && (
-            <span className="text-xs text-text-color opacity-75">
+            <span className="text-xs text-bg opacity-75">
               Category: {selectedCategory.replace(/_/g, " ")}
             </span>
           )}
@@ -262,7 +262,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
             className={`flex items-center gap-1 px-3 py-1 text-xs rounded-md transition-colors ${
               isSelected
                 ? "bg-primary text-white hover:bg-secondary"
-                : "bg-bg-secondary text-text-color hover:bg-primary hover:text-white"
+                : "bg-text-color-secondary text-bg hover:bg-primary hover:text-white"
             }`}
           >
             {isSelected ? (
@@ -306,7 +306,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
         <button
           onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
           disabled={currentPage === 1}
-          className="px-3 py-2 text-sm border border-bg-secondary rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-bg-secondary text-text-color"
+          className="px-3 py-2 text-sm border border-bg-secondary rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-text-color-secondary text-bg"
         >
           Previous
         </button>
@@ -318,7 +318,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
             className={`px-3 py-2 text-sm rounded-md ${
               currentPage === page
                 ? "bg-primary text-white"
-                : "border border-bg-secondary text-text-color hover:bg-bg-secondary"
+                : "border border-bg-secondary text-bg hover:bg-text-color-secondary"
             }`}
           >
             {page}
@@ -330,7 +330,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
             setCurrentPage((prev) => Math.min(totalPages, prev + 1))
           }
           disabled={currentPage === totalPages}
-          className="px-3 py-2 text-sm border border-bg-secondary rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-bg-secondary text-text-color"
+          className="px-3 py-2 text-sm border border-bg-secondary rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-text-color-secondary text-bg"
         >
           Next
         </button>
@@ -339,12 +339,16 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
   };
 
   return (
-    <div className={`max-w-7xl mx-auto p-4 ${bulkProductData.cssClass || ""}`}>
+    <div
+      className={`max-w-8xl mx-auto p-4 my-16 rounded bg-text-color w-full ${
+        bulkProductData.cssClass || ""
+      }`}
+    >
       {/* Mobile Filter Toggle */}
       <div className="lg:hidden mb-4">
         <button
           onClick={() => setShowMobileFilters(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-bg border border-bg-secondary rounded-lg text-text-color"
+          className="flex items-center gap-2 px-4 py-2 bg-text-color border border-bg-secondary rounded-lg text-bg"
         >
           <AdjustmentsHorizontalIcon className="w-4 h-4" />
           Filters & Sort
@@ -365,15 +369,13 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
             onClick={() => setShowMobileFilters(false)}
           />
           {/* Modal Content */}
-          <div className="absolute right-0 top-0 h-full w-80 max-w-full bg-bg shadow-2xl border-l border-bg-secondary">
+          <div className="absolute right-0 top-0 h-full w-80 max-w-full bg-text-color shadow-2xl border-l border-bg-secondary">
             <div className="p-4 overflow-y-auto h-full">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-text-color">
-                  Filters
-                </h3>
+                <h3 className="text-lg font-semibold text-bg">Filters</h3>
                 <button
                   onClick={() => setShowMobileFilters(false)}
-                  className="p-2 hover:bg-bg-secondary rounded-lg"
+                  className="p-2 hover:bg-text-color-secondary rounded-lg"
                 >
                   <XMarkIcon className="w-5 h-5" />
                 </button>
@@ -406,7 +408,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <ShoppingCartIcon className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium text-text-color">
+                  <span className="text-sm font-medium text-bg">
                     {selectedProducts.length} product
                     {selectedProducts.length !== 1 ? "s" : ""} selected
                   </span>
@@ -442,7 +444,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
                 {selectedProducts.slice(0, 3).map((item, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center gap-1 px-2 py-1 bg-bg border border-bg-secondary rounded text-xs text-text-color"
+                    className="inline-flex items-center gap-1 px-2 py-1 bg-text-color border border-bg-secondary rounded text-xs text-bg"
                   >
                     {item.product.length > 30
                       ? `${item.product.substring(0, 30)}...`
@@ -456,7 +458,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
                   </span>
                 ))}
                 {selectedProducts.length > 3 && (
-                  <span className="text-xs text-text-color opacity-75 px-2 py-1">
+                  <span className="text-xs text-bg opacity-75 px-2 py-1">
                     +{selectedProducts.length - 3} more
                   </span>
                 )}
@@ -466,10 +468,10 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
           {/* Header Controls */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <div className="flex items-center gap-4">
-              <h2 className="text-xl font-semibold text-text-color">
+              <h2 className="text-xl font-semibold text-bg">
                 {bulkProductData.title || "Products"}
               </h2>
-              <span className="text-sm text-text-color opacity-75">
+              <span className="text-sm text-bg opacity-75">
                 {filteredProducts.length} results
               </span>
             </div>
@@ -479,7 +481,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
               <select
                 value={itemsPerPage}
                 onChange={(e) => setItemsPerPage(Number(e.target.value))}
-                className="px-3 py-2 border border-bg-secondary rounded-md bg-bg text-text-color text-sm"
+                className="px-3 py-2 border border-bg-secondary rounded-md bg-text-color text-bg text-sm"
               >
                 <option value={12}>12 per page</option>
                 <option value={24}>24 per page</option>
@@ -490,7 +492,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
               <select
                 value={sortOrder}
                 onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
-                className="px-3 py-2 border border-bg-secondary rounded-md bg-bg text-text-color text-sm"
+                className="px-3 py-2 border border-bg-secondary rounded-md bg-text-color text-bg text-sm"
               >
                 <option value="asc">Sort A-Z</option>
                 <option value="desc">Sort Z-A</option>
@@ -503,7 +505,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
                   className={`p-2 ${
                     viewMode === "grid"
                       ? "bg-primary text-white"
-                      : "bg-bg text-text-color hover:bg-bg-secondary"
+                      : "bg-text-color text-bg hover:bg-text-color-secondary"
                   }`}
                 >
                   <Squares2X2Icon className="w-4 h-4" />
@@ -513,7 +515,7 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
                   className={`p-2 ${
                     viewMode === "list"
                       ? "bg-primary text-white"
-                      : "bg-bg text-text-color hover:bg-bg-secondary"
+                      : "bg-text-color text-bg hover:bg-text-color-secondary"
                   }`}
                 >
                   <ListBulletIcon className="w-4 h-4" />
@@ -543,13 +545,13 @@ const BulkProductSection = ({ bulkProductData }: BulkProductSectionProps) => {
             </>
           ) : (
             <div className="text-center py-16">
-              <div className="text-text-color opacity-50 mb-4">
+              <div className="text-bg opacity-50 mb-4">
                 <MagnifyingGlassIcon className="w-16 h-16 mx-auto mb-4" />
               </div>
-              <h3 className="text-lg font-medium text-text-color mb-2">
+              <h3 className="text-lg font-medium text-bg mb-2">
                 No products found
               </h3>
-              <p className="text-text-color opacity-75 mb-4">
+              <p className="text-bg opacity-75 mb-4">
                 Try adjusting your search or filter criteria
               </p>
               <button

@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,13 +33,13 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
   const primaryItems = items.filter((item) => item.primaryItem === true);
 
   return (
-    <Transition.Root show={open} as={Fragment}>
+    <Transition show={open} as={Fragment}>
       <Dialog
         as="div"
         className="mobile-menu-panel relative z-[1000]"
         onClose={setOpen}
       >
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="transition-opacity ease-linear duration-300"
           enterFrom="opacity-0"
@@ -52,10 +52,10 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
             className="fixed inset-0 bg-[#000000c7] opacity-60 backdrop-blur-xl"
             aria-hidden="true"
           />
-        </Transition.Child>
+        </TransitionChild>
 
         <div className="fixed inset-0 z-40 flex">
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="transition ease-in-out duration-[400ms] transform"
             enterFrom="-translate-y-full blur-xl"
@@ -85,54 +85,52 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                 leave="transition ease-in duration-300"
                 leaveFrom="transform translate-x-0"
                 leaveTo="transform translate-x-full"
-                className="absolute inset-0 w-full"
               >
-                <div className="h-full w-full flex flex-col p-2 relative">
+                <div className="absolute inset-0 w-full h-full flex flex-col p-2">
                   {/* Logo Section */}
-                  <Fade direction="down" triggerOnce className="relative z-10">
-                    <div className="flex mt-0 mx-4 px-0 pb-2 pt-2 items-center justify-between">
-                      <Link
-                        href="/"
-                        onClick={() => {
-                          setOpen(false);
-                          ReactGA.event({
-                            category: "Link",
-                            action: "Visit Home",
-                            label: "Visit Home",
-                          });
-                        }}
-                        className="cursor-pointer transition-all duration-[400ms] relative"
-                        id="nav-logo-mobile-panel"
+
+                  <div className="relative z-10 flex mt-0 mx-4 px-0 pb-2 pt-2 items-center justify-between">
+                    <Link
+                      href="/"
+                      onClick={() => {
+                        setOpen(false);
+                        ReactGA.event({
+                          category: "Link",
+                          action: "Visit Home",
+                          label: "Visit Home",
+                        });
+                      }}
+                      className="cursor-pointer transition-all duration-[400ms] relative"
+                      id="nav-logo-mobile-panel"
+                    >
+                      {navigationLogo ? (
+                        <>
+                          <span className="sr-only">{title}</span>
+                          <Image
+                            src={navigationLogo.url}
+                            className="w-[100px] md:w-[160px] max-h-[120px] cursor-pointer object-contain transition-all duration-[400ms] block"
+                            alt=""
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                          />
+                        </>
+                      ) : (
+                        <span className="font-bold text-2xl text-text-color">
+                          {title}
+                        </span>
+                      )}
+                    </Link>
+                    <div className="relative w-full max-w-max p-0 z-[1001]">
+                      <button
+                        onClick={() => setOpen(false)}
+                        className="text-primary hover:text-secondary transition-all border-text-color p-2"
+                        aria-label="Close menu"
                       >
-                        {navigationLogo ? (
-                          <>
-                            <span className="sr-only">{title}</span>
-                            <Image
-                              src={navigationLogo.url}
-                              className="w-[100px] md:w-[160px] max-h-[120px] cursor-pointer object-contain transition-all duration-[400ms] block"
-                              alt=""
-                              width={0}
-                              height={0}
-                              sizes="100%"
-                            />
-                          </>
-                        ) : (
-                          <span className="font-bold text-2xl text-text-color">
-                            {title}
-                          </span>
-                        )}
-                      </Link>
-                      <div className="relative w-full max-w-max p-0 z-[1001]">
-                        <button
-                          onClick={() => setOpen(false)}
-                          className="text-primary hover:text-secondary transition-all border-text-color p-2"
-                          aria-label="Close menu"
-                        >
-                          <XMarkIcon className="w-8 h-8" />
-                        </button>
-                      </div>
+                        <XMarkIcon className="w-8 h-8" />
+                      </button>
                     </div>
-                  </Fade>
+                  </div>
 
                   {/* NAV PANEL SECONDARY ITEMS */}
                   <nav className="px-4 py-2 flex flex-col gap-y-4">
@@ -272,9 +270,8 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                   leave="transition ease-in duration-300"
                   leaveFrom="transform translate-x-0"
                   leaveTo="transform translate-x-full"
-                  className="absolute inset-0 w-full bg-bg"
                 >
-                  <div className="h-full w-full pt-16 relative">
+                  <div className="absolute inset-0 w-full bg-bg h-full pt-16">
                     <div className="fixed top-0 right-2 w-full max-w-max p-4 z-[1001]">
                       <button
                         onClick={() => setOpen(false)}
@@ -327,10 +324,10 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                 </Transition>
               ))}
             </Dialog.Panel>
-          </Transition.Child>
+          </TransitionChild>
         </div>
       </Dialog>
-    </Transition.Root>
+    </Transition>
   );
 };
 

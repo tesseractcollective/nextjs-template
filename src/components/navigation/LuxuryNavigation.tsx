@@ -4,17 +4,13 @@ import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Popover, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Popover, Transition } from "@headlessui/react";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import MobileMenuPanel from "./NavigationSections/MobileMenuPanel";
 import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Fade } from "react-awesome-reveal";
 import parse from "html-react-parser";
 
 export interface NavProps {
@@ -211,11 +207,11 @@ export default function LuxuryNavigation({
                                       leaveFrom="opacity-100"
                                       leaveTo="opacity-0"
                                     >
-                                      <Popover.Panel className="absolute top-[100%] left-0 text-xs sm:text-sm md:text-base text-text-color box-shadow max-w-max rounded-xl">
+                                      <Popover.Panel className="absolute bg-text-color top-[100%] left-0 text-xs sm:text-sm md:text-base text-primary box-shadow max-w-max rounded-xl">
                                         {({ close }) => (
                                           <>
                                             <div className="relative bg-bg-secondary z-10 rounded-md max-w-max">
-                                              <div className="mx-auto max-w-max p-4 w-full h-full max-h-[85vh] overflow-scroll">
+                                              <div className="mx-auto max-w-max p-4 w-full h-full overflow-scroll">
                                                 <div className="flex flex-col items-center justify-start flex-wrap gap-4">
                                                   {mainNavigationItem.items.map(
                                                     (item) => (

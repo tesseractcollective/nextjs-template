@@ -100,7 +100,7 @@ export default function ProfileMusicTwoPage({
           </Fade>
           <SocialMediaIcons
             fadeDirection="up"
-            cssClass="w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4 text-text-color max-w-max"
+            cssClass="w-full flex flex-row !social-icons !items-center !justify-center flex-wrap gap-x-4 text-text-color max-w-max scale-[1.2]"
             instagramLinkProp={profile?.instagramLink || undefined}
             spotifyLinkProp={profile?.spotifyLink || undefined}
             facebookLinkProp={profile?.facebookLink || undefined}

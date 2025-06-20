@@ -3,7 +3,7 @@ import Sections from "@/components/sections/Sections";
 import ContentComponents from "@/components/ContentComponents";
 import Elements from "@/components/elements/Elements";
 import { Fragment, useState, useEffect } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import ReactGA from "react-ga4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -93,9 +93,9 @@ export default function VideoBox({
             {videoTitle}
           </h3>
         )}
-        <Transition.Root show={open} as={Fragment}>
+        <Transition show={open} as={Fragment}>
           <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
               enterFrom="opacity-0"
@@ -108,11 +108,11 @@ export default function VideoBox({
                 className="fixed inset-0 bg-[#000000c7] opacity-80 backdrop-blur-xl"
                 aria-hidden="true"
               />
-            </Transition.Child>
+            </TransitionChild>
 
             <div className="fixed inset-0 z-10 overflow-y-auto w-full">
               <div className="flex h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <Transition.Child
+                <TransitionChild
                   as={Fragment}
                   enter="transition ease-in-out duration-300 transform"
                   enterFrom="translate-y-full blur-xs"
@@ -151,11 +151,11 @@ export default function VideoBox({
                       />
                     </button>
                   </Dialog.Panel>
-                </Transition.Child>
+                </TransitionChild>
               </div>
             </div>
           </Dialog>
-        </Transition.Root>
+        </Transition>
         <button
           type="button"
           className={`rounded-md p-2 text-md font-semibold text-text-color hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 fixed left-8 bottom-8 z-[100] bg-primary`}

@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { useState, Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
@@ -34,9 +34,9 @@ export default function Whatsapp({
         />
         <span className="sr-only">Whatsapp</span>
       </button>
-      <Transition.Root show={open} as={Fragment}>
+      <Transition show={open} as={Fragment}>
         <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="transition ease-in-out duration-[400ms] transform"
             enterFrom="translate-y-full"
@@ -46,11 +46,11 @@ export default function Whatsapp({
             leaveTo="translate-y-full"
           >
             <div className="fixed inset-0 bg-[#00000097] transition-all backdrop-blur-lg" />
-          </Transition.Child>
+          </TransitionChild>
 
           <div className="fixed inset-0 z-10 overflow-y-auto w-full px-4">
             <div className="flex h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="ease-out duration-600"
                 enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -131,7 +131,7 @@ export default function Whatsapp({
                     </div>
                   </div>
                 </Dialog.Panel>
-              </Transition.Child>
+              </TransitionChild>
               <div className="absolute bottom-12">
                 <button
                   type="button"
@@ -157,7 +157,7 @@ export default function Whatsapp({
             </div>
           </div>
         </Dialog>
-      </Transition.Root>
+      </Transition>
     </>
   );
 }
