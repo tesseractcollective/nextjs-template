@@ -201,7 +201,7 @@ export default function DesktopNavSecondaryLinkItems({
                                       </div>
                                       <button
                                         type="button"
-                                        className="absolute bottom-1 right-1 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-xs hover:bg-dark group focus-within:bg-dark focus-within:ring-1 ring-primary gap-x-1 opacity-60 hover:opacity-100"
+                                        className="absolute bottom-1 right-1 inline-flex items-center justify-center rounded-md p-1 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-[10px] hover:bg-dark group focus-within:bg-dark focus-within:ring-1 ring-primary gap-x-1 opacity-60 hover:opacity-100"
                                         onClick={() => {
                                           close();
                                           ReactGA.event({
