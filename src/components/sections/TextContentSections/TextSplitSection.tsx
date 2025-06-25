@@ -34,7 +34,7 @@ export default function TextSplitSection({
             const isOpen = index === expanded;
             return (
               <div
-                key={textContentItem?.header?.html}
+                key={`key-item-no-link-content-${index}`}
                 className="mx-auto w-full"
               >
                 <div className="border-t border-text-color">
@@ -49,7 +49,9 @@ export default function TextSplitSection({
                     />
                   )}
                   <motion.header
-                    className={`flex flex-row items-center justify-between relative z-2 p-4 transition-all hover:!bg-tertiary ${isOpen ? "!bg-secondary" : "bg-bg"}`}
+                    className={`flex flex-row items-center justify-between relative z-2 p-4 transition-all hover:!bg-tertiary ${
+                      isOpen ? "!bg-secondary" : "bg-bg"
+                    }`}
                     initial={false}
                     onClick={() => setExpanded(isOpen ? false : index)}
                   >
@@ -106,9 +108,9 @@ export default function TextSplitSection({
               </div>
             );
           })}
-          {textContentItemWLink.map((textContentItem) => (
+          {textContentItemWLink.map((textContentItem, index) => (
             <LinkItem
-              key={textContentItem?.header?.html}
+              key={`key-item-link-content-${index}`}
               link={textContentItem.link}
               cssClass="mx-auto w-full block"
             >
