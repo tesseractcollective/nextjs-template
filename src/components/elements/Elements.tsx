@@ -212,13 +212,6 @@ export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
             />
           </div>
         )}
-      {!!siteLibrary.title && !!bandsInTownKey && (
-        <BandsInTownApi
-          apiKey={bandsInTownKey}
-          artistName={siteLibrary.title}
-          isSpanish={siteLibrary?.isSpanish || false}
-        />
-      )}
       {!!elementJson?.bandsInTownData && (
         <BandsInTownLayouts bandsInTownData={elementJson.bandsInTownData} />
       )}

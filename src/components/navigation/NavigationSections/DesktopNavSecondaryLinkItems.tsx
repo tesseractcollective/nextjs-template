@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Fragment } from "react";
 import type { NavigationFieldsFragment } from "@/graphql/generated/graphql";
 import {
   Transition,
@@ -34,7 +34,7 @@ export default function DesktopNavSecondaryLinkItems({
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
-  const panelGridColumns = items?.length >= 1 ? "grid-cols-2" : "grid-cols-1";
+  const panelGridColumns = items?.length >= 1 ? "grid-cols-1" : "grid-cols-1";
   return (
     <div className={`relative ${wrapperClassName}`}>
       {/* START Desktop Flyout menus */}
@@ -92,18 +92,21 @@ export default function DesktopNavSecondaryLinkItems({
                             </div>
                             {/* DROPDOWN NAV ITEM PANEL */}
                             <Transition
-                              enter="transition ease-in-out duration-[300ms] transform origin-top"
-                              enterFrom="scale-y-0 opacity-0"
-                              enterTo="scale-y-1 opacity-100"
-                              leave="transition ease-in-out duration-[300ms] transform origin-top"
-                              leaveFrom="scale-y-1 opacity-100"
-                              leaveTo="scale-y-0 opacity-0"
+                              enter="transition duration-100 ease-out"
+                              enterFrom="transform scale-95 opacity-0"
+                              enterTo="transform scale-100 opacity-100"
+                              leave="transition duration-75 ease-out"
+                              leaveFrom="transform scale-100 opacity-100"
+                              leaveTo="transform scale-95 opacity-0"
                             >
-                              <PopoverPanel className="" anchor="bottom">
+                              <PopoverPanel
+                                className="w-full max-w-lg mx-auto"
+                                anchor="bottom"
+                              >
                                 {({ close }) => (
                                   <>
-                                    <div className="relative bg-glass glass-darker max-w-6xl text-text-color box-shadow mx-auto rounded-lg z-30 pt-8">
-                                      <div className="mx-auto pt-8 pb-8 px-4 xl:px-8 w-full h-full max-h-[85vh] overflow-scroll">
+                                    <div className="relative bg-glass glass-darker max-w-lg text-text-color box-shadow mx-auto rounded-lg z-30 pt-8">
+                                      <div className="mx-auto pt-8 pb-8 px-4 w-full h-full max-h-[85vh] overflow-scroll">
                                         <div
                                           className={`grid ${panelGridColumns} items-center align-center flex-wrap gap-4`}
                                         >
@@ -123,11 +126,11 @@ export default function DesktopNavSecondaryLinkItems({
                                                         key={item?.link}
                                                         link={item?.link}
                                                         parentCssClass="w-full"
-                                                        cssClass={`border border-primary rounded gap-x-2  flex flex-row items-center font-semibold text-text-color transition-all group-hover:text-primary text-xs xl:text-sm bg-[#ffffff10] ${item?.cssClass}`}
+                                                        cssClass={`border border-[#ffffff00] hover:border-primary rounded gap-x-2 flex flex-row items-center font-semibold text-text-color transition-all group-hover:text-primary text-lg bg-[#ffffff05] ${item?.cssClass}`}
                                                         sameTab={item?.sameTab}
                                                       >
                                                         {item?.image && (
-                                                          <div className="aspect-1 h-24 w-24 overflow-hidden rounded-tl-sm rounded-bl-sm bg-bg-overlay group-hover:opacity-75 transition-all relative">
+                                                          <div className="aspect-1 h-32 w-32 overflow-hidden rounded-lg bg-bg-overlay group-hover:opacity-75 transition-all relative">
                                                             <Image
                                                               src={
                                                                 item.image?.url
@@ -139,11 +142,11 @@ export default function DesktopNavSecondaryLinkItems({
                                                               className="w-full inset-0 absolute h-full object-cover"
                                                               width={0}
                                                               height={0}
-                                                              sizes="100%"
+                                                              sizes="300px"
                                                             />
                                                           </div>
                                                         )}
-                                                        <span className="inline-block font-bold uppercase p-4">
+                                                        <span className="inline-block font-bold uppercase p-2">
                                                           {item?.label}
                                                         </span>
                                                         <span
@@ -201,7 +204,7 @@ export default function DesktopNavSecondaryLinkItems({
                                       </div>
                                       <button
                                         type="button"
-                                        className="absolute bottom-1 right-1 inline-flex items-center justify-center rounded-md p-2 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-xs hover:bg-dark group focus-within:bg-dark focus-within:ring-1 ring-primary gap-x-1 opacity-60 hover:opacity-100"
+                                        className="absolute bottom-1 right-1 inline-flex items-center justify-center rounded-md p-1 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-[10px] hover:bg-dark group focus-within:bg-dark focus-within:ring-1 ring-primary gap-x-1 opacity-60 hover:opacity-100"
                                         onClick={() => {
                                           close();
                                           ReactGA.event({

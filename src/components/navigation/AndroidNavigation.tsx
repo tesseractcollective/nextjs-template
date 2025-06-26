@@ -110,7 +110,7 @@ export default function AndroidNavigation({
       </Link>
 
       <div
-        className={`w-fill absolute bg-bg rounded-lg h-16 xl:h-24 inset-x-0 grid grid-cols-3 px-2 transition-all nav-shadow-scrolled z-20 ${
+        className={`w-fill absolute bg-bg rounded-lg h-16 xl:h-24 inset-x-0 grid grid-cols-3 px-4 transition-all nav-shadow-scrolled z-20 duration-300 ease-in-out ${
           isScrolled ? "-top-40" : "top-0"
         } ${navigationWrapperCssClass}`}
       >
@@ -383,13 +383,13 @@ export default function AndroidNavigation({
               : "hidden"
           }`}
         >
-          <nav className="px-4 py-2 flex flex-col gap-y-4">
+          <nav className="px-4 py-2 flex flex-col gap-y-4 text-center">
             {secondaryItems.map((item) => (
               <div key={item.label} className="">
                 {item.items?.length > 0 ? (
                   <button
                     onClick={() => setActivePanel(item.label || "")}
-                    className="group flex w-full items-center justify-between py-2 text-3xl font-bold uppercase text-text-color hover:text-primary focus-within:text-primary"
+                    className="group flex w-full items-center justify-between py-2 text-3xl font-bold uppercase text-text-color hover:text-primary focus-within:text-primary text-center"
                     aria-label={`Open submenu for ${item.label}`}
                   >
                     <span>{item.label}</span>

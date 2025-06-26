@@ -106,18 +106,33 @@ const Countdown: React.FC<Props> = ({
           )}
         </div>
       ) : (
-        <div>
-          <h1 className="text-3xl font-bold">Countdown Ended!</h1>
+        <div className="mx-auto flex flex-col items-center justify-center p-4">
+          <p className="text-3xl font-bold mx-auto text-center">{headerText}</p>
           {image && image !== "" && (
-            <Image
-              src={image}
-              alt="Promo Image"
-              className="p-4 rounded w-full h-full max-h-72"
-              width={0}
-              height={0}
-            />
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="max-w-max mx-auto"
+            >
+              <Image
+                src={image}
+                alt="Promo Image"
+                className="p-4 rounded w-full h-full max-h-72"
+                width={0}
+                height={0}
+                sizes="100%"
+              />
+            </a>
           )}
-          <p className="text-lg">{headerText}</p>
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-secondary border px-4 md:px-6 py-2 block no-underline font-bold w-full text-xl !rounded-md max-w-max mx-auto bg-primary"
+          >
+            {headerText}
+          </a>
         </div>
       )}
     </div>

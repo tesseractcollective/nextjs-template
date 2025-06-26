@@ -10,14 +10,15 @@ interface GridBoxProps {
 
 export default function InsetGridBoxes({ gridBoxData }: GridBoxProps) {
   return (
-    <section className="mx-auto px-4 sm:px-6 max-w-8xl lg:px-8 my-8 w-full inset-grid-boxes">
-      <Fade triggerOnce direction="up">
-        <div className="flex flex-wrap justify-center md:justify-between items-stretch gap-4 h-full w-full">
+    <div className="my-0 magic-grid block h-full">
+      <div className="block mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-1 my-4 md:my-1 px-4 md:px-0">
           {gridBoxData.map((gridBoxItem, index) => (
             <LinkItem
               link={gridBoxItem.boxLink}
               key={`${gridBoxItem.boxLink}-${index}`}
-              cssClass="relative isolate flex flex-col overflow-hidden rounded-2xl bg-background pb-4 pt-[25rem] px-36 group hover:cursor-pointer mx-auto w-full min-w-[280px] sm:min-w-[380px] md:w-[320px] lg:w-[420px] max-w-md self-stretch mx-auto"
+              parentCssClass="overflow-hidden"
+              cssClass="group aspect-[4/5] md:aspect-[9/16] block mx-auto overflow-hidden"
             >
               <div>
                 {!!gridBoxItem.boxImage?.url && (
@@ -28,13 +29,14 @@ export default function InsetGridBoxes({ gridBoxData }: GridBoxProps) {
                     height={0}
                     sizes="100%"
                     style={{ width: "100%" }}
-                    className="absolute inset-0 -z-10 h-full w-full object-cover"
+                    className="absolute inset-0 -z-10 h-full w-full object-cover scale-100 group-hover:scale-105 transition-transform duration-500 ease-in-out"
                   />
                 )}
-                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-gray-900/40 group-hover:from-secondary transition-all" />
-                <div className="absolute inset-0 -z-10 rounded-2xl ring-1 transition-all ring-primary group-hover:ring-secondary ring-inset" />
+                {/* <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background opacity-0 hover:opacity-100  group-hover:from-bg transition-all" /> */}
+                <div className="absolute inset-0 z-20 ring-0 group-hover:ring-1 transition-all ring-primary ring-inset" />
+                <div className="absolute inset-1 z-10 ring-0 group-hover:ring-2 transition-all ring-secondary ring-inset" />
 
-                <div className="mt-3 text-lg font-semibold leading-6 !text-text-color absolute bottom-8 inset-x-0">
+                <div className="hidden md:inline-block text-lg font-semibold leading-6 !text-text-color absolute bottom-8 inset-x-0">
                   <div>
                     {!!gridBoxItem?.boxTitle && (
                       <p className="text-text-overlay font-bold uppercase text-2xl text-center mx-auto text-shadow">
@@ -56,7 +58,7 @@ export default function InsetGridBoxes({ gridBoxData }: GridBoxProps) {
             </LinkItem>
           ))}
         </div>
-      </Fade>
-    </section>
+      </div>
+    </div>
   );
 }
