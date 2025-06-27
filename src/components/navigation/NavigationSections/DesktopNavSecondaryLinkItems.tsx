@@ -8,7 +8,7 @@ import {
   PopoverButton,
   PopoverBackdrop,
 } from "@headlessui/react";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import LinkItem from "@/components/LinkItem";
@@ -48,6 +48,8 @@ export default function DesktopNavSecondaryLinkItems({
               )
               .map((mainNavigationItem) => {
                 const hasItems = mainNavigationItem.items.length >= 1;
+                const itemHasLink =
+                  mainNavigationItem.link && mainNavigationItem.link !== "";
                 return (
                   <div key={mainNavigationItem.label} className="my-auto">
                     {/* DROPDOWN NAV ITEM */}
@@ -55,40 +57,77 @@ export default function DesktopNavSecondaryLinkItems({
                       <Popover className="flex">
                         {({ open }) => (
                           <>
-                            <div className="relative flex">
-                              <PopoverButton
-                                onMouseEnter={() => buttonRef.current?.click()}
-                                className={classNames(
-                                  open
-                                    ? "border-primary text-primary"
-                                    : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
-                                  `relative z-10 -mb-px flex items-center pt-px transition-all duration-200 ease-out uppercase font-semibold ${
-                                    small
-                                      ? "text-xs md:text-sm"
-                                      : "text-xs sm:text-sm md:text-base"
-                                  } ${mainNavigationItem?.cssClass} ${
-                                    mainNavigationItem.cssClass
-                                  }`
-                                )}
-                              >
-                                <span>{mainNavigationItem.label}</span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth={3}
-                                  stroke="currentColor"
-                                  className={`ml-2 w-4 h-4 transition-all ${
-                                    open ? "rotate-180" : "rotate-0"
-                                  }`}
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                            <div className="relative flex flex-row">
+                              {itemHasLink ? (
+                                <div className="flex flex-row gap-x-1">
+                                  <LinkItem
+                                    label={mainNavigationItem.label}
+                                    link={mainNavigationItem.link}
+                                    activeClassName="!text-primary border-primary"
+                                    cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold p-1 border-b hover:border-primary border-[#ffffff00] ${
+                                      small
+                                        ? "text-xs md:text-sm"
+                                        : "text-xs sm:text-sm md:text-base"
+                                    } ${mainNavigationItem?.cssClass}`}
                                   />
-                                </svg>
-                              </PopoverButton>
+
+                                  <PopoverButton
+                                    //TODO: MOUSE OVER  onMouseEnter={() => buttonRef.current?.click()}
+                                    className={classNames(
+                                      open
+                                        ? "border-primary text-primary"
+                                        : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
+                                      `relative z-10 -mb-px flex items-center pt-px transition-all duration-200 ease-out uppercase font-semibold ${
+                                        small
+                                          ? "text-xs md:text-sm"
+                                          : "text-xs sm:text-sm md:text-base"
+                                      } ${mainNavigationItem?.cssClass} ${
+                                        mainNavigationItem.cssClass
+                                      }`
+                                    )}
+                                  >
+                                    <ChevronDownIcon
+                                      className={`w-5 h-5 duration-300 transition-rotate ${
+                                        open ? "rotate-180" : "rotate-0"
+                                      }`}
+                                    />
+                                  </PopoverButton>
+                                </div>
+                              ) : (
+                                <PopoverButton
+                                  //TODO: MOUSE OVER  onMouseEnter={() => buttonRef.current?.click()}
+                                  className={classNames(
+                                    open
+                                      ? "border-primary text-primary"
+                                      : "border-dark text-text-color opacity-90 hover:text-text-color hover:opacity-100",
+                                    `relative z-10 -mb-px flex items-center pt-px transition-all duration-200 ease-out uppercase font-semibold ${
+                                      small
+                                        ? "text-xs md:text-sm"
+                                        : "text-xs sm:text-sm md:text-base"
+                                    } ${mainNavigationItem?.cssClass} ${
+                                      mainNavigationItem.cssClass
+                                    }`
+                                  )}
+                                >
+                                  <span>{mainNavigationItem.label}</span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={3}
+                                    stroke="currentColor"
+                                    className={`ml-2 w-4 h-4 transition-all ${
+                                      open ? "rotate-180" : "rotate-0"
+                                    }`}
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                    />
+                                  </svg>
+                                </PopoverButton>
+                              )}
                             </div>
                             {/* DROPDOWN NAV ITEM PANEL */}
                             <Transition
@@ -107,6 +146,7 @@ export default function DesktopNavSecondaryLinkItems({
                                   <>
                                     <div className="relative bg-glass glass-darker max-w-lg text-text-color box-shadow mx-auto rounded-lg z-30 pt-8">
                                       <div className="mx-auto pt-8 pb-8 px-4 w-full h-full max-h-[85vh] overflow-scroll">
+                                        {/* TODO: improve panel layout to separate primary items */}
                                         <div
                                           className={`grid ${panelGridColumns} items-center align-center flex-wrap gap-4`}
                                         >
@@ -222,7 +262,10 @@ export default function DesktopNavSecondaryLinkItems({
                                       </button>
                                     </div>
 
-                                    <div className="absolute bg-[#00000083] rounded-2xl z-0 inset-0" />
+                                    <div
+                                      className="fixed bg-[#00000042] rounded-2xl z-0 inset-0 backdrop-blur-sm"
+                                      onClick={() => close()}
+                                    />
                                   </>
                                 )}
                               </PopoverPanel>
@@ -237,8 +280,8 @@ export default function DesktopNavSecondaryLinkItems({
                         key={mainNavigationItem?.link}
                         link={mainNavigationItem?.link}
                         label={mainNavigationItem?.label}
-                        activeClassName="!text-primary"
-                        cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold p-1 ${
+                        activeClassName="!text-primary border-primary"
+                        cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold p-1 border-b hover:border-primary border-[#ffffff00] ${
                           small
                             ? "text-xs md:text-sm"
                             : "text-xs sm:text-sm md:text-base"

@@ -374,7 +374,7 @@ html {
 
 .body-parsed-text {
   h2 {
-    margin-bottom: 2em;
+    margin-bottom:0.8em;
   }
   h3 {
     margin-bottom: 0.8em;
@@ -385,7 +385,7 @@ html {
     margin-bottom: 2em;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: none;
     font-size: 18px;
     line-height: 28px;
     color: var(--text);

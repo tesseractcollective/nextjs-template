@@ -11,14 +11,14 @@ interface GridBoxProps {
 export default function InsetGridBoxes({ gridBoxData }: GridBoxProps) {
   return (
     <div className="my-0 magic-grid block h-full">
-      <div className="block mx-auto">
+      <div className="block mx-auto max-w-12xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-1 my-4 md:my-1 px-4 md:px-0">
           {gridBoxData.map((gridBoxItem, index) => (
             <LinkItem
               link={gridBoxItem.boxLink}
               key={`${gridBoxItem.boxLink}-${index}`}
               parentCssClass="overflow-hidden"
-              cssClass="group aspect-[4/5] md:aspect-[9/16] block mx-auto overflow-hidden"
+              cssClass="group aspect-[4/5] md:aspect-[9/16] block mx-auto overflow-hidden cursor-pointer"
             >
               <div>
                 {!!gridBoxItem.boxImage?.url && (
@@ -36,10 +36,10 @@ export default function InsetGridBoxes({ gridBoxData }: GridBoxProps) {
                 <div className="absolute inset-0 z-20 ring-0 group-hover:ring-1 transition-all ring-primary ring-inset" />
                 <div className="absolute inset-1 z-10 ring-0 group-hover:ring-2 transition-all ring-secondary ring-inset" />
 
-                <div className="hidden md:inline-block text-lg font-semibold leading-6 !text-text-color absolute bottom-8 inset-x-0">
+                <div className="inline-block text-lg font-semibold leading-6 !text-text-color absolute top-8 inset-x-0">
                   <div>
                     {!!gridBoxItem?.boxTitle && (
-                      <p className="text-text-overlay font-bold uppercase text-2xl text-center mx-auto text-shadow">
+                      <p className="text-text-overlay font-bold uppercase text-5xl text-center mx-auto text-shadow max-w-sm bg-[#ffffff00] border border-primary group-hover:bg-primary px-2 py-1 rounded-md h-full">
                         {gridBoxItem.boxTitle}
                       </p>
                     )}
