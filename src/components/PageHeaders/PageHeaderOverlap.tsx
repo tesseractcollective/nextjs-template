@@ -41,7 +41,6 @@ export default function PageHeaderOverlap({
               width={0}
               height={0}
               sizes="100%"
-              quality={100}
               className="w-full h-full object-cover"
             />
           )}

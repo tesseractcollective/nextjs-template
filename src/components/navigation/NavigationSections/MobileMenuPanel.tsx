@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Transition, TransitionChild } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
@@ -26,6 +26,7 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
   siteLibrary,
 }) => {
   const [activePanel, setActivePanel] = useState("main");
+  const [activeToggle, setActiveToggle] = useState(false);
   const { title, contactPhone, contactEmail, contactName } = siteLibrary;
   const { items, navigationLogo } = navigation;
 
@@ -89,7 +90,7 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                 <div className="absolute inset-0 w-full h-full flex flex-col p-2">
                   {/* Logo Section */}
 
-                  <div className="relative z-10 flex mt-0 mx-4 px-0 pb-2 pt-2 items-center justify-between">
+                  <div className="relative z-10 flex mt-0 px-4 pb-2 pt-2 items-center justify-between">
                     <Link
                       href="/"
                       onClick={() => {
@@ -124,7 +125,7 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                     <div className="relative w-full max-w-max p-0 z-[1001]">
                       <button
                         onClick={() => setOpen(false)}
-                        className="text-primary hover:text-secondary transition-all border-text-color p-2"
+                        className="text-text-color hover:text-secondary transition-all border-text-color p-2 opacity-80 hover:opacity-100 focus-within:opacity-100"
                         aria-label="Close menu"
                       >
                         <XMarkIcon className="w-8 h-8" />
@@ -134,40 +135,103 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
 
                   {/* NAV PANEL SECONDARY ITEMS */}
                   <nav className="px-4 py-2 flex flex-col gap-y-4">
-                    {secondaryItems.map((item) => (
-                      <div key={item.label} className="">
-                        {item.items?.length > 0 ? (
-                          <button
-                            onClick={() => setActivePanel(item.label || "")}
-                            className="group flex w-full items-center justify-between py-2 text-3xl font-bold uppercase text-text-color hover:text-primary focus-within:text-primary"
-                            aria-label={`Open submenu for ${item.label}`}
-                          >
-                            <span>{item.label}</span>
-                            <svg
-                              className="h-5 w-5 text-text-color group-hover:text-primary"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
+                    {secondaryItems.map((item) => {
+                      // ui note this is checking if full row should be a button or not - rb
+                      const hasSubItems = item.items && item.items.length > 0;
+                      const itemHasLink = item.link && item.link !== "";
+                      return (
+                        <div key={item.label} className="">
+                          {hasSubItems ? (
+                            <>
+                              {itemHasLink ? (
+                                <div className="flex w-full flex-row items-center justify-between">
+                                  <LinkItem
+                                    label={item.label}
+                                    link={item.link}
+                                    onClick={() => setOpen(false)}
+                                    cssClass="text-3xl font-bold uppercase text-text-color hover:text-primary focus-within:text-primary"
+                                  />
+                                  <button
+                                    type="button"
+                                    className={`hover:text-secondary transition-all border-text-color p-2 ${
+                                      activeToggle
+                                        ? "text-primary"
+                                        : "text-text-color"
+                                    }`}
+                                    aria-label={`Open submenu for ${item.label}`}
+                                    onClick={() =>
+                                      setActiveToggle(!activeToggle)
+                                    }
+                                  >
+                                    <ChevronDownIcon
+                                      className={`w-8 h-8 duration-300 transition-rotate ${
+                                        activeToggle ? "rotate-180" : "rotate-0"
+                                      }`}
+                                    />
+                                  </button>
+                                </div>
+                              ) : (
+                                <button
+                                  // onClick={() => setActivePanel(item.label || "")}
+                                  onClick={() => setActiveToggle(!activeToggle)}
+                                  className="group flex w-full items-center justify-between py-2 text-3xl font-bold uppercase text-text-color hover:text-primary focus-within:text-primary"
+                                  aria-label={`Open submenu for ${item.label}`}
+                                >
+                                  <span>{item.label}</span>
+                                  <svg
+                                    className={`h-8 w-8 text-text-color group-hover:text-primary transition-all duration-300 ${
+                                      activeToggle
+                                        ? "transform -rotate-90"
+                                        : "rotate-90"
+                                    }`}
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M9 5l7 7-7 7"
+                                    />
+                                  </svg>
+                                </button>
+                              )}
+                              <nav
+                                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                                  activeToggle
+                                    ? "max-h-full opacity-100 translate-y-0"
+                                    : "max-h-0 opacity-0 translate-y-2"
+                                }`}
+                              >
+                                {item.items?.map((subItem) => (
+                                  <div
+                                    key={subItem.label}
+                                    className="py-2 ml-4"
+                                  >
+                                    <LinkItem
+                                      link={subItem.link || "/"}
+                                      cssClass="block py-2 text-xl text-text-color hover:text-primary relative before:content-[''] before:absolute before:left-0 before:right-0 before:h-[1px] before:bg-primary before:top-0 before:opacity-0 before:transition-opacity before:duration-300 after:content-[''] after:absolute after:left-0 after:right-0 after:h-[1px] after:bg-primary after:bottom-0 after:opacity-0 after:transition-opacity after:duration-300 hover:before:opacity-100 hover:after:opacity-100"
+                                      onClick={() => setOpen(false)}
+                                    >
+                                      {subItem.label || ""}
+                                    </LinkItem>
+                                  </div>
+                                ))}
+                              </nav>
+                            </>
+                          ) : (
+                            <LinkItem
+                              link={item.link || "/"}
+                              cssClass="block py-2 text-3xl font-bold uppercase text-text-color hover:text-primary  focus-within:text-primary relative before:content-[''] before:absolute before:left-0 before:right-0 before:h-[1px] before:bg-primary before:top-0 before:opacity-0 before:transition-opacity before:duration-300 after:content-[''] after:absolute after:left-0 after:right-0 after:h-[1px] after:bg-primary after:bottom-0 after:opacity-0 after:transition-opacity after:duration-300 hover:before:opacity-100 hover:after:opacity-100 focus-within:before:opacity-100 focus-within:after:opacity-100"
+                              onClick={() => setOpen(false)}
                             >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 5l7 7-7 7"
-                              />
-                            </svg>
-                          </button>
-                        ) : (
-                          <LinkItem
-                            link={item.link || "/"}
-                            cssClass="block py-2 text-3xl font-bold uppercase text-text-color hover:text-primary  focus-within:text-primary relative before:content-[''] before:absolute before:left-0 before:right-0 before:h-[1px] before:bg-primary before:top-0 before:opacity-0 before:transition-opacity before:duration-300 after:content-[''] after:absolute after:left-0 after:right-0 after:h-[1px] after:bg-primary after:bottom-0 after:opacity-0 after:transition-opacity after:duration-300 hover:before:opacity-100 hover:after:opacity-100 focus-within:before:opacity-100 focus-within:after:opacity-100"
-                            onClick={() => setOpen(false)}
-                          >
-                            {item.label || ""}
-                          </LinkItem>
-                        )}
-                      </div>
-                    ))}
+                              {item.label || ""}
+                            </LinkItem>
+                          )}
+                        </div>
+                      );
+                    })}
                   </nav>
                   {/* NAV PANEL PRIMARY ITEMS */}
                   <nav className="px-4 py-1 mt-auto w-full max-h-max relative">
@@ -247,7 +311,7 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                       </div>
                     </div>
                   </Fade>
-                  <div className="fixed bottom-1 inset-x-0 w-full max-w-max p-4 z-[1001] mx-auto">
+                  <div className="relative w-full max-w-max p-4 z-[1001] mx-auto">
                     <button
                       onClick={() => setOpen(false)}
                       className="text-primary hover:text-secondary transition-all border-text-color flex flex-row items-center justify-center text-xs"
