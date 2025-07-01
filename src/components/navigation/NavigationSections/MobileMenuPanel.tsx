@@ -125,7 +125,7 @@ const MobileMenuPanel: React.FC<MobileMenuPanelProps> = ({
                     <div className="relative w-full max-w-max p-0 z-[1001]">
                       <button
                         onClick={() => setOpen(false)}
-                        className="text-text-color hover:text-secondary transition-all border-text-color p-2 opacity-80 hover:opacity-100 focus-within:opacity-100"
+                        className="text-text-color hover:text-secondary transition-all border-text-color p-2 opacity-80 hover:opacity-100 focus-within:opacity-100 focus-within:text-secondary"
                         aria-label="Close menu"
                       >
                         <XMarkIcon className="w-8 h-8" />

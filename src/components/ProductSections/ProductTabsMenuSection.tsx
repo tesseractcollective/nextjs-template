@@ -3,6 +3,7 @@ import type { ProductFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
 import parse from "html-react-parser";
 import LinkItem from "@/components/LinkItem";
+import BulletsSection from "../elements/BulletsSection";
 
 type ProductTabCategory = {
   title: string;
@@ -12,6 +13,7 @@ type ProductTabCategory = {
   footer: string;
   ctaLink: string;
   ctaText: string;
+  bullets?: string[];
 };
 
 type ProductTabMenu = {
@@ -76,7 +78,7 @@ export default function ProductTabsMenuSection({
                     <Image
                       src={category.image}
                       alt={category.title}
-                      className="w-full h-auto rounded-lg block"
+                      className="w-full h-auto rounded-lg block object-cover"
                       sizes="100%"
                       width={0}
                       height={0}
@@ -102,7 +104,7 @@ export default function ProductTabsMenuSection({
                               alt={product.name}
                               width={100}
                               height={100}
-                              className="w-16 h-16 rounded-lg"
+                              className="w-16 h-16 rounded-lg object-cover"
                             />
                           )}
                           <div className="body-parsed-text">
@@ -124,6 +126,9 @@ export default function ProductTabsMenuSection({
                       );
                     })}
                   </div>
+                  {!!category?.bullets && (
+                    <BulletsSection bullets={category.bullets} />
+                  )}
                   {ctaLink && ctaText && (
                     <LinkItem
                       label={ctaText}

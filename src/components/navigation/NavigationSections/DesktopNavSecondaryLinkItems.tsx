@@ -6,9 +6,8 @@ import {
   Popover,
   PopoverPanel,
   PopoverButton,
-  PopoverBackdrop,
 } from "@headlessui/react";
-import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import LinkItem from "@/components/LinkItem";
@@ -16,17 +15,18 @@ import ReactGA from "react-ga4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Fade } from "react-awesome-reveal";
 import parse from "html-react-parser";
 
 export interface DesktopNavSecondaryLinkItemsProps {
   navigation: NavigationFieldsFragment;
   wrapperClassName: string;
+  linkStyles?: string;
 }
 
 export default function DesktopNavSecondaryLinkItems({
   navigation,
   wrapperClassName,
+  linkStyles,
 }: DesktopNavSecondaryLinkItemsProps) {
   const [small, setSmall] = useState(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -64,7 +64,7 @@ export default function DesktopNavSecondaryLinkItems({
                                     label={mainNavigationItem.label}
                                     link={mainNavigationItem.link}
                                     activeClassName="!text-primary border-primary"
-                                    cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold p-1 border-b hover:border-primary border-[#ffffff00] ${
+                                    cssClass={`${linkStyles} ${
                                       small
                                         ? "text-xs md:text-sm"
                                         : "text-xs sm:text-sm md:text-base"
@@ -139,7 +139,7 @@ export default function DesktopNavSecondaryLinkItems({
                               leaveTo="transform scale-95 opacity-0"
                             >
                               <PopoverPanel
-                                className="w-full max-w-lg mx-auto"
+                                className="max-w-lg"
                                 anchor="bottom"
                               >
                                 {({ close }) => (
@@ -281,7 +281,7 @@ export default function DesktopNavSecondaryLinkItems({
                         link={mainNavigationItem?.link}
                         label={mainNavigationItem?.label}
                         activeClassName="!text-primary border-primary"
-                        cssClass={`flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold p-1 border-b hover:border-primary border-[#ffffff00] ${
+                        cssClass={`${linkStyles} ${
                           small
                             ? "text-xs md:text-sm"
                             : "text-xs sm:text-sm md:text-base"

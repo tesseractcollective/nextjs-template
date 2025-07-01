@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
@@ -131,6 +131,7 @@ export default function BorderNavigation({
                   <DesktopNavSecondaryLinkItems
                     navigation={navigation}
                     wrapperClassName="hidden md:flex flex-1 items-center justify-end max-w-max ml-auto gap-x-4 px-4"
+                    linkStyles="flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold p-1 "
                   />
 
                   {/* mega menu bar */}

@@ -1,18 +1,15 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState } from "react";
 import type {
   NavigationFieldsFragment,
   SiteLibraryFieldsFragment,
 } from "@/graphql/generated/graphql";
-import { Dialog, Transition, TransitionChild } from "@headlessui/react";
-import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import SocialMediaIcons from "@/components/SocialMediaIcons";
-import LinkItem from "@/components/LinkItem";
 import ReactGA from "react-ga4";
-import { Fade } from "react-awesome-reveal";
 import MobileMenuPanel from "./NavigationSections/MobileMenuPanel";
+import AccouncementBar from "./AccouncementBar";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -28,18 +25,12 @@ export default function MinimalNavigation({
   pageNavigationSelection,
 }: NavProps) {
   const [open, setOpen] = useState(false);
-  const [menuImage, setMenuImage] = useState<string | null | undefined>(
-    undefined
-  );
 
   if (!navigations && !siteLibrary) return <></>;
   if (hideNav === true) return <></>;
 
-  const { title, contactPhone, contactEmail, contactName } = siteLibrary;
+  const { title } = siteLibrary;
 
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
   const navigation =
     navigations?.find(
       (navigationTemp) =>
@@ -50,10 +41,19 @@ export default function MinimalNavigation({
         )
     ) || navigations[0];
 
-  const { items, navigationWrapperCssClass } = navigation;
+  const { navigationWrapperCssClass } = navigation;
 
   return (
     <>
+      {navigation?.announcementText && (
+        <AccouncementBar
+          accouncementText={navigation.announcementText}
+          accouncementLink={navigation?.announcementLink || ""}
+          cssClassWrapper="fixed w-full z-[998] text-center !bg-bg-secondary text-text-color bottom-0
+          
+          f"
+        />
+      )}
       <div
         className={`minimal-navigation fixed top-[2px] z-[999] left-0 right-0 transition-all duration-[400ms] ${
           navigationWrapperCssClass ? navigationWrapperCssClass : ""
@@ -71,38 +71,6 @@ export default function MinimalNavigation({
         <header className="relative px-1">
           <nav aria-label="Top" className="mx-auto px-0 my-2">
             <div className="flex items-center justify-between flex-row relative w-full">
-              {/* <Link
-                href="/"
-                className="max-w-max absolute left-0 top-[0.05rem] sm:top-0 transition-all duration-[400ms] cursor-pointer"
-                id={`nav-logo-desktop-${title?.replace(" ", "-")}`}
-                onClick={() => {
-                  ReactGA.event({
-                    category: "Link",
-                    action: "Visit Home",
-                    label: "Visit Home",
-                  });
-                }}
-              >
-                {navigation?.navigationLogo ? (
-                  <>
-                    <span className="sr-only">{title}</span>
-                    <Fade direction="down" triggerOnce>
-                      <Image
-                        className="w-[80px] md:w-[100px] max-h-[80px] cursor-pointer object-contain transition-all duration-[400ms] mr-auto"
-                        src={navigation.navigationLogo?.url}
-                        alt=""
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                      />
-                    </Fade>
-                  </>
-                ) : (
-                  <span className="font-bold text-2xl text-text-color">
-                    {title}
-                  </span>
-                )}
-              </Link> */}
               {/* Desktop menu bar */}
               <div className="absolute right-2 lg:right-initial left-[initial] lg:left-2 max-w-max aspect-1 border-[#00000000] hover:border-primary border top-2 transition-all duration-[400ms]">
                 <button
@@ -123,9 +91,9 @@ export default function MinimalNavigation({
                     className="h-10 lg:h-12 w-10 lg:w-12 group-hover:text-primary transition-all duration-[400ms] shadow-2xl"
                     aria-hidden="true"
                   />
-                  {/* <span className="text-xs group-hover:opacity-100 absolute bottom-[-10px] transition-all duration-[400ms] uppercase font-bold  group-hover:blur-0 text-center left-0 right-0 z-2">
+                  <span className="text-xs group-hover:opacity-100 absolute bottom-0 group-hover:bottom-[-20px] group-focus-visible:bottom-[-20px] transition-all duration-[400ms] uppercase font-bold group-hover:blur-0 text-center left-0 right-0 z-2 group-focus-visible:opacity-100 opacity-0">
                     Menu
-                  </span> */}
+                  </span>
                   <div className="bg-bg backdrop-blur-xl inset-0 h-full w-full -z-1 absolute opacity-50"></div>
                 </button>
               </div>
