@@ -15,10 +15,10 @@ export default function AccouncementBar({
   if (accouncementLink !== "")
     return (
       <LinkItem
-        cssClass={`bg-primary w-full nav-announcement-bar p-2 text-sm uppercase  ${cssClassWrapper}`}
+        cssClass={`bg-primary w-full nav-announcement-bar p-2 text-sm uppercase group ${cssClassWrapper}`}
         link={accouncementLink}
       >
-        <div className="px-4 lg:px-12 w-full mx-auto">
+        <div className="px-4 lg:px-12 w-full mx-auto group-focus-visible:ring-2 group-focus-visible:ring-[blue]">
           {parse(accouncementText)}
         </div>
       </LinkItem>

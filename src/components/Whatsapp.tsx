@@ -25,14 +25,16 @@ export default function Whatsapp({
       <button
         type="button"
         aria-label="Whatsapp"
-        className="fixed floating-whatsapp-button text-[#fff] bg-[#25D366] border-2 border-solid flex items-center align-middle z-[60] rounded-full border-[#fff] aspect-1 bottom-20 md:bottom-20 left-4 md:left-8 w-[40px] h-[40px] md:w-[50px] md:h-[50px] hover:rotate-[15deg] transition-all hover:scale-110 group shadow hover:shadow-xl duration-300"
+        className="fixed floating-whatsapp-button text-[#fff] bg-[#25D366] border-2 border-solid flex items-center align-middle z-[60] rounded-full border-[#fff] aspect-1 bottom-20 md:bottom-20 left-4 md:left-8 w-[40px] h-[40px] md:w-[50px] md:h-[50px] hover:rotate-[15deg] transition-all hover:scale-110 group shadow hover:shadow-xl duration-300 focus:outline-4 focus:outline-offset-4 focus:outline-[blue]"
         onClick={() => setOpen(true)}
       >
         <FontAwesomeIcon
           icon={faWhatsapp as IconProp}
           className="fa-fw h-7 w-7 mx-auto flex"
         />
-        <span className="sr-only">Whatsapp</span>
+        <span className="opacity-0 scale-x-0 absolute group-focus:absolute group-focus:opacity-100 group-focus:bg-bg-secondary group-focus:p-2 group-focus:scale-x-100 group-focus:max-w-max inline-block rounded-full group-focus:left-[70px] transition-all ease-in-out duration-300">
+          Whatsapp
+        </span>
       </button>
       <Transition show={open} as={Fragment}>
         <Dialog as="div" className="relative z-[10000]" onClose={setOpen}>
@@ -66,13 +68,13 @@ export default function Whatsapp({
                   <div className="flex items-start space-x-4">
                     <div className="min-w-0 flex-1">
                       <form action="#" className="relative">
-                        <div className="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-bg">
+                        <div className="rounded-lg shadow-sm ring-1 ring-inset ring-bg">
                           <textarea
                             value={whatsAppMessage}
                             onChange={(e) => setWhatsappMessage(e.target.value)}
                             rows={5}
                             id="whatsapp-input"
-                            className="block w-full resize-none border-0 bg-transparent py-1.5 !text-[#000] placeholder:text-[#333] focus:ring-0 sm:text-sm sm:leading-6 px-2"
+                            className="block w-full resize-none border-0 bg-transparent py-1.5 !text-[#000] placeholder:text-[#333] focus:ring-2 sm:text-sm sm:leading-6 px-2 focus:outline-4 focus:-outline-offset-4"
                             placeholder="WhatsApp Message"
                           />
                           <div className="py-0" aria-hidden="true">

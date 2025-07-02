@@ -10,7 +10,13 @@ import SocialMediaIcons from "@/components/SocialMediaIcons";
 import { Fade } from "react-awesome-reveal";
 import LinkItem from "@/components/LinkItem";
 import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  Keyboard,
+  A11y,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -73,7 +79,19 @@ export default function HeroMediaNetflixSection({
             className="h-full relative"
             grabCursor
             loop
-            modules={[Navigation, Pagination, Autoplay]}
+            modules={[Navigation, Pagination, Autoplay, Keyboard, A11y]}
+            keyboard={{
+              enabled: true,
+              onlyInViewport: true,
+            }}
+            a11y={{
+              enabled: true,
+              prevSlideMessage: "Previous testimonial",
+              nextSlideMessage: "Next testimonial",
+              firstSlideMessage: "This is the first testimonial",
+              lastSlideMessage: "This is the last testimonial",
+            }}
+            watchSlidesProgress
             autoplay={{
               delay: 7000,
               disableOnInteraction: true,
@@ -145,7 +163,7 @@ export default function HeroMediaNetflixSection({
                       </div>
                     )}
 
-                    <div className="flex flex-row flex-wrap justify-center items-center mx-auto w-full gap-x-4">
+                    <div className="flex flex-row flex-wrap justify-start items-center mx-auto w-full gap-x-4">
                       {heroMediaSliderItem?.callToAction?.map(
                         (callToActionItem) => (
                           <div key={Math.random()}>

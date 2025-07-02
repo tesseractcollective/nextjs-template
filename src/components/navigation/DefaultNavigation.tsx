@@ -130,9 +130,7 @@ export default function DefaultNavigation({
                   <Fade direction="down" triggerOnce>
                     <Image
                       className={`w-auto object-contain max-w-[240px] lg:max-w-[288px] transition-all ${
-                        small
-                          ? "h-7 lg:h-8" // 2rem = h-8, 2.5rem = h-10
-                          : "h-10 lg:h-12" // 4rem = h-16, 5rem = h-20
+                        small ? "h-7 lg:h-8" : "h-10 lg:h-12"
                       }`}
                       src={navigation.navigationLogo?.url}
                       alt=""
@@ -153,6 +151,7 @@ export default function DefaultNavigation({
             <DesktopNavSecondaryLinkItems
               navigation={navigation}
               wrapperClassName="hidden h-full lg:flex justify-center"
+              linkStyles="flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold p-1 border-b hover:border-primary border-[#ffffff00]"
             />
 
             <div className="flex flex-1 items-center justify-end max-w-max ml-auto">

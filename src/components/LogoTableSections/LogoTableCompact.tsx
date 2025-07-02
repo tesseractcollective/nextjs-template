@@ -10,7 +10,7 @@ interface LogoTableProps {
 export default function LogoTableCompact({ logoTableItems }: LogoTableProps) {
   return (
     <div>
-      <section className="container mx-auto px-4">
+      <section className="logo-table-compact container mx-auto px-4">
         <div className="py-12">
           <div className="mx-auto max-w-8xl px-6 lg:px-8">
             <div className="-mx-6 grid grid-cols-1 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl">
@@ -25,7 +25,7 @@ export default function LogoTableCompact({ logoTableItems }: LogoTableProps) {
                         {logoTableItem?.logoLink ? (
                           <LinkItem
                             link={`${logoTableItem.logoLink}`}
-                            cssClass="no-underline"
+                            cssClass="no-underline focus:outline-2 focus:outline-offset-2 focus:outline-primary"
                           >
                             <>
                               <Image

@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
 import parse from "html-react-parser";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  A11y,
+  Keyboard,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 import type { TestimonialFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
 import StarCount from "./StarCount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import TripAdvisor from "../../public/svg/tripadvisor.svg";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faGoogle,
   faYelp,
   faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
-import { faF } from "@fortawesome/free-solid-svg-icons";
 interface TestimonialProps {
   query: string;
   testimonials: TestimonialFieldsFragment[];
@@ -26,25 +35,41 @@ export default function Testimonials({
   const filteredTestimonials = testimonials.filter(
     (testimonial) => testimonial.testimonialType === query
   );
+  const buttonClass =
+    "flex outline-none font-bold cursor-pointer transition-all duration-300  text-text-overlay  hover:bg-secondary z-30 !p-4 aspect-1 focus-visible:outline-[#0073E6] focus-visible:outline-2  focus-visible:outline-offset-2";
+  const swiperRef = useRef<SwiperType | null>(null);
   return (
     <div className="w-full">
       {!!filteredTestimonials && filteredTestimonials.length >= 1 && (
-        <div className="testimonial-slider-wrapper w-full mx-auto my-16">
+        <div className="testimonial-slider-wrapper w-full mx-auto my-16 relative">
           <Swiper
+            className="h-full relative"
             grabCursor
-            loop={true}
+            loop
             autoplay={{
-              delay: 4500,
-              disableOnInteraction: false,
+              delay: 7000,
+              disableOnInteraction: true,
               pauseOnMouseEnter: true,
             }}
-            modules={[Navigation, Pagination, Autoplay]}
-            pagination={{
-              clickable: true,
+            onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
             }}
+            modules={[Navigation, Pagination, Autoplay, Keyboard, A11y]}
+            keyboard={{
+              enabled: true,
+              onlyInViewport: true,
+            }}
+            a11y={{
+              enabled: true,
+              prevSlideMessage: "Previous testimonial",
+              nextSlideMessage: "Next testimonial",
+              firstSlideMessage: "This is the first testimonial",
+              lastSlideMessage: "This is the last testimonial",
+            }}
+            watchSlidesProgress
             slidesPerView={1}
-            spaceBetween={30}
-            className="w-full"
+            spaceBetween={0}
+            pagination
           >
             {filteredTestimonials.map((testimonial, index) => (
               <SwiperSlide key={index}>
@@ -232,6 +257,30 @@ export default function Testimonials({
               </SwiperSlide>
             ))}
           </Swiper>
+          <div className="flex flex-row gap-x-2 mx-auto w-full max-w-max absolute bottom-5 right-0">
+            <button
+              type="button"
+              className={`${buttonClass}`}
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <FontAwesomeIcon
+                icon={faChevronLeft as IconProp}
+                className="p-0 aspect-1 m-0 text-xl h-6 w-6"
+              />
+              <span className="sr-only">Move Rotation Back</span>
+            </button>
+            <button
+              type="button"
+              className={`${buttonClass}`}
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <FontAwesomeIcon
+                icon={faChevronRight as IconProp}
+                className="p-0 aspect-1 m-0 text-xl h-6 w-6"
+              />
+              <span className="sr-only">Move Rotation Next</span>
+            </button>
+          </div>
         </div>
       )}
     </div>

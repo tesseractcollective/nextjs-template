@@ -26,7 +26,7 @@ export default function PageHeaderFixed({
 
   return (
     <section
-      className={`relative bg-black w-full fixed-header-wrapper ${
+      className={`relative bg-[black] w-full fixed-header-wrapper ${
         pageHeaderWrapperCssClassProp ? pageHeaderWrapperCssClassProp : ""
       }`}
     >
