@@ -9,6 +9,7 @@ interface GridBoxProps {
 }
 
 export default function CompactGridBoxes({ gridBoxData }: GridBoxProps) {
+  console.log(gridBoxData);
   return (
     <div className="mx-auto max-w-8xl my-8 w-full">
       <Fade direction="left" triggerOnce>
@@ -23,7 +24,8 @@ export default function CompactGridBoxes({ gridBoxData }: GridBoxProps) {
               {gridBoxItem?.boxLink ? (
                 <LinkItem
                   link={gridBoxItem.boxLink}
-                  cssClass="flex flex-col bg-invert hover:bg-primary transition-all all-text-dark py-2 px-0 rounded items-center justify-center gap-4 mx-auto w-full border-text-color border hover:border-primary group"
+                  cssClass="flex flex-col bg-invert hover:bg-primary transition-all all-text-dark py-2 px-0 rounded items-center justify-center mx-auto w-full border-text-color border hover:border-primary group"
+                  label={gridBoxItem.boxTitle}
                 >
                   <>
                     {gridBoxItem?.boxImage?.url && (
@@ -37,11 +39,11 @@ export default function CompactGridBoxes({ gridBoxData }: GridBoxProps) {
                       />
                     )}
                     <div className="flex flex-col">
-                      {gridBoxItem?.boxTitle && (
+                      {/* {gridBoxItem?.boxTitle && (
                         <div className="text-sm uppercase font-bold my-0 py-0 parsed-mb-0 text-center">
                           {gridBoxItem.boxTitle}
                         </div>
-                      )}
+                      )} */}
 
                       {gridBoxItem?.boxDescription && (
                         <div className="body-parsed-text text-xs my-0 opacity-70 py-0 parsed-mb-0 max-w-[200px text-center">
