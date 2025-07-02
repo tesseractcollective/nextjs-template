@@ -144,7 +144,7 @@ export default function DesktopNavSecondaryLinkItems({
                               >
                                 {({ close }) => (
                                   <>
-                                    <div className="relative bg-glass glass-darker max-w-lg text-text-color box-shadow mx-auto rounded-lg z-30 pt-8">
+                                    <div className="relative bg-glass glass-darker max-w-lg text-text-color box-shadow mx-auto rounded-lg z-[559] pt-8">
                                       <div className="mx-auto pt-8 pb-8 px-4 w-full h-full max-h-[85vh] overflow-scroll">
                                         {/* TODO: improve panel layout to separate primary items */}
                                         <div
@@ -263,7 +263,7 @@ export default function DesktopNavSecondaryLinkItems({
                                     </div>
 
                                     <div
-                                      className="fixed bg-[#00000042] rounded-2xl z-0 inset-0 backdrop-blur-sm"
+                                      className="fixed bg-[#00000042] rounded-2xl z-[1] inset-0 backdrop-blur-sm"
                                       onClick={() => close()}
                                     />
                                   </>

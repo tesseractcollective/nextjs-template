@@ -214,11 +214,11 @@ const Card: React.FC<CardProps> = ({ gridBox, index, layout = false }) => {
   );
 
   const handleOpen = (): void => {
-    if (gridBox.boxLink) {
-      // If there's a link, navigate instead of opening modal
-      window.open(gridBox.boxLink, "_blank");
-      return;
-    }
+    // if (gridBox.boxLink) {
+    //   // If there's a link, navigate instead of opening modal
+    //   window.open(gridBox.boxLink, "_blank");
+    //   return;
+    // }
     setOpen(true);
   };
 
@@ -235,7 +235,7 @@ const Card: React.FC<CardProps> = ({ gridBox, index, layout = false }) => {
   return (
     <>
       <AnimatePresence>
-        {open && !gridBox.boxLink && (
+        {open && (
           <div className="fixed inset-0 z-50 h-screen overflow-auto flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0 }}

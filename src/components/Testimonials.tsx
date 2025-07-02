@@ -35,22 +35,13 @@ export default function Testimonials({
   const filteredTestimonials = testimonials.filter(
     (testimonial) => testimonial.testimonialType === query
   );
+  const buttonClass =
+    "flex outline-none font-bold cursor-pointer transition-all duration-300  text-text-overlay  hover:bg-secondary z-30 !p-4 aspect-1 focus-visible:outline-[#0073E6] focus-visible:outline-2  focus-visible:outline-offset-2";
   const swiperRef = useRef<SwiperType | null>(null);
   return (
     <div className="w-full">
       {!!filteredTestimonials && filteredTestimonials.length >= 1 && (
-        <div className="testimonial-slider-wrapper w-full mx-auto my-16">
-          <button
-            type="button"
-            className="flex outline-none font-bold cursor-pointer transition-all duration-300 rotate-0 hover:rotate-[370deg] focus-within:rotate-[370deg] text-text-overlay absolute left-10 bottom-10 border-bg-secondary border hover:bg-secondary rounded-[999px] z-30 !p-4 aspect-1 hover-circle-shadow focus-visible:outline-[#0073E6] focus-visible:outline-2  focus-visible:outline-offset-2"
-            onClick={() => swiperRef.current?.slideNext()}
-          >
-            <FontAwesomeIcon
-              icon={faChevronLeft as IconProp}
-              className="p-0 aspect-1 m-0 text-xl h-6 md:h-8 w-6 md:w-8"
-            />
-            <span className="sr-only">Move Rotation Back</span>
-          </button>
+        <div className="testimonial-slider-wrapper w-full mx-auto my-16 relative">
           <Swiper
             className="h-full relative"
             grabCursor
@@ -266,17 +257,30 @@ export default function Testimonials({
               </SwiperSlide>
             ))}
           </Swiper>
-          <button
-            type="button"
-            className="flex outline-none font-bold cursor-pointer transition-all duration-300 rotate-0 hover:rotate-[-370deg] text-text-overlay absolute right-10 bottom-10 border-bg-secondary border hover:bg-secondary rounded-[999px] z-30 !p-4 aspect-1 hover-circle-shadow focus-within:rotate-[-370deg] focus-visible:outline-[#0073E6] focus-visible:outline-2  focus-visible:outline-offset-2"
-            onClick={() => swiperRef.current?.slideNext()}
-          >
-            <FontAwesomeIcon
-              icon={faChevronRight as IconProp}
-              className="p-0 aspect-1 m-0 text-xl h-6 md:h-8 w-6 md:w-8"
-            />
-            <span className="sr-only">Move Rotation Next</span>
-          </button>
+          <div className="flex flex-row gap-x-2 mx-auto w-full max-w-max absolute bottom-5 right-0">
+            <button
+              type="button"
+              className={`${buttonClass}`}
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <FontAwesomeIcon
+                icon={faChevronLeft as IconProp}
+                className="p-0 aspect-1 m-0 text-xl h-6 w-6"
+              />
+              <span className="sr-only">Move Rotation Back</span>
+            </button>
+            <button
+              type="button"
+              className={`${buttonClass}`}
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <FontAwesomeIcon
+                icon={faChevronRight as IconProp}
+                className="p-0 aspect-1 m-0 text-xl h-6 w-6"
+              />
+              <span className="sr-only">Move Rotation Next</span>
+            </button>
+          </div>
         </div>
       )}
     </div>
