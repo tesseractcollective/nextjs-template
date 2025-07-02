@@ -285,13 +285,12 @@ const Card: React.FC<CardProps> = ({ gridBox, index, layout = false }) => {
                       {parse(gridBox.boxDescription?.html) || ""}
                     </p>
                   )}
-                  {gridBox.boxLink && (
+                  {gridBox?.boxLink && (
                     <LinkItem
                       link={gridBox.boxLink}
                       cssClass="inline-flex items-center px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
-                    >
-                      Learn More
-                    </LinkItem>
+                      label="Learn More"
+                    ></LinkItem>
                   )}
                 </div>
               </div>
