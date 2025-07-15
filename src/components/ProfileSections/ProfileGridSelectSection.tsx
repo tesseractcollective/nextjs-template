@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 import Image from "next/image";
 import type { ProfileFieldsFragment } from "@/graphql/generated/graphql";
-import SocialMediaIcons from "@/components/SocialMediaIcons";
 import LinkItem from "@/components/LinkItem";
 
 interface ProfilesProps {
@@ -23,9 +21,11 @@ export default function ProfileGridSection({
   const primaryProfiles = profiles.filter(
     (profile) => profile?.primaryProfile === true
   );
+  const isUnder8 = primaryProfiles.length <= 7;
+  console.log(isUnder8);
   return (
     <div className="relative">
-      <section className="mx-auto w-full  flex flex-wrap">
+      <section className="mx-auto w-full flex flex-wrap">
         <div className="w-full transition">
           {!!profileSectionTitle && (
             <h3 className="text-2xl md:text-5xl mx-auto opacity-100 uppercase text-center font-bold mb-8">
@@ -33,7 +33,13 @@ export default function ProfileGridSection({
             </h3>
           )}
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 w-full mx-0 transition">
+        <div
+          className={`grid grid-cols-2 w-full mx-0 transition ${
+            isUnder8
+              ? "lg:grid-cols-3 xl:grid-cols-3"
+              : "lg:grid-cols-3 xl:grid-cols-4"
+          }`}
+        >
           {primaryProfiles
             .map((profile, index) => {
               const isHovered =

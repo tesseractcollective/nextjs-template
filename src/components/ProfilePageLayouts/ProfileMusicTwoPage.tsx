@@ -81,7 +81,7 @@ export default function ProfileMusicTwoPage({
           <link rel="shortcut icon" href={siteLibrary.favicon.url} />
         )}
       </Head>
-      <section className="bg-bg py-16">
+      <section className="bg-bg py-16 max-w-8xl mx-auto w-full">
         <div className="max-w-12xl flex flex-col md:flex-row items-center justify-center md:justify-between mx-auto w-full px-4 py-8">
           <Fade direction="up" cascade damping={0.25} triggerOnce>
             {profile.profileLogo?.url && (
@@ -141,7 +141,7 @@ export default function ProfileMusicTwoPage({
         </div>
       </section>
       <section className="bg-invert">
-        <div className="px-4 overflow-x-hidden py-8">
+        <div className="px-4 overflow-x-hidden py-8 max-w-8xl mx-auto w-full">
           <div className="mx-auto container relative flex flex-col md:items-center md:justify-center">
             {profile.miniBio && (
               <div className="px-2 text-4xl font-bold tracking-tight text-text-color md:text-5xl max-w-4xl text-center mx-auto relative block my-10 md:mt-12 md:mb-32">
@@ -280,7 +280,7 @@ export default function ProfileMusicTwoPage({
         </div>
       </section>
       {/* {!!profile.name && <SpotifyAlbums artistId="4aXXDj9aZnlshx7mzj3W1N" />} */}
-      <section className="container mx-auto">
+      <section className="max-w-8xl mx-auto w-full">
         {!!profile?.tourWidgetiFrame && (
           <div
             className="my-16 mx-auto max-w-5xl px-4 rounded"

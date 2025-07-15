@@ -31,10 +31,10 @@ export default function PageHeaderParallax({
       {/* Aspect ratio container */}
       <div className="relative w-full">
         {/* This div maintains 16:9 aspect ratio */}
-        <div className="pb-[70%] md:pb-[56.25%] relative w-full">
+        <div className="pb-[100%] md:pb-[56.25%] relative w-full">
           {/* Background image container */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed opacity-60"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed opacity-60 py-8"
             style={{
               backgroundImage: `url(${pageHeaderImageProp})`,
               backgroundSize: "cover",
@@ -51,9 +51,9 @@ export default function PageHeaderParallax({
               )}
 
               {!!pageHeaderSubtitleProp && (
-                <h2 className="text-shadow py-0 text-center uppercase tracking-widest font-bold text-base sm:text-lg text-text-overlay max-w-2xl mx-auto w-full">
+                <p className="text-shadow py-0 text-center uppercase tracking-widest font-bold text-base md:text-md text-text-overlay max-w-xl mx-auto w-full">
                   {pageHeaderSubtitleProp}
-                </h2>
+                </p>
               )}
 
               {!!pageCallToAction && pageCallToAction?.length > 0 && (

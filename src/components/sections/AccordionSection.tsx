@@ -28,20 +28,32 @@ export default function Accordion({
           <Disclosure key={item.contentHeader?.html}>
             {({ open }) => (
               <div
-                className={`overflow-hidden rounded-lg bg-bg backdrop-blur-lg outline transition-all ${
-                  open ? "outline-primary" : "outline-none"
+                className={`overflow-hidden bg-bg backdrop-blur-lg transition-all border-0 border-b ${
+                  open ? "border-primary" : "border-text-color"
                 }`}
               >
                 {!!item.contentHeader?.html && (
-                  <Disclosure.Button className="flex w-full items-center justify-between px-6 py-4 text-left transition-all duration-200 hover:bg-white/10">
-                    <span className={`text-lg font-bold text-text-color`}>
+                  <Disclosure.Button className="flex w-full items-center justify-between px-6 py-8 text-left transition-all duration-300 hover:bg-white/10">
+                    <span
+                      className={`text-lg font-bold transition-all duration-300 ${
+                        open ? "all-text-primary" : "text-text-color"
+                      }`}
+                    >
                       {parse(item.contentHeader?.html)}
                     </span>
-                    <ChevronUpIcon
-                      className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${
-                        open ? "rotate-180 transform" : ""
+                    <div
+                      className={`icon-wrapper rounded-full border p-1 transition-all duration-300 ${
+                        open ? "border-primary" : "border-text-color"
                       }`}
-                    />
+                    >
+                      <ChevronUpIcon
+                        className={`h-6 w-6 transition-all duration-300 ${
+                          open
+                            ? "rotate-0 transform text-primary"
+                            : "rotate-180 text-text-color"
+                        }`}
+                      />
+                    </div>
                   </Disclosure.Button>
                 )}
 
@@ -73,7 +85,7 @@ export default function Accordion({
                     )}
 
                     {item.contentDescription?.html && (
-                      <div className="prose prose-invert max-w-none">
+                      <div className="prose prose-invert max-w-none body-parsed-text">
                         {parse(item.contentDescription?.html)}
                       </div>
                     )}
