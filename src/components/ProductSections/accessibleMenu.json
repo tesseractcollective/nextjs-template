@@ -1,0 +1,116 @@
+{
+  "accessibleMenu": {
+    "title": "MENU",
+    "categories": [
+      {
+        "image": "",
+        "query": "coldShareables",
+        "title": "Cold Shareables",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Shareable plates that are cold and refreshing, perfect for sharing with friends and family."
+      },
+      {
+        "image": "",
+        "query": "hotShareables",
+        "title": "Hot Shareables",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Shareable plates that are hot and ready, perfect for sharing with friends and family."
+      },
+      {
+        "image": "",
+        "query": "sopaEnsalada",
+        "title": "Soups + Salads",
+        "footer": "+ Beef (11), Chicken (9), Shrimp (13), Salmon (13)",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Our dressings are crafted in-house daily, featuring exclusive recipes perfected by our executive chef."
+      },
+      {
+        "image": "",
+        "query": "sides",
+        "title": "Sides",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Delicious sides to complement your meal, perfect for sharing or enjoying on your own."
+      },
+      {
+        "image": "",
+        "query": "tacos",
+        "title": "Tacos",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Delicious tacos with a variety of fillings, perfect for a quick and tasty meal."
+      },
+      {
+        "image": "",
+        "query": "fromTheSea",
+        "title": "From The Sea",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Exquisite seafood selection."
+      },
+      {
+        "image": "",
+        "query": "losCortes",
+        "title": "Los Cortes",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "A selection of our finest cuts, perfect for meat lovers."
+      },
+      {
+        "image": "",
+        "query": "desserts",
+        "title": "Desserts",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Perfectly balanced desserts to satisfy your sweet tooth."
+      },
+      {
+        "image": "",
+        "query": "digestif",
+        "title": "Digestif",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "The best way to end your meal"
+      },
+      {
+        "image": "",
+        "query": "signatureCocktails",
+        "title": "Signature Cocktails",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Our expertly crafted signature cocktails featuring premium spirits and unique Mexican-inspired flavors."
+      },
+      {
+        "image": "",
+        "query": "margaritas",
+        "title": "Margaritas",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Classic and innovative margaritas made with premium tequilas and fresh ingredients."
+      },
+      {
+        "image": "",
+        "query": "mocktails",
+        "title": "Mocktails",
+        "footer": "",
+        "ctaLink": "https://www.opentable.com/r/polanco-reservations-fort-worth?restref=1424344&lang=en-US&ot_source=Restaurant%20website",
+        "ctaText": "Book a table",
+        "description": "Refreshing non-alcoholic cocktails with all the flavor and sophistication of our signature drinks."
+      }
+    ],
+    "backgroundImage": "https://us-west-2.graphassets.com/ALeJ6VCrR0atyPjIJxTvxz/output=format:jpg/cm5ljemy1hdmo07lmvnc9hv5k"
+  }
+}

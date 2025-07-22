@@ -30,7 +30,7 @@ export default function Album({ album, siteLibrary, albums }: AlbumProps) {
     videoBox,
     description,
   } = album;
-  if (!siteLibrary) return <></>;
+  if (!siteLibrary) return null;
   const { isSpanish, youtubeApiKey } = siteLibrary;
   const filteredAlbums = albums?.filter(
     (tempAlbum) => album.albumSlug !== tempAlbum.albumSlug

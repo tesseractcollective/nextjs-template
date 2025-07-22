@@ -35,6 +35,9 @@ export default function DesktopNavSecondaryLinkItems({
     return classes.filter(Boolean).join(" ");
   }
   const panelGridColumns = items?.length >= 1 ? "grid-cols-1" : "grid-cols-1";
+  const invertDropdown =
+    navigation.navigationWrapperCssClass?.includes("invert-dropdown");
+  console.log(invertDropdown);
   return (
     <div className={`relative ${wrapperClassName}`}>
       {/* START Desktop Flyout menus */}
@@ -144,7 +147,13 @@ export default function DesktopNavSecondaryLinkItems({
                               >
                                 {({ close }) => (
                                   <>
-                                    <div className="relative bg-glass glass-darker max-w-lg text-text-color box-shadow mx-auto rounded-lg z-[559] pt-8">
+                                    <div
+                                      className={`relative bg-glass max-w-lg text-primary box-shadow mx-auto rounded-lg z-[559] pt-8 ${
+                                        invertDropdown
+                                          ? "glass-white"
+                                          : "glass-darker"
+                                      }`}
+                                    >
                                       <div className="mx-auto pt-8 pb-8 px-4 w-full h-full max-h-[85vh] overflow-scroll">
                                         {/* TODO: improve panel layout to separate primary items */}
                                         <div
@@ -166,7 +175,7 @@ export default function DesktopNavSecondaryLinkItems({
                                                         key={item?.link}
                                                         link={item?.link}
                                                         parentCssClass="w-full"
-                                                        cssClass={`border border-[#ffffff00] hover:border-primary rounded gap-x-2 flex flex-row items-center font-semibold text-text-color transition-all group-hover:text-primary text-lg bg-[#ffffff05] ${item?.cssClass}`}
+                                                        cssClass={`border border-[#ffffff00] hover:border-primary rounded gap-x-2 flex flex-row items-center font-semibold text-primary opacity-100 transition-all group-hover:text-primary text-lg bg-[#ffffff05] ${item?.cssClass}`}
                                                         sameTab={item?.sameTab}
                                                       >
                                                         {item?.image && (
@@ -208,7 +217,7 @@ export default function DesktopNavSecondaryLinkItems({
                                                       key={item?.link}
                                                       link={item?.link}
                                                       parentCssClass="w-full"
-                                                      cssClass={`border-[#000000] hover:border-primary rounded gap-x-2  flex flex-row items-center font-semibold text-text-color transition-all group-hover:text-primary text-xs xl:text-sm ${item?.cssClass}`}
+                                                      cssClass={`border-[#000000] hover:border-primary rounded gap-x-2  flex flex-row items-center font-semibold text-secondary transition-all group-hover:text-primary text-xs xl:text-sm ${item?.cssClass}`}
                                                       sameTab={item?.sameTab}
                                                     >
                                                       {item?.image && (
@@ -244,7 +253,7 @@ export default function DesktopNavSecondaryLinkItems({
                                       </div>
                                       <button
                                         type="button"
-                                        className="absolute bottom-1 right-1 inline-flex items-center justify-center rounded-md p-1 text-text-color outline transition-all outline-none hover:text-primary mx-auto max-w-max uppercase text-[10px] hover:bg-dark group focus-within:bg-dark focus-within:ring-1 ring-primary gap-x-1 opacity-60 hover:opacity-100"
+                                        className="absolute bottom-1 right-1 inline-flex items-center justify-center rounded-md p-1 outline transition-all outline-none text-secondary hover:text-primary mx-auto max-w-max uppercase text-[10px] hover:bg-dark group focus-within:bg-dark focus-within:ring-1 ring-primary gap-x-1 opacity-100"
                                         onClick={() => {
                                           close();
                                           ReactGA.event({

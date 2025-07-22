@@ -145,7 +145,7 @@ export default function ProgressNavigation({
                 </div>
                 <DesktopNavSecondaryLinkItems
                   navigation={navigation}
-                  wrapperClassName="hidden h-full lg:flex mx-auto"
+                  wrapperClassName={`hidden h-full lg:flex mx-auto ${navigationWrapperCssClass}`}
                   linkStyles={`flex items-center font-medium text-text-color opacity-100  hover:opacity-100 transition-all capitalize font-semibold relative group ${
                     small
                       ? "text-xs md:text-sm"

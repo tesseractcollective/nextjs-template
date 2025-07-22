@@ -117,11 +117,11 @@ export default function BorderNavigation({
                       {navigation.announcementLink ? (
                         <LinkItem
                           label={navigation.announcementText}
-                          cssClass="flex m-0 p-2 items-center justify-center text-xs md:text-sm font-semibold text-text-color hover:text-primary"
+                          cssClass="flex m-0 p-2 items-center justify-center text-xs lg:text-sm font-semibold text-text-color hover:text-primary"
                           link={navigation.announcementLink}
                         ></LinkItem>
                       ) : (
-                        <p className="flex m-0 p-2 items-center justify-center text-xs md:text-sm font-semibold">
+                        <p className="flex m-0 p-2 items-center justify-center text-xs lg:text-sm font-semibold">
                           {parse(navigation.announcementText)}
                         </p>
                       )}
@@ -130,12 +130,12 @@ export default function BorderNavigation({
 
                   <DesktopNavSecondaryLinkItems
                     navigation={navigation}
-                    wrapperClassName="hidden md:flex flex-1 items-center justify-end max-w-max ml-auto gap-x-4 px-4"
+                    wrapperClassName={`hidden lg:flex flex-1 items-center justify-end max-w-max ml-auto gap-x-4 px-4 ${navigationWrapperCssClass}`}
                     linkStyles="flex items-center font-medium text-text-color opacity-90 hover:text-text-color hover:opacity-100 transition-all uppercase font-semibold p-1 "
                   />
 
                   {/* mega menu bar */}
-                  <div className="hidden md:flex flex-1 items-center justify-between max-w-max h-full bg-primary">
+                  <div className="hidden lg:flex flex-1 items-center justify-between max-w-max h-full bg-primary">
                     <Fade direction="right" triggerOnce>
                       {!!items &&
                         items
@@ -148,8 +148,8 @@ export default function BorderNavigation({
                               key={mainNavigationItem?.link}
                               link={mainNavigationItem?.link}
                               label={mainNavigationItem?.label}
-                              cssClass={`flex items-center text-xs md:text-base font-bold text-text-color opacity-100 hover:text-text-color 
-                              hover:opacity-100 border-1 border-primary cursor-pointer px-2 md:px-8 md:py-5 uppercase transition-all ${
+                              cssClass={`flex items-center text-xs lg:text-base font-bold text-text-color opacity-100 hover:text-text-color 
+                              hover:opacity-100 border-1 border-primary cursor-pointer px-2 lg:px-8 lg:py-5 uppercase transition-all ${
                                 isScrolled
                                   ? "bg-primary hover:bg-secondary"
                                   : "bg-secondary hover:bg-primary"
@@ -161,7 +161,7 @@ export default function BorderNavigation({
                   </div>
 
                   {/* PRIMARY ITEM */}
-                  <div className="flex md:hidden flex-1 items-center justify-between max-w-max h-full px-4">
+                  <div className="flex lg:hidden flex-1 items-center justify-between max-w-max h-full px-4">
                     <Fade direction="right" triggerOnce>
                       <button
                         type="button"
