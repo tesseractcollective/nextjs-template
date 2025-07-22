@@ -30,8 +30,7 @@ export default function ProductA11yMenuItem({
             <span className="text-[red]">{`$${product.price}`}</span>
           )}
         </h3>
-
-        {product.description?.html && (
+        {product?.description && (
           <div className="lowercase mb-1">
             {parse(product.description.html)}
           </div>
@@ -110,9 +109,9 @@ export default function ProductA11yMenuItem({
     ),
     [product]
   );
-  const buttonClass = "p-2 rounded !text-[18px] font-bold";
+
   return (
-    <div className={`flex flex-col-reverse items-start w-full`}>
+    <div className="flex flex-col-reverse items-start w-full">
       <Speech
         text={textSpeech}
         pitch={1.2}
@@ -121,7 +120,7 @@ export default function ProductA11yMenuItem({
         highlightText={true}
         startBtn={
           <button
-            className={`bg-[#58a9ff] !text-[white] ${buttonClass}`}
+            className="bg-[#58a9ff] !text-[white] p-2 rounded !text-[18px] font-bold"
             type="button"
             aria-label={product.name}
           >
@@ -130,7 +129,7 @@ export default function ProductA11yMenuItem({
         }
         stopBtn={
           <button
-            className={`bg-[#ffc107] text-[black ${buttonClass}`}
+            className="bg-[#ffc107] text-[black] p-2 rounded !text-[18px] font-bold"
             type="button"
           >
             STOP

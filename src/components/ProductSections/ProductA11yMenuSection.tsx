@@ -3,11 +3,11 @@ import type { ProductFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
 import parse from "html-react-parser";
 import BulletsSection from "../elements/BulletsSection";
-import "./ProductA11yMenuSection.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faFont } from "@fortawesome/free-solid-svg-icons";
 import ProductA11yMenuItem from "./ProductA11yMenuItem";
+import "./ProductA11yMenuSection.scss";
 
 type ProductTabCategory = {
   title: string;
@@ -35,8 +35,7 @@ export default function ProductA11yMenuSection({
   products,
 }: ProductsProps) {
   const [textScale, setTextScale] = useState("page-lg");
-  if (!products) return null;
-
+  if (!products) return <></>;
   const { title, categories } = productTabMenuData;
   if (!categories) return null;
   const textMultiplier = (num: string) => {
@@ -91,7 +90,7 @@ export default function ProductA11yMenuSection({
                 product?.productType?.toLowerCase() ===
                   category.query?.toLowerCase() || ""
             );
-            const { ctaLink, ctaText, footer, title, image } = category;
+            const { footer, title } = category;
 
             return (
               <div
@@ -134,8 +133,7 @@ export default function ProductA11yMenuSection({
                               className="w-16 h-16 rounded-lg object-cover"
                             />
                           )}
-
-                          <ProductA11yMenuItem product={product} />
+                          {product && <ProductA11yMenuItem product={product} />}
                         </article>
                       );
                     })}
