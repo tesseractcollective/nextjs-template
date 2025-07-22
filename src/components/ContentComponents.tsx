@@ -108,7 +108,7 @@ export default function ContentComponents({
       {elements?.elementJson?.accessibleMenu && !!products && (
         <section
           className="product-menu-wrapper-content-components w-full"
-          id="product-menu"
+          id="a11y-menu"
         >
           <ProductA11yMenuSection
             products={products}
