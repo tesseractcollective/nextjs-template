@@ -26,6 +26,7 @@ import { Event } from "@/components/Calendar/calendarHelpers";
 import Calendar from "@/components/Calendar/Calendar";
 import BandsintownEventsDataSort from "@/components/elements/BandsintownEventsDataSort";
 import React from "react";
+import ProductA11yMenuSection from "./ProductSections/ProductA11yMenuSection";
 
 type ContentTagsType =
   PageFieldsFragment["layoutBlocks"][number]["layoutBlockColumns"][number]["contentTags"];
@@ -103,6 +104,20 @@ export default function ContentComponents({
             productTabMenuData={elements.elementJson.productTabMenu}
           />
         </section>
+      )}
+      {elements?.elementJson?.accessibleMenu && !!products && (
+        <section
+          className="product-menu-wrapper-content-components w-full"
+          id="product-menu"
+        >
+          <ProductA11yMenuSection
+            products={products}
+            productTabMenuData={elements.elementJson.accessibleMenu}
+          />
+        </section>
+      )}
+      {elements?.elementJson?.ProductsAll && !!products && (
+        <ProductAllSection products={products} />
       )}
       {elements?.elementJson?.ProductsAll && !!products && (
         <ProductAllSection products={products} />

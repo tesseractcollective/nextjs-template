@@ -229,7 +229,7 @@ export default function DimensionNavigation({
                                     key={mainNavigationItem.label}
                                     link={mainNavigationItem.link || "/"}
                                     sameTab={mainNavigationItem?.sameTab}
-                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-6xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-left"
+                                    cssClass="block py-1 text-text-color max-w-max mx-auto text-3xl lg:text-6xl w-full transition-all duration-[400ms] uppercase font-bold hover:text-primary hover:skew-x-[8deg] hover:skew-y-[8deg] focus:text-primary focus:skew-x-[8deg] focus:skew-y-[8deg] text-center"
                                     onClick={() => setOpen(false)}
                                   >
                                     <span>{mainNavigationItem.label}</span>
@@ -249,16 +249,16 @@ export default function DimensionNavigation({
                         fadeDirection="up"
                         cssClass="my-2 mx-0 flex flex-row flex-wrap social-icons-row items-center justify-center text-text-color gap-2 overflow-hidden mx-auto py-0 max-w-max gap-x-4"
                       />
-                      <div className="text-left">
+                      <div className="text-center mx-auto w-full">
                         {!!contactName && (
-                          <p className="text-text-color text-xs font-bold">
+                          <p className="text-text-color text-xs font-bold flex flex-col items-center justify-center">
                             <span>{contactName}</span>
                           </p>
                         )}
                         {!!contactPhone && (
                           <a
                             href={`tel:${contactPhone.replace(/-/g, "")}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max mx-auto"
                           >
                             <span className="font-semibold">
                               {contactPhone}
@@ -268,7 +268,7 @@ export default function DimensionNavigation({
                         {!!contactEmail && (
                           <a
                             href={`mailto:${contactEmail}`}
-                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max"
+                            className="text-xs font-semibold block my-1 text-link !border-none hover:!border-none text-text-color max-w-max mx-auto"
                           >
                             <span className="font-semibold">
                               {contactEmail}

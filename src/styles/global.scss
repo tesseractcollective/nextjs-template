@@ -592,6 +592,15 @@ html {
   }
 }
 
+.all-text-black {
+  p, h1, h2, h3, h4, h6, a, button, blockquote, li, li div {
+    color: #000 !important;
+  }
+  .text-primary {
+    color: var(--primary) !important;
+  }
+}
+
 .all-text-primary {
   p, h1, h2, h3, h4, h6, a, button, blockquote {
     color: var(--primary) !important;

@@ -20,7 +20,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} ${siteLibrary.siteLibrary?.siteCssBodyClass}`}>
+      <body
+        className={`${inter.className} ${siteLibrary.siteLibrary?.siteCssBodyClass}`}
+      >
         {children}
       </body>
     </html>

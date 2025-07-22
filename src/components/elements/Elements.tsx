@@ -54,7 +54,7 @@ interface ElementsProps {
 }
 
 export default function LayoutBlocks({ elements, siteLibrary }: ElementsProps) {
-  if (!elements) return <></>;
+  if (!elements) return null;
 
   const {
     iFrameCode,
