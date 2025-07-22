@@ -7606,6 +7606,11 @@ react-text-loop-next@^0.0.3:
     cxs "^6.2.0"
     react-motion "^0.5.2"
 
+react-text-to-speech@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-text-to-speech/-/react-text-to-speech-2.1.2.tgz#b31239425bda1e3140b89c7ae67aed54b94da344"
+  integrity sha512-RC/0tdIZm3sG18BKBgeMjbPhDpKtsTJqIkt4bnFCupPbM/ITB/833TJN3Bh+kFeaTOBh14HYgIRi3FL4H54X8Q==
+
 react@18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"

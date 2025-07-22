@@ -1,19 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import type { ProductFieldsFragment } from "@/graphql/generated/graphql";
 import Image from "next/image";
 import parse from "html-react-parser";
-import LinkItem from "@/components/LinkItem";
 import BulletsSection from "../elements/BulletsSection";
 import "./ProductA11yMenuSection.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {
-  faFish,
-  faFont,
-  faLeaf,
-  faPepperHot,
-  faTree,
-} from "@fortawesome/free-solid-svg-icons";
+import { faFont } from "@fortawesome/free-solid-svg-icons";
+import ProductA11yMenuItem from "./ProductA11yMenuItem";
 
 type ProductTabCategory = {
   title: string;
@@ -41,11 +35,10 @@ export default function ProductA11yMenuSection({
   products,
 }: ProductsProps) {
   const [textScale, setTextScale] = useState("page-lg");
-  if (!products) return <></>;
+  if (!products) return null;
 
   const { title, categories } = productTabMenuData;
   if (!categories) return null;
-  console.log(categories);
   const textMultiplier = (num: string) => {
     return setTextScale(num);
   };
@@ -61,6 +54,7 @@ export default function ProductA11yMenuSection({
             onClick={() => textMultiplier("page-lg")}
             type="button"
             className={buttonClass}
+            aria-label="Scale page text large"
           >
             <FontAwesomeIcon
               icon={faFont as IconProp}
@@ -71,6 +65,7 @@ export default function ProductA11yMenuSection({
             onClick={() => textMultiplier("page-xl")}
             type="button"
             className={buttonClass}
+            aria-label="Scale page text x-large"
           >
             <FontAwesomeIcon
               icon={faFont as IconProp}
@@ -81,6 +76,7 @@ export default function ProductA11yMenuSection({
             onClick={() => textMultiplier("page-2xl")}
             type="button"
             className={buttonClass}
+            aria-label="Scale page text xx-large"
           >
             <FontAwesomeIcon
               icon={faFont as IconProp}
@@ -139,58 +135,7 @@ export default function ProductA11yMenuSection({
                             />
                           )}
 
-                          <h3 className="item-header flex flex-row justify-between items-start font-semibold w-full">
-                            <span className="text-[black]">{product.name}</span>
-                            {product?.price && (
-                              <span className="text-[red]">{`$${product.price}`}</span>
-                            )}
-                          </h3>
-
-                          {product.description?.html && (
-                            <div className="lowercase mb-1">
-                              {parse(product.description?.html)}
-                            </div>
-                          )}
-                          <div className="diet-pills flex flex-row py-2">
-                            {product.productJson?.peanut && (
-                              <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max">
-                                <FontAwesomeIcon
-                                  icon={faTree as IconProp}
-                                  title="Peanut"
-                                  className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[black]"
-                                />
-                                <span>Peanuts</span>
-                              </p>
-                            )}
-                            {product.productJson?.seafood && (
-                              <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max">
-                                <FontAwesomeIcon
-                                  icon={faFish as IconProp}
-                                  title="Seafood"
-                                  className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[black]"
-                                />
-                                <span>Seafood</span>
-                              </p>
-                            )}
-                            {product?.productJson?.spicy && (
-                              <span className="flex items-center gap-x-2 relative">
-                                <FontAwesomeIcon
-                                  icon={faPepperHot as IconProp}
-                                  title="Spicy"
-                                  className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[black]"
-                                />
-                              </span>
-                            )}
-                            {product?.productJson?.vegetarian && (
-                              <span className="flex items-center gap-x-2 relative">
-                                <FontAwesomeIcon
-                                  icon={faLeaf as IconProp}
-                                  title="Vegetarian"
-                                  className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[black]"
-                                />
-                              </span>
-                            )}
-                          </div>
+                          <ProductA11yMenuItem product={product} />
                         </article>
                       );
                     })}
@@ -198,13 +143,7 @@ export default function ProductA11yMenuSection({
                   {!!category?.bullets && (
                     <BulletsSection bullets={category.bullets} />
                   )}
-                  {/* {ctaLink && ctaText && (
-                    <LinkItem
-                      label={ctaText}
-                      link={ctaLink}
-                      cssClass="text-xl lg: font-semibold my-8 block mx-auto w-full max-w-xs my-2 px-4 py-2 rounded  border bg-bg border-primary hover:bg-secondary transition-all focus:bg-secondary text-text-color uppercase hidden lg:block"
-                    ></LinkItem>
-                  )} */}
+
                   {footer && (
                     <div className="text-left mx-auto tab-menu-footer">
                       {parse(footer)}
