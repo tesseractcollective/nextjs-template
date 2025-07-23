@@ -9,6 +9,36 @@ interface LogoTableProps {
 }
 
 export default function LogoTableGrid({ logoTableItems }: LogoTableProps) {
+  const LogoImage = ({
+    logoImage,
+    logoName,
+  }: {
+    logoImage?: string;
+    logoName: string;
+  }) => {
+    if (!logoImage)
+      return (
+        <h3 className="text-center uppercase text-sm tracking-wide">
+          {logoName}
+        </h3>
+      );
+    return (
+      <Image
+        className="max-h-24 w-full object-contain"
+        src={logoImage}
+        alt={logoName}
+        title={logoName || ""}
+        width={0}
+        height={0}
+        sizes="100%"
+        style={{
+          width: "auto",
+          height: "auto",
+          margin: "0 auto",
+        }}
+      />
+    );
+  };
   return (
     <div className="logo-table-grid">
       <section className="container mx-auto px-4">
@@ -20,48 +50,28 @@ export default function LogoTableGrid({ logoTableItems }: LogoTableProps) {
                   className="logo-grid-item bg-bg-secondary p-8 sm:p-10"
                   key={logoTableItem.logoName}
                 >
-                  {!!logoTableItem.logoImage?.url &&
-                    !!logoTableItem?.logoName && (
-                      <Fade triggerOnce cascade direction="up">
-                        {logoTableItem?.logoLink ? (
-                          <LinkItem
-                            link={`${logoTableItem.logoLink}`}
-                            cssClass="no-underline"
-                          >
-                            <>
-                              <Image
-                                className="max-h-24 w-full object-contain"
-                                src={logoTableItem.logoImage.url}
-                                alt={logoTableItem?.logoName}
-                                width={0}
-                                height={0}
-                                sizes="100%"
-                                style={{
-                                  width: "auto",
-                                  height: "auto",
-                                  margin: "0 auto",
-                                }}
-                              />
-                            </>
-                          </LinkItem>
-                        ) : (
-                          <Image
-                            className="max-h-24 w-full object-contain"
-                            src={logoTableItem.logoImage.url}
-                            alt={logoTableItem?.logoName}
-                            title={logoTableItem?.logoName || ""}
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            style={{
-                              width: "auto",
-                              height: "auto",
-                              margin: "0 auto",
-                            }}
-                          />
-                        )}
-                      </Fade>
-                    )}
+                  {!!logoTableItem?.logoName && (
+                    <Fade triggerOnce cascade direction="up">
+                      {logoTableItem?.logoLink ? (
+                        <LinkItem
+                          link={`${logoTableItem.logoLink}`}
+                          cssClass="no-underline"
+                        >
+                          <>
+                            <LogoImage
+                              logoImage={logoTableItem?.logoImage?.url}
+                              logoName={logoTableItem?.logoName}
+                            />
+                          </>
+                        </LinkItem>
+                      ) : (
+                        <LogoImage
+                          logoImage={logoTableItem?.logoImage?.url}
+                          logoName={logoTableItem?.logoName}
+                        />
+                      )}
+                    </Fade>
+                  )}
                 </div>
               ))}
             </div>
