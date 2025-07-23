@@ -12,6 +12,8 @@ import {
   faLeaf,
   faPepperHot,
   faTree,
+  faPlay,
+  faStop,
 } from "@fortawesome/free-solid-svg-icons";
 
 interface ProductA11yMenuItemProps {
@@ -35,76 +37,80 @@ export default function ProductA11yMenuItem({
             {parse(product.description.html || "")}
           </div>
         )}
-        <div className="diet-pills flex flex-row py-2">
-          {product.productJson?.dairy && (
-            <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max">
-              <FontAwesomeIcon
-                icon={faCow as IconProp}
-                title="dairy"
-                className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 text-[black]"
-              />
-              <span>Contains dairy</span>
-            </p>
-          )}
-          {product.productJson?.peanut && (
-            <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max">
-              <FontAwesomeIcon
-                icon={faTree as IconProp}
-                title="Peanut"
-                className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
-              />
-              <span>Contains peanut product</span>
-            </p>
-          )}
-          {product.productJson?.egg && (
-            <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max">
-              <FontAwesomeIcon
-                icon={faEgg as IconProp}
-                title="egg"
-                className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
-              />
-              <span>Contains egg</span>
-            </p>
-          )}
-          {product.productJson?.gluten && (
-            <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max">
-              <FontAwesomeIcon
-                icon={faBreadSlice as IconProp}
-                title="gluten"
-                className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
-              />
-              <span>Contains gluten</span>
-            </p>
-          )}
-          {product.productJson?.seafood && (
-            <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max">
-              <FontAwesomeIcon
-                icon={faFish as IconProp}
-                title="Seafood"
-                className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[black]"
-              />
-              <span>Seafood</span>
-            </p>
-          )}
-          {product?.productJson?.spicy && (
-            <span className="flex items-center gap-x-2 relative">
-              <FontAwesomeIcon
-                icon={faPepperHot as IconProp}
-                title="Spicy"
-                className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[black]"
-              />
-            </span>
-          )}
-          {product?.productJson?.vegetarian && (
-            <span className="flex items-center gap-x-2 relative">
-              <FontAwesomeIcon
-                icon={faLeaf as IconProp}
-                title="Vegetarian"
-                className="fa-fw my-0 py-0 mb-1 h-5 w-5 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100 transition-all rounded-full text-[black]"
-              />
-            </span>
-          )}
-        </div>
+        {product.productJson && (
+          <div className="diet-pills flex flex-row py-2 gap-4 flex-wrap">
+            {product.productJson?.dairy && (
+              <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max flex flex-row items-center justify-start gap-x-2">
+                <FontAwesomeIcon
+                  icon={faCow as IconProp}
+                  title="dairy"
+                  className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
+                />
+                <span>Contains dairy</span>
+              </p>
+            )}
+            {product.productJson?.peanut && (
+              <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max flex flex-row items-center justify-start gap-x-2">
+                <FontAwesomeIcon
+                  icon={faTree as IconProp}
+                  title="Peanut"
+                  className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
+                />
+                <span>Contains peanut product</span>
+              </p>
+            )}
+            {product.productJson?.egg && (
+              <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max flex flex-row items-center justify-start gap-x-2">
+                <FontAwesomeIcon
+                  icon={faEgg as IconProp}
+                  title="egg"
+                  className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
+                />
+                <span>Contains egg</span>
+              </p>
+            )}
+            {product.productJson?.gluten && (
+              <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max flex flex-row items-center justify-start gap-x-2">
+                <FontAwesomeIcon
+                  icon={faBreadSlice as IconProp}
+                  title="gluten"
+                  className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
+                />
+                <span>Contains gluten</span>
+              </p>
+            )}
+            {product.productJson?.seafood && (
+              <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max flex flex-row items-center justify-start gap-x-2">
+                <FontAwesomeIcon
+                  icon={faFish as IconProp}
+                  title="Seafood"
+                  className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
+                />
+                <span>Contains Seafood</span>
+              </p>
+            )}
+            {product?.productJson?.spicy && (
+              <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max flex flex-row items-center justify-start gap-x-2">
+                <FontAwesomeIcon
+                  icon={faPepperHot as IconProp}
+                  title="Spicy"
+                  className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
+                />
+                <span>Spicy Dish</span>
+              </p>
+            )}
+            {product?.productJson?.vegetarian && (
+              <p className="bg-[#d0d0d0] rounded-full px-4 max-w-max flex flex-row items-center justify-start gap-x-2">
+                <FontAwesomeIcon
+                  icon={faLeaf as IconProp}
+                  title="Vegetarian"
+                  className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[black]"
+                />
+                <span>Vegetarian</span>
+              </p>
+            )}
+          </div>
+        )}
       </>
     ),
     [product]
@@ -122,19 +128,29 @@ export default function ProductA11yMenuItem({
             highlightText={true}
             startBtn={
               <button
-                className="bg-[#58a9ff] !text-[white] p-2 rounded !text-[18px] font-bold"
+                className="bg-[blue] !text-[white] p-2 rounded !text-[18px] font-bold flex flex-row items-center justifty-center focus:outline-dotted outline-4"
                 type="button"
                 aria-label={product.name}
               >
-                PLAY
+                <FontAwesomeIcon
+                  icon={faPlay as IconProp}
+                  title="Play Audio"
+                  className="fa-fw my-0 py-0 h-5 w-5 opacity-70 text-[white]"
+                />
+                <span className="text-[white]">Audio Description</span>
               </button>
             }
             stopBtn={
               <button
-                className="bg-[#ffc107] text-[black] p-2 rounded !text-[18px] font-bold"
+                className="bg-[#ffc107] text-[black] p-2 rounded !text-[18px] font-bold flex flex-row items-center justifty-center"
                 type="button"
               >
-                STOP
+                <FontAwesomeIcon
+                  icon={faStop as IconProp}
+                  title="Stop Audio"
+                  className="fa-fw my-0 py-0 h-5 w-5 opacity-70text-[black]"
+                />
+                <span>Stop Audio</span>
               </button>
             }
             useStopOverPause

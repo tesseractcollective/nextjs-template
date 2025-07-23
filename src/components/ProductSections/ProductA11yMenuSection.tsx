@@ -41,14 +41,14 @@ export default function ProductA11yMenuSection({
   const textMultiplier = (num: string) => {
     return setTextScale(num);
   };
-  const buttonClass = "rounded-xl block aspect-1 bg-[#00a7eb] px-4";
+  const buttonClass = "rounded-xl block aspect-1 bg-[blue] px-4 text-[white]";
   return (
     <div className={`bg-[white] px-4 py-16 ${textScale}`}>
       <div className="mx-auto max-w-6xl w-full flex flex-col items-start justify-center font-poppins">
         <h2 className="text-left mx-auto mb-8 text-[black] font-poppins">
           {title}
         </h2>
-        <div className="flex flex-row w-full mx-auto gap-x-4 max-w-max items-center justify-start">
+        <div className="flex flex-row w-full max-w-6xl mx-auto gap-x-4 items-end justify-center">
           <button
             onClick={() => textMultiplier("page-lg")}
             type="button"
