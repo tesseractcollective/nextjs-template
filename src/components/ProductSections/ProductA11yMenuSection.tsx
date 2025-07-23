@@ -133,7 +133,7 @@ export default function ProductA11yMenuSection({
                               className="w-16 h-16 rounded-lg object-cover"
                             />
                           )}
-                          {product && <ProductA11yMenuItem product={product} />}
+                          {/* {product && <ProductA11yMenuItem product={product} />} */}
                         </article>
                       );
                     })}
