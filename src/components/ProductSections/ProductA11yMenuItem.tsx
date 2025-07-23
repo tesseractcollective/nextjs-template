@@ -32,7 +32,7 @@ export default function ProductA11yMenuItem({
         </h3>
         {product?.description && (
           <div className="lowercase mb-1">
-            {parse(product.description.html)}
+            {parse(product.description.html || "")}
           </div>
         )}
         <div className="diet-pills flex flex-row py-2">
