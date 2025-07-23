@@ -30,7 +30,7 @@ export default function ProductA11yMenuItem({
             <span className="text-[red]">{`$${product.price}`}</span>
           )}
         </h3>
-        {product?.description && (
+        {product?.description?.html && (
           <div className="lowercase mb-1">
             {parse(product.description.html || "")}
           </div>
@@ -112,34 +112,38 @@ export default function ProductA11yMenuItem({
 
   return (
     <div className="flex flex-col-reverse items-start w-full">
-      <Speech
-        text={textSpeech}
-        pitch={1.2}
-        rate={1.2}
-        id={product.productSlug}
-        highlightText={true}
-        startBtn={
-          <button
-            className="bg-[#58a9ff] !text-[white] p-2 rounded !text-[18px] font-bold"
-            type="button"
-            aria-label={product.name}
-          >
-            PLAY
-          </button>
-        }
-        stopBtn={
-          <button
-            className="bg-[#ffc107] text-[black] p-2 rounded !text-[18px] font-bold"
-            type="button"
-          >
-            STOP
-          </button>
-        }
-        useStopOverPause
-      ></Speech>
-      <HighlightedText id={product.productSlug} className="w-full mb-4">
-        {textSpeech}
-      </HighlightedText>
+      {textSpeech && (
+        <>
+          <Speech
+            text={textSpeech}
+            pitch={1.2}
+            rate={1.2}
+            id={product.productSlug}
+            highlightText={true}
+            startBtn={
+              <button
+                className="bg-[#58a9ff] !text-[white] p-2 rounded !text-[18px] font-bold"
+                type="button"
+                aria-label={product.name}
+              >
+                PLAY
+              </button>
+            }
+            stopBtn={
+              <button
+                className="bg-[#ffc107] text-[black] p-2 rounded !text-[18px] font-bold"
+                type="button"
+              >
+                STOP
+              </button>
+            }
+            useStopOverPause
+          ></Speech>
+          <HighlightedText id={product.productSlug} className="w-full mb-4">
+            {textSpeech}
+          </HighlightedText>
+        </>
+      )}
     </div>
   );
 }
