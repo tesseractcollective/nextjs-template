@@ -9,42 +9,36 @@ import parse from "html-react-parser";
 import SocialMediaIcons from "@/components/SocialMediaIcons";
 import Blogs from "@/components/Blogs";
 import { Fade } from "react-awesome-reveal";
-import MinimalFooter from "./FooterSections/MinimalFooter";
-import UniversalFooter from "./FooterSections/UniversalFooter";
-import HorizonFooter from "./FooterSections/HorizonFooter";
-import A11yFooter from "./FooterSections/A11yFooter";
+import Script from "next/script";
+import React from "react";
 
 export interface FooterProps {
   siteLibrary: SiteLibraryFieldsFragment;
-  navigations: NavigationFieldsFragment[];
+  navigation: NavigationFieldsFragment;
   blogs: BlogFieldsFragment[];
   hideFooter?: boolean;
   pageNavigationSelection?: string;
 }
 
-function Footer({
+function A11yFooter({
   siteLibrary,
-  navigations,
+  navigation,
   hideFooter,
   blogs,
-  pageNavigationSelection,
 }: FooterProps) {
-  if (!navigations || !siteLibrary || hideFooter) return null;
+  if (!navigation || !siteLibrary || hideFooter) return null;
 
-  const { isSpanish, title, secondaryLink, secondaryLogo, secondaryName } =
-    siteLibrary;
+  const {
+    isSpanish,
+    title,
+    secondaryLink,
+    secondaryLogo,
+    secondaryName,
+    siteId,
+  } = siteLibrary;
 
-  const navigation =
-    navigations.find(
-      (navigationTemp) =>
-        navigationTemp?.pageNavigationSelection &&
-        pageNavigationSelection &&
-        navigationTemp?.pageNavigationSelection.includes(
-          pageNavigationSelection
-        )
-    ) || navigations[0];
-
-  const { footerColumns, footerWrapperCssClass, footerItems } = navigation;
+  const { footerColumns, footerWrapperCssClass, footerItems, footerJson } =
+    navigation;
 
   const wideColumns = footerColumns.filter(
     (footerColumn) => footerColumn?.wideColumn === true
@@ -52,87 +46,22 @@ function Footer({
   const regularColumns = footerColumns.filter(
     (footerColumn) => footerColumn?.wideColumn !== true
   );
-  // ** Navigation Layout Style
-  // vertical
-  // universal √
-  // horizon
-  // circle
-  // dimension
-  // between
-  // center
-  // dashboard
-  // dual
-  // mega
-  // minimal √
-  // progress
-  // reverse
-  // space
-  // start √
-  // transparent
-  // vertical
-  // border
-  // verticalTwo
-  // blog
-  // luxury
-  // fixedSide
-  if (navigation.navigationLayoutStyle === "universal")
-    return (
-      <UniversalFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || "primary"}
-      />
-    );
-  if (navigation.navigationLayoutStyle === "horizon")
-    return (
-      <HorizonFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || "primary"}
-      />
-    );
-  if (navigation.navigationWrapperCssClass === "navA11y")
-    return (
-      <A11yFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || "primary"}
-      />
-    );
-  if (navigation.navigationLayoutStyle !== "start")
-    return (
-      <MinimalFooter
-        siteLibrary={siteLibrary}
-        navigation={navigation}
-        blogs={blogs}
-        hideFooter={hideFooter || undefined}
-        pageNavigationSelection={pageNavigationSelection || "primary"}
-      />
-    );
   return (
     <footer
-      aria-labelledby="footer-heading standard-footer"
-      className={`mt-16 mb-8 ${
-        footerWrapperCssClass ? footerWrapperCssClass : ""
-      }`}
+      aria-labelledby="site-footer"
+      className={`footer-heading a11y-footer !bg-[white] py-8`}
     >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 w-full">
         {wideColumns?.length >= 1 && (
-          <div className={`flex items-center justify-center w-full mb-16`}>
+          <div className={`flex items-center justify-center w-full`}>
             <Fade direction="up" cascade damping={0.1} triggerOnce>
               {wideColumns.map((item, index) => (
                 <div
                   key={`footer-col-${index++}`}
-                  className={`flex items-center mx-auto justify-center text-center relative my-4 md:my-0 flex-col gap-y-2 ${
+                  className={`flex items-center mx-auto justify-center text-center relative my-4 md:my-0 flex-col ${
                     item?.footerColumnCssWrapper || ""
                   }`}
                   id={`footer-col-${index + 1}`}
@@ -141,24 +70,24 @@ function Footer({
                     <Image
                       src={item.footerImage?.url}
                       className="h-20 w-full mb-4 object-contain max-w-max min-w-[120px]"
-                      alt=""
+                      alt={item.footerTitle || ""}
                       width={0}
                       height={0}
                       sizes="100%"
                     />
                   )}
                   {!!item.footerTitle && (
-                    <h3 className="text-md font-bold text-text-color uppercase tracking-widest opacity-90">
+                    <h3 className="text-xs font-bold !text-[black] uppercase tracking-widest opacity-90 mb-2">
                       {item.footerTitle}
                     </h3>
                   )}
                   {!!item?.footerText?.html && (
-                    <div className="text-xs font-medium text-text-color max-w-4xl body-parsed-text leading-none ring-opacity-90 opacity-80">
+                    <div className="text-xs font-medium !text-[black] max-w-lg body-parsed-text leading-none ring-opacity-90 opacity-90 all-text-black">
                       {parse(item.footerText?.html)}
                     </div>
                   )}
                   {!!item?.footerIframe && (
-                    <div className="text-sm font-medium text-text-color max-w-max">
+                    <div className="text-sm font-medium !text-[black] max-w-max all-text-black">
                       {parse(item.footerIframe)}
                     </div>
                   )}
@@ -173,7 +102,7 @@ function Footer({
                             <LinkItem
                               key={`footer-link-item-${index++}`}
                               link={linkItem?.link}
-                              cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
+                              cssClass={`text-[blue] opacity-80 hover:opacity-100 transition-all ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
                             >
                               <>
@@ -202,7 +131,7 @@ function Footer({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      blogLayoutStyle="compact"
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </div>
@@ -217,7 +146,7 @@ function Footer({
             {regularColumns.map((item, index) => (
               <div
                 key={`regular-column-${index++}`}
-                className={`relative my-4 lg:my-0 ${
+                className={`relative my-4 md:my-0 ${
                   item?.footerColumnCssWrapper || ""
                 }`}
                 id={`footer-col-${index++}`}
@@ -226,7 +155,7 @@ function Footer({
                   {!!item.footerImage?.url && (
                     <Image
                       src={item.footerImage?.url}
-                      className="h-20 w-full mb-4 object-contain max-w-max min-w-[120px]"
+                      className="h-16 w-full mb-4 object-contain max-w-max"
                       alt=""
                       width={0}
                       height={0}
@@ -234,17 +163,17 @@ function Footer({
                     />
                   )}
                   {!!item.footerTitle && (
-                    <h3 className="text-xs font-bold text-text-color uppercase tracking-widest opacity-90">
+                    <h3 className="text-xs font-bold !text-[black] uppercase tracking-widest opacity-90">
                       {item.footerTitle}
                     </h3>
                   )}
                   {!!item?.footerText?.html && (
-                    <div className="text-xs font-medium text-text-color max-w-max body-parsed-text leading-none ring-opacity-90 opacity-80">
+                    <div className="text-xs font-medium !text-[black] max-w-max body-parsed-text leading-none ring-opacity-90 opacity-80 all-text-black">
                       {parse(item.footerText?.html)}
                     </div>
                   )}
                   {!!item?.footerIframe && (
-                    <div className="text-sm font-medium text-text-color max-w-max">
+                    <div className="text-sm font-medium !text-[black] max-w-max all-text-black">
                       {parse(item.footerIframe)}
                     </div>
                   )}
@@ -259,10 +188,26 @@ function Footer({
                             <LinkItem
                               key={`footer-link-column-item-${index++}`}
                               link={linkItem?.link}
-                              label={linkItem?.label}
-                              cssClass={`text-text-color opacity-80 hover:opacity-100 transition-all hover:text-link ${linkItem?.cssClass}`}
+                              cssClass={`!text-[blue] opacity-80 hover:opacity-100 transition-all ${linkItem?.cssClass}`}
                               sameTab={linkItem?.sameTab}
-                            />
+                            >
+                              <>
+                                {!!linkItem.image?.url && (
+                                  <Image
+                                    src={linkItem.image?.url}
+                                    className="h-20 w-auto mb-4 object-contain max-w-max"
+                                    alt=""
+                                    width={0}
+                                    height={0}
+                                    sizes="100%"
+                                    style={{ width: "100%" }}
+                                  />
+                                )}
+                                {!!linkItem?.label && (
+                                  <>{parse(linkItem?.label)}</>
+                                )}
+                              </>
+                            </LinkItem>
                           </div>
                         )}
                       </li>
@@ -272,7 +217,7 @@ function Footer({
                     <Blogs
                       blogs={blogs}
                       blogCategory={item.recentBlogByCategory}
-                      blogLayoutStyle="compact"
+                      blogLayoutStyle={"compact"}
                     />
                   )}
                 </Fade>
@@ -281,17 +226,16 @@ function Footer({
           </div>
         )}
         {/* Bottom Footer */}
-        <div className="border-t border-primary-fade-opacity my-8 py-5 flex flex-col flex-wrap justify-center">
-          <SocialMediaIcons
-            fadeDirection="up"
-            siteLibrary={siteLibrary}
-            cssClass="mt-8 mb-4 w-full flex flex-row social-icons-row items-center justify-center text-text-color flex-wrap gap-x-2"
-          />
-          <p className="text-xs text-text-color uppercase text-center mb-4 opacity-70">
-            {`© ${new Date().getFullYear()} ${title || ""} ${
-              isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
-            }.`}
-          </p>
+        <div className="my-8 flex flex-col flex-wrap justify-center w-full mx-auto">
+          {footerJson?.hideFooterSocial === true ? (
+            <></>
+          ) : (
+            <SocialMediaIcons
+              fadeDirection="up"
+              siteLibrary={siteLibrary}
+              cssClass="my-4 w-full flex flex-row social-icons-row primary-hover items-center justify-center !text-[black] flex-wrap gap-x-2"
+            />
+          )}
           {secondaryLogo?.url && secondaryLink && secondaryName && (
             <a
               href={secondaryLink}
@@ -312,13 +256,13 @@ function Footer({
             </a>
           )}
           {footerItems && (
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-2">
+            <div className="flex flex-row items-center justify-center px-4 flex-wrap">
               {footerItems.map((footerItem, index) => (
                 <LinkItem
                   key={`${footerItem.link}-${index++}`}
                   label={footerItem.label}
                   link={footerItem.link}
-                  cssClass={`max-w-max mx-4 text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100 ${
+                  cssClass={`max-w-max my-2 mx-4 text-[12px] text-color-[blue] opacity-70 text-[blue] uppercase text-center hover:opacity-100 ${
                     footerItem.cssClass ? footerItem.cssClass : ""
                   }`}
                   sameTab={footerItem.sameTab}
@@ -326,33 +270,54 @@ function Footer({
               ))}
             </div>
           )}
-          {siteLibrary?.siteLibraryJson?.customCredit ? (
-            <a
-              href={`${
-                siteLibrary.siteLibraryJson?.customCredit.customCreditLink
-              }?source=${encodeURIComponent(title || "")}`}
-              target="_blank"
-              rel="noreferrer"
-              className="max-w-max m-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
-            >
-              {siteLibrary.siteLibraryJson?.customCredit.customCreditText}
-            </a>
-          ) : (
-            <a
-              href={`https://lnza.me/?${encodeURIComponent(title || "")}`}
-              target="_blank"
-              rel="noreferrer"
-              className="max-w-max m-4 mx-auto text-[10px] text-color-secondary opacity-70 text-link uppercase text-center hover:opacity-100"
-            >
-              {isSpanish
-                ? "Hecho a mano por Ricardo"
-                : "Hand crafted by Ricardo"}
-            </a>
-          )}
+          <div className="flex flex-col md:flex-row justify-center md:justify-between w-full items-center my-8">
+            <p className="text-xs text-[black] uppercase text-center md:text-left mx-auto md:ml-0 md:mr-auto opacity-70 flex items-center h-full text-[10px]">
+              {`© ${new Date().getFullYear()} ${title || ""} ${
+                isSpanish ? "Todos Derechos Reservados" : "All Rights Reserved"
+              }.`}
+            </p>
+            {siteLibrary?.siteLibraryJson?.disableCredit === true ? (
+              <></>
+            ) : (
+              <>
+                {siteLibrary?.siteLibraryJson?.customCredit ? (
+                  <a
+                    href={`${
+                      siteLibrary.siteLibraryJson?.customCredit.customCreditLink
+                    }?source=${encodeURIComponent(title || "")}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="max-w-max text-[10px] text-color-[blue] opacity-70 text-[blue] uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
+                  >
+                    {siteLibrary.siteLibraryJson?.customCredit.customCreditText}
+                  </a>
+                ) : (
+                  <a
+                    href={`https://lnza.me/?${encodeURIComponent(title || "")}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="max-w-max text-[10px] text-color-[blue] opacity-70 text-[blue] uppercase md:text-right mx-auto md:mr-0 md:ml-auto hover:opacity-100 h-full"
+                  >
+                    {isSpanish
+                      ? "Hecho a mano por Ricardo"
+                      : "Hand crafted by Ricardo"}
+                  </a>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
+      {siteId === "foodieevents" && (
+        <>
+          <Script
+            type="text/javascript"
+            src="//tag.brandcdn.com/autoscript/courageousheart_vgtssk0wnuvzeku9/Courageous_Heart.js"
+          ></Script>
+        </>
+      )}
     </footer>
   );
 }
 
-export default Footer;
+export default A11yFooter;

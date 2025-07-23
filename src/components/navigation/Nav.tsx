@@ -26,6 +26,7 @@ import BetweenNavigation from "@/components/navigation/BetweenNavigation";
 import FixedSideNavigation from "@/components/navigation/FixedSideNavigation";
 import LuxuryNavigation from "@/components/navigation/LuxuryNavigation";
 import TransparentNavigation from "@/components/navigation/TransparentNavigation";
+import A11yNavigation from "./A11yNavigation";
 
 export interface NavProps {
   siteLibrary: SiteLibraryFieldsFragment;
@@ -128,6 +129,16 @@ export default function Nav({
   if (navigation.navigationLayoutStyle === "space")
     return (
       <SpaceNavigation
+        navigations={navigations}
+        siteLibrary={siteLibrary}
+        hideNav={hideNav}
+        pageNavigationSelection={pageNavigationSelection}
+      />
+    );
+
+  if (navigation.navigationWrapperCssClass === "navA11y")
+    return (
+      <A11yNavigation
         navigations={navigations}
         siteLibrary={siteLibrary}
         hideNav={hideNav}
